@@ -15,5 +15,6 @@ namespace GameStore.Domain.Entities
 
         public virtual Game Game { get; set; }
         public virtual Comment ParentComment { get; set; }
+
     }
 }
