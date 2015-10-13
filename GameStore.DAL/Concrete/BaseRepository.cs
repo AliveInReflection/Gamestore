@@ -1,15 +1,12 @@
-﻿using System;
+﻿using Gamestore.DAL.Context;
+using GameStore.DAL.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Linq.Expressions;
-using GameStore.Domain.Entities.DAL.Context;
-using GameStore.Domain.Entities.DAL.Context;
-using GameStore.Domain.Entities.DAL.Interfaces;
 
-namespace GameStore.Domain.Entities.Domain.Entities.DAL.Concrete
+namespace GameStore.DAL.Concrete
 {
     public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {

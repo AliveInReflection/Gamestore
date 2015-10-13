@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GameStore.Domain.Entities.Domain.Metadata;
 
-namespace GameStore.Domain.Entities.Domain.Entities.Domain.Entities
+namespace GameStore.Domain.Entities
 {
     [MetadataType(typeof(CommentMetadata))]
-    public partial class Comment
+    public class Comment
     {
         public int CommentId { get; set; }
         public string SendersName { get; set; }

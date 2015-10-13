@@ -1,6 +1,4 @@
-﻿using GameStore.Domain.Entities.Domain.Entities;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GameStore.Domain.Entities

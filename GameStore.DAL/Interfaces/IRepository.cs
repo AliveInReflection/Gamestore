@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameStore.Domain.Entities.Domain.Entities.DAL.Interfaces
+namespace GameStore.DAL.Interfaces
 {
     public interface IRepository<T> where T : class
     {
