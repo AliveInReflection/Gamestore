@@ -1,16 +1,15 @@
-﻿using System;
+﻿using GameStore.Domain.Metadata;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace GameStore.Domain.Entities
 {
+    [MetadataType(typeof(PlatformTypeMetadata))]
     public class PlatformType
     {
         public int PlatformTypeId { get; set; }
         public string PlatformTypeName { get; set; }
 
-        public IEnumerable<Game> Games { get; set; }
+        public ICollection<Game> Games { get; set; }
     }
 }

@@ -49,6 +49,10 @@
     <Compile Include="Entities\Game.cs" />
     <Compile Include="Entities\Genre.cs" />
     <Compile Include="Entities\PlatformType.cs" />
+    <Compile Include="Metadata\CommentMetadata.cs" />
+    <Compile Include="Metadata\GameMetadata.cs" />
+    <Compile Include="Metadata\GenreMetadata.cs" />
+    <Compile Include="Metadata\PlatformTypeMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
