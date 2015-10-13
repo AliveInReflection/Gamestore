@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GameStore.Domain.Metadata;
+using GameStore.Domain.Entities.Domain.Metadata;
 
-namespace GameStore.Domain.Entities
+namespace GameStore.Domain.Entities.Domain.Entities.Domain.Entities
 {
     [MetadataType(typeof(GameMetadata))]
     public partial class Game

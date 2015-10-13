@@ -1,11 +1,11 @@
-﻿using GameStore.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameStore.Domain.Entities.Domain.Entities;
 
-namespace GameStore.DAL.Interfaces
+namespace GameStore.Domain.Entities.Domain.Entities.DAL.Interfaces
 {
     public interface IUnitOfWork
     {

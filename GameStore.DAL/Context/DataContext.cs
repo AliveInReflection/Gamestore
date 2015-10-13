@@ -1,12 +1,7 @@
-﻿using GameStore.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
+using GameStore.Domain.Entities.Domain.Entities;
 
-namespace GameStore.DAL.Context
+namespace GameStore.Domain.Entities.Domain.Entities.DAL.Context
 {
     public class DataContext : DbContext
     {

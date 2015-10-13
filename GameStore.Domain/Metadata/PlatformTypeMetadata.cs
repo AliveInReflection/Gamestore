@@ -1,4 +1,4 @@
-﻿using GameStore.Domain.Entities;
+﻿using GameStore.Domain.Entities.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameStore.Domain.Metadata
+namespace GameStore.Domain.Entities
 {
     class PlatformTypeMetadata
     {

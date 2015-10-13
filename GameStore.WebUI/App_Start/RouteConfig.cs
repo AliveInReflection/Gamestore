@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace GameStore.WebUI
+namespace GameStore.Domain.Entities.Domain.Entities.WebUI
 {
     public class RouteConfig
     {

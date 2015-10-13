@@ -4,11 +4,12 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GameStore.DAL.Interfaces;
 using System.Linq.Expressions;
-using GameStore.DAL.Context;
+using GameStore.Domain.Entities.DAL.Context;
+using GameStore.Domain.Entities.DAL.Context;
+using GameStore.Domain.Entities.DAL.Interfaces;
 
-namespace GameStore.DAL.Concrete
+namespace GameStore.Domain.Entities.Domain.Entities.DAL.Concrete
 {
     public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {

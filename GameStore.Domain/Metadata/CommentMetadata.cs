@@ -1,9 +1,9 @@
-﻿using GameStore.Domain.Entities;
+﻿using GameStore.Domain.Entities.Domain.Entities;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GameStore.Domain.Metadata
+namespace GameStore.Domain.Entities
 {
     public partial class CommentMetadata
     {
