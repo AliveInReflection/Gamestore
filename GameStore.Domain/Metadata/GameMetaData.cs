@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,10 @@ namespace GameStore.Domain.Metadata
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
         public int GameId { get; set; }
+
+        [Required]
+        [MaxLength(100)]
+        public string GameKey { get; set; }
 
         [Required]
         [MaxLength(100)]

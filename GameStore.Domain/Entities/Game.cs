@@ -12,6 +12,7 @@ namespace GameStore.Domain.Entities
     public partial class Game
     {
         public int GameId { get; set; }
+        public string GameKey { get; set; }
         public string GameName { get; set; }
         public string Description { get; set; }
 
