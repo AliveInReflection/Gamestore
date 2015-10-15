@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace GameStore.Domain.Entities.Domain.Entities.WebUI
+namespace GameStore.WebUI
 {
     public class FilterConfig
     {

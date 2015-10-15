@@ -7,12 +7,18 @@ using GameStore.BLL.Infrastructure;
 using GameStore.BLL.Interfaces;
 using GameStore.DAL.Interfaces;
 using GameStore.Domain.Entities;
+using GameStores.DAL.Concrete;
 
 namespace GameStore.BLL.Services
 {
     public class GameService : IGameService
     {
-        private IUnitOfWork database;
+        private readonly IUnitOfWork database;
+
+        public GameService()
+        {
+            database = new UnitOfWork("GameStoreContext");
+        }
 
         public GameService(IUnitOfWork database)
         {
@@ -21,16 +27,18 @@ namespace GameStore.BLL.Services
 
         public void AddGame(GameDTO game)
         {
-            if (game == null)
-                throw new ValidationException("No content received");
+            //if (game == null)
+            //    throw new ValidationException("No content received");
+
+            //Mapper.CreateMap<GameDTO, Game>();
+            //var gameToSave = Mapper.Map<GameDTO, Game>(game);
+
+            //var entry = database.Games.Get(m => m.GameKey.Equals(gameToSave.GameKey));
+            //if (entry != null)
+            //    throw new ValidationException("Another game has the same game key");
 
             Mapper.CreateMap<GameDTO, Game>();
             var gameToSave = Mapper.Map<GameDTO, Game>(game);
-
-            var entry = database.Games.Get(m => m.GameKey.Equals(gameToSave.GameKey));
-            if (entry != null)
-                throw new ValidationException("Another game has the same game key");
-
             database.Games.Add(gameToSave);
             database.Save();
 

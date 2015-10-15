@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace GameStore.Domain.Entities.Domain.Entities.WebUI
+namespace GameStore.WebUI
 {
     public static class WebApiConfig
     {
