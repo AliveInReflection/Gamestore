@@ -8,6 +8,7 @@ namespace GameStore.BLL.DTO
 {
     public class GameDTO
     {
+        
         public int GameId { get; set; }
         public string GameKey { get; set; }
         public string GameName { get; set; }
