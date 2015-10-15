@@ -16,6 +16,11 @@ namespace GameStore.WebUI
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            //Mapper.Initialize(cfg =>
+            //{
+            //    cfg.AddProfile()
+            //})
         }
     }
 }

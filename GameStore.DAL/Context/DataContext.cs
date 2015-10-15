@@ -85,7 +85,7 @@ namespace Gamestore.DAL.Context
 
             types.Add(console);
 
-            genres.Clear();
+            genres = new List<Genre>();
             genres.Add(races);
 
             db.Games.Add(new Game()
@@ -96,7 +96,7 @@ namespace Gamestore.DAL.Context
 
             //-----------------------------------
 
-            genres.Clear();
+            genres = new List<Genre>();
             genres.Add(action);
 
             var csgo = new Game()
@@ -108,7 +108,7 @@ namespace Gamestore.DAL.Context
             db.Games.Add(csgo);
 
 
-            var ghostComment = new Comment() {SendersName = "Ghost", Content = "Is it miltiplayer only?", Game = sc2};
+            var ghostComment = new Comment() {SendersName = "Ghost", Content = "Is it miltiplayer only?", Game = csgo};
             db.Comments.Add(ghostComment);
             db.Comments.Add(new Comment() { SendersName = "Shooter", Content = "No. It has offline mode to play with bots.", Game = csgo, ParentComment = ghostComment});
             db.Comments.Add(new Comment() { SendersName = "Sarah Kerrigan", Content = "Nice game", Game = sc2 });

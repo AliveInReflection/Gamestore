@@ -27,15 +27,13 @@ namespace GameStore.BLL.Services
 
         public void AddGame(GameDTO game)
         {
-            //if (game == null)
-            //    throw new ValidationException("No content received");
+            if (game == null)
+                throw new ValidationException("No content received");
 
-            //Mapper.CreateMap<GameDTO, Game>();
-            //var gameToSave = Mapper.Map<GameDTO, Game>(game);
 
-            //var entry = database.Games.Get(m => m.GameKey.Equals(gameToSave.GameKey));
-            //if (entry != null)
-            //    throw new ValidationException("Another game has the same game key");
+            var entry = database.Games.Get(m => m.GameKey.Equals(game.GameKey));
+            if (entry != null)
+                throw new ValidationException("Another game has the same game key");
 
             Mapper.CreateMap<GameDTO, Game>();
             var gameToSave = Mapper.Map<GameDTO, Game>(game);
@@ -48,19 +46,20 @@ namespace GameStore.BLL.Services
         {
             if (game == null)
                 throw new ValidationException("No content received");
-            
-            Mapper.CreateMap<GameDTO, Game>();
-            var gameToSave = Mapper.Map<GameDTO, Game>(game);
 
-            var entry = database.Games.Get(m => m.GameId.Equals(gameToSave.GameId));
-            if (entry == null)
-                throw new ValidationException("Game not found");
-
-            entry = database.Games.Get(m => m.GameKey.Equals(gameToSave.GameKey));
-            if (entry == null)
+            var entry = database.Games.Get(m => m.GameKey.Equals(game.GameKey));
+            if (entry != null)
                 throw new ValidationException("Another game has the same game key");
 
-            database.Games.Add(gameToSave);
+            entry = database.Games.Get(m => m.GameId.Equals(game.GameId));
+            if (entry == null)
+                throw new ValidationException("Game not found");
+            
+            Mapper.CreateMap<GameDTO, Game>();
+
+            var gameToSave = Mapper.Map(game, entry);
+
+            database.Games.Update(gameToSave);
             database.Save();
 
         }

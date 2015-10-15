@@ -9,6 +9,6 @@ namespace GameStore.Domain.Entities
         public int PlatformTypeId { get; set; }
         public string PlatformTypeName { get; set; }
 
-        public ICollection<Game> Games { get; set; }
+        public virtual ICollection<Game> Games { get; set; }
     }
 }
