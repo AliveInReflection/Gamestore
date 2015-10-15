@@ -27,8 +27,9 @@ namespace GameStore.DAL.Concrete
             context.Entry(entity).State = EntityState.Modified;
         }
 
-        public void Delete(TEntity entity)
+        public void Delete(int id)
         {
+            var entity = context.Set<TEntity>().Find(id);
             context.Entry(entity).State = EntityState.Deleted;
         }
 
