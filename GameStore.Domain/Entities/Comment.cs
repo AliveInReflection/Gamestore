@@ -10,7 +10,6 @@ namespace GameStore.Domain.Entities
         public string SendersName { get; set; }
         public string Content { get; set; }
         public int GameId { get; set; }
-        public int? ParentId { get; set; }
 
         public virtual Game Game { get; set; }
         public virtual Comment ParentComment { get; set; }

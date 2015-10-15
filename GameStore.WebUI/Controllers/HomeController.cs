@@ -30,6 +30,7 @@ namespace GameStore.WebUI.Controllers
                 Description = "asdasdasdasknakdsfamdfkqwehbffasfbqk"
 
             });
+            var games = gameService.GetAllGames();
             return View();
         }
 

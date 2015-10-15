@@ -15,11 +15,11 @@ namespace GameStore.Domain.Entities
         public string GameKey { get; set; }
 
         [Required]
-        [MaxLength(100)]
+        [MaxLength(200)]
         public string GameName { get; set; }
 
         [Required]
-        [MaxLength(400)]
+        [MaxLength(1000)]
         public string Description { get; set; }
 
     }
