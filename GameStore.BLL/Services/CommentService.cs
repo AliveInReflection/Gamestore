@@ -1,15 +1,11 @@
 ﻿using GameStore.BLL.DTO;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 using GameStore.Domain.Entities;
 using GameStore.BLL.Infrastructure;
 using GameStore.BLL.Interfaces;
 using GameStore.DAL.Interfaces;
-using GameStores.DAL.Concrete;
+using GameStore.DAL.Concrete;
 
 namespace GameStore.BLL.Services
 {
@@ -19,7 +15,7 @@ namespace GameStore.BLL.Services
 
         public CommentService()
         {
-            database = new UnitOfWork("GameStoreContext");
+
         }
 
         public CommentService(IUnitOfWork database)

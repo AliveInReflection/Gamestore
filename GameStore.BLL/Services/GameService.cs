@@ -7,7 +7,7 @@ using GameStore.BLL.Infrastructure;
 using GameStore.BLL.Interfaces;
 using GameStore.DAL.Interfaces;
 using GameStore.Domain.Entities;
-using GameStores.DAL.Concrete;
+using GameStore.DAL.Concrete;
 
 namespace GameStore.BLL.Services
 {
@@ -17,7 +17,7 @@ namespace GameStore.BLL.Services
 
         public GameService()
         {
-            database = new UnitOfWork("GameStoreContext");
+
         }
 
         public GameService(IUnitOfWork database)

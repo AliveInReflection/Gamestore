@@ -16,7 +16,7 @@ namespace GameStore.WebUI.Controllers
 
         public GamesController()
         {
-            this.gameService = new GameService();
+
         }
 
         public GamesController(IGameService gameService)
