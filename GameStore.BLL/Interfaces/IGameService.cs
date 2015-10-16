@@ -15,9 +15,7 @@ namespace GameStore.BLL.Interfaces
         GameDTO GetGameByKey(string key);
         IEnumerable<GameDTO> GetAllGames();
 
-        void AddComment(CommentDTO comment);
-        IEnumerable<CommentDTO> GetCommentsByGameKey(string key);
-
+       
         IEnumerable<GameDTO> GetGamesByGenre(int genreId);
         IEnumerable<GameDTO> GetGamesByPlatformTypes(IEnumerable<int> typeIds);
     }

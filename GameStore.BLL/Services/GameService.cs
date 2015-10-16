@@ -97,29 +97,6 @@ namespace GameStore.BLL.Services
             return games;
         }
 
-        public void AddComment(CommentDTO comment)
-        {
-            if (comment == null)
-                throw new ValidationException("No content received");
-
-            Mapper.CreateMap<CommentDTO, Comment>();
-            var commentToSave = Mapper.Map<CommentDTO, Comment>(comment);
-            database.Comments.Add(commentToSave);
-            database.Save();
-        }
-
-        public IEnumerable<CommentDTO> GetCommentsByGameKey(string key)
-        {
-            var game = database.Games.Get(m => m.GameKey.Equals(key));
-            if (game == null)
-                throw new ValidationException("Game not found");
-
-            var commentEntries = database.Comments.GetMany(m => m.GameId.Equals(game.GameId));
-            Mapper.CreateMap<Comment, CommentDTO>();
-            var comments = Mapper.Map<IEnumerable<Comment>, IEnumerable<CommentDTO>>(commentEntries);
-            return comments;
-        }
-
         public IEnumerable<GameDTO> GetGamesByGenre(int genreId)
         {
             var genre = database.Genres.Get(m => m.GenreId.Equals(genreId));
