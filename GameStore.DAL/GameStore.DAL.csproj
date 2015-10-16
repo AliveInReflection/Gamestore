@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Concrete\BaseRepository.cs" />
-    <Compile Include="Concrete\UnitOfWork.cs" />
     <Compile Include="Context\DataContext.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
