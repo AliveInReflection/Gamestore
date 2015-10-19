@@ -9,7 +9,7 @@ using GameStore.Domain.Entities;
 
 namespace GameStore.DAL.Concrete
 {
-    public class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private readonly DataContext context;
 
@@ -48,6 +48,11 @@ namespace GameStore.DAL.Concrete
         public void Save()
         {
             context.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            
         }
     }
 }

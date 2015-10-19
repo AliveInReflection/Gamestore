@@ -6,6 +6,7 @@ using GameStore.BLL.Infrastructure;
 using GameStore.BLL.Interfaces;
 using GameStore.DAL.Interfaces;
 using GameStore.DAL.Concrete;
+using System;
 
 namespace GameStore.BLL.Services
 {
@@ -27,6 +28,12 @@ namespace GameStore.BLL.Services
         {
             if (comment == null)
                 throw new ValidationException("No content received");
+            
+            if (String.IsNullOrEmpty(comment.SendersName))
+                throw new ValidationException("Senders name is empty");
+
+            if (String.IsNullOrEmpty(comment.Content))
+                throw new ValidationException("Content field is empty");
 
             var gameEntry = database.Games.Get(m => m.GameKey.Equals(gamekey));
             if (gameEntry == null)
@@ -49,6 +56,10 @@ namespace GameStore.BLL.Services
             Mapper.CreateMap<Comment, CommentDTO>();
             var comments = Mapper.Map<IEnumerable<Comment>, IEnumerable<CommentDTO>>(commentEntries);
             return comments;
+        }
+
+        public void Dispose()
+        {
         }
     }
 }

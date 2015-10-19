@@ -7,7 +7,7 @@ using GameStore.BLL.DTO;
 
 namespace GameStore.BLL.Interfaces
 {
-    public interface IGameService
+    public interface IGameService : IDisposable
     {
         void AddGame(GameDTO game);
         void EditGame(GameDTO game);

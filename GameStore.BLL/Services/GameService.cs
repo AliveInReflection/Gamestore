@@ -11,7 +11,7 @@ using GameStore.DAL.Concrete;
 
 namespace GameStore.BLL.Services
 {
-    public class GameService : IGameService
+    public class GameService : IGameService, IDisposable
     {
         private readonly IUnitOfWork database;
 
@@ -126,6 +126,11 @@ namespace GameStore.BLL.Services
             Mapper.CreateMap<Game, GameDTO>();
             var games = Mapper.Map<IEnumerable<Game>, IEnumerable<GameDTO>>(gameEntries);
             return games;
+        }
+
+        public void Dispose()
+        {
+            
         }
     }
 }

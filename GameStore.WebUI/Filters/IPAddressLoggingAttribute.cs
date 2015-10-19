@@ -21,17 +21,13 @@ namespace GameStore.WebUI.Filters
 
         
 
-        public void OnActionExecuting(ActionExecutingContext filterContext)
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             message.Append("IP: " + filterContext.RequestContext.HttpContext.Request.UserHostAddress + " | ");
             message.Append("Method: " + filterContext.RequestContext.HttpContext.Request.HttpMethod + " | ");
             message.Append("Path: " + filterContext.RequestContext.HttpContext.Request.Path);
             logger.Info(message);
             message.Clear();
-        }
-
-        public void OnActionExecuted(ActionExecutedContext filterContext)
-        {
         }
     }
 }

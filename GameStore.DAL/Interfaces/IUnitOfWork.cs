@@ -1,8 +1,9 @@
-﻿using GameStore.Domain.Entities;
+﻿using System;
+using GameStore.Domain.Entities;
 
 namespace GameStore.DAL.Interfaces
 {
-    public interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
         IRepository<Game> Games { get;}
         IRepository<Comment> Comments { get; }
