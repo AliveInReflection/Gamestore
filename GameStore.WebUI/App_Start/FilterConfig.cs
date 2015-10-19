@@ -11,6 +11,8 @@ namespace GameStore.WebUI
             filters.Add(new HandleErrorAttribute());
             filters.Add(new OutputCacheAttribute() {Duration = 60});
             filters.Add(new PerformanceLoggingAttribute());
+            filters.Add(new ErrorLoggingAttribute());
+            filters.Add(new IPAddressLoggingAttribute());
         }
     }
 }

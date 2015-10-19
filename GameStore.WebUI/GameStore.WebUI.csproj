@@ -139,6 +139,8 @@
     <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DI\NinjectDependencyResolver.cs" />
+    <Compile Include="Filters\ErrorLoggingAttribute.cs" />
+    <Compile Include="Filters\IPAddressLoggingAttribute.cs" />
     <Compile Include="Filters\PerformanceLoggingAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -163,6 +165,8 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\Logs\ErrorsLog\" />
+    <Folder Include="App_Data\Logs\IPAddressLog\" />
     <Folder Include="App_Data\Logs\PerformanceLog\" />
     <Folder Include="Models\" />
   </ItemGroup>

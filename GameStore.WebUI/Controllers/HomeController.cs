@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using GameStore.BLL.DTO;
 using GameStore.BLL.Services;
 using GameStore.BLL.Infrastructure;
+using GameStore.WebUI.Filters;
 
 namespace GameStore.WebUI.Controllers
 {
