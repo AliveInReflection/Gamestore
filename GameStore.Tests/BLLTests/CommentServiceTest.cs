@@ -87,7 +87,6 @@ namespace GameStore.Tests.BLLTests
         [ExpectedException(typeof(ValidationException))]
         public void Add_Comment_Without_Senders_Name()
         {
-            mock.Setup(x => x.Games.Get(It.IsAny<Expression<Func<Game, bool>>>())).Returns((Expression<Func<Game, bool>> predicate) => games.FirstOrDefault(predicate.Compile()));
             var commentToAdd = new CommentDTO()
             {
                 CommentId = 5,

@@ -30,6 +30,14 @@ namespace GameStore.BLL.Services
             if (game == null)
                 throw new ValidationException("No content received");
 
+            if (String.IsNullOrEmpty(game.GameName))
+                throw new ValidationException("Game name is empty");
+
+            if (String.IsNullOrEmpty(game.GameKey))
+                throw new ValidationException("Game key is empty");
+
+            if (String.IsNullOrEmpty(game.Description))
+                throw new ValidationException("Game description is empty");
 
             var entry = database.Games.Get(m => m.GameKey.Equals(game.GameKey));
             if (entry != null)
@@ -47,8 +55,18 @@ namespace GameStore.BLL.Services
             if (game == null)
                 throw new ValidationException("No content received");
 
+            if (String.IsNullOrEmpty(game.GameName))
+                throw new ValidationException("Game name is empty");
+
+            if (String.IsNullOrEmpty(game.GameKey))
+                throw new ValidationException("Game key is empty");
+
+            if (String.IsNullOrEmpty(game.Description))
+                throw new ValidationException("Game description is empty");
+
+
             var entry = database.Games.Get(m => m.GameKey.Equals(game.GameKey));
-            if (entry != null)
+            if (entry.GameId != game.GameId)
                 throw new ValidationException("Another game has the same game key");
 
             entry = database.Games.Get(m => m.GameId.Equals(game.GameId));
