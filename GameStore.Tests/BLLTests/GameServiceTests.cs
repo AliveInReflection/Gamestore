@@ -68,6 +68,7 @@ namespace GameStore.Tests.BLLTests
                     CommentId = 1,
                     SendersName = "Ghost",
                     Content = "Is it miltiplayer only?",
+                    GameId = games[1].GameId,
                     Game = games[1]
                 },
                 new Comment()
@@ -75,9 +76,10 @@ namespace GameStore.Tests.BLLTests
                     CommentId = 2,
                     SendersName = "Shooter",
                     Content = "No. It has offline mode to play with bots.",
+                    GameId = games[1].GameId,
                     Game = games[1]
                 },
-                new Comment() {CommentId = 3, SendersName = "Sarah Kerrigan", Content = "Nice game", Game = games[0]}
+                new Comment() {CommentId = 3, SendersName = "Sarah Kerrigan", Content = "Nice game", GameId = games[0].GameId, Game = games[0]}
             };
             comments[0].ChildComments = new List<Comment> {comments[1]};
             comments[1].ParentComment = comments[0];
@@ -115,8 +117,14 @@ namespace GameStore.Tests.BLLTests
                 .Returns((Expression<Func<Genre, bool>> predicate) => genres.FirstOrDefault(predicate.Compile()));
             mock.Setup(x => x.PlatformTypes.Get(It.IsAny<Expression<Func<PlatformType, bool>>>()))
                 .Returns((Expression<Func<PlatformType, bool>> predicate) => platformTypes.FirstOrDefault(predicate.Compile()));
+            
             mock.Setup(x => x.Comments.GetMany(It.IsAny<Expression<Func<Comment, bool>>>()))
                 .Returns((Expression<Func<Comment, bool>> predicate) => comments.Where(predicate.Compile()));
+
+            mock.Setup(x => x.Comments.Delete(It.IsAny<int>())).Callback<int>(
+                i => comments.Remove(comments.FirstOrDefault(m => m.CommentId.Equals(i)))
+                );
+
         }
 
         #region AddGame
@@ -283,6 +291,23 @@ namespace GameStore.Tests.BLLTests
 
         [TestMethod]
         [ExpectedException(typeof(ValidationException))]
+        public void Edit_Not_Existed_Game()
+        {
+            GameDTO gameToEdit = new GameDTO()
+            {
+                GameId = 10,
+                GameName = "TestName",
+                GameKey = "SCII",
+                Description = "Desc"
+            };
+            using (var service = new GameService(mock.Object))
+            {
+                service.EditGame(gameToEdit);
+            }
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ValidationException))]
         public void Edit_Game_With_Existing_Key()
         {
             GameDTO gameToEdit = new GameDTO()
@@ -321,7 +346,7 @@ namespace GameStore.Tests.BLLTests
 
         #region DeleteGame
         [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
+        [ExpectedException(typeof(ValidationException), "Game not found")]
         public void Delete_Not_Existed_Game()
         {
             using (var service = new GameService(mock.Object))
@@ -329,6 +354,7 @@ namespace GameStore.Tests.BLLTests
                 service.DeleteGame(100);
             }
         }
+        
         [TestMethod]
         public void Delete_Game()
         {
@@ -339,6 +365,19 @@ namespace GameStore.Tests.BLLTests
                 Assert.AreEqual(games.Count, count-1);
             }
         }
+
+        [TestMethod]
+        public void Delete_Comments_For_Game()
+        {
+            using (var service = new GameService(mock.Object))
+            {
+                var commentsCount = comments.Count;
+                var gameCommentsCount = games.FirstOrDefault(g => g.GameId.Equals(2)).Comments.Count;
+                service.DeleteGame(2);
+                Assert.AreEqual(comments.Count, commentsCount - gameCommentsCount);
+            }
+        }
+
         #endregion
 
         #region GetGame(s)

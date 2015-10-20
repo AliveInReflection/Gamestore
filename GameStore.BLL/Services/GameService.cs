@@ -88,7 +88,7 @@ namespace GameStore.BLL.Services
             if (entry == null)
                 throw new ValidationException("Game not found");
 
-            var commentIds = database.Comments.GetMany(m => m.GameId.Equals(id)).Select(m => m.CommentId);
+            var commentIds = database.Comments.GetMany(m => m.GameId.Equals(id)).Select(m => m.CommentId).ToList();
             foreach (var commentId in commentIds)
             {
                 database.Comments.Delete(commentId);

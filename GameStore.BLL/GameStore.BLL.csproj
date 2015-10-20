@@ -57,7 +57,6 @@
     <Compile Include="DTO\GameDTO.cs" />
     <Compile Include="DTO\GenreDTO.cs" />
     <Compile Include="DTO\PlatformTypeDTO.cs" />
-    <Compile Include="Infrastructure\BLLMapperProfile.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />
     <Compile Include="Infrastructure\ValidationException.cs" />
     <Compile Include="Interfaces\ICommentService.cs" />
@@ -69,9 +68,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameStore.DAL\GameStore.DAL.csproj">
