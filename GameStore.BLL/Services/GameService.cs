@@ -66,7 +66,7 @@ namespace GameStore.BLL.Services
 
 
             var entry = database.Games.Get(m => m.GameKey.Equals(game.GameKey));
-            if (entry.GameId != game.GameId)
+            if (entry != null && entry.GameId != game.GameId)
                 throw new ValidationException("Another game has the same game key");
 
             entry = database.Games.Get(m => m.GameId.Equals(game.GameId));

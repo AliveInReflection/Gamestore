@@ -115,6 +115,8 @@ namespace GameStore.Tests.BLLTests
                 .Returns((Expression<Func<Genre, bool>> predicate) => genres.FirstOrDefault(predicate.Compile()));
             mock.Setup(x => x.PlatformTypes.Get(It.IsAny<Expression<Func<PlatformType, bool>>>()))
                 .Returns((Expression<Func<PlatformType, bool>> predicate) => platformTypes.FirstOrDefault(predicate.Compile()));
+            mock.Setup(x => x.Comments.GetMany(It.IsAny<Expression<Func<Comment, bool>>>()))
+                .Returns((Expression<Func<Comment, bool>> predicate) => comments.Where(predicate.Compile()));
         }
 
         #region AddGame
@@ -301,9 +303,9 @@ namespace GameStore.Tests.BLLTests
         {
             GameDTO gameToEdit = new GameDTO()
             {
-                GameId = 5,
+                GameId = 2,
                 GameName = "TestName",
-                GameKey = "TestKey",
+                GameKey = "TestKey3",
                 Description = "Desc"
             };
             using (var service = new GameService(mock.Object))
@@ -328,13 +330,12 @@ namespace GameStore.Tests.BLLTests
             }
         }
         [TestMethod]
-
         public void Delete_Game()
         {
             using (var service = new GameService(mock.Object))
             {
                 var count = games.Count;
-                service.DeleteGame(1);
+                service.DeleteGame(2);
                 Assert.AreEqual(games.Count, count-1);
             }
         }

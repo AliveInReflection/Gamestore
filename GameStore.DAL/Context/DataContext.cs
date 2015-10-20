@@ -30,6 +30,18 @@ namespace Gamestore.DAL.Context
     {
         protected override void Seed(DataContext db)
         {
+            Dictionary<String, String> uniqeFields = new Dictionary<string, string>
+            {
+                {"Games", "GameKey"},
+                {"Genres", "GenreName"},
+                {"PlatformTypes", "PlatformTypeName"}
+            };
+            foreach (var item in uniqeFields)
+            {
+                String query = String.Format("CREATE UNIQUE INDEX uniqeKey ON [{0}] ([{1}])", item.Key, item.Value);
+                db.Database.ExecuteSqlCommand(query);
+            }
+
             var desctop = new PlatformType() { PlatformTypeName = "Desktop" };
             var console = new PlatformType() { PlatformTypeName = "Console" };
             db.PlatformTypes.Add(desctop);
