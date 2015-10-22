@@ -35,17 +35,14 @@ namespace GameStore.WebUI.Models
         public Boolean Discontinued { get; set; }
 
         [Required]
-        [ScaffoldColumn(false)]
         [Display(Name = "Pablisher")]
         public int PublisherId { get; set; }
 
         [Required]
-        [ScaffoldColumn(false)]
         [Display(Name = "Genres")]
         public IEnumerable<int> GenreIds { get; set; }
 
         [Required]
-        [ScaffoldColumn(false)]
         [Display(Name = "Platforms")]
         public IEnumerable<int> PlatformTypeIds { get; set; }
         
@@ -124,7 +121,7 @@ namespace GameStore.WebUI.Models
         public Boolean Discontinued { get; set; }
 
         [Display(Name="Publisher")]
-        public PublisherViewModel Publisher { get; set; }
+        public DisplayPublisherViewModel Publisher { get; set; }
 
         [Display(Name = "Genres")]
         public IEnumerable<GenreViewModel> Genres { get; set; }

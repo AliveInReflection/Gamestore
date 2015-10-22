@@ -16,12 +16,16 @@ namespace GameStore.WebUI.Infrastructure
             Mapper.CreateMap<CommentDTO, DisplayCommentViewModel>();
             Mapper.CreateMap<GenreDTO, GenreViewModel>();
             Mapper.CreateMap<PlatformTypeDTO, PlatformTypeViewModel>();
+            Mapper.CreateMap<PublisherDTO, DisplayPublisherViewModel>();
 
             Mapper.CreateMap<CreateGameViewModel, GameDTO>();
             Mapper.CreateMap<EditGameViewModel, GameDTO>();
             Mapper.CreateMap<CreateCommentViewModel, CommentDTO>();
             Mapper.CreateMap<GenreViewModel, GenreDTO>();
             Mapper.CreateMap<PlatformTypeViewModel, PlatformTypeDTO>();
+
+            Mapper.CreateMap<CreatePublisherViewModel, PublisherDTO>();
+            Mapper.CreateMap<EditPublisherViewModel, PublisherDTO>();
         }
     }
 }

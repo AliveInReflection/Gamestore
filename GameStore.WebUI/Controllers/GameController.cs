@@ -35,12 +35,18 @@ namespace GameStore.WebUI.Controllers
 
         }
 
+        public ActionResult List()
+        {           
+            var games = Mapper.Map<IEnumerable<GameDTO>, IEnumerable<DisplayGameViewModel>>(gameService.GetAll());
+            return View(games);
+        }
+
         [HttpGet]
-        public ActionResult Details(string key)
+        public ActionResult Details(string gameKey)
         {
-            var game = gameService.Get(key);
+            var game = gameService.Get(gameKey);
             var gameMV = BuildDisplayGameViewModel(game);
-            return View();
+            return View(gameMV);
         }
 
         [HttpGet]

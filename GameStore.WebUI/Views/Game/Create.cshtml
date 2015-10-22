@@ -18,15 +18,6 @@
 
         @Html.EditorForModel()
 
-        @Html.DisplayNameFor(m => m.GenreIds)
-        @Html.SelectListMultiple("GenreIds", ViewBag.Genres as IEnumerable<SelectListItem>)
-
-        @Html.DisplayNameFor(m => m.PlatformTypeIds)
-        @Html.SelectListMultiple("PlatformTypeIds", ViewBag.PlatformTypes as IEnumerable<SelectListItem>)
-
-        @Html.DisplayNameFor(m => m.PublisherId)
-        @Html.DropDownListFor(m => m.PublisherId, ViewBag.Publishers as IEnumerable<SelectListItem>)
-
         <p>
             <input type="submit" value="Create" />
         </p>

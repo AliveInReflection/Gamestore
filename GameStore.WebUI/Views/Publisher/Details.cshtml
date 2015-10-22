@@ -1,0 +1,34 @@
+﻿@model GameStore.WebUI.Models.DisplayPublisherViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>DisplayPublisherViewModel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CompanyName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CompanyName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HomePage)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HomePage)
+    </div>
+</fieldset>
+

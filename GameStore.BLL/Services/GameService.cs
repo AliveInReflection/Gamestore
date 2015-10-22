@@ -53,6 +53,8 @@ namespace GameStore.BLL.Services
                     return ptEntry;
                 }).ToList();
 
+                gameToSave.Publisher = database.Publishers.GetSingle(m => m.PublisherId.Equals(game.PublisherId));
+
                 database.Games.Create(gameToSave);
                 database.Save();
             }
@@ -123,6 +125,9 @@ namespace GameStore.BLL.Services
                 var ptEntry = database.PlatformTypes.GetSingle(m => m.PlatformTypeId.Equals(id));
                 gameToSave.PlatformTypes.Remove(ptEntry);
             }
+
+            gameToSave.Publisher = database.Publishers.GetSingle(m => m.PublisherId.Equals(game.PublisherId));
+
 
             database.Games.Update(gameToSave);
             database.Save();

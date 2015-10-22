@@ -14,9 +14,7 @@ namespace GameStore.BLL.Infrastructure
 
         protected override void Configure()
         {
-            Mapper.CreateMap<Game, GameDTO>()
-                .ForMember(g => g.Genres, m => m.Ignore())
-                .ForMember(g => g.PlatformTypes, m => m.Ignore());
+            Mapper.CreateMap<Game, GameDTO>();
            
             Mapper.CreateMap<Genre, GenreDTO>()
                 .ForMember(g => g.Games, m => m.Ignore());
@@ -34,6 +32,7 @@ namespace GameStore.BLL.Infrastructure
                 .ForMember(od => od.Order, m => m.Ignore())
                 .ForMember(od => od.Product, m => m.Ignore());
 
+            //====================================================
 
 
             Mapper.CreateMap<GameDTO, Game>()

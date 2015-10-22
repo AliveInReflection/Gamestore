@@ -141,6 +141,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\GameController.cs" />
+    <Compile Include="Controllers\PublisherController.cs" />
     <Compile Include="DI\NinjectDependencyResolver.cs" />
     <Compile Include="Filters\ErrorLoggingAttribute.cs" />
     <Compile Include="Filters\IPAddressLoggingAttribute.cs" />
@@ -207,6 +208,13 @@
     </None>
     <Content Include="Views\Game\Create.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CreateGameViewModel.cshtml" />
+    <Content Include="Views\Game\Update.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EditGameViewModel.cshtml" />
+    <Content Include="Views\Game\List.cshtml" />
+    <Content Include="Views\Game\Details.cshtml" />
+    <Content Include="Views\Publisher\Details.cshtml" />
+    <Content Include="Views\Publisher\Create.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

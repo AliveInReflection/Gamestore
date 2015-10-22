@@ -7,10 +7,34 @@ using System.Web.Mvc;
 
 namespace GameStore.WebUI.Models
 {
-    public class PublisherViewModel
-    {      
+    public class CreatePublisherViewModel
+    {
+
+        [Display(Name = "Company name")]
+        public string CompanyName { get; set; }
+
+        [Display(Name = "Description")]
+        public string Description { get; set; }
+
+        [Display(Name = "Home page")]
+        public string HomePage { get; set; }
+    }
+    public class EditPublisherViewModel
+    {
         [HiddenInput(DisplayValue = false)]
         public int PublisherId { get; set; }
+
+        [Display(Name = "Company name")]
+        public string CompanyName { get; set; }
+
+        [Display(Name = "Description")]
+        public string Description { get; set; }
+
+        [Display(Name = "Home page")]
+        public string HomePage { get; set; }
+    }
+    public class DisplayPublisherViewModel
+    {      
 
         [Display(Name = "Company name")]
         public string CompanyName { get; set; }

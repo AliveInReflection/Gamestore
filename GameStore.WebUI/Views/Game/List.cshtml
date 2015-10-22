@@ -1,0 +1,70 @@
+﻿@model IEnumerable<GameStore.WebUI.Models.DisplayGameViewModel>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GameId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GameKey)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GameName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitsInStock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discontinued)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GameId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GameKey)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GameName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitsInStock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Discontinued)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { gameKey = item.GameKey }) |
+            @Html.ActionLink("Details", "Details", new { gameKey = item.GameKey }) |
+            @Html.ActionLink("Delete", "Delete", new { gameKey = item.GameKey })
+        </td>
+    </tr>
+}
+
+</table>

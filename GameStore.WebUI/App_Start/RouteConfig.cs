@@ -20,6 +20,12 @@ namespace GameStore.WebUI
             );
 
             routes.MapRoute(
+                name: "PublisherNew",
+                url: "Publisher/New",
+                defaults: new { controller = "Publisher", action = "Create", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "GamesUpdate",
                 url: "Games/Update",
                 defaults: new { controller = "Game", action = "Update", id = UrlParameter.Optional }
@@ -33,13 +39,19 @@ namespace GameStore.WebUI
             routes.MapRoute(
                name: "Games",
                url: "Games",
-               defaults: new { controller = "Game", action = "Index", id = UrlParameter.Optional }
+               defaults: new { controller = "Game", action = "List", id = UrlParameter.Optional }
            );
 
             routes.MapRoute(
                 name: "GameDetails",
                 url: "Game/{key}",
                 defaults: new { controller = "Game", action = "Details", key = UrlParameter.Optional }
+                );
+
+            routes.MapRoute(
+                name: "PublisherDetails",
+                url: "Publisher/{CompanyName}",
+                defaults: new { controller = "Publisher", action = "Details"}
                 );
 
             routes.MapRoute(
@@ -57,7 +69,7 @@ namespace GameStore.WebUI
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Game", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Game", action = "List", id = UrlParameter.Optional }
             );
 
             

@@ -1,0 +1,82 @@
+﻿@model GameStore.WebUI.Models.DisplayGameViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>DisplayGameViewModel</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.GameId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GameId)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.GameKey)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GameKey)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.GameName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GameName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Description)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Price)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.UnitsInStock)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UnitsInStock)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Discontinued)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Discontinued)
+    </div>
+</fieldset>
+
+<p>
+    @Html.DisplayNameFor(model => model.Genres) :
+    @foreach (var genre in Model.Genres)
+    {
+        <span>@genre.GenreName</span>
+    }
+</p>
+<p>
+    @Html.DisplayNameFor(model => model.PlatformTypes) :
+    @foreach (var pt in Model.PlatformTypes)
+    {
+        <span>@pt.PlatformTypeName</span>
+    }
+</p>
+
+
+<p>
+    @Html.DisplayNameFor(model => model.Publisher) :
+    @Html.ActionLink(Model.Publisher.CompanyName, "Details", "Publisher", new { companyName = Model.Publisher.CompanyName }, null) 
+</p>
