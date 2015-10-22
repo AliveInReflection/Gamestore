@@ -29,6 +29,9 @@ namespace GameStore.WebUI.DI
         {
             kernel.Bind<IGameService>().To<GameService>();
             kernel.Bind<ICommentService>().To<CommentService>();
+            kernel.Bind<IGenreService>().To<GenreService>();
+            kernel.Bind<IPlatformTypeService>().To<PlatformTypeService>();
+            kernel.Bind<IPublisherService>().To<PublisherService>();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GameStore.Domain.Entities
@@ -21,6 +22,15 @@ namespace GameStore.Domain.Entities
         [Required]
         [MaxLength(1000)]
         public string Description { get; set; }
+
+        [Required]
+        public decimal Price { get; set; }
+
+        [Required]
+        public Int16 UnitsInStock { get; set; }
+
+        [Required]
+        public Boolean Discontinued { get; set; }
 
     }
 }

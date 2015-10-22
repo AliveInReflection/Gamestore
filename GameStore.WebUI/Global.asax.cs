@@ -2,9 +2,9 @@
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
-using AutoMapper;
 using GameStore.BLL.Infrastructure;
 using GameStore.WebUI.Infrastructure;
+using AutoMapper;
 
 namespace GameStore.WebUI
 {

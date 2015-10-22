@@ -25,12 +25,6 @@ namespace GameStore.Domain.Metadata
         [Required]
         public string HomePage { get; set; }
 
-        public decimal Price { get; set; }
-
-        [Required]
-        public Int16 UnitsInStock { get; set; }
-
-        [Required]
-        public Boolean Discontinued { get; set; }
+        
     }
 }

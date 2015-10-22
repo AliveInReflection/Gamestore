@@ -150,7 +150,6 @@
     </Compile>
     <Compile Include="Helpers\GameStoreHtmlHelper.cs" />
     <Compile Include="Infrastructure\AutomapperWebProfile.cs" />
-    <Compile Include="Infrastructure\LoggerInterfaces\IPerformanceLogger.cs" />
     <Compile Include="Models\CommentViewModels.cs" />
     <Compile Include="Models\GameViewModels.cs" />
     <Compile Include="Models\GenreViewModel.cs" />
@@ -207,6 +206,7 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Game\Create.cshtml" />
+    <Content Include="Views\Game\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

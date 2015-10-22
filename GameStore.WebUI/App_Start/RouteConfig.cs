@@ -39,7 +39,7 @@ namespace GameStore.WebUI
             routes.MapRoute(
                 name: "GameDetails",
                 url: "Game/{key}",
-                defaults: new {controller = "Game", action = "Details", key = UrlParameter.Optional}
+                defaults: new { controller = "Game", action = "Details", key = UrlParameter.Optional }
                 );
 
             routes.MapRoute(
