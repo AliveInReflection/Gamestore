@@ -14,28 +14,53 @@ namespace GameStore.WebUI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "GamesNew",
+                url: "Games/New",
+                defaults: new { controller = "Game", action = "Create", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "GamesUpdate",
+                url: "Games/Update",
+                defaults: new { controller = "Game", action = "Update", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+               name: "GamesRemove",
+               url: "Games/Update",
+               defaults: new { controller = "Game", action = "Delete", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
+               name: "Games",
+               url: "Games",
+               defaults: new { controller = "Game", action = "Index", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
                 name: "GameDetails",
                 url: "Game/{key}",
                 defaults: new {controller = "Game", action = "Details", key = UrlParameter.Optional}
                 );
 
             routes.MapRoute(
-                name: "GameDefault",
+                name: "Download",
+                url: "{controller}/{gamekey}/download",
+                defaults: new { controller = "Comment", action = "download" }
+                );
+
+            routes.MapRoute(
+                name: "Comments",
                 url: "{controller}/{gamekey}/{action}",
-                defaults: new { controller = "Game", gamekeykey = UrlParameter.Optional }
+                defaults: new { controller = "Comment" }
                 );
 
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Game", action = "Index", id = UrlParameter.Optional }
             );
 
-            routes.MapRoute(
-                name: "Games",
-                url: "{controller}/{action}/{id}",
-                defaults: new { action = "Index", id = UrlParameter.Optional }
-            );
+            
         }
             
     }

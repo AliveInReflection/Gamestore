@@ -48,8 +48,5 @@ namespace GameStore.BLL.Services
             return comments;
         }
 
-        public void Dispose()
-        {
-        }
     }
 }

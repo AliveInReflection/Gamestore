@@ -21,21 +21,21 @@ namespace GameStore.Tests.WebTests
         public void Default_Route()
         {
             RouteAssert.HasRoute(routes, "/",
-                new { controller = "Home", action = "Index" });
+                new { controller = "Game", action = "Index" });
         }
 
         [TestMethod]
         public void Create_Game_Route()
         {
             RouteAssert.HasRoute(routes, "/games/new",
-                new { controller = "Games", action = "New" });
+                new { controller = "Game", action = "Create" });
         }
 
         [TestMethod]
-        public void Edit_Game_Route()
+        public void Update_Game_Route()
         {
             RouteAssert.HasRoute(routes, "/games/update",
-                new { controller = "Games", action = "Update" });
+                new { controller = "Game", action = "Update" });
         }
 
         [TestMethod]
@@ -49,7 +49,7 @@ namespace GameStore.Tests.WebTests
         public void Get_All_Games_Route()
         {
             RouteAssert.HasRoute(routes, "/games",
-                new { controller = "Games", action = "Index"});
+                new { controller = "Game", action = "Index"});
         }
 
         [TestMethod]

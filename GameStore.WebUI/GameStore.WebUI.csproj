@@ -135,8 +135,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\GameController.cs" />
-    <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="DI\NinjectDependencyResolver.cs" />
     <Compile Include="Filters\ErrorLoggingAttribute.cs" />
     <Compile Include="Filters\IPAddressLoggingAttribute.cs" />

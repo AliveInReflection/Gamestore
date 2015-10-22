@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using GameStore.BLL.DTO;
 
@@ -13,17 +14,65 @@ namespace GameStore.WebUI.Controllers
     public class GameController : Controller
     {
         private IGameService gameService;
-        private ICommentService commentService;
 
-        public GameController()
+
+        public GameController(IGameService gameService)
         {
+            this.gameService = gameService;
+        }
+
+        public ActionResult Index()
+        {
+            return Json(gameService.GetAll(), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult Create(GameDTO game)
+        {
+            if (!ModelState.IsValid)
+                return Json("Model error");
+            try
+            {
+                gameService.Create(game);
+                return Json("Added");
+            }
+            catch (ValidationException e)
+            {
+                return Json("Validation error");
+            }
 
         }
 
-        public GameController(IGameService gameService, ICommentService commentService)
+        [HttpPost]
+        public ActionResult Update(GameDTO game)
         {
-            this.gameService = gameService;
-            this.commentService = commentService;
+            if (!ModelState.IsValid)
+                return Json("Model error");
+            try
+            {
+                gameService.Update(game);
+                return Json("Updated");
+            }
+            catch (ValidationException e)
+            {
+                return Json("Validation error");
+            }
+
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                gameService.Delete(id);
+                return Json("Removed");
+            }
+            catch (ValidationException e)
+            {
+                return Json("Validation error");
+            }
+
         }
 
         [HttpGet]
@@ -36,42 +85,9 @@ namespace GameStore.WebUI.Controllers
             }
             catch (ValidationException e)
             {
-                return Json(e.Message);
+                return Json("Validation error");
             }
-        }
-
-
-        [HttpPost]
-        public ActionResult NewComment(string gamekey, CommentDTO comment)
-        {
-            if (!ModelState.IsValid)
-                return Json("Model error");
-
-            try
-            {
-                commentService.Create(gamekey, comment);
-                return Json("Comment added");
-            }
-            catch (ValidationException e)
-            {
-                return Json(e.Message);
-            }
-        }
-
-        [HttpPost]
-        public ActionResult Comments(string gamekey)
-        {
-            try
-            {
-                var comments = commentService.Get(gamekey);
-                return Json(comments);
-            }
-            catch (ValidationException e)
-            {
-                return Json(e.Message);
-            }
-            
-        }
+        }       
 
         [HttpGet]
         public ActionResult Download(string gamekey)
@@ -87,7 +103,7 @@ namespace GameStore.WebUI.Controllers
             }
             catch (ValidationException e)
             {
-                return Json(e.Message);
+                return Json("Validation error");
             }
         }
 

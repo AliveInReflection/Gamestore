@@ -49,7 +49,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Game_Controller_Details_Result_Is_Json()
         {
-            using (var controller = new GameController(mockGame.Object, mockComment.Object))
+            using (var controller = new GameController(mockGame.Object))
             {
                 Assert.IsInstanceOfType(controller.Details("key"), typeof(JsonResult));
             }
@@ -58,7 +58,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Game_Controller_Details_Result_Data_Is_Not_Null()
         {
-            using (var controller = new GameController(mockGame.Object, mockComment.Object))
+            using (var controller = new GameController(mockGame.Object))
             {
                 Assert.IsNotNull((controller.Details("key") as JsonResult).Data);
             }
