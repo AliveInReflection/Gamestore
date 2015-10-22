@@ -17,6 +17,9 @@ namespace GameStore.DAL.Concrete
         private IRepository<Comment> comments;
         private IRepository<Genre> genres;
         private IRepository<PlatformType> platformTypes;
+        private IRepository<Publisher> publishers;
+        private IRepository<OrderDetails> orderDetailses;
+        private IRepository<Order> orders; 
 
 
         public UnitOfWork(string connectionString)
@@ -43,6 +46,21 @@ namespace GameStore.DAL.Concrete
         public IRepository<PlatformType> PlatformTypes
         {
             get { return platformTypes ?? (platformTypes = new BaseRepository<PlatformType>(context)); }
+        }
+
+        public IRepository<Publisher> Publishers
+        {
+            get { return publishers ?? (publishers = new BaseRepository<Publisher>(context)); }
+        }
+
+        public IRepository<OrderDetails> OrderDetailses
+        {
+            get { return orderDetailses ?? (orderDetailses = new BaseRepository<OrderDetails>(context)); }
+        }
+
+        public IRepository<Order> Orders
+        {
+            get { return orders ?? (orders = new BaseRepository<Order>(context)); }
         }
 
         public void Save()

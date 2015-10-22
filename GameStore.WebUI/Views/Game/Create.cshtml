@@ -1,0 +1,38 @@
+﻿@using GameStore.WebUI.Helpers
+@model GameStore.WebUI.Models.CreateGameViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Create new game</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>CreateGameViewModel</legend>
+
+        @Html.EditorForModel()
+
+        @Html.DisplayNameFor(m => m.GenreIds)
+        @Html.SelectListMultiple("GenreIds", ViewBag.Genres as IEnumerable<SelectListItem>)
+
+        @Html.DisplayNameFor(m => m.PlatformTypeIds)
+        @Html.SelectListMultiple("PlatformTypeIds", ViewBag.PlatformTypes as IEnumerable<SelectListItem>)
+
+        @Html.DisplayNameFor(m => m.PublisherId)
+        @Html.DropDownListFor(m => m.PublisherId, ViewBag.Publishers as IEnumerable<SelectListItem>)
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

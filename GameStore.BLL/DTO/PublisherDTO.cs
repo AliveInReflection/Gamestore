@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace GameStore.BLL.DTO
 {
-    public class GenreDTO
+    public class PublisherDTO
     {
-        public int GenreId { get; set; }
-        public string GenreName { get; set; }
-        public int? ParentGenreId { get; set; }
+        public int PublisherId { get; set; }
+        public string CompanyName { get; set; }
+        public string Description { get; set; }
+        public string HomePage { get; set; }
 
         public IEnumerable<GameDTO> Games { get; set; }
     }

@@ -83,7 +83,7 @@ namespace GameStore.Tests.BLLTests
             commentToAdd = new CommentDTO()
             {
                 CommentId = 5,
-                SendersName = "Test",
+                UserId = "Test",
                 Content = "Test comment",
                 GameId = 1
             };

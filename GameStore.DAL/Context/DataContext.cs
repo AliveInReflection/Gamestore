@@ -24,6 +24,9 @@ namespace Gamestore.DAL.Context
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<PlatformType> PlatformTypes { get; set; }
+        public DbSet<Publisher> Publishers { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetails> OrderDetailses { get; set; }
     }
 
 
@@ -89,8 +92,21 @@ namespace Gamestore.DAL.Context
 
             var sc2 = new Game()
             {
-                GameName = "StarCraft II", GameKey = "SCII", Description = "StarCraft II is a sequel to the real-time strategy game StarCraft, announced on May 19, 2007, at the Blizzard World Wide Invitational in Seoul, South Korea.[9][10] It is set to be released as a trilogy.",
-                Genres = genres, PlatformTypes = types
+                GameName = "StarCraft II",
+                GameKey = "SCII",
+                Description = "StarCraft II is a sequel to the real-time strategy game StarCraft, announced on May 19, 2007, at the Blizzard World Wide Invitational in Seoul, South Korea.[9][10] It is set to be released as a trilogy.",
+                Genres = genres,
+                PlatformTypes = types,
+                UnitsInStock = 12,
+                Discontinued = false,
+                Price = 49.99m,
+                Publisher = new Publisher()
+                {
+                    PublisherId = 1,
+                    CompanyName = "Blizzard",
+                    Description = "The best company in the world",
+                    HomePage = "battle.net"
+                }
             };
             db.Games.Add(sc2);
 
@@ -103,8 +119,21 @@ namespace Gamestore.DAL.Context
 
             db.Games.Add(new Game()
             {
-                GameName = "Need for speed: Most wanted", GameKey = "NFS:MW", Description = "Need for Speed: Most Wanted (commonly abbreviated to as NFS: MW or just Most Wanted) is a racing video game developed by EA Black Box and published by Electronic Arts. It is the ninth installment in the Need for Speed series.",
-                Genres = genres, PlatformTypes = types
+                GameName = "Need for speed: Most wanted",
+                GameKey = "NFS:MW",
+                Description = "Need for Speed: Most Wanted (commonly abbreviated to as NFS: MW or just Most Wanted) is a racing video game developed by EA Black Box and published by Electronic Arts. It is the ninth installment in the Need for Speed series.",
+                Genres = genres,
+                PlatformTypes = types,
+                UnitsInStock = 45,
+                Discontinued = false,
+                Price = 25,
+                Publisher = new Publisher()
+                {
+                    PublisherId = 2,
+                    CompanyName = "Electronic Arts",
+                    Description = "Only fast",
+                    HomePage = "www.needforspeed.com"
+                }
             });
 
             //-----------------------------------
@@ -114,8 +143,21 @@ namespace Gamestore.DAL.Context
 
             var csgo = new Game()
             {
-                GameName = "Counter-Strike: Global Offensive ", GameKey = "CS:GO", Description = "Counter-Strike: Global Offensive (CS:GO) is a first-person shooter video game which is a part of the Counter-Strike series. It was announced to the public on August 12, 2011, and is developed by Valve Corporation and their partner, Hidden Path Entertainment. The game was later released on August 21, 2012 for the Playstation 3, Xbox 360, Microsoft Windows, and OS X and later Linux as a downloadable title."                ,
-                Genres = genres, PlatformTypes = types
+                GameName = "Counter-Strike: Global Offensive ",
+                GameKey = "CS:GO",
+                Description = "Counter-Strike: Global Offensive (CS:GO) is a first-person shooter video game which is a part of the Counter-Strike series. It was announced to the public on August 12, 2011, and is developed by Valve Corporation and their partner, Hidden Path Entertainment. The game was later released on August 21, 2012 for the Playstation 3, Xbox 360, Microsoft Windows, and OS X and later Linux as a downloadable title.",
+                Genres = genres,
+                PlatformTypes = types,
+                UnitsInStock = 102,
+                Discontinued = false,
+                Price = 9.99m,
+                Publisher = new Publisher()
+                {
+                    PublisherId = 3,
+                    CompanyName = "Valve",
+                    Description = "Conquire the world",
+                    HomePage = "www.valve.com"
+                }
             };
 
             db.Games.Add(csgo);
@@ -126,6 +168,18 @@ namespace Gamestore.DAL.Context
             db.Comments.Add(new Comment() { User = new User(){UserId = 2, UserName ="Shooter"}, Content = "No. It has offline mode to play with bots.", Game = csgo, ParentComment = ghostComment});
             db.Comments.Add(new Comment() { User = new User(){UserId = 3, UserName ="Sarah Kerrigan"}, Content = "Nice game", Game = sc2 });
 
+
+            db.Orders.Add(new Order()
+            {
+                OrderId = 1,
+                CustomerId = "1",
+                Date = DateTime.UtcNow,
+                OrderDetailses = new List<OrderDetails>
+                {
+                    new OrderDetails() {OrderDetailsId = 1, Product = sc2, Quantity = 2, Discount = 0.1f},
+                    new OrderDetails() {OrderDetailsId = 2, Product = csgo, Quantity = 3, Discount = 0.15f}
+                }
+            });
         }
     }
 }

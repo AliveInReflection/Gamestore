@@ -10,5 +10,7 @@ namespace GameStore.BLL.DTO
     {
         public int PlatformTypeId { get; set; }
         public string PlatformTypeName { get; set; }
+
+        public IEnumerable<GameDTO> Games { get; set; }
     }
 }

@@ -9,6 +9,9 @@ namespace GameStore.DAL.Interfaces
         IRepository<Comment> Comments { get; }
         IRepository<Genre> Genres { get; }
         IRepository<PlatformType> PlatformTypes { get; }
+        IRepository<Publisher> Publishers { get; }
+        IRepository<OrderDetails> OrderDetailses { get; }
+        IRepository<Order> Orders { get; }
 
         void Save();
     }

@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -144,7 +148,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\GameStoreHtmlHelper.cs" />
+    <Compile Include="Infrastructure\AutomapperWebProfile.cs" />
     <Compile Include="Infrastructure\LoggerInterfaces\IPerformanceLogger.cs" />
+    <Compile Include="Models\CommentViewModels.cs" />
+    <Compile Include="Models\GameViewModels.cs" />
+    <Compile Include="Models\GenreViewModel.cs" />
+    <Compile Include="Models\OrderDetailsViewModels.cs" />
+    <Compile Include="Models\OrderViewModel.cs" />
+    <Compile Include="Models\PlatformTypeViewModel.cs" />
+    <Compile Include="Models\PublisherViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -167,7 +180,6 @@
     <Folder Include="App_Data\Logs\ErrorsLog\" />
     <Folder Include="App_Data\Logs\IPAddressLog\" />
     <Folder Include="App_Data\Logs\PerformanceLog\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -194,6 +206,7 @@
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Game\Create.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

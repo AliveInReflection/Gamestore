@@ -56,14 +56,24 @@
     <Compile Include="DTO\CommentDTO.cs" />
     <Compile Include="DTO\GameDTO.cs" />
     <Compile Include="DTO\GenreDTO.cs" />
+    <Compile Include="DTO\OrderDetailsDTO.cs" />
+    <Compile Include="DTO\OrderDTO.cs" />
     <Compile Include="DTO\PlatformTypeDTO.cs" />
+    <Compile Include="DTO\PublisherDTO.cs" />
+    <Compile Include="Infrastructure\AutomapperBLLProfile.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />
     <Compile Include="Infrastructure\ValidationException.cs" />
     <Compile Include="Interfaces\ICommentService.cs" />
     <Compile Include="Interfaces\IGameService.cs" />
+    <Compile Include="Interfaces\IGenreService.cs" />
+    <Compile Include="Interfaces\IPlatformTypeService.cs" />
+    <Compile Include="Interfaces\IPublisherService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CommentService.cs" />
     <Compile Include="Services\GameService.cs" />
+    <Compile Include="Services\GenreService.cs" />
+    <Compile Include="Services\PlatformTypeService.cs" />
+    <Compile Include="Services\PublisherService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

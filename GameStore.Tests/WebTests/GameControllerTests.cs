@@ -46,23 +46,7 @@ namespace GameStore.Tests.WebTests
             mockGame.Setup(x => x.Get(It.IsAny<string>())).Returns(games[0]);
         }
 
-        [TestMethod]
-        public void Game_Controller_Details_Result_Is_Json()
-        {
-            using (var controller = new GameController(mockGame.Object))
-            {
-                Assert.IsInstanceOfType(controller.Details("key"), typeof(JsonResult));
-            }
-        }
-
-        [TestMethod]
-        public void Game_Controller_Details_Result_Data_Is_Not_Null()
-        {
-            using (var controller = new GameController(mockGame.Object))
-            {
-                Assert.IsNotNull((controller.Details("key") as JsonResult).Data);
-            }
-        }
+        
 
 
 

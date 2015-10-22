@@ -2,6 +2,9 @@
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using AutoMapper;
+using GameStore.BLL.Infrastructure;
+using GameStore.WebUI.Infrastructure;
 
 namespace GameStore.WebUI
 {
@@ -17,10 +20,11 @@ namespace GameStore.WebUI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
-            //Mapper.Initialize(cfg =>
-            //{
-            //    cfg.AddProfile()
-            //})
+            Mapper.Initialize(cfg =>
+            {
+                cfg.AddProfile(new AutomapperBLLProfile());
+                cfg.AddProfile(new AutomapperWebProfile());
+            });
         }
     }
 }

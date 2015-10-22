@@ -21,7 +21,7 @@ namespace GameStore.BLL.Services
             this.database = database;
         }
 
-        public void Create(GameDTO game)
+        public void Create(GameDTO game, IEnumerable<int> genreIds, IEnumerable<int> platformTypeIds)
         {
             if (game == null)
             {
@@ -38,12 +38,27 @@ namespace GameStore.BLL.Services
             {
                 Mapper.CreateMap<GameDTO, Game>();
                 var gameToSave = Mapper.Map<GameDTO, Game>(game);
+
+                gameToSave.Genres = genreIds.Select(id =>
+                {
+                    var genreEntry = database.Genres.GetSingle(m => m.GenreId.Equals(id));
+
+                    return genreEntry;
+                }).ToList();
+
+                gameToSave.PlatformTypes = platformTypeIds.Select(id =>
+                {
+                    var ptEntry = database.PlatformTypes.GetSingle(m => m.PlatformTypeId.Equals(id));
+                    
+                    return ptEntry;
+                }).ToList();
+
                 database.Games.Create(gameToSave);
                 database.Save();
             }
         }
 
-        public void Update(GameDTO game)
+        public void Update(GameDTO game, IEnumerable<int> genreIds, IEnumerable<int> platformTypeIds)
         {
             if (game == null)
             {
@@ -70,6 +85,44 @@ namespace GameStore.BLL.Services
 
             Mapper.CreateMap<GameDTO, Game>();
             var gameToSave = Mapper.Map(game, entry);
+
+            // Updating game genres
+            var existedGenreIds = gameToSave.Genres.Select(m => m.GenreId);
+
+            var genreIdsToAdd = genreIds.Except(existedGenreIds);
+
+            foreach (var id in genreIdsToAdd)
+            {
+                var genreEntry = database.Genres.GetSingle(m => m.GenreId.Equals(id));
+                gameToSave.Genres.Add(genreEntry);
+            }
+
+            var genreIdsToRemove = existedGenreIds.Except(genreIds);
+
+            foreach (var id in genreIdsToRemove)
+            {
+                var genreEntry = database.Genres.GetSingle(m => m.GenreId.Equals(id));
+                gameToSave.Genres.Remove(genreEntry);
+            }
+
+            // Updating game platform types
+            var existedPtIds = gameToSave.PlatformTypes.Select(m => m.PlatformTypeId);
+
+            var ptIdsToAdd = platformTypeIds.Except(existedPtIds);
+            
+            foreach (var id in ptIdsToAdd)
+            {
+                var ptEntry = database.PlatformTypes.GetSingle(m => m.PlatformTypeId.Equals(id));
+                gameToSave.PlatformTypes.Add(ptEntry);
+            }
+
+            var ptIdsToRemove = existedPtIds.Except(platformTypeIds);
+
+            foreach (var id in ptIdsToRemove)
+            {
+                var ptEntry = database.PlatformTypes.GetSingle(m => m.PlatformTypeId.Equals(id));
+                gameToSave.PlatformTypes.Remove(ptEntry);
+            }
 
             database.Games.Update(gameToSave);
             database.Save();
