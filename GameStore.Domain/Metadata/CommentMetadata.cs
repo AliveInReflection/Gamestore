@@ -11,8 +11,7 @@ namespace GameStore.Domain.Entities
         public int CommentId { get; set; }
 
         [Required]
-        [MaxLength(100)]
-        public string SendersName { get; set; }
+        public string UserId { get; set; }
 
         [Required]
         [MaxLength(400)]

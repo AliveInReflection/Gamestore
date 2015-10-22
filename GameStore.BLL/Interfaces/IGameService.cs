@@ -7,16 +7,15 @@ using GameStore.BLL.DTO;
 
 namespace GameStore.BLL.Interfaces
 {
-    public interface IGameService : IDisposable
+    public interface IGameService
     {
-        void AddGame(GameDTO game);
-        void EditGame(GameDTO game);
-        void DeleteGame(int id);
-        GameDTO GetGameByKey(string key);
-        IEnumerable<GameDTO> GetAllGames();
-
-       
-        IEnumerable<GameDTO> GetGamesByGenre(int genreId);
-        IEnumerable<GameDTO> GetGamesByPlatformTypes(IEnumerable<int> typeIds);
+        void Create(GameDTO game);
+        void Update(GameDTO game);
+        void Delete(int gameId);
+        
+        GameDTO Get(string gameKey);
+        IEnumerable<GameDTO> Get(int genreId);
+        IEnumerable<GameDTO> Get(IEnumerable<int> platfotmTypeIds);
+        IEnumerable<GameDTO> GetAll();
     }
 }

@@ -52,7 +52,9 @@ namespace GameStore.DAL.Concrete
 
         public void Dispose()
         {
-            
+            //the context itself checks if Dispose has already been called so that nothing happens on a second call and no exception will be thrown
+            //the context class has its own finalizer that will ensure that the database connection is released on garbage collection if you didn't call Dispose explicitly
+            context.Dispose();
         }
     }
 }

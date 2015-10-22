@@ -14,47 +14,37 @@ namespace GameStore.BLL.Services
     {
         private readonly IUnitOfWork database;
 
-        public CommentService()
-        {
-
-        }
-
         public CommentService(IUnitOfWork database)
         {
             this.database = database;
         }
 
-        public void AddComment(string gamekey, CommentDTO comment)
+        public void Create(string gameKey, CommentDTO comment)
         {
             if (comment == null)
+            {
                 throw new ValidationException("No content received");
+            }
+
+            var gameEntry = database.Games.GetSingle(m => m.GameKey.Equals(gameKey));
             
-            if (String.IsNullOrEmpty(comment.SendersName))
-                throw new ValidationException("Senders name is empty");
-
-            if (String.IsNullOrEmpty(comment.Content))
-                throw new ValidationException("Content field is empty");
-
-            var gameEntry = database.Games.Get(m => m.GameKey.Equals(gamekey));
-            if (gameEntry == null)
-                throw new ValidationException("Game not found");
-
             Mapper.CreateMap<CommentDTO, Comment>();
             var commentToSave = Mapper.Map<CommentDTO, Comment>(comment);
+            
             gameEntry.Comments.Add(commentToSave);
-            database.Comments.Add(commentToSave);
+
             database.Save();
         }
 
-        public IEnumerable<CommentDTO> GetCommentsByGameKey(string key)
+        public IEnumerable<CommentDTO> Get(string gameKey)
         {
-            var game = database.Games.Get(m => m.GameKey.Equals(key));
-            if (game == null)
-                throw new ValidationException("Game not found");
+            var game = database.Games.GetSingle(m => m.GameKey.Equals(gameKey));
 
-            var commentEntries = database.Comments.GetMany(m => m.GameId.Equals(game.GameId));
+            var commentEntries = game.Comments;
+
             Mapper.CreateMap<Comment, CommentDTO>();
             var comments = Mapper.Map<IEnumerable<Comment>, IEnumerable<CommentDTO>>(commentEntries);
+            
             return comments;
         }
 

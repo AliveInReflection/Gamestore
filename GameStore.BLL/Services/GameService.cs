@@ -11,129 +11,115 @@ using GameStore.DAL.Concrete;
 
 namespace GameStore.BLL.Services
 {
-    public class GameService : IGameService, IDisposable
+    public class GameService : IGameService
     {
         private readonly IUnitOfWork database;
 
-        public GameService()
-        {
-
-        }
 
         public GameService(IUnitOfWork database)
         {
             this.database = database;
         }
 
-        public void AddGame(GameDTO game)
+        public void Create(GameDTO game)
         {
             if (game == null)
+            {
                 throw new ValidationException("No content received");
+            }
 
-            if (String.IsNullOrEmpty(game.GameName))
-                throw new ValidationException("Game name is empty");
-
-            if (String.IsNullOrEmpty(game.GameKey))
-                throw new ValidationException("Game key is empty");
-
-            if (String.IsNullOrEmpty(game.Description))
-                throw new ValidationException("Game description is empty");
-
-            var entry = database.Games.Get(m => m.GameKey.Equals(game.GameKey));
-            if (entry != null)
+            try
+            {
+                //throws exception when can not find
+                var entry = database.Games.GetSingle(m => m.GameKey.Equals(game.GameKey));
                 throw new ValidationException("Another game has the same game key");
-
-            Mapper.CreateMap<GameDTO, Game>();
-            var gameToSave = Mapper.Map<GameDTO, Game>(game);
-            database.Games.Add(gameToSave);
-            database.Save();
-
+            }
+            catch (InvalidOperationException)
+            {
+                Mapper.CreateMap<GameDTO, Game>();
+                var gameToSave = Mapper.Map<GameDTO, Game>(game);
+                database.Games.Create(gameToSave);
+                database.Save();
+            }
         }
 
-        public void EditGame(GameDTO game)
+        public void Update(GameDTO game)
         {
             if (game == null)
+            {
                 throw new ValidationException("No content received");
+            }
 
-            if (String.IsNullOrEmpty(game.GameName))
-                throw new ValidationException("Game name is empty");
-
-            if (String.IsNullOrEmpty(game.GameKey))
-                throw new ValidationException("Game key is empty");
-
-            if (String.IsNullOrEmpty(game.Description))
-                throw new ValidationException("Game description is empty");
-
-
-            var entry = database.Games.Get(m => m.GameKey.Equals(game.GameKey));
-            if (entry != null && entry.GameId != game.GameId)
-                throw new ValidationException("Another game has the same game key");
-
-            entry = database.Games.Get(m => m.GameId.Equals(game.GameId));
-            if (entry == null)
-                throw new ValidationException("Game not found");
+            Game entry;
+            try
+            {
+                entry = database.Games.GetSingle(m => m.GameKey.Equals(game.GameKey));
+                // if entry and game are different games with the same key
+                if (entry.GameId != game.GameId)
+                {
+                    throw new ValidationException("Another game has the same game key");
+                }
+     
+            }
+            catch (InvalidOperationException)
+            {
+  
+            }
             
-            Mapper.CreateMap<GameDTO, Game>();
+            entry = database.Games.GetSingle(m => m.GameId.Equals(game.GameId));
 
+            Mapper.CreateMap<GameDTO, Game>();
             var gameToSave = Mapper.Map(game, entry);
 
             database.Games.Update(gameToSave);
             database.Save();
-
         }
 
-        public void DeleteGame(int id)
+        public void Delete(int gameId)
         {
-            var entry = database.Games.Get(m => m.GameId.Equals(id));
-            if (entry == null)
-                throw new ValidationException("Game not found");
+            var entry = database.Games.GetSingle(m => m.GameId.Equals(gameId));
 
-            var commentIds = database.Comments.GetMany(m => m.GameId.Equals(id)).Select(m => m.CommentId).ToList();
+            var commentIds = entry.Comments.Select(m => m.CommentId);
             foreach (var commentId in commentIds)
             {
                 database.Comments.Delete(commentId);
             }
-            database.Games.Delete(id);
+            database.Games.Delete(gameId);
             database.Save();
         }
 
-        public GameDTO GetGameByKey(string key)
+        public GameDTO Get(string gameKey)
         {
-            var entry = database.Games.Get(m => m.GameKey.Equals(key));
-            if (entry == null)
-                throw new ValidationException("Game not found");
+            var entry = database.Games.GetSingle(m => m.GameKey.Equals(gameKey));
 
             Mapper.CreateMap<Game, GameDTO>();
             var game = Mapper.Map<Game, GameDTO>(entry);
             return game;
         }
 
-        public IEnumerable<GameDTO> GetAllGames()
+        public IEnumerable<GameDTO> GetAll()
         {
             Mapper.CreateMap<Game, GameDTO>();
             var games = Mapper.Map<IEnumerable<Game>, IEnumerable<GameDTO>>(database.Games.GetAll());
             return games;
         }
 
-        public IEnumerable<GameDTO> GetGamesByGenre(int genreId)
+        public IEnumerable<GameDTO> Get(int genreId)
         {
-            var genre = database.Genres.Get(m => m.GenreId.Equals(genreId));
-            if (genre == null)
-                throw new ValidationException("Genre not found");
+            var genre = database.Genres.GetSingle(m => m.GenreId.Equals(genreId));
+
             var gameEntries = genre.Games.ToList();
             Mapper.CreateMap<Game, GameDTO>();
             var games = Mapper.Map<IEnumerable<Game>, IEnumerable<GameDTO>>(gameEntries);
             return games;
         }
 
-        public IEnumerable<GameDTO> GetGamesByPlatformTypes(IEnumerable<int> typeIds)
+        public IEnumerable<GameDTO> Get(IEnumerable<int> platformTypeIds)
         {
             HashSet<Game> gameEntries = new HashSet<Game>();
-            foreach (var typeId in typeIds)
+            foreach (var typeId in platformTypeIds)
             {
-                var platformType = database.PlatformTypes.Get(m => m.PlatformTypeId.Equals(typeId));
-                if (platformType == null)
-                    throw new ValidationException("Platform type not found");
+                var platformType = database.PlatformTypes.GetSingle(m => m.PlatformTypeId.Equals(typeId));
 
                 var gamesTMP = platformType.Games.ToList();
                 foreach (var game in gamesTMP)
@@ -144,11 +130,6 @@ namespace GameStore.BLL.Services
             Mapper.CreateMap<Game, GameDTO>();
             var games = Mapper.Map<IEnumerable<Game>, IEnumerable<GameDTO>>(gameEntries);
             return games;
-        }
-
-        public void Dispose()
-        {
-            
         }
     }
 }

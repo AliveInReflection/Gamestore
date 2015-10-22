@@ -9,10 +9,10 @@ namespace GameStore.DAL.Interfaces
 {
     public interface IRepository<T> where T : class
     {
-        void Add(T entity);
+        void Create(T entity);
         void Update(T entity);
         void Delete(int id);
-        T Get(Expression<Func<T, bool>> where);
+        T GetSingle(Expression<Func<T, bool>> where);
         IEnumerable<T> GetAll();
         IEnumerable<T> GetMany(Expression<Func<T, bool>> where);
     }

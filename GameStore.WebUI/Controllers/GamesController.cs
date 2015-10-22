@@ -26,7 +26,7 @@ namespace GameStore.WebUI.Controllers
 
         public ActionResult Index()
         {
-            return Json(gameService.GetAllGames(),JsonRequestBehavior.AllowGet);
+            return Json(gameService.GetAll(),JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -36,7 +36,7 @@ namespace GameStore.WebUI.Controllers
                 return Json("Model error");
             try
             {
-                gameService.AddGame(game);
+                gameService.Create(game);
                 return Json("Added");
             }
             catch (ValidationException e)
@@ -53,7 +53,7 @@ namespace GameStore.WebUI.Controllers
                 return Json("Model error");
             try
             {
-                gameService.EditGame(game);
+                gameService.Update(game);
                 return Json("Updated");
             }
             catch (ValidationException e)
@@ -68,7 +68,7 @@ namespace GameStore.WebUI.Controllers
         {
             try
             {
-                gameService.DeleteGame(id);
+                gameService.Delete(id);
                 return Json("Removed");
             }
             catch (ValidationException e)

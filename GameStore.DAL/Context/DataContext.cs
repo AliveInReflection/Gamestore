@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GameStore.Domain.Entities;
 using System.Data.Entity;
+using System.Data.Metadata.Edm;
 
 namespace Gamestore.DAL.Context
 {
@@ -120,10 +121,10 @@ namespace Gamestore.DAL.Context
             db.Games.Add(csgo);
 
 
-            var ghostComment = new Comment() {SendersName = "Ghost", Content = "Is it miltiplayer only?", Game = csgo};
+            var ghostComment = new Comment() {User = new User(){UserId = 1, UserName = "Ghost"}, Content = "Is it miltiplayer only?", Game = csgo};
             db.Comments.Add(ghostComment);
-            db.Comments.Add(new Comment() { SendersName = "Shooter", Content = "No. It has offline mode to play with bots.", Game = csgo, ParentComment = ghostComment});
-            db.Comments.Add(new Comment() { SendersName = "Sarah Kerrigan", Content = "Nice game", Game = sc2 });
+            db.Comments.Add(new Comment() { User = new User(){UserId = 2, UserName ="Shooter"}, Content = "No. It has offline mode to play with bots.", Game = csgo, ParentComment = ghostComment});
+            db.Comments.Add(new Comment() { User = new User(){UserId = 3, UserName ="Sarah Kerrigan"}, Content = "Nice game", Game = sc2 });
 
         }
     }

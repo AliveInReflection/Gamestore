@@ -31,7 +31,7 @@ namespace GameStore.WebUI.Controllers
         {
             try
             {
-                var game = gameService.GetGameByKey(key);
+                var game = gameService.Get(key);
                 return Json(game, JsonRequestBehavior.AllowGet);
             }
             catch (ValidationException e)
@@ -49,7 +49,7 @@ namespace GameStore.WebUI.Controllers
 
             try
             {
-                commentService.AddComment(gamekey, comment);
+                commentService.Create(gamekey, comment);
                 return Json("Comment added");
             }
             catch (ValidationException e)
@@ -63,7 +63,7 @@ namespace GameStore.WebUI.Controllers
         {
             try
             {
-                var comments = commentService.GetCommentsByGameKey(gamekey);
+                var comments = commentService.Get(gamekey);
                 return Json(comments);
             }
             catch (ValidationException e)
@@ -79,7 +79,7 @@ namespace GameStore.WebUI.Controllers
             try
             {
                 //control of game existance in db
-                var game = gameService.GetGameByKey(gamekey);
+                var game = gameService.Get(gamekey);
                 var rootPath = Server.MapPath("~/App_Data/Binary/");
                 byte[] fileBytes = System.IO.File.ReadAllBytes(rootPath + "game.data");
                 string fileName = "game.data";

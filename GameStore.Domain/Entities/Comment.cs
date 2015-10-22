@@ -7,13 +7,12 @@ namespace GameStore.Domain.Entities
     public class Comment
     {
         public int CommentId { get; set; }
-        public string SendersName { get; set; }
+        public int UserId { get; set; }
         public string Content { get; set; }
-        public int GameId { get; set; }
 
         public virtual Game Game { get; set; }
         public virtual Comment ParentComment { get; set; }
-        public virtual ICollection<Comment> ChildComments { get; set; }
+        public virtual User User { get; set; }
 
     }
 }

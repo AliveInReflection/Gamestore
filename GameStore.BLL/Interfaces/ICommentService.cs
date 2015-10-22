@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace GameStore.BLL.Interfaces
 {
-    public interface ICommentService : IDisposable
+    public interface ICommentService
     {
-        void AddComment(string gamekey, CommentDTO comment);
-        IEnumerable<CommentDTO> GetCommentsByGameKey(string key);
+        void Create(string gameKey, CommentDTO comment);
+        IEnumerable<CommentDTO> Get(string gameKey);
     }
 }

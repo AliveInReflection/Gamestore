@@ -17,7 +17,7 @@ namespace GameStore.DAL.Concrete
             this.context = context;
         }
 
-        public void Add(TEntity entity)
+        public void Create(TEntity entity)
         {
             context.Entry(entity).State = EntityState.Added;
         }
@@ -33,9 +33,9 @@ namespace GameStore.DAL.Concrete
             context.Entry(entity).State = EntityState.Deleted;
         }
 
-        public TEntity Get(Expression<Func<TEntity, bool>> where)
+        public TEntity GetSingle(Expression<Func<TEntity, bool>> where)
         {
-            return context.Set<TEntity>().FirstOrDefault(where);
+            return context.Set<TEntity>().First(where);
         }
         public IEnumerable<TEntity> GetAll()
         {

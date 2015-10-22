@@ -43,7 +43,7 @@ namespace GameStore.Tests.WebTests
                 }
             };
 
-            mockGame.Setup(x => x.GetGameByKey(It.IsAny<string>())).Returns(games[0]);
+            mockGame.Setup(x => x.Get(It.IsAny<string>())).Returns(games[0]);
         }
 
         [TestMethod]
