@@ -8,6 +8,7 @@ using GameStore.Domain.Entities;
 using GameStore.DAL.Interfaces;
 using Moq;
 using System.Linq.Expressions;
+using AutoMapper;
 using GameStore.BLL.Infrastructure;
 using GameStore.BLL.DTO;
 using GameStore.BLL.Services;
@@ -21,6 +22,7 @@ namespace GameStore.Tests.BLLTests
         private List<PlatformType> platformTypes;
         private List<Game> games;
         private List<Comment> comments;
+        private List<Publisher> publishers; 
 
         public Mock<IUnitOfWork> mock;
 
@@ -47,6 +49,24 @@ namespace GameStore.Tests.BLLTests
             {
                 new PlatformType() {PlatformTypeId = 1, PlatformTypeName = "Desktop"},
                 new PlatformType() {PlatformTypeId = 2, PlatformTypeName = "Console"},
+            };
+
+            publishers = new List<Publisher>
+            {
+                new Publisher()
+                {
+                    PublisherId = 1,
+                    CompanyName = "Blizzard",
+                    Description = "The best company in the world",
+                    HomePage = "battle.net"
+                },
+                new Publisher()
+                {
+                    PublisherId = 2,
+                    CompanyName = "Electronic Arts",
+                    Description = "Only fast",
+                    HomePage = "www.needforspeed.com"
+                }
             };
 
 
@@ -108,7 +128,7 @@ namespace GameStore.Tests.BLLTests
 
             mock.Setup(x => x.Games.GetAll()).Returns(games);
             mock.Setup(x => x.Games.GetSingle(It.IsAny<Expression<Func<Game, bool>>>()))
-                .Returns((Expression<Func<Game, bool>> predicate) => games.First(predicate.Compile()));
+                .Returns((Expression<Func<Game, bool>> predicate) => games.Where(predicate.Compile()).First());
             mock.Setup(x => x.Games.GetMany(It.IsAny<Expression<Func<Game, bool>>>()))
                 .Returns((Expression<Func<Game, bool>> predicate) => games.Where(predicate.Compile()));
             mock.Setup(x => x.Games.Create(It.IsAny<Game>())).Callback((Game game) => games.Add(game));
@@ -128,8 +148,12 @@ namespace GameStore.Tests.BLLTests
 
             mock.Setup(x => x.Genres.GetSingle(It.IsAny<Expression<Func<Genre, bool>>>()))
                 .Returns((Expression<Func<Genre, bool>> predicate) => genres.First(predicate.Compile()));
+            
             mock.Setup(x => x.PlatformTypes.GetSingle(It.IsAny<Expression<Func<PlatformType, bool>>>()))
                 .Returns((Expression<Func<PlatformType, bool>> predicate) => platformTypes.First(predicate.Compile()));
+           
+            mock.Setup(x => x.Publishers.GetSingle(It.IsAny<Expression<Func<Publisher, bool>>>()))
+                .Returns((Expression<Func<Publisher, bool>> predicate) => publishers.Where(predicate.Compile()).First());
 
             mock.Setup(x => x.Comments.GetMany(It.IsAny<Expression<Func<Comment, bool>>>()))
                 .Returns((Expression<Func<Comment, bool>> predicate) => comments.Where(predicate.Compile()));
@@ -143,10 +167,11 @@ namespace GameStore.Tests.BLLTests
         {
             testGame = new GameDTO()
             {
-                GameId = 5,
+                GameId = 1,
                 GameName = "TestName",
                 GameKey = "TestKey",
-                Description = "Desc"
+                Description = "Desc",
+                PublisherId = 1
             };
 
             testGameKey = "SCII";            
@@ -165,6 +190,10 @@ namespace GameStore.Tests.BLLTests
         [TestInitialize]
         public void TestInitialize()
         {
+            Mapper.Initialize(cfg =>
+            {
+                cfg.AddProfile(new AutomapperBLLProfile());
+            });
             InitializeCollections();
             InitializeMocks();
             InitializeTestEntities();
@@ -180,7 +209,7 @@ namespace GameStore.Tests.BLLTests
 
             var service = new GameService(mock.Object);
 
-            //service.Create(gameToAdd);
+            service.Create(gameToAdd, new int[] { 1, 2 }, new int[] { 1, 2 });
         }
 
 
@@ -192,7 +221,7 @@ namespace GameStore.Tests.BLLTests
 
             var service = new GameService(mock.Object);
 
-            //service.Create(testGame);
+            service.Create(testGame, new int[] { 1, 2 }, new int[] { 1, 2 });
         }
 
         [TestMethod]
@@ -201,7 +230,7 @@ namespace GameStore.Tests.BLLTests
             var service = new GameService(mock.Object);
             
             var expectedCount = games.Count + 1;
-            //service.Create(testGame);
+            service.Create(testGame, new int[] {1,2}, new int[] {1,2});
 
             Assert.AreEqual(expectedCount, games.Count);
         }
@@ -216,39 +245,32 @@ namespace GameStore.Tests.BLLTests
 
             var service = new GameService(mock.Object);
 
-            //service.Update(testGame);
+            service.Update(testGame, new int[] { 1, 2 }, new int[] { 1, 2 });
         }
 
-
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
-        public void Update_Not_Existed_Game_Expected_Exception()
-        {
-            testGame.GameKey = notExistedGameKey;
-
-            var service = new GameService(mock.Object);
-
-            //service.Update(testGame);
-        }
+        
 
         [TestMethod]
         [ExpectedException(typeof(ValidationException))]
         public void Update_Game_With_Existing_Key_Expected_Exception()
         {
             testGame.GameKey = testGameKey;
+            testGame.GameId = 2;
 
             var service = new GameService(mock.Object);
 
-            //service.Update(testGame);
+            service.Update(testGame, new int[] {1,2}, new int[] {1,2});
         }
 
         [TestMethod]
         public void Update_Game()
         {
-            testGame.GameId = testGameId;
+            testGame.GameId = 1;
+            testGame.GameKey = testGameKey;
+
             var service = new GameService(mock.Object);
 
-            //service.Update(testGame);
+            service.Update(testGame, new int[] { 1, 2 }, new int[] { 1, 2 });
 
             var entry = games.First(m => m.GameId.Equals(testGame.GameId));
             Assert.AreEqual(entry.GameName, testGame.GameName);

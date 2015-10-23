@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GameStore.Domain.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -11,6 +9,7 @@ using System.Linq.Expressions;
 using GameStore.BLL.Infrastructure;
 using GameStore.BLL.Services;
 using GameStore.BLL.DTO;
+using AutoMapper;
 
 namespace GameStore.Tests.BLLTests
 {
@@ -21,6 +20,7 @@ namespace GameStore.Tests.BLLTests
         private List<PlatformType> platformTypes;
         private List<Game> games;
         private List<Comment> comments;
+        private List<User> users; 
         private Mock<IUnitOfWork> mock;
         private CommentDTO commentToAdd;
         private string testGameKey;
@@ -29,6 +29,14 @@ namespace GameStore.Tests.BLLTests
 
         private void InitializeCollections()
         {
+            users = new List<User>
+            {
+                new User(){UserId = 1, UserName = "User1"},
+                new User(){UserId = 2, UserName = "User2"},
+                new User(){UserId = 3, UserName = "User3"},
+                new User(){UserId = 4, UserName = "User4"}
+            };
+
             genres = new List<Genre>
             {
                 new Genre() {GenreId = 1, GenreName = "RTS", },
@@ -49,9 +57,9 @@ namespace GameStore.Tests.BLLTests
 
             comments = new List<Comment>
             {
-                new Comment() {CommentId = 1, UserId = 1, Content = "Is it miltiplayer only?", Game = games[1]},
-                new Comment() { CommentId = 2, UserId = 2, Content = "No. It has offline mode to play with bots.", Game = games[1]},
-                new Comment() { CommentId = 3, UserId = 3, Content = "Nice game", Game = games[0]}
+                new Comment() {CommentId = 1, UserId = 1, Content = "Is it miltiplayer only?", Game = games[1], User = users[3]},
+                new Comment() { CommentId = 2, UserId = 2, Content = "No. It has offline mode to play with bots.", Game = games[1], User = users[0]},
+                new Comment() { CommentId = 3, UserId = 3, Content = "Nice game", Game = games[0], User = users[2]}
             };
             comments[1].ParentComment = comments[0];
 
@@ -74,17 +82,21 @@ namespace GameStore.Tests.BLLTests
             mock.Setup(x => x.Comments.GetSingle(It.IsAny<Expression<Func<Comment, bool>>>())).Returns((Expression<Func<Comment, bool>> predicate) => comments.FirstOrDefault(predicate.Compile()));
             mock.Setup(x => x.Comments.GetMany(It.IsAny<Expression<Func<Comment, bool>>>())).Returns((Expression<Func<Comment, bool>> predicate) => comments.Where(predicate.Compile()));
             mock.Setup(x => x.Comments.Create(It.IsAny<Comment>())).Callback((Comment comment) => comments.Add(comment));
-            mock.Setup(x => x.Comments.Create(It.IsAny<Comment>())).Callback((Comment comment) => comments.Add(comment));
+            
             mock.Setup(x => x.Games.GetSingle(It.IsAny<Expression<Func<Game, bool>>>())).Returns((Expression<Func<Game, bool>> predicate) => games.FirstOrDefault(predicate.Compile()));
+
+            mock.Setup(x => x.Users.GetSingle(It.IsAny<Expression<Func<User, bool>>>())).Returns((Expression<Func<User, bool>> predicate) => users.FirstOrDefault(predicate.Compile()));
         }
 
         private void InitializeTestEntities()
         {
             commentToAdd = new CommentDTO()
             {
-                CommentId = 5,
-                UserId = 10,
-                Content = "Test comment"
+                CommentId = 1,
+                UserId = 1,
+                Content = "Test comment",
+                ParentCommentId = 1,
+                ChildComments = new List<CommentDTO>()
             };
 
             testGameKey = "SCII";
@@ -95,6 +107,10 @@ namespace GameStore.Tests.BLLTests
         [TestInitialize]
         public void TestInitialize()
         {
+            Mapper.Initialize(cfg =>
+            {
+                cfg.AddProfile(new AutomapperBLLProfile());
+            });
             InitializeCollections();
             InitializeMocks();
             InitializeTestEntities();
@@ -114,7 +130,7 @@ namespace GameStore.Tests.BLLTests
 
        
         [TestMethod]
-        [ExpectedException(typeof(NullReferenceException))]
+        [ExpectedException(typeof(InvalidOperationException))]
         public void Add_Comment_For_Not_Existed_Game_Expected_Exception()
         {
             var service = new CommentService(mock.Object);
@@ -128,6 +144,7 @@ namespace GameStore.Tests.BLLTests
             var service = new CommentService(mock.Object);
             var game = games.First(m => m.GameKey.Equals(testGameKey));
             var expectedCount = game.Comments.Count + 1;
+            
             service.Create(testGameKey, commentToAdd);
 
             Assert.AreEqual(expectedCount, game.Comments.Count);

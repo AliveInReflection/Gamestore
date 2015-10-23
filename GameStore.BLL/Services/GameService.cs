@@ -157,8 +157,8 @@ namespace GameStore.BLL.Services
 
         public IEnumerable<GameDTO> GetAll()
         {
-            Mapper.CreateMap<Game, GameDTO>();
-            var games = Mapper.Map<IEnumerable<Game>, IEnumerable<GameDTO>>(database.Games.GetAll());
+            var entries = database.Games.GetAll();
+            var games = Mapper.Map<IEnumerable<Game>, IEnumerable<GameDTO>>(entries);
             return games;
         }
 
@@ -167,7 +167,6 @@ namespace GameStore.BLL.Services
             var genre = database.Genres.GetSingle(m => m.GenreId.Equals(genreId));
 
             var gameEntries = genre.Games.ToList();
-            Mapper.CreateMap<Game, GameDTO>();
             var games = Mapper.Map<IEnumerable<Game>, IEnumerable<GameDTO>>(gameEntries);
             return games;
         }
@@ -185,7 +184,6 @@ namespace GameStore.BLL.Services
                     gameEntries.Add(game);
                 }
             }
-            Mapper.CreateMap<Game, GameDTO>();
             var games = Mapper.Map<IEnumerable<Game>, IEnumerable<GameDTO>>(gameEntries);
             return games;
         }

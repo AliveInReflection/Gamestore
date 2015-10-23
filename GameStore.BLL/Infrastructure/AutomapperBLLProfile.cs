@@ -15,23 +15,13 @@ namespace GameStore.BLL.Infrastructure
         protected override void Configure()
         {
             Mapper.CreateMap<Game, GameDTO>();
-           
-            Mapper.CreateMap<Genre, GenreDTO>()
-                .ForMember(g => g.Games, m => m.Ignore());
-
-            Mapper.CreateMap<Comment, CommentDTO>()
-                .ForMember(c => c.ChildComments, m => m.Ignore());
-
-
-            Mapper.CreateMap<PlatformType, PlatformTypeDTO>()
-                .ForMember(pt => pt.Games, m => m.Ignore());
-
-            Mapper.CreateMap<Publisher, PublisherDTO>()
-                .ForMember(p => p.Games, m => m.Ignore());
-
-            Mapper.CreateMap<OrderDetails, OrderDetailsDTO>()
-                .ForMember(od => od.Order, m => m.Ignore())
-                .ForMember(od => od.Product, m => m.Ignore());
+            Mapper.CreateMap<Genre, GenreDTO>();
+            Mapper.CreateMap<Comment, CommentDTO>();
+            Mapper.CreateMap<PlatformType, PlatformTypeDTO>();
+            Mapper.CreateMap<Publisher, PublisherDTO>();
+            Mapper.CreateMap<Order, OrderDTO>();
+            Mapper.CreateMap<OrderDetails, OrderDetailsDTO>();
+            Mapper.CreateMap<User, UserDTO>();
 
             //====================================================
 
@@ -40,7 +30,9 @@ namespace GameStore.BLL.Infrastructure
                 .ForMember(g => g.Genres, m => m.Ignore())
                 .ForMember(g => g.PlatformTypes, m => m.Ignore()); ;
            
-            Mapper.CreateMap<CommentDTO, Comment>();
+            Mapper.CreateMap<CommentDTO, Comment>()
+                .ForMember(c => c.ParentComment, m => m.Ignore())
+                .ForMember(c => c.User, m => m.Ignore());
 
             Mapper.CreateMap<GenreDTO, Genre>()
                 .ForMember(g => g.ChildGenres, m => m.Ignore())
@@ -50,10 +42,13 @@ namespace GameStore.BLL.Infrastructure
                 .ForMember(pt => pt.Games, m => m.Ignore());
 
             Mapper.CreateMap<PublisherDTO, Publisher>();
+            
             Mapper.CreateMap<OrderDetailsDTO, OrderDetails>();
+            
             Mapper.CreateMap<OrderDTO, Order>();
 
-            Mapper.CreateMap<CommentDTO, Comment>();
+            Mapper.CreateMap<UserDTO, User>();
+
 
         }
     }

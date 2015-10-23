@@ -25,6 +25,12 @@ namespace GameStore.WebUI
                 defaults: new { controller = "Game", action = "download" }
                 );
 
+            routes.MapRoute(
+                name: "NewComment",
+                url: "game/{gamekey}/newcomment",
+                defaults: new { controller = "Comment", action = "Create" }
+                );
+
 
             routes.MapRoute(
                 name: "GamesNew",
