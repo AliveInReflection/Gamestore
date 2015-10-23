@@ -14,6 +14,19 @@ namespace GameStore.WebUI
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+               name: "Buy",
+               url: "game/{gamekey}/buy",
+               defaults: new { controller = "Order", action = "Add" }
+               );
+
+            routes.MapRoute(
+                name: "Download",
+                url: "game/{gamekey}/download",
+                defaults: new { controller = "Game", action = "download" }
+                );
+
+
+            routes.MapRoute(
                 name: "GamesNew",
                 url: "Games/New",
                 defaults: new { controller = "Game", action = "Create", id = UrlParameter.Optional }
@@ -43,6 +56,12 @@ namespace GameStore.WebUI
            );
 
             routes.MapRoute(
+               name: "Busket",
+               url: "Busket",
+               defaults: new { controller = "Order", action = "Details", id = UrlParameter.Optional }
+           );
+
+            routes.MapRoute(
                 name: "GameDetails",
                 url: "Game/{key}",
                 defaults: new { controller = "Game", action = "Details", key = UrlParameter.Optional }
@@ -54,16 +73,13 @@ namespace GameStore.WebUI
                 defaults: new { controller = "Publisher", action = "Details"}
                 );
 
-            routes.MapRoute(
-                name: "Download",
-                url: "{controller}/{gamekey}/download",
-                defaults: new { controller = "Comment", action = "download" }
-                );
+            
 
+           
             routes.MapRoute(
                 name: "Comments",
-                url: "{controller}/{gamekey}/{action}",
-                defaults: new { controller = "Comment" }
+                url: "game/{gamekey}/comments",
+                defaults: new { controller = "Comment", action = "List"}
                 );
 
             routes.MapRoute(

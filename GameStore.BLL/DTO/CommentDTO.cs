@@ -9,9 +9,10 @@ namespace GameStore.BLL.DTO
     public class CommentDTO
     {
         public int CommentId { get; set; }
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         public string Content { get; set; }
-        public int GameId { get; set; }
-        public int? ParentId { get; set; }
+        public int? ParentCommentId { get; set; }
+
+        public IEnumerable<CommentDTO> ChildComments { get; set; } 
     }
 }

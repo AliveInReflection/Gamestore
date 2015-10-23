@@ -83,9 +83,8 @@ namespace GameStore.Tests.BLLTests
             commentToAdd = new CommentDTO()
             {
                 CommentId = 5,
-                UserId = "Test",
-                Content = "Test comment",
-                GameId = 1
+                UserId = 10,
+                Content = "Test comment"
             };
 
             testGameKey = "SCII";

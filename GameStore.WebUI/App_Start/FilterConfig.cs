@@ -9,7 +9,6 @@ namespace GameStore.WebUI
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            filters.Add(new OutputCacheAttribute() {Duration = 60});
             filters.Add(new PerformanceLoggingAttribute());
             filters.Add(new ErrorLoggingAttribute());
             filters.Add(new IPAddressLoggingAttribute());

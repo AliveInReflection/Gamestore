@@ -27,6 +27,7 @@ namespace Gamestore.DAL.Context
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetails> OrderDetailses { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 
 

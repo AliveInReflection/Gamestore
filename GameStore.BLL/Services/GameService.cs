@@ -189,5 +189,10 @@ namespace GameStore.BLL.Services
             var games = Mapper.Map<IEnumerable<Game>, IEnumerable<GameDTO>>(gameEntries);
             return games;
         }
+
+        public int GetCount()
+        {
+            return database.Games.GetAll().Count();
+        }
     }
 }

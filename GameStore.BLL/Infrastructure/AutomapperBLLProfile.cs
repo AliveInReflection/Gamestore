@@ -19,7 +19,8 @@ namespace GameStore.BLL.Infrastructure
             Mapper.CreateMap<Genre, GenreDTO>()
                 .ForMember(g => g.Games, m => m.Ignore());
 
-            Mapper.CreateMap<Comment, CommentDTO>();
+            Mapper.CreateMap<Comment, CommentDTO>()
+                .ForMember(c => c.ChildComments, m => m.Ignore());
 
 
             Mapper.CreateMap<PlatformType, PlatformTypeDTO>()
@@ -51,6 +52,8 @@ namespace GameStore.BLL.Infrastructure
             Mapper.CreateMap<PublisherDTO, Publisher>();
             Mapper.CreateMap<OrderDetailsDTO, OrderDetails>();
             Mapper.CreateMap<OrderDTO, Order>();
+
+            Mapper.CreateMap<CommentDTO, Comment>();
 
         }
     }

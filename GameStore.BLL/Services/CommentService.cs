@@ -27,12 +27,21 @@ namespace GameStore.BLL.Services
             }
 
             var gameEntry = database.Games.GetSingle(m => m.GameKey.Equals(gameKey));
-            
-            Mapper.CreateMap<CommentDTO, Comment>();
-            var commentToSave = Mapper.Map<CommentDTO, Comment>(comment);
-            
-            gameEntry.Comments.Add(commentToSave);
+            var userEntry = database.Users.GetSingle(m => m.UserId.Equals(comment.UserId));
 
+            var commentToSave = Mapper.Map<CommentDTO, Comment>(comment);
+            commentToSave.User = userEntry;
+
+            if (comment.ParentCommentId != null)
+            {
+                var commentEntry = database.Comments.GetSingle(m => m.CommentId.Equals(comment.ParentCommentId.Value));
+                commentToSave.ParentComment = commentEntry;
+            }
+            else
+            {
+                gameEntry.Comments.Add(commentToSave);
+            }
+            database.Comments.Create(commentToSave);
             database.Save();
         }
 
@@ -44,8 +53,24 @@ namespace GameStore.BLL.Services
 
             Mapper.CreateMap<Comment, CommentDTO>();
             var comments = Mapper.Map<IEnumerable<Comment>, IEnumerable<CommentDTO>>(commentEntries);
+
+            foreach (var comment in comments)
+            {
+                GetChildComments(comment);
+            }
             
             return comments;
+        }
+
+        private void GetChildComments(CommentDTO parent)
+        {
+            var childComments = database.Comments.GetMany(m => m.ParentComment.CommentId.Equals(parent.CommentId));
+            parent.ChildComments = Mapper.Map<IEnumerable<Comment>, IEnumerable<CommentDTO>>(childComments);
+
+            foreach (var childComment in parent.ChildComments)
+            {
+                GetChildComments(childComment);
+            }
         }
 
     }

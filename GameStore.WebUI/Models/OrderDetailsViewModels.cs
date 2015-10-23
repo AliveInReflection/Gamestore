@@ -7,10 +7,8 @@ using System.Web.Mvc;
 
 namespace GameStore.WebUI.Models
 {
-    public class DisplayOrderDetailsViewModel
+    public class OrderDetailsViewModel
     {
-        [HiddenInput(DisplayValue = false)]
-        public int OrderDetailsId { get; set; }
 
         [Display(Name="Game key")]
         public string GameKey { get; set; }

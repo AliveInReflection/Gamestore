@@ -28,13 +28,7 @@ namespace GameStore.WebUI.Controllers
             this.platformTypeService = platformTypeService;
             this.publisherService = publisherService;
         }
-
-        public ActionResult Index()
-        {
-            return View();
-
-        }
-
+        
         public ActionResult List()
         {           
             var games = Mapper.Map<IEnumerable<GameDTO>, IEnumerable<DisplayGameViewModel>>(gameService.GetAll());
@@ -98,6 +92,14 @@ namespace GameStore.WebUI.Controllers
         {
             return View();
 
+        }
+
+        [HttpGet]
+        [ChildActionOnly]
+        [OutputCache(Duration=60)]
+        public ActionResult GetCount()
+        {
+            return PartialView(gameService.GetCount());
         }
 
         

@@ -17,5 +17,6 @@ namespace GameStore.BLL.Interfaces
         IEnumerable<GameDTO> Get(int genreId);
         IEnumerable<GameDTO> Get(IEnumerable<int> platfotmTypeIds);
         IEnumerable<GameDTO> GetAll();
+        int GetCount();
     }
 }

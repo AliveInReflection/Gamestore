@@ -1,0 +1,28 @@
+﻿@using GameStore.WebUI.Helpers;
+@model IEnumerable<GameStore.WebUI.Models.DisplayCommentViewModel>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div>
+    @Html.BuildCommentsTree(Model)
+</div>
+
+<div>
+    @Html.Action("Create", "Comment", new {gameKey = ViewBag.GameKey as string})
+</div>
+
+
+@section Scripts
+{
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/Comment/Comment_answer.js"></script>
+}

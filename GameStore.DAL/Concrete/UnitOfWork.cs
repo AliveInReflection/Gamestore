@@ -19,7 +19,8 @@ namespace GameStore.DAL.Concrete
         private IRepository<PlatformType> platformTypes;
         private IRepository<Publisher> publishers;
         private IRepository<OrderDetails> orderDetailses;
-        private IRepository<Order> orders; 
+        private IRepository<Order> orders;
+        private IRepository<User> users;
 
 
         public UnitOfWork(string connectionString)
@@ -61,6 +62,11 @@ namespace GameStore.DAL.Concrete
         public IRepository<Order> Orders
         {
             get { return orders ?? (orders = new BaseRepository<Order>(context)); }
+        }
+
+        public IRepository<User> Users
+        {
+            get { return users ?? (users = new BaseRepository<User>(context)); }
         }
 
         public void Save()

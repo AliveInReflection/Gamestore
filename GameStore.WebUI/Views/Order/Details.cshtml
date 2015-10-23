@@ -1,0 +1,30 @@
+﻿@model GameStore.WebUI.Models.OrderViewModel
+
+@{
+    ViewBag.Title = "Busket";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<fieldset>
+    <legend>Games in busket</legend>
+    <table>
+        <thead>
+        <tr>
+            <th>Game key</th>
+            <th>Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderDetailses)
+            {
+                <tr>
+                    <td>@item.GameKey</td>
+                    <td>@item.Quantity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
+</fieldset>

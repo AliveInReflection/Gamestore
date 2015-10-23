@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using GameStore.BLL.DTO;
 using GameStore.BLL.Infrastructure;
+using GameStore.WebUI.Models;
 
 namespace GameStore.WebUI.Controllers
 {
@@ -20,37 +22,40 @@ namespace GameStore.WebUI.Controllers
             this.commentService = commentService;
         }
 
+      
+        public ActionResult List(string gameKey)
+        {
+            ViewBag.GameKey = gameKey;
+            var comments = commentService.Get(gameKey);
+            return View(Mapper.Map<IEnumerable<CommentDTO>, IEnumerable<DisplayCommentViewModel>>(comments));
+        }
+
+
+        [HttpGet]
+        public ActionResult Create(string gameKey)
+        {
+            return PartialView(new CreateCommentViewModel());
+        }
+
         [HttpPost]
-        public ActionResult Create(string gamekey, CommentDTO comment)
+        public ActionResult Create(string gameKey, CreateCommentViewModel comment)
         {
             if (!ModelState.IsValid)
-                return Json("Model error");
+                return PartialView(comment);
 
             try
             {
-                commentService.Create(gamekey, comment);
-                return Json("Comment added");
+                commentService.Create(gameKey, Mapper.Map<CreateCommentViewModel, CommentDTO>(comment));
             }
-            catch (ValidationException e)
+            catch (Exception e)
             {
-                return Json("Validation error");
+                TempData["ErrorMessage"] = "Error";
             }
-        }
 
-        [HttpPost]
-        public ActionResult GetAll(string gamekey)
-        {
-            try
-            {
-                var comments = commentService.Get(gamekey);
-                return Json(comments);
-            }
-            catch (ValidationException e)
-            {
-                return Json("Validation error");
-            }
+            return RedirectToAction("List", "Comment", new { gameKey = gameKey });
 
         }
 
+        
     }
 }

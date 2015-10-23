@@ -10,12 +10,6 @@
 <fieldset>
     <legend>DisplayGameViewModel</legend>
 
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.GameId)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.GameId)
-    </div>
 
     <div class="display-label">
         @Html.DisplayNameFor(model => model.GameKey)
@@ -78,5 +72,20 @@
 
 <p>
     @Html.DisplayNameFor(model => model.Publisher) :
-    @Html.ActionLink(Model.Publisher.CompanyName, "Details", "Publisher", new { companyName = Model.Publisher.CompanyName }, null) 
+    @Html.ActionLink(Model.Publisher.CompanyName, "Details", "Publisher", new {companyName = Model.Publisher.CompanyName}, null)
+</p>
+
+<p>
+    @using (Html.BeginForm("Add", "Order"))
+    {
+        @Html.Hidden("gameKey", Model.GameKey)
+        ;
+        <span>Qauntity: </span>@Html.TextBox("quantity", 1, new {type = "number"})
+        ;
+        <input type="submit" value="Buy"/>
+    }
+</p>
+
+<p>
+    @Html.ActionLink("Download", "Download", "Game", new{ gameKey=Model.GameKey}, new{ target="_blank"})
 </p>

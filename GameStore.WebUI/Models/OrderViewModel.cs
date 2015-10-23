@@ -7,8 +7,10 @@ using System.Web.Mvc;
 
 namespace GameStore.WebUI.Models
 {
-    public class DisplayOrderViewModel
+    public class OrderViewModel
     {
+
+
         [HiddenInput(DisplayValue = false)]
         public int OrderId { get; set; }
 
@@ -18,6 +20,6 @@ namespace GameStore.WebUI.Models
         [Display(Name="Date")]
         public DateTime Date { get; set; }
 
-        public IEnumerable<DisplayOrderDetailsViewModel> OrderDetailses { get; set; }
+        public List<OrderDetailsViewModel> OrderDetailses { get; set; }
     }
 }

@@ -10,8 +10,13 @@
     <title>Layout</title>
 </head>
 <body>
-    <div>
-        @RenderBody()
-    </div>
+<div class="header">
+    @Html.Action("GetCount", "Game")
+    @Html.ActionLink("Busket","Details", "Order")
+</div>
+<div>
+    @RenderBody()
+</div>
+    @RenderSection("Scripts", false)
 </body>
 </html>

@@ -12,6 +12,7 @@ namespace GameStore.DAL.Interfaces
         IRepository<Publisher> Publishers { get; }
         IRepository<OrderDetails> OrderDetailses { get; }
         IRepository<Order> Orders { get; }
+        IRepository<User> Users { get; }
 
         void Save();
     }
