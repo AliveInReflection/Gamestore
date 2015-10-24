@@ -187,7 +187,6 @@
     <Folder Include="App_Data\Logs\ErrorsLog\" />
     <Folder Include="App_Data\Logs\IPAddressLog\" />
     <Folder Include="App_Data\Logs\PerformanceLog\" />
-    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

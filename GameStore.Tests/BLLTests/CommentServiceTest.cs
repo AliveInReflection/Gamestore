@@ -83,7 +83,7 @@ namespace GameStore.Tests.BLLTests
             mock.Setup(x => x.Comments.GetMany(It.IsAny<Expression<Func<Comment, bool>>>())).Returns((Expression<Func<Comment, bool>> predicate) => comments.Where(predicate.Compile()));
             mock.Setup(x => x.Comments.Create(It.IsAny<Comment>())).Callback((Comment comment) => comments.Add(comment));
             
-            mock.Setup(x => x.Games.GetSingle(It.IsAny<Expression<Func<Game, bool>>>())).Returns((Expression<Func<Game, bool>> predicate) => games.FirstOrDefault(predicate.Compile()));
+            mock.Setup(x => x.Games.GetSingle(It.IsAny<Expression<Func<Game, bool>>>())).Returns((Expression<Func<Game, bool>> predicate) => games.Where(predicate.Compile()).First());
 
             mock.Setup(x => x.Users.GetSingle(It.IsAny<Expression<Func<User, bool>>>())).Returns((Expression<Func<User, bool>> predicate) => users.FirstOrDefault(predicate.Compile()));
         }
@@ -92,14 +92,13 @@ namespace GameStore.Tests.BLLTests
         {
             commentToAdd = new CommentDTO()
             {
-                CommentId = 1,
+                CommentId = 5,
                 UserId = 1,
                 Content = "Test comment",
-                ParentCommentId = 1,
                 ChildComments = new List<CommentDTO>()
             };
 
-            testGameKey = "SCII";
+            testGameKey = "CSGO";
 
             notExistedGameKey = "Not Existed";
         }
@@ -151,7 +150,7 @@ namespace GameStore.Tests.BLLTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(NullReferenceException))]
+        [ExpectedException(typeof(InvalidOperationException))]
         public void Get_Comments_For_Not_Existed_Game_Expected_Exception()
         {
             var service = new CommentService(mock.Object);

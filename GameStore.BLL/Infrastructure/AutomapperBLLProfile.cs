@@ -26,20 +26,13 @@ namespace GameStore.BLL.Infrastructure
             //====================================================
 
 
-            Mapper.CreateMap<GameDTO, Game>()
-                .ForMember(g => g.Genres, m => m.Ignore())
-                .ForMember(g => g.PlatformTypes, m => m.Ignore()); ;
-           
-            Mapper.CreateMap<CommentDTO, Comment>()
-                .ForMember(c => c.ParentComment, m => m.Ignore())
-                .ForMember(c => c.User, m => m.Ignore());
+            Mapper.CreateMap<GameDTO, Game>();
 
-            Mapper.CreateMap<GenreDTO, Genre>()
-                .ForMember(g => g.ChildGenres, m => m.Ignore())
-                .ForMember(g => g.Games, m => m.Ignore()); ;
-            
-            Mapper.CreateMap<PlatformTypeDTO, PlatformType>()
-                .ForMember(pt => pt.Games, m => m.Ignore());
+            Mapper.CreateMap<CommentDTO, Comment>();
+
+            Mapper.CreateMap<GenreDTO, Genre>();
+
+            Mapper.CreateMap<PlatformTypeDTO, PlatformType>();
 
             Mapper.CreateMap<PublisherDTO, Publisher>();
             

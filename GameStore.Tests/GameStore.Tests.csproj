@@ -71,6 +71,8 @@
   <ItemGroup>
     <Compile Include="BLLTests\CommentServiceTest.cs" />
     <Compile Include="BLLTests\GameServiceTests.cs" />
+    <Compile Include="BLLTests\GenreServiceTests.cs" />
+    <Compile Include="BLLTests\PublisherServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebTests\GameControllerTests.cs" />
     <Compile Include="WebTests\GamesControllerTests.cs" />
