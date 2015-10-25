@@ -102,7 +102,6 @@ namespace GameStore.WebUI.Controllers
             return PartialView(gameService.GetCount());
         }
 
-        
 
         [HttpGet]
         public ActionResult Download(string gamekey)

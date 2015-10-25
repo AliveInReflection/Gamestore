@@ -58,10 +58,10 @@ namespace GameStore.Tests.BLLTests
             comments = new List<Comment>
             {
                 new Comment() {CommentId = 1, UserId = 1, Content = "Is it miltiplayer only?", Game = games[1], User = users[3]},
-                new Comment() { CommentId = 2, UserId = 2, Content = "No. It has offline mode to play with bots.", Game = games[1], User = users[0]},
+                new Comment() { CommentId = 2, UserId = 2, Content = "No. It has offline mode to play with bots.", Game = games[1], User = users[0]}, 
                 new Comment() { CommentId = 3, UserId = 3, Content = "Nice game", Game = games[0], User = users[2]}
             };
-            comments[1].ParentComment = comments[0];
+            comments[1].ParentComment = comments[2];
 
             games[0].Comments = new List<Comment> { comments[2] };
             games[1].Comments = new List<Comment> { comments[0], comments[1] };
@@ -79,7 +79,7 @@ namespace GameStore.Tests.BLLTests
 
 
             mock.Setup(x => x.Comments.GetAll()).Returns(comments);
-            mock.Setup(x => x.Comments.GetSingle(It.IsAny<Expression<Func<Comment, bool>>>())).Returns((Expression<Func<Comment, bool>> predicate) => comments.FirstOrDefault(predicate.Compile()));
+            mock.Setup(x => x.Comments.GetSingle(It.IsAny<Expression<Func<Comment, bool>>>())).Returns((Expression<Func<Comment, bool>> predicate) => comments.Where(predicate.Compile()).First());
             mock.Setup(x => x.Comments.GetMany(It.IsAny<Expression<Func<Comment, bool>>>())).Returns((Expression<Func<Comment, bool>> predicate) => comments.Where(predicate.Compile()));
             mock.Setup(x => x.Comments.Create(It.IsAny<Comment>())).Callback((Comment comment) => comments.Add(comment));
             

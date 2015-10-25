@@ -75,7 +75,10 @@
     <Compile Include="BLLTests\PlatformTypeServiceTests.cs" />
     <Compile Include="BLLTests\PublisherServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebTests\CommentControllerTests.cs" />
     <Compile Include="WebTests\GameControllerTests.cs" />
+    <Compile Include="WebTests\OrderControllerTests.cs" />
+    <Compile Include="WebTests\PublisherControllerTests.cs" />
     <Compile Include="WebTests\RouteTests.cs" />
   </ItemGroup>
   <ItemGroup />
