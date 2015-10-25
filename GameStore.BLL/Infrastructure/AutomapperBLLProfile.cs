@@ -18,6 +18,7 @@ namespace GameStore.BLL.Infrastructure
             Mapper.CreateMap<Genre, GenreDTO>();
             Mapper.CreateMap<Comment, CommentDTO>();
 
+
             Mapper.CreateMap<PlatformType, PlatformTypeDTO>();
             Mapper.CreateMap<Publisher, PublisherDTO>();
             Mapper.CreateMap<Order, OrderDTO>();
