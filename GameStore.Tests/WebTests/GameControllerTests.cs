@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameStore.Domain.Entities;
 
 namespace GameStore.Tests.WebTests
 {
@@ -16,8 +17,14 @@ namespace GameStore.Tests.WebTests
     public class GameControllerTests
     {
         private Mock<IGameService> mockGame;
-        private Mock<ICommentService> mockComment;
+        private Mock<IGenreService> mockGenre;
+        private Mock<IPlatformTypeService> mockPlatformType;
+        private Mock<IPublisherService> mockPublisher;
+
+        private List<GenreDTO> genres;
+        private List<PlatformTypeDTO> platformTypes;
         private List<GameDTO> games;
+        private List<PublisherDTO> publishers; 
 
 
         [TestInitialize]
