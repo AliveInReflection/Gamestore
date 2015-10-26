@@ -56,6 +56,21 @@ namespace GameStore.WebUI.Controllers
 
         }
 
+
+        [HttpPost]
+        public ActionResult Delete(int commentId, string gameKey)
+        {
+            try
+            {
+                commentService.Delete(commentId);
+            }
+            catch (Exception e)
+            {
+                TempData["ErrorMessage"] = "Error"; 
+            }
+            return RedirectToAction("List", "Comment", new { gameKey = gameKey });
+        }
+
         
     }
 }

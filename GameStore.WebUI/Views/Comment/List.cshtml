@@ -8,12 +8,8 @@
 
 <h2>List</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
 <div>
-    @Html.BuildCommentsTree(Model)
+    @Html.BuildCommentsTree(Model, ViewBag.GameKey as string)
 </div>
 
 <div>
@@ -24,5 +20,5 @@
 @section Scripts
 {
     <script src="~/Scripts/jquery-2.1.4.min.js"></script>
-    <script src="~/Scripts/Comment/Comment_answer.js"></script>
+    <script src="~/Scripts/Comment/Comment.js"></script>
 }

@@ -11,5 +11,6 @@ namespace GameStore.BLL.Interfaces
     {
         void Create(string gameKey, CommentDTO comment);
         IEnumerable<CommentDTO> Get(string gameKey);
+        void Delete(int commentId);
     }
 }

@@ -7,6 +7,7 @@ using GameStore.BLL.Interfaces;
 using GameStore.DAL.Interfaces;
 using GameStore.DAL.Concrete;
 using System;
+using System.Linq;
 
 namespace GameStore.BLL.Services
 {
@@ -62,6 +63,20 @@ namespace GameStore.BLL.Services
             return comments;
         }
 
+        public void Delete(int commentId)
+        {
+            var comment = database.Comments.GetSingle(m => m.CommentId.Equals(commentId));
+            if (HasChildren(comment))
+            {
+                comment.Content = "<Message deleted>";
+            }
+            else
+            {
+                database.Comments.Delete(commentId);
+            }
+            database.Save();
+        }
+
         private void GetChildComments(CommentDTO parent)
         {
             var childComments = database.Comments.GetMany(m => m.ParentComment.CommentId.Equals(parent.CommentId));
@@ -71,6 +86,12 @@ namespace GameStore.BLL.Services
             {
                 GetChildComments(childComment);
             }
+        }
+
+        private bool HasChildren(Comment parent)
+        {
+            var children = database.Comments.GetMany(m => m.ParentComment.CommentId.Equals(parent.CommentId));
+            return children.Any();
         }
 
     }
