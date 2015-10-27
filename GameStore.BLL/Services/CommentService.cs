@@ -58,7 +58,6 @@ namespace GameStore.BLL.Services
 
             var commentEntries = game.Comments;
 
-            Mapper.CreateMap<Comment, CommentDTO>();
             var comments = Mapper.Map<IEnumerable<Comment>, IEnumerable<CommentDTO>>(commentEntries);
 
             foreach (var comment in comments)

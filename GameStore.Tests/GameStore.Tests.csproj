@@ -72,6 +72,7 @@
     <Compile Include="BLLTests\CommentServiceTest.cs" />
     <Compile Include="BLLTests\GameServiceTests.cs" />
     <Compile Include="BLLTests\GenreServiceTests.cs" />
+    <Compile Include="BLLTests\OrderServiceTests.cs" />
     <Compile Include="BLLTests\PublisherServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebTests\CommentControllerTests.cs" />
@@ -102,9 +103,6 @@
       <Project>{acc97165-bfca-4363-a7d5-08bb95e8dd72}</Project>
       <Name>GameStore.WebUI</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

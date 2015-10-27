@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameStore.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace GameStore.BLL.DTO
     {
         public int OrderId { get; set; }
         public string CustomerId { get; set; }
+        public OrderState OrderState { get; set; }
         public DateTime Date { get; set; }
 
         public IEnumerable<OrderDetailsDTO> OrderDetailses { get; set; }

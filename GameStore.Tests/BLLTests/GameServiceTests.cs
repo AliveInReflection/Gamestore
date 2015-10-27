@@ -375,6 +375,14 @@ namespace GameStore.Tests.BLLTests
             Assert.IsInstanceOfType(games, typeof(IEnumerable<GameDTO>));
         }
 
+        [TestMethod]
+        public void Get_Games_Count()
+        {
+            var service = new GameService(mock.Object);
+            var count = service.GetCount();
+            Assert.AreEqual(2, count);
+        }
+
         #endregion
 
     }

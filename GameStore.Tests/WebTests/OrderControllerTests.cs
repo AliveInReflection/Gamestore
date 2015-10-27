@@ -12,14 +12,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using GameStore.Domain.Entities;
 
 namespace GameStore.Tests.WebTests
 {
     [TestClass]
     public class OrderControllerTests
     {
-        private Mock<IGameService> mock;
-        private List<GameDTO> games;
+        private Mock<IOrderService> mock;
+        private List<OrderDTO> orders;
         private string testGameKey = "SCII"; 
 
 
@@ -29,36 +30,15 @@ namespace GameStore.Tests.WebTests
 
         private void InitializeCollections()
         {
-            games = new List<GameDTO>
-            {
-                new GameDTO()
-                {
-                    GameId = 1,
-                    GameKey = "SCII",
-                    GameName = "StarCraftII",
-                    Description = "DescriptionSCII",
-                    Genres = new List<GenreDTO>(),
-                    PlatformTypes = new List<PlatformTypeDTO>()
-                },
-                new GameDTO()
-                {
-                    GameId = 2,
-                    GameKey = "CSGO",
-                    GameName = "Counter strike: global offencive",
-                    Description = "DescriptionCSGO",
-                    Genres = new List<GenreDTO>(),
-                    PlatformTypes = new List<PlatformTypeDTO>()
-                }
-            };
-
-
-
+            
         }
 
         private void InitializeMocks()
         {
-            mock = new Mock<IGameService>();
-            mock.Setup(x => x.Get(It.IsAny<string>())).Returns(games.First());
+            mock = new Mock<IOrderService>();
+            mock.Setup(x => x.AddItem(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<short>()));
+            mock.Setup(x => x.GetCurrent(It.IsAny<string>())).Returns(new OrderDTO());
+            mock.Setup(x => x.CalculateAmount(It.IsAny<int>())).Returns(256);
         }
 
         private void InitializeTestEntities()
@@ -77,26 +57,11 @@ namespace GameStore.Tests.WebTests
             InitializeMocks();
             InitializeTestEntities();
 
-           // controller = new OrderController(mock.Object);
+            controller = new OrderController(mock.Object);
         }
         #endregion
 
-        //[TestMethod]
-        //public void Order_Add_Is_Redirect_Result()
-        //{
-        //    var result = controller.Add(testGameKey, new OrderViewModel(), 2);
-
-        //    Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
-        //}
-
-        //[TestMethod]
-        //public void Order_Details_Model_Is_Not_Null()
-        //{
-        //    var result = controller.Details(new OrderViewModel()) as ViewResult;
-
-        //    Assert.IsNotNull(result.Model);
-        //}
-
+        
 
     }
 }

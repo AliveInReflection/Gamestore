@@ -15,14 +15,11 @@ namespace GameStore.WebUI.Controllers
 {
     public class OrderController : Controller
     {
-        
-        private IGameService gameService;
         private IOrderService orderService;
         
 
-        public OrderController(IGameService gameService, IOrderService orderService)
+        public OrderController(IOrderService orderService)
         {
-            this.gameService = gameService;
             this.orderService = orderService;
         }
 
@@ -89,20 +86,4 @@ namespace GameStore.WebUI.Controllers
 
     }
 
-    public class BusketBinder : IModelBinder
-    {
-        public static string BusketKey {get { return "Busket"; }} 
-
-        public object BindModel(ControllerContext controllerContext, System.Web.Mvc.ModelBindingContext bindingContext)
-        {
-            var order = controllerContext.HttpContext.Session[BusketKey] as OrderViewModel;
-            if (order == null)
-            {
-                order = new OrderViewModel();
-                order.OrderDetailses = new List<OrderDetailsViewModel>();
-                controllerContext.HttpContext.Session[BusketKey] = order;
-            }
-            return order;
-        }
-    }
 }

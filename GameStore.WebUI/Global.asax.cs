@@ -6,8 +6,6 @@ using AutoMapper;
 using GameStore.BLL.Infrastructure;
 using GameStore.WebUI.Concrete;
 using GameStore.WebUI.Infrastructure;
-using GameStore.WebUI.Controllers;
-using GameStore.WebUI.Models;
 
 namespace GameStore.WebUI
 {
@@ -22,8 +20,7 @@ namespace GameStore.WebUI
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            
-            ModelBinders.Binders.Add(typeof(OrderViewModel),new BusketBinder());
+
 
             Mapper.Initialize(cfg =>
             {

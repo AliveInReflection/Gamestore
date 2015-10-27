@@ -19,7 +19,7 @@ namespace GameStore.BLL.Services
 
         public decimal CalculateAmount(int orderId)
         {
-            var entry = database.Orders.GetSingle(m => m.OrderId.Equals(orderId) && m.OrderState == OrderState.NotIssued);
+            var entry = database.Orders.GetSingle(m => (m.OrderId.Equals(orderId) && m.OrderState == OrderState.NotIssued));
             decimal amount = entry.OrderDetailses.Sum(orderDetailse => orderDetailse.Product.Price*orderDetailse.Quantity);
             return amount;
         }
@@ -28,15 +28,6 @@ namespace GameStore.BLL.Services
         {
             var entry = GetCurrentOrder(customerId);
             return Mapper.Map<Order, OrderDTO>(entry);
-        }
-
-
-        public void Update(OrderDTO order)
-        {
-            var entry = database.Orders.GetSingle(m => m.OrderId.Equals(order.OrderId));
-            var orderToSave = Mapper.Map<OrderDTO, Order>(order,entry);
-            database.Orders.Update(orderToSave);
-            database.Save();
         }
 
         public void Make(int orderId)
