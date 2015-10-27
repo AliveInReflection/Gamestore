@@ -17,6 +17,9 @@ namespace GameStore.WebUI.Infrastructure
             Mapper.CreateMap<GenreDTO, GenreViewModel>();
             Mapper.CreateMap<PlatformTypeDTO, PlatformTypeViewModel>();
             Mapper.CreateMap<PublisherDTO, DisplayPublisherViewModel>();
+            Mapper.CreateMap<OrderDTO, OrderViewModel>();
+            Mapper.CreateMap<OrderDetailsDTO, OrderDetailsViewModel>();
+
 
             Mapper.CreateMap<CreateGameViewModel, GameDTO>();
             Mapper.CreateMap<EditGameViewModel, GameDTO>();

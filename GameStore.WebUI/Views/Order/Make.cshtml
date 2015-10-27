@@ -19,12 +19,13 @@
     @foreach (var product in Model.Order.OrderDetailses)
     {
         <tr>
-            <td>@product.GameKey</td>
+            <td>@product.Product.GameKey</td>
             <td>@product.Quantity</td>
         </tr>
     }
     </tbody>
 </table>
+<p><b>Amount: </b> @Model.Amount</p>
 
 <h4>Choose payment method</h4>
 <table>

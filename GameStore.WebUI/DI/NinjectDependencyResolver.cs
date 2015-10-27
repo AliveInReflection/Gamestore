@@ -32,6 +32,7 @@ namespace GameStore.WebUI.DI
             kernel.Bind<IGenreService>().To<GenreService>();
             kernel.Bind<IPlatformTypeService>().To<PlatformTypeService>();
             kernel.Bind<IPublisherService>().To<PublisherService>();
+            kernel.Bind<IOrderService>().To<OrderService>();
         }
     }
 }

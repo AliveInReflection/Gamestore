@@ -11,7 +11,7 @@ namespace GameStore.WebUI.Models
     {
 
         [Display(Name="Game key")]
-        public string GameKey { get; set; }
+        public DisplayGameViewModel Product { get; set; }
 
         [Display(Name="Quantity")]
         public Int16 Quantity { get; set; }

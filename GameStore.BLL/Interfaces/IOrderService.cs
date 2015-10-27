@@ -10,6 +10,9 @@ namespace GameStore.BLL.Interfaces
     public interface IOrderService
     {
         decimal CalculateAmount(int orderId);
-        OrderDTO GetCurrent(int UserId);
+        OrderDTO GetCurrent(string customerId);
+        void AddItem(string customerId, string gameId, short quantity);
+        void Update(OrderDTO order);
+        void Make(int orderId);
     }
 }

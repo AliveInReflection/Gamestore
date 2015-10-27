@@ -9,5 +9,6 @@ namespace GameStore.WebUI.Models
     {
         public OrderViewModel Order { get; set; }
         public IEnumerable<DisplayPaymentMethodViewModel> PaymentMethods { get; set; }
+        public decimal Amount { get; set; }
     }
 }

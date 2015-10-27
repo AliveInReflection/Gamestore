@@ -179,6 +179,7 @@ namespace Gamestore.DAL.Context
             {
                 OrderId = 1,
                 CustomerId = "1",
+                OrderState = OrderState.NotIssued,
                 Date = DateTime.UtcNow,
                 OrderDetailses = new List<OrderDetails>
                 {

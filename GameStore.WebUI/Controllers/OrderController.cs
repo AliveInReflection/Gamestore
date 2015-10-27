@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using GameStore.BLL.DTO;
 using GameStore.BLL.Interfaces;
 using GameStore.WebUI.Abstract;
 using GameStore.WebUI.Infrastructure;
@@ -16,33 +17,21 @@ namespace GameStore.WebUI.Controllers
     {
         
         private IGameService gameService;
-        private IPayment paymentContext;
+        private IOrderService orderService;
         
 
-        public OrderController(IGameService gameService)
+        public OrderController(IGameService gameService, IOrderService orderService)
         {
             this.gameService = gameService;
+            this.orderService = orderService;
         }
 
-        public ActionResult Add(string gameKey,  OrderViewModel busket, short quantity = 1)
+        public ActionResult Add(string gameKey, short quantity = 1)
         {
+            string sessionId = HttpContext.Session.SessionID;
             try
             {
-                var game = gameService.Get(gameKey);                
-                var currentOrderDetails = busket.OrderDetailses.FirstOrDefault(m => m.GameKey.Equals(gameKey));
-                if (currentOrderDetails == null)
-                {
-                    busket.OrderDetailses.Add(new OrderDetailsViewModel()
-                    {
-                        GameKey = gameKey,
-                        Quantity = quantity
-                    });
-                }
-                else
-                {
-                    currentOrderDetails.Quantity += quantity;
-                }
-                HttpContext.Session[BusketBinder.BusketKey] = busket;
+                orderService.AddItem(sessionId, gameKey, quantity);
             }
             catch (Exception)
             {
@@ -53,19 +42,24 @@ namespace GameStore.WebUI.Controllers
         }
 
         [HttpGet]
-        public ActionResult Details(OrderViewModel busket)
+        public ActionResult Details()
         {
-            return View(busket);
+            var busket = orderService.GetCurrent(HttpContext.Session.SessionID);
+            return View(Mapper.Map<OrderDTO, OrderViewModel>(busket));
         }
 
         public ActionResult Make()
         {
-            OrderViewModel busket = Session["Busket"] as OrderViewModel;
+            string sessionId = HttpContext.Session.SessionID;            
+            var busket = orderService.GetCurrent(sessionId);
             var methods = PaymentManager.GetAll();
+            
             var order = new MakeOrderViewModel();
-            order.Order = busket;
-            order.PaymentMethods =
-                Mapper.Map<IEnumerable<PaymentMethod>, IEnumerable<DisplayPaymentMethodViewModel>>(methods);
+            
+            order.Order = Mapper.Map<OrderDTO,OrderViewModel>(busket);
+            order.PaymentMethods = Mapper.Map<IEnumerable<PaymentMethod>, IEnumerable<DisplayPaymentMethodViewModel>>(methods);
+            order.Amount = orderService.CalculateAmount(busket.OrderId);
+
             return View(order);
         }
 
@@ -74,9 +68,16 @@ namespace GameStore.WebUI.Controllers
         {
             try
             {
+                string sessionId = HttpContext.Session.SessionID;
+                var busket = orderService.GetCurrent(sessionId);
 
                 var payment = PaymentManager.Get(paymentKey);
-                return payment.Payment.Pay(1, 200m);
+
+                var amount = orderService.CalculateAmount(busket.OrderId);
+
+                orderService.Make(busket.OrderId);
+
+                return payment.Payment.Pay(busket.OrderId, amount);
             }
             catch (Exception e)
             {

@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameStore.Domain.Entities;
 
 namespace GameStore.Domain.Metadata
 {
@@ -20,5 +21,8 @@ namespace GameStore.Domain.Metadata
 
         [Required]
         public DateTime Date { get; set; }
+
+        [Required]
+        public OrderState OrderState { get; set; }
     }
 }
