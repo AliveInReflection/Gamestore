@@ -36,35 +36,20 @@ namespace GameStore.WebUI.Helpers
                 quote.MergeAttribute("href", "#");
                 quote.MergeAttribute("data-message", comment.Content);
 
-                var delete = new TagBuilder("form");
-                delete.MergeAttribute("action", (new UrlHelper(HttpContext.Current.Request.RequestContext)).Action("Delete", "Comment"));
-                delete.MergeAttribute("method", "post");
+                var deleteLink = new TagBuilder("a");
+                deleteLink.AddCssClass("comment-delete");
+                deleteLink.MergeAttribute("data-href", (new UrlHelper(HttpContext.Current.Request.RequestContext)).Action("Delete", "Comment"));
+                deleteLink.MergeAttribute("data-commentId", comment.CommentId.ToString());
+                deleteLink.MergeAttribute("data-gameKey", gameKey);
+                deleteLink.MergeAttribute("href", "#");
+                deleteLink.SetInnerText("Delete");
 
-                var hiddenGameId = new TagBuilder("input");
-                hiddenGameId.MergeAttribute("type", "hidden");
-                hiddenGameId.MergeAttribute("name", "commentId");
-                hiddenGameId.MergeAttribute("value", comment.CommentId.ToString());
-
-                var hiddenGameKey = new TagBuilder("input");
-                hiddenGameKey.MergeAttribute("type", "hidden");
-                hiddenGameKey.MergeAttribute("name", "gameKey");
-                hiddenGameKey.MergeAttribute("value", gameKey);
-
-                var submitLink = new TagBuilder("a");
-                submitLink.MergeAttribute("href", "#");
-                submitLink.SetInnerText("Delete");
-                submitLink.AddCssClass("comment-delete-btn");
-
-
-                delete.InnerHtml += hiddenGameId.ToString();
-                delete.InnerHtml += hiddenGameKey.ToString();
-
-
+                
                 li.InnerHtml += author.ToString();
                 li.InnerHtml += content.ToString();
                 li.InnerHtml += answer.ToString();
-                li.InnerHtml += delete.ToString();
-                li.InnerHtml += submitLink.ToString();
+                li.InnerHtml += deleteLink.ToString();
+                
                 if (comment.ChildComments != null)
                 {
                     li.InnerHtml += BuildCommentsTree(_this, comment.ChildComments, gameKey);

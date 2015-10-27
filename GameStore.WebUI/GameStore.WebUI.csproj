@@ -20,6 +20,13 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>12.0</OldToolsVersion>
+    <NuGetPackageImportStamp>524a2d9e</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -62,6 +69,10 @@
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.1.2\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Select.Pdf, Version=15.2.0.0, Culture=neutral, PublicKeyToken=e0ae9f6e27a97018, processorArchitecture=MSIL">
+      <HintPath>..\packages\Select.Pdf.15.2.0.0\lib\net40\Select.Pdf.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -138,7 +149,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IPayment.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Concrete\BankPayment.cs" />
+    <Compile Include="Concrete\IBoxPayment.cs" />
+    <Compile Include="Concrete\VisaPayment.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -152,9 +167,12 @@
     </Compile>
     <Compile Include="Helpers\GameStoreHtmlHelper.cs" />
     <Compile Include="Infrastructure\AutomapperWebProfile.cs" />
+    <Compile Include="Infrastructure\PaymentManager.cs" />
     <Compile Include="Models\CommentViewModels.cs" />
+    <Compile Include="Models\DisplayPaymentMethodViewModel.cs" />
     <Compile Include="Models\GameViewModels.cs" />
     <Compile Include="Models\GenreViewModel.cs" />
+    <Compile Include="Models\MakeOrderViewModel.cs" />
     <Compile Include="Models\OrderDetailsViewModels.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\PlatformTypeViewModel.cs" />
@@ -170,6 +188,30 @@
     <Content Include="Scripts\Comment\Comment.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4\external\jquery\jquery.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4\images\ui-bg_flat_30_cccccc_40x100.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4\images\ui-bg_flat_50_5c5c5c_40x100.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4\images\ui-bg_glass_20_555555_1x400.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4\images\ui-bg_glass_40_0078a3_1x400.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4\images\ui-bg_glass_40_ffc73d_1x400.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4\images\ui-bg_gloss-wave_25_333333_500x100.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4\images\ui-bg_highlight-soft_80_eeeeee_1x100.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4\images\ui-bg_inset-soft_25_000000_1x100.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4\images\ui-bg_inset-soft_30_f58400_1x100.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4\images\ui-icons_222222_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4\images\ui-icons_4b8e0b_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4\images\ui-icons_a83300_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4\images\ui-icons_cccccc_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4\index.html" />
+    <Content Include="Scripts\jquery-ui-1.11.4\jquery-ui.css" />
+    <Content Include="Scripts\jquery-ui-1.11.4\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4\jquery-ui.min.css" />
+    <Content Include="Scripts\jquery-ui-1.11.4\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4\jquery-ui.structure.css" />
+    <Content Include="Scripts\jquery-ui-1.11.4\jquery-ui.structure.min.css" />
+    <Content Include="Scripts\jquery-ui-1.11.4\jquery-ui.theme.css" />
+    <Content Include="Scripts\jquery-ui-1.11.4\jquery-ui.theme.min.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -182,6 +224,8 @@
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Order\Make.cshtml" />
+    <Content Include="Views\Shared\Payment\VisaPayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Logs\ErrorsLog\" />
@@ -255,6 +299,13 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\Select.Pdf.15.2.0.0\build\Select.Pdf.targets" Condition="Exists('..\packages\Select.Pdf.15.2.0.0\build\Select.Pdf.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Select.Pdf.15.2.0.0\build\Select.Pdf.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Select.Pdf.15.2.0.0\build\Select.Pdf.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -26,6 +26,8 @@ namespace GameStore.WebUI.Infrastructure
 
             Mapper.CreateMap<CreatePublisherViewModel, PublisherDTO>();
             Mapper.CreateMap<EditPublisherViewModel, PublisherDTO>();
+
+            Mapper.CreateMap<PaymentMethod, DisplayPaymentMethodViewModel>();
         }
     }
 }

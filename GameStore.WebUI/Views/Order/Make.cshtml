@@ -1,0 +1,40 @@
+﻿@model GameStore.WebUI.Models.MakeOrderViewModel
+
+@{
+    ViewBag.Title = "Pay";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Make order</h2>
+
+<h4>Products in your busket:</h4>
+<table>
+    <thead>
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var product in Model.Order.OrderDetailses)
+    {
+        <tr>
+            <td>@product.GameKey</td>
+            <td>@product.Quantity</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<h4>Choose payment method</h4>
+<table>
+     @foreach (var payment in Model.PaymentMethods)
+     {
+         <tr>
+             <td><img src="@payment.PictureURL" alt="@payment.PaymentKey"/></td>
+             <td>@payment.Description</td>
+             <td>@Html.ActionLink("Pay", "Pay", "Order", new{paymentKey = payment.PaymentKey}, null)</td>
+         </tr>
+     }   
+</table>
+

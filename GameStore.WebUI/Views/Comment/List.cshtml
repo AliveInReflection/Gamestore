@@ -16,9 +16,19 @@
     @Html.Action("Create", "Comment", new {gameKey = ViewBag.GameKey as string})
 </div>
 
+<div id="dialog" title="Confirmation required">
+    Delete this comment?
+</div>
+
 
 @section Scripts
 {
     <script src="~/Scripts/jquery-2.1.4.min.js"></script>
     <script src="~/Scripts/Comment/Comment.js"></script>
+    <script src="/Scripts/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+}
+
+@section Styles
+{
+    <link rel="stylesheet" href="/Scripts/jquery-ui-1.11.4/jquery-ui.min.css"/>
 }

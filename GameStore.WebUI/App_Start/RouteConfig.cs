@@ -58,13 +58,18 @@ namespace GameStore.WebUI
             routes.MapRoute(
                name: "Games",
                url: "Games",
-               defaults: new { controller = "Game", action = "List", id = UrlParameter.Optional }
+               defaults: new { controller = "Game", action = "List"}
            );
 
             routes.MapRoute(
                name: "Busket",
                url: "Busket",
-               defaults: new { controller = "Order", action = "Details", id = UrlParameter.Optional }
+               defaults: new { controller = "Order", action = "Details" }
+           );
+            routes.MapRoute(
+               name: "Order",
+               url: "Order",
+               defaults: new { controller = "Order", action = "Make"}
            );
 
             routes.MapRoute(

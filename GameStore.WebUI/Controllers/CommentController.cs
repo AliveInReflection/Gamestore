@@ -13,23 +13,19 @@ namespace GameStore.WebUI.Controllers
 {
     public class CommentController : Controller
     {
-
         private ICommentService commentService;
-
 
         public CommentController(ICommentService commentService)
         {
             this.commentService = commentService;
         }
 
-      
         public ActionResult List(string gameKey)
         {
             ViewBag.GameKey = gameKey;
             var comments = commentService.Get(gameKey);
             return View(Mapper.Map<IEnumerable<CommentDTO>, IEnumerable<DisplayCommentViewModel>>(comments));
         }
-
 
         [HttpGet]
         public ActionResult Create(string gameKey)
@@ -53,9 +49,7 @@ namespace GameStore.WebUI.Controllers
             }
 
             return RedirectToAction("List", "Comment", new { gameKey = gameKey });
-
         }
-
 
         [HttpPost]
         public ActionResult Delete(int commentId, string gameKey)
@@ -68,9 +62,12 @@ namespace GameStore.WebUI.Controllers
             {
                 TempData["ErrorMessage"] = "Error"; 
             }
-            return RedirectToAction("List", "Comment", new { gameKey = gameKey });
+            return RedirectToAction("List", "Comment", new {gameKey = gameKey});
         }
 
-        
+        public ActionResult Ban(int userId)
+        {
+            return View();
+        }       
     }
 }

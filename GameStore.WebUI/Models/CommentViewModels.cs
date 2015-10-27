@@ -19,6 +19,8 @@ namespace GameStore.WebUI.Models
         [Display(Name="Message")]
         public string Content { get; set; }
 
+        public string Quote { get; set; }
+
         [HiddenInput(DisplayValue = false)]
         public int? ParentCommentId { get; set; }
 
@@ -29,6 +31,7 @@ namespace GameStore.WebUI.Models
         public int CommentId { get; set; }
         public int UserId { get; set; }
         public string Content { get; set; }
+        public string Quote { get; set; }
         public IEnumerable<DisplayCommentViewModel> ChildComments { get; set; }
     }
 }

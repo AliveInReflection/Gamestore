@@ -14,6 +14,11 @@ namespace Gamestore.DAL.Context
             System.Data.Entity.Database.SetInitializer<DataContext>(new GameStoreDbInitializer());
         }
 
+        public DataContext()
+        {
+            
+        }
+
         public DataContext(string connectionString)
             :base(connectionString)
         {

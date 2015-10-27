@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Metadata.Edm;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using GameStore.BLL.Interfaces;
+using GameStore.WebUI.Abstract;
+using GameStore.WebUI.Infrastructure;
 using GameStore.WebUI.Models;
 
 namespace GameStore.WebUI.Controllers
@@ -12,6 +16,7 @@ namespace GameStore.WebUI.Controllers
     {
         
         private IGameService gameService;
+        private IPayment paymentContext;
         
 
         public OrderController(IGameService gameService)
@@ -51,6 +56,34 @@ namespace GameStore.WebUI.Controllers
         public ActionResult Details(OrderViewModel busket)
         {
             return View(busket);
+        }
+
+        public ActionResult Make()
+        {
+            OrderViewModel busket = Session["Busket"] as OrderViewModel;
+            var methods = PaymentManager.GetAll();
+            var order = new MakeOrderViewModel();
+            order.Order = busket;
+            order.PaymentMethods =
+                Mapper.Map<IEnumerable<PaymentMethod>, IEnumerable<DisplayPaymentMethodViewModel>>(methods);
+            return View(order);
+        }
+
+        [HttpGet]
+        public ActionResult Pay(string paymentKey)
+        {
+            try
+            {
+
+                var payment = PaymentManager.Get(paymentKey);
+                return payment.Payment.Pay(1, 200m);
+            }
+            catch (Exception e)
+            {
+                TempData["ErrorMessage"] = "Error";
+                return RedirectToAction("Details");
+            }
+            
         }
 
     }
