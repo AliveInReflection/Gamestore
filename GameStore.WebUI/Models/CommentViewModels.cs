@@ -19,7 +19,7 @@ namespace GameStore.WebUI.Models
         [Display(Name="Message")]
         public string Content { get; set; }
 
-        public string Quote { get; set; }
+        public int? QuoteId { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         public int? ParentCommentId { get; set; }

@@ -24,17 +24,19 @@ namespace GameStore.WebUI.Helpers
                 var content = new TagBuilder("span");
                 content.AddCssClass("comment-content");
                 content.SetInnerText(comment.Content);
+                content.InnerHtml = comment.Quote + content.InnerHtml;
 
-                var answer = new TagBuilder("a");
-                answer.AddCssClass("comment-answer");
-                answer.MergeAttribute("href", "#");
-                answer.MergeAttribute("data-id", comment.CommentId.ToString());
-                answer.SetInnerText("Answer");
+                var answerLink = new TagBuilder("a");
+                answerLink.AddCssClass("comment-answer");
+                answerLink.MergeAttribute("href", "#");
+                answerLink.MergeAttribute("data-id", comment.CommentId.ToString());
+                answerLink.SetInnerText("Answer");
 
-                var quote = new TagBuilder("a");
-                quote.AddCssClass("comment-quote");
-                quote.MergeAttribute("href", "#");
-                quote.MergeAttribute("data-message", comment.Content);
+                var quoteLink = new TagBuilder("a");
+                quoteLink.AddCssClass("comment-quote");
+                quoteLink.MergeAttribute("href", "#");
+                quoteLink.MergeAttribute("data-id", comment.CommentId.ToString());
+                quoteLink.SetInnerText("Quote");
 
                 var deleteLink = new TagBuilder("a");
                 deleteLink.AddCssClass("comment-delete");
@@ -47,7 +49,8 @@ namespace GameStore.WebUI.Helpers
                 
                 li.InnerHtml += author.ToString();
                 li.InnerHtml += content.ToString();
-                li.InnerHtml += answer.ToString();
+                li.InnerHtml += answerLink.ToString();
+                li.InnerHtml += quoteLink.ToString();
                 li.InnerHtml += deleteLink.ToString();
                 
                 if (comment.ChildComments != null)

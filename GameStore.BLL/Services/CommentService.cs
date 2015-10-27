@@ -42,6 +42,12 @@ namespace GameStore.BLL.Services
             {
                 gameEntry.Comments.Add(commentToSave);
             }
+            if (comment.QuoteId != null)
+            {
+                var quotedComment = database.Comments.GetSingle(m => m.CommentId.Equals(comment.QuoteId.Value));
+                commentToSave.Quote = "<quote>" + quotedComment.Quote + quotedComment.Content + "</quote>";
+            }
+
             database.Comments.Create(commentToSave);
             database.Save();
         }

@@ -11,6 +11,8 @@ namespace GameStore.BLL.DTO
         public int CommentId { get; set; }
         public int UserId { get; set; }
         public string Content { get; set; }
+        public string Quote { get; set; }
+        public int? QuoteId { get; set; }
         public int? ParentCommentId { get; set; }
 
         public IEnumerable<CommentDTO> ChildComments { get; set; } 

@@ -15,14 +15,21 @@
             }
         }
     });
+
     $(".comment-delete").click(function(event) {
         CommentObjectToDelete = $(this);
         $("#dialog").dialog("open");
     });
+
     $(".comment-answer").click(function(event) {
         var parentId = $(this).data("id");
         console.log(parentId);
         $("#ParentCommentId").attr("value", parentId);
+    });
+    $(".comment-quote").click(function (event) {
+        var quoteId = $(this).data("id");
+        console.log(quoteId);
+        $("#QuoteId").attr("value", quoteId);
     });
     
 

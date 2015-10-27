@@ -150,7 +150,7 @@ namespace Gamestore.DAL.Context
             var csgo = new Game()
             {
                 GameName = "Counter-Strike: Global Offensive ",
-                GameKey = "CS:GO",
+                GameKey = "CSGO",
                 Description = "Counter-Strike: Global Offensive (CS:GO) is a first-person shooter video game which is a part of the Counter-Strike series. It was announced to the public on August 12, 2011, and is developed by Valve Corporation and their partner, Hidden Path Entertainment. The game was later released on August 21, 2012 for the Playstation 3, Xbox 360, Microsoft Windows, and OS X and later Linux as a downloadable title.",
                 Genres = genres,
                 PlatformTypes = types,

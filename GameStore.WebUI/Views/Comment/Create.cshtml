@@ -9,6 +9,7 @@
         <legend>CreateCommentViewModel</legend>
 
          @Html.HiddenFor(m => m.ParentCommentId)
+         @Html.HiddenFor(m => m.QuoteId)
          @Html.Hidden("gameKey", ViewBag.GameKey as string)
 
         <div class="editor-label">

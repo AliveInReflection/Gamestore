@@ -9,6 +9,7 @@ namespace GameStore.Domain.Entities
         public int CommentId { get; set; }
         public int UserId { get; set; }
         public string Content { get; set; }
+        public string Quote { get; set; }
 
         public virtual Game Game { get; set; }
         public virtual Comment ParentComment { get; set; }
