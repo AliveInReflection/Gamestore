@@ -1,0 +1,19 @@
+﻿@model IEnumerable<string>
+
+@{
+    ViewBag.Title = "Ban";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Ban</h2>
+
+<p>Choose bun duration: </p>
+@using (Html.BeginForm())
+{
+    Html.Hidden("userId", (int)ViewBag.UserId);
+    foreach (var item in Model)
+    {
+        @Html.RadioButton("duration", item); <span>@item</span>
+    }
+    <input type="submit" value="Ban"/>
+}

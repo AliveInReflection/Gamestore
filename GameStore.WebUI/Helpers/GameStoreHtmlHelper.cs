@@ -46,12 +46,18 @@ namespace GameStore.WebUI.Helpers
                 deleteLink.MergeAttribute("href", "#");
                 deleteLink.SetInnerText("Delete");
 
+                var banLink = new TagBuilder("a");
+                banLink.AddCssClass("comment-ban");
+                banLink.MergeAttribute("href", (new UrlHelper(HttpContext.Current.Request.RequestContext)).Action("Ban", "User", new{userId = comment.UserId}));
+                banLink.SetInnerText("Ban");
+
                 
                 li.InnerHtml += author.ToString();
                 li.InnerHtml += content.ToString();
                 li.InnerHtml += answerLink.ToString();
                 li.InnerHtml += quoteLink.ToString();
                 li.InnerHtml += deleteLink.ToString();
+                li.InnerHtml += banLink.ToString();
                 
                 if (comment.ChildComments != null)
                 {
