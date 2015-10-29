@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
+using GameStore.BLL.Concrete;
+using GameStore.BLL.Concrete.ContentFilters;
+using GameStore.BLL.ContentFilters;
 using GameStore.BLL.DTO;
 using GameStore.BLL.Infrastructure;
 using GameStore.BLL.Interfaces;
+using GameStore.BLL.Interfaces.ContentFilters;
 using GameStore.DAL.Interfaces;
 using GameStore.Domain.Entities;
 using GameStore.DAL.Concrete;
@@ -162,6 +166,18 @@ namespace GameStore.BLL.Services
             return games;
         }
 
+        public IEnumerable<GameDTO> Get(GameFilteringMode filteringMode)
+        {
+            var filter = BuildPipeline(filteringMode);
+            if (!filter.IsEmpty())
+            {
+                var entries = database.Games.GetMany(filter.GetExpression());
+                var games = Mapper.Map<IEnumerable<Game>, IEnumerable<GameDTO>>(entries);
+                return games;
+            }
+            return GetAll();
+        }
+
         public IEnumerable<GameDTO> Get(int genreId)
         {
             var genre = database.Genres.GetSingle(m => m.GenreId.Equals(genreId));
@@ -191,6 +207,45 @@ namespace GameStore.BLL.Services
         public int GetCount()
         {
             return database.Games.GetAll().Count();
+        }
+
+
+        private IFilteringPipeline<Game> BuildPipeline(GameFilteringMode filteringMode)
+        {
+            var pipeline = new GameFilterPipeline();
+
+            if (filteringMode.GenreIds.Any())
+            {
+                pipeline.Add(new GameFilterByGenre(filteringMode.GenreIds));
+            }
+
+            if (filteringMode.PlatformTypeIds.Any())
+            {
+                pipeline.Add(new GameFilterByPlatformType(filteringMode.PlatformTypeIds));
+            }
+
+            if (filteringMode.PublisherIds.Any())
+            {
+                pipeline.Add(new GameFilterByPublisher(filteringMode.PublisherIds));
+            }
+
+            if (filteringMode.MaxPrice > 0)
+            {
+                pipeline.Add(new GamePriceFilter(filteringMode.MinPrice, filteringMode.MaxPrice));
+            }
+            
+            if (!String.IsNullOrEmpty(filteringMode.PartOfName))
+            {
+                pipeline.Add(new GameFilterByName(filteringMode.PartOfName));
+            }
+
+            //if (filteringMode.PublishingDate != TimeSpan.MinValue)
+            //{
+            //    pipeline.Add(new GameFilterByPublitingDate(filteringMode.PublishingDate));
+            //}
+
+
+            return pipeline;
         }
     }
 }

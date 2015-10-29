@@ -4,12 +4,14 @@ using GameStore.BLL.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using GameStore.BLL.DTO;
 using GameStore.WebUI.Models;
 using AutoMapper;
+using GameStore.WebUI.Infrastructure;
 
 namespace GameStore.WebUI.Controllers
 {
@@ -28,14 +30,17 @@ namespace GameStore.WebUI.Controllers
             this.platformTypeService = platformTypeService;
             this.publisherService = publisherService;
         }
-        
-        public ActionResult List()
-        {           
-            var games = Mapper.Map<IEnumerable<GameDTO>, IEnumerable<DisplayGameViewModel>>(gameService.GetAll());
-            return View(games);
+
+        public ActionResult List(FilteringViewModel filter)
+        {
+            var model = new FilteredGamesViewModel();
+            UpdateFilterViewModel(filter);
+            var games = gameService.Get(BuildFilteringMode(filter));
+            model.Games = Mapper.Map<IEnumerable<GameDTO>, IEnumerable<DisplayGameViewModel>>(games);           
+            model.Filter = filter;
+            return View(model);
         }
 
-        [HttpGet]
         public ActionResult Details(string gameKey)
         {
             var game = gameService.Get(gameKey);
@@ -43,7 +48,6 @@ namespace GameStore.WebUI.Controllers
             return View(gameMV);
         }
 
-        [HttpGet]
         public ActionResult Create()
         {
             var genres = genreService.GetAll();
@@ -55,7 +59,7 @@ namespace GameStore.WebUI.Controllers
             var publishers = convertPublishersToSelectListItems(publisherService.GetAll());
             ViewBag.Publishers = publishers;
 
-            return View(new CreateGameViewModel()); 
+            return View(new CreateGameViewModel());
 
         }
 
@@ -88,22 +92,21 @@ namespace GameStore.WebUI.Controllers
         }
 
         [HttpPost]
+        [ActionName("Remove")]
         public ActionResult Delete(int id)
         {
             return View();
 
         }
 
-        [HttpGet]
-        [ChildActionOnly]
-        [OutputCache(Duration=60)]
+
+        [OutputCache(Duration = 60)]
         public ActionResult GetCount()
         {
             return PartialView(gameService.GetCount());
         }
 
 
-        [HttpGet]
         public ActionResult Download(string gamekey)
         {
             try
@@ -120,6 +123,7 @@ namespace GameStore.WebUI.Controllers
                 return Json("Validation error");
             }
         }
+        
 
         #region Private helpers
 
@@ -139,7 +143,6 @@ namespace GameStore.WebUI.Controllers
                 Text = m.PlatformTypeName
             });
         }
-
         private IEnumerable<SelectListItem> convertPublishersToSelectListItems(IEnumerable<PublisherDTO> publishers)
         {
             return publishers.Select(m => new SelectListItem()
@@ -148,12 +151,117 @@ namespace GameStore.WebUI.Controllers
                 Text = m.CompanyName
             });
         }
-
-
         private DisplayGameViewModel BuildDisplayGameViewModel(GameDTO game)
         {
             var gameVM = Mapper.Map<GameDTO, DisplayGameViewModel>(game);
             return gameVM;
+        }
+
+        
+        private void UpdateFilterViewModel(FilteringViewModel filter)
+        {
+            if (filter.Genres == null)
+            {
+                filter.Genres = genreService.GetAll().Select(m => new CheckBoxViewModel()
+                {
+                    Id = m.GenreId,
+                    Text = m.GenreName
+                }).ToList();
+            }
+
+            if (filter.PlatformTypes == null)
+            {
+                filter.PlatformTypes = platformTypeService.GetAll().Select(m => new CheckBoxViewModel()
+                {
+                    Id = m.PlatformTypeId,
+                    Text = m.PlatformTypeName
+                }).ToList();
+            }
+
+
+            if (filter.Publishers == null)
+            {
+                filter.Publishers = publisherService.GetAll().Select(m => new CheckBoxViewModel()
+                {
+                    Id = m.PublisherId,
+                    Text = m.CompanyName
+                }).ToList();
+            }
+
+            filter.ItemsPerPageList = PagingManager.GetKeys().Select(m => new SelectListItem()
+            {
+                Text = m,
+                Value = m,
+                Selected = m == filter.SortBy
+            }).ToList();
+
+            filter.SortByItems = GameSortingModeManager.GetKeys().Select(m => new SelectListItem()
+            {
+                Text = m,
+                Value = m,
+                Selected = m == filter.SortBy
+            }).ToList();
+
+            if (filter.PublishingDate == null)
+            {
+                filter.PublishingDates = GamePublishingDateFilteringManager.GetKeys().Select(m => new RadiobuttonViewModel()
+                {
+                    Value = m,
+                    Text = m
+                }).ToList();
+            }
+            else
+            {
+                filter.PublishingDates = GamePublishingDateFilteringManager.GetKeys().Select(m => new RadiobuttonViewModel()
+                {
+                    Value = m,
+                    Text = m,
+                    IsChecked = m == filter.PublishingDate.Value
+                }).ToList();
+            }
+            
+
+        }
+
+        private GameFilteringMode BuildFilteringMode(FilteringViewModel filter)
+        {
+            var filteringMode = new GameFilteringMode();
+
+            if (filter.Genres != null)
+            {
+                filteringMode.GenreIds = filter.Genres.Where(m => m.IsChecked).Select(m => m.Id);
+            }
+
+            if (filter.PlatformTypes != null)
+            {
+                filteringMode.PlatformTypeIds = filter.PlatformTypes.Where(m => m.IsChecked).Select(m => m.Id);
+            }
+
+            if (filter.Publishers != null)
+            {
+                filteringMode.PublisherIds = filter.Publishers.Where(m => m.IsChecked).Select(m => m.Id);
+            }
+
+            if (filter.PublishingDate != null)
+            {
+                filteringMode.PublishingDate = GamePublishingDateFilteringManager.Get(filter.PublishingDate.Text);
+            }
+
+            if (filter.SortBy != null)
+            {
+                filteringMode.SortingMode = GameSortingModeManager.Get(filter.SortBy); 
+            }
+
+            if (filter.ItemsPerPage != null)
+            {
+                filteringMode.ItemsPerPage = PagingManager.Get(filter.ItemsPerPage);
+            }
+            
+            filteringMode.MinPrice = filter.MinPrice;
+            filteringMode.MaxPrice = filter.MaxPrice;                      
+            filteringMode.PartOfName = filter.Name;
+
+            return filteringMode;
         }
 
         #endregion

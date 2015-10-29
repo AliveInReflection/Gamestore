@@ -134,7 +134,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Game_List_Model_Is_Not_Null()
         {
-            var result = controller.List() as ViewResult;
+            var result = controller.List(null) as ViewResult;
 
             Assert.IsNotNull(result.Model);
         }

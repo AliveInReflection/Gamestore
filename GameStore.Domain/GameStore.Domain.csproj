@@ -53,6 +53,7 @@
     <Compile Include="Entities\PlatformType.cs" />
     <Compile Include="Entities\Publisher.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\View.cs" />
     <Compile Include="Metadata\CommentMetadata.cs" />
     <Compile Include="Metadata\GameMetadata.cs" />
     <Compile Include="Metadata\GenreMetadata.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Metadata\PlatformTypeMetadata.cs" />
     <Compile Include="Metadata\PublisherMetadata.cs" />
     <Compile Include="Metadata\UserMetadata.cs" />
+    <Compile Include="Metadata\ViewMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

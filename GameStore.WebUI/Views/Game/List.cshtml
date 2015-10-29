@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GameStore.WebUI.Models.DisplayGameViewModel>
+﻿@model GameStore.WebUI.Models.FilteredGamesViewModel
 
 @{
     ViewBag.Title = "List";
@@ -6,57 +6,53 @@
 }
 
 <h2>List</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
+<table class="table table-condensed">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.GameKey)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GameName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UnitsInStock)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Discontinued)
-        </th>
+        <th>Game key</th>
+        <th>Game name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Units in stock</th>
+        <th>Discontinued</th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.GameKey)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GameName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UnitsInStock)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Discontinued)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { gameKey = item.GameKey })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model.Games)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GameKey)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GameName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsInStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discontinued)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new {gameKey = item.GameKey})
+            </td>
+        </tr>
+    }
 
 </table>
+
+@section LeftSideBar
+{
+    @using (Html.BeginForm("List", "Game"))
+    {
+        @Html.EditorFor(m => m.Filter,"FilteringViewModel", "filter")
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    }
+}

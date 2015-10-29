@@ -32,6 +32,7 @@ namespace GameStore.WebUI.Controllers
         }
 
         [HttpGet]
+        [ActionName("New")]
         public ActionResult Create()
         {
             return View(new CreatePublisherViewModel());

@@ -1,0 +1,17 @@
+﻿@model GameStore.WebUI.Models.FilteringViewModel
+
+
+@using (Html.BeginForm("Filter", "Game"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    
+
+    @Html.EditorForModel("FilteringViewModel", "filter")
+
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+}
+

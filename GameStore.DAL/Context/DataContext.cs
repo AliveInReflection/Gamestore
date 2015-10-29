@@ -33,6 +33,7 @@ namespace Gamestore.DAL.Context
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetails> OrderDetailses { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<View> Views { get; set; }
     }
 
 
@@ -112,6 +113,14 @@ namespace Gamestore.DAL.Context
                     CompanyName = "Blizzard",
                     Description = "The best company in the world",
                     HomePage = "battle.net"
+                },
+                PublitingDate = new DateTime(2012,9,17),
+                AdditionDate = new DateTime(2014, 12, 10),
+                Views = new List<View>
+                {
+                    new View(){UserId = 1},
+                    new View(){UserId = 2},
+                    new View(){UserId = 3}
                 }
             };
             db.Games.Add(sc2);
@@ -139,6 +148,13 @@ namespace Gamestore.DAL.Context
                     CompanyName = "Electronic Arts",
                     Description = "Only fast",
                     HomePage = "www.needforspeed.com"
+                },
+                PublitingDate = new DateTime(2008,10,13),
+                AdditionDate = new DateTime(2014, 12, 10),
+                Views = new List<View>
+                {
+                    new View(){UserId = 1},
+                    new View(){UserId = 2}
                 }
             });
 
@@ -163,6 +179,15 @@ namespace Gamestore.DAL.Context
                     CompanyName = "Valve",
                     Description = "Conquire the world",
                     HomePage = "www.valve.com"
+                },
+                PublitingDate = new DateTime(2013,12,1),
+                AdditionDate = new DateTime(2014, 12, 10),
+                Views = new List<View>
+                {
+                    new View(){UserId = 1},
+                    new View(){UserId = 2},
+                    new View(){UserId = 3},
+                    new View(){UserId = 4}
                 }
             };
 
@@ -185,7 +210,7 @@ namespace Gamestore.DAL.Context
                 {
                     new OrderDetails() {OrderDetailsId = 1, Product = sc2, Quantity = 2, Discount = 0.1f},
                     new OrderDetails() {OrderDetailsId = 2, Product = csgo, Quantity = 3, Discount = 0.15f}
-                }
+                },
             });
         }
     }

@@ -28,9 +28,9 @@ namespace GameStore.WebUI
                 cfg.AddProfile(new AutomapperWebProfile());
             });
 
-            PaymentManager.Add(new PaymentMethod("https://en.wikipedia.org/wiki/Visa_Inc.#/media/File:Visa.svg","Visa", "American multinational financial services", new VisaPayment()));
-            PaymentManager.Add(new PaymentMethod("http://znet.lviv.ua/assets/img/ibox_logo.PNG", "IBox", "The payment network of Ukraine", new IBoxPayment()));
-            PaymentManager.Add(new PaymentMethod("http://www.financemagnates.com/wp-content/uploads/fxmag-experts/2014/08/unicredit.jpg", "Bank", "Remote banking services", new BankPayment()));
+            PaymentManager.Add(new PaymentMethod("en.wikipedia.org/wiki/Visa_Inc.#/media/File:Visa.svg","Visa", "American multinational financial services", new VisaPayment()));
+            PaymentManager.Add(new PaymentMethod("znet.lviv.ua/assets/img/ibox_logo.PNG", "IBox", "The payment network of Ukraine", new IBoxPayment()));
+            PaymentManager.Add(new PaymentMethod("www.financemagnates.com/wp-content/uploads/fxmag-experts/2014/08/unicredit.jpg", "Bank", "Remote banking services", new BankPayment()));
         }
     }
 }

@@ -53,32 +53,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Concrete\ContentFilters\GameFilterByGenre.cs" />
+    <Compile Include="Concrete\ContentFilters\GameFilterByName.cs" />
+    <Compile Include="Concrete\ContentFilters\GameFilterByPlatformType.cs" />
+    <Compile Include="Concrete\ContentFilters\GameFilterByPublisher.cs" />
+    <Compile Include="Concrete\ContentFilters\GameFilterByPublitingDate.cs" />
+    <Compile Include="Concrete\ContentFilters\GamePriceFilter.cs" />
+    <Compile Include="Concrete\ContentSorters\GameSorterByComments.cs" />
+    <Compile Include="Concrete\ContentSorters\GameSorterByDate.cs" />
+    <Compile Include="Concrete\ContentSorters\GameSorterByPrice.cs" />
+    <Compile Include="Concrete\ContentSorters\GameSorterByViews.cs" />
+    <Compile Include="Concrete\ContentSorters\SortingDirectionEnum.cs" />
+    <Compile Include="Concrete\GameFilterPipeline.cs" />
     <Compile Include="DTO\CommentDTO.cs" />
     <Compile Include="DTO\GameDTO.cs" />
+    <Compile Include="DTO\GameFilteringMode.cs" />
     <Compile Include="DTO\GenreDTO.cs" />
     <Compile Include="DTO\OrderDetailsDTO.cs" />
     <Compile Include="DTO\OrderDTO.cs" />
+    <Compile Include="DTO\PaginatedGames.cs" />
     <Compile Include="DTO\PlatformTypeDTO.cs" />
     <Compile Include="DTO\PublisherDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Infrastructure\AutomapperBLLProfile.cs" />
+    <Compile Include="Infrastructure\ExpressionHelper.cs" />
     <Compile Include="Infrastructure\ServiceModule.cs" />
     <Compile Include="Infrastructure\ValidationException.cs" />
-    <Compile Include="Interfaces\ICommentService.cs" />
-    <Compile Include="Interfaces\IGameService.cs" />
-    <Compile Include="Interfaces\IGenreService.cs" />
-    <Compile Include="Interfaces\IOrderService.cs" />
-    <Compile Include="Interfaces\IPlatformTypeService.cs" />
-    <Compile Include="Interfaces\IPublisherService.cs" />
-    <Compile Include="Interfaces\IUserService.cs" />
+    <Compile Include="Interfaces\ContentFilters\IContentFilter.cs" />
+    <Compile Include="Interfaces\ContentFilters\IContentSorter.cs" />
+    <Compile Include="Interfaces\ContentFilters\IFilteringPipeline.cs" />
+    <Compile Include="Interfaces\Services\ICommentService.cs" />
+    <Compile Include="Interfaces\Services\IGameService.cs" />
+    <Compile Include="Interfaces\Services\IGenreService.cs" />
+    <Compile Include="Interfaces\Services\IOrderService.cs" />
+    <Compile Include="Interfaces\Services\IPlatformTypeService.cs" />
+    <Compile Include="Interfaces\Services\IPublisherService.cs" />
+    <Compile Include="Interfaces\Services\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\CommentService.cs" />
-    <Compile Include="Services\GameService.cs" />
-    <Compile Include="Services\GenreService.cs" />
-    <Compile Include="Services\OrderService.cs" />
-    <Compile Include="Services\PlatformTypeService.cs" />
-    <Compile Include="Services\PublisherService.cs" />
-    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Concrete\Services\CommentService.cs" />
+    <Compile Include="Concrete\Services\GameService.cs" />
+    <Compile Include="Concrete\Services\GenreService.cs" />
+    <Compile Include="Concrete\Services\OrderService.cs" />
+    <Compile Include="Concrete\Services\PlatformTypeService.cs" />
+    <Compile Include="Concrete\Services\PublisherService.cs" />
+    <Compile Include="Concrete\Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -94,6 +112,7 @@
       <Name>GameStore.Domain</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

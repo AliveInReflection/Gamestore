@@ -32,5 +32,11 @@ namespace GameStore.Domain.Entities
         [Required]
         public Boolean Discontinued { get; set; }
 
+        [Required]
+        public DateTime PublitingDate { get; set; }
+
+        [Required]
+        public DateTime AdditionDate { get; set; }
+
     }
 }

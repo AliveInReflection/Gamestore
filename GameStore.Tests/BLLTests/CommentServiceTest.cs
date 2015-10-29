@@ -158,26 +158,8 @@ namespace GameStore.Tests.BLLTests
             var result = service.Get(notExistedGameKey);
         }
 
-        [TestMethod]
-        public void Get_Comments_For_Game()
-        {
-            var service = new CommentService(mock.Object);
-            
-            var result = service.Get(testGameKey);
-               
-            Assert.IsNotNull(result);
-        }
-
-        [TestMethod]
-        public void Get_Comments_For_Game_As_IEnumerable_CommentDTO()
-        {
-            var service = new CommentService(mock.Object);
-            
-            var result = service.Get(testGameKey);
-            
-            Assert.IsInstanceOfType(result,typeof(IEnumerable<CommentDTO>));
-        }
-
+        
+         
 
     }
 }

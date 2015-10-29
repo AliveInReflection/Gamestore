@@ -8,15 +8,27 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Layout</title>
+    <link rel="stylesheet" href="/Content/Styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="/Content/Styles/Main.css"/>
+    <link rel="stylesheet" href="/Content/Styles/Content.css" />
     @RenderSection("Styles", false)
 </head>
 <body>
 <div class="header">
-    @Html.Action("GetCount", "Game")
-    @Html.ActionLink("Busket","Details", "Order")
+    <div class="pull-left">@Html.Action("GetCount", "Game")</div>
+    <div class="pull-right">@Html.ActionLink("Busket", "Details", "Order")</div>
 </div>
-<div>
-    @RenderBody()
+<div class="content-line">
+    <div class="col-md-3 left-side-bar">
+        @RenderSection("LeftSideBar", false)
+    </div>
+    <div class="col-md-6 content">
+        @RenderBody()
+    </div>
+    <div class="col-md-3 right-side-bar">
+        @RenderSection("RightSidebar", false)
+    </div>
+    
 </div>
     @RenderSection("Scripts", false)
 </body>

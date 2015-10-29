@@ -28,11 +28,11 @@
 <p><b>Amount: </b> @Model.Amount</p>
 
 <h4>Choose payment method</h4>
-<table>
+<table class="table">
      @foreach (var payment in Model.PaymentMethods)
      {
          <tr>
-             <td><img src="@payment.PictureURL" alt="@payment.PaymentKey"/></td>
+             <td><img src="@payment.PictureURL" alt="@payment.PaymentKey"></td>
              <td>@payment.Description</td>
              <td>@Html.ActionLink("Pay", "Pay", "Order", new{paymentKey = payment.PaymentKey}, null)</td>
          </tr>
