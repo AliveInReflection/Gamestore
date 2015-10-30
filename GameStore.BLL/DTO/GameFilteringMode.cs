@@ -17,6 +17,8 @@ namespace GameStore.BLL.DTO
         public TimeSpan PublishingDate { get; set; }
         public string PartOfName { get; set; }
         public int ItemsPerPage { get; set; }
+        public int CurrentPage { get; set; }
+        public int PageCount { get; set; }
     }
 
     public enum GamesSortingMode

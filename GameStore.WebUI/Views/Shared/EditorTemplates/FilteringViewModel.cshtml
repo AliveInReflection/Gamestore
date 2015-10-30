@@ -1,5 +1,7 @@
 ﻿@model GameStore.WebUI.Models.FilteringViewModel
 
+@Html.Hidden("CurrentPage", Model.CurrentPage, new { id = "CurrentPage" })
+
 <fieldset>
     <legend>@Html.LabelFor(m => m.Genres)</legend>
     @for (int i = 0; i < Model.Genres.Count; i++)
@@ -33,7 +35,7 @@
     <legend>@Html.LabelFor(m => m.PublishingDates)</legend>
     @for (int i = 0; i < Model.PublishingDates.Count; i++)
     {
-        @Html.EditorFor(m => Model.PublishingDates[i], "RadiobuttonViewModel", "PublishingDate")
+        @Html.EditorFor(m => Model.PublishingDates[i], "RadiobuttonViewModel", "PublishingDates")
     }
 </fieldset>
 

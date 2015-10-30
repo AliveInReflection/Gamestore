@@ -3,7 +3,7 @@
 @Html.Hidden("Text", Model.Text)
 @Html.Hidden("Value", Model.Value)
 <div class="editor-checkbox">
-    @Html.RadioButton("IsChecked", Model.IsChecked)
+    @Html.RadioButton("IsChecked",Model.Text,Model.IsChecked)
     @Html.LabelFor(x => x.IsChecked, Model.Text)
 </div>
  

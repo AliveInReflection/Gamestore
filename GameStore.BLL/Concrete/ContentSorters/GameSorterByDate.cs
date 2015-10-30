@@ -10,9 +10,9 @@ namespace GameStore.BLL.Concrete.ContentSorters
 {
     public class GameSorterByDate : IContentSorter<Game>
     {
-        public void Sort(IEnumerable<Game> source)
+        public IEnumerable<Game> Sort(IEnumerable<Game> source)
         {
-            
+            return source.OrderByDescending(m => m.AdditionDate);
         }
     }
 }

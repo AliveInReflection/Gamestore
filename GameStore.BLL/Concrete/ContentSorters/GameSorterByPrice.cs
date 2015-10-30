@@ -16,9 +16,13 @@ namespace GameStore.BLL.Concrete.ContentSorters
             this.direction = direction;
         }
 
-        public void Sort(IEnumerable<Game> source)
+        public IEnumerable<Game> Sort(IEnumerable<Game> source)
         {
-            throw new NotImplementedException();
+            if (direction == SortingDirection.Ascending)
+            {
+                return source.OrderBy(m => m.Price);
+            }
+            return source.OrderByDescending(m => m.Price);
         }
     }
 }

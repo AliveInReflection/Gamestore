@@ -59,6 +59,7 @@
     <Compile Include="Concrete\ContentFilters\GameFilterByPublisher.cs" />
     <Compile Include="Concrete\ContentFilters\GameFilterByPublitingDate.cs" />
     <Compile Include="Concrete\ContentFilters\GamePriceFilter.cs" />
+    <Compile Include="Concrete\ContentPaginators\GamePaginator.cs" />
     <Compile Include="Concrete\ContentSorters\GameSorterByComments.cs" />
     <Compile Include="Concrete\ContentSorters\GameSorterByDate.cs" />
     <Compile Include="Concrete\ContentSorters\GameSorterByPrice.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Infrastructure\ServiceModule.cs" />
     <Compile Include="Infrastructure\ValidationException.cs" />
     <Compile Include="Interfaces\ContentFilters\IContentFilter.cs" />
+    <Compile Include="Interfaces\ContentFilters\IContentPaginator.cs" />
     <Compile Include="Interfaces\ContentFilters\IContentSorter.cs" />
     <Compile Include="Interfaces\ContentFilters\IFilteringPipeline.cs" />
     <Compile Include="Interfaces\Services\ICommentService.cs" />

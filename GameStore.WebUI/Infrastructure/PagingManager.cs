@@ -36,6 +36,8 @@ namespace GameStore.WebUI.Infrastructure
             pages.Add("20", 20);
             pages.Add("50", 50);
             pages.Add("100", 100);
+            pages.Add("5", 5);
+            pages.Add("1", 1);
             pages.Add("All", 0);
         }
     }

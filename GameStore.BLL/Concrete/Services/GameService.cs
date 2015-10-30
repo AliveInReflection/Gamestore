@@ -4,6 +4,8 @@ using System.Linq;
 using AutoMapper;
 using GameStore.BLL.Concrete;
 using GameStore.BLL.Concrete.ContentFilters;
+using GameStore.BLL.Concrete.ContentPaginators;
+using GameStore.BLL.Concrete.ContentSorters;
 using GameStore.BLL.ContentFilters;
 using GameStore.BLL.DTO;
 using GameStore.BLL.Infrastructure;
@@ -18,11 +20,13 @@ namespace GameStore.BLL.Services
     public class GameService : IGameService
     {
         private readonly IUnitOfWork database;
+        private readonly IContentPaginator<Game> paginator;
 
 
-        public GameService(IUnitOfWork database)
+        public GameService(IUnitOfWork database, IContentPaginator<Game> paginator)
         {
             this.database = database;
+            this.paginator = paginator;
         }
 
         public void Create(GameDTO game, IEnumerable<int> genreIds, IEnumerable<int> platformTypeIds)
@@ -166,16 +170,36 @@ namespace GameStore.BLL.Services
             return games;
         }
 
-        public IEnumerable<GameDTO> Get(GameFilteringMode filteringMode)
+        public PaginatedGames Get(GameFilteringMode filteringMode)
         {
+            IEnumerable<Game> entries;
+            
             var filter = BuildPipeline(filteringMode);
             if (!filter.IsEmpty())
             {
-                var entries = database.Games.GetMany(filter.GetExpression());
-                var games = Mapper.Map<IEnumerable<Game>, IEnumerable<GameDTO>>(entries);
-                return games;
+                entries = database.Games.GetMany(filter.GetExpression());
             }
-            return GetAll();
+            else
+            {
+                entries = database.Games.GetAll();
+            }
+
+            var sorter = GetSorter(filteringMode);
+            if (sorter != null)
+            {
+                entries = sorter.Sort(entries);
+            }
+
+            var paginatedGames = new PaginatedGames();
+            paginatedGames.CurrentPage = filteringMode.CurrentPage;
+            paginatedGames.PageCount = (int)Math.Ceiling((double)entries.Count()/filteringMode.ItemsPerPage);
+
+            entries = paginator.GetItems(entries, filteringMode.CurrentPage, filteringMode.ItemsPerPage);
+            var games = Mapper.Map<IEnumerable<Game>, IEnumerable<GameDTO>>(entries);
+
+            paginatedGames.Games = games;
+
+            return paginatedGames;
         }
 
         public IEnumerable<GameDTO> Get(int genreId)
@@ -239,13 +263,33 @@ namespace GameStore.BLL.Services
                 pipeline.Add(new GameFilterByName(filteringMode.PartOfName));
             }
 
-            //if (filteringMode.PublishingDate != TimeSpan.MinValue)
-            //{
-            //    pipeline.Add(new GameFilterByPublitingDate(filteringMode.PublishingDate));
-            //}
+            if (filteringMode.PublishingDate.Days != 0)
+            {
+                pipeline.Add(new GameFilterByPublitingDate(filteringMode.PublishingDate));
+            }
 
 
             return pipeline;
         }
+
+        private IContentSorter<Game> GetSorter(GameFilteringMode filteringMode)
+        {
+            switch (filteringMode.SortingMode)
+            {
+                case GamesSortingMode.MostPopular: 
+                    return new GameSorterByViews();
+                case GamesSortingMode.MostCommented: 
+                    return new GameSorterByComments();
+                case GamesSortingMode.AdditionDate:
+                    return new GameSorterByDate();
+                case GamesSortingMode.PriceAscending: 
+                    return new GameSorterByPrice(SortingDirection.Ascending);
+                case GamesSortingMode.PriceDescending:
+                    return new GameSorterByPrice(SortingDirection.Descending);
+                default :
+                    return null;
+            }            
+        }
+
     }
 }

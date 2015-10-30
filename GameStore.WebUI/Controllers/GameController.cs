@@ -35,16 +35,24 @@ namespace GameStore.WebUI.Controllers
         {
             var model = new FilteredGamesViewModel();
             UpdateFilterViewModel(filter);
-            var games = gameService.Get(BuildFilteringMode(filter));
-            model.Games = Mapper.Map<IEnumerable<GameDTO>, IEnumerable<DisplayGameViewModel>>(games);           
+
+            var paginatedGames = gameService.Get(BuildFilteringMode(filter));
+
+            model.Games = Mapper.Map<IEnumerable<GameDTO>, IEnumerable<DisplayGameViewModel>>(paginatedGames.Games);
+
+            filter.CurrentPage = paginatedGames.CurrentPage;
+            filter.PageCount = paginatedGames.PageCount;
             model.Filter = filter;
+
             return View(model);
         }
 
         public ActionResult Details(string gameKey)
         {
             var game = gameService.Get(gameKey);
+
             var gameMV = BuildDisplayGameViewModel(game);
+
             return View(gameMV);
         }
 
@@ -81,7 +89,7 @@ namespace GameStore.WebUI.Controllers
             }
             var gameToSave = Mapper.Map<CreateGameViewModel, GameDTO>(game);
             gameService.Create(gameToSave, game.GenreIds, game.PlatformTypeIds);
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
 
         [HttpPost]
@@ -202,7 +210,7 @@ namespace GameStore.WebUI.Controllers
                 Selected = m == filter.SortBy
             }).ToList();
 
-            if (filter.PublishingDate == null)
+            if (filter.PublishingDates == null)
             {
                 filter.PublishingDates = GamePublishingDateFilteringManager.GetKeys().Select(m => new RadiobuttonViewModel()
                 {
@@ -210,16 +218,10 @@ namespace GameStore.WebUI.Controllers
                     Text = m
                 }).ToList();
             }
-            else
-            {
-                filter.PublishingDates = GamePublishingDateFilteringManager.GetKeys().Select(m => new RadiobuttonViewModel()
-                {
-                    Value = m,
-                    Text = m,
-                    IsChecked = m == filter.PublishingDate.Value
-                }).ToList();
-            }
-            
+
+            filter.CurrentPage = filter.CurrentPage == 0 ? 1 : filter.CurrentPage;
+            filter.ItemsPerPage = filter.ItemsPerPage == null ? 10.ToString() : filter.ItemsPerPage;
+
 
         }
 
@@ -242,9 +244,15 @@ namespace GameStore.WebUI.Controllers
                 filteringMode.PublisherIds = filter.Publishers.Where(m => m.IsChecked).Select(m => m.Id);
             }
 
-            if (filter.PublishingDate != null)
+            if (filter.PublishingDates != null)
             {
-                filteringMode.PublishingDate = GamePublishingDateFilteringManager.Get(filter.PublishingDate.Text);
+                var publitionDateKey =
+                    filter.PublishingDates.Where(m => m.IsChecked).Select(m => m.Text).FirstOrDefault();
+
+                if (publitionDateKey != null)
+                {
+                    filteringMode.PublishingDate = GamePublishingDateFilteringManager.Get(publitionDateKey);
+                }
             }
 
             if (filter.SortBy != null)
@@ -260,6 +268,9 @@ namespace GameStore.WebUI.Controllers
             filteringMode.MinPrice = filter.MinPrice;
             filteringMode.MaxPrice = filter.MaxPrice;                      
             filteringMode.PartOfName = filter.Name;
+
+            filteringMode.CurrentPage = filter.CurrentPage;
+            filteringMode.ItemsPerPage = Int16.Parse(filter.ItemsPerPage);
 
             return filteringMode;
         }

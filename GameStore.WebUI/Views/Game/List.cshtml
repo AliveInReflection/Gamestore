@@ -1,4 +1,5 @@
-﻿@model GameStore.WebUI.Models.FilteredGamesViewModel
+﻿@using GameStore.WebUI.Helpers
+@model GameStore.WebUI.Models.FilteredGamesViewModel
 
 @{
     ViewBag.Title = "List";
@@ -46,13 +47,24 @@
 
 </table>
 
+
+@Html.PaginationBuilder(Model.Filter.CurrentPage,Model.Filter.PageCount,"List", "Game")
+
+
+
 @section LeftSideBar
 {
     @using (Html.BeginForm("List", "Game"))
     {
         @Html.EditorFor(m => m.Filter,"FilteringViewModel", "filter")
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Filter" />
         </p>
     }
+}
+
+@section Scripts
+{
+    <script src="/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="/Scripts/Game/pagination.js"></script>
 }

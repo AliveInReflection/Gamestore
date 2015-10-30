@@ -10,9 +10,9 @@ namespace GameStore.BLL.Concrete.ContentSorters
 {
     public class GameSorterByComments : IContentSorter<Game>
     {
-        public void Sort(IEnumerable<Game> source)
+        public IEnumerable<Game> Sort(IEnumerable<Game> source)
         {
-            source.OrderBy(m => m.Comments.Count);
+            return source.OrderByDescending(m => m.Comments.Count);
         }
     }
 }

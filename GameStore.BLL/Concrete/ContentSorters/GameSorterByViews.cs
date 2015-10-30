@@ -10,9 +10,9 @@ namespace GameStore.BLL.Concrete.ContentSorters
 {
     public class GameSorterByViews : IContentSorter<Game>
     {
-        public void Sort(IEnumerable<Game> source)
+        public IEnumerable<Game> Sort(IEnumerable<Game> source)
         {
-            throw new NotImplementedException();
+            return source.OrderByDescending(m => m.Views.Count);
         }
     }
 }

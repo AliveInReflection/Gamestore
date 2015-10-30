@@ -34,7 +34,7 @@ namespace GameStore.WebUI.Infrastructure
 
         public static void Initialize()
         {
-            filters.Add("All", TimeSpan.MinValue);
+            filters.Add("All", TimeSpan.FromDays(0));
             filters.Add("Last week", TimeSpan.FromDays(7));
             filters.Add("Last month", TimeSpan.FromDays(30));
             filters.Add("Last year", TimeSpan.FromDays(365));

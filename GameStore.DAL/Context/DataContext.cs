@@ -135,7 +135,7 @@ namespace Gamestore.DAL.Context
             db.Games.Add(new Game()
             {
                 GameName = "Need for speed: Most wanted",
-                GameKey = "NFS:MW",
+                GameKey = "NFSMW",
                 Description = "Need for Speed: Most Wanted (commonly abbreviated to as NFS: MW or just Most Wanted) is a racing video game developed by EA Black Box and published by Electronic Arts. It is the ninth installment in the Need for Speed series.",
                 Genres = genres,
                 PlatformTypes = types,

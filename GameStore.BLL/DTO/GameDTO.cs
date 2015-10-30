@@ -17,6 +17,8 @@ namespace GameStore.BLL.DTO
         public Int16 UnitsInStock { get; set; }
         public Boolean Discontinued { get; set; }
         public int PublisherId { get; set; }
+        public DateTime PublitingDate { get; set; }
+        public DateTime AdditionDate { get; set; }
 
         public IEnumerable<GenreDTO> Genres { get; set; }
         public IEnumerable<PlatformTypeDTO> PlatformTypes { get; set; }

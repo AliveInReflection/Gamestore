@@ -34,6 +34,12 @@ namespace GameStore.WebUI.Models
         [Display(Name="Is discontinued")]
         public Boolean Discontinued { get; set; }
 
+        [Display(Name = "Publiting date")]
+        public DateTime PublitingDate { get; set; }
+
+        [Display(Name = "Addition date")]
+        public DateTime AdditionDate { get; set; }
+
         [Required]
         [Display(Name = "Pablisher")]
         public int PublisherId { get; set; }
@@ -80,6 +86,12 @@ namespace GameStore.WebUI.Models
         [Display(Name = "Is discontinued")]
         public Boolean Discontinued { get; set; }
 
+        [Display(Name = "Publiting date")]
+        public DateTime PublitingDate { get; set; }
+
+        [Display(Name = "Addition date")]
+        public DateTime AdditionDate { get; set; }
+
         [Required]
         [ScaffoldColumn(false)]
         [Display(Name = "Publisher")]
@@ -119,6 +131,12 @@ namespace GameStore.WebUI.Models
 
         [Display(Name = "Is discontinued")]
         public Boolean Discontinued { get; set; }
+
+        [Display(Name = "Publiting date")]
+        public DateTime PublitingDate { get; set; }
+
+        [Display(Name = "Addition date")]
+        public DateTime AdditionDate { get; set; }
 
         [Display(Name="Publisher")]
         public DisplayPublisherViewModel Publisher { get; set; }

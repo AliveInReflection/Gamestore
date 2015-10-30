@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace GameStore.WebUI.Models
 {
@@ -24,7 +25,6 @@ namespace GameStore.WebUI.Models
 
         [Display(Name = "Filter by publishing date")]
         public List<RadiobuttonViewModel> PublishingDates { get; set; }
-        public RadiobuttonViewModel PublishingDate { get; set; }
 
         [Display(Name="Minimal price")]
         public decimal MinPrice { get; set; }

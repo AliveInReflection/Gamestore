@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GameStore.BLL.Interfaces.ContentFilters
 {
-    public interface IContentSorter<T>
+    public interface IContentPaginator<T>
     {
-        IEnumerable<T> Sort(IEnumerable<T> source);
+        IEnumerable<T> GetItems(IEnumerable<T> items, int pageNumber, int itemsPerPage);
     }
 }

@@ -16,7 +16,7 @@ namespace GameStore.BLL.Interfaces
         GameDTO Get(string gameKey);
         IEnumerable<GameDTO> Get(int genreId);
         IEnumerable<GameDTO> Get(IEnumerable<int> platfotmTypeIds);
-        IEnumerable<GameDTO> Get(GameFilteringMode filteringMode);
+        PaginatedGames Get(GameFilteringMode filteringMode);
         IEnumerable<GameDTO> GetAll();
         int GetCount();
     }
