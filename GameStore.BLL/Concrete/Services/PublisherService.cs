@@ -36,7 +36,9 @@ namespace GameStore.BLL.Services
         public void Create(PublisherDTO publisher)
         {
             if (publisher == null)
+            {
                 throw new ValidationException("No content received");
+            }
 
             try
             {
@@ -49,6 +51,39 @@ namespace GameStore.BLL.Services
                 database.Publishers.Create(publisherToSave);
                 database.Save();
             }
+        }
+
+
+        public void Update(PublisherDTO publisher)
+        {
+            if (publisher == null)
+            {
+                throw new ValidationException("No content received");
+            }
+
+            var entry = database.Publishers.GetSingle(m => m.CompanyName.Equals(publisher.CompanyName));
+            if (entry.PublisherId != publisher.PublisherId)
+            {
+                throw new ValidationException("Anothe publisher with the same company name exists");
+            }
+
+            var publisherToSave = Mapper.Map(publisher, entry);
+
+            database.Publishers.Update(publisherToSave);
+            database.Save();
+        }
+
+        public void Delete(int publisherId)
+        {
+            var entry = database.Publishers.GetSingle(m => m.PublisherId.Equals(publisherId));
+
+            if(entry.Games.Any())
+            {
+                throw new ValidationException("There are some games that marked up by this genre in the store");
+            }
+
+            database.Publishers.Delete(publisherId);
+            database.Save();
         }
     }
 }

@@ -9,8 +9,11 @@ namespace GameStore.BLL.Interfaces
 {
     public interface IPublisherService
     {
+        void Create(PublisherDTO publisher);
+        void Update(PublisherDTO publisher);
+        void Delete(int publisherId);
+
         IEnumerable<PublisherDTO> GetAll();
         PublisherDTO Get(string companyName);
-        void Create(PublisherDTO publisher);
     }
 }

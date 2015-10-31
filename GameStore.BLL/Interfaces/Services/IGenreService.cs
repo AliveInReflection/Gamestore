@@ -9,6 +9,10 @@ namespace GameStore.BLL.Interfaces
 {
     public interface IGenreService
     {
+        void Create(GenreDTO genre);
+        void Update(GenreDTO genre);
+        void Delete(int genreId);
+
         IEnumerable<GenreDTO> GetAll();
         IEnumerable<GenreDTO> Get(string gameKey);
     }

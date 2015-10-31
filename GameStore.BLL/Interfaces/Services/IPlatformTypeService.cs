@@ -9,6 +9,10 @@ namespace GameStore.BLL.Interfaces
 {
     public interface IPlatformTypeService
     {
+        void Create(PlatformTypeDTO platformType);
+        void Update(PlatformTypeDTO platformType);
+        void Delete(int platformTypeId);
+
         IEnumerable<PlatformTypeDTO> GetAll();
         IEnumerable<PlatformTypeDTO> Get(string gameKey);
     }

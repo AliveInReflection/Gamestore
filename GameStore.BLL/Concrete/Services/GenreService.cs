@@ -38,5 +38,55 @@ namespace GameStore.BLL.Services
             var genres = game.Genres;
             return Mapper.Map<IEnumerable<Genre>, IEnumerable<GenreDTO>>(genres);
         }
+
+        public void Create(GenreDTO genre)
+        {
+            if (genre == null)
+            {
+                throw new ValidationException("No content received");
+            }
+            try
+            {
+                var entry = database.Genres.GetSingle(m => m.GenreName.Equals(genre.GenreName));
+                throw new ValidationException("Another genre with the same name exists");
+            }
+            catch (InvalidOperationException)
+            {
+                var genreToSave = Mapper.Map<GenreDTO, Genre>(genre);
+                database.Genres.Create(genreToSave);
+                database.Save();
+            }
+        }
+
+        public void Update(GenreDTO genre)
+        {
+            if (genre == null)
+            {
+                throw new ValidationException("No content received");
+            }
+
+            var entry = database.Genres.GetSingle(m => m.GenreName.Equals(genre.GenreName));
+            if (entry.GenreId != genre.GenreId)
+            {
+                throw new ValidationException("Another genre with the same name exists");
+            }
+
+            var genreToSave = Mapper.Map(genre, entry);
+            database.Genres.Update(genreToSave);
+            database.Save();
+        }
+
+        public void Delete(int genreId)
+        {
+            var entry = database.Genres.GetSingle(m => m.GenreId.Equals(genreId));
+            
+            if(entry.Games.Any())
+            {
+                throw new ValidationException("There are some games that marked up by this genre in the store");
+            }
+
+            database.Genres.Delete(genreId);
+            database.Save();
+        }
     }
 }

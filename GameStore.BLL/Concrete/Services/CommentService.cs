@@ -99,5 +99,23 @@ namespace GameStore.BLL.Services
             return children.Any();
         }
 
+
+
+        public void Update(string gameKey, CommentDTO comment)
+        {
+            if (comment == null)
+            {
+                throw new ValidationException("No content received");
+            }
+
+            //check for game existance
+            var game = database.Games.GetSingle(m => m.GameKey.Equals(gameKey));
+
+            var entry = database.Comments.GetSingle(m => m.CommentId.Equals(comment.CommentId));
+            entry.Content = comment.Content;
+            entry.Quote = comment.Quote;
+            database.Comments.Update(entry);
+            database.Save();
+        }
     }
 }

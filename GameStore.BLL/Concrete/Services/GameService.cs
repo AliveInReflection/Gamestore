@@ -75,32 +75,22 @@ namespace GameStore.BLL.Services
                 throw new ValidationException("No content received");
             }
 
-            Game entry;
-            try
+
+            var entry = database.Games.GetSingle(m => m.GameKey.Equals(game.GameKey));
+            // if entry and game are different games with the same key
+            if (entry.GameId != game.GameId)
             {
-                entry = database.Games.GetSingle(m => m.GameKey.Equals(game.GameKey));
-                // if entry and game are different games with the same key
-                if (entry.GameId != game.GameId)
-                {
-                    throw new ValidationException("Another game has the same game key");
-                }
-     
+                throw new ValidationException("Another game has the same game key");
             }
-            catch (InvalidOperationException)
-            {
-  
-            }
-            
+
             entry = database.Games.GetSingle(m => m.GameId.Equals(game.GameId));
 
-            Mapper.CreateMap<GameDTO, Game>();
             var gameToSave = Mapper.Map(game, entry);
 
             // Updating game genres
             var existedGenreIds = gameToSave.Genres.Select(m => m.GenreId);
 
             var genreIdsToAdd = genreIds.Except(existedGenreIds);
-
             foreach (var id in genreIdsToAdd)
             {
                 var genreEntry = database.Genres.GetSingle(m => m.GenreId.Equals(id));
@@ -108,7 +98,6 @@ namespace GameStore.BLL.Services
             }
 
             var genreIdsToRemove = existedGenreIds.Except(genreIds);
-
             foreach (var id in genreIdsToRemove)
             {
                 var genreEntry = database.Genres.GetSingle(m => m.GenreId.Equals(id));
@@ -119,7 +108,6 @@ namespace GameStore.BLL.Services
             var existedPtIds = gameToSave.PlatformTypes.Select(m => m.PlatformTypeId);
 
             var ptIdsToAdd = platformTypeIds.Except(existedPtIds);
-            
             foreach (var id in ptIdsToAdd)
             {
                 var ptEntry = database.PlatformTypes.GetSingle(m => m.PlatformTypeId.Equals(id));
@@ -127,7 +115,6 @@ namespace GameStore.BLL.Services
             }
 
             var ptIdsToRemove = existedPtIds.Except(platformTypeIds);
-
             foreach (var id in ptIdsToRemove)
             {
                 var ptEntry = database.PlatformTypes.GetSingle(m => m.PlatformTypeId.Equals(id));

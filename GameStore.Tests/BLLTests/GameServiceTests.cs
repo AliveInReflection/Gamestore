@@ -24,7 +24,7 @@ namespace GameStore.Tests.BLLTests
         private List<Comment> comments;
         private List<Publisher> publishers; 
 
-        public Mock<IUnitOfWork> mock;
+        private Mock<IUnitOfWork> mock;
 
         private GameDTO testGame;
         private string testGameKey;
@@ -35,6 +35,8 @@ namespace GameStore.Tests.BLLTests
         private int notExistedGenreId;
         private IEnumerable<int> testPlatformTypeIds;
         private IEnumerable<int> notExistedPlatformTypeIds;
+
+        private GameService service;
 
         #region initialize
         private void InitializeCollections()
@@ -165,6 +167,8 @@ namespace GameStore.Tests.BLLTests
 
         private void InitializeTestEntities()
         {
+            service = new GameService(mock.Object, null);
+
             testGame = new GameDTO()
             {
                 GameId = 1,
@@ -207,8 +211,6 @@ namespace GameStore.Tests.BLLTests
         {
             GameDTO gameToAdd = null;
 
-            var service = new GameService(mock.Object);
-
             service.Create(gameToAdd, new int[] { 1, 2 }, new int[] { 1, 2 });
         }
 
@@ -219,16 +221,12 @@ namespace GameStore.Tests.BLLTests
         {
             testGame.GameKey = testGameKey;
 
-            var service = new GameService(mock.Object);
-
             service.Create(testGame, new int[] { 1, 2 }, new int[] { 1, 2 });
         }
 
         [TestMethod]
         public void Create_Game()
-        {           
-            var service = new GameService(mock.Object);
-            
+        {                     
             var expectedCount = games.Count + 1;
             service.Create(testGame, new int[] {1,2}, new int[] {1,2});
 
@@ -243,8 +241,6 @@ namespace GameStore.Tests.BLLTests
         {
             testGame = null;
 
-            var service = new GameService(mock.Object);
-
             service.Update(testGame, new int[] { 1, 2 }, new int[] { 1, 2 });
         }
 
@@ -257,8 +253,6 @@ namespace GameStore.Tests.BLLTests
             testGame.GameKey = testGameKey;
             testGame.GameId = 2;
 
-            var service = new GameService(mock.Object);
-
             service.Update(testGame, new int[] {1,2}, new int[] {1,2});
         }
 
@@ -267,8 +261,6 @@ namespace GameStore.Tests.BLLTests
         {
             testGame.GameId = 1;
             testGame.GameKey = testGameKey;
-
-            var service = new GameService(mock.Object);
 
             service.Update(testGame, new int[] { 1, 2 }, new int[] { 1, 2 });
 
@@ -283,16 +275,13 @@ namespace GameStore.Tests.BLLTests
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         public void Delete_Not_Existed_Game_Expected_Exception()
-        {
-            var service = new GameService(mock.Object);
-            
+        {           
             service.Delete(notExistedGameId);
         }
 
         [TestMethod]
         public void Delete_Game()
         {
-            var service = new GameService(mock.Object);
             var expectedCount = games.Count - 1;
             
             service.Delete(testGameId);
@@ -307,7 +296,6 @@ namespace GameStore.Tests.BLLTests
             var gameCommentsCount = games.First(g => g.GameId.Equals(2)).Comments.Count;
             var expectedCount = commentsCount - gameCommentsCount;
 
-            var service = new GameService(mock.Object);
             service.Delete(2);
             
             Assert.AreEqual(expectedCount, comments.Count);
@@ -320,15 +308,12 @@ namespace GameStore.Tests.BLLTests
         [ExpectedException(typeof(InvalidOperationException))]
         public void Get_Not_Existed_Game_By_Key_Expected_Exception()
         {
-            var service = new GameService(mock.Object);
-
             service.Get(notExistedGameKey);
         }
 
         [TestMethod]
         public void Get_Game_By_Key()
         {
-            var service = new GameService(mock.Object);
             var entry = service.Get(testGameKey);
             Assert.IsInstanceOfType(entry, typeof(GameDTO));
         }
@@ -337,7 +322,6 @@ namespace GameStore.Tests.BLLTests
         [TestMethod]
         public void Get_All_Games()
         {
-            var service = new GameService(mock.Object);
             var games = service.GetAll();
             Assert.IsInstanceOfType(games, typeof(IEnumerable<GameDTO>));
         }
@@ -347,14 +331,12 @@ namespace GameStore.Tests.BLLTests
         [ExpectedException(typeof(InvalidOperationException))]
         public void Get_Games_By_Genre_With_Not_Existed_Genre_Expected_Exception()
         {
-            var service = new GameService(mock.Object);
             var games = service.Get(notExistedGenreId);
         }
 
         [TestMethod]
         public void Get_Games_By_Genre()
         {
-            var service = new GameService(mock.Object);
                 var games = service.Get(testGenreId);
                 Assert.IsInstanceOfType(games, typeof(IEnumerable<GameDTO>));
         }
@@ -363,14 +345,12 @@ namespace GameStore.Tests.BLLTests
         [ExpectedException(typeof(InvalidOperationException))]
         public void Get_Games_By_Platform_With_Not_Existed_Platform_Expected_Exception()
         {
-            var service = new GameService(mock.Object);
             var games = service.Get(notExistedPlatformTypeIds);
         }
 
         [TestMethod]
         public void Get_Games_By_Platform()
         {
-            var service = new GameService(mock.Object);
             var games = service.Get(testPlatformTypeIds);
             Assert.IsInstanceOfType(games, typeof(IEnumerable<GameDTO>));
         }
@@ -378,7 +358,6 @@ namespace GameStore.Tests.BLLTests
         [TestMethod]
         public void Get_Games_Count()
         {
-            var service = new GameService(mock.Object);
             var count = service.GetCount();
             Assert.AreEqual(2, count);
         }
