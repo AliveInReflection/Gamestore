@@ -15,5 +15,6 @@ namespace GameStore.DAL.Interfaces
         T GetSingle(Expression<Func<T, bool>> where);
         IEnumerable<T> GetAll();
         IEnumerable<T> GetMany(Expression<Func<T, bool>> where);
+        int Count();
     }
 }

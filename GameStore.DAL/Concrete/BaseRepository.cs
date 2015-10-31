@@ -46,5 +46,10 @@ namespace GameStore.DAL.Concrete
         {
             return context.Set<TEntity>().Where(where).ToList();
         }
+
+        public int Count()
+        {
+            return context.Set<TEntity>().Count() ;
+        }
     }
 }
