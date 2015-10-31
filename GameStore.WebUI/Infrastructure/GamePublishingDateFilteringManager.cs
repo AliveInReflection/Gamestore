@@ -34,12 +34,12 @@ namespace GameStore.WebUI.Infrastructure
 
         public static void Initialize()
         {
-            filters.Add("All", TimeSpan.FromDays(0));
             filters.Add("Last week", TimeSpan.FromDays(7));
             filters.Add("Last month", TimeSpan.FromDays(30));
             filters.Add("Last year", TimeSpan.FromDays(365));
             filters.Add("Last 2 years", TimeSpan.FromDays(730));
             filters.Add("Last 3 years", TimeSpan.FromDays(1095));
+            filters.Add("All", TimeSpan.FromDays(0));
         }
 
     }

@@ -214,8 +214,7 @@ namespace GameStore.WebUI.Controllers
             {
                 filter.PublishingDates = GamePublishingDateFilteringManager.GetKeys().Select(m => new RadiobuttonViewModel()
                 {
-                    Value = m,
-                    Text = m
+                    SelectedValue = m
                 }).ToList();
             }
 
@@ -244,15 +243,9 @@ namespace GameStore.WebUI.Controllers
                 filteringMode.PublisherIds = filter.Publishers.Where(m => m.IsChecked).Select(m => m.Id);
             }
 
-            if (filter.PublishingDates != null)
+            if (filter.PublishingDate != null)
             {
-                var publitionDateKey =
-                    filter.PublishingDates.Where(m => m.IsChecked).Select(m => m.Text).FirstOrDefault();
-
-                if (publitionDateKey != null)
-                {
-                    filteringMode.PublishingDate = GamePublishingDateFilteringManager.Get(publitionDateKey);
-                }
+                filteringMode.PublishingDate = GamePublishingDateFilteringManager.Get(filter.PublishingDate.SelectedValue);
             }
 
             if (filter.SortBy != null)
