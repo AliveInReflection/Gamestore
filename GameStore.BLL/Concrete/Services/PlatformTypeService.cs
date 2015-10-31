@@ -40,6 +40,12 @@ namespace GameStore.BLL.Services
             return Mapper.Map<IEnumerable<PlatformType>, IEnumerable<PlatformTypeDTO>>(platformTypes);
         }
 
+        public PlatformTypeDTO Get(int platformTypeId)
+        {
+            var entry = database.PlatformTypes.GetSingle(m => m.PlatformTypeId.Equals(platformTypeId));
+            return Mapper.Map<PlatformType, PlatformTypeDTO>(entry);
+        }
+
         public void Create(PlatformTypeDTO platformType)
         {
             if (platformType == null)

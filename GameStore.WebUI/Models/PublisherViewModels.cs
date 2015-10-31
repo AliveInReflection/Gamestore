@@ -9,7 +9,6 @@ namespace GameStore.WebUI.Models
 {
     public class CreatePublisherViewModel
     {
-
         [Display(Name = "Company name")]
         public string CompanyName { get; set; }
 
@@ -19,9 +18,10 @@ namespace GameStore.WebUI.Models
         [Display(Name = "Home page")]
         public string HomePage { get; set; }
     }
-    public class EditPublisherViewModel
+
+    public class UpdatePublisherViewModel
     {
-        [HiddenInput(DisplayValue = false)]
+        [HiddenInput]
         public int PublisherId { get; set; }
 
         [Display(Name = "Company name")]
@@ -35,7 +35,6 @@ namespace GameStore.WebUI.Models
     }
     public class DisplayPublisherViewModel
     {      
-
         [Display(Name = "Company name")]
         public string CompanyName { get; set; }
 

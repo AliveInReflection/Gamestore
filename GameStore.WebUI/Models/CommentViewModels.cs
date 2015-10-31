@@ -19,11 +19,35 @@ namespace GameStore.WebUI.Models
         [Display(Name="Message")]
         public string Content { get; set; }
 
+        [HiddenInput(DisplayValue = false)]
         public int? QuoteId { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         public int? ParentCommentId { get; set; }
 
+    }
+
+    public class UpdateCommentViewModel
+    {
+        [HiddenInput]
+        public int CommentId { get; set; }
+
+        [HiddenInput]
+        public int? ParentCommentId { get; set; }
+
+        [HiddenInput]
+        public int? QuoteId { get; set; }
+
+        [HiddenInput]
+        public int UserId { get; set; }
+
+        [Required]
+        [MinLength(5)]
+        [MaxLength(400)]
+        [Display(Name = "Message")]
+        public string Content { get; set; }
+
+               
     }
 
     public class DisplayCommentViewModel

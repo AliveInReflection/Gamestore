@@ -65,6 +65,42 @@ namespace GameStore.WebUI.Controllers
             return RedirectToAction("List", "Comment", new {gameKey = gameKey});
         }
 
+        public ActionResult Update(int id, string gameKey)
+        {
+            try
+            {
+                var comment = commentService.Get(id);
+                ViewBag.GameKey = gameKey;
+                return View(Mapper.Map<CommentDTO, UpdateCommentViewModel>(comment));
+            }
+            catch (Exception)
+            {
+                TempData["ErrorMessage"] = "Error";
+                return RedirectToAction("List", "Comment", new { gameKey = gameKey });
+            }
+            
+        }
+
+        [HttpPost]
+        public ActionResult Update(UpdateCommentViewModel comment, string gameKey)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(comment);   
+            }
+
+            try
+            {
+                commentService.Update(Mapper.Map<UpdateCommentViewModel, CommentDTO>(comment));
+                return RedirectToAction("List", "Comment", new { gameKey = gameKey });
+            }
+            catch (ValidationException e)
+            {
+                ModelState.AddModelError("CommentId", e.Message);
+                return View(comment);
+            }
+        }
+
         public ActionResult Ban(int userId)
         {
             return View();

@@ -15,5 +15,6 @@ namespace GameStore.BLL.Interfaces
 
         IEnumerable<PlatformTypeDTO> GetAll();
         IEnumerable<PlatformTypeDTO> Get(string gameKey);
+        PlatformTypeDTO Get(int platformTypeId);
     }
 }

@@ -55,7 +55,7 @@ namespace GameStore.WebUI.Models
     }
 
 
-    public class EditGameViewModel
+    public class UpdateGameViewModel
     {
         [Required]
         [HiddenInput(DisplayValue = false)]
@@ -142,10 +142,10 @@ namespace GameStore.WebUI.Models
         public DisplayPublisherViewModel Publisher { get; set; }
 
         [Display(Name = "Genres")]
-        public IEnumerable<GenreViewModel> Genres { get; set; }
+        public IEnumerable<DisplayGenreViewModel> Genres { get; set; }
 
         [Display(Name = "Platforms")]
-        public IEnumerable<PlatformTypeViewModel> PlatformTypes { get; set; }
+        public IEnumerable<DisplayPlatformTypeViewModel> PlatformTypes { get; set; }
 
     }
 }

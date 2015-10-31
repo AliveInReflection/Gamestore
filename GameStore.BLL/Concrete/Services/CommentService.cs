@@ -68,6 +68,12 @@ namespace GameStore.BLL.Services
             return comments;
         }
 
+        public CommentDTO Get(int commentId)
+        {
+            var entry = database.Comments.GetSingle(m => m.CommentId.Equals(commentId));
+            return Mapper.Map<Comment, CommentDTO>(entry);
+        }
+
         public void Delete(int commentId)
         {
             var comment = database.Comments.GetSingle(m => m.CommentId.Equals(commentId));
@@ -101,15 +107,12 @@ namespace GameStore.BLL.Services
 
 
 
-        public void Update(string gameKey, CommentDTO comment)
+        public void Update(CommentDTO comment)
         {
             if (comment == null)
             {
                 throw new ValidationException("No content received");
             }
-
-            //check for game existance
-            var game = database.Games.GetSingle(m => m.GameKey.Equals(gameKey));
 
             var entry = database.Comments.GetSingle(m => m.CommentId.Equals(comment.CommentId));
             entry.Content = comment.Content;

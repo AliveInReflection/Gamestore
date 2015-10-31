@@ -13,22 +13,38 @@ namespace GameStore.WebUI.Infrastructure
         protected override void Configure()
         {
             Mapper.CreateMap<GameDTO, DisplayGameViewModel>();
+            Mapper.CreateMap<GameDTO, UpdateGameViewModel>();
+
             Mapper.CreateMap<CommentDTO, DisplayCommentViewModel>();
-            Mapper.CreateMap<GenreDTO, GenreViewModel>();
-            Mapper.CreateMap<PlatformTypeDTO, PlatformTypeViewModel>();
+            Mapper.CreateMap<CommentDTO, UpdateCommentViewModel>();
+            
+            Mapper.CreateMap<GenreDTO, DisplayGenreViewModel>();
+            Mapper.CreateMap<GenreDTO, UpdateGenreViewModel>();
+
+            Mapper.CreateMap<PlatformTypeDTO, DisplayPlatformTypeViewModel>();
+            Mapper.CreateMap<PlatformTypeDTO, UpdatePlatformTypeViewModel>();
+
             Mapper.CreateMap<PublisherDTO, DisplayPublisherViewModel>();
+            Mapper.CreateMap<PublisherDTO, UpdatePublisherViewModel>();
+
             Mapper.CreateMap<OrderDTO, OrderViewModel>();
             Mapper.CreateMap<OrderDetailsDTO, OrderDetailsViewModel>();
 
 
             Mapper.CreateMap<CreateGameViewModel, GameDTO>();
-            Mapper.CreateMap<EditGameViewModel, GameDTO>();
+            Mapper.CreateMap<UpdateGameViewModel, GameDTO>();
+
             Mapper.CreateMap<CreateCommentViewModel, CommentDTO>();
-            Mapper.CreateMap<GenreViewModel, GenreDTO>();
-            Mapper.CreateMap<PlatformTypeViewModel, PlatformTypeDTO>();
+            Mapper.CreateMap<UpdateCommentViewModel, CommentDTO>();
+
+            Mapper.CreateMap<CreateGenreViewModel, GenreDTO>();
+            Mapper.CreateMap<UpdateGenreViewModel, GenreDTO>();
+
+            Mapper.CreateMap<CreatePlatformTypeViewModel, PlatformTypeDTO>();
+            Mapper.CreateMap<UpdatePlatformTypeViewModel, PlatformTypeDTO>();
 
             Mapper.CreateMap<CreatePublisherViewModel, PublisherDTO>();
-            Mapper.CreateMap<EditPublisherViewModel, PublisherDTO>();
+            Mapper.CreateMap<UpdatePublisherViewModel, PublisherDTO>();
 
             Mapper.CreateMap<PaymentMethod, DisplayPaymentMethodViewModel>();
         }

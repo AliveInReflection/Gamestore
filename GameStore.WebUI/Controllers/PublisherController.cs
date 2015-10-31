@@ -7,6 +7,7 @@ using AutoMapper;
 using GameStore.BLL.DTO;
 using GameStore.BLL.Interfaces;
 using GameStore.WebUI.Models;
+using GameStore.BLL.Infrastructure;
 
 namespace GameStore.WebUI.Controllers
 {
@@ -48,6 +49,41 @@ namespace GameStore.WebUI.Controllers
 
             publisherService.Create(Mapper.Map<CreatePublisherViewModel, PublisherDTO>(publisher));
             return RedirectToAction("List", "Game");
+
+        }
+
+        public ActionResult Update(int id)
+        {
+            try
+            {
+                var publisher = publisherService.Get(id);
+                return View(Mapper.Map<PublisherDTO, UpdatePublisherViewModel>(publisher));
+            }
+            catch (Exception)
+            {
+                TempData["ErrorMessage"] = "Error";
+                return RedirectToAction("List", "Game");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Update(UpdatePublisherViewModel publisher)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(publisher);
+            }
+
+            try
+            {
+                publisherService.Update(Mapper.Map<UpdatePublisherViewModel, PublisherDTO>(publisher));
+                return RedirectToAction("List", "Game");
+            }
+            catch (ValidationException e)
+            {
+                ModelState.AddModelError("PublisherId", e.Message);
+                return View(publisher);
+            }
 
         }
 

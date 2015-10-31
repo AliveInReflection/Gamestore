@@ -33,6 +33,12 @@ namespace GameStore.BLL.Services
             return Mapper.Map<Publisher, PublisherDTO>(publisher);
         }
 
+        public PublisherDTO Get(int publisherId)
+        {
+            var entry = database.Publishers.GetSingle(m => m.PublisherId.Equals(publisherId));
+            return Mapper.Map<Publisher, PublisherDTO>(entry);
+        }
+
         public void Create(PublisherDTO publisher)
         {
             if (publisher == null)

@@ -3,10 +3,32 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Web.Mvc;
 
 namespace GameStore.WebUI.Models
 {
-    public class PlatformTypeViewModel
+    public class CreatePlatformTypeViewModel
+    {
+        [Required]
+        [MinLength(3)]
+        [MaxLength(20)]
+        [Display(Name="Platform type")]
+        public string PlatformTypeName { get; set; }
+    }
+
+    public class UpdatePlatformTypeViewModel
+    {
+        [HiddenInput]
+        public int PlatformTypeId { get; set; }
+
+        [Required]
+        [MinLength(3)]
+        [MaxLength(20)]
+        [Display(Name = "Platform type")]
+        public string PlatformTypeName { get; set; }
+    }
+
+    public class DisplayPlatformTypeViewModel
     {
         [Required]
         public int PlatformTypeId { get; set; }
@@ -14,7 +36,7 @@ namespace GameStore.WebUI.Models
         [Required]
         [MinLength(3)]
         [MaxLength(20)]
-        [Display(Name="Platform type")]
+        [Display(Name = "Platform type")]
         public string PlatformTypeName { get; set; }
     }
 }

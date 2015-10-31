@@ -15,5 +15,6 @@ namespace GameStore.BLL.Interfaces
 
         IEnumerable<GenreDTO> GetAll();
         IEnumerable<GenreDTO> Get(string gameKey);
+        GenreDTO Get(int genreId);
     }
 }

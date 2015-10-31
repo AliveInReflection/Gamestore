@@ -39,6 +39,12 @@ namespace GameStore.BLL.Services
             return Mapper.Map<IEnumerable<Genre>, IEnumerable<GenreDTO>>(genres);
         }
 
+        public GenreDTO Get(int genreId)
+        {
+            var entry = database.Genres.GetSingle(m => m.GenreId.Equals(genreId));
+            return Mapper.Map<Genre, GenreDTO>(entry);
+        }
+
         public void Create(GenreDTO genre)
         {
             if (genre == null)

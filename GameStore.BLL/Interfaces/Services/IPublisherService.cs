@@ -15,5 +15,6 @@ namespace GameStore.BLL.Interfaces
 
         IEnumerable<PublisherDTO> GetAll();
         PublisherDTO Get(string companyName);
+        PublisherDTO Get(int publisherId);
     }
 }
