@@ -11,7 +11,7 @@ namespace GameStore.WebUI.Filters
 {
     public class IPAddressLoggingAttribute : ActionFilterAttribute, IActionFilter
     {
-        private static readonly ILogger logger = LogManager.GetLogger("IPAddresseLogger");
+        private static readonly ILogger logger = LogManager.GetLogger("IPAddressLogger");
         private StringBuilder message;
 
         public IPAddressLoggingAttribute()

@@ -21,7 +21,11 @@ namespace GameStore.Tests.BLLTests
         private List<Publisher> publishers;
         private Mock<IUnitOfWork> mock;
         private PublisherDTO publisherToAdd;
+        private PublisherDTO publisherToUpdate;
+        private int publisherToDeleteId;
         private string existedCompanyName;
+
+        private PublisherService service;
 
 
 
@@ -55,16 +59,35 @@ namespace GameStore.Tests.BLLTests
             mock.Setup(x => x.Publishers.GetSingle(It.IsAny<Expression<Func<Publisher, bool>>>())).Returns((Expression<Func<Publisher, bool>> predicate) => publishers.Where(predicate.Compile()).First());
             mock.Setup(x => x.Publishers.GetMany(It.IsAny<Expression<Func<Publisher, bool>>>())).Returns((Expression<Func<Publisher, bool>> predicate) => publishers.Where(predicate.Compile()));
             mock.Setup(x => x.Publishers.Create(It.IsAny<Publisher>())).Callback((Publisher publisher) => publishers.Add(publisher));
+            mock.Setup(x => x.Publishers.Update(It.IsAny<Publisher>())).Callback((Publisher publisher) =>
+            {
+                var entry = publishers.Where(m => m.PublisherId.Equals(publisher.PublisherId)).First();
+                entry.CompanyName = publisher.CompanyName;
+                entry.HomePage = publisher.HomePage;
+                entry.Description = entry.Description;
+            });
+            mock.Setup(x => x.Publishers.Delete(It.IsAny<int>()))
+                .Callback((int id) => publishers.Remove(publishers.Where(m => m.PublisherId.Equals(id)).First()));
         }
 
         private void InitializeTestEntities()
         {
+            service = new PublisherService(mock.Object);
+
             publisherToAdd = new PublisherDTO()
                 {
                     PublisherId = 3,
                     CompanyName = "Valve",
                     Description = "Conquire the world",
                     HomePage = "www.valve.com"
+                };
+
+            publisherToUpdate = new PublisherDTO()
+                {
+                    PublisherId = 2,
+                    CompanyName = "Electronic Arts",
+                    Description = "Only fast updated",
+                    HomePage = "www.needforspeed.com 1"
                 };
 
             existedCompanyName = "Blizzard";
@@ -86,9 +109,6 @@ namespace GameStore.Tests.BLLTests
         [ExpectedException(typeof(ValidationException))]
         public void Add_Publisher_With_Null_Reference_Expected_Exception()
         {
-
-            var service = new PublisherService(mock.Object);
-
             service.Create(null);
         }
 
@@ -98,15 +118,12 @@ namespace GameStore.Tests.BLLTests
         {
             publisherToAdd.CompanyName = existedCompanyName;
 
-            var service = new PublisherService(mock.Object);
-
             service.Create(publisherToAdd);
         }
 
         [TestMethod]
         public void Add_Publisher()
         {
-            var service = new PublisherService(mock.Object);
             var expectedCount = publishers.Count + 1;
 
             service.Create(publisherToAdd);
@@ -117,8 +134,6 @@ namespace GameStore.Tests.BLLTests
         [TestMethod]
         public void Get_Publisher_By_Company_Name_Is_Not_Null()
         {
-            var service = new PublisherService(mock.Object);
-
             var publisher = service.Get(existedCompanyName);
 
             Assert.IsNotNull(publisher);
@@ -127,11 +142,21 @@ namespace GameStore.Tests.BLLTests
         [TestMethod]
         public void Get_All_Publishers_Is_Not_Null()
         {
-            var service = new PublisherService(mock.Object);
-
             var publisherEntries = service.GetAll();
 
             Assert.IsNotNull(publisherEntries);
+        }
+
+        [TestMethod]
+        public void Update_Publisher()
+        {
+            service.Update(publisherToUpdate);
+
+            var entry = publishers.First(m => m.PublisherId.Equals(publisherToUpdate.PublisherId));
+
+            Assert.AreEqual(publisherToUpdate.CompanyName, entry.CompanyName);
+            Assert.AreEqual(publisherToUpdate.Description, entry.Description);
+            Assert.AreEqual(publisherToUpdate.HomePage, entry.HomePage);
         }
 
 

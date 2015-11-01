@@ -105,6 +105,7 @@ namespace GameStore.Tests.WebTests
             mockGame.Setup(x => x.GetAll()).Returns(games);
             mockGame.Setup(x => x.Get(It.IsAny<string>())).Returns(games.First());
             mockGame.Setup(x => x.Create(It.IsAny<GameDTO>(), It.IsAny<IEnumerable<int>>(),It.IsAny<IEnumerable<int>>()));
+            mockGame.Setup(x => x.Get(It.IsAny<GameFilteringMode>())).Returns(new PaginatedGames());
 
             mockGenre.Setup(x => x.GetAll()).Returns(genres);
             mockPlatformType.Setup(x => x.GetAll()).Returns(platformTypes);
@@ -134,7 +135,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Game_List_Model_Is_Not_Null()
         {
-            var result = controller.List(null) as ViewResult;
+            var result = controller.List(new FilteringViewModel()) as ViewResult;
 
             Assert.IsNotNull(result.Model);
         }

@@ -217,7 +217,7 @@ namespace GameStore.BLL.Services
 
         public int GetCount()
         {
-            return database.Games.GetAll().Count();
+            return database.Games.Count();
         }
 
 

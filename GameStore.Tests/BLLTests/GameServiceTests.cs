@@ -148,6 +148,8 @@ namespace GameStore.Tests.BLLTests
                     games.Remove(games.First(m => m.GameId.Equals(id)));
                 });
 
+            mock.Setup(x => x.Games.Count()).Returns(games.Count);
+
             mock.Setup(x => x.Genres.GetSingle(It.IsAny<Expression<Func<Genre, bool>>>()))
                 .Returns((Expression<Func<Genre, bool>> predicate) => genres.First(predicate.Compile()));
             
