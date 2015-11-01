@@ -267,6 +267,10 @@
       <Project>{03cf56c3-71ea-40d1-9866-89a4b42f5e1e}</Project>
       <Name>GameStore.BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GameStore.Logger\GameStore.Logger.csproj">
+      <Project>{9d1b2955-174a-4236-bab2-0dcc818bef64}</Project>
+      <Name>GameStore.Logger</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Binary\game.data" />

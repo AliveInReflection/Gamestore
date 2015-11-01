@@ -1,5 +1,7 @@
 ﻿using GameStore.BLL.Interfaces;
 using GameStore.BLL.Services;
+using GameStore.Logger.Concrete;
+using GameStore.Logger.Interfaces;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -27,6 +29,7 @@ namespace GameStore.WebUI.DI
         }
         private void AddBindings()
         {
+            kernel.Bind<IGameStoreLogger>().To<NLogAdapter>();
             kernel.Bind<IGameService>().To<GameService>();
             kernel.Bind<ICommentService>().To<CommentService>();
             kernel.Bind<IGenreService>().To<GenreService>();

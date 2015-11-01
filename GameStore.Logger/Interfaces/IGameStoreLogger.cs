@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace GameStore.Logger.Interfaces
 {
-    public interface IIpAddressLogger
+    public interface IGameStoreLogger
     {
-        void Log(string message);
+        void Warn(string message);
+        void Error(string message);
+        void Fatal(string message);
     }
 }

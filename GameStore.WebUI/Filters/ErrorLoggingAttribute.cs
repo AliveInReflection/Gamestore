@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using NLog;
+using Ninject;
+using GameStore.Logger.Interfaces;
 
 
 namespace GameStore.WebUI.Filters
@@ -15,12 +17,14 @@ namespace GameStore.WebUI.Filters
 
     public class ErrorLoggingAttribute : ActionFilterAttribute, IExceptionFilter
     {
-        private ILogger logger = LogManager.GetLogger("ErrorsLogger");
+        private IGameStoreLogger logger;
+        
         private StringBuilder message;
 
         public ErrorLoggingAttribute()
         {
             message = new StringBuilder();
+            logger = DependencyResolver.Current.GetService<IGameStoreLogger>();
         }
 
         public void OnException(ExceptionContext exceptionContext)
@@ -31,9 +35,9 @@ namespace GameStore.WebUI.Filters
                 message.Append("Action: " + exceptionContext.RouteData.Values["action"] + " | ");                
                 message.Append("Message: " + exceptionContext.Exception.Message  + " | ");               
                 message.Append("Where: " + exceptionContext.Exception.StackTrace.Split('\n')[0]);
-                logger.Fatal(message);
+                logger.Fatal(message.ToString());
                 message.Clear();
-                exceptionContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new {controller = "Home", action = "Index"}));
+                exceptionContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new {controller = "Game", action = "List"}));
                 exceptionContext.ExceptionHandled = true;
             }
         }
