@@ -7,28 +7,30 @@
 
 <h2>Details</h2>
 
-<fieldset>
-    <legend>DisplayPublisherViewModel</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.CompanyName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.CompanyName)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Description)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Description)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.HomePage)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.HomePage)
-    </div>
-</fieldset>
+<table class="table">
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.CompanyName)
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.Description)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.Description)
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.HomePage)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.HomePage)
+        </td>
+    </tr>
+</table>
 

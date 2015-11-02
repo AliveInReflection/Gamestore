@@ -102,10 +102,10 @@ namespace GameStore.Tests.BLLTests
             
             mock.Setup(x => x.Games.GetAll()).Returns(games);
             
-            mock.Setup(x => x.Games.GetSingle(It.IsAny<Expression<Func<Game, bool>>>()))
+            mock.Setup(x => x.Games.Get(It.IsAny<Expression<Func<Game, bool>>>()))
                 .Returns((Expression<Func<Game, bool>> predicate) => games.Where(predicate.Compile()).First());
 
-            mock.Setup(x => x.Orders.GetSingle(It.IsAny<Expression<Func<Order, bool>>>()))
+            mock.Setup(x => x.Orders.Get(It.IsAny<Expression<Func<Order, bool>>>()))
                  .Returns((Expression<Func<Order, bool>> predicate) => orders.Where(predicate.Compile()).First());
             
             mock.Setup(x => x.Orders.Create(It.IsAny<Order>()))

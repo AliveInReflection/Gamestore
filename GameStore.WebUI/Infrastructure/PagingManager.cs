@@ -38,7 +38,7 @@ namespace GameStore.WebUI.Infrastructure
             pages.Add("100", 100);
             pages.Add("5", 5);
             pages.Add("1", 1);
-            pages.Add("All", 0);
+            pages.Add("All", short.MaxValue);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace GameStore.BLL.Services
 
         public decimal CalculateAmount(int orderId)
         {
-            var entry = database.Orders.GetSingle(m => (m.OrderId.Equals(orderId) && m.OrderState == OrderState.NotIssued));
+            var entry = database.Orders.Get(m => (m.OrderId.Equals(orderId) && m.OrderState == OrderState.NotIssued));
             decimal amount = entry.OrderDetailses.Sum(orderDetailse => orderDetailse.Product.Price*orderDetailse.Quantity);
             return amount;
         }
@@ -32,7 +32,7 @@ namespace GameStore.BLL.Services
 
         public void Make(int orderId)
         {
-            var entry = database.Orders.GetSingle(m => m.OrderId.Equals(orderId) && m.OrderState == OrderState.NotIssued);
+            var entry = database.Orders.Get(m => m.OrderId.Equals(orderId) && m.OrderState == OrderState.NotIssued);
             entry.OrderState = OrderState.NotPayed;
             entry.Date = DateTime.UtcNow;
             database.Save();
@@ -42,7 +42,7 @@ namespace GameStore.BLL.Services
         public void AddItem(string customerId, string gameKey, short quantity)
         {
             var order = GetCurrentOrder(customerId);
-            var game = database.Games.GetSingle(m => m.GameKey.Equals(gameKey));
+            var game = database.Games.Get(m => m.GameKey.Equals(gameKey));
 
             var orderDetails = order.OrderDetailses.FirstOrDefault(m => m.Product.GameKey.Equals(gameKey));
             if (orderDetails == null)
@@ -69,7 +69,7 @@ namespace GameStore.BLL.Services
             Order entry;
             try
             {
-                entry = database.Orders.GetSingle(m => m.CustomerId.Equals(customerId) && m.OrderState == OrderState.NotIssued);
+                entry = database.Orders.Get(m => m.CustomerId.Equals(customerId) && m.OrderState == OrderState.NotIssued);
             }
             catch (InvalidOperationException)
             {

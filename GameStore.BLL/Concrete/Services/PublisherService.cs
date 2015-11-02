@@ -29,13 +29,13 @@ namespace GameStore.BLL.Services
 
         public PublisherDTO Get(string companyName)
         {
-            var publisher = database.Publishers.GetSingle(m => m.CompanyName.Equals(companyName));
+            var publisher = database.Publishers.Get(m => m.CompanyName.Equals(companyName));
             return Mapper.Map<Publisher, PublisherDTO>(publisher);
         }
 
         public PublisherDTO Get(int publisherId)
         {
-            var entry = database.Publishers.GetSingle(m => m.PublisherId.Equals(publisherId));
+            var entry = database.Publishers.Get(m => m.PublisherId.Equals(publisherId));
             return Mapper.Map<Publisher, PublisherDTO>(entry);
         }
 
@@ -48,7 +48,7 @@ namespace GameStore.BLL.Services
 
             try
             {
-                var entry = database.Publishers.GetSingle(m => m.CompanyName.Equals(publisher.CompanyName));
+                var entry = database.Publishers.Get(m => m.CompanyName.Equals(publisher.CompanyName));
                 throw new ValidationException("Another company exists with the same name");
             }
             catch (InvalidOperationException)
@@ -67,7 +67,7 @@ namespace GameStore.BLL.Services
                 throw new ValidationException("No content received");
             }
 
-            var entry = database.Publishers.GetSingle(m => m.CompanyName.Equals(publisher.CompanyName));
+            var entry = database.Publishers.Get(m => m.CompanyName.Equals(publisher.CompanyName));
             if (entry.PublisherId != publisher.PublisherId)
             {
                 throw new ValidationException("Anothe publisher with the same company name exists");
@@ -81,7 +81,7 @@ namespace GameStore.BLL.Services
 
         public void Delete(int publisherId)
         {
-            var entry = database.Publishers.GetSingle(m => m.PublisherId.Equals(publisherId));
+            var entry = database.Publishers.Get(m => m.PublisherId.Equals(publisherId));
 
             if(entry.Games.Any())
             {

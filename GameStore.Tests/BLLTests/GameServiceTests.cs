@@ -129,7 +129,7 @@ namespace GameStore.Tests.BLLTests
 
 
             mock.Setup(x => x.Games.GetAll()).Returns(games);
-            mock.Setup(x => x.Games.GetSingle(It.IsAny<Expression<Func<Game, bool>>>()))
+            mock.Setup(x => x.Games.Get(It.IsAny<Expression<Func<Game, bool>>>()))
                 .Returns((Expression<Func<Game, bool>> predicate) => games.Where(predicate.Compile()).First());
             mock.Setup(x => x.Games.GetMany(It.IsAny<Expression<Func<Game, bool>>>()))
                 .Returns((Expression<Func<Game, bool>> predicate) => games.Where(predicate.Compile()));
@@ -150,13 +150,13 @@ namespace GameStore.Tests.BLLTests
 
             mock.Setup(x => x.Games.Count()).Returns(games.Count);
 
-            mock.Setup(x => x.Genres.GetSingle(It.IsAny<Expression<Func<Genre, bool>>>()))
+            mock.Setup(x => x.Genres.Get(It.IsAny<Expression<Func<Genre, bool>>>()))
                 .Returns((Expression<Func<Genre, bool>> predicate) => genres.First(predicate.Compile()));
             
-            mock.Setup(x => x.PlatformTypes.GetSingle(It.IsAny<Expression<Func<PlatformType, bool>>>()))
+            mock.Setup(x => x.PlatformTypes.Get(It.IsAny<Expression<Func<PlatformType, bool>>>()))
                 .Returns((Expression<Func<PlatformType, bool>> predicate) => platformTypes.First(predicate.Compile()));
            
-            mock.Setup(x => x.Publishers.GetSingle(It.IsAny<Expression<Func<Publisher, bool>>>()))
+            mock.Setup(x => x.Publishers.Get(It.IsAny<Expression<Func<Publisher, bool>>>()))
                 .Returns((Expression<Func<Publisher, bool>> predicate) => publishers.Where(predicate.Compile()).First());
 
             mock.Setup(x => x.Comments.GetMany(It.IsAny<Expression<Func<Comment, bool>>>()))

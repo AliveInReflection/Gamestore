@@ -9,7 +9,7 @@ using GameStore.Domain.Metadata;
 namespace GameStore.Domain.Entities
 {
     [MetadataType(typeof(ViewMetadata))]
-    public partial class View
+    public partial class View : BaseEntity
     {
         public int ViewId { get; set; }
         public int UserId { get; set; }

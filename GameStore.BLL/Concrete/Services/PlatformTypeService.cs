@@ -34,7 +34,7 @@ namespace GameStore.BLL.Services
 
         public IEnumerable<PlatformTypeDTO> Get(string gameKey)
         {
-            var game = database.Games.GetSingle(m => m.GameKey.Equals(gameKey));
+            var game = database.Games.Get(m => m.GameKey.Equals(gameKey));
 
             var platformTypes = game.PlatformTypes;
             return Mapper.Map<IEnumerable<PlatformType>, IEnumerable<PlatformTypeDTO>>(platformTypes);
@@ -42,7 +42,7 @@ namespace GameStore.BLL.Services
 
         public PlatformTypeDTO Get(int platformTypeId)
         {
-            var entry = database.PlatformTypes.GetSingle(m => m.PlatformTypeId.Equals(platformTypeId));
+            var entry = database.PlatformTypes.Get(m => m.PlatformTypeId.Equals(platformTypeId));
             return Mapper.Map<PlatformType, PlatformTypeDTO>(entry);
         }
 
@@ -55,7 +55,7 @@ namespace GameStore.BLL.Services
 
             try
             {
-                var entry = database.PlatformTypes.GetSingle(m => m.PlatformTypeName.Equals(platformType.PlatformTypeName));
+                var entry = database.PlatformTypes.Get(m => m.PlatformTypeName.Equals(platformType.PlatformTypeName));
                 throw new ValidationException("Another platform type with the same name exists");
             }
             catch (InvalidOperationException)
@@ -77,7 +77,7 @@ namespace GameStore.BLL.Services
             try
             {
                 var entry =
-                    database.PlatformTypes.GetSingle(m => m.PlatformTypeName.Equals(platformType.PlatformTypeName));
+                    database.PlatformTypes.Get(m => m.PlatformTypeName.Equals(platformType.PlatformTypeName));
                 if (entry.PlatformTypeId != platformType.PlatformTypeId)
                 {
                     throw new ValidationException("Another platform type with the same name exists");
@@ -85,7 +85,7 @@ namespace GameStore.BLL.Services
             }
             catch (InvalidOperationException)
             {
-                var entry = database.PlatformTypes.GetSingle(m => m.PlatformTypeId.Equals(platformType.PlatformTypeId));
+                var entry = database.PlatformTypes.Get(m => m.PlatformTypeId.Equals(platformType.PlatformTypeId));
                 var platformTypeToSave = Mapper.Map(platformType, entry);
                 database.PlatformTypes.Update(platformTypeToSave);
                 database.Save();
@@ -94,7 +94,7 @@ namespace GameStore.BLL.Services
 
         public void Delete(int platformTypeId)
         {
-            var entry = database.PlatformTypes.GetSingle(m => m.PlatformTypeId.Equals(platformTypeId));
+            var entry = database.PlatformTypes.Get(m => m.PlatformTypeId.Equals(platformTypeId));
 
             if(entry.Games.Any())
             {

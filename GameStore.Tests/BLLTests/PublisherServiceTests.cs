@@ -58,7 +58,7 @@ namespace GameStore.Tests.BLLTests
 
 
             mock.Setup(x => x.Publishers.GetAll()).Returns(publishers);
-            mock.Setup(x => x.Publishers.GetSingle(It.IsAny<Expression<Func<Publisher, bool>>>())).Returns((Expression<Func<Publisher, bool>> predicate) => publishers.Where(predicate.Compile()).First());
+            mock.Setup(x => x.Publishers.Get(It.IsAny<Expression<Func<Publisher, bool>>>())).Returns((Expression<Func<Publisher, bool>> predicate) => publishers.Where(predicate.Compile()).First());
             mock.Setup(x => x.Publishers.GetMany(It.IsAny<Expression<Func<Publisher, bool>>>())).Returns((Expression<Func<Publisher, bool>> predicate) => publishers.Where(predicate.Compile()));
             mock.Setup(x => x.Publishers.Create(It.IsAny<Publisher>())).Callback((Publisher publisher) => publishers.Add(publisher));
             mock.Setup(x => x.Publishers.Update(It.IsAny<Publisher>())).Callback((Publisher publisher) =>

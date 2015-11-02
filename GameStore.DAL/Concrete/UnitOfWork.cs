@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Gamestore.DAL.Context;
+using GameStore.DAL.Concrete.Repositories;
 using GameStore.DAL.Interfaces;
 using GameStore.Domain.Entities;
 
@@ -11,7 +8,7 @@ namespace GameStore.DAL.Concrete
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        private readonly DataContext context;
+        private readonly GameStoreContext context;
 
         private IRepository<Game> games;
         private IRepository<Comment> comments;
@@ -25,48 +22,48 @@ namespace GameStore.DAL.Concrete
 
         public UnitOfWork(string connectionString)
         {
-                context = new DataContext(connectionString);
+            context = new GameStoreContext(connectionString);
         }
 
 
         public IRepository<Game> Games
         {
-            get { return games ?? (games = new BaseRepository<Game>(context)); }
+            get { return games ?? (games = new GameRepository(context)); }
         }
 
         public IRepository<Comment> Comments
         {
-            get { return comments ?? (comments = new BaseRepository<Comment>(context)); }
+            get { return comments ?? (comments = new CommentRepository(context)); }
         }
 
         public IRepository<Genre> Genres
         {
-            get { return genres ?? (genres = new BaseRepository<Genre>(context)); }
+            get { return genres ?? (genres = new GenreRepository(context)); }
         }
 
         public IRepository<PlatformType> PlatformTypes
         {
-            get { return platformTypes ?? (platformTypes = new BaseRepository<PlatformType>(context)); }
+            get { return platformTypes ?? (platformTypes = new PlatformTypeRepository(context)); }
         }
 
         public IRepository<Publisher> Publishers
         {
-            get { return publishers ?? (publishers = new BaseRepository<Publisher>(context)); }
+            get { return publishers ?? (publishers = new PublisherRepository(context)); }
         }
 
         public IRepository<OrderDetails> OrderDetailses
         {
-            get { return orderDetailses ?? (orderDetailses = new BaseRepository<OrderDetails>(context)); }
+            get { return orderDetailses ?? (orderDetailses = new OrderDetailsRepository(context)); }
         }
 
         public IRepository<Order> Orders
         {
-            get { return orders ?? (orders = new BaseRepository<Order>(context)); }
+            get { return orders ?? (orders = new OrderRepository(context)); }
         }
 
         public IRepository<User> Users
         {
-            get { return users ?? (users = new BaseRepository<User>(context)); }
+            get { return users ?? (users = new UserRepository(context)); }
         }
 
         public void Save()

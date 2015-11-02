@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace GameStore.Domain.Entities
 {
     [MetadataType(typeof(PublisherMetadata))]
-    public partial class Publisher
+    public partial class Publisher : BaseEntity
     { 
         public int PublisherId { get; set; }
         public string CompanyName { get; set; }

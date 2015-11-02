@@ -23,13 +23,17 @@ namespace GameStore.WebUI.Models
         public List<SelectListItem> SortByItems { get; set; }
         public string SortBy { get; set; }
 
-        [Display(Name = "Filter by publishing date")]
+        [Display(Name = "Filter by publication date")]
         public List<RadiobuttonViewModel> PublishingDates { get; set; }
         public RadiobuttonViewModel PublishingDate { get; set; }
 
         [Display(Name="Minimal price")]
+        [Range(0,int.MaxValue)]
         public decimal MinPrice { get; set; }
+
+
         [Display(Name = "Maximal price")]
+        [Range(0, int.MaxValue)]
         public decimal MaxPrice { get; set; }
 
         [Display(Name = "Part of name")]

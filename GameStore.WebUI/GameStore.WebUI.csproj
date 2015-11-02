@@ -175,18 +175,28 @@
     <Compile Include="Infrastructure\PaymentManager.cs" />
     <Compile Include="Infrastructure\GamePublishingDateFilteringManager.cs" />
     <Compile Include="Models\CheckBoxViewModel.cs" />
-    <Compile Include="Models\CommentViewModels.cs" />
+    <Compile Include="Models\Comment\DisplayCommentViewModel.cs" />
+    <Compile Include="Models\Comment\CreateCommentViewModel.cs" />
+    <Compile Include="Models\Genre\CreateGenreViewModel.cs" />
+    <Compile Include="Models\Publisher\CreatePublisherViewModel.cs" />
+    <Compile Include="Models\PlatformType\CreatePlatformTypeViewModel.cs" />
+    <Compile Include="Models\Game\CreateGameViewModel.cs" />
     <Compile Include="Models\DisplayPaymentMethodViewModel.cs" />
-    <Compile Include="Models\FilteredGamesViewModel.cs" />
-    <Compile Include="Models\FilteringViewModel.cs" />
-    <Compile Include="Models\GameViewModels.cs" />
-    <Compile Include="Models\GenreViewModel.cs" />
-    <Compile Include="Models\MakeOrderViewModel.cs" />
-    <Compile Include="Models\OrderDetailsViewModels.cs" />
-    <Compile Include="Models\OrderViewModel.cs" />
-    <Compile Include="Models\PlatformTypeViewModel.cs" />
-    <Compile Include="Models\PublisherViewModels.cs" />
+    <Compile Include="Models\Game\FilteredGamesViewModel.cs" />
+    <Compile Include="Models\Game\FilteringViewModel.cs" />
+    <Compile Include="Models\Game\DisplayGameViewModel.cs" />
+    <Compile Include="Models\Genre\DisplayGenreViewModel.cs" />
+    <Compile Include="Models\Order\MakeOrderViewModel.cs" />
+    <Compile Include="Models\Order\OrderDetailsViewModels.cs" />
+    <Compile Include="Models\Order\OrderViewModel.cs" />
+    <Compile Include="Models\PlatformType\DisplayPlatformTypeViewModel.cs" />
+    <Compile Include="Models\Publisher\DisplayPublisherViewModel.cs" />
     <Compile Include="Models\RadiobuttonViewModel.cs" />
+    <Compile Include="Models\Game\UpdateGameViewModel.cs" />
+    <Compile Include="Models\Comment\UpdateCommentViewModel.cs" />
+    <Compile Include="Models\PlatformType\UpdatePlatformTypeViewModel.cs" />
+    <Compile Include="Models\Publisher\UpdatePublisherViewModel.cs" />
+    <Compile Include="Models\Genre\UpdateGenreViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -242,7 +252,6 @@
     <Content Include="Views\Order\Make.cshtml" />
     <Content Include="Views\Shared\Payment\VisaPayment.cshtml" />
     <Content Include="Views\User\Ban.cshtml" />
-    <Content Include="Views\Game\Filter.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CheckBoxViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\FilteringViewModel.cshtml" />
     <Content Include="Views\Comment\Update.cshtml" />
@@ -258,9 +267,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Layout.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameStore.BLL\GameStore.BLL.csproj">
@@ -283,7 +289,6 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Game\Create.cshtml" />
-    <Content Include="Views\Game\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CreateGameViewModel.cshtml" />
     <Content Include="Views\Game\Update.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\EditGameViewModel.cshtml" />

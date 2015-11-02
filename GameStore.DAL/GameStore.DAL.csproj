@@ -45,9 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Concrete\BaseRepository.cs" />
+    <Compile Include="Concrete\Repositories\CommentRepository.cs" />
+    <Compile Include="Concrete\Repositories\GameRepository.cs" />
+    <Compile Include="Concrete\Repositories\GenreRepository.cs" />
+    <Compile Include="Concrete\Repositories\OrderDetailsRepository.cs" />
+    <Compile Include="Concrete\Repositories\OrderRepository.cs" />
+    <Compile Include="Concrete\Repositories\PlatformTypeRepository.cs" />
+    <Compile Include="Concrete\Repositories\PublisherPrepository.cs" />
+    <Compile Include="Concrete\Repositories\UserRepository.cs" />
     <Compile Include="Concrete\UnitOfWork.cs" />
-    <Compile Include="Context\DataContext.cs" />
+    <Compile Include="Context\GameStoreContext.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

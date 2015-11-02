@@ -68,7 +68,7 @@ namespace GameStore.Tests.BLLTests
 
 
             mock.Setup(x => x.PlatformTypes.GetAll()).Returns(platformTypes);
-            mock.Setup(x => x.PlatformTypes.GetSingle(It.IsAny<Expression<Func<PlatformType, bool>>>())).Returns((Expression<Func<PlatformType, bool>> predicate) => platformTypes.Where(predicate.Compile()).First());
+            mock.Setup(x => x.PlatformTypes.Get(It.IsAny<Expression<Func<PlatformType, bool>>>())).Returns((Expression<Func<PlatformType, bool>> predicate) => platformTypes.Where(predicate.Compile()).First());
             mock.Setup(x => x.PlatformTypes.GetMany(It.IsAny<Expression<Func<PlatformType, bool>>>())).Returns((Expression<Func<PlatformType, bool>> predicate) => platformTypes.Where(predicate.Compile()));
             mock.Setup(x => x.PlatformTypes.Create(It.IsAny<PlatformType>())).Callback((PlatformType platformType) => platformTypes.Add(platformType));
             mock.Setup(x => x.PlatformTypes.Update(It.IsAny<PlatformType>())).Callback((PlatformType platformType) =>
@@ -79,7 +79,7 @@ namespace GameStore.Tests.BLLTests
             mock.Setup(x => x.PlatformTypes.Delete(It.IsAny<int>()))
                 .Callback((int id) => platformTypes.Remove(platformTypes.First(m => m.PlatformTypeId.Equals(id))));
             
-            mock.Setup(x => x.Games.GetSingle(It.IsAny<Expression<Func<Game, bool>>>())).Returns((Expression<Func<Game, bool>> predicate) => games.Where(predicate.Compile()).First());
+            mock.Setup(x => x.Games.Get(It.IsAny<Expression<Func<Game, bool>>>())).Returns((Expression<Func<Game, bool>> predicate) => games.Where(predicate.Compile()).First());
         }
 
         private void InitializeTestEntities()

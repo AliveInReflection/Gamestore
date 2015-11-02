@@ -101,10 +101,17 @@ namespace GameStore.WebUI.Controllers
 
         [HttpPost]
         [ActionName("Remove")]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int gameId)
         {
-            return View();
-
+            try
+            {
+                gameService.Delete(gameId);
+            }
+            catch (Exception)
+            {
+                
+            }
+            return RedirectToAction("List", "Game");
         }
 
 
@@ -263,7 +270,7 @@ namespace GameStore.WebUI.Controllers
             filteringMode.PartOfName = filter.Name;
 
             filteringMode.CurrentPage = filter.CurrentPage;
-            filteringMode.ItemsPerPage = Int16.Parse(filter.ItemsPerPage);
+            filteringMode.ItemsPerPage = PagingManager.Get(filter.ItemsPerPage);
 
             return filteringMode;
         }

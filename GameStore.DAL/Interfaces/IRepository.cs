@@ -12,9 +12,10 @@ namespace GameStore.DAL.Interfaces
         void Create(T entity);
         void Update(T entity);
         void Delete(int id);
-        T GetSingle(Expression<Func<T, bool>> where);
+        T Get(Expression<Func<T, bool>> predicate);
         IEnumerable<T> GetAll();
-        IEnumerable<T> GetMany(Expression<Func<T, bool>> where);
+        IEnumerable<T> GetMany(Expression<Func<T, bool>> predicate);
         int Count();
+        bool IsExists(Expression<Func<T, bool>> predicate);
     }
 }

@@ -1,79 +1,113 @@
-﻿@model GameStore.WebUI.Models.EditGameViewModel
+﻿@model GameStore.WebUI.Models.UpdateGameViewModel
 
 
-@Html.HiddenFor(m => m.GameId)
-
-<div class="editor-label">
-    @Html.LabelFor(model => model.GameKey)
-</div>
-<div class="editor-field">
-    @Html.TextBoxFor(model => model.GameKey)
-    @Html.ValidationMessageFor(model => model.GameKey)
-</div>
-
-<div class="editor-label">
-    @Html.LabelFor(model => model.GameName)
-</div>
-<div class="editor-field">
-    @Html.TextBoxFor(model => model.GameName)
-    @Html.ValidationMessageFor(model => model.GameName)
-</div>
-
-<div class="editor-label">
-    @Html.LabelFor(model => model.Description)
-</div>
-<div class="editor-field">
-    @Html.TextAreaFor(model => model.Description)
-    @Html.ValidationMessageFor(model => model.Description)
-</div>
-
-<div class="editor-label">
-    @Html.LabelFor(model => model.PublisherId)
-</div>
-<div class="editor-field">
-    @Html.DropDownListFor(model => model.PublisherId, ViewBag.Publishers as IEnumerable<SelectListItem>)
-    @Html.ValidationMessageFor(model => model.PublisherId)
-</div>
-
-
-<div class="editor-label">
-    @Html.LabelFor(model => model.GenreIds)
-</div>
-<div class="editor-field">
-    @Html.ListBoxFor(m => m.GenreIds, ViewBag.Genres as IEnumerable<SelectListItem>)
-    @Html.ValidationMessageFor(model => model.GenreIds)
-</div>
-
-<div class="editor-label">
-    @Html.LabelFor(model => model.PlatformTypeIds)
-</div>
-<div class="editor-field">
-    @Html.ListBoxFor(m => m.PlatformTypeIds, ViewBag.PlatformTypes as IEnumerable<SelectListItem>)
-    @Html.ValidationMessageFor(model => model.PlatformTypeIds)
-</div>
-
-
-<div class="editor-label">
-    @Html.LabelFor(model => model.Price)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.Price)
-    @Html.ValidationMessageFor(model => model.Price)
-</div>
-
-<div class="editor-label">
-    @Html.LabelFor(model => model.UnitsInStock)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.UnitsInStock)
-    @Html.ValidationMessageFor(model => model.UnitsInStock)
-</div>
-
-
-<div class="editor-label">
-    @Html.LabelFor(model => model.Discontinued)
-</div>
-<div class="editor-field">
-    @Html.EditorFor(model => model.Discontinued)
-    @Html.ValidationMessageFor(model => model.Discontinued)
-</div>
+<table class="table">
+    <tr>
+        <td class="editor-label">
+            @Html.LabelFor(model => model.GameId)
+        </td>
+        <td class="editor-field">
+            @Html.EditorFor(model => model.GameId)
+            @Html.ValidationMessageFor(model => model.GameId)
+        </td>
+    </tr>
+    <tr>
+        <td class="editor-label">
+            @Html.LabelFor(model => model.GameKey)
+        </td>
+        <td class="editor-field">
+            @Html.TextBoxFor(model => model.GameKey)
+            @Html.ValidationMessageFor(model => model.GameKey)
+        </td>
+    </tr>
+    <tr>
+        <td class="editor-label">
+            @Html.LabelFor(model => model.GameName)
+        </td>
+        <td class="editor-field">
+            @Html.TextBoxFor(model => model.GameName)
+            @Html.ValidationMessageFor(model => model.GameName)
+        </td>
+    </tr>
+    <tr>
+        <td class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </td>
+        <td class="editor-field">
+            @Html.TextAreaFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </td>
+    </tr>
+    <tr>
+        <td class="editor-label">
+            @Html.LabelFor(model => model.PublisherId)
+        </td>
+        <td class="editor-field">
+            @Html.DropDownListFor(model => model.PublisherId, ViewBag.Publishers as IEnumerable<SelectListItem>)
+            @Html.ValidationMessageFor(model => model.PublisherId)
+        </td>
+    </tr>
+    <tr>
+        <td class="editor-label">
+            @Html.LabelFor(model => model.GenreIds)
+        </td>
+        <td class="editor-field">
+            @Html.ListBoxFor(m => m.GenreIds, ViewBag.Genres as IEnumerable<SelectListItem>)
+            @Html.ValidationMessageFor(model => model.GenreIds)
+        </td>
+    </tr>
+    <tr>
+        <td class="editor-label">
+            @Html.LabelFor(model => model.PlatformTypeIds)
+        </td>
+        <td class="editor-field">
+            @Html.ListBoxFor(m => m.PlatformTypeIds, ViewBag.PlatformTypes as IEnumerable<SelectListItem>)
+            @Html.ValidationMessageFor(model => model.PlatformTypeIds)
+        </td>
+    </tr>
+    <tr>
+        <td class="editor-label">
+            @Html.LabelFor(model => model.Price)
+        </td>
+        <td class="editor-field">
+            @Html.EditorFor(model => model.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </td>
+    </tr>
+    <tr>
+        <td class="editor-label">
+            @Html.LabelFor(model => model.UnitsInStock)
+        </td>
+        <td class="editor-field">
+            @Html.EditorFor(model => model.UnitsInStock)
+            @Html.ValidationMessageFor(model => model.UnitsInStock)
+        </td>
+    </tr>
+    <tr>
+        <td class="editor-label">
+            @Html.LabelFor(model => model.Discontinued)
+        </td>
+        <td class="editor-field">
+            @Html.EditorFor(model => model.Discontinued)
+            @Html.ValidationMessageFor(model => model.Discontinued)
+        </td>
+    </tr>
+    <tr>
+        <td class="editor-label">
+            @Html.LabelFor(model => model.PublicationDate)
+        </td>
+        <td class="editor-field">
+            @Html.EditorFor(model => model.PublicationDate, Model.PublicationDate.ToShortDateString())
+            @Html.ValidationMessageFor(model => model.PublicationDate)
+        </td>
+    </tr>
+    <tr>
+        <td class="editor-label">
+            @Html.LabelFor(model => model.ReceiptDate)
+        </td>
+        <td class="editor-field">
+            @Html.EditorFor(model => model.ReceiptDate, Model.ReceiptDate.ToShortDateString())
+            @Html.ValidationMessageFor(model => model.ReceiptDate)
+        </td>
+    </tr>
+</table>

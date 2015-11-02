@@ -6,7 +6,8 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>List</h2>
+<h2>Games in the store</h2>
+<div class="pull-right">@Html.ActionLink("Add new", "Create", "Game")</div>
 <table class="table table-condensed">
     <tr>
         <th>Game key</th>

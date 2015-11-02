@@ -9,8 +9,6 @@ namespace GameStore.WebUI.Models
 {
     public class OrderViewModel
     {
-
-
         [HiddenInput(DisplayValue = false)]
         public int OrderId { get; set; }
 

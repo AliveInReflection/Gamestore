@@ -6,17 +6,16 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>CreateCommentViewModel</legend>
 
          @Html.HiddenFor(m => m.ParentCommentId)
          @Html.HiddenFor(m => m.QuoteId)
          @Html.Hidden("gameKey", ViewBag.GameKey as string)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.UserId)
+            @Html.LabelFor(model => model.UserName)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.UserId)
+            @Html.EditorFor(model => model.UserName)
             @Html.ValidationMessageFor(model => model.Content)
         </div> 
 
@@ -29,11 +28,7 @@
         </div>        
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Comment" />
         </p>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

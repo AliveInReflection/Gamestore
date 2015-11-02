@@ -6,53 +6,58 @@
 }
 
 
-<h2>Details</h2>
-<fieldset>
-    <legend></legend>
+<h2>@Model.GameName</h2>
+<table class="table">
 
-
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.GameKey)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.GameKey)
-    </div>
-
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.GameName)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.GameName)
-    </div>
-
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.Description)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Description)
-    </div>
-
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.Price)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Price)
-    </div>
-
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.UnitsInStock)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.UnitsInStock)
-    </div>
-
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.Discontinued)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Discontinued)
-    </div>
-</fieldset>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.GameKey)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.GameKey)
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.GameName)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.GameName)
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.Description)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.Description)
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.Price)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.Price)
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.UnitsInStock)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.UnitsInStock)
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.Discontinued)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.Discontinued)
+        </td>
+    </tr>
+</table>
 
 <p>
     @Html.DisplayNameFor(model => model.Genres) :
@@ -68,11 +73,17 @@
         <span>@pt.PlatformTypeName</span>
     }
 </p>
-
-
 <p>
     @Html.DisplayNameFor(model => model.Publisher) :
     @Html.ActionLink(Model.Publisher.CompanyName, "Details", "Publisher", new {companyName = Model.Publisher.CompanyName}, null)
+</p>
+
+<p>
+    @using (Html.BeginForm("Delete", "Game"))
+    {
+        @Html.Hidden("gameId", Model.GameId)
+        <input type="submit" value="Delete" />
+    }
 </p>
 
 <p>
@@ -80,7 +91,7 @@
     {
         @Html.Hidden("gameKey", Model.GameKey)
         ;
-        <span>Qauntity: </span>@Html.TextBox("quantity", 1, new {type = "number"})
+        <span>Qauntity: </span>@Html.TextBox("quantity", 1, new {type = "number", min = 1, max = Model.UnitsInStock})
         ;
         <input type="submit" value="Buy"/>
     }
@@ -88,4 +99,5 @@
 
 <p>
     @Html.ActionLink("Download", "Download", "Game", new{ gameKey=Model.GameKey}, new{ target="_blank"})
+    @Html.ActionLink("Comments", "List", "Comment", new{gameKey = Model.GameKey}, null)
 </p>

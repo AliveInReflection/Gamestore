@@ -67,7 +67,7 @@ namespace GameStore.Tests.BLLTests
 
 
             mock.Setup(x => x.Genres.GetAll()).Returns(genres);
-            mock.Setup(x => x.Genres.GetSingle(It.IsAny<Expression<Func<Genre, bool>>>())).Returns((Expression<Func<Genre, bool>> predicate) => genres.Where(predicate.Compile()).First());
+            mock.Setup(x => x.Genres.Get(It.IsAny<Expression<Func<Genre, bool>>>())).Returns((Expression<Func<Genre, bool>> predicate) => genres.Where(predicate.Compile()).First());
             mock.Setup(x => x.Genres.GetMany(It.IsAny<Expression<Func<Genre, bool>>>())).Returns((Expression<Func<Genre, bool>> predicate) => genres.Where(predicate.Compile()));
             mock.Setup(x => x.Genres.Create(It.IsAny<Genre>())).Callback((Genre genre) => genres.Add(genre));
             mock.Setup(x => x.Genres.Update(It.IsAny<Genre>())).Callback((Genre genre) =>
@@ -78,7 +78,7 @@ namespace GameStore.Tests.BLLTests
             mock.Setup(x => x.Genres.Delete(It.IsAny<int>()))
                 .Callback((int id) => genres.Remove(genres.First(m => m.GenreId.Equals(id))));
 
-            mock.Setup(x => x.Games.GetSingle(It.IsAny<Expression<Func<Game, bool>>>())).Returns((Expression<Func<Game, bool>> predicate) => games.Where(predicate.Compile()).First());
+            mock.Setup(x => x.Games.Get(It.IsAny<Expression<Func<Game, bool>>>())).Returns((Expression<Func<Game, bool>> predicate) => games.Where(predicate.Compile()).First());
         }
 
         private void InitializeTestEntities()

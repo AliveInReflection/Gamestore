@@ -12,7 +12,7 @@ namespace GameStore.BLL.Concrete.ContentSorters
     {
         public IEnumerable<Game> Sort(IEnumerable<Game> source)
         {
-            return source.OrderByDescending(m => m.AdditionDate);
+            return source.OrderByDescending(m => m.ReceiptDate);
         }
     }
 }

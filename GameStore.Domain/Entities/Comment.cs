@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace GameStore.Domain.Entities
 {
     [MetadataType(typeof(CommentMetadata))]
-    public class Comment
+    public class Comment : BaseEntity
     {
         public int CommentId { get; set; }
         public int UserId { get; set; }

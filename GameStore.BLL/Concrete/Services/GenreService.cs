@@ -33,7 +33,7 @@ namespace GameStore.BLL.Services
 
         public IEnumerable<GenreDTO> Get(string gameKey)
         {
-            var game = database.Games.GetSingle(m => m.GameKey.Equals(gameKey));
+            var game = database.Games.Get(m => m.GameKey.Equals(gameKey));
             
             var genres = game.Genres;
             return Mapper.Map<IEnumerable<Genre>, IEnumerable<GenreDTO>>(genres);
@@ -41,7 +41,7 @@ namespace GameStore.BLL.Services
 
         public GenreDTO Get(int genreId)
         {
-            var entry = database.Genres.GetSingle(m => m.GenreId.Equals(genreId));
+            var entry = database.Genres.Get(m => m.GenreId.Equals(genreId));
             return Mapper.Map<Genre, GenreDTO>(entry);
         }
 
@@ -53,7 +53,7 @@ namespace GameStore.BLL.Services
             }
             try
             {
-                var entry = database.Genres.GetSingle(m => m.GenreName.Equals(genre.GenreName));
+                var entry = database.Genres.Get(m => m.GenreName.Equals(genre.GenreName));
                 throw new ValidationException("Another genre with the same name exists");
             }
             catch (InvalidOperationException)
@@ -72,7 +72,7 @@ namespace GameStore.BLL.Services
             }
             try
             {
-                var entry = database.Genres.GetSingle(m => m.GenreName.Equals(genre.GenreName));
+                var entry = database.Genres.Get(m => m.GenreName.Equals(genre.GenreName));
                 if (entry.GenreId != genre.GenreId)
                 {
                     throw new ValidationException("Another genre with the same name exists");
@@ -80,7 +80,7 @@ namespace GameStore.BLL.Services
             }
             catch (InvalidOperationException)
             {
-                var entry = database.Genres.GetSingle(m => m.GenreId.Equals(genre.GenreId));
+                var entry = database.Genres.Get(m => m.GenreId.Equals(genre.GenreId));
                 var genreToSave = Mapper.Map(genre, entry);
                 database.Genres.Update(genreToSave);
                 database.Save();
@@ -89,7 +89,7 @@ namespace GameStore.BLL.Services
 
         public void Delete(int genreId)
         {
-            var entry = database.Genres.GetSingle(m => m.GenreId.Equals(genreId));
+            var entry = database.Genres.Get(m => m.GenreId.Equals(genreId));
             
             if(entry.Games.Any())
             {

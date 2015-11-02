@@ -5,17 +5,17 @@ using System.ComponentModel.DataAnnotations;
 namespace GameStore.Domain.Entities
 {
     [MetadataType(typeof(GameMetadata))]
-    public partial class Game
+    public partial class Game : BaseEntity
     {
         public int GameId { get; set; }
         public string GameKey { get; set; }
         public string GameName { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
-        public Int16 UnitsInStock { get; set; }
-        public Boolean Discontinued { get; set; }
-        public DateTime PublitingDate { get; set; }
-        public DateTime AdditionDate { get; set; }
+        public short UnitsInStock { get; set; }
+        public bool Discontinued { get; set; }
+        public DateTime PublicationDate { get; set; }
+        public DateTime ReceiptDate { get; set; }
 
 
         public virtual ICollection<Comment> Comments { get; set; }

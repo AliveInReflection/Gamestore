@@ -24,7 +24,7 @@ namespace GameStore.BLL.Concrete.ContentFilters
             if (minDate == null)
                 throw new InvalidOperationException("No date received");
 
-            Expression<Func<Game, bool>> result = m => m.PublitingDate >= minDate;
+            Expression<Func<Game, bool>> result = m => m.PublicationDate >= minDate;
 
             return result;
         }

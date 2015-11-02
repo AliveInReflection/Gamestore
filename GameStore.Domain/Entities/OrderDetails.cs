@@ -9,10 +9,10 @@ using GameStore.Domain.Metadata;
 namespace GameStore.Domain.Entities
 {
     [MetadataType(typeof(OrderDetailsMetadata))]
-    public class OrderDetails
+    public class OrderDetails : BaseEntity
     {
         public int OrderDetailsId { get; set; }
-        public Int16 Quantity { get; set; }
+        public short Quantity { get; set; }
         public float Discount { get; set; }
 
         public virtual Game Product { get; set; }

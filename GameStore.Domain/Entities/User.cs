@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace GameStore.Domain.Entities
 {
     [MetadataType(typeof(UserMetadata))]
-    public class User
+    public class User : BaseEntity
     {
         public int UserId { get; set; }
         public string UserName { get; set; }

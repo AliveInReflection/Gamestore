@@ -7,19 +7,19 @@ using System.Data.Metadata.Edm;
 
 namespace Gamestore.DAL.Context
 {
-    public class DataContext : DbContext
+    public class GameStoreContext : DbContext
     {
-        static  DataContext()
+        static  GameStoreContext()
         {
-            System.Data.Entity.Database.SetInitializer<DataContext>(new GameStoreDbInitializer());
+            System.Data.Entity.Database.SetInitializer<GameStoreContext>(new GameStoreDbInitializer());
         }
 
-        public DataContext()
+        public GameStoreContext()
         {
             
         }
 
-        public DataContext(string connectionString)
+        public GameStoreContext(string connectionString)
             :base(connectionString)
         {
             
@@ -37,9 +37,9 @@ namespace Gamestore.DAL.Context
     }
 
 
-    public class GameStoreDbInitializer : DropCreateDatabaseIfModelChanges<DataContext>
+    public class GameStoreDbInitializer : DropCreateDatabaseIfModelChanges<GameStoreContext>
     {
-        protected override void Seed(DataContext db)
+        protected override void Seed(GameStoreContext db)
         {
             Dictionary<String, String> uniqeFields = new Dictionary<string, string>
             {
@@ -114,8 +114,8 @@ namespace Gamestore.DAL.Context
                     Description = "The best company in the world",
                     HomePage = "battle.net"
                 },
-                PublitingDate = new DateTime(2012,9,17),
-                AdditionDate = new DateTime(2014, 12, 10),
+                PublicationDate = new DateTime(2012, 9, 17),
+                ReceiptDate = new DateTime(2014, 12, 10),
                 Views = new List<View>
                 {
                     new View(){UserId = 1},
@@ -149,8 +149,8 @@ namespace Gamestore.DAL.Context
                     Description = "Only fast",
                     HomePage = "www.needforspeed.com"
                 },
-                PublitingDate = new DateTime(2008,10,13),
-                AdditionDate = new DateTime(2014, 12, 10),
+                PublicationDate = new DateTime(2008, 10, 13),
+                ReceiptDate = new DateTime(2014, 12, 10),
                 Views = new List<View>
                 {
                     new View(){UserId = 1},
@@ -180,8 +180,8 @@ namespace Gamestore.DAL.Context
                     Description = "Conquire the world",
                     HomePage = "www.valve.com"
                 },
-                PublitingDate = new DateTime(2013,12,1),
-                AdditionDate = new DateTime(2014, 12, 10),
+                PublicationDate = new DateTime(2013, 12, 1),
+                ReceiptDate = new DateTime(2014, 12, 10),
                 Views = new List<View>
                 {
                     new View(){UserId = 1},

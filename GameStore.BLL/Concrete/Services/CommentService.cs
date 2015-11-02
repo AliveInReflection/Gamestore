@@ -27,15 +27,15 @@ namespace GameStore.BLL.Services
                 throw new ValidationException("No content received");
             }
 
-            var gameEntry = database.Games.GetSingle(m => m.GameKey.Equals(gameKey));
-            var userEntry = database.Users.GetSingle(m => m.UserId.Equals(comment.UserId));
+            var gameEntry = database.Games.Get(m => m.GameKey.Equals(gameKey));
+            var userEntry = database.Users.Get(m => m.UserId.Equals(comment.UserId));
 
             var commentToSave = Mapper.Map<CommentDTO, Comment>(comment);
             commentToSave.User = userEntry;
 
             if (comment.ParentCommentId != null)
             {
-                var commentEntry = database.Comments.GetSingle(m => m.CommentId.Equals(comment.ParentCommentId.Value));
+                var commentEntry = database.Comments.Get(m => m.CommentId.Equals(comment.ParentCommentId.Value));
                 commentToSave.ParentComment = commentEntry;
             }
             else
@@ -44,7 +44,7 @@ namespace GameStore.BLL.Services
             }
             if (comment.QuoteId != null)
             {
-                var quotedComment = database.Comments.GetSingle(m => m.CommentId.Equals(comment.QuoteId.Value));
+                var quotedComment = database.Comments.Get(m => m.CommentId.Equals(comment.QuoteId.Value));
                 commentToSave.Quote = "<quote>" + quotedComment.Quote + quotedComment.Content + "</quote>";
             }
 
@@ -54,7 +54,7 @@ namespace GameStore.BLL.Services
 
         public IEnumerable<CommentDTO> Get(string gameKey)
         {
-            var game = database.Games.GetSingle(m => m.GameKey.Equals(gameKey));
+            var game = database.Games.Get(m => m.GameKey.Equals(gameKey));
 
             var commentEntries = game.Comments;
 
@@ -70,13 +70,13 @@ namespace GameStore.BLL.Services
 
         public CommentDTO Get(int commentId)
         {
-            var entry = database.Comments.GetSingle(m => m.CommentId.Equals(commentId));
+            var entry = database.Comments.Get(m => m.CommentId.Equals(commentId));
             return Mapper.Map<Comment, CommentDTO>(entry);
         }
 
         public void Delete(int commentId)
         {
-            var comment = database.Comments.GetSingle(m => m.CommentId.Equals(commentId));
+            var comment = database.Comments.Get(m => m.CommentId.Equals(commentId));
             if (HasChildren(comment))
             {
                 comment.Content = "<Message deleted>";
@@ -114,7 +114,7 @@ namespace GameStore.BLL.Services
                 throw new ValidationException("No content received");
             }
 
-            var entry = database.Comments.GetSingle(m => m.CommentId.Equals(comment.CommentId));
+            var entry = database.Comments.Get(m => m.CommentId.Equals(comment.CommentId));
             entry.Content = comment.Content;
             entry.Quote = comment.Quote;
             database.Comments.Update(entry);

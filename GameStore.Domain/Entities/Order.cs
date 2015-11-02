@@ -8,7 +8,7 @@ using System.Text;
 namespace GameStore.Domain.Entities
 {
     [MetadataType(typeof(OrderMetadata))]
-    public partial class Order
+    public partial class Order : BaseEntity
     {
         public int OrderId { get; set; }
         public string CustomerId { get; set; }
