@@ -73,6 +73,7 @@
     <Compile Include="BLLTests\GameServiceTests.cs" />
     <Compile Include="BLLTests\GenreServiceTests.cs" />
     <Compile Include="BLLTests\OrderServiceTests.cs" />
+    <Compile Include="BLLTests\PlatformTypeServiceTests.cs" />
     <Compile Include="BLLTests\PublisherServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebTests\CommentControllerTests.cs" />

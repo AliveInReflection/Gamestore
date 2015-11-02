@@ -70,16 +70,21 @@ namespace GameStore.BLL.Services
             {
                 throw new ValidationException("No content received");
             }
-
-            var entry = database.Genres.GetSingle(m => m.GenreName.Equals(genre.GenreName));
-            if (entry.GenreId != genre.GenreId)
+            try
             {
-                throw new ValidationException("Another genre with the same name exists");
+                var entry = database.Genres.GetSingle(m => m.GenreName.Equals(genre.GenreName));
+                if (entry.GenreId != genre.GenreId)
+                {
+                    throw new ValidationException("Another genre with the same name exists");
+                }
             }
-
-            var genreToSave = Mapper.Map(genre, entry);
-            database.Genres.Update(genreToSave);
-            database.Save();
+            catch (InvalidOperationException)
+            {
+                var entry = database.Genres.GetSingle(m => m.GenreId.Equals(genre.GenreId));
+                var genreToSave = Mapper.Map(genre, entry);
+                database.Genres.Update(genreToSave);
+                database.Save();
+            }
         }
 
         public void Delete(int genreId)

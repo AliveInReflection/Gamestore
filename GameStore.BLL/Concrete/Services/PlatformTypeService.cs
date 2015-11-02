@@ -74,15 +74,22 @@ namespace GameStore.BLL.Services
                 throw new ValidationException("No content received");
             }
 
-            var entry = database.PlatformTypes.GetSingle(m => m.PlatformTypeName.Equals(platformType.PlatformTypeName));
-            if (entry.PlatformTypeId != platformType.PlatformTypeId)
+            try
             {
-                throw new ValidationException("Another platform type with the same name exists");
+                var entry =
+                    database.PlatformTypes.GetSingle(m => m.PlatformTypeName.Equals(platformType.PlatformTypeName));
+                if (entry.PlatformTypeId != platformType.PlatformTypeId)
+                {
+                    throw new ValidationException("Another platform type with the same name exists");
+                }
             }
-
-            var platformTypeToSave = Mapper.Map(platformType, entry);
-            database.PlatformTypes.Update(platformTypeToSave);
-            database.Save();
+            catch (InvalidOperationException)
+            {
+                var entry = database.PlatformTypes.GetSingle(m => m.PlatformTypeId.Equals(platformType.PlatformTypeId));
+                var platformTypeToSave = Mapper.Map(platformType, entry);
+                database.PlatformTypes.Update(platformTypeToSave);
+                database.Save();
+            }
         }
 
         public void Delete(int platformTypeId)

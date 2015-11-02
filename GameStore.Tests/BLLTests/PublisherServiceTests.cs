@@ -38,14 +38,16 @@ namespace GameStore.Tests.BLLTests
                     PublisherId = 1,
                     CompanyName = "Blizzard",
                     Description = "The best company in the world",
-                    HomePage = "battle.net"
+                    HomePage = "battle.net",
+                    Games = new List<Game>()
                 },
                 new Publisher()
                 {
                     PublisherId = 2,
                     CompanyName = "Electronic Arts",
                     Description = "Only fast",
-                    HomePage = "www.needforspeed.com"
+                    HomePage = "www.needforspeed.com",
+                    Games = new List<Game>{new Game()}
                 }
             };
         }
@@ -61,13 +63,13 @@ namespace GameStore.Tests.BLLTests
             mock.Setup(x => x.Publishers.Create(It.IsAny<Publisher>())).Callback((Publisher publisher) => publishers.Add(publisher));
             mock.Setup(x => x.Publishers.Update(It.IsAny<Publisher>())).Callback((Publisher publisher) =>
             {
-                var entry = publishers.Where(m => m.PublisherId.Equals(publisher.PublisherId)).First();
+                var entry = publishers.First(m => m.PublisherId.Equals(publisher.PublisherId));
                 entry.CompanyName = publisher.CompanyName;
                 entry.HomePage = publisher.HomePage;
                 entry.Description = entry.Description;
             });
             mock.Setup(x => x.Publishers.Delete(It.IsAny<int>()))
-                .Callback((int id) => publishers.Remove(publishers.Where(m => m.PublisherId.Equals(id)).First()));
+                .Callback((int id) => publishers.Remove(publishers.First(m => m.PublisherId.Equals(id))));
         }
 
         private void InitializeTestEntities()
@@ -79,7 +81,8 @@ namespace GameStore.Tests.BLLTests
                     PublisherId = 3,
                     CompanyName = "Valve",
                     Description = "Conquire the world",
-                    HomePage = "www.valve.com"
+                    HomePage = "www.valve.com",
+                    Games = new List<GameDTO>()
                 };
 
             publisherToUpdate = new PublisherDTO()
@@ -87,7 +90,8 @@ namespace GameStore.Tests.BLLTests
                     PublisherId = 2,
                     CompanyName = "Electronic Arts",
                     Description = "Only fast updated",
-                    HomePage = "www.needforspeed.com 1"
+                    HomePage = "www.needforspeed.com 1",
+                    Games = new List<GameDTO>()
                 };
 
             existedCompanyName = "Blizzard";
@@ -140,11 +144,34 @@ namespace GameStore.Tests.BLLTests
         }
 
         [TestMethod]
+        public void Get_Publisher_By_Id_Is_Not_Null()
+        {
+            var publisher = service.Get(1);
+
+            Assert.IsNotNull(publisher);
+        }
+
+        [TestMethod]
         public void Get_All_Publishers_Is_Not_Null()
         {
             var publisherEntries = service.GetAll();
 
             Assert.IsNotNull(publisherEntries);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof (ValidationException))]
+        public void Update_Publisher_With_Null_Refference_Expected_Exception()
+        {
+            service.Update(null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ValidationException))]
+        public void Update_Publisher_With_Existed_Company_Name_Expected_Exception()
+        {
+            publisherToUpdate.PublisherId = 10;
+            service.Update(publisherToUpdate);
         }
 
         [TestMethod]
@@ -157,6 +184,23 @@ namespace GameStore.Tests.BLLTests
             Assert.AreEqual(publisherToUpdate.CompanyName, entry.CompanyName);
             Assert.AreEqual(publisherToUpdate.Description, entry.Description);
             Assert.AreEqual(publisherToUpdate.HomePage, entry.HomePage);
+        }
+
+        [TestMethod]
+        public void Remove_Publisher()
+        {
+            var expectedCount = publishers.Count - 1;
+            
+            service.Delete(1);
+
+            Assert.AreEqual(expectedCount, publishers.Count);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ValidationException))]
+        public void Remove_Publisher_With_Published_Games_Expected_Exception()
+        {
+            service.Delete(2);
         }
 
 
