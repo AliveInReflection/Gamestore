@@ -14,7 +14,7 @@ namespace GameStore.WebUI.Models
         public DisplayGameViewModel Product { get; set; }
 
         [Display(Name="Quantity")]
-        public Int16 Quantity { get; set; }
+        public short Quantity { get; set; }
 
         [Display(Name="Discount")]
         public float Discount { get; set; } 

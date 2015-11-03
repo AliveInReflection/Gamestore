@@ -10,17 +10,20 @@ using GameStore.BLL.Interfaces;
 using GameStore.WebUI.Abstract;
 using GameStore.WebUI.Infrastructure;
 using GameStore.WebUI.Models;
+using GameStore.BLL.Infrastructure;
+using GameStore.Logger.Interfaces;
 
 namespace GameStore.WebUI.Controllers
 {
     public class OrderController : Controller
     {
         private IOrderService orderService;
-        
+        private IGameStoreLogger logger;
 
-        public OrderController(IOrderService orderService)
+        public OrderController(IOrderService orderService, IGameStoreLogger logger)
         {
             this.orderService = orderService;
+            this.logger = logger;
         }
 
 
@@ -32,9 +35,10 @@ namespace GameStore.WebUI.Controllers
             {
                 orderService.AddItem(sessionId, gameKey, quantity);
             }
-            catch (Exception)
+            catch (ValidationException e)
             {
-                TempData["ErrorMessage"] = "Error";
+                logger.Warn(e);
+                TempData["ErrorMessage"] = "Validation error";
             }
             return RedirectToAction("Index", "Game");
 

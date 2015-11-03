@@ -34,7 +34,7 @@
             @Html.LabelFor(model => model.PublisherId)
         </td>
         <td class="editor-field">
-            @Html.DropDownListFor(model => model.PublisherId, ViewBag.Publishers as IEnumerable<SelectListItem>)
+            @Html.DropDownListFor(model => model.PublisherId, Model.Publishers)
             @Html.ValidationMessageFor(model => model.PublisherId)
         </td>
     </tr>
@@ -43,7 +43,7 @@
             @Html.LabelFor(model => model.GenreIds)
         </td>
         <td class="editor-field">
-            @Html.ListBoxFor(m => m.GenreIds, ViewBag.Genres as IEnumerable<SelectListItem>)
+            @Html.ListBoxFor(m => m.GenreIds, Model.Genres)
             @Html.ValidationMessageFor(model => model.GenreIds)
         </td>
     </tr>
@@ -52,7 +52,7 @@
             @Html.LabelFor(model => model.PlatformTypeIds)
         </td>
         <td class="editor-field">
-            @Html.ListBoxFor(m => m.PlatformTypeIds, ViewBag.PlatformTypes as IEnumerable<SelectListItem>)
+            @Html.ListBoxFor(m => m.PlatformTypeIds, Model.PlatformTypes)
             @Html.ValidationMessageFor(model => model.PlatformTypeIds)
         </td>
     </tr>

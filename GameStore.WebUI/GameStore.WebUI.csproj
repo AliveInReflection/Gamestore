@@ -46,8 +46,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -301,6 +301,7 @@
     <Content Include="Views\Publisher\Index.cshtml" />
     <Content Include="Views\Publisher\New.cshtml" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <Content Include="Views\Shared\EditorTemplates\UpdateGameViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Logs\ErrorsLog\" />
@@ -333,10 +334,9 @@
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\Game\Create.cshtml" />
+    <Content Include="Views\Game\New.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CreateGameViewModel.cshtml" />
     <Content Include="Views\Game\Update.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\EditGameViewModel.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
     <Content Include="Views\Game\Details.cshtml" />
     <Content Include="Views\Publisher\Details.cshtml" />

@@ -9,8 +9,8 @@ namespace GameStore.BLL.Interfaces
 {
     public interface IGameService
     {
-        void Create(GameDTO game, IEnumerable<int> genreIds, IEnumerable<int> platformTypeIds);
-        void Update(GameDTO game, IEnumerable<int> genreIds, IEnumerable<int> platformTypeIds);
+        void Create(GameDTO game);
+        void Update(GameDTO game);
         void Delete(int gameId);
         
         GameDTO Get(string gameKey);

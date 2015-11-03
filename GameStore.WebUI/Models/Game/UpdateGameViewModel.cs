@@ -10,7 +10,7 @@ namespace GameStore.WebUI.Models
     public class UpdateGameViewModel
     {
         [Required]
-        [HiddenInput(DisplayValue = false)]
+        [HiddenInput]
         public int GameId { get; set; }
 
         [Required]
@@ -47,16 +47,19 @@ namespace GameStore.WebUI.Models
         public DateTime ReceiptDate { get; set; }
 
         [Required]
-        [Display(Name = "Publisher")]
+        [Display(Name = "Pablisher")]
         public int PublisherId { get; set; }
+        public IEnumerable<SelectListItem> Publishers { get; set; }
 
         [Required]
         [Display(Name = "Genres")]
         public IEnumerable<int> GenreIds { get; set; }
+        public IEnumerable<SelectListItem> Genres { get; set; }
 
         [Required]
         [Display(Name = "Platforms")]
         public IEnumerable<int> PlatformTypeIds { get; set; }
+        public IEnumerable<SelectListItem> PlatformTypes { get; set; }
 
     }
 }

@@ -16,7 +16,7 @@ namespace GameStore.Domain.Metadata
         public int OrderDetailsId { get; set; }
 
         [Required]
-        public Int16 Quantity { get; set; }
+        public short Quantity { get; set; }
 
         [Required]
         public float Discount { get; set; }

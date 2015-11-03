@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using GameStore.BLL.DTO;
 using GameStore.BLL.Infrastructure;
+using GameStore.Logger.Interfaces;
 using GameStore.WebUI.Models;
 
 namespace GameStore.WebUI.Controllers
@@ -14,10 +15,12 @@ namespace GameStore.WebUI.Controllers
     public class CommentController : Controller
     {
         private ICommentService commentService;
+        private IGameStoreLogger logger;
 
-        public CommentController(ICommentService commentService)
+        public CommentController(ICommentService commentService, IGameStoreLogger logger)
         {
             this.commentService = commentService;
+            this.logger = logger;
         }
 
         public ActionResult Index(string gameKey)
@@ -42,9 +45,10 @@ namespace GameStore.WebUI.Controllers
             {
                 commentService.Create(gameKey, Mapper.Map<CreateCommentViewModel, CommentDTO>(comment));
             }
-            catch (Exception e)
+            catch (ValidationException e)
             {
-                TempData["ErrorMessage"] = "Error";
+                logger.Warn(e);
+                TempData["ErrorMessage"] = "Validation error";
             }
 
             return RedirectToAction("Index", "Comment", new{gameKey = gameKey});
@@ -57,9 +61,10 @@ namespace GameStore.WebUI.Controllers
             {
                 commentService.Delete(commentId);
             }
-            catch (Exception e)
+            catch (ValidationException e)
             {
-                TempData["ErrorMessage"] = "Error"; 
+                logger.Warn(e);
+                TempData["ErrorMessage"] = "Validation error"; 
             }
             return RedirectToAction("Index", "Comment", new {gameKey = gameKey});
         }
@@ -72,12 +77,12 @@ namespace GameStore.WebUI.Controllers
                 ViewBag.GameKey = gameKey;
                 return View(Mapper.Map<CommentDTO, UpdateCommentViewModel>(comment));
             }
-            catch (Exception)
+            catch (ValidationException e)
             {
-                TempData["ErrorMessage"] = "Error";
-                return RedirectToAction("List", "Comment", new { gameKey = gameKey });
+                logger.Warn(e);
+                TempData["ErrorMessage"] = "Validation error";
             }
-            
+            return RedirectToAction("Index", "Comment", new { gameKey = gameKey });
         }
 
         [HttpPost]
@@ -91,18 +96,14 @@ namespace GameStore.WebUI.Controllers
             try
             {
                 commentService.Update(Mapper.Map<UpdateCommentViewModel, CommentDTO>(comment));
-                return RedirectToAction("List", "Comment", new { gameKey = gameKey });
+                return RedirectToAction("Index", "Comment", new { gameKey = gameKey });
             }
             catch (ValidationException e)
             {
+                logger.Warn(e);
                 ModelState.AddModelError("CommentId", e.Message);
                 return View(comment);
             }
-        }
-
-        public ActionResult Ban(int userId)
-        {
-            return View();
-        }       
+        }     
     }
 }

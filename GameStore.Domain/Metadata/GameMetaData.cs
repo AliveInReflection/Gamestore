@@ -27,7 +27,7 @@ namespace GameStore.Domain.Entities
         public decimal Price { get; set; }
 
         [Required]
-        public Int16 UnitsInStock { get; set; }
+        public short UnitsInStock { get; set; }
 
         [Required]
         public Boolean Discontinued { get; set; }

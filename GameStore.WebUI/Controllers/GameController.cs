@@ -11,6 +11,7 @@ using System.Web.Mvc;
 using GameStore.BLL.DTO;
 using GameStore.WebUI.Models;
 using AutoMapper;
+using GameStore.Logger.Interfaces;
 using GameStore.WebUI.Infrastructure;
 
 namespace GameStore.WebUI.Controllers
@@ -21,14 +22,16 @@ namespace GameStore.WebUI.Controllers
         private IGenreService genreService;
         private IPlatformTypeService platformTypeService;
         private IPublisherService publisherService;
+        private IGameStoreLogger logger;
 
 
-        public GameController(IGameService gameService, IGenreService genreService, IPlatformTypeService platformTypeService, IPublisherService publisherService)
+        public GameController(IGameService gameService, IGenreService genreService, IPlatformTypeService platformTypeService, IPublisherService publisherService, IGameStoreLogger logger)
         {
             this.gameService = gameService;
             this.genreService = genreService;
             this.platformTypeService = platformTypeService;
             this.publisherService = publisherService;
+            this.logger = logger;
         }
 
         public ActionResult Index(FilteringViewModel filter)
@@ -51,7 +54,7 @@ namespace GameStore.WebUI.Controllers
         {
             var game = gameService.Get(gameKey);
 
-            var gameMV = BuildDisplayGameViewModel(game);
+            var gameMV = Mapper.Map<GameDTO, DisplayGameViewModel>(game);
 
             return View(gameMV);
         }
@@ -59,44 +62,71 @@ namespace GameStore.WebUI.Controllers
         [ActionName("New")]
         public ActionResult Create()
         {
-            var genres = genreService.GetAll();
-            ViewBag.Genres = ConvertGenresToSelectListItems(genres);
-
-            var pts = platformTypeService.GetAll();
-            ViewBag.PlatformTypes = ConvertPlatformTypesToSelectListItems(pts);
-
-            var publishers = convertPublishersToSelectListItems(publisherService.GetAll());
-            ViewBag.Publishers = publishers;
-
-            return View(new CreateGameViewModel());
-
+            var viewModel = new CreateGameViewModel();
+            viewModel.Genres = Mapper.Map<IEnumerable<GenreDTO>, IEnumerable<SelectListItem>>(genreService.GetAll());
+            viewModel.PlatformTypes = Mapper.Map<IEnumerable<PlatformTypeDTO>, IEnumerable<SelectListItem>>(platformTypeService.GetAll());
+            viewModel.Publishers = Mapper.Map<IEnumerable<PublisherDTO>, IEnumerable<SelectListItem>>(publisherService.GetAll());
+            return View(viewModel);
         }
 
         [HttpPost]
+        [ActionName("New")]
         public ActionResult Create(CreateGameViewModel game)
         {
             if (!ModelState.IsValid)
             {
-                var genres = genreService.GetAll();
-                ViewBag.Genres = ConvertGenresToSelectListItems(genres);
-
-                var pts = platformTypeService.GetAll();
-                ViewBag.PlatformTypes = ConvertPlatformTypesToSelectListItems(pts);
-
-                var publishers = convertPublishersToSelectListItems(publisherService.GetAll());
-                ViewBag.Publishers = publishers;
+                game.Genres = Mapper.Map<IEnumerable<GenreDTO>, IEnumerable<SelectListItem>>(genreService.GetAll());
+                game.PlatformTypes = Mapper.Map<IEnumerable<PlatformTypeDTO>, IEnumerable<SelectListItem>>(platformTypeService.GetAll());
+                game.Publishers = Mapper.Map<IEnumerable<PublisherDTO>, IEnumerable<SelectListItem>>(publisherService.GetAll());
 
                 return View(game);
             }
-            var gameToSave = Mapper.Map<CreateGameViewModel, GameDTO>(game);
-            gameService.Create(gameToSave, game.GenreIds, game.PlatformTypeIds);
-            return RedirectToAction("List");
+
+            try
+            {
+                var gameToSave = Mapper.Map<CreateGameViewModel, GameDTO>(game);
+                gameService.Create(gameToSave);
+            }
+            catch (ValidationException e)
+            {
+               logger.Warn(e);
+               TempData["ErrorMessage"] = "Validation error";
+            }
+            
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Update(string gameKey)
+        {
+            var viewModel = Mapper.Map<GameDTO, UpdateGameViewModel>(gameService.Get(gameKey));
+            viewModel.Genres = Mapper.Map<IEnumerable<GenreDTO>, IEnumerable<SelectListItem>>(genreService.GetAll());
+            viewModel.PlatformTypes = Mapper.Map<IEnumerable<PlatformTypeDTO>, IEnumerable<SelectListItem>>(platformTypeService.GetAll());
+            viewModel.Publishers = Mapper.Map<IEnumerable<PublisherDTO>, IEnumerable<SelectListItem>>(publisherService.GetAll());
+            return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult Update(GameDTO game)
+        public ActionResult Update(UpdateGameViewModel game)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                game.Genres = Mapper.Map<IEnumerable<GenreDTO>, IEnumerable<SelectListItem>>(genreService.GetAll());
+                game.PlatformTypes = Mapper.Map<IEnumerable<PlatformTypeDTO>, IEnumerable<SelectListItem>>(platformTypeService.GetAll());
+                game.Publishers = Mapper.Map<IEnumerable<PublisherDTO>, IEnumerable<SelectListItem>>(publisherService.GetAll());
+                return View(game);
+            }
+            try
+            {
+                var gameToUpdate = Mapper.Map<UpdateGameViewModel, GameDTO>(game);
+                gameService.Update(gameToUpdate);
+            }
+            catch (ValidationException e)
+            {
+                logger.Warn(e);
+                TempData["ErrorMessage"] = "Validation error";
+            }
+
+            return RedirectToAction("Index");
 
         }
 
@@ -108,11 +138,12 @@ namespace GameStore.WebUI.Controllers
             {
                 gameService.Delete(gameId);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                
+                logger.Warn(e);
+                TempData["ErrorMessage"] = "Validation error";
             }
-            return RedirectToAction("List", "Game");
+            return RedirectToAction("Index");
         }
 
 
@@ -132,103 +163,48 @@ namespace GameStore.WebUI.Controllers
                 var rootPath = Server.MapPath("~/App_Data/Binary/");
                 byte[] fileBytes = System.IO.File.ReadAllBytes(rootPath + "game.data");
                 string fileName = "game.data";
-                return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+                return File(fileBytes, MediaTypeNames.Application.Octet, fileName);
             }
-            catch (ValidationException e)
+            catch (InvalidOperationException e)
             {
-                return Json("Validation error");
+                logger.Warn(e);
+                TempData["ErrorMessage"] = "Game not found";
             }
+            return RedirectToAction("Index");
         }
         
 
         #region Private helpers
-
-        private IEnumerable<SelectListItem> ConvertGenresToSelectListItems(IEnumerable<GenreDTO> genres)
-        {
-            return genres.Select(m => new SelectListItem()
-            {
-                Value = m.GenreId.ToString(),
-                Text = m.GenreName
-            });
-        }
-        private IEnumerable<SelectListItem> ConvertPlatformTypesToSelectListItems(IEnumerable<PlatformTypeDTO> pts)
-        {
-            return pts.Select(m => new SelectListItem()
-            {
-                Value = m.PlatformTypeId.ToString(),
-                Text = m.PlatformTypeName
-            });
-        }
-        private IEnumerable<SelectListItem> convertPublishersToSelectListItems(IEnumerable<PublisherDTO> publishers)
-        {
-            return publishers.Select(m => new SelectListItem()
-            {
-                Value = m.PublisherId.ToString(),
-                Text = m.CompanyName
-            });
-        }
-        private DisplayGameViewModel BuildDisplayGameViewModel(GameDTO game)
-        {
-            var gameVM = Mapper.Map<GameDTO, DisplayGameViewModel>(game);
-            return gameVM;
-        }
 
         
         private void UpdateFilterViewModel(FilteringViewModel filter)
         {
             if (filter.Genres == null)
             {
-                filter.Genres = genreService.GetAll().Select(m => new CheckBoxViewModel()
-                {
-                    Id = m.GenreId,
-                    Text = m.GenreName
-                }).ToList();
+                filter.Genres = Mapper.Map<IEnumerable<GenreDTO>, List<CheckBoxViewModel>>(genreService.GetAll());
             }
 
             if (filter.PlatformTypes == null)
             {
-                filter.PlatformTypes = platformTypeService.GetAll().Select(m => new CheckBoxViewModel()
-                {
-                    Id = m.PlatformTypeId,
-                    Text = m.PlatformTypeName
-                }).ToList();
+                filter.PlatformTypes = Mapper.Map<IEnumerable<PlatformTypeDTO>, List<CheckBoxViewModel>>(platformTypeService.GetAll());
             }
-
 
             if (filter.Publishers == null)
             {
-                filter.Publishers = publisherService.GetAll().Select(m => new CheckBoxViewModel()
-                {
-                    Id = m.PublisherId,
-                    Text = m.CompanyName
-                }).ToList();
+                filter.Publishers = Mapper.Map<IEnumerable<PublisherDTO>, List<CheckBoxViewModel>>(publisherService.GetAll());
             }
 
-            filter.ItemsPerPageList = PagingManager.GetKeys().Select(m => new SelectListItem()
-            {
-                Text = m,
-                Value = m,
-                Selected = m == filter.SortBy
-            }).ToList();
+            filter.ItemsPerPageList = Mapper.Map<IEnumerable<string>, List<SelectListItem>>(PagingManager.GetKeys());
 
-            filter.SortByItems = GameSortingModeManager.GetKeys().Select(m => new SelectListItem()
-            {
-                Text = m,
-                Value = m,
-                Selected = m == filter.SortBy
-            }).ToList();
+            filter.SortByItems = Mapper.Map<IEnumerable<string>, List<SelectListItem>>(GameSortingModeManager.GetKeys());
 
             if (filter.PublishingDates == null)
             {
-                filter.PublishingDates = GamePublishingDateFilteringManager.GetKeys().Select(m => new RadiobuttonViewModel()
-                {
-                    SelectedValue = m
-                }).ToList();
+                filter.PublishingDates = Mapper.Map<IEnumerable<string>, List<RadiobuttonViewModel>>(GamePublishingDateFilteringManager.GetKeys());
             }
 
             filter.CurrentPage = filter.CurrentPage == 0 ? 1 : filter.CurrentPage;
-            filter.ItemsPerPage = filter.ItemsPerPage == null ? 10.ToString() : filter.ItemsPerPage;
-
+            filter.ItemsPerPage = filter.ItemsPerPage ?? 10.ToString();
 
         }
 

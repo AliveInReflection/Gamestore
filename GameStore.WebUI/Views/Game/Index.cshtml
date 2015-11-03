@@ -7,7 +7,7 @@
 }
 
 <h2>Games in the store</h2>
-<div class="pull-right">@Html.ActionLink("Add new", "Create", "Game")</div>
+<div class="pull-right">@Html.ActionLink("Add new", "New", "Game")</div>
 <table class="table table-condensed">
     <tr>
         <th>Game key</th>
@@ -55,7 +55,7 @@
 
 @section LeftSideBar
 {
-    @using (Html.BeginForm("List", "Game"))
+    @using (Html.BeginForm("Index", "Game"))
     {
         @Html.EditorFor(m => m.Filter,"FilteringViewModel", "filter")
         <p>
