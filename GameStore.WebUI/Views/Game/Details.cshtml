@@ -79,7 +79,7 @@
 </p>
 
 <p>
-    @using (Html.BeginForm("Delete", "Game"))
+    @using (Html.BeginForm("Remove", "Game"))
     {
         @Html.Hidden("gameId", Model.GameId)
         <input type="submit" value="Delete" />
@@ -99,5 +99,5 @@
 
 <p>
     @Html.ActionLink("Download", "Download", "Game", new{ gameKey=Model.GameKey}, new{ target="_blank"})
-    @Html.ActionLink("Comments", "List", "Comment", new{gameKey = Model.GameKey}, null)
+    @Html.ActionLink("Comments", "Index", "Comment", new{gameKey = Model.GameKey}, null)
 </p>

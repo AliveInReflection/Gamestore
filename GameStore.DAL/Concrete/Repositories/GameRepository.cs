@@ -31,7 +31,7 @@ namespace GameStore.DAL.Concrete.Repositories
 
         public void Delete(int id)
         {
-            var entry = context.Genres.First(m => m.GenreId.Equals(id));
+            var entry = context.Games.First(m => m.GameId.Equals(id));
             entry.IsDeleted = true;
         }
 

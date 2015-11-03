@@ -8,28 +8,42 @@ using GameStore.BLL.DTO;
 using GameStore.BLL.Interfaces;
 using GameStore.WebUI.Models;
 using GameStore.BLL.Infrastructure;
+using GameStore.Logger.Interfaces;
 
 namespace GameStore.WebUI.Controllers
 {
     public class PublisherController : Controller
     {
         private IPublisherService publisherService;
+        private IGameStoreLogger logger;
 
-        public PublisherController(IPublisherService publisherService)
+        public PublisherController(IPublisherService publisherService, IGameStoreLogger logger)
         {
             this.publisherService = publisherService;
+            this.logger = logger;
         }
 
         public ActionResult Index()
         {
-            return View();
+            var publishers = publisherService.GetAll();
+            return View(Mapper.Map<IEnumerable<PublisherDTO>, IEnumerable<DisplayPublisherViewModel>>(publishers));
         }
 
         [HttpGet]
         public ActionResult Details(string companyName)
         {
-            var publisher = publisherService.Get(companyName);
-            return View(Mapper.Map<PublisherDTO, DisplayPublisherViewModel>(publisher));
+            try
+            {
+                var publisher = publisherService.Get(companyName);
+                return View(Mapper.Map<PublisherDTO, DisplayPublisherViewModel>(publisher));
+            }
+            catch (InvalidOperationException e)
+            {
+                logger.Warn(e);
+                TempData["ErrorMessage"] = "Not found";
+                return RedirectToAction("Index");
+            }
+            
         }
 
         [HttpGet]
@@ -40,29 +54,39 @@ namespace GameStore.WebUI.Controllers
         }
 
         [HttpPost]
+        [ActionName("New")]
         public ActionResult Create(CreatePublisherViewModel publisher)
         {
             if (!ModelState.IsValid)
             {
                 return View(publisher);
             }
-
-            publisherService.Create(Mapper.Map<CreatePublisherViewModel, PublisherDTO>(publisher));
-            return RedirectToAction("List", "Game");
+            try
+            {
+                publisherService.Create(Mapper.Map<CreatePublisherViewModel, PublisherDTO>(publisher));
+            }
+            catch (ValidationException e)
+            {
+                logger.Warn(e);
+                TempData["ErrorMessage"] = "Error";
+            }
+            
+            return RedirectToAction("Index");
 
         }
 
-        public ActionResult Update(int id)
+        public ActionResult Update(int publisherId)
         {
             try
             {
-                var publisher = publisherService.Get(id);
+                var publisher = publisherService.Get(publisherId);
                 return View(Mapper.Map<PublisherDTO, UpdatePublisherViewModel>(publisher));
             }
-            catch (Exception)
+            catch (InvalidOperationException e)
             {
-                TempData["ErrorMessage"] = "Error";
-                return RedirectToAction("List", "Game");
+                logger.Warn(e);
+                TempData["ErrorMessage"] = "Not found";
+                return RedirectToAction("Index", "Game");
             }
         }
 
@@ -77,14 +101,30 @@ namespace GameStore.WebUI.Controllers
             try
             {
                 publisherService.Update(Mapper.Map<UpdatePublisherViewModel, PublisherDTO>(publisher));
-                return RedirectToAction("List", "Game");
+                return RedirectToAction("Index");
             }
             catch (ValidationException e)
             {
+                logger.Warn(e);
                 ModelState.AddModelError("PublisherId", e.Message);
                 return View(publisher);
             }
 
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int publisherId)
+        {
+            try
+            {
+                publisherService.Delete(publisherId);
+            }
+            catch (ValidationException e)
+            {
+                logger.Warn(e);
+                TempData["ErrorMessage"] = "Error";
+            }
+            return RedirectToAction("Index");
         }
 
         

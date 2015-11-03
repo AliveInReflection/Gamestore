@@ -31,7 +31,7 @@ namespace GameStore.WebUI.Controllers
             this.publisherService = publisherService;
         }
 
-        public ActionResult List(FilteringViewModel filter)
+        public ActionResult Index(FilteringViewModel filter)
         {
             var model = new FilteredGamesViewModel();
             UpdateFilterViewModel(filter);
@@ -56,6 +56,7 @@ namespace GameStore.WebUI.Controllers
             return View(gameMV);
         }
 
+        [ActionName("New")]
         public ActionResult Create()
         {
             var genres = genreService.GetAll();

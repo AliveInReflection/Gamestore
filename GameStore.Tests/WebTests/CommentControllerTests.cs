@@ -31,9 +31,9 @@ namespace GameStore.Tests.WebTests
         {
             comments = new List<CommentDTO>
             {
-                new CommentDTO() {CommentId = 1, UserId = 1, Content = "Is it miltiplayer only?"},
-                new CommentDTO() { CommentId = 2, UserId = 2, Content = "No. It has offline mode to play with bots."},
-                new CommentDTO() { CommentId = 3, UserId = 3, Content = "Nice game"}
+                new CommentDTO() {CommentId = 1, UserName = "Pol", Content = "Is it miltiplayer only?"},
+                new CommentDTO() { CommentId = 2, UserName = "John", Content = "No. It has offline mode to play with bots."},
+                new CommentDTO() { CommentId = 3, UserName = "Lissa", Content = "Nice game"}
             };
         }
 
@@ -70,7 +70,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Comment_List_Model_Is_Not_Null()
         {
-            var result = controller.List(testGameKey) as ViewResult;
+            var result = controller.Index(testGameKey) as ViewResult;
 
             Assert.IsNotNull(result.Model);
         }

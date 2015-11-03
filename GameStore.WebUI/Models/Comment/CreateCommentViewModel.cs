@@ -11,7 +11,7 @@ namespace GameStore.WebUI.Models
     {
         [Required]
         [Display(Name = "Name")]
-        public int UserName { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [MinLength(5)]

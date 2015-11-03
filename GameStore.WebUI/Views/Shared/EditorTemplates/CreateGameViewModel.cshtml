@@ -88,7 +88,7 @@
             @Html.LabelFor(model => model.PublicationDate)
         </td>
         <td class="editor-field">
-            @Html.EditorFor(model => model.PublicationDate, Model.PublicationDate.ToShortDateString())
+            @Html.TextBox("PublicationDate", Model.PublicationDate.ToShortDateString(),new{ type = "date"})
             @Html.ValidationMessageFor(model => model.PublicationDate)
         </td>
     </tr>

@@ -175,6 +175,7 @@
     <Compile Include="Infrastructure\PaymentManager.cs" />
     <Compile Include="Infrastructure\GamePublishingDateFilteringManager.cs" />
     <Compile Include="Models\CheckBoxViewModel.cs" />
+    <Compile Include="Models\Comment\CommentViewModel.cs" />
     <Compile Include="Models\Comment\DisplayCommentViewModel.cs" />
     <Compile Include="Models\Comment\CreateCommentViewModel.cs" />
     <Compile Include="Models\Genre\CreateGenreViewModel.cs" />
@@ -206,12 +207,47 @@
     <Content Include="Content\Styles\bootstrap.min.css" />
     <Content Include="Content\Styles\Content.css" />
     <Content Include="Content\Styles\Main.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Global.asax" />
-    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\Comment\Comment.js" />
     <Content Include="Scripts\Game\pagination.js" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
     <Content Include="Scripts\jquery-ui-1.11.4\external\jquery\jquery.js" />
     <Content Include="Scripts\jquery-ui-1.11.4\images\ui-bg_flat_30_cccccc_40x100.png" />
     <Content Include="Scripts\jquery-ui-1.11.4\images\ui-bg_flat_50_5c5c5c_40x100.png" />
@@ -236,6 +272,13 @@
     <Content Include="Scripts\jquery-ui-1.11.4\jquery-ui.structure.min.css" />
     <Content Include="Scripts\jquery-ui-1.11.4\jquery-ui.theme.css" />
     <Content Include="Scripts\jquery-ui-1.11.4\jquery-ui.theme.min.css" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Views\Shared\EditorTemplates\RadiobuttonViewModel.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -247,7 +290,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Scripts\jquery-2.1.4.min.map" />
     <Content Include="Views\Order\Details.cshtml" />
     <Content Include="Views\Order\Make.cshtml" />
     <Content Include="Views\Shared\Payment\VisaPayment.cshtml" />
@@ -256,6 +298,9 @@
     <Content Include="Views\Shared\EditorTemplates\FilteringViewModel.cshtml" />
     <Content Include="Views\Comment\Update.cshtml" />
     <Content Include="Views\Publisher\Update.cshtml" />
+    <Content Include="Views\Publisher\Index.cshtml" />
+    <Content Include="Views\Publisher\New.cshtml" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Logs\ErrorsLog\" />
@@ -292,13 +337,12 @@
     <Content Include="Views\Shared\EditorTemplates\CreateGameViewModel.cshtml" />
     <Content Include="Views\Game\Update.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\EditGameViewModel.cshtml" />
-    <Content Include="Views\Game\List.cshtml" />
+    <Content Include="Views\Game\Index.cshtml" />
     <Content Include="Views\Game\Details.cshtml" />
     <Content Include="Views\Publisher\Details.cshtml" />
-    <Content Include="Views\Publisher\Create.cshtml" />
     <Content Include="Views\Game\GetCount.cshtml" />
     <Content Include="Views\Comment\Get.cshtml" />
-    <Content Include="Views\Comment\List.cshtml" />
+    <Content Include="Views\Comment\Index.cshtml" />
     <Content Include="Views\Comment\Create.cshtml" />
   </ItemGroup>
   <PropertyGroup>

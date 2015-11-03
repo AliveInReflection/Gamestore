@@ -27,11 +27,19 @@ namespace GameStore.BLL.Services
                 throw new ValidationException("No content received");
             }
 
-            var gameEntry = database.Games.Get(m => m.GameKey.Equals(gameKey));
-            var userEntry = database.Users.Get(m => m.UserId.Equals(comment.UserId));
-
             var commentToSave = Mapper.Map<CommentDTO, Comment>(comment);
-            commentToSave.User = userEntry;
+
+            if (database.Users.IsExists(m => m.UserName.Equals(comment.UserName)))
+            {
+                var userEntry = database.Users.Get(m => m.UserName.Equals(comment.UserName));
+                commentToSave.User = userEntry;
+            }
+            else
+            {
+                commentToSave.User = new User() {UserName = comment.UserName};
+            }
+            
+            var gameEntry = database.Games.Get(m => m.GameKey.Equals(gameKey));
 
             if (comment.ParentCommentId != null)
             {
@@ -42,6 +50,7 @@ namespace GameStore.BLL.Services
             {
                 gameEntry.Comments.Add(commentToSave);
             }
+
             if (comment.QuoteId != null)
             {
                 var quotedComment = database.Comments.Get(m => m.CommentId.Equals(comment.QuoteId.Value));
@@ -54,9 +63,7 @@ namespace GameStore.BLL.Services
 
         public IEnumerable<CommentDTO> Get(string gameKey)
         {
-            var game = database.Games.Get(m => m.GameKey.Equals(gameKey));
-
-            var commentEntries = game.Comments;
+            var commentEntries = database.Comments.GetMany(m => m.Game.GameKey.Equals(gameKey));
 
             var comments = Mapper.Map<IEnumerable<Comment>, IEnumerable<CommentDTO>>(commentEntries);
 
@@ -88,6 +95,21 @@ namespace GameStore.BLL.Services
             database.Save();
         }
 
+        public void Update(CommentDTO comment)
+        {
+            if (comment == null)
+            {
+                throw new ValidationException("No content received");
+            }
+
+            var entry = database.Comments.Get(m => m.CommentId.Equals(comment.CommentId));
+            entry.Content = comment.Content;
+            entry.Quote = comment.Quote;
+            database.Comments.Update(entry);
+            database.Save();
+        }
+
+        #region privates
         private void GetChildComments(CommentDTO parent)
         {
             var childComments = database.Comments.GetMany(m => m.ParentComment.CommentId.Equals(parent.CommentId));
@@ -105,20 +127,7 @@ namespace GameStore.BLL.Services
             return children.Any();
         }
 
+        #endregion
 
-
-        public void Update(CommentDTO comment)
-        {
-            if (comment == null)
-            {
-                throw new ValidationException("No content received");
-            }
-
-            var entry = database.Comments.Get(m => m.CommentId.Equals(comment.CommentId));
-            entry.Content = comment.Content;
-            entry.Quote = comment.Quote;
-            database.Comments.Update(entry);
-            database.Save();
-        }
     }
 }

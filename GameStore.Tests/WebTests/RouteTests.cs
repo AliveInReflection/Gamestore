@@ -21,14 +21,14 @@ namespace GameStore.Tests.WebTests
         public void Default_Route()
         {
             RouteAssert.HasRoute(routes, "/",
-                new { controller = "Game", action = "List" });
+                new { controller = "Game", action = "Index" });
         }
 
         [TestMethod]
         public void Create_Game_Route()
         {
             RouteAssert.HasRoute(routes, "/games/new",
-                new { controller = "Game", action = "Create" });
+                new { controller = "Game", action = "New" });
         }
 
         [TestMethod]
@@ -49,7 +49,7 @@ namespace GameStore.Tests.WebTests
         public void Get_All_Games_Route()
         {
             RouteAssert.HasRoute(routes, "/games",
-                new { controller = "Game", action = "List"});
+                new { controller = "Game", action = "Index"});
         }
 
         //[TestMethod]
@@ -70,7 +70,7 @@ namespace GameStore.Tests.WebTests
         public void Get_Comments_For_Game_Route()
         {
             RouteAssert.HasRoute(routes, "/game/gamekey/comments",
-                new { controller = "Comment", action = "List", gamekey = "gamekey" });
+                new { controller = "Comment", action = "Index", gamekey = "gamekey" });
         }
 
         [TestMethod]
@@ -91,13 +91,13 @@ namespace GameStore.Tests.WebTests
         public void Publisher_Create_Route()
         {
             RouteAssert.HasRoute(routes, "/publisher/new",
-                new { controller = "Publisher", action = "Create"});
+                new { controller = "Publisher", action = "New"});
         }
 
         [TestMethod]
-        public void Busket_Route()
+        public void Basket_Route()
         {
-            RouteAssert.HasRoute(routes, "/busket",
+            RouteAssert.HasRoute(routes, "/basket",
                 new { controller = "Order", action = "Details" });
         }
 

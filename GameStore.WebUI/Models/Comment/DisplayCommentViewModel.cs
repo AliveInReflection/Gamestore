@@ -10,7 +10,7 @@ namespace GameStore.WebUI.Models
     public class DisplayCommentViewModel
     {
         public int CommentId { get; set; }
-        public int UserId { get; set; }
+        public string UserName { get; set; }
         public string Content { get; set; }
         public string Quote { get; set; }
         public IEnumerable<DisplayCommentViewModel> ChildComments { get; set; }

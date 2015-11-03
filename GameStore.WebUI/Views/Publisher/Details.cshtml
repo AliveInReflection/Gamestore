@@ -6,7 +6,7 @@
 }
 
 <h2>Details</h2>
-
+@Html.ActionLink("Update", "Update", new { publisherId = Model.PublisherId }) 
 <table class="table">
     <tr>
         <td class="display-label">
@@ -33,4 +33,9 @@
         </td>
     </tr>
 </table>
+@using (Html.BeginForm("Delete", "Publisher"))
+{
+    @Html.Hidden("publisherId", Model.PublisherId)
+    <input type="submit" value="Delete" />
+}
 

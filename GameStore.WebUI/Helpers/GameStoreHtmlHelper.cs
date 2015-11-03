@@ -19,7 +19,7 @@ namespace GameStore.WebUI.Helpers
                 var li = new TagBuilder("li");
                 var author = new TagBuilder("span");
                 author.AddCssClass("comment-author");
-                author.SetInnerText(comment.UserId.ToString() + ": ");
+                author.SetInnerText(comment.UserName + ": ");
 
                 var content = new TagBuilder("span");
                 content.AddCssClass("comment-content");
@@ -48,7 +48,7 @@ namespace GameStore.WebUI.Helpers
 
                 var banLink = new TagBuilder("a");
                 banLink.AddCssClass("comment-ban");
-                banLink.MergeAttribute("href", (new UrlHelper(HttpContext.Current.Request.RequestContext)).Action("Ban", "User", new{userId = comment.UserId}));
+                banLink.MergeAttribute("href", (new UrlHelper(HttpContext.Current.Request.RequestContext)).Action("Ban", "User", new{userName = comment.UserName}));
                 banLink.SetInnerText("Ban");
 
                 

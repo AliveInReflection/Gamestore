@@ -23,6 +23,8 @@ namespace GameStore.WebUI.Controllers
             this.orderService = orderService;
         }
 
+
+        [HttpPost]
         public ActionResult Add(string gameKey, short quantity = 1)
         {
             string sessionId = HttpContext.Session.SessionID;
@@ -34,28 +36,28 @@ namespace GameStore.WebUI.Controllers
             {
                 TempData["ErrorMessage"] = "Error";
             }
-            return RedirectToAction("List", "Game");
+            return RedirectToAction("Index", "Game");
 
         }
 
         [HttpGet]
         public ActionResult Details()
         {
-            var busket = orderService.GetCurrent(HttpContext.Session.SessionID);
-            return View(Mapper.Map<OrderDTO, OrderViewModel>(busket));
+            var basket = orderService.GetCurrent(HttpContext.Session.SessionID);
+            return View(Mapper.Map<OrderDTO, OrderViewModel>(basket));
         }
 
         public ActionResult Make()
         {
             string sessionId = HttpContext.Session.SessionID;            
-            var busket = orderService.GetCurrent(sessionId);
+            var basket = orderService.GetCurrent(sessionId);
             var methods = PaymentManager.GetAll();
             
             var order = new MakeOrderViewModel();
             
-            order.Order = Mapper.Map<OrderDTO,OrderViewModel>(busket);
+            order.Order = Mapper.Map<OrderDTO,OrderViewModel>(basket);
             order.PaymentMethods = Mapper.Map<IEnumerable<PaymentMethod>, IEnumerable<DisplayPaymentMethodViewModel>>(methods);
-            order.Amount = orderService.CalculateAmount(busket.OrderId);
+            order.Amount = orderService.CalculateAmount(basket.OrderId);
 
             return View(order);
         }
@@ -66,15 +68,15 @@ namespace GameStore.WebUI.Controllers
             try
             {
                 string sessionId = HttpContext.Session.SessionID;
-                var busket = orderService.GetCurrent(sessionId);
+                var basket = orderService.GetCurrent(sessionId);
 
                 var payment = PaymentManager.Get(paymentKey);
 
-                var amount = orderService.CalculateAmount(busket.OrderId);
+                var amount = orderService.CalculateAmount(basket.OrderId);
 
-                orderService.Make(busket.OrderId);
+                orderService.Make(basket.OrderId);
 
-                return payment.Payment.Pay(busket.OrderId, amount);
+                return payment.Payment.Pay(basket.OrderId, amount);
             }
             catch (Exception e)
             {

@@ -20,7 +20,6 @@ namespace GameStore.DAL.Concrete.Repositories
             this.context = context;
         }
 
-
         public void Create(Comment entity)
         {
             context.Entry(entity).State = EntityState.Added;

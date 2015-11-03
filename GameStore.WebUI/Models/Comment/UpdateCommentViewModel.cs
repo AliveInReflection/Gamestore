@@ -19,7 +19,7 @@ namespace GameStore.WebUI.Models
         public int? QuoteId { get; set; }
 
         [HiddenInput]
-        public int UserId { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [MinLength(5)]

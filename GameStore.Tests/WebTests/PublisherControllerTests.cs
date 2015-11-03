@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using GameStore.Logger.Concrete;
 
 namespace GameStore.Tests.WebTests
 {
@@ -73,7 +74,7 @@ namespace GameStore.Tests.WebTests
             InitializeMocks();
             InitializeTestEntities();
 
-            controller = new PublisherController(mock.Object);
+            controller = new PublisherController(mock.Object, new NLogAdapter());
         }
         #endregion
 

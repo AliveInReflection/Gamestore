@@ -37,7 +37,7 @@
     </xs:attribute>
     <xs:attribute name="globalThreshold" type="NLogLevel">
       <xs:annotation>
-        <xs:documentation>Global log level threshold for application log messages. Messages below this level won't be logged..</xs:documentation>
+        <xs:documentation>Global log level threshold for application log messages. Messages below this level won"t be logged..</xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="throwExceptions" type="xs:boolean">
@@ -56,7 +56,7 @@
     </xs:choice>
     <xs:attribute name="async" type="xs:boolean">
       <xs:annotation>
-        <xs:documentation>Make all targets within this section asynchronous (creates additional threads but the calling thread isn't blocked by any target writes).</xs:documentation>
+        <xs:documentation>Make all targets within this section asynchronous (creates additional threads but the calling thread isn"t blocked by any target writes).</xs:documentation>
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
@@ -93,7 +93,7 @@
     </xs:choice>
     <xs:attribute name="name" use="optional">
       <xs:annotation>
-        <xs:documentation>Name of the logger. May include '*' character which acts like a wildcard. Allowed forms are: *, Name, *Name, Name* and *Name*</xs:documentation>
+        <xs:documentation>Name of the logger. May include "*" character which acts like a wildcard. Allowed forms are: *, Name, *Name, Name* and *Name*</xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="levels" type="NLogLevelList">
@@ -346,7 +346,7 @@
         </xs:attribute>
         <xs:attribute name="flushTimeout" type="xs:integer">
           <xs:annotation>
-            <xs:documentation>Timeout (in milliseconds) after which the contents of buffer will be flushed if there's no write in the specified period of time. Use -1 to disable timed flushes.</xs:documentation>
+            <xs:documentation>Timeout (in milliseconds) after which the contents of buffer will be flushed if there"s no write in the specified period of time. Use -1 to disable timed flushes.</xs:documentation>
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="slidingTimeout" type="xs:boolean">
@@ -452,7 +452,7 @@
         </xs:attribute>
         <xs:attribute name="appInfo" type="xs:string">
           <xs:annotation>
-            <xs:documentation>AppInfo field. By default it's the friendly name of the current AppDomain.</xs:documentation>
+            <xs:documentation>AppInfo field. By default it"s the friendly name of the current AppDomain.</xs:documentation>
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="includeNdc" type="xs:boolean">
@@ -1425,7 +1425,7 @@
         </xs:attribute>
         <xs:attribute name="to" type="SimpleLayoutAttribute">
           <xs:annotation>
-            <xs:documentation>Recipients' email addresses separated by semicolons (e.g. john@domain.com;jane@domain.com).</xs:documentation>
+            <xs:documentation>Recipients" email addresses separated by semicolons (e.g. john@domain.com;jane@domain.com).</xs:documentation>
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="cc" type="SimpleLayoutAttribute">
@@ -1445,7 +1445,7 @@
         </xs:attribute>
         <xs:attribute name="from" type="SimpleLayoutAttribute">
           <xs:annotation>
-            <xs:documentation>Sender's email address (e.g. joe@domain.com).</xs:documentation>
+            <xs:documentation>Sender"s email address (e.g. joe@domain.com).</xs:documentation>
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="replaceNewlineWithBrTagInHtml" type="xs:boolean">
@@ -1569,7 +1569,7 @@
         </xs:attribute>
         <xs:attribute name="createQueueIfNotExists" type="xs:boolean">
           <xs:annotation>
-            <xs:documentation>Indicates whether to create the queue if it doesn't exists.</xs:documentation>
+            <xs:documentation>Indicates whether to create the queue if it doesn"t exists.</xs:documentation>
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="label" type="SimpleLayoutAttribute">
@@ -1780,7 +1780,7 @@
         </xs:attribute>
         <xs:attribute name="appInfo" type="xs:string">
           <xs:annotation>
-            <xs:documentation>AppInfo field. By default it's the friendly name of the current AppDomain.</xs:documentation>
+            <xs:documentation>AppInfo field. By default it"s the friendly name of the current AppDomain.</xs:documentation>
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="includeNdc" type="xs:boolean">
@@ -2159,7 +2159,7 @@
         </xs:attribute>
         <xs:attribute name="customColumnDelimiter" type="xs:string">
           <xs:annotation>
-            <xs:documentation>Custom column delimiter value (valid when ColumnDelimiter is set to 'Custom').</xs:documentation>
+            <xs:documentation>Custom column delimiter value (valid when ColumnDelimiter is set to "Custom").</xs:documentation>
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="delimiter" type="NLog.Layouts.CsvColumnDelimiterMode">
@@ -2235,7 +2235,7 @@
     </xs:choice>
     <xs:attribute name="layout" type="SimpleLayoutAttribute">
       <xs:annotation>
-        <xs:documentation>Layout that will be rendered as the attribute's value.</xs:documentation>
+        <xs:documentation>Layout that will be rendered as the attribute"s value.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
     <xs:attribute name="name" type="xs:string">

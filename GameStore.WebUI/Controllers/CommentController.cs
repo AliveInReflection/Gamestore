@@ -20,7 +20,7 @@ namespace GameStore.WebUI.Controllers
             this.commentService = commentService;
         }
 
-        public ActionResult List(string gameKey)
+        public ActionResult Index(string gameKey)
         {
             ViewBag.GameKey = gameKey;
             var comments = commentService.Get(gameKey);
@@ -38,7 +38,6 @@ namespace GameStore.WebUI.Controllers
         {
             if (!ModelState.IsValid)
                 return PartialView(comment);
-
             try
             {
                 commentService.Create(gameKey, Mapper.Map<CreateCommentViewModel, CommentDTO>(comment));
@@ -48,7 +47,7 @@ namespace GameStore.WebUI.Controllers
                 TempData["ErrorMessage"] = "Error";
             }
 
-            return RedirectToAction("List", "Comment", new { gameKey = gameKey });
+            return RedirectToAction("Index", "Comment", new{gameKey = gameKey});
         }
 
         [HttpPost]
@@ -62,7 +61,7 @@ namespace GameStore.WebUI.Controllers
             {
                 TempData["ErrorMessage"] = "Error"; 
             }
-            return RedirectToAction("List", "Comment", new {gameKey = gameKey});
+            return RedirectToAction("Index", "Comment", new {gameKey = gameKey});
         }
 
         public ActionResult Update(int id, string gameKey)

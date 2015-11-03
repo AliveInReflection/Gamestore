@@ -8,6 +8,12 @@ namespace GameStore.WebUI.Models
 {
     public class CreateGameViewModel
     {
+        public CreateGameViewModel()
+        {
+            ReceiptDate = DateTime.UtcNow;
+            PublicationDate = new DateTime(1990,1,1);
+        }
+
         [Required]
         [MinLength(3)]
         [MaxLength(10)]

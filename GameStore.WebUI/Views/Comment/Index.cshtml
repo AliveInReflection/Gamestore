@@ -1,0 +1,36 @@
+﻿@using GameStore.WebUI.Helpers;
+@model IEnumerable<GameStore.WebUI.Models.DisplayCommentViewModel>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>List</h2>
+
+<div class="comment-block">
+    @Html.BuildCommentsTree(Model, ViewBag.GameKey as string)
+</div>
+
+<div>
+    @Html.Action("Create", "Comment", new {gameKey = ViewBag.GameKey as string})
+</div>
+
+<div id="dialog" title="Confirmation required">
+    Delete this comment?
+</div>
+
+
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/jquery-2.1.4.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Comment/Comment.js")"></script>
+    <script src="@Url.Content("/Scripts/jquery-ui-1.11.4.min.js")"></script>
+}
+
+@section Styles
+{
+    <link rel="stylesheet" href="@Url.Content("/Scripts/jquery-ui-1.11.4/jquery-ui.min.css")"/>
+}

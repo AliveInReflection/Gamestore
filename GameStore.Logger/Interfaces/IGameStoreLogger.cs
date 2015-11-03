@@ -11,5 +11,9 @@ namespace GameStore.Logger.Interfaces
         void Warn(string message);
         void Error(string message);
         void Fatal(string message);
+
+        void Warn(Exception e);
+        void Error(Exception e);
+        void Fatal(Exception e);
     }
 }

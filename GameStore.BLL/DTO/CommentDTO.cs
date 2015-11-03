@@ -9,7 +9,7 @@ namespace GameStore.BLL.DTO
     public class CommentDTO
     {
         public int CommentId { get; set; }
-        public int UserId { get; set; }
+        public string UserName { get; set; }
         public string Content { get; set; }
         public string Quote { get; set; }
         public int? QuoteId { get; set; }

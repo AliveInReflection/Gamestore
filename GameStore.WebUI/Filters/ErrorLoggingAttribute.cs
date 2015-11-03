@@ -37,7 +37,7 @@ namespace GameStore.WebUI.Filters
                 message.Append("Where: " + exceptionContext.Exception.StackTrace.Split('\n')[0]);
                 logger.Fatal(message.ToString());
                 message.Clear();
-                exceptionContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new {controller = "Game", action = "List"}));
+                exceptionContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new {controller = "Game", action = "Index"}));
                 exceptionContext.ExceptionHandled = true;
             }
         }

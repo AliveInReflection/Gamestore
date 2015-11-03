@@ -46,17 +46,14 @@ namespace GameStore.BLL.Services
                 throw new ValidationException("No content received");
             }
 
-            try
+            if(database.Publishers.IsExists(m => m.CompanyName.Equals(publisher.CompanyName)))
             {
-                var entry = database.Publishers.Get(m => m.CompanyName.Equals(publisher.CompanyName));
                 throw new ValidationException("Another company exists with the same name");
             }
-            catch (InvalidOperationException)
-            {
-                var publisherToSave = Mapper.Map<PublisherDTO, Publisher>(publisher);
-                database.Publishers.Create(publisherToSave);
-                database.Save();
-            }
+
+            var publisherToSave = Mapper.Map<PublisherDTO, Publisher>(publisher);
+            database.Publishers.Create(publisherToSave);
+            database.Save();
         }
 
 
@@ -67,12 +64,7 @@ namespace GameStore.BLL.Services
                 throw new ValidationException("No content received");
             }
 
-            var entry = database.Publishers.Get(m => m.CompanyName.Equals(publisher.CompanyName));
-            if (entry.PublisherId != publisher.PublisherId)
-            {
-                throw new ValidationException("Anothe publisher with the same company name exists");
-            }
-
+            var entry = database.Publishers.Get(m => m.PublisherId.Equals(publisher.PublisherId));
             var publisherToSave = Mapper.Map(publisher, entry);
 
             database.Publishers.Update(publisherToSave);
@@ -81,13 +73,10 @@ namespace GameStore.BLL.Services
 
         public void Delete(int publisherId)
         {
-            var entry = database.Publishers.Get(m => m.PublisherId.Equals(publisherId));
-
-            if(entry.Games.Any())
+            if (!database.Publishers.IsExists(m => m.PublisherId.Equals(publisherId)))
             {
-                throw new ValidationException("There are some games that marked up by this genre in the store");
+                throw new ValidationException("Publisher not found");
             }
-
             database.Publishers.Delete(publisherId);
             database.Save();
         }
