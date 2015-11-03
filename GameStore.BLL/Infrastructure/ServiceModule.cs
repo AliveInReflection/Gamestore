@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using GameStore.BLL.Concrete.ContentPaginators;
 using GameStore.BLL.Interfaces.ContentFilters;
 using GameStore.Domain.Entities;
+using GameStore.Logger.Concrete;
+using GameStore.Logger.Interfaces;
 
 namespace GameStore.BLL.Infrastructure
 {
@@ -23,6 +25,7 @@ namespace GameStore.BLL.Infrastructure
         {
             Bind<IUnitOfWork>().To<UnitOfWork>().WithConstructorArgument(connectionString);
             Bind<IContentPaginator<Game>>().To<GamePaginator>();
+            Bind<IGameStoreLogger>().To<NLogAdapter>();
         }
     }
 }

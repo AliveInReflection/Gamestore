@@ -113,6 +113,10 @@
       <Project>{cb81696a-2b7e-4fbb-9e08-ce552c35e964}</Project>
       <Name>GameStore.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GameStore.Logger\GameStore.Logger.csproj">
+      <Project>{9d1b2955-174a-4236-bab2-0dcc818bef64}</Project>
+      <Name>GameStore.Logger</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

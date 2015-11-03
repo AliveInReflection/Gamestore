@@ -14,6 +14,8 @@ using GameStore.BLL.Interfaces.ContentFilters;
 using GameStore.DAL.Interfaces;
 using GameStore.Domain.Entities;
 using GameStore.DAL.Concrete;
+using GameStore.Logger.Interfaces;
+using Ninject;
 
 namespace GameStore.BLL.Services
 {
@@ -21,6 +23,9 @@ namespace GameStore.BLL.Services
     {
         private readonly IUnitOfWork database;
         private readonly IContentPaginator<Game> paginator;
+
+        [Inject]
+        private IGameStoreLogger Logger { get; set; }
 
 
         public GameService(IUnitOfWork database, IContentPaginator<Game> paginator)
@@ -54,8 +59,16 @@ namespace GameStore.BLL.Services
             }
 
             var gameToSave = Mapper.Map<GameDTO, Game>(game);
-            database.Games.Update(gameToSave);
-            database.Save();
+            try
+            {
+                database.Games.Update(gameToSave);
+                database.Save();
+            }
+            catch (InvalidOperationException e)
+            {                
+                throw new ValidationException(String.Format("Another game with the same key ({0}) exists", game.GameKey));
+            }
+            
         }
 
         public void Delete(int gameId)
@@ -110,27 +123,16 @@ namespace GameStore.BLL.Services
 
         public IEnumerable<GameDTO> Get(int genreId)
         {
-            var genre = database.Genres.Get(m => m.GenreId.Equals(genreId));
-
-            var gameEntries = genre.Games.ToList();
+            var gameEntries = database.Games.GetMany(m => m.Genres.Any(g => g.GenreId.Equals(genreId)));
             var games = Mapper.Map<IEnumerable<Game>, IEnumerable<GameDTO>>(gameEntries);
             return games;
         }
 
         public IEnumerable<GameDTO> Get(IEnumerable<int> platformTypeIds)
         {
-            HashSet<Game> gameEntries = new HashSet<Game>();
-            foreach (var typeId in platformTypeIds)
-            {
-                var platformType = database.PlatformTypes.Get(m => m.PlatformTypeId.Equals(typeId));
-
-                var gamesTMP = platformType.Games.ToList();
-                foreach (var game in gamesTMP)
-                {
-                    gameEntries.Add(game);
-                }
-            }
-            var games = Mapper.Map<IEnumerable<Game>, IEnumerable<GameDTO>>(gameEntries);
+            var entries =
+                database.Games.GetMany(m => m.PlatformTypes.Any(pt => platformTypeIds.Contains(pt.PlatformTypeId)));
+            var games = Mapper.Map<IEnumerable<Game>, IEnumerable<GameDTO>>(entries);
             return games;
         }
 
