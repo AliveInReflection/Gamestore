@@ -71,6 +71,7 @@
     <Compile Include="ContentSorters\GameSorterByPrice.cs" />
     <Compile Include="ContentSorters\GameSorterByViews.cs" />
     <Compile Include="GameFilterPipeline.cs" />
+    <Compile Include="Infrastructure\TransformationManager.cs" />
     <Compile Include="Infrastructure\ExpressionHelper.cs" />
     <Compile Include="Infrastructure\PaymentManager.cs" />
     <Compile Include="Infrastructure\ValidationException.cs" />

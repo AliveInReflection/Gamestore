@@ -92,7 +92,7 @@ namespace GameStore.WebUI.Controllers
             catch (ValidationException e)
             {
                 logger.Warn(e);
-                TempData["ErrorMessage"] = "Basket is empty";
+                TempData["ErrorMessage"] = e.Message;
                 return RedirectToAction("Details");
             }
             

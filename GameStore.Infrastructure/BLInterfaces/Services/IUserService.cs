@@ -4,6 +4,6 @@ namespace GameStore.Infrastructure.BLInterfaces
 {
     public interface IUserService
     {
-        void Ban(int userId, TimeSpan duration);
+        void Ban(string userName, TimeSpan duration);
     }
 }

@@ -31,12 +31,7 @@ namespace GameStore.Tests.BLLTests
 
 
         private void InitializeCollections()
-        {
-            genres = new List<Genre>
-            {
-                new Genre() {GenreId = 1, GenreName = "RTS", Games = new List<Game>()},
-                new Genre() {GenreId = 2, GenreName = "Action", Games = new List<Game>{new Game()}}
-            };
+        {           
             games = new List<Game>
             {
                 new Game()
@@ -45,7 +40,7 @@ namespace GameStore.Tests.BLLTests
                     GameKey = "SCII",
                     GameName = "StarCraftII",
                     Description = "DescriptionSCII",
-                    Genres = new List<Genre> {genres[0]},
+                    Genres = new List<Genre>(),
                     PlatformTypes = new List<PlatformType>()
                 },
                 new Game()
@@ -54,9 +49,15 @@ namespace GameStore.Tests.BLLTests
                     GameKey = "CSGO",
                     GameName = "Counter strike: global offencive",
                     Description = "DescriptionCSGO",
-                    Genres = new List<Genre> {genres[1]},
+                    Genres = new List<Genre>(),
                     PlatformTypes = new List<PlatformType>()
                 }
+            };
+
+            genres = new List<Genre>
+            {
+                new Genre() {GenreId = 1, GenreName = "RTS", Games = games},
+                new Genre() {GenreId = 2, GenreName = "Action", Games = games}
             };
         }
 
@@ -111,22 +112,12 @@ namespace GameStore.Tests.BLLTests
             InitializeMocks();
             InitializeTestEntities();
         }
-
-
-
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
-        public void Get_Genres_By_Game_Key_Expected_Exception()
-        {
-            service.Get(notExistedGameKey);
-        }
-        
+    
 
         [TestMethod]
         public void Get_Genres_By_Game_Key_Is_Not_Null()
         {
             var result = service.Get(testGameKey);
-
             Assert.IsNotNull(result);
         }
 
@@ -146,13 +137,6 @@ namespace GameStore.Tests.BLLTests
             service.Create(null);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
-        public void Add_Genre_With_Existed_Name_Expected_Exception()
-        {
-            genreToAdd.GenreName = genres[0].GenreName;
-            service.Create(genreToAdd);
-        }
 
         [TestMethod]
         public void Add_Genre()
@@ -171,14 +155,6 @@ namespace GameStore.Tests.BLLTests
             service.Update(null);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
-        public void Update_Genre_With_Existed_Name_Expected_Exception()
-        {
-            genreToUpdate.GenreName = genres[0].GenreName;
-            genreToUpdate.GenreId = 2;
-            service.Update(genreToUpdate);
-        }
 
         [TestMethod]
         public void Update_Genre()

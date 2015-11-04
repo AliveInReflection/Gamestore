@@ -45,7 +45,7 @@ namespace GameStore.BLL.Services
             foreach (var orderDetailse in orderDetailses)
             {
                 var game = orderDetailse.Product;
-                if (game.UnitsInStock > orderDetailse.Quantity)
+                if (game.UnitsInStock >= orderDetailse.Quantity)
                 {
                     game.UnitsInStock -= orderDetailse.Quantity;
                 }

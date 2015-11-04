@@ -217,15 +217,6 @@ namespace GameStore.Tests.BLLTests
 
 
         [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
-        public void Create_Game_With_Existing_Key_Expected_Exception()
-        {
-            testGame.GameKey = testGameKey;
-
-            service.Create(testGame);
-        }
-
-        [TestMethod]
         public void Create_Game()
         {                     
             var expectedCount = games.Count + 1;
@@ -247,15 +238,6 @@ namespace GameStore.Tests.BLLTests
 
         
 
-        [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
-        public void Update_Game_With_Existing_Key_Expected_Exception()
-        {
-            testGame.GameKey = testGameKey;
-            testGame.GameId = 2;
-
-            service.Update(testGame);
-        }
 
         [TestMethod]
         public void Update_Game()
@@ -290,17 +272,7 @@ namespace GameStore.Tests.BLLTests
             Assert.AreEqual(expectedCount, games.Count);
         }
 
-        [TestMethod]
-        public void Delete_Comments_For_Game()
-        {
-            var commentsCount = comments.Count;
-            var gameCommentsCount = games.First(g => g.GameId.Equals(2)).Comments.Count;
-            var expectedCount = commentsCount - gameCommentsCount;
-
-            service.Delete(2);
-            
-            Assert.AreEqual(expectedCount, comments.Count);
-        }
+        
 
         #endregion
 
@@ -328,12 +300,6 @@ namespace GameStore.Tests.BLLTests
         }
 
 
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
-        public void Get_Games_By_Genre_With_Not_Existed_Genre_Expected_Exception()
-        {
-            var games = service.Get(notExistedGenreId);
-        }
 
         [TestMethod]
         public void Get_Games_By_Genre()
@@ -342,12 +308,6 @@ namespace GameStore.Tests.BLLTests
                 Assert.IsInstanceOfType(games, typeof(IEnumerable<GameDTO>));
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
-        public void Get_Games_By_Platform_With_Not_Existed_Platform_Expected_Exception()
-        {
-            var games = service.Get(notExistedPlatformTypeIds);
-        }
 
         [TestMethod]
         public void Get_Games_By_Platform()

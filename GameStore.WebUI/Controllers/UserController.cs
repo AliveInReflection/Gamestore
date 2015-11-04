@@ -14,18 +14,18 @@ namespace GameStore.WebUI.Controllers
         }
 
         [HttpGet]
-        public ActionResult Ban(int userId)
+        public ActionResult Ban(string userName)
         {
-            ViewBag.UserId = userId;
+            ViewBag.UserId = userName;
             var durations = BanDurationManager.GetKeys();
             return View("Ban", durations);
         }
 
         [HttpPost]
-        public ActionResult Ban(int userId, string duration)
+        public ActionResult Ban(string userName, string duration)
         {
-            userService.Ban(userId, BanDurationManager.Get(duration));
-            return RedirectToAction("List", "Game");
+            userService.Ban(userName, BanDurationManager.Get(duration));
+            return RedirectToAction("Index", "Game");
         }
 
     }

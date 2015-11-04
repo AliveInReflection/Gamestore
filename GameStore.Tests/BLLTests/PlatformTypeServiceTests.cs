@@ -113,17 +113,6 @@ namespace GameStore.Tests.BLLTests
             InitializeTestEntities();
         }
 
-
-
-
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
-        public void Get_Platform_Types_By_Game_Key_Expected_Exception()
-        {
-            service.Get(notExistedGameKey);
-        }
-
-
         [TestMethod]
         public void Get_Platform_Types_By_Game_Key_Is_Not_Null()
         {
@@ -149,14 +138,6 @@ namespace GameStore.Tests.BLLTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
-        public void Add_Platform_Type_With_Existed_Name_Expected_Exception()
-        {
-            platformTypeToAdd.PlatformTypeName = platformTypes[0].PlatformTypeName;
-            service.Create(platformTypeToAdd);
-        }
-
-        [TestMethod]
         public void Add_Platform_Type()
         {
             var expectedCount = platformTypes.Count + 1;
@@ -173,14 +154,6 @@ namespace GameStore.Tests.BLLTests
             service.Update(null);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
-        public void Update_Platform_Type_With_Existed_Name_Expected_Exception()
-        {
-            platformTypeToUpdate.PlatformTypeName = platformTypes[0].PlatformTypeName;
-            platformTypeToUpdate.PlatformTypeId = 2;
-            service.Update(platformTypeToUpdate);
-        }
 
         [TestMethod]
         public void Update_Platform_Type()

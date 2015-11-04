@@ -27,6 +27,8 @@ namespace GameStore.Tests.BLLTests
         private string testGameKey;
         private string notExistedGameKey;
 
+        private CommentService service;
+
 
         private void InitializeCollections()
         {
@@ -91,6 +93,7 @@ namespace GameStore.Tests.BLLTests
 
         private void InitializeTestEntities()
         {
+            service = new CommentService(mock.Object);
             commentToAdd = new CommentDTO()
             {
                 CommentId = 5,
@@ -123,40 +126,27 @@ namespace GameStore.Tests.BLLTests
         {
             CommentDTO commentToAdd = null;
 
-            var service = new CommentService(mock.Object);
-
             service.Create(commentToAdd);
         }
 
        
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
-        public void Add_Comment_For_Not_Existed_Game_Expected_Exception()
-        {
-            var service = new CommentService(mock.Object);
-            
-            service.Create(commentToAdd);
-        }
 
         [TestMethod]
         public void Add_Comment_For_Game_By_Key()
         {
-            var service = new CommentService(mock.Object);
-            var game = games.First(m => m.GameKey.Equals(testGameKey));
-            var expectedCount = game.Comments.Count + 1;
+            var expectedCount = comments.Count + 1;
             
             service.Create(commentToAdd);
 
-            Assert.AreEqual(expectedCount, game.Comments.Count);
+            Assert.AreEqual(expectedCount, comments.Count);
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
-        public void Get_Comments_For_Not_Existed_Game_Expected_Exception()
+        public void Get_Comments_By_Game_Key()
         {
-            var service = new CommentService(mock.Object);
+            var result = service.Get(testGameKey);
 
-            var result = service.Get(notExistedGameKey);
+            Assert.IsNotNull(result);
         }
 
         

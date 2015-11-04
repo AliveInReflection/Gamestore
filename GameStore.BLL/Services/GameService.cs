@@ -12,8 +12,6 @@ using GameStore.Domain.Entities;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
 using GameStore.Infrastructure.Enums;
-using GameStore.Logger.Interfaces;
-using Ninject;
 
 namespace GameStore.BLL.Services
 {
@@ -21,9 +19,6 @@ namespace GameStore.BLL.Services
     {
         private readonly IUnitOfWork database;
         private readonly IContentPaginator<Game> paginator;
-
-        [Inject]
-        private IGameStoreLogger Logger { get; set; }
 
 
         public GameService(IUnitOfWork database, IContentPaginator<Game> paginator)
@@ -97,12 +92,12 @@ namespace GameStore.BLL.Services
         public PaginatedGames Get(GameFilteringMode filteringMode)
         {
             IEnumerable<Game> entries;
-            
-            var filter = BuildPipeline(filteringMode);
+
+            var filter = TransformationManager.GetGameFilteringPipeline(filteringMode);
             
             entries = !filter.IsEmpty() ? database.Games.GetMany(filter.GetExpression()) : database.Games.GetAll();
 
-            var sorter = GetSorter(filteringMode);
+            var sorter = TransformationManager.GetGameSorter(filteringMode.SortingMode);
             if (sorter != null)
             {
                 entries = sorter.Sort(entries);
@@ -141,64 +136,6 @@ namespace GameStore.BLL.Services
         {
             return database.Games.Count();
         }
-
-
-        private IFilteringPipeline<Game> BuildPipeline(GameFilteringMode filteringMode)
-        {
-            var pipeline = new GameFilterPipeline();
-
-            if (filteringMode.GenreIds.Any())
-            {
-                pipeline.Add(new GameFilterByGenre(filteringMode.GenreIds));
-            }
-
-            if (filteringMode.PlatformTypeIds.Any())
-            {
-                pipeline.Add(new GameFilterByPlatformType(filteringMode.PlatformTypeIds));
-            }
-
-            if (filteringMode.PublisherIds.Any())
-            {
-                pipeline.Add(new GameFilterByPublisher(filteringMode.PublisherIds));
-            }
-
-            if (filteringMode.MaxPrice > 0)
-            {
-                pipeline.Add(new GamePriceFilter(filteringMode.MinPrice, filteringMode.MaxPrice));
-            }
-            
-            if (!String.IsNullOrEmpty(filteringMode.PartOfName))
-            {
-                pipeline.Add(new GameFilterByName(filteringMode.PartOfName));
-            }
-
-            if (filteringMode.PublishingDate.Days != 0)
-            {
-                pipeline.Add(new GameFilterByPublitingDate(filteringMode.PublishingDate));
-            }
-
-
-            return pipeline;
-        }
-
-        private IContentSorter<Game> GetSorter(GameFilteringMode filteringMode)
-        {
-            switch (filteringMode.SortingMode)
-            {
-                case GamesSortingMode.MostPopular: 
-                    return new GameSorterByViews();
-                case GamesSortingMode.MostCommented: 
-                    return new GameSorterByComments();
-                case GamesSortingMode.AdditionDate:
-                    return new GameSorterByDate();
-                case GamesSortingMode.PriceAscending: 
-                    return new GameSorterByPrice(SortingDirection.Ascending);
-                case GamesSortingMode.PriceDescending:
-                    return new GameSorterByPrice(SortingDirection.Descending);
-                default :
-                    return null;
-            }            
-        }
-
+     
     }
 }

@@ -10,7 +10,7 @@
 <p>Choose bun duration: </p>
 @using (Html.BeginForm())
 {
-    Html.Hidden("userId", (int)ViewBag.UserId);
+    Html.Hidden("userName", ViewBag.UserName as string);
     foreach (var item in Model)
     {
         @Html.RadioButton("duration", item); <span>@item</span>

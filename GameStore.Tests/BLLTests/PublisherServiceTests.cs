@@ -65,7 +65,7 @@ namespace GameStore.Tests.BLLTests
                 var entry = publishers.First(m => m.PublisherId.Equals(publisher.PublisherId));
                 entry.CompanyName = publisher.CompanyName;
                 entry.HomePage = publisher.HomePage;
-                entry.Description = entry.Description;
+                entry.Description = publisher.Description;
             });
             mock.Setup(x => x.Publishers.Delete(It.IsAny<int>()))
                 .Callback((int id) => publishers.Remove(publishers.First(m => m.PublisherId.Equals(id))));
@@ -115,14 +115,6 @@ namespace GameStore.Tests.BLLTests
             service.Create(null);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
-        public void Add_Publisher_With_Existed_Company_Name_Reference_Expected_Exception()
-        {
-            publisherToAdd.CompanyName = existedCompanyName;
-
-            service.Create(publisherToAdd);
-        }
 
         [TestMethod]
         public void Add_Publisher()
@@ -193,13 +185,6 @@ namespace GameStore.Tests.BLLTests
             service.Delete(1);
 
             Assert.AreEqual(expectedCount, publishers.Count);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
-        public void Remove_Publisher_With_Published_Games_Expected_Exception()
-        {
-            service.Delete(2);
         }
 
 

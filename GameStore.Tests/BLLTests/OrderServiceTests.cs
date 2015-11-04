@@ -90,6 +90,8 @@ namespace GameStore.Tests.BLLTests
             };
 
             orderDetailses = new List<OrderDetails>(orders[0].OrderDetailses);
+            orderDetailses[0].Order = orders[0];
+            orderDetailses[1].Order = orders[0];
 
         }
 
@@ -110,6 +112,9 @@ namespace GameStore.Tests.BLLTests
             mock.Setup(x => x.OrderDetailses.Create(It.IsAny<OrderDetails>()))
                 .Callback((OrderDetails orderDetailse) => orderDetailses.Add(orderDetailse));
 
+
+            mock.Setup(x => x.OrderDetailses.GetMany(It.IsAny<Expression<Func<OrderDetails, bool>>>()))
+                .Returns((Expression<Func<OrderDetails, bool>> predicate) => orderDetailses.Where(predicate.Compile()));
         }
 
         private void InitializeTestEntities()
@@ -152,7 +157,7 @@ namespace GameStore.Tests.BLLTests
         [TestMethod]
         public void Make_Order()
         {
-            service.Make(1,"");
+            service.Make(1,"Visa");
 
             Assert.AreEqual(OrderState.NotPayed, orders[0].OrderState);
         }

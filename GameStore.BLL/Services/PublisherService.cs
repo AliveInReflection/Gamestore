@@ -66,7 +66,7 @@ namespace GameStore.BLL.Services
             try
             {
                 var publisherToSave = Mapper.Map<PublisherDTO, Publisher>(publisher);
-                database.Publishers.Create(publisherToSave);
+                database.Publishers.Update(publisherToSave);
                 database.Save();
             }
             catch (InvalidOperationException)

@@ -5,7 +5,7 @@ namespace GameStore.BLL.Services
 {
     public class UserService : IUserService
     {
-        public void Ban(int userId, TimeSpan duration)
+        public void Ban(string userName, TimeSpan duration)
         {
             throw new NotImplementedException();
         }
