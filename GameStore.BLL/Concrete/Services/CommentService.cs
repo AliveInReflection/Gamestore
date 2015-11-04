@@ -20,7 +20,7 @@ namespace GameStore.BLL.Services
             this.database = database;
         }
 
-        public void Create(string gameKey, CommentDTO comment)
+        public void Create(CommentDTO comment)
         {
             if (comment == null)
             {
@@ -28,7 +28,6 @@ namespace GameStore.BLL.Services
             }
 
             var commentToSave = Mapper.Map<CommentDTO, Comment>(comment);
-            commentToSave.Game = Mapper.Map<string, Game>(gameKey);
 
             if (comment.QuoteId != null)
             {

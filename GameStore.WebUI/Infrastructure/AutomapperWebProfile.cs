@@ -90,6 +90,8 @@ namespace GameStore.WebUI.Infrastructure
 
             Mapper.CreateMap<string, RadiobuttonViewModel>()
                 .ForMember(m => m.SelectedValue, opt => opt.MapFrom(t => t));
+
+            Mapper.CreateMap<string, GameDTO>().ForMember(m => m.GameKey, opt => opt.MapFrom(t => t));
         }
     }
 }

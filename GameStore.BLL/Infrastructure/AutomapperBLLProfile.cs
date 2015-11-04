@@ -49,7 +49,7 @@ namespace GameStore.BLL.Infrastructure
 
             Mapper.CreateMap<string, User>().ForMember(m => m.UserName, opt => opt.MapFrom(t => t));
             Mapper.CreateMap<int, Comment>().ForMember(m => m.CommentId, opt => opt.MapFrom(t => t));
-            Mapper.CreateMap<string, Game>().ForMember(m => m.GameKey, opt => opt.MapFrom(t => t));
+            
 
 
         }

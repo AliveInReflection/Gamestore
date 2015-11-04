@@ -7,6 +7,7 @@ namespace GameStore.WebUI.Models
 {
     public class CommentViewModel
     {
+        public string GameKey { get; set; }
         public IEnumerable<DisplayCommentViewModel> Comments { get; set; }
         public CreateCommentViewModel NewComment { get; set; }
     }

@@ -9,7 +9,7 @@ namespace GameStore.BLL.Interfaces
 {
     public interface ICommentService
     {
-        void Create(string gameKey, CommentDTO comment);
+        void Create(CommentDTO comment);
         void Update(CommentDTO comment);
         void Delete(int commentId);
 

@@ -1,5 +1,5 @@
 ﻿@using GameStore.WebUI.Helpers;
-@model IEnumerable<GameStore.WebUI.Models.DisplayCommentViewModel>
+@model GameStore.WebUI.Models.CommentViewModel
 
 @{
     ViewBag.Title = "List";
@@ -9,11 +9,43 @@
 <h2>List</h2>
 
 <div class="comment-block">
-    @Html.BuildCommentsTree(Model, ViewBag.GameKey as string)
+    @Html.BuildCommentsTree(Model.Comments, ViewBag.GameKey as string)
 </div>
 
 <div>
-    @Html.Action("Create", "Comment", new {gameKey = ViewBag.GameKey as string})
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(m => m.GameKey)
+
+        <fieldset>
+
+            @Html.HiddenFor(m => m.NewComment.ParentCommentId)
+            @Html.HiddenFor(m => m.NewComment.QuoteId)
+            @Html.Hidden("gameKey", ViewBag.GameKey as string)
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.NewComment.UserName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.NewComment.UserName)
+                @Html.ValidationMessageFor(model => model.NewComment.UserName)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.NewComment.Content)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.NewComment.Content)
+                @Html.ValidationMessageFor(model => model.NewComment.Content)
+            </div>
+
+            <p>
+                <input type="submit" value="Comment" />
+            </p>
+        </fieldset>
+    }
 </div>
 
 <div id="dialog" title="Confirmation required">

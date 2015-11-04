@@ -25,25 +25,31 @@ namespace GameStore.WebUI.Controllers
 
         public ActionResult Index(string gameKey)
         {
-            ViewBag.GameKey = gameKey;
-            var comments = commentService.Get(gameKey);
-            return View(Mapper.Map<IEnumerable<CommentDTO>, IEnumerable<DisplayCommentViewModel>>(comments));
-        }
+            var viewModel = new CommentViewModel()
+            {
+                GameKey = gameKey,
+                Comments =
+                    Mapper.Map<IEnumerable<CommentDTO>, IEnumerable<DisplayCommentViewModel>>(commentService.Get(gameKey)),
+                NewComment = new CreateCommentViewModel()
+            };
 
-        [HttpGet]
-        public ActionResult Create(string gameKey)
-        {
-            return PartialView(new CreateCommentViewModel());
+            return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult Create(string gameKey, CreateCommentViewModel comment)
+        public ActionResult Index(CommentViewModel comment)
         {
             if (!ModelState.IsValid)
-                return PartialView(comment);
+            {
+                comment.Comments = Mapper.Map<IEnumerable<CommentDTO>, IEnumerable<DisplayCommentViewModel>>(commentService.Get(comment.GameKey));
+                return View(comment);;
+            }
+                
             try
             {
-                commentService.Create(gameKey, Mapper.Map<CreateCommentViewModel, CommentDTO>(comment));
+                var commentToSave = Mapper.Map<CreateCommentViewModel, CommentDTO>(comment.NewComment);
+                commentToSave.Game = Mapper.Map<string, GameDTO>(comment.GameKey);
+                commentService.Create(commentToSave);
             }
             catch (ValidationException e)
             {
@@ -51,7 +57,7 @@ namespace GameStore.WebUI.Controllers
                 TempData["ErrorMessage"] = "Validation error";
             }
 
-            return RedirectToAction("Index", "Comment", new{gameKey = gameKey});
+            return RedirectToAction("Index", "Comment", new{gameKey = comment.GameKey});
         }
 
         [HttpPost]
