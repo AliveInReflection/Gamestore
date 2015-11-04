@@ -1,18 +1,14 @@
-﻿using AutoMapper;
-using GameStore.BLL.DTO;
-using GameStore.BLL.Interfaces;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
+using AutoMapper;
+using GameStore.CL.AutomapperProfiles;
+using GameStore.Infrastructure.BLInterfaces;
+using GameStore.Infrastructure.DTO;
+using GameStore.Logger.Concrete;
 using GameStore.WebUI.Controllers;
-using GameStore.WebUI.Infrastructure;
 using GameStore.WebUI.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-using GameStore.Logger.Concrete;
 
 namespace GameStore.Tests.WebTests
 {

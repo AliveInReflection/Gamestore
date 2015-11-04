@@ -1,12 +1,9 @@
-﻿using GameStore.BLL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
-using GameStore.BLL.DTO;
 using GameStore.BLL.Infrastructure;
+using GameStore.Infrastructure.BLInterfaces;
+using GameStore.Infrastructure.DTO;
 using GameStore.Logger.Interfaces;
 using GameStore.WebUI.Models;
 

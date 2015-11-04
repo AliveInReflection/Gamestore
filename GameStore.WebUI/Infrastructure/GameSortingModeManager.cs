@@ -1,8 +1,7 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using GameStore.BLL.DTO;
+using GameStore.Infrastructure.DTO;
+
 
 namespace GameStore.WebUI.Infrastructure
 {

@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Metadata.Edm;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
-using GameStore.BLL.DTO;
-using GameStore.BLL.Interfaces;
-using GameStore.WebUI.Abstract;
+using GameStore.BLL.Infrastructure;
+using GameStore.Infrastructure.BLInterfaces;
+using GameStore.Infrastructure.DTO;
+using GameStore.Logger.Interfaces;
 using GameStore.WebUI.Infrastructure;
 using GameStore.WebUI.Models;
-using GameStore.BLL.Infrastructure;
-using GameStore.Logger.Interfaces;
 
 namespace GameStore.WebUI.Controllers
 {

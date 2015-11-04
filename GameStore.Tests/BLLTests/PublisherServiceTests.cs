@@ -1,17 +1,16 @@
-﻿using AutoMapper;
-using GameStore.BLL.DTO;
-using GameStore.BLL.Infrastructure;
-using GameStore.BLL.Services;
-using GameStore.DAL.Interfaces;
-using GameStore.Domain.Entities;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+using AutoMapper;
+using GameStore.BLL.Infrastructure;
+using GameStore.BLL.Services;
+using GameStore.CL.AutomapperProfiles;
+using GameStore.DAL.Interfaces;
+using GameStore.Domain.Entities;
+using GameStore.Infrastructure.DTO;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace GameStore.Tests.BLLTests
 {

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using GameStore.BLL.DTO;
-using GameStore.WebUI.Models;
+﻿using System.Web.Mvc;
 using AutoMapper;
+using GameStore.Infrastructure.DTO;
+using GameStore.WebUI.Infrastructure;
+using GameStore.WebUI.Models;
 
-namespace GameStore.WebUI.Infrastructure
+namespace GameStore.CL.AutomapperProfiles
 {
     public class AutomapperWebProfile : Profile
     {

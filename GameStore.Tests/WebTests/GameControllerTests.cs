@@ -1,18 +1,14 @@
-﻿using GameStore.BLL.DTO;
-using GameStore.BLL.Interfaces;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using AutoMapper;
+using GameStore.CL.AutomapperProfiles;
+using GameStore.Infrastructure.BLInterfaces;
+using GameStore.Infrastructure.DTO;
 using GameStore.WebUI.Controllers;
+using GameStore.WebUI.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System.Web.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GameStore.Domain.Entities;
-using AutoMapper;
-using GameStore.WebUI.Infrastructure;
-using GameStore.WebUI.Models;
 
 namespace GameStore.Tests.WebTests
 {
@@ -104,7 +100,7 @@ namespace GameStore.Tests.WebTests
 
             mockGame.Setup(x => x.GetAll()).Returns(games);
             mockGame.Setup(x => x.Get(It.IsAny<string>())).Returns(games.First());
-            mockGame.Setup(x => x.Create(It.IsAny<GameDTO>(), It.IsAny<IEnumerable<int>>(),It.IsAny<IEnumerable<int>>()));
+            mockGame.Setup(x => x.Create(It.IsAny<GameDTO>()));
             mockGame.Setup(x => x.Get(It.IsAny<GameFilteringMode>())).Returns(new PaginatedGames());
 
             mockGenre.Setup(x => x.GetAll()).Returns(genres);
@@ -128,7 +124,7 @@ namespace GameStore.Tests.WebTests
             InitializeMocks();
             InitializeTestEntities();
 
-            controller = new GameController(mockGame.Object, mockGenre.Object, mockPlatformType.Object, mockPublisher.Object);
+            controller = new GameController(mockGame.Object, mockGenre.Object, mockPlatformType.Object, mockPublisher.Object, null);
         }
         #endregion
 

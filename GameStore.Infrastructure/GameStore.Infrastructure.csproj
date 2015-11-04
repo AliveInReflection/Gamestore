@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0A05FE70-F5B3-4772-92EB-657ABF6E59BF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GameStore.Infrastructure</RootNamespace>
+    <AssemblyName>GameStore.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLInterfaces\ContentFilters\IContentFilter.cs" />
+    <Compile Include="BLInterfaces\ContentFilters\IContentPaginator.cs" />
+    <Compile Include="BLInterfaces\ContentFilters\IContentSorter.cs" />
+    <Compile Include="BLInterfaces\ContentFilters\IFilteringPipeline.cs" />
+    <Compile Include="BLInterfaces\Services\ICommentService.cs" />
+    <Compile Include="BLInterfaces\Services\IGameService.cs" />
+    <Compile Include="BLInterfaces\Services\IGenreService.cs" />
+    <Compile Include="BLInterfaces\Services\IOrderService.cs" />
+    <Compile Include="BLInterfaces\Services\IPlatformTypeService.cs" />
+    <Compile Include="BLInterfaces\Services\IPublisherService.cs" />
+    <Compile Include="BLInterfaces\Services\IUserService.cs" />
+    <Compile Include="DTO\CommentDTO.cs" />
+    <Compile Include="DTO\GameDTO.cs" />
+    <Compile Include="DTO\GameFilteringMode.cs" />
+    <Compile Include="DTO\GenreDTO.cs" />
+    <Compile Include="DTO\OrderDetailsDTO.cs" />
+    <Compile Include="DTO\OrderDTO.cs" />
+    <Compile Include="DTO\PaginatedGames.cs" />
+    <Compile Include="DTO\PlatformTypeDTO.cs" />
+    <Compile Include="DTO\PublisherDTO.cs" />
+    <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="Enums\SortingDirectionEnum.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GameStore.Domain\GameStore.Domain.csproj">
+      <Project>{cb81696a-2b7e-4fbb-9e08-ce552c35e964}</Project>
+      <Name>GameStore.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,6 +1,4 @@
-using System.Web.Mvc;
-using GameStore.BLL.Infrastructure;
-using GameStore.WebUI.DI;
+using GameStore.CL.DI;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(GameStore.WebUI.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(GameStore.WebUI.App_Start.NinjectWebCommon), "Stop")]
@@ -44,7 +42,7 @@ namespace GameStore.WebUI.App_Start
         /// <returns>The created kernel.</returns>
         private static IKernel CreateKernel()
         {
-            var modules = new INinjectModule[] { new ServiceModule("GameStoreContext"), };
+            var modules = new INinjectModule[] { new BLLModule("DefaultConnection"), new WebModule() };
             var kernel = new StandardKernel(modules);
             try
             {
@@ -67,7 +65,7 @@ namespace GameStore.WebUI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+
         }        
     }
 }

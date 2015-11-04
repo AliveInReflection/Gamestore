@@ -8,8 +8,9 @@ using GameStore.DAL.Interfaces;
 using System.Linq.Expressions;
 using GameStore.BLL.Infrastructure;
 using GameStore.BLL.Services;
-using GameStore.BLL.DTO;
 using AutoMapper;
+using GameStore.CL.AutomapperProfiles;
+using GameStore.Infrastructure.DTO;
 
 namespace GameStore.Tests.BLLTests
 {
@@ -124,7 +125,7 @@ namespace GameStore.Tests.BLLTests
 
             var service = new CommentService(mock.Object);
 
-            service.Create(testGameKey, commentToAdd);
+            service.Create(commentToAdd);
         }
 
        
@@ -134,7 +135,7 @@ namespace GameStore.Tests.BLLTests
         {
             var service = new CommentService(mock.Object);
             
-            service.Create(notExistedGameKey, commentToAdd);
+            service.Create(commentToAdd);
         }
 
         [TestMethod]
@@ -144,7 +145,7 @@ namespace GameStore.Tests.BLLTests
             var game = games.First(m => m.GameKey.Equals(testGameKey));
             var expectedCount = game.Comments.Count + 1;
             
-            service.Create(testGameKey, commentToAdd);
+            service.Create(commentToAdd);
 
             Assert.AreEqual(expectedCount, game.Comments.Count);
         }

@@ -53,52 +53,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Concrete\ContentFilters\GameFilterByGenre.cs" />
-    <Compile Include="Concrete\ContentFilters\GameFilterByName.cs" />
-    <Compile Include="Concrete\ContentFilters\GameFilterByPlatformType.cs" />
-    <Compile Include="Concrete\ContentFilters\GameFilterByPublisher.cs" />
-    <Compile Include="Concrete\ContentFilters\GameFilterByPublitingDate.cs" />
-    <Compile Include="Concrete\ContentFilters\GamePriceFilter.cs" />
-    <Compile Include="Concrete\ContentPaginators\GamePaginator.cs" />
-    <Compile Include="Concrete\ContentSorters\GameSorterByComments.cs" />
-    <Compile Include="Concrete\ContentSorters\GameSorterByDate.cs" />
-    <Compile Include="Concrete\ContentSorters\GameSorterByPrice.cs" />
-    <Compile Include="Concrete\ContentSorters\GameSorterByViews.cs" />
-    <Compile Include="Concrete\ContentSorters\SortingDirectionEnum.cs" />
-    <Compile Include="Concrete\GameFilterPipeline.cs" />
-    <Compile Include="DTO\CommentDTO.cs" />
-    <Compile Include="DTO\GameDTO.cs" />
-    <Compile Include="DTO\GameFilteringMode.cs" />
-    <Compile Include="DTO\GenreDTO.cs" />
-    <Compile Include="DTO\OrderDetailsDTO.cs" />
-    <Compile Include="DTO\OrderDTO.cs" />
-    <Compile Include="DTO\PaginatedGames.cs" />
-    <Compile Include="DTO\PlatformTypeDTO.cs" />
-    <Compile Include="DTO\PublisherDTO.cs" />
-    <Compile Include="DTO\UserDTO.cs" />
-    <Compile Include="Infrastructure\AutomapperBLLProfile.cs" />
+    <Compile Include="ContentFilters\GameFilterByGenre.cs" />
+    <Compile Include="ContentFilters\GameFilterByName.cs" />
+    <Compile Include="ContentFilters\GameFilterByPlatformType.cs" />
+    <Compile Include="ContentFilters\GameFilterByPublisher.cs" />
+    <Compile Include="ContentFilters\GameFilterByPublitingDate.cs" />
+    <Compile Include="ContentFilters\GamePriceFilter.cs" />
+    <Compile Include="ContentPaginators\GamePaginator.cs" />
+    <Compile Include="ContentSorters\GameSorterByComments.cs" />
+    <Compile Include="ContentSorters\GameSorterByDate.cs" />
+    <Compile Include="ContentSorters\GameSorterByPrice.cs" />
+    <Compile Include="ContentSorters\GameSorterByViews.cs" />
+    <Compile Include="GameFilterPipeline.cs" />
     <Compile Include="Infrastructure\ExpressionHelper.cs" />
-    <Compile Include="Infrastructure\ServiceModule.cs" />
     <Compile Include="Infrastructure\ValidationException.cs" />
-    <Compile Include="Interfaces\ContentFilters\IContentFilter.cs" />
-    <Compile Include="Interfaces\ContentFilters\IContentPaginator.cs" />
-    <Compile Include="Interfaces\ContentFilters\IContentSorter.cs" />
-    <Compile Include="Interfaces\ContentFilters\IFilteringPipeline.cs" />
-    <Compile Include="Interfaces\Services\ICommentService.cs" />
-    <Compile Include="Interfaces\Services\IGameService.cs" />
-    <Compile Include="Interfaces\Services\IGenreService.cs" />
-    <Compile Include="Interfaces\Services\IOrderService.cs" />
-    <Compile Include="Interfaces\Services\IPlatformTypeService.cs" />
-    <Compile Include="Interfaces\Services\IPublisherService.cs" />
-    <Compile Include="Interfaces\Services\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Concrete\Services\CommentService.cs" />
-    <Compile Include="Concrete\Services\GameService.cs" />
-    <Compile Include="Concrete\Services\GenreService.cs" />
-    <Compile Include="Concrete\Services\OrderService.cs" />
-    <Compile Include="Concrete\Services\PlatformTypeService.cs" />
-    <Compile Include="Concrete\Services\PublisherService.cs" />
-    <Compile Include="Concrete\Services\UserService.cs" />
+    <Compile Include="Services\CommentService.cs" />
+    <Compile Include="Services\GameService.cs" />
+    <Compile Include="Services\GenreService.cs" />
+    <Compile Include="Services\OrderService.cs" />
+    <Compile Include="Services\PlatformTypeService.cs" />
+    <Compile Include="Services\PublisherService.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -112,6 +88,10 @@
     <ProjectReference Include="..\GameStore.Domain\GameStore.Domain.csproj">
       <Project>{cb81696a-2b7e-4fbb-9e08-ce552c35e964}</Project>
       <Name>GameStore.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GameStore.Infrastructure\GameStore.Infrastructure.csproj">
+      <Project>{0a05fe70-f5b3-4772-92eb-657abf6e59bf}</Project>
+      <Name>GameStore.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\GameStore.Logger\GameStore.Logger.csproj">
       <Project>{9d1b2955-174a-4236-bab2-0dcc818bef64}</Project>

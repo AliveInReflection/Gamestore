@@ -1,17 +1,12 @@
-﻿using AutoMapper;
-using GameStore.BLL.DTO;
-using GameStore.BLL.Interfaces;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
+using AutoMapper;
+using GameStore.CL.AutomapperProfiles;
+using GameStore.Infrastructure.BLInterfaces;
+using GameStore.Infrastructure.DTO;
 using GameStore.WebUI.Controllers;
-using GameStore.WebUI.Infrastructure;
-using GameStore.WebUI.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace GameStore.Tests.WebTests
 {
@@ -42,7 +37,7 @@ namespace GameStore.Tests.WebTests
             mock = new Mock<ICommentService>();
 
             mock.Setup(x => x.Get(It.IsAny<string>())).Returns(comments);
-            mock.Setup(x => x.Create(It.IsAny<string>(), It.IsAny<CommentDTO>()));
+            mock.Setup(x => x.Create(It.IsAny<CommentDTO>()));
 
         }
 
@@ -62,7 +57,7 @@ namespace GameStore.Tests.WebTests
             InitializeMocks();
             InitializeTestEntities();
 
-            controller = new CommentController(mock.Object);
+            controller = new CommentController(mock.Object, null);
         }
         #endregion
 
@@ -75,29 +70,7 @@ namespace GameStore.Tests.WebTests
             Assert.IsNotNull(result.Model);
         }
 
-        [TestMethod]
-        public void Comment_Create_Get_Returns_Partial()
-        {
-            var result = controller.Create(testGameKey);
-
-            Assert.IsInstanceOfType(result, typeof(PartialViewResult));
-        }
-
-        [TestMethod]
-        public void Comment_Create_Get_Model_Is_Not_Null()
-        {
-            var result = controller.Create(testGameKey) as PartialViewResult;
-
-            Assert.IsNotNull(result.Model);
-        }
-
-        [TestMethod]
-        public void Comment_Create_Post_Is_Redirect_Result()
-        {
-            var result = controller.Create(testGameKey,new CreateCommentViewModel());
-
-            Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
-        }
 
     }
+
 }

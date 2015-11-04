@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.UI.WebControls;
-using GameStore.BLL.Interfaces;
+﻿using System.Web.Mvc;
 using GameStore.WebUI.Abstract;
-using GameStore.WebUI.Models;
 using SelectPdf;
 
 namespace GameStore.WebUI.Concrete

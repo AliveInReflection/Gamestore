@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GameStore.Domain.Entities;
-using GameStore.DAL.Interfaces;
-using Moq;
 using System.Linq.Expressions;
 using AutoMapper;
 using GameStore.BLL.Infrastructure;
-using GameStore.BLL.DTO;
 using GameStore.BLL.Services;
+using GameStore.CL.AutomapperProfiles;
+using GameStore.DAL.Interfaces;
+using GameStore.Domain.Entities;
+using GameStore.Infrastructure.DTO;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace GameStore.Tests.BLLTests
 {
@@ -213,7 +212,7 @@ namespace GameStore.Tests.BLLTests
         {
             GameDTO gameToAdd = null;
 
-            service.Create(gameToAdd, new int[] { 1, 2 }, new int[] { 1, 2 });
+            service.Create(gameToAdd);
         }
 
 
@@ -223,14 +222,14 @@ namespace GameStore.Tests.BLLTests
         {
             testGame.GameKey = testGameKey;
 
-            service.Create(testGame, new int[] { 1, 2 }, new int[] { 1, 2 });
+            service.Create(testGame);
         }
 
         [TestMethod]
         public void Create_Game()
         {                     
             var expectedCount = games.Count + 1;
-            service.Create(testGame, new int[] {1,2}, new int[] {1,2});
+            service.Create(testGame);
 
             Assert.AreEqual(expectedCount, games.Count);
         }
@@ -243,7 +242,7 @@ namespace GameStore.Tests.BLLTests
         {
             testGame = null;
 
-            service.Update(testGame, new int[] { 1, 2 }, new int[] { 1, 2 });
+            service.Update(testGame);
         }
 
         
@@ -255,7 +254,7 @@ namespace GameStore.Tests.BLLTests
             testGame.GameKey = testGameKey;
             testGame.GameId = 2;
 
-            service.Update(testGame, new int[] {1,2}, new int[] {1,2});
+            service.Update(testGame);
         }
 
         [TestMethod]
@@ -264,7 +263,7 @@ namespace GameStore.Tests.BLLTests
             testGame.GameId = 1;
             testGame.GameKey = testGameKey;
 
-            service.Update(testGame, new int[] { 1, 2 }, new int[] { 1, 2 });
+            service.Update(testGame);
 
             var entry = games.First(m => m.GameId.Equals(testGame.GameId));
             Assert.AreEqual(entry.GameName, testGame.GameName);

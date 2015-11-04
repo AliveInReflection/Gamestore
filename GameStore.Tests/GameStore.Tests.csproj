@@ -92,6 +92,10 @@
       <Project>{03cf56c3-71ea-40d1-9866-89a4b42f5e1e}</Project>
       <Name>GameStore.BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GameStore.CL\GameStore.CL.csproj">
+      <Project>{111516a1-4b35-495d-8c4c-1b1aa62e14a0}</Project>
+      <Name>GameStore.CL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GameStore.DAL\GameStore.DAL.csproj">
       <Project>{8f0aced7-ed94-4b36-8f99-601fb8345d87}</Project>
       <Name>GameStore.DAL</Name>
@@ -99,6 +103,10 @@
     <ProjectReference Include="..\GameStore.Domain\GameStore.Domain.csproj">
       <Project>{cb81696a-2b7e-4fbb-9e08-ce552c35e964}</Project>
       <Name>GameStore.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GameStore.Infrastructure\GameStore.Infrastructure.csproj">
+      <Project>{0a05fe70-f5b3-4772-92eb-657abf6e59bf}</Project>
+      <Name>GameStore.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\GameStore.Logger\GameStore.Logger.csproj">
       <Project>{9d1b2955-174a-4236-bab2-0dcc818bef64}</Project>

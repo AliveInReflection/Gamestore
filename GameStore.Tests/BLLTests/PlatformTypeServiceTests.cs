@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GameStore.Domain.Entities;
-using GameStore.DAL.Interfaces;
-using Moq;
-using GameStore.BLL.DTO;
 using GameStore.BLL.Infrastructure;
 using GameStore.BLL.Services;
+using GameStore.CL.AutomapperProfiles;
+using GameStore.DAL.Interfaces;
+using GameStore.Domain.Entities;
+using GameStore.Infrastructure.DTO;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace GameStore.Tests.BLLTests
 {
