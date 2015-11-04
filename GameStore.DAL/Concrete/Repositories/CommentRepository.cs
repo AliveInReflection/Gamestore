@@ -22,11 +22,34 @@ namespace GameStore.DAL.Concrete.Repositories
 
         public void Create(Comment entity)
         {
+            var game = context.Games.First(m => m.GameKey.Equals(entity.Game.GameKey));
+            var user = context.Users.FirstOrDefault(m => m.UserName.Equals(entity.User.UserName));
+            if (user != null)
+            {
+                entity.User = user;
+            }
+
+
+            var parentComment = context.Comments.FirstOrDefault(m => m.CommentId.Equals(entity.ParentComment.CommentId));
+            if (parentComment != null)
+            {
+                entity.Game = null;
+                entity.ParentComment = parentComment;
+            }
+            else
+            {
+                entity.ParentComment = null;
+                entity.Game = null;
+                game.Comments.Add(entity);
+            }
             context.Entry(entity).State = EntityState.Added;
         }
 
         public void Update(Comment entity)
         {
+            var entry = context.Comments.First(m => m.CommentId.Equals(entity.CommentId));
+            entry.Content = entity.Content;
+            entry.Quote = entity.Quote;
             context.Entry(entity).State = EntityState.Modified;
         }
 

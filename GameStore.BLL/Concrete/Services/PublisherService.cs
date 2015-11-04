@@ -46,14 +46,16 @@ namespace GameStore.BLL.Services
                 throw new ValidationException("No content received");
             }
 
-            if(database.Publishers.IsExists(m => m.CompanyName.Equals(publisher.CompanyName)))
+            try
             {
-                throw new ValidationException("Another company exists with the same name");
+                var publisherToSave = Mapper.Map<PublisherDTO, Publisher>(publisher);
+                database.Publishers.Create(publisherToSave);
+                database.Save();
             }
-
-            var publisherToSave = Mapper.Map<PublisherDTO, Publisher>(publisher);
-            database.Publishers.Create(publisherToSave);
-            database.Save();
+            catch (InvalidOperationException)
+            {
+                throw new ValidationException(String.Format("Another publisher with the same company name ({0}) exists", publisher.CompanyName));
+            }
         }
 
 
@@ -64,19 +66,20 @@ namespace GameStore.BLL.Services
                 throw new ValidationException("No content received");
             }
 
-            var entry = database.Publishers.Get(m => m.PublisherId.Equals(publisher.PublisherId));
-            var publisherToSave = Mapper.Map(publisher, entry);
-
-            database.Publishers.Update(publisherToSave);
-            database.Save();
+            try
+            {
+                var publisherToSave = Mapper.Map<PublisherDTO, Publisher>(publisher);
+                database.Publishers.Create(publisherToSave);
+                database.Save();
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ValidationException(String.Format("Another publisher with the same company name ({0}) exists", publisher.CompanyName));
+            }
         }
 
         public void Delete(int publisherId)
         {
-            if (!database.Publishers.IsExists(m => m.PublisherId.Equals(publisherId)))
-            {
-                throw new ValidationException("Publisher not found");
-            }
             database.Publishers.Delete(publisherId);
             database.Save();
         }

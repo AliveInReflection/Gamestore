@@ -28,28 +28,7 @@ namespace GameStore.BLL.Services
             }
 
             var commentToSave = Mapper.Map<CommentDTO, Comment>(comment);
-
-            if (database.Users.IsExists(m => m.UserName.Equals(comment.UserName)))
-            {
-                var userEntry = database.Users.Get(m => m.UserName.Equals(comment.UserName));
-                commentToSave.User = userEntry;
-            }
-            else
-            {
-                commentToSave.User = new User() {UserName = comment.UserName};
-            }
-            
-            var gameEntry = database.Games.Get(m => m.GameKey.Equals(gameKey));
-
-            if (comment.ParentCommentId != null)
-            {
-                var commentEntry = database.Comments.Get(m => m.CommentId.Equals(comment.ParentCommentId.Value));
-                commentToSave.ParentComment = commentEntry;
-            }
-            else
-            {
-                gameEntry.Comments.Add(commentToSave);
-            }
+            commentToSave.Game = Mapper.Map<string, Game>(gameKey);
 
             if (comment.QuoteId != null)
             {
@@ -102,10 +81,8 @@ namespace GameStore.BLL.Services
                 throw new ValidationException("No content received");
             }
 
-            var entry = database.Comments.Get(m => m.CommentId.Equals(comment.CommentId));
-            entry.Content = comment.Content;
-            entry.Quote = comment.Quote;
-            database.Comments.Update(entry);
+            var commentToSave = Mapper.Map<CommentDTO, Comment>(comment);
+            database.Comments.Update(commentToSave);
             database.Save();
         }
 

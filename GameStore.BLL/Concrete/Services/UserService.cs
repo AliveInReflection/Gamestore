@@ -11,7 +11,7 @@ namespace GameStore.BLL.Services
     {
         public void Ban(int userId, TimeSpan duration)
         {
-            
+            throw new NotImplementedException();
         }
     }
 }

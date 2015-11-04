@@ -4,7 +4,6 @@ using System.Linq;
 using AutoMapper;
 using GameStore.BLL.Concrete;
 using GameStore.BLL.Concrete.ContentFilters;
-using GameStore.BLL.Concrete.ContentPaginators;
 using GameStore.BLL.Concrete.ContentSorters;
 using GameStore.BLL.ContentFilters;
 using GameStore.BLL.DTO;
@@ -13,7 +12,6 @@ using GameStore.BLL.Interfaces;
 using GameStore.BLL.Interfaces.ContentFilters;
 using GameStore.DAL.Interfaces;
 using GameStore.Domain.Entities;
-using GameStore.DAL.Concrete;
 using GameStore.Logger.Interfaces;
 using Ninject;
 
@@ -41,14 +39,17 @@ namespace GameStore.BLL.Services
                 throw new ValidationException("No content received");
             }
 
-            if (database.Games.IsExists(m => m.GameKey.Equals(game.GameKey)))
+            try
+            {
+                var gameToSave = Mapper.Map<GameDTO, Game>(game);
+                database.Games.Create(gameToSave);
+                database.Save();
+            }
+            catch (InvalidOperationException)
             {
                 throw new ValidationException(string.Format("Another game has the same game key: {0}", game.GameKey));
             }
-
-            var gameToSave = Mapper.Map<GameDTO, Game>(game);
-            database.Games.Create(gameToSave);
-            database.Save();
+          
         }
 
         public void Update(GameDTO game)
@@ -58,9 +59,9 @@ namespace GameStore.BLL.Services
                 throw new ValidationException("No content received");
             }
 
-            var gameToSave = Mapper.Map<GameDTO, Game>(game);
             try
             {
+                var gameToSave = Mapper.Map<GameDTO, Game>(game);
                 database.Games.Update(gameToSave);
                 database.Save();
             }

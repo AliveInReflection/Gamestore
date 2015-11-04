@@ -33,9 +33,7 @@ namespace GameStore.BLL.Services
 
         public IEnumerable<GenreDTO> Get(string gameKey)
         {
-            var game = database.Games.Get(m => m.GameKey.Equals(gameKey));
-            
-            var genres = game.Genres;
+            var genres = database.Genres.GetMany(m => m.Games.Any(g => g.GameKey.Equals(gameKey)));
             return Mapper.Map<IEnumerable<Genre>, IEnumerable<GenreDTO>>(genres);
         }
 
@@ -51,17 +49,16 @@ namespace GameStore.BLL.Services
             {
                 throw new ValidationException("No content received");
             }
-            try
+
+            if (database.Genres.IsExists(m => m.GenreName.Equals(genre.GenreName)))
             {
-                var entry = database.Genres.Get(m => m.GenreName.Equals(genre.GenreName));
-                throw new ValidationException("Another genre with the same name exists");
+                throw new ValidationException(String.Format("Another genre with the same name ({0}) exists",genre.GenreName));
             }
-            catch (InvalidOperationException)
-            {
-                var genreToSave = Mapper.Map<GenreDTO, Genre>(genre);
-                database.Genres.Create(genreToSave);
-                database.Save();
-            }
+
+            var genreToSave = Mapper.Map<GenreDTO, Genre>(genre);
+            database.Genres.Create(genreToSave);
+            database.Save();
+
         }
 
         public void Update(GenreDTO genre)
@@ -70,32 +67,21 @@ namespace GameStore.BLL.Services
             {
                 throw new ValidationException("No content received");
             }
+
             try
             {
-                var entry = database.Genres.Get(m => m.GenreName.Equals(genre.GenreName));
-                if (entry.GenreId != genre.GenreId)
-                {
-                    throw new ValidationException("Another genre with the same name exists");
-                }
+                var genreToUpdate = Mapper.Map<GenreDTO, Genre>(genre);
+                database.Genres.Update(genreToUpdate);
+                database.Save();
             }
             catch (InvalidOperationException)
             {
-                var entry = database.Genres.Get(m => m.GenreId.Equals(genre.GenreId));
-                var genreToSave = Mapper.Map(genre, entry);
-                database.Genres.Update(genreToSave);
-                database.Save();
+                throw new ValidationException(String.Format("Another genre with the same name ({0}) exists", genre.GenreName));
             }
         }
 
         public void Delete(int genreId)
         {
-            var entry = database.Genres.Get(m => m.GenreId.Equals(genreId));
-            
-            if(entry.Games.Any())
-            {
-                throw new ValidationException("There are some games that marked up by this genre in the store");
-            }
-
             database.Genres.Delete(genreId);
             database.Save();
         }

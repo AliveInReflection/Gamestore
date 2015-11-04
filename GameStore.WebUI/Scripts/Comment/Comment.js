@@ -12,7 +12,7 @@
                     commentId: CommentObjectToDelete.data("commentid"),
                     gameKey: CommentObjectToDelete.data("gamekey"),
                     success: function () {
-                        setTimeout(window.location.reload(), 1000);
+                        setTimeout(window.location.reload(), 1500);
                     }
                 });
             },
@@ -23,16 +23,19 @@
     });
 
     $(".comment-delete").click(function (event) {
+        event.preventDefault();
         CommentObjectToDelete = $(this);
         $("#dialog").dialog("open");
     });
 
     $(".comment-answer").click(function (event) {
+        event.preventDefault();
         var parentId = $(this).data("id");
         console.log(parentId);
         $("#ParentCommentId").attr("value", parentId);
     });
     $(".comment-quote").click(function (event) {
+        event.preventDefault();
         var quoteId = $(this).data("id");
         console.log(quoteId);
         $("#QuoteId").attr("value", quoteId);

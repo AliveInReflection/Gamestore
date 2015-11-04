@@ -25,7 +25,7 @@ namespace GameStore.BLL.Infrastructure
         {
             Bind<IUnitOfWork>().To<UnitOfWork>().WithConstructorArgument(connectionString);
             Bind<IContentPaginator<Game>>().To<GamePaginator>();
-            Bind<IGameStoreLogger>().To<NLogAdapter>();
+            //Bind<IGameStoreLogger>().To<NLogAdapter>();
         }
     }
 }

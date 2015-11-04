@@ -31,7 +31,9 @@ namespace GameStore.BLL.Infrastructure
 
             Mapper.CreateMap<GameDTO, Game>();
 
-            Mapper.CreateMap<CommentDTO, Comment>();
+            Mapper.CreateMap<CommentDTO, Comment>()
+                .ForMember(m => m.User, opt => opt.MapFrom(t => t.UserName))
+                .ForMember(m => m.ParentComment, opt => opt.MapFrom(t => t.ParentCommentId));
 
             Mapper.CreateMap<GenreDTO, Genre>();
 
@@ -44,6 +46,10 @@ namespace GameStore.BLL.Infrastructure
             Mapper.CreateMap<OrderDTO, Order>();
 
             Mapper.CreateMap<UserDTO, User>();
+
+            Mapper.CreateMap<string, User>().ForMember(m => m.UserName, opt => opt.MapFrom(t => t));
+            Mapper.CreateMap<int, Comment>().ForMember(m => m.CommentId, opt => opt.MapFrom(t => t));
+            Mapper.CreateMap<string, Game>().ForMember(m => m.GameKey, opt => opt.MapFrom(t => t));
 
 
         }
