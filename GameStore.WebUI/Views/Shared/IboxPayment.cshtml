@@ -1,0 +1,34 @@
+﻿@model GameStore.WebUI.Models.IboxPaymentViewModel
+
+@{
+    ViewBag.Title = "IboxPayment";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Ibox payment</h2>
+
+<fieldset>
+
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.InvoiceId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.InvoiceId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OrderId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OrderId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Amount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Amount)
+    </div>
+</fieldset>
+

@@ -7,6 +7,13 @@
 
 <h2>@ViewBag.Title</h2>
 
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
 <fieldset>
     <legend>Games in basket</legend>
     <table class="table">

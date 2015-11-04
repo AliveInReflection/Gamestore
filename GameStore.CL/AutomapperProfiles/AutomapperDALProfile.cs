@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using GameStore.Domain.Entities;
 
 namespace GameStore.CL.AutomapperProfiles
 {
@@ -11,7 +12,8 @@ namespace GameStore.CL.AutomapperProfiles
     {
         protected override void Configure()
         {
-
+            Mapper.CreateMap<Game, Game>().ForMember(m => m.Genres, opt => opt.Ignore())
+                .ForMember(m => m.PlatformTypes, opt => opt.Ignore()).ForMember(m => m.Publisher, opt => opt.Ignore());
         }
     }
 }

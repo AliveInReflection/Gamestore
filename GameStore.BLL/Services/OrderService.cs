@@ -6,6 +6,7 @@ using GameStore.DAL.Interfaces;
 using GameStore.Domain.Entities;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
+using GameStore.Infrastructure.Enums;
 
 namespace GameStore.BLL.Services
 {
@@ -31,10 +32,15 @@ namespace GameStore.BLL.Services
             return Mapper.Map<Order, OrderDTO>(entry);
         }
 
-        public void Make(int orderId)
+        public IPayment Make(int orderId, string paymentKey)
         {
             var order = database.Orders.Get(m => m.OrderId.Equals(orderId));
             var orderDetailses = database.OrderDetailses.GetMany(m => m.Order.OrderId.Equals(orderId));
+
+            if (!orderDetailses.Any())
+            {
+                throw new ValidationException(String.Format("Basket is empty ({0})", orderId));
+            }
 
             foreach (var orderDetailse in orderDetailses)
             {
@@ -52,6 +58,8 @@ namespace GameStore.BLL.Services
             order.OrderState = OrderState.NotPayed;
             order.Date = DateTime.UtcNow;
             database.Save();
+
+            return PaymentManager.Get(paymentKey);
         }
 
 

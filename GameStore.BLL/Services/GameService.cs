@@ -65,7 +65,7 @@ namespace GameStore.BLL.Services
                 database.Games.Update(gameToSave);
                 database.Save();
             }
-            catch (InvalidOperationException e)
+            catch (InvalidOperationException)
             {                
                 throw new ValidationException(String.Format("Another game with the same key ({0}) exists", game.GameKey));
             }

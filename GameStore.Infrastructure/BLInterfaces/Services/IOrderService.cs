@@ -7,6 +7,6 @@ namespace GameStore.Infrastructure.BLInterfaces
         decimal CalculateAmount(int orderId);
         OrderDTO GetCurrent(string customerId);
         void AddItem(string customerId, string gameId, short quantity);
-        void Make(int orderId);
+        IPayment Make(int orderId, string paymentKey);
     }
 }

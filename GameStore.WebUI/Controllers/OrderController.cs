@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
 using GameStore.BLL.Infrastructure;
+using GameStore.BLL.Services;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
+using GameStore.Infrastructure.Enums;
 using GameStore.Logger.Interfaces;
 using GameStore.WebUI.Infrastructure;
 using GameStore.WebUI.Models;
@@ -34,7 +36,7 @@ namespace GameStore.WebUI.Controllers
             catch (ValidationException e)
             {
                 logger.Warn(e);
-                TempData["ErrorMessage"] = "Validation error";
+                TempData["ErrorMessage"] = "Not enough units in stock";
             }
             return RedirectToAction("Index", "Game");
 
@@ -51,7 +53,7 @@ namespace GameStore.WebUI.Controllers
         {
             string sessionId = HttpContext.Session.SessionID;            
             var basket = orderService.GetCurrent(sessionId);
-            var methods = PaymentManager.GetAll();
+            var methods = PaymentModeManager.GetAll();
             
             var order = new MakeOrderViewModel();
             
@@ -70,17 +72,27 @@ namespace GameStore.WebUI.Controllers
                 string sessionId = HttpContext.Session.SessionID;
                 var basket = orderService.GetCurrent(sessionId);
 
-                var payment = PaymentManager.Get(paymentKey);
-
+                var payment = orderService.Make(basket.OrderId, paymentKey);
                 var amount = orderService.CalculateAmount(basket.OrderId);
+                var paymentMode = payment.Pay(basket.OrderId, amount);
 
-                orderService.Make(basket.OrderId);
+                switch (paymentMode)
+                {
+                    case PaymentMode.Bank:
+                        return File(InvoiceService.GenerateInvoice(basket.OrderId, amount),"application/pdf","invoice.pdf");
+                    case PaymentMode.Ibox:
+                        return View("IboxPayment", new IboxPaymentViewModel(){InvoiceId = new Random().Next(10000000,99999999), OrderId = basket.OrderId, Amount = amount});
+                    case PaymentMode.Visa:
+                        return View("VisaPayment");
+                    default:
+                        return HttpNotFound();
 
-                return payment.Payment.Pay(basket.OrderId, amount);
+                }
             }
-            catch (Exception e)
+            catch (ValidationException e)
             {
-                TempData["ErrorMessage"] = "Error";
+                logger.Warn(e);
+                TempData["ErrorMessage"] = "Basket is empty";
                 return RedirectToAction("Details");
             }
             

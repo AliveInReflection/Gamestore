@@ -43,6 +43,7 @@
     <Compile Include="BLInterfaces\ContentFilters\IContentPaginator.cs" />
     <Compile Include="BLInterfaces\ContentFilters\IContentSorter.cs" />
     <Compile Include="BLInterfaces\ContentFilters\IFilteringPipeline.cs" />
+    <Compile Include="BLInterfaces\IPayment.cs" />
     <Compile Include="BLInterfaces\Services\ICommentService.cs" />
     <Compile Include="BLInterfaces\Services\IGameService.cs" />
     <Compile Include="BLInterfaces\Services\IGenreService.cs" />
@@ -60,6 +61,8 @@
     <Compile Include="DTO\PlatformTypeDTO.cs" />
     <Compile Include="DTO\PublisherDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="Enums\GameSortingMode.cs" />
+    <Compile Include="Enums\PaymentMode.cs" />
     <Compile Include="Enums\SortingDirectionEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

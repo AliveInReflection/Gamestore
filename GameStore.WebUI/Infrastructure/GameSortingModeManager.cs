@@ -1,6 +1,5 @@
-﻿
-using System.Collections.Generic;
-using GameStore.Infrastructure.DTO;
+﻿using System.Collections.Generic;
+using GameStore.Infrastructure.Enums;
 
 
 namespace GameStore.WebUI.Infrastructure

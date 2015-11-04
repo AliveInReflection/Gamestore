@@ -8,6 +8,13 @@
 
 <h2>List</h2>
 
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
 <div class="comment-block">
     @Html.BuildCommentsTree(Model.Comments, ViewBag.GameKey as string)
 </div>

@@ -7,6 +7,14 @@
 }
 
 <h2>Games in the store</h2>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
 <div class="pull-right">@Html.ActionLink("Add new", "New", "Game")</div>
 <table class="table table-condensed">
     <tr>

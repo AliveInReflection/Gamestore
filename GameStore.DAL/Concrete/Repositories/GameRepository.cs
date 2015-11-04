@@ -48,9 +48,7 @@ namespace GameStore.DAL.Concrete.Repositories
             var publisher = context.Publishers.First(m => m.PublisherId.Equals(entity.Publisher.PublisherId));
 
             var entry = context.Games.First(m => m.GameId.Equals(entity.GameId));
-
-            Mapper.CreateMap<Game, Game>().ForMember(m => m.Genres, opt => opt.Ignore())
-                .ForMember(m => m.PlatformTypes, opt => opt.Ignore()).ForMember(m => m.Publisher, opt => opt.Ignore());
+            
             Mapper.Map(entity, entry);
 
             entry.Genres.Clear();

@@ -104,7 +104,7 @@ namespace Gamestore.DAL.Context
                 Description = "StarCraft II is a sequel to the real-time strategy game StarCraft, announced on May 19, 2007, at the Blizzard World Wide Invitational in Seoul, South Korea.[9][10] It is set to be released as a trilogy.",
                 Genres = genres,
                 PlatformTypes = types,
-                UnitsInStock = 12,
+                UnitsInStock = 450,
                 Discontinued = false,
                 Price = 49.99m,
                 Publisher = new Publisher()
@@ -139,7 +139,7 @@ namespace Gamestore.DAL.Context
                 Description = "Need for Speed: Most Wanted (commonly abbreviated to as NFS: MW or just Most Wanted) is a racing video game developed by EA Black Box and published by Electronic Arts. It is the ninth installment in the Need for Speed series.",
                 Genres = genres,
                 PlatformTypes = types,
-                UnitsInStock = 45,
+                UnitsInStock = 780,
                 Discontinued = false,
                 Price = 25,
                 Publisher = new Publisher()
@@ -170,7 +170,7 @@ namespace Gamestore.DAL.Context
                 Description = "Counter-Strike: Global Offensive (CS:GO) is a first-person shooter video game which is a part of the Counter-Strike series. It was announced to the public on August 12, 2011, and is developed by Valve Corporation and their partner, Hidden Path Entertainment. The game was later released on August 21, 2012 for the Playstation 3, Xbox 360, Microsoft Windows, and OS X and later Linux as a downloadable title.",
                 Genres = genres,
                 PlatformTypes = types,
-                UnitsInStock = 102,
+                UnitsInStock = 818,
                 Discontinued = false,
                 Price = 9.99m,
                 Publisher = new Publisher()

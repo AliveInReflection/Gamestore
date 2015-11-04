@@ -152,7 +152,7 @@ namespace GameStore.Tests.BLLTests
         [TestMethod]
         public void Make_Order()
         {
-            service.Make(1);
+            service.Make(1,"");
 
             Assert.AreEqual(OrderState.NotPayed, orders[0].OrderState);
         }
