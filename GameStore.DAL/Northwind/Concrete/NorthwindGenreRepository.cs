@@ -21,7 +21,8 @@ namespace GameStore.DAL.Northwind.Concrete
 
         public IEnumerable<Genre> GetAll(IEnumerable<int> idsToExclude)
         {
-            var categories = context.Categories.Where(m => !idsToExclude.Contains(m.CategoryID)).ToList();
+            var categories = context.Categories.ToList();
+            //var filteredCategories = categories.Where(m => !idsToExclude.Contains(m.CategoryID));
             return Mapper.Map<IEnumerable<Category>, IEnumerable<Genre>>(categories);
         }
 

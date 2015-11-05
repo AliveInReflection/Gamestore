@@ -23,6 +23,7 @@ namespace GameStore.WebUI
 
             Mapper.Initialize(cfg =>
             {
+                cfg.AddProfile(new AutomapperDALProfile());
                 cfg.AddProfile(new AutomapperBLLProfile());
                 cfg.AddProfile(new AutomapperWebProfile());
             });

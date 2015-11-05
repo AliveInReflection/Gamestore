@@ -2,13 +2,18 @@
 using Gamestore.DAL.Context;
 using GameStore.DAL.Concrete.Repositories;
 using GameStore.DAL.Interfaces;
+using GameStore.DAL.Northwind;
+using GameStore.DAL.Northwind.Concrete;
+using GameStore.DAL.Northwind.Interfaces;
 using GameStore.Domain.Entities;
+using Order = GameStore.Domain.Entities.Order;
 
 namespace GameStore.DAL.Concrete
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private readonly GameStoreContext context;
+        private readonly INorthwindUnitOfWork northwind;
 
         private IRepository<Game> games;
         private IRepository<Comment> comments;
@@ -20,15 +25,16 @@ namespace GameStore.DAL.Concrete
         private IRepository<User> users;
 
 
-        public UnitOfWork(string connectionString)
+        public UnitOfWork(string gameStoreConnectionString)
         {
-            context = new GameStoreContext(connectionString);
+            context = new GameStoreContext(gameStoreConnectionString);
+            northwind = new NorthwindUnitOfWork(new NorthwindContext());
         }
 
 
         public IRepository<Game> Games
         {
-            get { return games ?? (games = new GameRepository(context)); }
+            get { return games ?? (games = new GameRepository(context, northwind)); }
         }
 
         public IRepository<Comment> Comments
@@ -38,7 +44,7 @@ namespace GameStore.DAL.Concrete
 
         public IRepository<Genre> Genres
         {
-            get { return genres ?? (genres = new GenreRepository(context)); }
+            get { return genres ?? (genres = new GenreRepository(context, northwind)); }
         }
 
         public IRepository<PlatformType> PlatformTypes

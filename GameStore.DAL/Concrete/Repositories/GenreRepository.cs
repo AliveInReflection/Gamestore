@@ -6,17 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Gamestore.DAL.Context;
+using GameStore.DAL.Infrastructure;
 using GameStore.DAL.Interfaces;
+using GameStore.DAL.Northwind.Interfaces;
 
 namespace GameStore.DAL.Concrete.Repositories
 {
     class GenreRepository : IRepository<Genre>
     {
         private GameStoreContext context;
+        private INorthwindUnitOfWork northwind;
 
-        public GenreRepository(GameStoreContext context)
+        public GenreRepository(GameStoreContext context, INorthwindUnitOfWork northwind)
         {
             this.context = context;
+            this.northwind = northwind;
         }
 
         public void Create(Genre entity)
@@ -42,7 +46,12 @@ namespace GameStore.DAL.Concrete.Repositories
 
         public IEnumerable<Genre> GetAll()
         {
-            return context.Genres.Where(m => !m.IsDeleted).ToList();
+            var genresToExclude = context.Genres.Where(m => KeyManager.GetDatabase(m.GenreId) == DatabaseType.Northwind).Select(m => m.GenreId);
+            var genres = context.Genres.Where(m => !m.IsDeleted).ToList();
+
+            genres.AddRange(northwind.Genres.GetAll(genresToExclude));
+
+            return genres;
         }
 
         public IEnumerable<Genre> GetMany(System.Linq.Expressions.Expression<Func<Genre, bool>> predicate)
