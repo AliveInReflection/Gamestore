@@ -70,6 +70,13 @@
     <Compile Include="Northwind\Category.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
+    <Compile Include="Northwind\Concrete\NorthwindGameRepository.cs" />
+    <Compile Include="Northwind\Concrete\NorthwindGenreRepository.cs" />
+    <Compile Include="Northwind\Concrete\NorthwindOrderRepository.cs" />
+    <Compile Include="Northwind\Concrete\NorthwindPublisherRepository.cs" />
+    <Compile Include="Northwind\Concrete\NorthwindUnitOfWork.cs" />
+    <Compile Include="Northwind\Interfaces\INorthwindRepository.cs" />
+    <Compile Include="Northwind\Interfaces\INorthwindUnitOfWork.cs" />
     <Compile Include="Northwind\Northwind.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using GameStore.Domain.Entities;
 using System.Data.Entity;
 using System.Data.Metadata.Edm;
+using GameStore.Domain.Static;
 
 namespace Gamestore.DAL.Context
 {

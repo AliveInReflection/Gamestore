@@ -50,6 +50,7 @@
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\Game.cs" />
+    <Compile Include="Entities\GameGenre.cs" />
     <Compile Include="Entities\Genre.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderDetails.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Metadata\UserMetadata.cs" />
     <Compile Include="Metadata\ViewMetadata.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Static\OrderState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

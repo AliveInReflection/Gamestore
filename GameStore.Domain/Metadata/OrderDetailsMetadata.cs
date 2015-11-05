@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GameStore.Domain.Entities;
 
 namespace GameStore.Domain.Metadata
 {
@@ -21,5 +17,16 @@ namespace GameStore.Domain.Metadata
         [Required]
         public float Discount { get; set; }
 
+        [Required]
+        public int OrderId { get; set; }
+
+        [Required]
+        public int ProductId { get; set; }
+
+
+        [NotMapped]
+        public Game Product { get; set; }
+        [NotMapped]
+        public Order Order { get; set; }
     }
 }

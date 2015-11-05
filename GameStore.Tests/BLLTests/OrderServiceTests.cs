@@ -7,6 +7,7 @@ using GameStore.BLL.Services;
 using GameStore.CL.AutomapperProfiles;
 using GameStore.DAL.Interfaces;
 using GameStore.Domain.Entities;
+using GameStore.Domain.Static;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using GameStore.Domain.Static;
 
 namespace GameStore.Domain.Entities
 {
@@ -16,13 +17,5 @@ namespace GameStore.Domain.Entities
 
         
         public ICollection<OrderDetails> OrderDetailses { get; set; }
-    }
-
-    public enum OrderState
-    {
-        NotIssued = 1,
-        NotPayed = 2,
-        CheckingOut = 3,
-        Complete = 4
-    }
+    }   
 }

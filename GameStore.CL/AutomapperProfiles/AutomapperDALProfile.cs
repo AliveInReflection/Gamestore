@@ -3,7 +3,7 @@ using AutoMapper;
 using GameStore.DAL.Infrastructure;
 using GameStore.DAL.Northwind;
 using GameStore.Domain.Entities;
-
+using GameStore.Domain.Static;
 using GameStoreOrder = GameStore.Domain.Entities.Order;
 using NorthwindOrder = GameStore.DAL.Northwind.Order;
 
@@ -65,7 +65,13 @@ namespace GameStore.CL.AutomapperProfiles
 
 
             Mapper.CreateMap<NorthwindOrderDetails, GameStoreOrderDetails>()
-                .ForMember(m => m.OrderDetailsId, opt => opt.MapFrom(m => KeyManager.Encode(m.SupplierID, DatabaseType.Northwind)));
+                .ForMember(m => m.OrderId, opt => opt.MapFrom(m => KeyManager.Encode(m.OrderID, DatabaseType.Northwind)))
+                .ForMember(m => m.ProductId,
+                    opt => opt.MapFrom(m => KeyManager.Encode(m.ProductID, DatabaseType.Northwind)))
+                .ForMember(m => m.Quantity, opt => opt.MapFrom(m => m.Quantity))
+                .ForMember(m => m.Discount, opt => opt.MapFrom(m => m.Discount))
+                .ForMember(m => m.Order, opt => opt.MapFrom(m => m.Order))
+                .ForMember(m => m.Product, opt => opt.MapFrom(m => m.Product));
         }
     }
 }
