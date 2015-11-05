@@ -8,10 +8,12 @@ namespace GameStore.Domain.Entities
     {
         public int GenreId { get; set; }
         public string GenreName { get; set; }
+        public int? ParentGenreId { get; set; }
 
         public virtual Genre ParentGenre { get; set; }
         public virtual ICollection<Genre> ChildGenres { get; set; }
-        public virtual ICollection<Game> Games { get; set; }
+        
+        public ICollection<Game> Games { get; set; }
          
     }
 }

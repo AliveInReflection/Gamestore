@@ -59,6 +59,7 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\View.cs" />
     <Compile Include="Metadata\CommentMetadata.cs" />
+    <Compile Include="Metadata\GameGenreMetadata.cs" />
     <Compile Include="Metadata\GameMetadata.cs" />
     <Compile Include="Metadata\GenreMetadata.cs" />
     <Compile Include="Metadata\OrderDetailsMetadata.cs" />

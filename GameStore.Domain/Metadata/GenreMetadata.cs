@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GameStore.Domain.Entities
@@ -6,7 +7,7 @@ namespace GameStore.Domain.Entities
     public partial class GenreMetadata
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Required]
         public int GenreId { get; set; }
 
@@ -15,5 +16,7 @@ namespace GameStore.Domain.Entities
         public string GenreName { get; set; }
 
 
+        [NotMapped]
+        public ICollection<Game> Games { get; set; }
     }
 }

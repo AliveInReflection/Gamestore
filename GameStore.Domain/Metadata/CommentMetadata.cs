@@ -17,5 +17,10 @@ namespace GameStore.Domain.Entities
         [MaxLength(400)]
         public string Content { get; set; }
 
+        [Required]
+        public int GameId { get; set; }
+
+        [NotMapped]
+        public Game Game { get; set; }
     }
 }

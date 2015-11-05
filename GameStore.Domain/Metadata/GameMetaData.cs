@@ -8,7 +8,7 @@ namespace GameStore.Domain.Entities
     public partial class GameMetadata
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Required]
         public int GameId { get; set; }
 

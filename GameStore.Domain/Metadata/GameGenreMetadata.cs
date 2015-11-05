@@ -5,25 +5,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GameStore.Domain.Entities;
 
 namespace GameStore.Domain.Metadata
 {
-    public partial class ViewMetadata
+    public partial class GameGenreMetadata
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
-        public int ViewId { get; set; }
-
-        [Required]
-        public int UserId { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public int GameId { get; set; }
-
-
-        [NotMapped]
-        public Game Game { get; set; }
+        [Required]
+        public int GenreId { get; set; }
     }
 }

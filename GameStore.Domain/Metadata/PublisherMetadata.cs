@@ -12,7 +12,7 @@ namespace GameStore.Domain.Metadata
     public partial class PublisherMetadata
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Required]
         public int PublisherId { get; set; }
 

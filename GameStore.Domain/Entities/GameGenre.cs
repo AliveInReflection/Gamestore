@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using GameStore.Domain.Metadata;
 
 namespace GameStore.Domain.Entities
 {
-    class GameGenre
+    [MetadataType(typeof(GameGenreMetadata))]
+    public partial class GameGenre
     {
+        public int Id { get; set; }
+        public int GameId { get; set; }
+        public int GenreId { get; set; }
     }
 }
