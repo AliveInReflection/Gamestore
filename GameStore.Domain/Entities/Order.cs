@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
 
 namespace GameStore.Domain.Entities
 {
@@ -15,7 +13,9 @@ namespace GameStore.Domain.Entities
         public DateTime Date { get; set; }
         public OrderState OrderState { get; set; }
 
-        public virtual ICollection<OrderDetails> OrderDetailses { get; set; }
+
+        
+        public ICollection<OrderDetails> OrderDetailses { get; set; }
     }
 
     public enum OrderState

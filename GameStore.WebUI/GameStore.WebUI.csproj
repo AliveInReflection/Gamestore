@@ -198,6 +198,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="App_Data\Northwind.mdf" />
+    <Content Include="App_Data\Northwind_log.ldf">
+      <DependentUpon>Northwind.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\Styles\bootstrap.min.css" />
     <Content Include="Content\Styles\Content.css" />
     <Content Include="Content\Styles\Main.css" />

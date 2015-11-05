@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -37,6 +38,20 @@ namespace GameStore.Domain.Entities
 
         [Required]
         public DateTime ReceiptDate { get; set; }
+
+        [Required]
+        public int PublisherId { get; set; }
+
+
+
+        [NotMapped]
+        public ICollection<Comment> Comments { get; set; }
+        [NotMapped]
+        public ICollection<Genre> Genres { get; set; }
+        [NotMapped]
+        public Publisher Publisher { get; set; }
+        [NotMapped]
+        public ICollection<View> Views { get; set; }
 
     }
 }

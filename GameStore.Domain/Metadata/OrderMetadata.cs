@@ -24,5 +24,8 @@ namespace GameStore.Domain.Metadata
 
         [Required]
         public OrderState OrderState { get; set; }
+
+        [NotMapped]
+        public ICollection<OrderDetails> OrderDetailses { get; set; }
     }
 }
