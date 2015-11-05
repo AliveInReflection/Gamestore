@@ -31,7 +31,7 @@ namespace GameStore.BLL.Services
         {
             if (game == null)
             {
-                throw new ValidationException("No content received");
+                throw new NullReferenceException("No content received");
             }
 
             try
@@ -51,7 +51,7 @@ namespace GameStore.BLL.Services
         {
             if (game == null)
             {
-                throw new ValidationException("No content received");
+                throw new NullReferenceException("No content received");
             }
 
             try

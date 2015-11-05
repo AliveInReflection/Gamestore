@@ -62,18 +62,13 @@ namespace GameStore.WebUI
                 defaults: new { controller = "Game", action = "Details" }
                 );
 
+
             routes.MapRoute(
                 name: "Publisher",
-                url: "Publisher/{action}/{publisherId}",
-                defaults: new { controller = "Publisher", action = "Index", publisherId = UrlParameter.Optional }
+                url: "Publisher/{action}",
+                defaults: new { controller = "Publisher", action = "Index"}
                 );
-
-            routes.MapRoute(
-                name: "PublisherDetails",
-                url: "Publisher/{CompanyName}",
-                defaults: new { controller = "Publisher", action = "Details"}
-                );
-
+          
             
             routes.MapRoute(
                 name: "Default",

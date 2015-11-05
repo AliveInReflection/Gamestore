@@ -24,8 +24,12 @@ namespace GameStore.Tests.BLLTests
         private List<User> users; 
         private Mock<IUnitOfWork> mock;
         private CommentDTO commentToAdd;
-        private string testGameKey;
-        private string notExistedGameKey;
+        private CommentDTO commentToUpdate;
+
+
+        private string testGameKey = "CSGO";
+        private string notExistedGameKey = "Not Existed";
+        private int existedCommentId = 1;
 
         private CommentService service;
 
@@ -85,6 +89,13 @@ namespace GameStore.Tests.BLLTests
             mock.Setup(x => x.Comments.Get(It.IsAny<Expression<Func<Comment, bool>>>())).Returns((Expression<Func<Comment, bool>> predicate) => comments.Where(predicate.Compile()).First());
             mock.Setup(x => x.Comments.GetMany(It.IsAny<Expression<Func<Comment, bool>>>())).Returns((Expression<Func<Comment, bool>> predicate) => comments.Where(predicate.Compile()));
             mock.Setup(x => x.Comments.Create(It.IsAny<Comment>())).Callback((Comment comment) => comments.Add(comment));
+            mock.Setup(x => x.Comments.Update(It.IsAny<Comment>())).Callback((Comment comment) =>
+            {
+                var entry = comments.First(m => m.CommentId.Equals(comment.CommentId));
+                entry.Content = comment.Content;
+                entry.Quote = comment.Quote;
+            });
+                
             
             mock.Setup(x => x.Games.Get(It.IsAny<Expression<Func<Game, bool>>>())).Returns((Expression<Func<Game, bool>> predicate) => games.Where(predicate.Compile()).First());
 
@@ -102,9 +113,12 @@ namespace GameStore.Tests.BLLTests
                 ChildComments = new List<CommentDTO>()
             };
 
-            testGameKey = "CSGO";
-
-            notExistedGameKey = "Not Existed";
+            commentToUpdate = new CommentDTO()
+            {
+                CommentId = 1,
+                Content = "Test",
+                Quote = "Test"
+            };
         }
 
         [TestInitialize]
@@ -121,7 +135,7 @@ namespace GameStore.Tests.BLLTests
 
 
         [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
+        [ExpectedException(typeof(NullReferenceException))]
         public void Add_Comment_With_Null_Reference_Expected_Exception()
         {
             CommentDTO commentToAdd = null;
@@ -141,12 +155,31 @@ namespace GameStore.Tests.BLLTests
             Assert.AreEqual(expectedCount, comments.Count);
         }
 
+
         [TestMethod]
-        public void Get_Comments_By_Game_Key()
+        public void Get_Comment_By_Id_Result_Is_Not_Null()
         {
-            var result = service.Get(testGameKey);
+            var result = service.Get(existedCommentId);
 
             Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof (NullReferenceException))]
+        public void Update_Comment_Null_Refference_Expected_Exception()
+        {
+            service.Update(null);
+        }
+
+        [TestMethod]
+        public void Update_Comment()
+        {
+            var entry = comments.First(m => m.CommentId.Equals(commentToUpdate.CommentId));
+            
+            service.Update(commentToUpdate);
+
+            Assert.AreEqual(commentToUpdate.Content, entry.Content);
+            Assert.AreEqual(commentToUpdate.Quote, entry.Quote);
         }
 
         

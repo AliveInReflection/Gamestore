@@ -45,7 +45,7 @@ namespace GameStore.BLL.Services
         {
             if (genre == null)
             {
-                throw new ValidationException("No content received");
+                throw new NullReferenceException("No content received");
             }
 
             if (database.Genres.IsExists(m => m.GenreName.Equals(genre.GenreName)))
@@ -63,7 +63,7 @@ namespace GameStore.BLL.Services
         {
             if (genre == null)
             {
-                throw new ValidationException("No content received");
+                throw new NullReferenceException("No content received");
             }
 
             try

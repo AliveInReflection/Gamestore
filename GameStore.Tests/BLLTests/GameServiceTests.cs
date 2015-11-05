@@ -207,7 +207,7 @@ namespace GameStore.Tests.BLLTests
 
         #region AddGame
         [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
+        [ExpectedException(typeof(NullReferenceException))]
         public void Create_Game_With_Null_Reference_Expected_Exception()
         {
             GameDTO gameToAdd = null;
@@ -228,7 +228,7 @@ namespace GameStore.Tests.BLLTests
 
         #region UpdateGame
         [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
+        [ExpectedException(typeof(NullReferenceException))]
         public void Update_Game_With_Null_Reference_Expected_Exception()
         {
             testGame = null;

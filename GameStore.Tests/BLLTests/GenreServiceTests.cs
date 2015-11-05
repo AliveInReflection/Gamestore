@@ -20,8 +20,11 @@ namespace GameStore.Tests.BLLTests
         private List<Genre> genres;
         private List<Game> games;
         private Mock<IUnitOfWork> mock;
+       
         private string testGameKey;
         private string notExistedGameKey;
+
+        private int existedGenreId = 1;
 
         private GenreDTO genreToAdd;
         private GenreDTO genreToUpdate;
@@ -131,7 +134,7 @@ namespace GameStore.Tests.BLLTests
 
 
         [TestMethod]
-        [ExpectedException(typeof (ValidationException))]
+        [ExpectedException(typeof (NullReferenceException))]
         public void Add_Genre_With_Null_Refference_Expected_Exception()
         {
             service.Create(null);
@@ -149,7 +152,7 @@ namespace GameStore.Tests.BLLTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ValidationException))]
+        [ExpectedException(typeof(NullReferenceException))]
         public void Update_Genre_With_Null_Refference_Expected_Exception()
         {
             service.Update(null);
@@ -172,6 +175,14 @@ namespace GameStore.Tests.BLLTests
             service.Delete(1);
 
             Assert.AreEqual(expectedCount, genres.Count);
+        }
+
+        [TestMethod]
+        public void Get_Genre_By_Id_Result_Is_Not_Null()
+        {
+            var result = service.Get(existedGenreId);
+
+            Assert.IsNotNull(result);
         }
 
 

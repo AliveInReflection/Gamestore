@@ -26,6 +26,7 @@ namespace GameStore.Tests.WebTests
         private List<PublisherDTO> publishers;
 
         private string testGameKey = "CSGO";
+        private int testGameId = 1;
 
 
         private GameController controller;
@@ -102,6 +103,7 @@ namespace GameStore.Tests.WebTests
             mockGame.Setup(x => x.Get(It.IsAny<string>())).Returns(games.First());
             mockGame.Setup(x => x.Create(It.IsAny<GameDTO>()));
             mockGame.Setup(x => x.Get(It.IsAny<GameFilteringMode>())).Returns(new PaginatedGames());
+            mockGame.Setup(x => x.GetCount()).Returns(100);
 
             mockGenre.Setup(x => x.GetAll()).Returns(genres);
             mockPlatformType.Setup(x => x.GetAll()).Returns(platformTypes);
@@ -129,7 +131,7 @@ namespace GameStore.Tests.WebTests
         #endregion
 
         [TestMethod]
-        public void Game_List_Model_Is_Not_Null()
+        public void Game_Index_Model_Is_Not_Null()
         {
             var result = controller.Index(new FilteringViewModel()) as ViewResult;
 
@@ -160,6 +162,37 @@ namespace GameStore.Tests.WebTests
              Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
         }
 
+        [TestMethod]
+        public void Game_Update_Get_Model_Is_Not_Null()
+        {
+            var result = controller.Update(testGameKey) as ViewResult;
+
+            Assert.IsNotNull(result.Model);
+        }
+
+        [TestMethod]
+        public void Game_Update_Post_Is_Redirect_Result()
+        {
+            var result = controller.Update(new UpdateGameViewModel());
+
+            Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
+        }
+
+        [TestMethod]
+        public void Game_Delete_Post_Is_Redirect_Result()
+        {
+            var result = controller.Delete(testGameId);
+
+            Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
+        }
+
+        [TestMethod]
+        public void Game_GetCount_Is_Partial()
+        {
+            var result = controller.GetCount();
+
+            Assert.IsInstanceOfType(result, typeof(PartialViewResult));
+        }
 
 
     }

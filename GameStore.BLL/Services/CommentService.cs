@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AutoMapper;
 using GameStore.Domain.Entities;
 using GameStore.BLL.Infrastructure;
@@ -22,7 +23,7 @@ namespace GameStore.BLL.Services
         {
             if (comment == null)
             {
-                throw new ValidationException("No content received");
+                throw new NullReferenceException("No content received");
             }
 
             var commentToSave = Mapper.Map<CommentDTO, Comment>(comment);
@@ -75,7 +76,7 @@ namespace GameStore.BLL.Services
         {
             if (comment == null)
             {
-                throw new ValidationException("No content received");
+                throw new NullReferenceException("No content received");
             }
 
             var commentToSave = Mapper.Map<CommentDTO, Comment>(comment);

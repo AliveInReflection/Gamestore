@@ -14,11 +14,6 @@ namespace GameStore.BLL.Services
     {
         private readonly IUnitOfWork database;
 
-        public PlatformTypeService()
-        {
-            
-        }
-
         public PlatformTypeService(IUnitOfWork database)
         {
             this.database = database;

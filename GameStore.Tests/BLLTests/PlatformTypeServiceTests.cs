@@ -23,6 +23,8 @@ namespace GameStore.Tests.BLLTests
         private string testGameKey;
         private string notExistedGameKey;
 
+        private int existedPlatformTypeId = 1;
+
         private PlatformTypeDTO platformTypeToAdd;
         private PlatformTypeDTO platformTypeToUpdate;
 
@@ -171,6 +173,14 @@ namespace GameStore.Tests.BLLTests
             service.Delete(1);
 
             Assert.AreEqual(expectedCount, platformTypes.Count);
+        }
+
+        [TestMethod]
+        public void Get_Platform_Type_By_Id_Result_Is_Not_Null()
+        {
+            var result = service.Get(existedPlatformTypeId);
+
+            Assert.IsNotNull(result);
         }
     }
 

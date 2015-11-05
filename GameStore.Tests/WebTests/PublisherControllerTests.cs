@@ -19,6 +19,7 @@ namespace GameStore.Tests.WebTests
         private List<PublisherDTO> publishers;
 
         private string testCompanyName = "Blizzard";
+        private int testPublisherId = 1;
 
         private PublisherController controller;
 
@@ -50,6 +51,7 @@ namespace GameStore.Tests.WebTests
             mock = new Mock<IPublisherService>();
 
             mock.Setup(x => x.Get(It.IsAny<string>())).Returns(publishers[0]);
+            mock.Setup(x => x.Get(It.IsAny<int>())).Returns(publishers[0]);
             mock.Setup(x => x.Create(It.IsAny<PublisherDTO>()));
 
         }
@@ -96,6 +98,30 @@ namespace GameStore.Tests.WebTests
         public void Comment_Create_Post_Is_Redirect_Result()
         {
             var result = controller.Create(new CreatePublisherViewModel());
+
+            Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
+        }
+
+        [TestMethod]
+        public void Publisher_Update_Get_Model_Is_Not_Null()
+        {
+            var result = controller.Update(testPublisherId) as ViewResult;
+
+            Assert.IsNotNull(result.Model);
+        }
+
+        [TestMethod]
+        public void Comment_Update_Post_Is_Redirect_Result()
+        {
+            var result = controller.Update(new UpdatePublisherViewModel());
+
+            Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
+        }
+
+        [TestMethod]
+        public void Comment_Delete_Post_Is_Redirect_Result()
+        {
+            var result = controller.Delete(testPublisherId);
 
             Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
         }

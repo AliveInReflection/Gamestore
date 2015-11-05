@@ -42,7 +42,7 @@ namespace GameStore.Tests.WebTests
         public void Game_Details_By_Key_Route()
         {
             RouteAssert.HasRoute(routes, "/game/gamekey",
-                new { controller = "Game", action = "Details", key = "gamekey" });
+                new { controller = "Game", action = "Details", gameKey = "gamekey" });
         }
 
         [TestMethod]
@@ -80,12 +80,6 @@ namespace GameStore.Tests.WebTests
                 new { controller = "Game", action = "Download", gamekey = "gamekey" });
         }
 
-        [TestMethod]
-        public void Publisher_Details_Route()
-        {
-            RouteAssert.HasRoute(routes, "/publisher/CompanyName",
-                new { controller = "Publisher", action = "Details", companyName = "CompanyName" });
-        }
 
         [TestMethod]
         public void Publisher_Create_Route()

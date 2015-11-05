@@ -98,15 +98,14 @@ namespace GameStore.WebUI.Controllers
 
             try
             {
-                commentService.Update(Mapper.Map<UpdateCommentViewModel, CommentDTO>(comment));
-                return RedirectToAction("Index", "Comment", new { gameKey = gameKey });
+                commentService.Update(Mapper.Map<UpdateCommentViewModel, CommentDTO>(comment));                
             }
             catch (ValidationException e)
             {
                 logger.Warn(e);
-                ModelState.AddModelError("CommentId", e.Message);
-                return View(comment);
+                TempData["ErrorMessage"] = e;
             }
+            return RedirectToAction("Index", "Comment", new { gameKey = gameKey });
         }     
     }
 }

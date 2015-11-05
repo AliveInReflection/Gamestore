@@ -5,6 +5,7 @@ using GameStore.CL.AutomapperProfiles;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
 using GameStore.WebUI.Controllers;
+using GameStore.WebUI.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -17,6 +18,9 @@ namespace GameStore.Tests.WebTests
         private List<CommentDTO> comments;
 
         private string testGameKey = "SCII";
+        private int testCommentId = 1;
+
+        private CommentViewModel commentToSave;
 
         private CommentController controller;
 
@@ -37,13 +41,18 @@ namespace GameStore.Tests.WebTests
             mock = new Mock<ICommentService>();
 
             mock.Setup(x => x.Get(It.IsAny<string>())).Returns(comments);
+            mock.Setup(x => x.Get(It.IsAny<int>())).Returns(new CommentDTO());
             mock.Setup(x => x.Create(It.IsAny<CommentDTO>()));
 
         }
 
         private void InitializeTestEntities()
         {
-
+            commentToSave = new CommentViewModel()
+            {
+                GameKey = "BlaBla",
+                NewComment = new CreateCommentViewModel()
+            };
         }
 
         [TestInitialize]
@@ -63,13 +72,45 @@ namespace GameStore.Tests.WebTests
 
 
         [TestMethod]
-        public void Comment_List_Model_Is_Not_Null()
+        public void Comment_Index_Get_Model_Is_Not_Null()
         {
             var result = controller.Index(testGameKey) as ViewResult;
 
             Assert.IsNotNull(result.Model);
         }
 
+        [TestMethod]
+        public void Comment_Index_Post_Result_Is_Redirect()
+        {
+            var result = controller.Index(commentToSave);
+
+            Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
+        }
+
+        [TestMethod]
+        public void Comment_Delete_Post_Result_Is_Redirect()
+        {
+            var result = controller.Delete(testCommentId, testGameKey);
+
+            Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
+        }
+
+
+        [TestMethod]
+        public void Comment_Update_Get_Model_Is_Not_Null()
+        {
+            var result = controller.Update(testCommentId, testGameKey) as ViewResult;
+
+            Assert.IsNotNull(result.Model);
+        }
+
+        [TestMethod]
+        public void Comment_Update_Post_Result_Is_Redirect()
+        {
+            var result = controller.Update(new UpdateCommentViewModel(), testGameKey);
+
+            Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
+        }
 
     }
 

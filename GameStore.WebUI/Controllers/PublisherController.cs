@@ -99,14 +99,13 @@ namespace GameStore.WebUI.Controllers
             try
             {
                 publisherService.Update(Mapper.Map<UpdatePublisherViewModel, PublisherDTO>(publisher));
-                return RedirectToAction("Index");
             }
             catch (ValidationException e)
             {
                 logger.Warn(e);
-                ModelState.AddModelError("PublisherId", e.Message);
-                return View(publisher);
+                TempData["ErrorMessage"] = "Validation error";
             }
+            return RedirectToAction("Index");
 
         }
 
