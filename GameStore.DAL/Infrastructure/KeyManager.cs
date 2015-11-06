@@ -15,6 +15,11 @@ namespace GameStore.DAL.Infrastructure
             return key*Coefficient + (int) databaseType;
         }
 
+        public static int Decode(int key)
+        {
+            return key / Coefficient;
+        }
+
         public static DatabaseType GetDatabase(int key)
         {
             return (DatabaseType)(key % Coefficient);

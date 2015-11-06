@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using AutoMapper;
 using GameStore.DAL.Interfaces;
 using Gamestore.DAL.Context;
@@ -68,9 +69,9 @@ namespace GameStore.DAL.Concrete.Repositories
             entry.IsDeleted = true;
         }
 
-        public Game Get(System.Linq.Expressions.Expression<Func<Game, bool>> predicate)
+        public Game Get(Expression<Func<Game, bool>> predicate)
         {
-            var gameIdsToExclude = context.Games.Where(m => KeyManager.GetDatabase(m.GameId) == DatabaseType.Northwind).Select(m => m.GameId);
+            var gameIdsToExclude = GetGameIdsToExclude();
             
             var entry = context.Games.Where(predicate).FirstOrDefault(m => !m.IsDeleted);
             if (entry == null)
@@ -80,52 +81,128 @@ namespace GameStore.DAL.Concrete.Repositories
             else
             {
                 BuildGame(entry);
-            }
-            
-            
+            }           
+
             return entry;
         }
 
         public IEnumerable<Game> GetAll()
         {
-            var games = context.Games.Where(m => !m.IsDeleted).ToList();
+            var gameIdsToExclude = GetGameIdsToExclude();
             
-            var gameIdsToExclude = context.Games.Where(m => KeyManager.GetDatabase(m.GameId) == DatabaseType.Northwind).Select(m => m.GameId).ToList();
+            var games = context.Games.Where(m => !m.IsDeleted).ToList();
+            foreach (var game in games)
+            {
+                BuildGame(game);
+            }
 
-            games.AddRange(northwind.Games.GetAll(gameIdsToExclude));
+            var gamesFromNorthwind = northwind.Games.GetAll(gameIdsToExclude);
+            foreach (var game in gamesFromNorthwind)
+            {
+                AddCommentsToGame(game);
+            }
+
+            games.AddRange(gamesFromNorthwind);
             
             return games;
         }
 
-        public IEnumerable<Game> GetMany(System.Linq.Expressions.Expression<Func<Game, bool>> predicate)
+        public IEnumerable<Game> GetMany(Expression<Func<Game, bool>> predicate)
         {
-            return context.Games.Where(predicate).Where(m => !m.IsDeleted).ToList();
+            var gameIdsToExclude = GetGameIdsToExclude();
+
+            var games = context.Games.Where(m => !m.IsDeleted).ToList();
+            foreach (var game in games)
+            {
+                BuildGame(game);
+            }
+
+            var filteredGames = games.Where(predicate.Compile()).ToList();
+
+            var gamesFromNorthwind = northwind.Games.GetAll(gameIdsToExclude).Where(predicate.Compile());
+            foreach (var game in gamesFromNorthwind)
+            {
+                AddCommentsToGame(game);
+            }
+
+            filteredGames.AddRange(gamesFromNorthwind);
+
+            return filteredGames;
         }
 
         public int Count()
         {
-            return context.Games.Count(m => !m.IsDeleted);
+            var gameIdsToExclude = GetGameIdsToExclude();
+
+            var gameStoreCount = context.Games.Count(m => !m.IsDeleted);
+            var northwindCount = northwind.Games.GetAll(gameIdsToExclude).Count();
+
+            return gameStoreCount + northwindCount;
         }
 
-        public bool IsExists(System.Linq.Expressions.Expression<Func<Game, bool>> predicate)
+        public bool IsExists(Expression<Func<Game, bool>> predicate)
         {
-            return context.Games.Where(predicate).Any(m => !m.IsDeleted);
+            var gameIdsToExclude = GetGameIdsToExclude();
+            
+            bool gameStoreIsExists = context.Games.Where(predicate).Any(m => !m.IsDeleted);
+            bool northwindIsExists = northwind.Games.GetAll(gameIdsToExclude).Any(predicate.Compile());
+
+            return gameStoreIsExists && northwindIsExists;
         }
 
 
         private void BuildGame(Game entity)
         {
-            var publisher = context.Publishers.First(m => m.PublisherId.Equals(entity.PublisherId));
+            AddPublisherToGame(entity);
+            AddGenresToGame(entity);
+            AddCommentsToGame(entity);
+        }
+
+        private void AddCommentsToGame(Game entity)
+        {
             var comments = context.Comments.Where(m => m.GameId.Equals(entity.GameId)).ToList();
-            
-            var genres = context.Genres.Join(context.GameGenre, genre => genre.GenreId, gg => gg.GenreId,(genre,gg) => new {genre = genre, gg = gg})
-                .Join(context.Games, m => m.gg.GameId, game => game.GameId, (genre, game) => new { genre = genre, game = game })
-                .Where(m => m.game.GameId.Equals(entity.GameId)).Select(m => m.genre.genre).ToList();
-
-            entity.Publisher = publisher;
             entity.Comments = comments;
-            entity.Genres = genres;
+        }
 
+        private void AddPublisherToGame(Game entity)
+        {
+            var database = KeyManager.GetDatabase(entity.PublisherId);
+            Publisher publisher;
+            
+            switch (database)
+            {
+                case DatabaseType.GameStore:
+                    publisher = context.Publishers.First(m => m.PublisherId.Equals(entity.PublisherId));
+                    break;
+                case DatabaseType.Northwind:
+                    publisher = northwind.Publishers.Get(KeyManager.Decode(entity.PublisherId));
+                    break;
+                default:
+                    throw new InvalidOperationException(string.Format("Publisher was not found in all databases (id: {0})", entity.PublisherId));
+            }
+            entity.Publisher = publisher;
+        }
+
+        private void AddGenresToGame(Game entity)
+        {
+            var genreIds = context.Games.Join(context.GameGenre, 
+                                                game => game.GameId, 
+                                                gg => gg.GameId,
+                                                (game, gg) => new {game = game, gg = gg})
+                                        .Select(m => m.gg.GenreId).ToList();
+
+            var genreIdsInGameStore = genreIds.Where(m => KeyManager.GetDatabase(m) == DatabaseType.GameStore);
+            var genreIdsInNorthwind = genreIds.Where(m => KeyManager.GetDatabase(m) == DatabaseType.Northwind).Select(m => KeyManager.Decode(m));
+
+            var genres = context.Genres.Where(m => genreIdsInGameStore.Contains(m.GenreId)).ToList();
+            genres.AddRange(northwind.Genres.GetAll(new int[] { }).Where(m => genreIdsInNorthwind.Contains(m.GenreId)));
+
+            entity.Genres = genres;
+        }
+
+        private IEnumerable<int> GetGameIdsToExclude()
+        {
+            return context.Games.ToList().Where(m => KeyManager.GetDatabase(m.GameId) == DatabaseType.Northwind).Select(m => KeyManager.Decode(m.GameId));
         }
     }
 }
