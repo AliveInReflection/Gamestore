@@ -8,27 +8,36 @@ using System.Threading.Tasks;
 using Gamestore.DAL.Context;
 using GameStore.DAL.Interfaces;
 using System.Linq.Expressions;
+using GameStore.DAL.Northwind.Interfaces;
 
 namespace GameStore.DAL.Concrete.Repositories
 {
     public class CommentRepository : IRepository<Comment>
     {
         private GameStoreContext context;
+        private INorthwindUnitOfWork northwind;
 
-        public CommentRepository(GameStoreContext context)
+        public CommentRepository(GameStoreContext context, INorthwindUnitOfWork northwind)
         {
             this.context = context;
+            this.northwind = northwind;
         }
 
         public void Create(Comment entity)
         {
-            var game = context.Games.First(m => m.GameKey.Equals(entity.Game.GameKey));
+            var game = context.Games.FirstOrDefault(m => m.GameKey.Equals(entity.Game.GameKey));
+            if (game == null)
+            {
+                game = northwind.Games.GetAll(new int[] { }).First(m => m.GameKey.Equals(entity.Game.GameKey));
+            }
+
+
+
             var user = context.Users.FirstOrDefault(m => m.UserName.Equals(entity.User.UserName));
             if (user != null)
             {
                 entity.User = user;
             }
-
 
             var parentComment = context.Comments.FirstOrDefault(m => m.CommentId.Equals(entity.ParentComment.CommentId));
             if (parentComment != null)
@@ -40,9 +49,10 @@ namespace GameStore.DAL.Concrete.Repositories
             {
                 entity.ParentComment = null;
                 entity.Game = null;
-                game.Comments.Add(entity);
+                entity.GameId = game.GameId;
             }
-            context.Entry(entity).State = EntityState.Added;
+
+            context.Comments.Add(entity);
         }
 
         public void Update(Comment entity)

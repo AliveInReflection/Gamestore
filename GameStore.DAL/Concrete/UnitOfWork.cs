@@ -39,7 +39,7 @@ namespace GameStore.DAL.Concrete
 
         public IRepository<Comment> Comments
         {
-            get { return comments ?? (comments = new CommentRepository(context)); }
+            get { return comments ?? (comments = new CommentRepository(context, northwind)); }
         }
 
         public IRepository<Genre> Genres
@@ -54,7 +54,7 @@ namespace GameStore.DAL.Concrete
 
         public IRepository<Publisher> Publishers
         {
-            get { return publishers ?? (publishers = new PublisherRepository(context)); }
+            get { return publishers ?? (publishers = new PublisherRepository(context, northwind)); }
         }
 
         public IRepository<OrderDetails> OrderDetailses

@@ -10,7 +10,7 @@ namespace GameStore.WebUI.Models
     public class UpdateGameViewModel
     {
         [Required]
-        [HiddenInput]
+        [HiddenInput(DisplayValue = false)]
         public int GameId { get; set; }
 
         [Required]

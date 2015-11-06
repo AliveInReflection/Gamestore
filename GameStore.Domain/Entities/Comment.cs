@@ -11,7 +11,7 @@ namespace GameStore.Domain.Entities
         public string Content { get; set; }
         public string Quote { get; set; }
 
-        public int GameId { get; set; }
+        public int? GameId { get; set; }
 
         public Game Game { get; set; }
         public virtual Comment ParentComment { get; set; }

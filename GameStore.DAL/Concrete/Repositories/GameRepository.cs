@@ -184,7 +184,7 @@ namespace GameStore.DAL.Concrete.Repositories
             bool gameStoreIsExists = context.Games.Where(predicate).Any(m => !m.IsDeleted);
             bool northwindIsExists = northwind.Games.GetAll(gameIdsToExclude).Any(predicate.Compile());
 
-            return gameStoreIsExists && northwindIsExists;
+            return gameStoreIsExists || northwindIsExists;
         }
 
 
@@ -197,7 +197,7 @@ namespace GameStore.DAL.Concrete.Repositories
 
         private void AddCommentsToGame(Game entity)
         {
-            var comments = context.Comments.Where(m => m.GameId.Equals(entity.GameId)).ToList();
+            var comments = context.Comments.Where(m => m.GameId.HasValue && m.GameId.Value.Equals(entity.GameId)).ToList();
             entity.Comments = comments;
         }
 
