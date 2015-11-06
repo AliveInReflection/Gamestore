@@ -24,47 +24,84 @@ namespace GameStore.DAL.Concrete.Repositories
 
         public void Create(Game entity)
         {
+            if (entity.GameId == 0)
+            {
+                entity.GameId = GetId();
+            }
+
             var genreIds = entity.Genres.Select(m => m.GenreId);
-            var genres = context.Genres.Where(m => genreIds.Contains(m.GenreId));
+            foreach (var genreId in genreIds)
+            {
+                context.GameGenre.Add(new GameGenre()
+                {
+                    GameId = entity.GameId,
+                    GenreId = genreId
+                });
+            }
 
             var platformTypeIds = entity.PlatformTypes.Select(m => m.PlatformTypeId);
             var platformTypes = context.PlatformTypes.Where(m => platformTypeIds.Contains(m.PlatformTypeId));
-
-            var publisher = context.Publishers.First(m => m.PublisherId.Equals(entity.Publisher.PublisherId));
-
-            entity.Genres = genres.ToList();
             entity.PlatformTypes = platformTypes.ToList();
-            entity.Publisher = publisher;
 
             context.Games.Add(entity);
         }
 
         public void Update(Game entity)
         {
-            var genreIds = entity.Genres.Select(m => m.GenreId);
-            var genres = context.Genres.Where(m => genreIds.Contains(m.GenreId)).ToList();
+            var database = KeyManager.GetDatabase(entity.GameId);
+
+            if (database == DatabaseType.Northwind)
+            {
+                Create(entity);
+                return;
+            }
+
+            var currentGenreIds = entity.Genres.Select(m => m.GenreId).ToList();
+            var previousGenreIds = context.GameGenre.Where(m => m.GameId.Equals(entity.GameId)).Select(m => m.GenreId).ToList();
+
+            var genreIdsToAdd = currentGenreIds.Except(previousGenreIds).ToList();
+            var genreIdsToRemove = previousGenreIds.Except(currentGenreIds).ToList();
+
+            foreach (var genreId in genreIdsToAdd)
+            {
+                context.GameGenre.Add(new GameGenre()
+                {
+                    GameId = entity.GameId,
+                    GenreId = genreId
+                });
+            }
+
+            var genresToRemove = context.GameGenre.Where(m => m.GameId.Equals(entity.GameId) && genreIdsToRemove.Contains(m.GenreId));
+
+            foreach (var genre in genresToRemove)
+            {
+                context.GameGenre.Remove(genre);
+            }
 
             var platformTypeIds = entity.PlatformTypes.Select(m => m.PlatformTypeId);
             var platformTypes = context.PlatformTypes.Where(m => platformTypeIds.Contains(m.PlatformTypeId)).ToList();
-
-            var publisher = context.Publishers.First(m => m.PublisherId.Equals(entity.Publisher.PublisherId));
 
             var entry = context.Games.First(m => m.GameId.Equals(entity.GameId));
             
             Mapper.Map(entity, entry);
 
-            entry.Genres.Clear();
-            entry.Genres = genres.ToList();
-
             entry.PlatformTypes.Clear();
             entry.PlatformTypes = platformTypes.ToList();
-
-            entry.Publisher = publisher;
 
         }
 
         public void Delete(int id)
         {
+            var database = KeyManager.GetDatabase(id);
+
+            if (database == DatabaseType.Northwind)
+            {
+                var game = northwind.Games.Get(KeyManager.Decode(id));
+                game.IsDeleted = true;
+                Create(game);
+                return;
+            }
+
             var entry = context.Games.First(m => m.GameId.Equals(id));
             entry.IsDeleted = true;
         }
@@ -189,13 +226,14 @@ namespace GameStore.DAL.Concrete.Repositories
                                                 game => game.GameId, 
                                                 gg => gg.GameId,
                                                 (game, gg) => new {game = game, gg = gg})
+                                        .Where(m => m.game.GameId.Equals(entity.GameId))
                                         .Select(m => m.gg.GenreId).ToList();
 
             var genreIdsInGameStore = genreIds.Where(m => KeyManager.GetDatabase(m) == DatabaseType.GameStore);
             var genreIdsInNorthwind = genreIds.Where(m => KeyManager.GetDatabase(m) == DatabaseType.Northwind).Select(m => KeyManager.Decode(m));
 
             var genres = context.Genres.Where(m => genreIdsInGameStore.Contains(m.GenreId)).ToList();
-            genres.AddRange(northwind.Genres.GetAll(new int[] { }).Where(m => genreIdsInNorthwind.Contains(m.GenreId)));
+            genres.AddRange(northwind.Genres.GetAll(new int[] { }).Where(m => genreIdsInNorthwind.Contains(KeyManager.Decode(m.GenreId))));
 
             entity.Genres = genres;
         }
@@ -203,6 +241,11 @@ namespace GameStore.DAL.Concrete.Repositories
         private IEnumerable<int> GetGameIdsToExclude()
         {
             return context.Games.ToList().Where(m => KeyManager.GetDatabase(m.GameId) == DatabaseType.Northwind).Select(m => KeyManager.Decode(m.GameId));
+        }
+
+        private int GetId()
+        {
+            return context.Games.Select(m => m.GameId).OrderBy(m => m).ToList().Last() + KeyManager.Coefficient;
         }
     }
 }

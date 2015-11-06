@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using AutoMapper;
 using GameStore.DAL.Infrastructure;
 using GameStore.DAL.Northwind;
@@ -27,11 +28,12 @@ namespace GameStore.CL.AutomapperProfiles
                 .ForMember(m => m.Price, opt => opt.MapFrom(m => m.UnitPrice))
                 .ForMember(m => m.UnitsInStock, opt => opt.MapFrom(m => m.UnitsInStock))
                 .ForMember(m => m.Discontinued, opt => opt.MapFrom(m => m.Discontinued))
-                .ForMember(m => m.PublicationDate, opt => opt.MapFrom(m => new DateTime()))
-                .ForMember(m => m.ReceiptDate, opt => opt.MapFrom(m => new DateTime()))
+                .ForMember(m => m.PublicationDate, opt => opt.MapFrom(m => new DateTime(1990,1,1)))
+                .ForMember(m => m.ReceiptDate, opt => opt.MapFrom(m => new DateTime(1990, 1, 1)))
                 .ForMember(m => m.PublisherId, opt => opt.MapFrom(m => KeyManager.Encode(m.SupplierID.Value, DatabaseType.Northwind)))
                 .ForMember(m => m.Genres, opt => opt.MapFrom(m => new[] {m.Category}))
-                .ForMember(m => m.Publisher, opt => opt.MapFrom(m => m.Supplier));
+                .ForMember(m => m.Publisher, opt => opt.MapFrom(m => m.Supplier))
+                .ForMember(m => m.PlatformTypes, opt => opt.MapFrom(m => new List<PlatformType>()));
 
 
             Mapper.CreateMap<Category, Genre>()
