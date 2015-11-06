@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using GameStore.BLL.Infrastructure;
@@ -22,7 +23,7 @@ namespace GameStore.BLL.Services
 
         public decimal CalculateAmount(int orderId)
         {
-            var orderDetailses = database.OrderDetailses.GetMany(m => m.Order.OrderId.Equals(orderId));
+            var orderDetailses = database.OrderDetailses.GetMany(m => m.OrderId.Equals(orderId));
             decimal amount = orderDetailses.Sum(orderDetailse => orderDetailse.Product.Price*orderDetailse.Quantity*(decimal)(1-orderDetailse.Discount));
             return amount;
         }
@@ -36,23 +37,24 @@ namespace GameStore.BLL.Services
         public IPayment Make(int orderId, string paymentKey)
         {
             var order = database.Orders.Get(m => m.OrderId.Equals(orderId));
-            var orderDetailses = database.OrderDetailses.GetMany(m => m.Order.OrderId.Equals(orderId));
+            var orderDetailses = database.OrderDetailses.GetMany(m => m.OrderId.Equals(orderId));
 
             if (!orderDetailses.Any())
             {
                 throw new ValidationException(String.Format("Basket is empty ({0})", orderId));
             }
 
-            foreach (var orderDetailse in orderDetailses)
+            foreach (var orderDetails in orderDetailses)
             {
-                var game = orderDetailse.Product;
-                if (game.UnitsInStock >= orderDetailse.Quantity)
+                var game = database.Games.Get(m => m.GameId.Equals(orderDetails.ProductId));
+                if (game.UnitsInStock >= orderDetails.Quantity)
                 {
-                    game.UnitsInStock -= orderDetailse.Quantity;
+                    game.UnitsInStock -= orderDetails.Quantity;
+                    database.Games.Update(game);
                 }
                 else
                 {
-                    throw new ValidationException(String.Format("Not enough units ({0}({1} items)) in stock to make your order({2} items)",game.GameKey, game.UnitsInStock,orderDetailse.Quantity));
+                    throw new ValidationException(String.Format("Not enough units ({0}({1} items)) in stock to make your order({2} items)", game.GameKey, game.UnitsInStock, orderDetails.Quantity));
                 }
             }
 
@@ -75,12 +77,12 @@ namespace GameStore.BLL.Services
 
             var order = GetCurrentOrder(customerId);
                        
-            if (!database.OrderDetailses.IsExists(m => m.Order.OrderId.Equals(order.OrderId) && m.Product.GameKey.Equals(gameKey)))
+            if (!database.OrderDetailses.IsExists(m => m.OrderId.Equals(order.OrderId) && m.ProductId.Equals(game.GameId)))
             {
                 database.OrderDetailses.Create(new OrderDetails()
                 {
-                    Order = order,
-                    Product = game,
+                    OrderId = order.OrderId,
+                    ProductId = game.GameId,
                     Discount = 0,
                     Quantity = quantity
                 });
@@ -95,6 +97,18 @@ namespace GameStore.BLL.Services
                 }
             }
             database.Save();
+        }
+
+
+        public IEnumerable<OrderDTO> Get(DateTime dateFrom, DateTime dateTo)
+        {
+            if (dateFrom == null || dateTo == null)
+            {
+                throw new NullReferenceException("No content received");
+            }
+
+            var orders = database.Orders.GetMany(m => m.Date > dateFrom && m.Date < dateTo);
+            return Mapper.Map<IEnumerable<Order>, IEnumerable<OrderDTO>>(orders);
         }
 
         private Order GetCurrentOrder(string customerId)

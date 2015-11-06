@@ -59,12 +59,12 @@ namespace GameStore.DAL.Concrete
 
         public IRepository<OrderDetails> OrderDetailses
         {
-            get { return orderDetailses ?? (orderDetailses = new OrderDetailsRepository(context)); }
+            get { return orderDetailses ?? (orderDetailses = new OrderDetailsRepository(context, northwind)); }
         }
 
         public IRepository<Order> Orders
         {
-            get { return orders ?? (orders = new OrderRepository(context)); }
+            get { return orders ?? (orders = new OrderRepository(context, northwind)); }
         }
 
         public IRepository<User> Users

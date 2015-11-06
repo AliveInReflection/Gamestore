@@ -193,6 +193,7 @@ namespace GameStore.DAL.Concrete.Repositories
             AddPublisherToGame(entity);
             AddGenresToGame(entity);
             AddCommentsToGame(entity);
+            entity.Views = new List<View>();
         }
 
         private void AddCommentsToGame(Game entity)

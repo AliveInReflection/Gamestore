@@ -10,6 +10,7 @@ using GameStore.Infrastructure.Enums;
 using GameStore.Logger.Interfaces;
 using GameStore.WebUI.Infrastructure;
 using GameStore.WebUI.Models;
+using GameStore.WebUI.Models.Order;
 
 namespace GameStore.WebUI.Controllers
 {
@@ -96,6 +97,20 @@ namespace GameStore.WebUI.Controllers
                 return RedirectToAction("Details");
             }
             
+        }
+
+        [ActionName("History")]
+        public ActionResult GetHistory()
+        {
+            return View(new List<DisplayOrderViewModel>());
+        }
+
+        [ActionName("History")]
+        [HttpPost]
+        public ActionResult GetHistory(DateTime dateFrom, DateTime dateTo)
+        {
+            var orders = orderService.Get(dateFrom, dateTo);
+            return View(Mapper.Map<IEnumerable<OrderDTO>, IEnumerable<DisplayOrderViewModel>>(orders));
         }
 
     }

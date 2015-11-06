@@ -20,8 +20,9 @@ namespace GameStore.DAL.Northwind.Concrete
 
         public IEnumerable<GamestoreOrder> GetAll(IEnumerable<int> idsToExclude)
         {
-            var orders = context.Orders.Where(m => !idsToExclude.Contains(m.OrderID));
-            return Mapper.Map<IEnumerable<Order>, IEnumerable<GamestoreOrder>>(orders);
+            var orders = context.Orders.ToList();
+            var filteredOrders = orders.Where(m => !idsToExclude.Contains(m.OrderID));
+            return Mapper.Map<IEnumerable<Order>, IEnumerable<GamestoreOrder>>(filteredOrders);
         }
 
         public GamestoreOrder Get(int id)

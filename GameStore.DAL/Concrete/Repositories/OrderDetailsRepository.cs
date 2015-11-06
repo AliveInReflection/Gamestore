@@ -5,7 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Gamestore.DAL.Context;
+using GameStore.DAL.Infrastructure;
 using GameStore.DAL.Interfaces;
+using GameStore.DAL.Northwind.Interfaces;
 using GameStore.Domain.Entities;
 
 namespace GameStore.DAL.Concrete.Repositories
@@ -13,10 +15,12 @@ namespace GameStore.DAL.Concrete.Repositories
     public class OrderDetailsRepository : IRepository<OrderDetails>
     {
         private GameStoreContext context;
+        private INorthwindUnitOfWork northwind;
 
-        public OrderDetailsRepository(GameStoreContext context)
+        public OrderDetailsRepository(GameStoreContext context, INorthwindUnitOfWork northwind)
         {
             this.context = context;
+            this.northwind = northwind;
         }
 
         public void Create(OrderDetails entity)
@@ -37,17 +41,29 @@ namespace GameStore.DAL.Concrete.Repositories
 
         public OrderDetails Get(System.Linq.Expressions.Expression<Func<OrderDetails, bool>> predicate)
         {
-            return context.OrderDetailses.Where(predicate).First(m => !m.IsDeleted);
+            var orderDetails = context.OrderDetailses.Where(predicate).First(m => !m.IsDeleted);
+            BuildOrderDetails(orderDetails);
+            return orderDetails;
         }
 
         public IEnumerable<OrderDetails> GetAll()
         {
-            return context.OrderDetailses.Where(m => !m.IsDeleted).ToList();
+            var orderDetailses = context.OrderDetailses.Where(m => !m.IsDeleted).ToList();
+            foreach (var orderDetails in orderDetailses)
+            {
+                BuildOrderDetails(orderDetails);
+            }
+            return orderDetailses;
         }
 
         public IEnumerable<OrderDetails> GetMany(System.Linq.Expressions.Expression<Func<OrderDetails, bool>> predicate)
         {
-            return context.OrderDetailses.Where(predicate).Where(m => !m.IsDeleted).ToList();
+            var orderDetailses = context.OrderDetailses.Where(predicate).Where(m => !m.IsDeleted).ToList();
+            foreach (var orderDetails in orderDetailses)
+            {
+                BuildOrderDetails(orderDetails);
+            }
+            return orderDetailses;
         }
 
         public int Count()
@@ -58,6 +74,17 @@ namespace GameStore.DAL.Concrete.Repositories
         public bool IsExists(System.Linq.Expressions.Expression<Func<OrderDetails, bool>> predicate)
         {
             return context.OrderDetailses.Where(predicate).Any(m => !m.IsDeleted);
+        }
+
+        private void BuildOrderDetails(OrderDetails orderDetails)
+        {
+            var product = context.Games.FirstOrDefault(m => m.GameId.Equals(orderDetails.ProductId));
+            if (product == null)
+            {
+                product = northwind.Games.Get(KeyManager.Decode(orderDetails.ProductId));
+            }
+            orderDetails.Product = product;
+
         }
     }
 }

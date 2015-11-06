@@ -18,6 +18,13 @@
     <div class="pull-left">@Html.Action("GetCount", "Game")</div>
     <div class="pull-right">@Html.ActionLink("Basket", "Details", "Order")</div>
 </div>
+<div class="menu-line">
+    <p class="text-center">
+        @Html.ActionLink("Games", "Index", "Game") | 
+        @Html.ActionLink("Publishers", "Index", "Publisher") | 
+        @Html.ActionLink("Order history", "History", "Order")
+    </p>
+</div>
 <div class="content-line">
     <div class="col-md-3 left-side-bar">
         @RenderSection("LeftSideBar", false)

@@ -1,8 +1,10 @@
 ﻿using System.Web.Mvc;
 using AutoMapper;
+using GameStore.Domain.Entities;
 using GameStore.Infrastructure.DTO;
 using GameStore.WebUI.Infrastructure;
 using GameStore.WebUI.Models;
+using GameStore.WebUI.Models.Order;
 
 namespace GameStore.CL.AutomapperProfiles
 {
@@ -27,6 +29,8 @@ namespace GameStore.CL.AutomapperProfiles
 
             Mapper.CreateMap<OrderDTO, OrderViewModel>();
             Mapper.CreateMap<OrderDetailsDTO, OrderDetailsViewModel>();
+
+            Mapper.CreateMap<OrderDTO, DisplayOrderViewModel>();
 
 
             Mapper.CreateMap<int, GenreDTO>().ForMember(m => m.GenreId, opt => opt.MapFrom(t => t));

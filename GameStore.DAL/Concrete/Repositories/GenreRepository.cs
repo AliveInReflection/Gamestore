@@ -123,5 +123,7 @@ namespace GameStore.DAL.Concrete.Repositories
         {
             return context.Genres.ToList().Where(m => KeyManager.GetDatabase(m.GenreId) == DatabaseType.Northwind).Select(m => KeyManager.Decode(m.GenreId));
         }
+
+        
     }
 }

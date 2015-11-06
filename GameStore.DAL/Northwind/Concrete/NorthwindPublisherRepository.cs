@@ -20,7 +20,8 @@ namespace GameStore.DAL.Northwind.Concrete
 
         public IEnumerable<Publisher> GetAll(IEnumerable<int> idsToExclude)
         {
-            var suppliers = context.Suppliers.Where(m => !idsToExclude.Contains(m.SupplierID));
+            var suppliers = context.Suppliers.ToList();
+            var filteredSuppliers = suppliers.Where(m => !idsToExclude.Contains(m.SupplierID));
             return Mapper.Map<IEnumerable<Supplier>, IEnumerable<Publisher>>(suppliers);
         }
 

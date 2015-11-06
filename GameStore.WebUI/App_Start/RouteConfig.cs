@@ -22,6 +22,12 @@ namespace GameStore.WebUI
                );
 
             routes.MapRoute(
+               name: "OrdersHistory",
+               url: "orders/history",
+               defaults: new { controller = "Order", action = "History" }
+               );
+
+            routes.MapRoute(
                 name: "Comments",
                 url: "game/{gamekey}/comments",
                 defaults: new { controller = "Comment", action = "Index" }
