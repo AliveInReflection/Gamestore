@@ -8,7 +8,6 @@ using GameStore.Domain.Entities;
 using GameStore.Domain.Static;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
-using GameStore.Infrastructure.Enums;
 
 namespace GameStore.BLL.Services
 {
@@ -23,7 +22,7 @@ namespace GameStore.BLL.Services
 
         public decimal CalculateAmount(int orderId)
         {
-            var orderDetailses = database.OrderDetailses.GetMany(m => m.OrderId.Equals(orderId));
+            var orderDetailses = database.OrderDetailses.GetMany(m => m.OrderId.Equals(orderId)).ToList();
             decimal amount = orderDetailses.Sum(orderDetailse => orderDetailse.Product.Price*orderDetailse.Quantity*(decimal)(1-orderDetailse.Discount));
             return amount;
         }

@@ -5,7 +5,7 @@ using GameStore.Infrastructure.BLInterfaces;
 
 namespace GameStore.BLL.Concrete.ContentFilters
 {
-    class GameFilterByName : IContentFilter<Game>
+    public class GameFilterByName : IContentFilter<Game>
     {
         private string partOfName;
 

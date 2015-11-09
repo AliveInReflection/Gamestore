@@ -7,7 +7,7 @@ using GameStore.Infrastructure.BLInterfaces;
 
 namespace GameStore.BLL.ContentFilters
 {
-    class GameFilterByPublisher : IContentFilter<Game>
+    public class GameFilterByPublisher : IContentFilter<Game>
     {
         private IEnumerable<int> publisherIds;
 

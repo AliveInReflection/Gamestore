@@ -26,6 +26,8 @@ namespace GameStore.Tests.BLLTests
         private Order testOrder;
         private string testGameKey;
         private string notOrderedGameKey;
+        private string testPaymentKey = "Visa";
+        private string testCustomerId = "1";
 
 
         private OrderService service;
@@ -84,8 +86,8 @@ namespace GameStore.Tests.BLLTests
                     Date = DateTime.UtcNow,
                     OrderDetailses = new List<OrderDetails>
                     {
-                        new OrderDetails() {OrderDetailsId = 1, Product = games[0], Quantity = 2, Discount = 0},
-                        new OrderDetails() {OrderDetailsId = 2, Product = games[1], Quantity = 2, Discount = 0}
+                        new OrderDetails() {OrderDetailsId = 1, Product = games[0], ProductId = games[0].GameId, Quantity = 2, Discount = 0},
+                        new OrderDetails() {OrderDetailsId = 2, Product = games[1], ProductId = games[1].GameId, Quantity = 2, Discount = 0}
                     }
                 }
             };
@@ -106,16 +108,14 @@ namespace GameStore.Tests.BLLTests
                 .Returns((Expression<Func<Game, bool>> predicate) => games.Where(predicate.Compile()).First());
 
             mock.Setup(x => x.Orders.Get(It.IsAny<Expression<Func<Order, bool>>>()))
-                 .Returns((Expression<Func<Order, bool>> predicate) => orders.Where(predicate.Compile()).First());
+                 .Returns(orders[0]);
             
             mock.Setup(x => x.Orders.Create(It.IsAny<Order>()))
                 .Callback((Order order) => orders.Add(order));
             mock.Setup(x => x.OrderDetailses.Create(It.IsAny<OrderDetails>()))
                 .Callback((OrderDetails orderDetailse) => orderDetailses.Add(orderDetailse));
-
-
             mock.Setup(x => x.OrderDetailses.GetMany(It.IsAny<Expression<Func<OrderDetails, bool>>>()))
-                .Returns((Expression<Func<OrderDetails, bool>> predicate) => orderDetailses.Where(predicate.Compile()));
+                .Returns(orders[0].OrderDetailses);
         }
 
         private void InitializeTestEntities()
@@ -150,7 +150,7 @@ namespace GameStore.Tests.BLLTests
         [TestMethod]
         public void Get_Current()
         {
-            var order = service.GetCurrent("1");
+            var order = service.GetCurrent(testCustomerId);
 
             Assert.IsNotNull(order);
         }
@@ -158,7 +158,7 @@ namespace GameStore.Tests.BLLTests
         [TestMethod]
         public void Make_Order()
         {
-            service.Make(1,"Visa");
+            service.Make(1,testPaymentKey);
 
             Assert.AreEqual(OrderState.NotPayed, orders[0].OrderState);
         }
@@ -167,7 +167,7 @@ namespace GameStore.Tests.BLLTests
         public void Add_Existed_Item()
         {
             var expectedCount = orders[0].OrderDetailses.Count;
-            service.AddItem("1",testGameKey,2);
+            service.AddItem(testCustomerId, testGameKey, 2);
 
             Assert.AreEqual(expectedCount, orders[0].OrderDetailses.Count);
         }
@@ -176,7 +176,7 @@ namespace GameStore.Tests.BLLTests
         public void Add_New_Item()
         {
             var expectedCount = orderDetailses.Count + 1;
-            service.AddItem("1", notOrderedGameKey, 2);
+            service.AddItem(testCustomerId, notOrderedGameKey, 2);
 
             Assert.AreEqual(expectedCount, orderDetailses.Count);
         }

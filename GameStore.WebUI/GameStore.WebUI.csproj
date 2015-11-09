@@ -147,6 +147,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Resources\Validation\Validation.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Validation.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\GameController.cs" />
@@ -309,6 +314,8 @@
     <Folder Include="App_Data\Logs\ErrorsLog\" />
     <Folder Include="App_Data\Logs\IPAddressLog\" />
     <Folder Include="App_Data\Logs\PerformanceLog\" />
+    <Folder Include="App_Resources\ModelFields\" />
+    <Folder Include="App_Resources\Views\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -358,6 +365,12 @@
     <Content Include="Views\Comment\Get.cshtml" />
     <Content Include="Views\Comment\Index.cshtml" />
     <Content Include="Views\Comment\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App_Resources\Validation\Validation.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Validation.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
