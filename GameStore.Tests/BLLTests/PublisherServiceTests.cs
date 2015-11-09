@@ -17,63 +17,16 @@ namespace GameStore.Tests.BLLTests
     [TestClass]
     public class PublisherServiceTests
     {
-        private List<Publisher> publishers;
-        private Mock<IUnitOfWork> mock;
+        private TestCollections collections;
+        private UOWMock mock;
         private PublisherDTO publisherToAdd;
         private PublisherDTO publisherToUpdate;
-        private int publisherToDeleteId;
-        private string existedCompanyName;
 
         private PublisherService service;
 
-
-
-        private void InitializeCollections()
-        {
-            publishers = new List<Publisher>
-            {
-                new Publisher()
-                {
-                    PublisherId = 1,
-                    CompanyName = "Blizzard",
-                    Description = "The best company in the world",
-                    HomePage = "battle.net",
-                    Games = new List<Game>()
-                },
-                new Publisher()
-                {
-                    PublisherId = 2,
-                    CompanyName = "Electronic Arts",
-                    Description = "Only fast",
-                    HomePage = "www.needforspeed.com",
-                    Games = new List<Game>{new Game()}
-                }
-            };
-        }
-
-        private void InitializeMocks()
-        {
-            mock = new Mock<IUnitOfWork>();
-
-
-            mock.Setup(x => x.Publishers.GetAll()).Returns(publishers);
-            mock.Setup(x => x.Publishers.Get(It.IsAny<Expression<Func<Publisher, bool>>>())).Returns((Expression<Func<Publisher, bool>> predicate) => publishers.Where(predicate.Compile()).First());
-            mock.Setup(x => x.Publishers.GetMany(It.IsAny<Expression<Func<Publisher, bool>>>())).Returns((Expression<Func<Publisher, bool>> predicate) => publishers.Where(predicate.Compile()));
-            mock.Setup(x => x.Publishers.Create(It.IsAny<Publisher>())).Callback((Publisher publisher) => publishers.Add(publisher));
-            mock.Setup(x => x.Publishers.Update(It.IsAny<Publisher>())).Callback((Publisher publisher) =>
-            {
-                var entry = publishers.First(m => m.PublisherId.Equals(publisher.PublisherId));
-                entry.CompanyName = publisher.CompanyName;
-                entry.HomePage = publisher.HomePage;
-                entry.Description = publisher.Description;
-            });
-            mock.Setup(x => x.Publishers.Delete(It.IsAny<int>()))
-                .Callback((int id) => publishers.Remove(publishers.First(m => m.PublisherId.Equals(id))));
-        }
-
         private void InitializeTestEntities()
         {
-            service = new PublisherService(mock.Object);
+            service = new PublisherService(mock.UnitOfWork);
 
             publisherToAdd = new PublisherDTO()
                 {
@@ -92,8 +45,6 @@ namespace GameStore.Tests.BLLTests
                     HomePage = "www.needforspeed.com 1",
                     Games = new List<GameDTO>()
                 };
-
-            existedCompanyName = "Blizzard";
         }
 
         [TestInitialize]
@@ -103,8 +54,8 @@ namespace GameStore.Tests.BLLTests
             {
                 cfg.AddProfile(new AutomapperBLLProfile());
             });
-            InitializeCollections();
-            InitializeMocks();
+            collections = new TestCollections();
+            mock = new UOWMock(collections);
             InitializeTestEntities();
         }
 
@@ -119,17 +70,17 @@ namespace GameStore.Tests.BLLTests
         [TestMethod]
         public void Add_Publisher()
         {
-            var expectedCount = publishers.Count + 1;
+            var expectedCount = collections.Publishers.Count + 1;
 
             service.Create(publisherToAdd);
 
-            Assert.AreEqual(expectedCount, publishers.Count);
+            Assert.AreEqual(expectedCount, collections.Publishers.Count);
         }
 
         [TestMethod]
         public void Get_Publisher_By_Company_Name_Is_Not_Null()
         {
-            var publisher = service.Get(existedCompanyName);
+            var publisher = service.Get(collections.Publishers[0].CompanyName);
 
             Assert.IsNotNull(publisher);
         }
@@ -170,7 +121,7 @@ namespace GameStore.Tests.BLLTests
         {
             service.Update(publisherToUpdate);
 
-            var entry = publishers.First(m => m.PublisherId.Equals(publisherToUpdate.PublisherId));
+            var entry = collections.Publishers.First(m => m.PublisherId.Equals(publisherToUpdate.PublisherId));
 
             Assert.AreEqual(publisherToUpdate.CompanyName, entry.CompanyName);
             Assert.AreEqual(publisherToUpdate.Description, entry.Description);
@@ -180,11 +131,11 @@ namespace GameStore.Tests.BLLTests
         [TestMethod]
         public void Remove_Publisher()
         {
-            var expectedCount = publishers.Count - 1;
+            var expectedCount = collections.Publishers.Count - 1;
             
             service.Delete(1);
 
-            Assert.AreEqual(expectedCount, publishers.Count);
+            Assert.AreEqual(expectedCount, collections.Publishers.Count);
         }
 
 

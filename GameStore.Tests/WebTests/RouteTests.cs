@@ -52,12 +52,6 @@ namespace GameStore.Tests.WebTests
                 new { controller = "Game", action = "Index"});
         }
 
-        //[TestMethod]
-        //public void Delete_Game_Route()
-        //{
-        //    RouteAssert.HasRoute(routes, "/games/remove",
-        //        new { controller = "Games", action = "Delete" });
-        //}
 
         [TestMethod]
         public void New_Comment_For_Game_Route()

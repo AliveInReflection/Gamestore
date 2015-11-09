@@ -1,31 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using AutoMapper;
+﻿using AutoMapper;
 using GameStore.BLL.Services;
 using GameStore.CL.AutomapperProfiles;
-using GameStore.DAL.Interfaces;
 using GameStore.Domain.Entities;
 using GameStore.Domain.Static;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 
 namespace GameStore.Tests.BLLTests
 {
     [TestClass]
     public class OrderServiceTests
     {
-        private List<Game> games;
-        private List<Order> orders;
-        private List<OrderDetails> orderDetailses; 
-
-        public Mock<IUnitOfWork> mock;
+        private TestCollections collections;
+        public UOWMock mock;
 
 
         private Order testOrder;
-        private string testGameKey;
-        private string notOrderedGameKey;
         private string testPaymentKey = "Visa";
         private string testCustomerId = "1";
 
@@ -33,97 +22,12 @@ namespace GameStore.Tests.BLLTests
         private OrderService service;
 
         #region initialize
-        private void InitializeCollections()
-        {
-            games = new List<Game>
-            {
-                new Game()
-                {
-                    GameId = 1,
-                    GameKey = "SCII",
-                    GameName = "StarCraftII",
-                    Description = "DescriptionSCII",
-                    Price = 10,
-                    UnitsInStock = 10,
-                    Discontinued = false,
-                    Genres = new List<Genre>(),
-                    PlatformTypes = new List<PlatformType>()
-                },
-                new Game()
-                {
-                    GameId = 2,
-                    GameKey = "CSGO",
-                    GameName = "Counter strike: global offencive",
-                    Description = "DescriptionCSGO",
-                    Price = 10,
-                    UnitsInStock = 10,
-                    Discontinued = false,
-                    Genres = new List<Genre>(),
-                    PlatformTypes = new List<PlatformType>()
-                },
-                new Game()
-                {
-                    GameId = 2,
-                    GameKey = "NFS",
-                    GameName = "Need for speed",
-                    Description = "DescriptionNFS",
-                    Price = 10,
-                    UnitsInStock = 10,
-                    Discontinued = false,
-                    Genres = new List<Genre>(),
-                    PlatformTypes = new List<PlatformType>()
-                }
-
-            };
-
-            orders = new List<Order>
-            {
-                new Order()
-                {
-                    OrderId = 1,
-                    CustomerId = "1",
-                    OrderState = OrderState.NotIssued,
-                    Date = DateTime.UtcNow,
-                    OrderDetailses = new List<OrderDetails>
-                    {
-                        new OrderDetails() {OrderDetailsId = 1, Product = games[0], ProductId = games[0].GameId, Quantity = 2, Discount = 0},
-                        new OrderDetails() {OrderDetailsId = 2, Product = games[1], ProductId = games[1].GameId, Quantity = 2, Discount = 0}
-                    }
-                }
-            };
-
-            orderDetailses = new List<OrderDetails>(orders[0].OrderDetailses);
-            orderDetailses[0].Order = orders[0];
-            orderDetailses[1].Order = orders[0];
-
-        }
-
-        private void InitializeMocks()
-        {
-            mock = new Mock<IUnitOfWork>();
-            
-            mock.Setup(x => x.Games.GetAll()).Returns(games);
-            
-            mock.Setup(x => x.Games.Get(It.IsAny<Expression<Func<Game, bool>>>()))
-                .Returns((Expression<Func<Game, bool>> predicate) => games.Where(predicate.Compile()).First());
-
-            mock.Setup(x => x.Orders.Get(It.IsAny<Expression<Func<Order, bool>>>()))
-                 .Returns(orders[0]);
-            
-            mock.Setup(x => x.Orders.Create(It.IsAny<Order>()))
-                .Callback((Order order) => orders.Add(order));
-            mock.Setup(x => x.OrderDetailses.Create(It.IsAny<OrderDetails>()))
-                .Callback((OrderDetails orderDetailse) => orderDetailses.Add(orderDetailse));
-            mock.Setup(x => x.OrderDetailses.GetMany(It.IsAny<Expression<Func<OrderDetails, bool>>>()))
-                .Returns(orders[0].OrderDetailses);
-        }
+        
 
         private void InitializeTestEntities()
         {
-            testGameKey = "SCII";
-            notOrderedGameKey = "NFS";
 
-            service = new OrderService(mock.Object);
+            service = new OrderService(mock.UnitOfWork);
         }
 
         [TestInitialize]
@@ -133,8 +37,8 @@ namespace GameStore.Tests.BLLTests
             {
                 cfg.AddProfile(new AutomapperBLLProfile());
             });
-            InitializeCollections();
-            InitializeMocks();
+            collections = new TestCollections();
+            mock = new UOWMock(collections);
             InitializeTestEntities();
         }
         #endregion
@@ -142,9 +46,11 @@ namespace GameStore.Tests.BLLTests
         [TestMethod]
         public void Calculate_Amount()
         {
+            var expectedAmount = 149.98m;
+
             var amount = service.CalculateAmount(1);
 
-            Assert.AreEqual(40,amount);
+            Assert.AreEqual(expectedAmount, amount);
         }
 
         [TestMethod]
@@ -160,25 +66,25 @@ namespace GameStore.Tests.BLLTests
         {
             service.Make(1,testPaymentKey);
 
-            Assert.AreEqual(OrderState.NotPayed, orders[0].OrderState);
+            Assert.AreEqual(OrderState.NotPayed, collections.Orders[0].OrderState);
         }
 
         [TestMethod]
         public void Add_Existed_Item()
         {
-            var expectedCount = orders[0].OrderDetailses.Count;
-            service.AddItem(testCustomerId, testGameKey, 2);
+            var expectedCount = collections.Orders[0].OrderDetailses.Count;
+            service.AddItem(testCustomerId, collections.Games[0].GameKey, 2);
 
-            Assert.AreEqual(expectedCount, orders[0].OrderDetailses.Count);
+            Assert.AreEqual(expectedCount, collections.Orders[0].OrderDetailses.Count);
         }
 
         [TestMethod]
         public void Add_New_Item()
         {
-            var expectedCount = orderDetailses.Count + 1;
-            service.AddItem(testCustomerId, notOrderedGameKey, 2);
+            var expectedCount = collections.OrderDetailses.Count + 1;
+            service.AddItem(testCustomerId, collections.Games[1].GameKey, 2);
 
-            Assert.AreEqual(expectedCount, orderDetailses.Count);
+            Assert.AreEqual(expectedCount, collections.OrderDetailses.Count);
         }
 
         

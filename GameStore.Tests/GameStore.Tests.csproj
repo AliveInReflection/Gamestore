@@ -76,11 +76,15 @@
     <Compile Include="BLLTests\GameServiceTests.cs" />
     <Compile Include="BLLTests\GenreServiceTests.cs" />
     <Compile Include="BLLTests\OrderServiceTests.cs" />
+    <Compile Include="BLLTests\PaymentTests.cs" />
     <Compile Include="BLLTests\PlatformTypeServiceTests.cs" />
     <Compile Include="BLLTests\PublisherServiceTests.cs" />
+    <Compile Include="BLLTests\TestCollections.cs" />
+    <Compile Include="BLLTests\UOWMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebTests\CommentControllerTests.cs" />
     <Compile Include="WebTests\GameControllerTests.cs" />
+    <Compile Include="WebTests\InftastructureTests.cs" />
     <Compile Include="WebTests\OrderControllerTests.cs" />
     <Compile Include="WebTests\PublisherControllerTests.cs" />
     <Compile Include="WebTests\RouteTests.cs" />
