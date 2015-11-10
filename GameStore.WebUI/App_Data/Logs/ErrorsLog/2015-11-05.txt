@@ -1,0 +1,2 @@
+2015-11-05 18:40:37.6974|Warn| Type: InvalidOperationException | Message: Sequence contains no elements | Where:    at GameStore.WebUI.Controllers.PublisherController.Details(String companyName) in d:\GameStoreApp\GameStore\GameStore\GameStore.WebUI\Controllers\PublisherController.cs:line 35
+2015-11-05 18:42:29.6072|Warn| Type: InvalidOperationException | Message: Sequence contains no elements | Where:    at GameStore.WebUI.Controllers.GameController.Delete(Int32 gameId) in d:\GameStoreApp\GameStore\GameStore\GameStore.WebUI\Controllers\GameController.cs:line 136
