@@ -86,6 +86,7 @@
     <Compile Include="WebTests\GameControllerTests.cs" />
     <Compile Include="WebTests\HelperTests.cs" />
     <Compile Include="WebTests\InftastructureTests.cs" />
+    <Compile Include="WebTests\Mocks.cs" />
     <Compile Include="WebTests\OrderControllerTests.cs" />
     <Compile Include="WebTests\PublisherControllerTests.cs" />
     <Compile Include="WebTests\RouteTests.cs" />

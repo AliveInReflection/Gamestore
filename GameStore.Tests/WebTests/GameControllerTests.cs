@@ -20,19 +20,9 @@ namespace GameStore.Tests.WebTests
     [TestClass]
     public class GameControllerTests
     {
-        private Mock<IGameService> mockGame;
-        private Mock<IGenreService> mockGenre;
-        private Mock<IPlatformTypeService> mockPlatformType;
-        private Mock<IPublisherService> mockPublisher;
-        private Mock<IGameStoreLogger> loggerMock;
-
+        private Mocks mocks;
         private Mock<HttpContextBase> context;
         private Mock<HttpRequestBase> request;
-
-        private List<GenreDTO> genres;
-        private List<PlatformTypeDTO> platformTypes;
-        private List<GameDTO> games;
-        private List<PublisherDTO> publishers;
 
         private string testGameKey = "CSGO";
         private int testGameId = 1;
@@ -42,85 +32,8 @@ namespace GameStore.Tests.WebTests
 
         #region Initialize
 
-        private void InitializeCollections()
-        {
-            genres = new List<GenreDTO>
-            {
-                new GenreDTO() {GenreId = 1, GenreName = "RTS",},
-                new GenreDTO() {GenreId = 2, GenreName = "Action"}
-            };
-
-            platformTypes = new List<PlatformTypeDTO>
-            {
-                new PlatformTypeDTO() {PlatformTypeId = 1, PlatformTypeName = "Desktop"},
-                new PlatformTypeDTO() {PlatformTypeId = 2, PlatformTypeName = "Console"},
-            };
-
-            publishers = new List<PublisherDTO>
-            {
-                new PublisherDTO()
-                {
-                    PublisherId = 1,
-                    CompanyName = "Blizzard",
-                    Description = "The best company in the world",
-                    HomePage = "battle.net"
-                },
-                new PublisherDTO()
-                {
-                    PublisherId = 2,
-                    CompanyName = "Electronic Arts",
-                    Description = "Only fast",
-                    HomePage = "www.needforspeed.com"
-                }
-            };
-
-
-            games = new List<GameDTO>
-            {
-                new GameDTO()
-                {
-                    GameId = 1,
-                    GameKey = "SCII",
-                    GameName = "StarCraftII",
-                    Description = "DescriptionSCII",
-                    Genres = new List<GenreDTO> {genres[0]},
-                    PlatformTypes = new List<PlatformTypeDTO> {platformTypes[0]}
-                },
-                new GameDTO()
-                {
-                    GameId = 2,
-                    GameKey = "CSGO",
-                    GameName = "Counter strike: global offencive",
-                    Description = "DescriptionCSGO",
-                    Genres = new List<GenreDTO> {genres[1]},
-                    PlatformTypes = new List<PlatformTypeDTO> {platformTypes[0], platformTypes[1]}
-                }
-            };
-
-            
-            
-        }
-
         private void InitializeMocks()
         {
-            mockGame = new Mock<IGameService>();
-            mockGenre = new Mock<IGenreService>();
-            mockPlatformType = new Mock<IPlatformTypeService>();
-            mockPublisher = new Mock<IPublisherService>();
-            loggerMock = new Mock<IGameStoreLogger>();
-
-            mockGame.Setup(x => x.GetAll()).Returns(games);
-            mockGame.Setup(x => x.Get(It.IsAny<string>())).Returns(games.First());
-            mockGame.Setup(x => x.Create(It.IsAny<GameDTO>()));
-            mockGame.Setup(x => x.Get(It.IsAny<GameFilteringMode>())).Returns(new PaginatedGames());
-            mockGame.Setup(x => x.GetCount()).Returns(100);
-
-            mockGenre.Setup(x => x.GetAll()).Returns(genres);
-            mockPlatformType.Setup(x => x.GetAll()).Returns(platformTypes);
-            mockPublisher.Setup(x => x.GetAll()).Returns(publishers);
-
-            loggerMock.Setup(x => x.Warn(It.IsAny<Exception>()));
-
             context = new Mock<HttpContextBase>();
             request = new Mock<HttpRequestBase>();
 
@@ -141,11 +54,11 @@ namespace GameStore.Tests.WebTests
             {
                 cfg.AddProfile(new AutomapperWebProfile());
             });
-            InitializeCollections();
             InitializeMocks();
             InitializeTestEntities();
 
-            controller = new GameController(mockGame.Object, mockGenre.Object, mockPlatformType.Object, mockPublisher.Object, loggerMock.Object);
+            mocks = new Mocks();
+            controller = new GameController(mocks.GameService.Object, mocks.GenreService.Object, mocks.PlatformTypeService.Object, mocks.PublisherService.Object, mocks.Logger.Object);
             controller.ControllerContext = new ControllerContext(context.Object, new RouteData(), controller);
         }
         #endregion
@@ -235,7 +148,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Game_Create_Post_Exception_Error_Message_Is_Not_Null()
         {
-            mockGame.Setup(x => x.Create(It.IsAny<GameDTO>())).Throws<ValidationException>();
+            mocks.GameService.Setup(x => x.Create(It.IsAny<GameDTO>())).Throws<ValidationException>();
 
             controller.Create(new CreateGameViewModel());
 
@@ -245,7 +158,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Game_Delete_Post_Exception_Error_Message_Is_Not_Null()
         {
-            mockGame.Setup(x => x.Delete(It.IsAny<int>())).Throws<ValidationException>();
+            mocks.GameService.Setup(x => x.Delete(It.IsAny<int>())).Throws<ValidationException>();
 
             controller.Delete(testGameId);
 
@@ -255,7 +168,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Game_Update_Post_Exception_Error_Message_Is_Not_Null()
         {
-            mockGame.Setup(x => x.Update(It.IsAny<GameDTO>())).Throws<ValidationException>();
+            mocks.GameService.Setup(x => x.Update(It.IsAny<GameDTO>())).Throws<ValidationException>();
 
             controller.Update(new UpdateGameViewModel());
 

@@ -17,10 +17,7 @@ namespace GameStore.Tests.WebTests
     [TestClass]
     public class CommentControllerTests
     {
-        private Mock<ICommentService> mock;
-        private Mock<IGameStoreLogger> loggerMock;
-        private List<CommentDTO> comments;
-
+        private Mocks mocks;
         private string testGameKey = "SCII";
         private int testCommentId = 1;
 
@@ -29,29 +26,6 @@ namespace GameStore.Tests.WebTests
         private CommentController controller;
 
         #region Initialize
-
-        private void InitializeCollections()
-        {
-            comments = new List<CommentDTO>
-            {
-                new CommentDTO() {CommentId = 1, UserName = "Pol", Content = "Is it miltiplayer only?"},
-                new CommentDTO() { CommentId = 2, UserName = "John", Content = "No. It has offline mode to play with bots."},
-                new CommentDTO() { CommentId = 3, UserName = "Lissa", Content = "Nice game"}
-            };
-        }
-
-        private void InitializeMocks()
-        {
-            mock = new Mock<ICommentService>();
-            loggerMock = new Mock<IGameStoreLogger>();
-
-            mock.Setup(x => x.Get(It.IsAny<string>())).Returns(comments);
-            mock.Setup(x => x.Get(It.IsAny<int>())).Returns(new CommentDTO());
-            mock.Setup(x => x.Create(It.IsAny<CommentDTO>()));
-
-            loggerMock.Setup(x => x.Warn(It.IsAny<Exception>()));
-
-        }
 
         private void InitializeTestEntities()
         {
@@ -69,11 +43,9 @@ namespace GameStore.Tests.WebTests
             {
                 cfg.AddProfile(new AutomapperWebProfile());
             });
-            InitializeCollections();
-            InitializeMocks();
             InitializeTestEntities();
-
-            controller = new CommentController(mock.Object, loggerMock.Object);
+            mocks = new Mocks();
+            controller = new CommentController(mocks.CommentService.Object, mocks.Logger.Object);
         }
         #endregion
 
@@ -143,7 +115,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Comment_Index_Post_Exception_Error_Message_Is_Not_Null()
         {
-            mock.Setup(x => x.Create(It.IsAny<CommentDTO>())).Throws<ValidationException>();
+            mocks.CommentService.Setup(x => x.Create(It.IsAny<CommentDTO>())).Throws<ValidationException>();
 
             controller.Index(commentToSave);
 
@@ -153,7 +125,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Comment_Delete_Post_Exception_Error_Message_Is_Not_Null()
         {
-            mock.Setup(x => x.Delete(It.IsAny<int>())).Throws<ValidationException>();
+            mocks.CommentService.Setup(x => x.Delete(It.IsAny<int>())).Throws<ValidationException>();
 
             controller.Delete(testCommentId, testGameKey);
 
@@ -163,7 +135,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Comment_Update_Get_Exception_Error_Message_Is_Not_Null()
         {
-            mock.Setup(x => x.Get(It.IsAny<int>())).Throws<ValidationException>();
+            mocks.CommentService.Setup(x => x.Get(It.IsAny<int>())).Throws<ValidationException>();
 
             controller.Update(testCommentId, testGameKey);
 
@@ -173,7 +145,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Comment_Update_Get_Exception_Result_Is_Redirect()
         {
-            mock.Setup(x => x.Get(It.IsAny<int>())).Throws<ValidationException>();
+            mocks.CommentService.Setup(x => x.Get(It.IsAny<int>())).Throws<ValidationException>();
 
             var result = controller.Update(testCommentId, testGameKey);
 
@@ -183,7 +155,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Comment_Update_Post_Exception_Error_Message_Is_Not_Null()
         {
-            mock.Setup(x => x.Update(It.IsAny<CommentDTO>())).Throws<ValidationException>();
+            mocks.CommentService.Setup(x => x.Update(It.IsAny<CommentDTO>())).Throws<ValidationException>();
 
             controller.Update(new UpdateCommentViewModel(), testGameKey);
 

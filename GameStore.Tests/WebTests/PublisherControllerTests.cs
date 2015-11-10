@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using AutoMapper;
 using GameStore.BLL.Infrastructure;
 using GameStore.CL.AutomapperProfiles;
-using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
-using GameStore.Logger.Concrete;
-using GameStore.Logger.Interfaces;
 using GameStore.WebUI.Controllers;
 using GameStore.WebUI.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -18,10 +13,7 @@ namespace GameStore.Tests.WebTests
     [TestClass]
     public class PublisherControllerTests
     {
-        private Mock<IPublisherService> mock;
-        private Mock<IGameStoreLogger> loggerMock;
-        private List<PublisherDTO> publishers;
-
+        private Mocks mocks;
         private string testCompanyName = "Blizzard";
         private int testPublisherId = 1;
 
@@ -29,38 +21,6 @@ namespace GameStore.Tests.WebTests
 
         #region Initialize
 
-        private void InitializeCollections()
-        {
-            publishers = new List<PublisherDTO>
-            {
-                new PublisherDTO()
-                {
-                    PublisherId = 1,
-                    CompanyName = "Blizzard",
-                    Description = "The best company in the world",
-                    HomePage = "battle.net"
-                },
-                new PublisherDTO()
-                {
-                    PublisherId = 2,
-                    CompanyName = "Electronic Arts",
-                    Description = "Only fast",
-                    HomePage = "www.needforspeed.com"
-                }
-            };
-        }
-
-        private void InitializeMocks()
-        {
-            mock = new Mock<IPublisherService>();
-            loggerMock = new Mock<IGameStoreLogger>();
-
-            mock.Setup(x => x.Get(It.IsAny<string>())).Returns(publishers[0]);
-            mock.Setup(x => x.Get(It.IsAny<int>())).Returns(publishers[0]);
-            mock.Setup(x => x.Create(It.IsAny<PublisherDTO>()));
-
-            loggerMock.Setup(x => x.Warn(It.IsAny<Exception>()));
-        }
 
         private void InitializeTestEntities()
         {
@@ -74,14 +34,22 @@ namespace GameStore.Tests.WebTests
             {
                 cfg.AddProfile(new AutomapperWebProfile());
             });
-            InitializeCollections();
-            InitializeMocks();
+
             InitializeTestEntities();
 
-            controller = new PublisherController(mock.Object, loggerMock.Object);
+            mocks = new Mocks();
+            controller = new PublisherController(mocks.PublisherService.Object, mocks.Logger.Object);
         }
         #endregion
+        
+        
+        [TestMethod]
+        public void Publisher_Index_Model_Is_Not_Null()
+        {
+            var result = controller.Index() as ViewResult;
 
+            Assert.IsNotNull(result.Model);
+        }
 
         [TestMethod]
         public void Publisher_Details_Model_Is_Not_Null()
@@ -153,7 +121,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Publisher_Details_Get_Exception_Error_Message_Is_Not_Null()
         {
-            mock.Setup(x => x.Get(It.IsAny<string>())).Throws<ValidationException>();
+            mocks.PublisherService.Setup(x => x.Get(It.IsAny<string>())).Throws<ValidationException>();
 
             controller.Details(testCompanyName);
 
@@ -163,7 +131,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Publisher_Create_Post_Exception_Error_Message_Is_Not_Null()
         {
-            mock.Setup(x => x.Create(It.IsAny<PublisherDTO>())).Throws<ValidationException>();
+            mocks.PublisherService.Setup(x => x.Create(It.IsAny<PublisherDTO>())).Throws<ValidationException>();
 
             controller.Create(new CreatePublisherViewModel());
 
@@ -173,7 +141,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Publisher_Update_Get_Exception_Error_Message_Is_Not_Null()
         {
-            mock.Setup(x => x.Get(It.IsAny<int>())).Throws<ValidationException>();
+            mocks.PublisherService.Setup(x => x.Get(It.IsAny<int>())).Throws<ValidationException>();
 
             controller.Update(testPublisherId);
 
@@ -183,7 +151,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Publisher_Update_Get_Result_Is_Redirect()
         {
-            mock.Setup(x => x.Get(It.IsAny<int>())).Throws<ValidationException>();
+            mocks.PublisherService.Setup(x => x.Get(It.IsAny<int>())).Throws<ValidationException>();
 
             var result = controller.Update(testPublisherId);
 
@@ -193,7 +161,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Publisher_Update_Post_Exception_Error_Message_Is_Not_Null()
         {
-            mock.Setup(x => x.Update(It.IsAny<PublisherDTO>())).Throws<ValidationException>();
+            mocks.PublisherService.Setup(x => x.Update(It.IsAny<PublisherDTO>())).Throws<ValidationException>();
 
             controller.Update(new UpdatePublisherViewModel());
 
@@ -203,7 +171,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Publisher_Delete_Post_Exception_Error_Message_Is_Not_Null()
         {
-            mock.Setup(x => x.Delete(It.IsAny<int>())).Throws<ValidationException>();
+            mocks.PublisherService.Setup(x => x.Delete(It.IsAny<int>())).Throws<ValidationException>();
 
             controller.Delete(testPublisherId);
 
