@@ -35,7 +35,7 @@ namespace GameStore.WebUI.Controllers
                 var publisher = publisherService.Get(companyName);
                 return View(Mapper.Map<PublisherDTO, DisplayPublisherViewModel>(publisher));
             }
-            catch (InvalidOperationException e)
+            catch (ValidationException e)
             {
                 logger.Warn(e);
                 TempData["ErrorMessage"] = "Not found";
@@ -80,12 +80,12 @@ namespace GameStore.WebUI.Controllers
                 var publisher = publisherService.Get(publisherId);
                 return View(Mapper.Map<PublisherDTO, UpdatePublisherViewModel>(publisher));
             }
-            catch (InvalidOperationException e)
+            catch (ValidationException e)
             {
                 logger.Warn(e);
                 TempData["ErrorMessage"] = "Not found";
-                return RedirectToAction("Index", "Game");
             }
+            return RedirectToAction("Index", "Game");
         }
 
         [HttpPost]

@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using System.Web.UI;
 using AutoMapper;
+using GameStore.BLL.Infrastructure;
 using GameStore.BLL.Payments;
 using GameStore.CL.AutomapperProfiles;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
+using GameStore.Logger.Interfaces;
 using GameStore.WebUI.Controllers;
-using GameStore.WebUI.Models.Order;
+using GameStore.WebUI.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -20,6 +21,7 @@ namespace GameStore.Tests.WebTests
     public class OrderControllerTests
     {
         private Mock<IOrderService> mock;
+        private Mock<IGameStoreLogger> loggerMock;
         private Mock<HttpContextBase> context;
         private Mock<HttpRequestBase> request;
         
@@ -43,6 +45,9 @@ namespace GameStore.Tests.WebTests
         private void InitializeMocks()
         {
             mock = new Mock<IOrderService>();
+            loggerMock = new Mock<IGameStoreLogger>();
+
+
             mock.Setup(x => x.AddItem(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<short>()));
             mock.Setup(x => x.GetCurrent(It.IsAny<string>())).Returns(new OrderDTO());
             mock.Setup(x => x.CalculateAmount(It.IsAny<int>())).Returns(256);
@@ -54,6 +59,8 @@ namespace GameStore.Tests.WebTests
 
             context.Setup(c => c.Request).Returns(request.Object);
             context.Setup(c => c.Session.SessionID).Returns("session");
+
+            loggerMock.Setup(x => x.Warn(It.IsAny<Exception>()));
         }
 
         private void InitializeTestEntities()
@@ -70,12 +77,9 @@ namespace GameStore.Tests.WebTests
             });
             InitializeCollections();
             InitializeMocks();
-            InitializeTestEntities();
+            InitializeTestEntities();   
 
-            
-            
-
-            controller = new OrderController(mock.Object, null);
+            controller = new OrderController(mock.Object, loggerMock.Object);
             controller.ControllerContext = new ControllerContext(context.Object, new RouteData(), controller);
         }
         #endregion
@@ -148,6 +152,16 @@ namespace GameStore.Tests.WebTests
             var result = controller.GetHistory(new DateTime(1990, 1, 1), new DateTime(2014, 1, 1)) as ViewResult;
 
             Assert.IsNotNull(result.Model);
+        }
+
+        [TestMethod]
+        public void Order_Add_Get_Exception_Error_Message_Is_Not_Null()
+        {
+            mock.Setup(x => x.AddItem(It.IsAny<string>(),It.IsAny<string>(),It.IsAny<short>())).Throws<ValidationException>();
+
+            controller.Add("gameKey", 1);
+
+            Assert.IsNotNull(controller.TempData["ErrorMessage"]);
         }
 
     }

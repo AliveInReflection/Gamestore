@@ -72,11 +72,11 @@ namespace GameStore.WebUI.Controllers
             return RedirectToAction("Index", "Comment", new {gameKey = gameKey});
         }
 
-        public ActionResult Update(int id, string gameKey)
+        public ActionResult Update(int commentId, string gameKey)
         {
             try
             {
-                var comment = commentService.Get(id);
+                var comment = commentService.Get(commentId);
                 ViewBag.GameKey = gameKey;
                 return View(Mapper.Map<CommentDTO, UpdateCommentViewModel>(comment));
             }
