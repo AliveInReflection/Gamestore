@@ -27,10 +27,6 @@ namespace GameStore.WebUI
                 cfg.AddProfile(new AutomapperBLLProfile());
                 cfg.AddProfile(new AutomapperWebProfile());
             });
-
-            PaymentModeManager.Add(new PaymentMethod("en.wikipedia.org/wiki/Visa_Inc.#/media/File:Visa.svg","Visa", "American multinational financial services"));
-            PaymentModeManager.Add(new PaymentMethod("znet.lviv.ua/assets/img/ibox_logo.PNG", "Ibox", "The payment network of Ukraine"));
-            PaymentModeManager.Add(new PaymentMethod("www.financemagnates.com/wp-content/uploads/fxmag-experts/2014/08/unicredit.jpg", "Bank", "Remote banking services"));
         }
     }
 }
