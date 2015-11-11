@@ -39,19 +39,13 @@ namespace GameStore.Domain.Entities
         [Required]
         public DateTime ReceiptDate { get; set; }
 
-        [Required]
-        public int PublisherId { get; set; }
 
+        [ForeignKey("PublisherId")]
+        public virtual Publisher Publisher { get; set; }
 
-
-        [NotMapped]
-        public ICollection<Comment> Comments { get; set; }
-        [NotMapped]
-        public ICollection<Genre> Genres { get; set; }
-        [NotMapped]
-        public Publisher Publisher { get; set; }
-        [NotMapped]
-        public ICollection<View> Views { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Genre> Genres { get; set; }
+        public virtual ICollection<View> Views { get; set; }
 
     }
 }

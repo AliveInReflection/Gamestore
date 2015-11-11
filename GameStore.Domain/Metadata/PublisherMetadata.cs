@@ -26,7 +26,5 @@ namespace GameStore.Domain.Metadata
         [Required]
         public string HomePage { get; set; }
 
-        [NotMapped]
-        public ICollection<Game> Games { get; set; }
     }
 }

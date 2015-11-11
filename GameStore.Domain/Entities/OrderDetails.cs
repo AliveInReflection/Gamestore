@@ -14,7 +14,7 @@ namespace GameStore.Domain.Entities
         public int ProductId { get; set; }
 
 
-        public Game Product { get; set; }
-        public Order Order { get; set; }
+        public virtual Game Product { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

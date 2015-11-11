@@ -1,6 +1,8 @@
 ﻿using System;
 using Gamestore.DAL.Context;
 using GameStore.DAL.Concrete.Repositories;
+using GameStore.DAL.GameStore.Concrete;
+using GameStore.DAL.GameStore.Interfaces;
 using GameStore.DAL.Interfaces;
 using GameStore.DAL.Northwind;
 using GameStore.DAL.Northwind.Concrete;
@@ -12,8 +14,11 @@ namespace GameStore.DAL.Concrete
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        private readonly GameStoreContext context;
-        private readonly INorthwindUnitOfWork northwind;
+        private readonly GameStoreContext gameStoreContext;
+        private readonly NorthwindContext northwindContext;
+
+        private IGameStoreUnitOfWork gameStore;
+        private INorthwindUnitOfWork northwind;
 
         private IRepository<Game> games;
         private IRepository<Comment> comments;
@@ -27,61 +32,65 @@ namespace GameStore.DAL.Concrete
 
         public UnitOfWork(string gameStoreConnectionString)
         {
-            context = new GameStoreContext(gameStoreConnectionString);
-            northwind = new NorthwindUnitOfWork(new NorthwindContext());
+            gameStoreContext = new GameStoreContext(gameStoreConnectionString);
+            northwindContext = new NorthwindContext();
+
+            gameStore = new GameStoreUnitOfWork(gameStoreContext);
+            northwind = new NorthwindUnitOfWork(northwindContext);
         }
 
 
         public IRepository<Game> Games
         {
-            get { return games ?? (games = new GameRepository(context, northwind)); }
+            get { return games ?? (games = new GameRepository(gameStore, northwind)); }
         }
 
         public IRepository<Comment> Comments
         {
-            get { return comments ?? (comments = new CommentRepository(context, northwind)); }
+            get { return comments ?? (comments = new CommentRepository(gameStore, northwind)); }
         }
 
         public IRepository<Genre> Genres
         {
-            get { return genres ?? (genres = new GenreRepository(context, northwind)); }
+            get { return genres ?? (genres = new GenreRepository(gameStore, northwind)); }
         }
 
         public IRepository<PlatformType> PlatformTypes
         {
-            get { return platformTypes ?? (platformTypes = new PlatformTypeRepository(context)); }
+            get { return platformTypes ?? (platformTypes = new PlatformTypeRepository(gameStoreContext)); }
         }
 
         public IRepository<Publisher> Publishers
         {
-            get { return publishers ?? (publishers = new PublisherRepository(context, northwind)); }
+            get { return publishers ?? (publishers = new PublisherRepository(gameStore, northwind)); }
         }
 
         public IRepository<OrderDetails> OrderDetailses
         {
-            get { return orderDetailses ?? (orderDetailses = new OrderDetailsRepository(context, northwind)); }
+            get { return orderDetailses ?? (orderDetailses = new OrderDetailsRepository(gameStore, northwind)); }
         }
 
         public IRepository<Order> Orders
         {
-            get { return orders ?? (orders = new OrderRepository(context, northwind)); }
+            get { return orders ?? (orders = new OrderRepository(gameStore, northwind)); }
         }
 
         public IRepository<User> Users
         {
-            get { return users ?? (users = new UserRepository(context)); }
+            get { return users ?? (users = new UserRepository(gameStoreContext)); }
         }
 
         public void Save()
         {
-            context.SaveChanges();
+            gameStoreContext.SaveChanges();
         }
 
         public void Dispose()
         {
             //the context itself checks if Dispose has already been called so that nothing happens on a second call and no exception will be thrown
             //the context class has its own finalizer that will ensure that the database connection is released on garbage collection if you didn"t call Dispose explicitly
-            context.Dispose();
+            gameStoreContext.Dispose();
+            northwindContext.Dispose();
         }
     }
 }

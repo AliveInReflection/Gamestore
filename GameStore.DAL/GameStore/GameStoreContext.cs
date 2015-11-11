@@ -35,7 +35,6 @@ namespace Gamestore.DAL.Context
         public DbSet<OrderDetails> OrderDetailses { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<View> Views { get; set; }
-        public DbSet<GameGenre> GameGenre { get; set; }
     }
 
 
@@ -66,12 +65,18 @@ namespace Gamestore.DAL.Context
             db.Genres.Add(new Genre() {GenreId = 1, GenreName = "Strategy"});
             db.Genres.Add(new Genre() { GenreId = 4, GenreName = "RPG" });
             db.Genres.Add(new Genre() { GenreId = 7, GenreName = "Sports" });
-            db.Genres.Add(new Genre() { GenreId = 10, GenreName = "Races" });
-            db.Genres.Add(new Genre() { GenreId = 13, GenreName = "Action" });
+            
+            var races = new Genre() { GenreId = 10, GenreName = "Races" };
+            var action = new Genre() { GenreId = 13, GenreName = "Action" };
+            db.Genres.Add(races);
+            db.Genres.Add(action);
+
             db.Genres.Add(new Genre() { GenreId = 16, GenreName = "Adventure" });
             db.Genres.Add(new Genre() { GenreId = 19, GenreName = "Puzzle&Skill" });
 
-            db.Genres.Add(new Genre() { GenreId = 22, GenreName = "RTS", ParentGenreId = 1 });
+            var rts = new Genre() { GenreId = 22, GenreName = "RTS", ParentGenreId = 1 };
+            db.Genres.Add(rts);
+
             db.Genres.Add(new Genre() { GenreId = 25, GenreName = "BTS", ParentGenreId = 1 });
 
             db.Genres.Add(new Genre() { GenreId = 28, GenreName = "Rally", ParentGenreId = 10 });
@@ -102,7 +107,8 @@ namespace Gamestore.DAL.Context
                 Price = 49.99m,
                 PublisherId = 1,
                 PublicationDate = new DateTime(2012, 9, 17),
-                ReceiptDate = new DateTime(2014, 12, 10)
+                ReceiptDate = new DateTime(2014, 12, 10),
+                Genres = new[] { rts}
             };
             db.Games.Add(sc2);
 
@@ -120,7 +126,8 @@ namespace Gamestore.DAL.Context
                 Price = 25,
                 PublisherId = 4,
                 PublicationDate = new DateTime(2008, 10, 13),
-                ReceiptDate = new DateTime(2014, 12, 10)
+                ReceiptDate = new DateTime(2014, 12, 10),
+                Genres = new[] { races}
             });
 
             //-----------------------------------
@@ -138,6 +145,7 @@ namespace Gamestore.DAL.Context
                 PublisherId = 7,
                 PublicationDate = new DateTime(2013, 12, 1),
                 ReceiptDate = new DateTime(2014, 12, 10),
+                Genres = new[] { action}
             };
 
             db.Games.Add(csgo);
@@ -162,14 +170,14 @@ namespace Gamestore.DAL.Context
                 },
             });
 
-            db.GameGenre.Add(new GameGenre() {GameId = 1, GenreId = 1});
-            db.GameGenre.Add(new GameGenre() { GameId = 1, GenreId = 22 });
-            db.GameGenre.Add(new GameGenre() { GameId = 1, GenreId = 4 });
+            //db.GameGenre.Add(new GameGenre() {GameId = 1, GenreId = 1});
+            //db.GameGenre.Add(new GameGenre() { GameId = 1, GenreId = 22 });
+            //db.GameGenre.Add(new GameGenre() { GameId = 1, GenreId = 4 });
 
-            db.GameGenre.Add(new GameGenre() { GameId = 4, GenreId = 4 });
+            //db.GameGenre.Add(new GameGenre() { GameId = 4, GenreId = 4 });
             
-            db.GameGenre.Add(new GameGenre() { GameId = 7, GenreId = 13 });
-            db.GameGenre.Add(new GameGenre() { GameId = 7, GenreId = 4 });
+            //db.GameGenre.Add(new GameGenre() { GameId = 7, GenreId = 13 });
+            //db.GameGenre.Add(new GameGenre() { GameId = 7, GenreId = 4 });
 
             db.Views.Add(new View() {GameId = 1, UserId = 1});
             db.Views.Add(new View() { GameId = 1, UserId = 2 });

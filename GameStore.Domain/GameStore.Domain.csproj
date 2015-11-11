@@ -50,7 +50,6 @@
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\Game.cs" />
-    <Compile Include="Entities\GameGenre.cs" />
     <Compile Include="Entities\Genre.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderDetails.cs" />
@@ -59,7 +58,6 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\View.cs" />
     <Compile Include="Metadata\CommentMetadata.cs" />
-    <Compile Include="Metadata\GameGenreMetadata.cs" />
     <Compile Include="Metadata\GameMetadata.cs" />
     <Compile Include="Metadata\GenreMetadata.cs" />
     <Compile Include="Metadata\OrderDetailsMetadata.cs" />

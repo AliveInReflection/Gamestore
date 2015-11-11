@@ -17,7 +17,7 @@ namespace GameStore.Domain.Entities
         [MaxLength(400)]
         public string Content { get; set; }
 
-        [NotMapped]
-        public Game Game { get; set; }
+        [ForeignKey("GameId")]
+        public virtual Game Game { get; set; }
     }
 }

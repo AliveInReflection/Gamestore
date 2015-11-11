@@ -15,8 +15,5 @@ namespace GameStore.Domain.Entities
         [MaxLength(100)]
         public string GenreName { get; set; }
 
-
-        [NotMapped]
-        public ICollection<Game> Games { get; set; }
     }
 }

@@ -16,6 +16,6 @@ namespace GameStore.Domain.Entities
 
 
         
-        public ICollection<OrderDetails> OrderDetailses { get; set; }
+        public virtual ICollection<OrderDetails> OrderDetailses { get; set; }
     }   
 }

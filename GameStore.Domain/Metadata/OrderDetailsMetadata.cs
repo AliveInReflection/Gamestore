@@ -24,9 +24,9 @@ namespace GameStore.Domain.Metadata
         public int ProductId { get; set; }
 
 
-        [NotMapped]
+        [ForeignKey("ProductId")]
         public Game Product { get; set; }
-        [NotMapped]
+        [ForeignKey("OrderId")]
         public Order Order { get; set; }
     }
 }

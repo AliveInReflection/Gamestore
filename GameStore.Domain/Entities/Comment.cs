@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GameStore.Domain.Entities
 {
@@ -13,7 +14,8 @@ namespace GameStore.Domain.Entities
 
         public int? GameId { get; set; }
 
-        public Game Game { get; set; }
+
+        public virtual Game Game { get; set; }
         public virtual Comment ParentComment { get; set; }
         public virtual User User { get; set; }
 

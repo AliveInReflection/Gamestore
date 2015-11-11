@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 using GameStore.Domain.Metadata;
 
 namespace GameStore.Domain.Entities
@@ -15,6 +10,6 @@ namespace GameStore.Domain.Entities
         public int UserId { get; set; }
         public int GameId { get; set; }
 
-        public Game Game { get; set; }
+        public virtual Game Game { get; set; }
     }
 }

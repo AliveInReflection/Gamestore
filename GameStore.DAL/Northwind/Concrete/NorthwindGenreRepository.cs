@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AutoMapper;
 using GameStore.DAL.Northwind.Interfaces;
 using GameStore.Domain.Entities;
@@ -18,7 +15,6 @@ namespace GameStore.DAL.Northwind.Concrete
             this.context = context;
         }
 
-
         public IEnumerable<Genre> GetAll(IEnumerable<int> idsToExclude)
         {
             var categories = context.Categories.ToList();
@@ -30,6 +26,11 @@ namespace GameStore.DAL.Northwind.Concrete
         {
             var category = context.Categories.First(m => m.CategoryID.Equals(id));
             return Mapper.Map<Category, Genre>(category);
+        }
+
+        public int Count(IEnumerable<int> idsToExclude)
+        {
+            return context.Categories.Count(m => !idsToExclude.Contains(m.CategoryID));
         }
     }
 }

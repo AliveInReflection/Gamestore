@@ -21,9 +21,9 @@ namespace GameStore.Domain.Entities
         
         public virtual ICollection<PlatformType> PlatformTypes { get; set; }
 
-        public ICollection<Comment> Comments { get; set; }
-        public ICollection<Genre> Genres { get; set; }
-        public Publisher Publisher { get; set; }
-        public ICollection<View> Views { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Genre> Genres { get; set; }
+        public virtual Publisher Publisher { get; set; }
+        public virtual ICollection<View> Views { get; set; }
     }
 }

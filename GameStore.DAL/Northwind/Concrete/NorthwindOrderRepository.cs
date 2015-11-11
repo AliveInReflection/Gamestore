@@ -30,5 +30,10 @@ namespace GameStore.DAL.Northwind.Concrete
             var order = context.Orders.First(m => m.OrderID.Equals(id));
             return Mapper.Map<Order, GamestoreOrder>(order);
         }
+
+        public int Count(IEnumerable<int> idsToExclude)
+        {
+            return context.Orders.Count(m => !idsToExclude.Contains(m.OrderID));
+        }
     }
 }

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GameStore.Domain.Entities;
 
 namespace GameStore.Domain.Metadata
@@ -23,7 +18,7 @@ namespace GameStore.Domain.Metadata
         public int GameId { get; set; }
 
 
-        [NotMapped]
+        [ForeignKey("GameId")]
         public Game Game { get; set; }
     }
 }

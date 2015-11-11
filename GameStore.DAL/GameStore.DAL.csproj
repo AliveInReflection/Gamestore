@@ -53,16 +53,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Concrete\Repositories\CommentRepository.cs" />
-    <Compile Include="Concrete\Repositories\GameRepository.cs" />
-    <Compile Include="Concrete\Repositories\GenreRepository.cs" />
-    <Compile Include="Concrete\Repositories\OrderDetailsRepository.cs" />
-    <Compile Include="Concrete\Repositories\OrderRepository.cs" />
-    <Compile Include="Concrete\Repositories\PlatformTypeRepository.cs" />
-    <Compile Include="Concrete\Repositories\PublisherPrepository.cs" />
-    <Compile Include="Concrete\Repositories\UserRepository.cs" />
+    <Compile Include="Concrete\RepositoryDecorators\BaseRepository.cs" />
+    <Compile Include="Concrete\RepositoryDecorators\CommentRepository.cs" />
+    <Compile Include="Concrete\RepositoryDecorators\GameRepository.cs" />
+    <Compile Include="Concrete\RepositoryDecorators\GenreRepository.cs" />
+    <Compile Include="Concrete\RepositoryDecorators\OrderDetailsRepository.cs" />
+    <Compile Include="Concrete\RepositoryDecorators\OrderRepository.cs" />
+    <Compile Include="Concrete\RepositoryDecorators\PlatformTypeRepository.cs" />
+    <Compile Include="Concrete\RepositoryDecorators\PublisherRepository.cs" />
+    <Compile Include="Concrete\RepositoryDecorators\UserRepository.cs" />
     <Compile Include="Concrete\UnitOfWork.cs" />
+    <Compile Include="GameStore\Concrete\BaseGameStoreRepository.cs" />
+    <Compile Include="GameStore\Concrete\GameStoreCommentRepository.cs" />
+    <Compile Include="GameStore\Concrete\GameStoreGameRepository.cs" />
+    <Compile Include="GameStore\Concrete\GameStoreGenreRepository.cs" />
+    <Compile Include="GameStore\Concrete\GameStoreOrderDetailsRepository.cs" />
+    <Compile Include="GameStore\Concrete\GameStoreOrderRepository.cs" />
+    <Compile Include="GameStore\Concrete\GameStorePlatformTypeRepository.cs" />
+    <Compile Include="GameStore\Concrete\GameStorePublisherRepository.cs" />
+    <Compile Include="GameStore\Concrete\GameStoreUnitOfWork.cs" />
+    <Compile Include="GameStore\Concrete\GameStoreUserRepository.cs" />
     <Compile Include="GameStore\GameStoreContext.cs" />
+    <Compile Include="GameStore\Interfaces\IGameStoreRepository.cs" />
+    <Compile Include="GameStore\Interfaces\IGameStoreUnitOfWork.cs" />
     <Compile Include="Infrastructure\DatabaseType.cs" />
     <Compile Include="Infrastructure\KeyManager.cs" />
     <Compile Include="Interfaces\IRepository.cs" />

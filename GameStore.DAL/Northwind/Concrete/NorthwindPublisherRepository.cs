@@ -22,13 +22,18 @@ namespace GameStore.DAL.Northwind.Concrete
         {
             var suppliers = context.Suppliers.ToList();
             var filteredSuppliers = suppliers.Where(m => !idsToExclude.Contains(m.SupplierID));
-            return Mapper.Map<IEnumerable<Supplier>, IEnumerable<Publisher>>(suppliers);
+            return Mapper.Map<IEnumerable<Supplier>, IEnumerable<Publisher>>(filteredSuppliers);
         }
 
         public Publisher Get(int id)
         {
             var supplier = context.Suppliers.First(m => m.SupplierID.Equals(id));
             return Mapper.Map<Supplier, Publisher>(supplier);
+        }
+
+        public int Count(IEnumerable<int> idsToExclude)
+        {
+            return context.Suppliers.Count(m => !idsToExclude.Contains(m.SupplierID));
         }
     }
 }

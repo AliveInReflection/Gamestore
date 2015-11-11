@@ -32,5 +32,10 @@ namespace GameStore.DAL.Northwind.Concrete
             var product = context.Products.First(m => m.ProductID.Equals(id));
             return Mapper.Map<Product,Game>(product);
         }
+
+        public int Count(IEnumerable<int> idsToExclude)
+        {
+            return context.Products.Count(m => !idsToExclude.Contains(m.ProductID));
+        }
     }
 }
