@@ -1,16 +1,12 @@
-﻿using GameStore.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Gamestore.DAL.Context;
+using System.Linq.Expressions;
 using GameStore.DAL.Concrete.RepositoryDecorators;
 using GameStore.DAL.GameStore.Interfaces;
 using GameStore.DAL.Infrastructure;
-using GameStore.DAL.Interfaces;
 using GameStore.DAL.Northwind.Interfaces;
+using GameStore.Domain.Entities;
 
 namespace GameStore.DAL.Concrete.Repositories
 {
@@ -22,33 +18,31 @@ namespace GameStore.DAL.Concrete.Repositories
             
         }
 
-        public void Create(Genre entity)
+        public override void Create(Genre entity)
         {
-            if (entity.GenreId == 0)
-            {
-                entity.GenreId = GetId();
-            }
-            context.Genres.Add(entity);
+            gameStore.Genres.Create(entity);
         }
 
-        public void Update(Genre entity)
+        public override void Update(Genre entity)
         {
             var database = KeyManager.GetDatabase(entity.GenreId);
 
-            if (database == DatabaseType.Northwind)
+            if (database == DatabaseType.Northwind &&
+                gameStore.Genres.Get(m => m.GenreId.Equals(entity.GenreId)) == null)
             {
                 Create(entity);
                 return;
             }
 
-            context.Entry(entity).State = EntityState.Modified;
+            gameStore.Genres.Update(entity);
         }
 
-        public void Delete(int id)
+        public override void Delete(int id)
         {
             var database = KeyManager.GetDatabase(id);
 
-            if (database == DatabaseType.Northwind)
+            if (database == DatabaseType.Northwind &&
+                gameStore.Genres.Get(m => m.GenreId.Equals(id)) == null)
             {
                 var genre = northwind.Genres.Get(KeyManager.Decode(id));
                 genre.IsDeleted = true;
@@ -56,73 +50,58 @@ namespace GameStore.DAL.Concrete.Repositories
                 return;
             }
 
-            var entry = context.Genres.First(m => m.GenreId.Equals(id));
-            entry.IsDeleted = true;
+            gameStore.Genres.Delete(id);
         }
 
-        public Genre Get(System.Linq.Expressions.Expression<Func<Genre, bool>> predicate)
+        public override Genre Get(Expression<Func<Genre, bool>> predicate)
         {
-            var genreIdsToExclude = GetGenreIdsToExclude();
-            
-            var genre = context.Genres.Where(predicate).FirstOrDefault(m => !m.IsDeleted);
+            var genre = gameStore.Genres.GetMany(predicate).FirstOrDefault(m => !m.IsDeleted);
             if (genre == null)
             {
-                genre = northwind.Genres.GetAll(genreIdsToExclude).Where(predicate.Compile()).First();
+                genre = northwind.Genres.GetAll(GetGenreIdsToExclude()).Where(predicate.Compile()).First();
             }
             
             return genre;
         }
 
-        public IEnumerable<Genre> GetAll()
+        public override IEnumerable<Genre> GetAll()
         {
-            var genreIdsToExclude = GetGenreIdsToExclude();
-            var genres = context.Genres.Where(m => !m.IsDeleted).ToList();
+            var genres = gameStore.Genres.GetMany(m => !m.IsDeleted).ToList();
 
-            genres.AddRange(northwind.Genres.GetAll(genreIdsToExclude));
+            genres.AddRange(northwind.Genres.GetAll(GetGenreIdsToExclude()));
 
             return genres;
         }
 
-        public IEnumerable<Genre> GetMany(System.Linq.Expressions.Expression<Func<Genre, bool>> predicate)
+        public override IEnumerable<Genre> GetMany(Expression<Func<Genre, bool>> predicate)
         {
-            var genreIdsToExclude = GetGenreIdsToExclude();
-            var genres = context.Genres.Where(predicate).Where(m => !m.IsDeleted).ToList();
+            var genres = gameStore.Genres.GetMany(predicate).Where(m => !m.IsDeleted).ToList();
 
-            genres.AddRange(northwind.Genres.GetAll(genreIdsToExclude).Where(predicate.Compile()));
+            genres.AddRange(northwind.Genres.GetAll(GetGenreIdsToExclude()).Where(predicate.Compile()));
 
             return genres;
         }
 
-        public int Count()
+        public override int Count()
         {
             var genreIdsToExclude = GetGenreIdsToExclude();
 
-            var gameStoreCount = context.Genres.Count(m => !m.IsDeleted);
-            var northwindCount = northwind.Genres.GetAll(genreIdsToExclude).Count();
+            var gameStoreCount = gameStore.Genres.GetMany(m => !m.IsDeleted).Count();
+            var northwindCount = northwind.Genres.Count(genreIdsToExclude);
 
             return gameStoreCount + northwindCount;
         }
 
-        public bool IsExists(System.Linq.Expressions.Expression<Func<Genre, bool>> predicate)
+        public override bool IsExists(Expression<Func<Genre, bool>> predicate)
         {
-            var genreIdsToExclude = GetGenreIdsToExclude();
+            var gameStoreIsExists = gameStore.Genres.GetMany(m => !m.IsDeleted).Any(predicate);
 
-            var gameStoreIsExists = context.Genres.Where(m => !m.IsDeleted).Any(predicate);
-            var northwindIsExists = northwind.Genres.GetAll(genreIdsToExclude).Any(predicate.Compile());
-
-            return gameStoreIsExists || northwindIsExists;
-        }
-
-        private int GetId()
-        {
-            return context.Genres.Select(m => m.GenreId).OrderBy(m => m).ToList().Last() + KeyManager.Coefficient;
+            return gameStoreIsExists ? gameStoreIsExists : northwind.Genres.GetAll(GetGenreIdsToExclude()).Any(predicate.Compile());
         }
 
         private IEnumerable<int> GetGenreIdsToExclude()
         {
-            return context.Genres.ToList().Where(m => KeyManager.GetDatabase(m.GenreId) == DatabaseType.Northwind).Select(m => KeyManager.Decode(m.GenreId));
+            return gameStore.Genres.GetAll().Select(m => m.GenreId).Where(m => KeyManager.GetDatabase(m) == DatabaseType.Northwind).Select(m => KeyManager.Decode(m));
         }
-
-        
     }
 }

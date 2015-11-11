@@ -22,68 +22,48 @@ namespace GameStore.DAL.Concrete.Repositories
             
         }
 
-        public void Create(OrderDetails entity)
+        public override void Create(OrderDetails entity)
         {
-            context.Entry(entity).State = EntityState.Added;
+            gameStore.OrderDetailses.Create(entity);
         }
 
-        public void Update(OrderDetails entity)
+        public override void Update(OrderDetails entity)
         {
-            context.Entry(entity).State = EntityState.Modified;
+            gameStore.OrderDetailses.Update(entity);
         }
 
-        public void Delete(int id)
+        public override void Delete(int id)
         {
-            var entry = context.OrderDetailses.First(m => m.OrderDetailsId.Equals(id));
-            entry.IsDeleted = true;
+            gameStore.OrderDetailses.Delete(id);
         }
 
-        public OrderDetails Get(System.Linq.Expressions.Expression<Func<OrderDetails, bool>> predicate)
+        public override OrderDetails Get(System.Linq.Expressions.Expression<Func<OrderDetails, bool>> predicate)
         {
-            var orderDetails = context.OrderDetailses.Where(predicate).First(m => !m.IsDeleted);
-            BuildOrderDetails(orderDetails);
+            var orderDetails = gameStore.OrderDetailses.GetMany(predicate).First(m => !m.IsDeleted);
             return orderDetails;
         }
 
-        public IEnumerable<OrderDetails> GetAll()
+        public override IEnumerable<OrderDetails> GetAll()
         {
-            var orderDetailses = context.OrderDetailses.Where(m => !m.IsDeleted).ToList();
-            foreach (var orderDetails in orderDetailses)
-            {
-                BuildOrderDetails(orderDetails);
-            }
+            var orderDetailses = gameStore.OrderDetailses.GetMany(m => !m.IsDeleted).ToList();
             return orderDetailses;
         }
 
-        public IEnumerable<OrderDetails> GetMany(System.Linq.Expressions.Expression<Func<OrderDetails, bool>> predicate)
+        public override IEnumerable<OrderDetails> GetMany(System.Linq.Expressions.Expression<Func<OrderDetails, bool>> predicate)
         {
-            var orderDetailses = context.OrderDetailses.Where(predicate).Where(m => !m.IsDeleted).ToList();
-            foreach (var orderDetails in orderDetailses)
-            {
-                BuildOrderDetails(orderDetails);
-            }
+            var orderDetailses = gameStore.OrderDetailses.GetMany(predicate).Where(m => !m.IsDeleted).ToList();
             return orderDetailses;
         }
 
-        public int Count()
+        public override int Count()
         {
-            return context.OrderDetailses.Count(m => !m.IsDeleted);
+            return gameStore.OrderDetailses.GetMany(m => !m.IsDeleted).Count();
         }
 
-        public bool IsExists(System.Linq.Expressions.Expression<Func<OrderDetails, bool>> predicate)
+        public override bool IsExists(System.Linq.Expressions.Expression<Func<OrderDetails, bool>> predicate)
         {
-            return context.OrderDetailses.Where(predicate).Any(m => !m.IsDeleted);
+            return gameStore.OrderDetailses.GetMany(predicate).Any(m => !m.IsDeleted);
         }
 
-        private void BuildOrderDetails(OrderDetails orderDetails)
-        {
-            var product = context.Games.FirstOrDefault(m => m.GameId.Equals(orderDetails.ProductId));
-            if (product == null)
-            {
-                product = northwind.Games.Get(KeyManager.Decode(orderDetails.ProductId));
-            }
-            orderDetails.Product = product;
-
-        }
     }
 }

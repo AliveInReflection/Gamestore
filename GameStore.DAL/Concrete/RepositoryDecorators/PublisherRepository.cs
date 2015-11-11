@@ -20,33 +20,31 @@ namespace GameStore.DAL.Concrete.Repositories
             
         }
 
-        public void Create(Publisher entity)
+        public override void Create(Publisher entity)
         {
-            if (entity.PublisherId == 0)
-            {
-                entity.PublisherId = GetId();
-            }
-            context.Publishers.Add(entity);
+            gameStore.Publishers.Create(entity);
         }
 
-        public void Update(Publisher entity)
+        public override void Update(Publisher entity)
         {
             var database = KeyManager.GetDatabase(entity.PublisherId);
 
-            if (database == DatabaseType.Northwind)
+            if (database == DatabaseType.Northwind &&
+                gameStore.Publishers.Get(m => m.PublisherId.Equals(entity.PublisherId)) == null)
             {
                 Create(entity);
                 return;
             }
 
-            context.Entry(entity).State = EntityState.Modified;
+            gameStore.Publishers.Update(entity);
         }
 
-        public void Delete(int id)
+        public override void Delete(int id)
         {
             var database = KeyManager.GetDatabase(id);
 
-            if (database == DatabaseType.Northwind)
+            if (database == DatabaseType.Northwind &&
+                gameStore.Publishers.Get(m => m.PublisherId.Equals(id)) == null)
             {
                 var publiser = northwind.Publishers.Get(KeyManager.Decode(id));
                 publiser.IsDeleted = true;
@@ -54,73 +52,55 @@ namespace GameStore.DAL.Concrete.Repositories
                 return;
             }
 
-            var entry = context.Publishers.First(m => m.PublisherId.Equals(id));
-            entry.IsDeleted = true;
+            gameStore.Publishers.Delete(id);
         }
 
-        public Publisher Get(System.Linq.Expressions.Expression<Func<Publisher, bool>> predicate)
+        public override Publisher Get(System.Linq.Expressions.Expression<Func<Publisher, bool>> predicate)
         {
-            var publisherIdsToExclude = GetPubliserIdsToExclude();
-
-            var publisher = context.Publishers.Where(predicate).FirstOrDefault(m => !m.IsDeleted);
+            var publisher = gameStore.Publishers.GetMany(predicate).FirstOrDefault(m => !m.IsDeleted);
             if (publisher == null)
             {
-                publisher = northwind.Publishers.GetAll(publisherIdsToExclude).First(predicate.Compile());
+                publisher = northwind.Publishers.GetAll(GetPubliserIdsToExclude()).First(predicate.Compile());
             }
 
             return publisher;
         }
 
-        public IEnumerable<Publisher> GetAll()
+        public override IEnumerable<Publisher> GetAll()
         {
-            var publisherIdsToExclude = GetPubliserIdsToExclude();
+            var publishers = gameStore.Publishers.GetMany(m => !m.IsDeleted).ToList();
 
-            var publishers = context.Publishers.Where(m => !m.IsDeleted).ToList();
-
-            publishers.AddRange(northwind.Publishers.GetAll(publisherIdsToExclude));
+            publishers.AddRange(northwind.Publishers.GetAll(GetPubliserIdsToExclude()));
 
             return publishers;
         }
 
-        public IEnumerable<Publisher> GetMany(System.Linq.Expressions.Expression<Func<Publisher, bool>> predicate)
+        public override IEnumerable<Publisher> GetMany(System.Linq.Expressions.Expression<Func<Publisher, bool>> predicate)
         {
-            var publisherIdsToExclude = GetPubliserIdsToExclude();
+            var publishers = gameStore.Publishers.GetMany(predicate).Where(m => !m.IsDeleted).ToList();
 
-            var publishers = context.Publishers.Where(predicate).Where(m => !m.IsDeleted).ToList();
-
-            publishers.AddRange(northwind.Publishers.GetAll(publisherIdsToExclude).Where(predicate.Compile()));
+            publishers.AddRange(northwind.Publishers.GetAll(GetPubliserIdsToExclude()).Where(predicate.Compile()));
 
             return publishers;
         }
 
-        public int Count()
+        public override int Count()
         {
-            var publisherIdsToExclude = GetPubliserIdsToExclude();
-
-            var gameStoreCount = context.Publishers.Count(m => !m.IsDeleted);
-            var northwindCount = northwind.Publishers.GetAll(publisherIdsToExclude).Count();
+            var gameStoreCount = gameStore.Publishers.GetMany(m => !m.IsDeleted).Count();
+            var northwindCount = northwind.Publishers.Count(GetPubliserIdsToExclude());
 
             return gameStoreCount + northwindCount;
         }
 
-        public bool IsExists(System.Linq.Expressions.Expression<Func<Publisher, bool>> predicate)
+        public override bool IsExists(System.Linq.Expressions.Expression<Func<Publisher, bool>> predicate)
         {
-            var publisherIdsToExclude = GetPubliserIdsToExclude();
-
-            var gameStoreIsExists = context.Publishers.Where(m => !m.IsDeleted).Any(predicate);
-            var northwindIsExists = northwind.Publishers.GetAll(publisherIdsToExclude).Any(predicate.Compile());
-
-            return gameStoreIsExists || northwindIsExists;
+            var gameStoreIsExists = gameStore.Publishers.GetMany(m => !m.IsDeleted).Any(predicate);
+            return gameStoreIsExists ? gameStoreIsExists : northwind.Publishers.GetAll(GetPubliserIdsToExclude()).Any(predicate.Compile());
         }
 
         private IEnumerable<int> GetPubliserIdsToExclude()
         {
-            return context.Publishers.ToList().Where(m => KeyManager.GetDatabase(m.PublisherId) == DatabaseType.Northwind).Select(m => KeyManager.Decode(m.PublisherId));
-        }
-
-        private int GetId()
-        {
-            return context.Publishers.Select(m => m.PublisherId).OrderBy(m => m).ToList().Last() + KeyManager.Coefficient;
+            return gameStore.Publishers.GetAll().Select(m => m.PublisherId).Where(m => KeyManager.GetDatabase(m) == DatabaseType.Northwind).Select(m => KeyManager.Decode(m));
         }
     }
 }
