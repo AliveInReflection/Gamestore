@@ -69,7 +69,7 @@ namespace GameStore.BLL.Services
                 database.Publishers.Update(publisherToSave);
                 database.Save();
             }
-            catch (InvalidOperationException)
+            catch (InvalidOperationException e)
             {
                 throw new ValidationException(String.Format("Another publisher with the same company name ({0}) exists", publisher.CompanyName));
             }

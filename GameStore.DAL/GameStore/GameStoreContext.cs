@@ -170,15 +170,6 @@ namespace Gamestore.DAL.Context
                 },
             });
 
-            //db.GameGenre.Add(new GameGenre() {GameId = 1, GenreId = 1});
-            //db.GameGenre.Add(new GameGenre() { GameId = 1, GenreId = 22 });
-            //db.GameGenre.Add(new GameGenre() { GameId = 1, GenreId = 4 });
-
-            //db.GameGenre.Add(new GameGenre() { GameId = 4, GenreId = 4 });
-            
-            //db.GameGenre.Add(new GameGenre() { GameId = 7, GenreId = 13 });
-            //db.GameGenre.Add(new GameGenre() { GameId = 7, GenreId = 4 });
-
             db.Views.Add(new View() {GameId = 1, UserId = 1});
             db.Views.Add(new View() { GameId = 1, UserId = 2 });
             db.Views.Add(new View() { GameId = 1, UserId = 3 });

@@ -1,14 +1,13 @@
-﻿using GameStore.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using Gamestore.DAL.Context;
+using System.Linq.Expressions;
+using AutoMapper;
 using GameStore.DAL.Concrete.RepositoryDecorators;
 using GameStore.DAL.GameStore.Interfaces;
 using GameStore.DAL.Infrastructure;
-using GameStore.DAL.Interfaces;
 using GameStore.DAL.Northwind.Interfaces;
+using GameStore.Domain.Entities;
 
 namespace GameStore.DAL.Concrete.Repositories
 {
@@ -35,7 +34,6 @@ namespace GameStore.DAL.Concrete.Repositories
                 Create(entity);
                 return;
             }
-
             gameStore.Publishers.Update(entity);
         }
 
@@ -55,7 +53,7 @@ namespace GameStore.DAL.Concrete.Repositories
             gameStore.Publishers.Delete(id);
         }
 
-        public override Publisher Get(System.Linq.Expressions.Expression<Func<Publisher, bool>> predicate)
+        public override Publisher Get(Expression<Func<Publisher, bool>> predicate)
         {
             var publisher = gameStore.Publishers.GetMany(predicate).FirstOrDefault(m => !m.IsDeleted);
             if (publisher == null)
@@ -75,7 +73,7 @@ namespace GameStore.DAL.Concrete.Repositories
             return publishers;
         }
 
-        public override IEnumerable<Publisher> GetMany(System.Linq.Expressions.Expression<Func<Publisher, bool>> predicate)
+        public override IEnumerable<Publisher> GetMany(Expression<Func<Publisher, bool>> predicate)
         {
             var publishers = gameStore.Publishers.GetMany(predicate).Where(m => !m.IsDeleted).ToList();
 
@@ -92,7 +90,7 @@ namespace GameStore.DAL.Concrete.Repositories
             return gameStoreCount + northwindCount;
         }
 
-        public override bool IsExists(System.Linq.Expressions.Expression<Func<Publisher, bool>> predicate)
+        public override bool IsExists(Expression<Func<Publisher, bool>> predicate)
         {
             var gameStoreIsExists = gameStore.Publishers.GetMany(m => !m.IsDeleted).Any(predicate);
             return gameStoreIsExists ? gameStoreIsExists : northwind.Publishers.GetAll(GetPubliserIdsToExclude()).Any(predicate.Compile());
@@ -100,7 +98,9 @@ namespace GameStore.DAL.Concrete.Repositories
 
         private IEnumerable<int> GetPubliserIdsToExclude()
         {
-            return gameStore.Publishers.GetAll().Select(m => m.PublisherId).Where(m => KeyManager.GetDatabase(m) == DatabaseType.Northwind).Select(m => KeyManager.Decode(m));
+            return gameStore.Publishers.GetAll().Select(m => m.PublisherId).ToList()
+                .Where(m => KeyManager.GetDatabase(m) == DatabaseType.Northwind)
+                .Select(m => KeyManager.Decode(m));
         }
     }
 }

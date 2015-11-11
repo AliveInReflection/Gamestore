@@ -56,7 +56,7 @@ namespace GameStore.CL.AutomapperProfiles
                     "Address: " + m.Address + "\n" +
                     "Phone: " + m.Phone + "\n" +
                     "Contact name: " + m.ContactName + "\n"))
-                .ForMember(m => m.HomePage, opt => opt.MapFrom(m => m.HomePage))
+                    .ForMember(m => m.HomePage, opt => opt.MapFrom(m => string.IsNullOrEmpty(m.HomePage) ? "---" : m.HomePage))
                 .ForMember(m => m.Games, opt => opt.MapFrom(m => m.Products));
 
             Mapper.CreateMap<NorthwindOrder, GameStoreOrder>()

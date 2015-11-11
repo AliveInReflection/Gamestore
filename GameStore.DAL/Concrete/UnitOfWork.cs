@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data.Entity.Validation;
+using System.Text;
 using Gamestore.DAL.Context;
 using GameStore.DAL.Concrete.Repositories;
 using GameStore.DAL.GameStore.Concrete;
@@ -47,7 +49,7 @@ namespace GameStore.DAL.Concrete
 
         public IRepository<Comment> Comments
         {
-            get { return comments ?? (comments = new CommentRepository(gameStore, northwind)); }
+            get { return comments ?? (comments = new CommentRepository(gameStore, northwind, Games)); }
         }
 
         public IRepository<Genre> Genres
@@ -82,7 +84,26 @@ namespace GameStore.DAL.Concrete
 
         public void Save()
         {
-            gameStoreContext.SaveChanges();
+            try
+            {
+                gameStoreContext.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                StringBuilder sb = new StringBuilder();
+
+                foreach (var failure in e.EntityValidationErrors)
+                {
+                    sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
+                    foreach (var error in failure.ValidationErrors)
+                    {
+                        sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
+                        sb.AppendLine();
+                    }
+                }
+                string message = sb.ToString();
+            }
+            
         }
 
         public void Dispose()

@@ -1,26 +1,23 @@
-﻿using GameStore.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Gamestore.DAL.Context;
-using GameStore.DAL.Interfaces;
 using System.Linq.Expressions;
 using GameStore.DAL.Concrete.RepositoryDecorators;
 using GameStore.DAL.GameStore.Interfaces;
+using GameStore.DAL.Interfaces;
 using GameStore.DAL.Northwind.Interfaces;
+using GameStore.Domain.Entities;
 
 namespace GameStore.DAL.Concrete.Repositories
 {
     public class CommentRepository : BaseRepository<Comment>
     {
+        private IRepository<Game> gameRepository;
 
-        public CommentRepository(IGameStoreUnitOfWork gameStore, INorthwindUnitOfWork northwind)
+        public CommentRepository(IGameStoreUnitOfWork gameStore, INorthwindUnitOfWork northwind, IRepository<Game> gameRepository)
             : base(gameStore, northwind)
         {
-
+            this.gameRepository = gameRepository;
         }
 
         public override void Create(Comment entity)
@@ -34,8 +31,8 @@ namespace GameStore.DAL.Concrete.Repositories
             var game = gameStore.Games.Get(m => m.GameKey.Equals(entity.Game.GameKey));
             if (game == null)
             {
-                game = northwind.Games.GetAll(new int[] { }).First(m => m.GameKey.Equals(entity.Game.GameKey));
-                gameStore.Games.Create(game);
+                game = northwind.Games.GetAll(new int[] { }).First(m => m.GameKey.Equals(entity.Game.GameKey));             
+                gameRepository.Create(game);
             }
 
             var parentComment = gameStore.Comments.Get(m => m.CommentId.Equals(entity.ParentComment.CommentId));
@@ -46,7 +43,7 @@ namespace GameStore.DAL.Concrete.Repositories
             }
             else
             {
-                entity.ParentComment = null;
+                entity.ParentComment = null;        
                 entity.Game = game;
             }
             gameStore.Comments.Create(entity);

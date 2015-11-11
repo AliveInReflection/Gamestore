@@ -101,7 +101,9 @@ namespace GameStore.DAL.Concrete.Repositories
 
         private IEnumerable<int> GetGenreIdsToExclude()
         {
-            return gameStore.Genres.GetAll().Select(m => m.GenreId).Where(m => KeyManager.GetDatabase(m) == DatabaseType.Northwind).Select(m => KeyManager.Decode(m));
+            return gameStore.Genres.GetAll().Select(m => m.GenreId).ToList()
+                .Where(m => KeyManager.GetDatabase(m) == DatabaseType.Northwind)
+                .Select(m => KeyManager.Decode(m));
         }
     }
 }

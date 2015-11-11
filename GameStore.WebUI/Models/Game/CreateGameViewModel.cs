@@ -17,7 +17,7 @@ namespace GameStore.WebUI.Models
 
         [Required]
         [MinLength(3)]
-        [MaxLength(10)]
+        [MaxLength(20)]
         [Display(Name = "Key")]
         public string GameKey { get; set; }
 
