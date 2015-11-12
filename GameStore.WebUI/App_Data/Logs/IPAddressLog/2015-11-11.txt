@@ -1,0 +1,1053 @@
+2015-11-11 13:29:31.7888| IP: ::1 | Method: GET | Path: /
+2015-11-11 13:31:59.4716| IP: ::1 | Method: GET | Path: /
+2015-11-11 13:32:50.4958| IP: ::1 | Method: GET | Path: /
+2015-11-11 13:33:19.0236| IP: ::1 | Method: GET | Path: /
+2015-11-11 13:33:48.1694| IP: ::1 | Method: GET | Path: /
+2015-11-11 13:33:52.4241| IP: ::1 | Method: GET | Path: /
+2015-11-11 13:37:22.0138| IP: ::1 | Method: GET | Path: /
+2015-11-11 13:38:42.5944| IP: ::1 | Method: GET | Path: /IP: ::1 | Method: GET | Path: /
+2015-11-11 13:38:42.5944| IP: ::1 | Method: GET | Path: /IP: ::1 | Method: GET | Path: /
+2015-11-11 13:38:47.7264| IP: ::1 | Method: GET | Path: /
+2015-11-11 13:38:47.7264| IP: ::1 | Method: GET | Path: /
+2015-11-11 13:39:03.6731| IP: ::1 | Method: GET | Path: /game/SCII
+2015-11-11 13:39:03.8038| IP: ::1 | Method: GET | Path: /game/SCII
+2015-11-11 13:39:05.4272| IP: ::1 | Method: GET | Path: /game/SCII/comments
+2015-11-11 13:39:06.7111| IP: ::1 | Method: GET | Path: /game/SCII/comments
+2015-11-11 13:39:14.9843| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 13:39:15.1484| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 13:39:55.5508| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 13:39:59.2678| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 13:39:59.3797| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 13:40:26.0332| IP: ::1 | Method: GET | Path: /game/SCII
+2015-11-11 13:40:26.0482| IP: ::1 | Method: GET | Path: /game/SCII
+2015-11-11 13:40:27.8563| IP: ::1 | Method: GET | Path: /game/SCII/comments
+2015-11-11 13:40:27.8763| IP: ::1 | Method: GET | Path: /game/SCII/comments
+2015-11-11 13:40:32.3126| IP: ::1 | Method: POST | Path: /game/SCII/comments
+2015-11-11 13:40:35.7980| IP: ::1 | Method: GET | Path: /game/SCII/comments
+2015-11-11 13:40:35.8240| IP: ::1 | Method: GET | Path: /game/SCII/comments
+2015-11-11 13:40:44.3066| IP: ::1 | Method: POST | Path: /game/SCII/comments
+2015-11-11 13:40:44.3441| IP: ::1 | Method: GET | Path: /game/SCII/comments
+2015-11-11 13:40:44.3631| IP: ::1 | Method: GET | Path: /game/SCII/comments
+2015-11-11 13:40:48.0093| IP: ::1 | Method: GET | Path: /game/SCII/Index
+2015-11-11 13:40:48.1123| IP: ::1 | Method: GET | Path: /game/SCII/Index
+2015-11-11 13:40:50.5867| IP: ::1 | Method: GET | Path: /game/Northwind 1
+2015-11-11 13:40:50.6257| IP: ::1 | Method: GET | Path: /game/Northwind 1
+2015-11-11 13:40:52.5766| IP: ::1 | Method: GET | Path: /game/Northwind 1/comments
+2015-11-11 13:40:52.6198| IP: ::1 | Method: GET | Path: /game/Northwind 1/comments
+2015-11-11 13:40:57.2797| IP: ::1 | Method: POST | Path: /game/Northwind 1/comments
+2015-11-11 13:52:43.9895| IP: ::1 | Method: GET | Path: /
+2015-11-11 13:52:46.4626| IP: ::1 | Method: GET | Path: /
+2015-11-11 13:53:38.7669| IP: ::1 | Method: GET | Path: /
+2015-11-11 13:53:40.9741| IP: ::1 | Method: GET | Path: /
+2015-11-11 13:54:04.3865| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 13:54:04.7083| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 13:54:36.9975| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 13:54:40.2149| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 13:54:40.3225| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 13:54:53.2674| IP: ::1 | Method: GET | Path: /game/rrrrrrrr
+2015-11-11 13:54:53.3495| IP: ::1 | Method: GET | Path: /game/rrrrrrrr
+2015-11-11 13:55:42.4036| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 13:55:42.4851| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 13:56:19.0405| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 13:57:45.6087| IP: ::1 | Method: GET | Path: /
+2015-11-11 13:57:48.8336| IP: ::1 | Method: GET | Path: /
+2015-11-11 13:57:52.8087| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 14:02:57.0192| IP: ::1 | Method: GET | Path: /
+2015-11-11 14:02:59.9138| IP: ::1 | Method: GET | Path: /
+2015-11-11 14:03:35.8903| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 14:03:36.0935| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 14:04:05.2317| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 14:11:56.1082| IP: ::1 | Method: GET | Path: /
+2015-11-11 14:11:59.2453| IP: ::1 | Method: GET | Path: /
+2015-11-11 14:12:29.9660| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 14:15:15.7541| IP: ::1 | Method: GET | Path: /
+2015-11-11 14:15:18.8248| IP: ::1 | Method: GET | Path: /
+2015-11-11 14:15:20.9234| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 14:16:44.8002| IP: ::1 | Method: GET | Path: /
+2015-11-11 14:16:47.9127| IP: ::1 | Method: GET | Path: /
+2015-11-11 14:16:50.4222| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 14:20:56.2348| IP: ::1 | Method: GET | Path: /
+2015-11-11 14:20:58.3695| IP: ::1 | Method: GET | Path: /
+2015-11-11 14:21:03.4294| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 14:22:21.7761| IP: ::1 | Method: GET | Path: /
+2015-11-11 14:22:25.0270| IP: ::1 | Method: GET | Path: /
+2015-11-11 14:22:29.8546| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 14:24:07.4448| IP: ::1 | Method: GET | Path: /
+2015-11-11 14:24:10.0080| IP: ::1 | Method: GET | Path: /
+2015-11-11 14:24:16.5229| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 15:05:54.2845| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:05:56.1596| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:06:07.1050| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 15:10:24.1261| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:10:25.7864| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:13:20.5927| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:13:22.7603| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:13:27.8491| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 15:14:15.0833| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:14:17.2174| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:14:46.0511| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 15:16:16.6019| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:16:18.7255| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:16:24.0575| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 15:17:26.5505| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:17:28.6612| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:17:38.5136| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 15:24:33.5223| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:24:35.9373| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 15:25:20.8160| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:25:23.4711| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:25:35.1310| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 15:25:37.9717| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 15:25:38.1757| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 15:25:41.6573| IP: ::1 | Method: GET | Path: /game/Ccccccc
+2015-11-11 15:25:41.7545| IP: ::1 | Method: GET | Path: /game/Ccccccc
+2015-11-11 15:25:53.2727| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 15:25:53.4728| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 15:26:11.0287| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 15:26:14.1108| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 15:26:14.2309| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 15:26:24.6101| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 15:26:24.6842| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 15:26:34.7480| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 15:27:02.5175| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 15:27:02.6379| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 15:30:44.3702| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:30:46.4952| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:30:56.4516| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 15:30:56.6498| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 15:30:58.5206| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 15:37:38.5119| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:37:40.6213| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:37:44.9395| IP: ::1 | Method: GET | Path: /game/sdklfsd
+2015-11-11 15:37:45.0311| IP: ::1 | Method: GET | Path: /game/sdklfsd
+2015-11-11 15:37:49.5469| IP: ::1 | Method: GET | Path: /game/rrrrrrrr
+2015-11-11 15:37:49.5833| IP: ::1 | Method: GET | Path: /game/rrrrrrrr
+2015-11-11 15:37:56.6749| IP: ::1 | Method: GET | Path: /game/Ccccccc
+2015-11-11 15:37:56.7079| IP: ::1 | Method: GET | Path: /game/Ccccccc
+2015-11-11 15:38:03.7786| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 15:38:03.9890| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 15:38:20.0021| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 15:39:42.3875| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 15:39:42.5266| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 15:40:00.7012| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 15:40:00.7853| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 15:40:02.2226| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 15:45:21.1525| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:45:24.0982| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:45:28.4765| IP: ::1 | Method: GET | Path: /game/Ccccccc
+2015-11-11 15:45:28.5671| IP: ::1 | Method: GET | Path: /game/Ccccccc
+2015-11-11 15:45:30.3341| IP: ::1 | Method: POST | Path: /game/Ccccccc/Remove
+2015-11-11 15:45:30.4912| IP: ::1 | Method: GET | Path: /game/Ccccccc/Index
+2015-11-11 15:45:30.6007| IP: ::1 | Method: GET | Path: /game/Ccccccc/Index
+2015-11-11 15:45:32.7563| IP: ::1 | Method: GET | Path: /game/rrrrrrrr
+2015-11-11 15:45:32.7857| IP: ::1 | Method: GET | Path: /game/rrrrrrrr
+2015-11-11 15:45:33.8691| IP: ::1 | Method: POST | Path: /game/rrrrrrrr/Remove
+2015-11-11 15:45:33.8791| IP: ::1 | Method: GET | Path: /game/rrrrrrrr/Index
+2015-11-11 15:45:33.9952| IP: ::1 | Method: GET | Path: /game/rrrrrrrr/Index
+2015-11-11 15:45:37.5480| IP: ::1 | Method: GET | Path: /game/sdklfsd
+2015-11-11 15:45:37.5860| IP: ::1 | Method: GET | Path: /game/sdklfsd
+2015-11-11 15:45:39.0608| IP: ::1 | Method: POST | Path: /game/sdklfsd/Remove
+2015-11-11 15:45:39.0828| IP: ::1 | Method: GET | Path: /game/sdklfsd/Index
+2015-11-11 15:45:39.1972| IP: ::1 | Method: GET | Path: /game/sdklfsd/Index
+2015-11-11 15:45:40.7214| IP: ::1 | Method: GET | Path: /game/sdklfsd/Index
+2015-11-11 15:45:40.8474| IP: ::1 | Method: GET | Path: /game/sdklfsd/Index
+2015-11-11 15:45:42.2450| IP: ::1 | Method: GET | Path: /game/sdklfsd/Index
+2015-11-11 15:45:42.3521| IP: ::1 | Method: GET | Path: /game/sdklfsd/Index
+2015-11-11 15:45:43.0547| IP: ::1 | Method: GET | Path: /game/sdklfsd/Index
+2015-11-11 15:45:43.1653| IP: ::1 | Method: GET | Path: /game/sdklfsd/Index
+2015-11-11 15:45:43.7572| IP: ::1 | Method: GET | Path: /game/sdklfsd/Index
+2015-11-11 15:45:43.9323| IP: ::1 | Method: GET | Path: /game/sdklfsd/Index
+2015-11-11 15:45:51.6079| IP: ::1 | Method: POST | Path: /game/sdklfsd/Index
+2015-11-11 15:45:51.6489| IP: ::1 | Method: POST | Path: /game/sdklfsd/Index
+2015-11-11 15:45:54.0297| IP: ::1 | Method: GET | Path: /game/sdklfsd/Index
+2015-11-11 15:45:54.1329| IP: ::1 | Method: GET | Path: /game/sdklfsd/Index
+2015-11-11 15:46:03.2283| IP: ::1 | Method: GET | Path: /game/Northwind 16
+2015-11-11 15:46:03.2594| IP: ::1 | Method: GET | Path: /game/Northwind 16
+2015-11-11 15:46:24.3410| IP: ::1 | Method: GET | Path: /game/aaaaaaa
+2015-11-11 15:46:24.3790| IP: ::1 | Method: GET | Path: /game/aaaaaaa
+2015-11-11 15:46:25.7331| IP: ::1 | Method: POST | Path: /game/aaaaaaa/Remove
+2015-11-11 15:46:25.7412| IP: ::1 | Method: GET | Path: /game/aaaaaaa/Index
+2015-11-11 15:46:25.8796| IP: ::1 | Method: GET | Path: /game/aaaaaaa/Index
+2015-11-11 15:46:32.0037| IP: ::1 | Method: GET | Path: /game/wewerew
+2015-11-11 15:46:32.0247| IP: ::1 | Method: GET | Path: /game/wewerew
+2015-11-11 15:46:35.0939| IP: ::1 | Method: POST | Path: /game/wewerew/Remove
+2015-11-11 15:46:35.0989| IP: ::1 | Method: GET | Path: /game/wewerew/Index
+2015-11-11 15:46:35.2256| IP: ::1 | Method: GET | Path: /game/wewerew/Index
+2015-11-11 15:50:35.3116| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:50:43.9657| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:51:57.5759| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:51:59.9427| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:53:07.5096| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 15:53:07.7151| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 15:53:30.1238| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 15:53:30.4523| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 15:53:30.5699| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 15:53:33.8601| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 15:53:33.9162| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 15:53:52.5289| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 15:53:52.6388| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 15:53:52.7334| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 15:54:47.0714| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:54:48.9137| IP: ::1 | Method: GET | Path: /
+2015-11-11 15:54:56.3494| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 15:54:56.5422| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 15:55:18.2209| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 15:55:18.3890| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 15:55:18.4951| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 15:55:27.9968| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 15:55:28.1509| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 15:55:51.8184| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 15:55:51.9038| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 15:56:03.2572| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 15:56:03.2892| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 15:56:03.3913| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 16:00:43.5542| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:00:48.5370| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:01:15.9030| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 16:01:16.0972| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 16:01:44.9490| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 16:01:45.0269| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 16:01:45.1105| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 16:01:48.7507| IP: ::1 | Method: GET | Path: /game/aaaa
+2015-11-11 16:01:48.8308| IP: ::1 | Method: GET | Path: /game/aaaa
+2015-11-11 16:03:12.6935| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:03:15.5286| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:03:38.7672| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 16:03:38.9544| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 16:04:05.4052| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 16:04:05.7651| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 16:04:05.8557| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 16:04:10.7516| IP: ::1 | Method: GET | Path: /game/bbbbbb
+2015-11-11 16:04:10.8368| IP: ::1 | Method: GET | Path: /game/bbbbbb
+2015-11-11 16:04:13.8159| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 16:04:14.4060| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 16:04:26.2937| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 16:04:26.3177| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 16:04:45.7813| IP: ::1 | Method: GET | Path: /game/Northwind 2
+2015-11-11 16:04:45.8303| IP: ::1 | Method: GET | Path: /game/Northwind 2
+2015-11-11 16:04:48.7422| IP: ::1 | Method: GET | Path: /game/Northwind 2/Update
+2015-11-11 16:04:48.9518| IP: ::1 | Method: GET | Path: /game/Northwind 2/Update
+2015-11-11 16:12:27.8057| IP: ::1 | Method: POST | Path: /game/Northwind 2/Update
+2015-11-11 16:12:28.7926| IP: ::1 | Method: POST | Path: /game/Northwind 2/Update
+2015-11-11 16:14:38.5083| IP: ::1 | Method: POST | Path: /game/Northwind 2/Update
+2015-11-11 16:14:41.6523| IP: ::1 | Method: POST | Path: /game/Northwind 2/Update
+2015-11-11 16:14:54.8330| IP: ::1 | Method: POST | Path: /game/Northwind 2/Update
+2015-11-11 16:14:54.8970| IP: ::1 | Method: POST | Path: /game/Northwind 2/Update
+2015-11-11 16:14:59.4563| IP: ::1 | Method: POST | Path: /game/Northwind 2/Update
+2015-11-11 16:14:59.5082| IP: ::1 | Method: POST | Path: /game/Northwind 2/Update
+2015-11-11 16:15:01.5778| IP: ::1 | Method: POST | Path: /game/Northwind 2/Update
+2015-11-11 16:15:01.6339| IP: ::1 | Method: POST | Path: /game/Northwind 2/Update
+2015-11-11 16:15:02.0863| IP: ::1 | Method: POST | Path: /game/Northwind 2/Update
+2015-11-11 16:15:02.1643| IP: ::1 | Method: POST | Path: /game/Northwind 2/Update
+2015-11-11 16:15:04.2087| IP: ::1 | Method: POST | Path: /game/Northwind 2/Update
+2015-11-11 16:15:04.2648| IP: ::1 | Method: POST | Path: /game/Northwind 2/Update
+2015-11-11 16:15:09.0182| IP: ::1 | Method: POST | Path: /game/Northwind 2/Update
+2015-11-11 16:15:14.0209| IP: ::1 | Method: GET | Path: /game/Northwind 2/Index
+2015-11-11 16:15:14.2096| IP: ::1 | Method: GET | Path: /game/Northwind 2/Index
+2015-11-11 16:15:28.1994| IP: ::1 | Method: GET | Path: /game/Northwind 2
+2015-11-11 16:15:28.3125| IP: ::1 | Method: GET | Path: /game/Northwind 2
+2015-11-11 16:15:30.0703| IP: ::1 | Method: GET | Path: /game/Northwind 2/Update
+2015-11-11 16:15:30.1711| IP: ::1 | Method: GET | Path: /game/Northwind 2/Update
+2015-11-11 16:15:38.2424| IP: ::1 | Method: POST | Path: /game/Northwind 2/Update
+2015-11-11 16:15:38.3035| IP: ::1 | Method: POST | Path: /game/Northwind 2/Update
+2015-11-11 16:15:52.2665| IP: ::1 | Method: POST | Path: /game/Northwind 2/Update
+2015-11-11 16:16:23.7879| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:16:49.1411| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:16:52.3299| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:16:53.4502| IP: ::1 | Method: POST | Path: /game/Northwind 2/Update
+2015-11-11 16:17:02.4481| IP: ::1 | Method: GET | Path: /game/Northwind 2/Index
+2015-11-11 16:17:02.5452| IP: ::1 | Method: GET | Path: /game/Northwind 2/Index
+2015-11-11 16:17:08.9524| IP: ::1 | Method: GET | Path: /game/Nort 2
+2015-11-11 16:17:09.0324| IP: ::1 | Method: GET | Path: /game/Nort 2
+2015-11-11 16:18:05.8960| IP: ::1 | Method: POST | Path: /game/Northwind 2/Index
+2015-11-11 16:18:05.9926| IP: ::1 | Method: POST | Path: /game/Northwind 2/Index
+2015-11-11 16:18:13.2211| IP: ::1 | Method: POST | Path: /game/Northwind 2/Index
+2015-11-11 16:18:13.3372| IP: ::1 | Method: POST | Path: /game/Northwind 2/Index
+2015-11-11 16:18:16.6226| IP: ::1 | Method: POST | Path: /game/Northwind 2/Index
+2015-11-11 16:18:16.6656| IP: ::1 | Method: POST | Path: /game/Northwind 2/Index
+2015-11-11 16:18:21.0575| IP: ::1 | Method: POST | Path: /game/Northwind 2/Index
+2015-11-11 16:18:21.1646| IP: ::1 | Method: POST | Path: /game/Northwind 2/Index
+2015-11-11 16:18:23.3440| IP: ::1 | Method: POST | Path: /game/Northwind 2/Index
+2015-11-11 16:18:23.4000| IP: ::1 | Method: POST | Path: /game/Northwind 2/Index
+2015-11-11 16:18:40.5576| IP: ::1 | Method: POST | Path: /game/Northwind 2/Index
+2015-11-11 16:18:40.6434| IP: ::1 | Method: POST | Path: /game/Northwind 2/Index
+2015-11-11 16:18:46.8771| IP: ::1 | Method: POST | Path: /game/Northwind 2/Index
+2015-11-11 16:18:46.9171| IP: ::1 | Method: POST | Path: /game/Northwind 2/Index
+2015-11-11 16:18:51.9899| IP: ::1 | Method: POST | Path: /game/Northwind 2/Index
+2015-11-11 16:18:52.0276| IP: ::1 | Method: POST | Path: /game/Northwind 2/Index
+2015-11-11 16:19:01.3496| IP: ::1 | Method: POST | Path: /game/Northwind 2/Index
+2015-11-11 16:19:01.3906| IP: ::1 | Method: POST | Path: /game/Northwind 2/Index
+2015-11-11 16:19:05.5552| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:19:05.6683| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:19:11.7993| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:19:11.8700| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:19:19.5904| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:19:19.6405| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:19:26.6448| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:19:26.6968| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:19:31.0381| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:19:31.0890| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:19:41.1020| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:19:41.2276| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:19:46.0801| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:19:46.1798| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:19:52.2371| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:19:52.3031| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:19:56.3310| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:19:56.3700| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:19:58.6297| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:19:58.6885| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:20:04.9351| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:20:05.0142| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 16:20:16.7295| IP: ::1 | Method: GET | Path: /orders/history
+2015-11-11 16:20:17.2009| IP: ::1 | Method: GET | Path: /orders/history
+2015-11-11 16:20:35.6409| IP: ::1 | Method: POST | Path: /orders/history
+2015-11-11 16:20:36.5191| IP: ::1 | Method: POST | Path: /orders/history
+2015-11-11 16:20:55.5607| IP: ::1 | Method: GET | Path: /game/Northwind 4
+2015-11-11 16:20:55.6207| IP: ::1 | Method: GET | Path: /game/Northwind 4
+2015-11-11 16:20:57.4992| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 16:20:57.9028| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 16:21:11.3992| IP: ::1 | Method: GET | Path: /game/Northwind 3
+2015-11-11 16:21:11.4483| IP: ::1 | Method: GET | Path: /game/Northwind 3
+2015-11-11 16:21:13.5693| IP: ::1 | Method: GET | Path: /game/Northwind 3/comments
+2015-11-11 16:21:14.5088| IP: ::1 | Method: GET | Path: /game/Northwind 3/comments
+2015-11-11 16:21:20.2049| IP: ::1 | Method: POST | Path: /game/Northwind 3/comments
+2015-11-11 16:24:44.0425| IP: 127.0.0.1 | Method: GET | Path: /
+2015-11-11 16:24:46.9182| IP: 127.0.0.1 | Method: GET | Path: /
+2015-11-11 16:24:48.4748| IP: 127.0.0.1 | Method: POST | Path: /game/Northwind 3/comments
+2015-11-11 16:32:17.7744| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:32:23.4932| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:32:23.7391| IP: ::1 | Method: POST | Path: /game/Northwind 3/comments
+2015-11-11 16:35:18.4200| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:35:21.5373| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:35:22.0688| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:35:22.2328| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:35:27.5602| IP: ::1 | Method: POST | Path: /game/Northwind 3/comments
+2015-11-11 16:36:06.0333| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:36:08.9796| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:36:12.2554| IP: ::1 | Method: POST | Path: /game/Northwind 3/comments
+2015-11-11 16:43:58.5916| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:44:01.6794| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:44:08.2276| IP: ::1 | Method: GET | Path: /game/SCII
+2015-11-11 16:44:08.3111| IP: ::1 | Method: GET | Path: /game/SCII
+2015-11-11 16:44:36.5487| IP: ::1 | Method: GET | Path: /game/SCII/comments
+2015-11-11 16:44:37.4509| IP: ::1 | Method: GET | Path: /game/SCII/comments
+2015-11-11 16:44:42.8847| IP: ::1 | Method: POST | Path: /game/SCII/comments
+2015-11-11 16:44:43.0208| IP: ::1 | Method: GET | Path: /game/SCII/comments
+2015-11-11 16:44:43.0488| IP: ::1 | Method: GET | Path: /game/SCII/comments
+2015-11-11 16:44:48.8838| IP: ::1 | Method: POST | Path: /game/SCII/comments
+2015-11-11 16:44:48.9248| IP: ::1 | Method: GET | Path: /game/SCII/comments
+2015-11-11 16:44:48.9409| IP: ::1 | Method: GET | Path: /game/SCII/comments
+2015-11-11 16:46:10.2129| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 16:46:10.6570| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 16:46:18.8519| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 16:46:18.9239| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 16:46:21.7707| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 16:46:21.8478| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 16:46:34.1499| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 16:46:34.1659| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 16:46:34.2230| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 16:52:53.6229| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:52:55.8563| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:52:58.6372| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 16:52:58.7540| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 16:52:59.9012| IP: ::1 | Method: GET | Path: /Publisher/New
+2015-11-11 16:53:00.0199| IP: ::1 | Method: GET | Path: /Publisher/New
+2015-11-11 16:53:06.4229| IP: ::1 | Method: POST | Path: /Publisher/New
+2015-11-11 16:53:06.5280| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 16:53:06.5720| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 16:55:05.6924| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:55:06.7525| IP: ::1 | Method: GET | Path: /Publisher/New
+2015-11-11 16:55:07.0223| IP: ::1 | Method: GET | Path: /Publisher/New
+2015-11-11 16:55:07.6061| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:55:15.6151| IP: ::1 | Method: POST | Path: /Publisher/New
+2015-11-11 16:55:47.9134| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 16:55:48.0205| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 16:58:39.2888| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:58:41.6196| IP: ::1 | Method: GET | Path: /
+2015-11-11 16:58:46.6147| IP: ::1 | Method: GET | Path: /Publisher/New
+2015-11-11 16:58:46.7628| IP: ::1 | Method: GET | Path: /Publisher/New
+2015-11-11 16:58:55.0396| IP: ::1 | Method: POST | Path: /Publisher/New
+2015-11-11 16:59:42.4612| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 16:59:42.5613| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 16:59:47.9248| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 16:59:47.9610| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:01:01.9292| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:01:05.4583| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:01:06.0044| IP: ::1 | Method: GET | Path: /Publisher/New
+2015-11-11 17:01:06.4544| IP: ::1 | Method: GET | Path: /Publisher/New
+2015-11-11 17:01:08.1040| IP: ::1 | Method: POST | Path: /Publisher/New
+2015-11-11 17:01:10.8384| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:01:10.9369| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:01:41.2165| IP: ::1 | Method: GET | Path: /Publisher/New
+2015-11-11 17:01:41.2478| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:01:42.1842| IP: ::1 | Method: GET | Path: /Publisher/New
+2015-11-11 17:01:42.8896| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:01:50.7289| IP: ::1 | Method: POST | Path: /Publisher/New
+2015-11-11 17:01:53.5552| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:01:53.6483| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:02:02.2852| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:02:02.3422| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:02:04.2932| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:02:04.3586| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:02:14.7352| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 17:02:16.6279| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:02:16.6799| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:02:39.2779| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:02:39.2909| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:03:18.8056| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:03:18.8246| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:03:26.4953| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 17:03:43.0718| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:03:43.1339| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:05:33.3032| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:05:36.2370| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:05:53.6308| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:05:54.0780| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:05:56.3907| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:05:56.4477| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:05:58.0711| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:05:58.2022| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:06:06.5921| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 17:06:07.9808| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:06:08.0319| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:06:22.9601| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:06:23.0021| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:06:28.0062| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:06:28.0122| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:06:29.4621| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:06:29.4662| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:06:35.4956| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 17:08:16.6968| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:08:19.8297| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:08:46.1858| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:08:46.6057| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:08:52.7511| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:08:52.8092| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:08:53.8219| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:08:53.9560| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:08:57.8489| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 17:09:01.6229| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:09:01.6679| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:19:23.3447| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:19:28.3869| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:19:38.6157| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:19:38.7039| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:19:39.8152| IP: ::1 | Method: POST | Path: /Publisher/Delete
+2015-11-11 17:19:39.9115| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:19:39.9991| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:19:43.9973| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:19:43.9973| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:19:45.2293| IP: ::1 | Method: POST | Path: /Publisher/Delete
+2015-11-11 17:19:45.2373| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:19:45.2843| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:19:52.1408| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:19:52.1408| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:19:55.1495| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:19:55.2786| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:20:02.7983| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 17:20:31.7688| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:20:31.8298| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:20:42.3422| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:20:42.3422| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:20:43.8055| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:20:43.8115| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:20:48.9760| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 17:21:32.0857| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:21:35.1488| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:21:46.0198| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 17:22:04.8923| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:22:05.3296| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:22:21.0797| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:22:21.1398| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:22:22.9191| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:22:23.0444| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:22:30.6743| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 17:26:30.1336| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:26:33.0527| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 17:26:57.3089| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:28:17.2695| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:28:20.8695| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:29:22.5284| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:29:26.4695| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:29:47.9076| IP: ::1 | Method: GET | Path: /game/aaaa
+2015-11-11 17:29:47.9896| IP: ::1 | Method: GET | Path: /game/aaaa
+2015-11-11 17:29:58.8039| IP: ::1 | Method: GET | Path: /game/aaaa/Update
+2015-11-11 17:29:59.0726| IP: ::1 | Method: GET | Path: /game/aaaa/Update
+2015-11-11 17:30:05.2876| IP: ::1 | Method: POST | Path: /game/aaaa/Update
+2015-11-11 17:30:05.3561| IP: ::1 | Method: POST | Path: /game/aaaa/Update
+2015-11-11 17:30:11.1749| IP: ::1 | Method: POST | Path: /game/aaaa/Update
+2015-11-11 17:30:15.3558| IP: ::1 | Method: GET | Path: /game/aaaa/Index
+2015-11-11 17:30:15.4508| IP: ::1 | Method: GET | Path: /game/aaaa/Index
+2015-11-11 17:30:37.1950| IP: ::1 | Method: GET | Path: /game/bbbb
+2015-11-11 17:30:37.2261| IP: ::1 | Method: GET | Path: /game/bbbb
+2015-11-11 17:30:46.1947| IP: ::1 | Method: GET | Path: /game/bbbb/Update
+2015-11-11 17:30:46.2737| IP: ::1 | Method: GET | Path: /game/bbbb/Update
+2015-11-11 17:30:54.4066| IP: ::1 | Method: POST | Path: /game/bbbb/Update
+2015-11-11 17:30:59.0266| IP: ::1 | Method: GET | Path: /game/bbbb/Index
+2015-11-11 17:30:59.1328| IP: ::1 | Method: GET | Path: /game/bbbb/Index
+2015-11-11 17:31:03.2502| IP: ::1 | Method: GET | Path: /game/bbbb
+2015-11-11 17:31:03.2732| IP: ::1 | Method: GET | Path: /game/bbbb
+2015-11-11 17:31:21.8661| IP: ::1 | Method: GET | Path: /game/bbbb/Update
+2015-11-11 17:31:21.9443| IP: ::1 | Method: GET | Path: /game/bbbb/Update
+2015-11-11 17:31:30.0870| IP: ::1 | Method: POST | Path: /game/bbbb/Update
+2015-11-11 17:31:36.5096| IP: ::1 | Method: GET | Path: /game/bbbb/Index
+2015-11-11 17:31:36.7268| IP: ::1 | Method: GET | Path: /game/bbbb/Index
+2015-11-11 17:31:40.3545| IP: ::1 | Method: GET | Path: /game/bbbb
+2015-11-11 17:31:40.3705| IP: ::1 | Method: GET | Path: /game/bbbb
+2015-11-11 17:33:25.4657| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:33:28.5282| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:33:35.2275| IP: ::1 | Method: GET | Path: /game/bbbb
+2015-11-11 17:33:35.3115| IP: ::1 | Method: GET | Path: /game/bbbb
+2015-11-11 17:33:37.8510| IP: ::1 | Method: GET | Path: /game/bbbb/Update
+2015-11-11 17:33:38.1022| IP: ::1 | Method: GET | Path: /game/bbbb/Update
+2015-11-11 17:33:57.3205| IP: ::1 | Method: POST | Path: /game/bbbb/Update
+2015-11-11 17:34:00.6062| IP: ::1 | Method: GET | Path: /game/bbbb/Index
+2015-11-11 17:34:00.7143| IP: ::1 | Method: GET | Path: /game/bbbb/Index
+2015-11-11 17:34:04.2595| IP: ::1 | Method: GET | Path: /game/bbbb
+2015-11-11 17:34:04.2745| IP: ::1 | Method: GET | Path: /game/bbbb
+2015-11-11 17:34:20.6513| IP: ::1 | Method: GET | Path: /game/SCII
+2015-11-11 17:34:20.7134| IP: ::1 | Method: GET | Path: /game/SCII
+2015-11-11 17:34:25.6035| IP: ::1 | Method: GET | Path: /game/SCII/Update
+2015-11-11 17:34:25.6806| IP: ::1 | Method: GET | Path: /game/SCII/Update
+2015-11-11 17:34:38.5661| IP: ::1 | Method: POST | Path: /game/SCII/Update
+2015-11-11 17:34:42.4009| IP: ::1 | Method: GET | Path: /game/SCII/Index
+2015-11-11 17:34:42.4929| IP: ::1 | Method: GET | Path: /game/SCII/Index
+2015-11-11 17:34:44.8038| IP: ::1 | Method: GET | Path: /game/SCII
+2015-11-11 17:34:44.8228| IP: ::1 | Method: GET | Path: /game/SCII
+2015-11-11 17:35:43.7644| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:35:46.5842| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:35:58.2131| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:35:58.6466| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:36:00.6934| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:36:00.7481| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:36:02.2278| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:36:02.3575| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:36:05.4224| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 17:36:09.3554| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:36:09.4039| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:36:20.0758| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:36:20.0758| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:36:24.2758| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:36:24.2758| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:36:25.9957| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:36:25.9957| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:36:29.4225| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 17:43:59.0972| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:44:01.9794| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:44:07.2801| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:44:07.7133| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:44:18.8219| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:44:18.8840| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:44:21.6211| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:44:21.7538| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:44:31.4548| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 17:44:35.3421| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:44:35.3882| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:44:41.9732| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:44:41.9872| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:44:44.1806| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:44:44.1886| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:44:56.1029| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 17:47:05.2784| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:47:07.5230| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:47:11.0676| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 17:57:39.9565| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:57:42.1031| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:58:20.0523| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:58:22.9568| IP: ::1 | Method: GET | Path: /
+2015-11-11 17:58:31.7839| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:58:32.2026| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:58:38.0554| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:58:38.1164| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 17:58:40.3590| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:58:40.4901| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 17:58:48.0809| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 17:58:54.3787| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:58:54.4283| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 17:59:48.5918| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 17:59:48.7043| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 17:59:50.3830| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 17:59:50.5181| IP: ::1 | Method: GET | Path: /Games/New
+2015-11-11 18:00:16.1571| IP: ::1 | Method: POST | Path: /Games/New
+2015-11-11 18:00:25.6000| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 18:00:25.7057| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 18:00:31.5754| IP: ::1 | Method: GET | Path: /game/Sssss
+2015-11-11 18:00:31.6623| IP: ::1 | Method: GET | Path: /game/Sssss
+2015-11-11 18:00:37.4485| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:00:37.4655| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:00:42.8255| IP: ::1 | Method: GET | Path: /game/Sssss/comments
+2015-11-11 18:00:43.6007| IP: ::1 | Method: GET | Path: /game/Sssss/comments
+2015-11-11 18:00:48.0402| IP: ::1 | Method: POST | Path: /game/Sssss/comments
+2015-11-11 18:00:58.6786| IP: ::1 | Method: GET | Path: /game/Sssss/comments
+2015-11-11 18:00:58.7217| IP: ::1 | Method: GET | Path: /game/Sssss/comments
+2015-11-11 18:01:08.3605| IP: ::1 | Method: GET | Path: /game/Sssss/Index
+2015-11-11 18:01:08.4700| IP: ::1 | Method: GET | Path: /game/Sssss/Index
+2015-11-11 18:01:17.0231| IP: ::1 | Method: GET | Path: /game/Northwind 1
+2015-11-11 18:01:17.0719| IP: ::1 | Method: GET | Path: /game/Northwind 1
+2015-11-11 18:01:21.3994| IP: ::1 | Method: GET | Path: /game/Northwind 1/Update
+2015-11-11 18:01:21.6159| IP: ::1 | Method: GET | Path: /game/Northwind 1/Update
+2015-11-11 18:01:30.7709| IP: ::1 | Method: POST | Path: /game/Northwind 1/Update
+2015-11-11 18:01:30.8510| IP: ::1 | Method: POST | Path: /game/Northwind 1/Update
+2015-11-11 18:01:43.7317| IP: ::1 | Method: POST | Path: /game/Northwind 1/Update
+2015-11-11 18:01:45.4874| IP: ::1 | Method: GET | Path: /game/Northwind 1/Index
+2015-11-11 18:01:45.6122| IP: ::1 | Method: GET | Path: /game/Northwind 1/Index
+2015-11-11 18:01:48.5355| IP: ::1 | Method: GET | Path: /game/North 1
+2015-11-11 18:01:48.5535| IP: ::1 | Method: GET | Path: /game/North 1
+2015-11-11 18:02:10.1514| IP: ::1 | Method: GET | Path: /game/North 1/comments
+2015-11-11 18:02:10.1633| IP: ::1 | Method: GET | Path: /game/North 1/comments
+2015-11-11 18:02:14.4534| IP: ::1 | Method: POST | Path: /game/North 1/comments
+2015-11-11 18:02:14.4882| IP: ::1 | Method: GET | Path: /game/North 1/comments
+2015-11-11 18:02:14.5202| IP: ::1 | Method: GET | Path: /game/North 1/comments
+2015-11-11 18:02:23.5562| IP: ::1 | Method: POST | Path: /game/North 1/comments
+2015-11-11 18:02:23.5712| IP: ::1 | Method: GET | Path: /game/North 1/comments
+2015-11-11 18:02:23.6072| IP: ::1 | Method: GET | Path: /game/North 1/comments
+2015-11-11 18:02:26.2324| IP: ::1 | Method: GET | Path: /game/North 1/Index
+2015-11-11 18:02:26.3505| IP: ::1 | Method: GET | Path: /game/North 1/Index
+2015-11-11 18:02:29.2152| IP: ::1 | Method: GET | Path: /game/Northwind 3
+2015-11-11 18:02:29.2689| IP: ::1 | Method: GET | Path: /game/Northwind 3
+2015-11-11 18:02:30.7837| IP: ::1 | Method: GET | Path: /game/Northwind 3/comments
+2015-11-11 18:02:30.8314| IP: ::1 | Method: GET | Path: /game/Northwind 3/comments
+2015-11-11 18:02:34.9589| IP: ::1 | Method: POST | Path: /game/Northwind 3/comments
+2015-11-11 18:05:38.0321| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:05:40.8324| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:06:00.7530| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:06:01.2036| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:06:19.8972| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:06:19.9492| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:06:23.6875| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:06:23.6985| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:06:25.3208| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:06:25.4503| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:06:34.8581| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 18:06:39.2462| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:06:39.2882| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:07:42.1210| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:07:42.1831| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:07:51.3598| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:07:51.3708| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:07:53.2478| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:07:53.2599| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:07:57.9145| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 18:11:45.9935| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:11:48.9426| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:11:51.9145| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:11:52.3559| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:12:01.3934| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:12:01.4544| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:12:05.1210| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:12:05.2510| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:12:13.9377| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 18:12:23.7286| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:12:23.7946| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:14:19.7330| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:14:22.7768| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:14:28.9219| IP: ::1 | Method: GET | Path: /game/Sssss
+2015-11-11 18:14:29.0090| IP: ::1 | Method: GET | Path: /game/Sssss
+2015-11-11 18:14:33.3290| IP: ::1 | Method: GET | Path: /game/Sssss/Update
+2015-11-11 18:14:33.6591| IP: ::1 | Method: GET | Path: /game/Sssss/Update
+2015-11-11 18:14:57.2231| IP: ::1 | Method: POST | Path: /game/Sssss/Update
+2015-11-11 18:15:01.0439| IP: ::1 | Method: GET | Path: /game/Sssss/Index
+2015-11-11 18:15:01.1659| IP: ::1 | Method: GET | Path: /game/Sssss/Index
+2015-11-11 18:15:06.2334| IP: ::1 | Method: GET | Path: /game/Sssss
+2015-11-11 18:15:06.2504| IP: ::1 | Method: GET | Path: /game/Sssss
+2015-11-11 18:15:18.3209| IP: ::1 | Method: GET | Path: /game/Sssss/Update
+2015-11-11 18:15:18.4030| IP: ::1 | Method: GET | Path: /game/Sssss/Update
+2015-11-11 18:15:42.9724| IP: ::1 | Method: POST | Path: /game/Sssss/Update
+2015-11-11 18:17:18.3727| IP: ::1 | Method: GET | Path: /game/Sssss/Index
+2015-11-11 18:17:18.4927| IP: ::1 | Method: GET | Path: /game/Sssss/Index
+2015-11-11 18:30:16.2620| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:30:21.2612| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:30:52.2611| IP: ::1 | Method: GET | Path: /game/Sssss
+2015-11-11 18:30:52.3570| IP: ::1 | Method: GET | Path: /game/Sssss
+2015-11-11 18:30:54.5805| IP: ::1 | Method: GET | Path: /game/Sssss/Update
+2015-11-11 18:30:54.8513| IP: ::1 | Method: GET | Path: /game/Sssss/Update
+2015-11-11 18:31:14.5147| IP: ::1 | Method: POST | Path: /game/Sssss/Update
+2015-11-11 18:31:16.8767| IP: ::1 | Method: GET | Path: /game/Sssss/Index
+2015-11-11 18:31:16.9863| IP: ::1 | Method: GET | Path: /game/Sssss/Index
+2015-11-11 18:32:07.8089| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:32:10.6617| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:32:33.4957| IP: ::1 | Method: GET | Path: /game/Sssss/Update
+2015-11-11 18:32:33.7618| IP: ::1 | Method: GET | Path: /game/Sssss/Update
+2015-11-11 18:32:35.6584| IP: ::1 | Method: POST | Path: /game/Sssss/Update
+2015-11-11 18:32:42.2256| IP: ::1 | Method: GET | Path: /game/Sssss/Index
+2015-11-11 18:32:42.3288| IP: ::1 | Method: GET | Path: /game/Sssss/Index
+2015-11-11 18:32:45.1398| IP: ::1 | Method: GET | Path: /game/yyyyy
+2015-11-11 18:32:45.2193| IP: ::1 | Method: GET | Path: /game/yyyyy
+2015-11-11 18:32:51.8279| IP: ::1 | Method: GET | Path: /game/Sssss/Update
+2015-11-11 18:33:05.1677| IP: 127.0.0.1 | Method: GET | Path: /game/Sssss/Update
+2015-11-11 18:33:05.1727| IP: 127.0.0.1 | Method: GET | Path: /game/Sssss/UpdateIP: 127.0.0.1 | Method: GET | Path: /
+2015-11-11 18:33:14.7467| IP: 127.0.0.1 | Method: GET | Path: /
+2015-11-11 18:33:16.5706| IP: 127.0.0.1 | Method: GET | Path: /
+2015-11-11 18:33:16.7624| IP: 127.0.0.1 | Method: GET | Path: /
+2015-11-11 18:33:16.8915| IP: 127.0.0.1 | Method: GET | Path: /
+2015-11-11 18:33:35.6764| IP: 127.0.0.1 | Method: GET | Path: /game/yyyyy
+2015-11-11 18:33:35.7754| IP: 127.0.0.1 | Method: GET | Path: /game/yyyyy
+2015-11-11 18:33:38.7962| IP: 127.0.0.1 | Method: GET | Path: /game/yyyyy/Update
+2015-11-11 18:33:39.0599| IP: 127.0.0.1 | Method: GET | Path: /game/yyyyy/Update
+2015-11-11 18:33:50.2897| IP: 127.0.0.1 | Method: POST | Path: /game/yyyyy/Update
+2015-11-11 18:33:52.5962| IP: 127.0.0.1 | Method: GET | Path: /game/yyyyy/Index
+2015-11-11 18:33:52.7039| IP: 127.0.0.1 | Method: GET | Path: /game/yyyyy/Index
+2015-11-11 18:33:56.3398| IP: 127.0.0.1 | Method: GET | Path: /game/yyyyy
+2015-11-11 18:33:56.3618| IP: 127.0.0.1 | Method: GET | Path: /game/yyyyy
+2015-11-11 18:35:46.4500| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:35:49.3885| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:36:13.0056| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:36:13.4493| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:36:16.0855| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:36:16.1460| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:36:18.0046| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:36:18.1391| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:36:23.7033| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 18:36:25.8143| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:36:25.8654| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:36:31.6479| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:36:31.6479| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:36:33.8943| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 18:36:48.7062| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:36:48.7667| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:36:50.9665| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:36:50.9705| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:36:53.5345| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 18:38:58.5491| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:39:01.6062| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:39:42.6731| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:39:43.1045| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:39:52.6700| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:39:52.7290| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:39:54.3572| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:39:54.4900| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:40:03.1820| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 18:50:03.2142| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:50:09.5124| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:50:22.7361| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:50:23.1842| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:50:29.1438| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:50:29.2029| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:50:30.5840| IP: ::1 | Method: POST | Path: /Publisher/Delete
+2015-11-11 18:50:30.6776| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:50:30.7127| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:50:35.5025| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:50:35.5055| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:50:37.6792| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:50:37.8110| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:51:05.7284| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 18:51:09.3537| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:51:09.4168| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:51:17.6222| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:51:17.6352| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 18:51:19.3340| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:51:19.3501| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:51:33.4887| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 18:52:31.5750| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:52:34.4981| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:52:35.8929| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 18:55:06.4422| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:55:09.2548| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 18:55:12.0953| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:56:13.2085| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:56:16.5323| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:56:18.4855| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 18:56:48.6181| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:56:49.0399| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:57:52.2338| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:57:55.6993| IP: ::1 | Method: GET | Path: /
+2015-11-11 18:58:40.6603| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:58:41.1289| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 18:58:43.9623| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 18:59:20.9226| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 18:59:21.0269| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 19:00:07.3851| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:00:10.4148| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:00:12.5774| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 19:00:13.0201| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 19:00:15.9275| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 19:00:15.9648| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 19:00:19.7045| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 19:00:19.7592| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 19:00:21.3047| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 19:00:21.4368| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 19:00:34.2580| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 19:00:37.8900| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 19:00:37.9330| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 19:02:37.4636| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:02:40.2317| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:02:40.7261| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 19:02:41.8081| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 19:02:45.6817| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 19:02:45.7392| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 19:02:47.2804| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 19:02:47.4155| IP: ::1 | Method: GET | Path: /Publisher/Update
+2015-11-11 19:02:52.5701| IP: ::1 | Method: POST | Path: /Publisher/Update
+2015-11-11 19:02:56.1209| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 19:02:56.1835| IP: ::1 | Method: GET | Path: /Publisher
+2015-11-11 19:03:15.1529| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 19:03:15.2659| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 19:03:21.1364| IP: ::1 | Method: GET | Path: /game/bbbb
+2015-11-11 19:03:21.2232| IP: ::1 | Method: GET | Path: /game/bbbb
+2015-11-11 19:03:25.7363| IP: ::1 | Method: GET | Path: /game/bbbb/Update
+2015-11-11 19:03:25.9301| IP: ::1 | Method: GET | Path: /game/bbbb/Update
+2015-11-11 19:03:41.5254| IP: ::1 | Method: POST | Path: /game/bbbb/Update
+2015-11-11 19:03:41.5804| IP: ::1 | Method: POST | Path: /game/bbbb/Update
+2015-11-11 19:03:46.7473| IP: ::1 | Method: POST | Path: /game/bbbb/Update
+2015-11-11 19:03:49.4328| IP: ::1 | Method: GET | Path: /game/bbbb/Index
+2015-11-11 19:03:49.5421| IP: ::1 | Method: GET | Path: /game/bbbb/Index
+2015-11-11 19:04:01.2845| IP: ::1 | Method: POST | Path: /game/bbbb/Update
+2015-11-11 19:10:21.2641| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:10:26.2780| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:10:37.2022| IP: ::1 | Method: GET | Path: /game/bbbb
+2015-11-11 19:10:37.2963| IP: ::1 | Method: GET | Path: /game/bbbb
+2015-11-11 19:10:39.3534| IP: ::1 | Method: GET | Path: /game/bbbb/Update
+2015-11-11 19:10:39.6240| IP: ::1 | Method: GET | Path: /game/bbbb/Update
+2015-11-11 19:10:55.0705| IP: ::1 | Method: POST | Path: /game/bbbb/Update
+2015-11-11 19:11:10.6149| IP: ::1 | Method: GET | Path: /game/bbbb/Index
+2015-11-11 19:11:10.7239| IP: ::1 | Method: GET | Path: /game/bbbb/Index
+2015-11-11 19:11:13.6498| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj
+2015-11-11 19:11:13.6738| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj
+2015-11-11 19:30:54.2153| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:30:59.7731| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:31:43.4529| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj
+2015-11-11 19:31:43.5469| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj
+2015-11-11 19:31:46.0672| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj/Update
+2015-11-11 19:31:46.3384| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj/Update
+2015-11-11 19:31:57.6804| IP: ::1 | Method: POST | Path: /game/jjjjjjjjj/Update
+2015-11-11 19:32:01.5398| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj/Index
+2015-11-11 19:32:01.6451| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj/Index
+2015-11-11 19:32:04.1225| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj
+2015-11-11 19:32:04.1405| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj
+2015-11-11 19:32:42.2282| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj/Update
+2015-11-11 19:32:42.3252| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj/Update
+2015-11-11 19:32:45.2381| IP: ::1 | Method: POST | Path: /game/jjjjjjjjj/Update
+2015-11-11 19:33:11.2482| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:33:11.5043| IP: ::1 | Method: POST | Path: /game/jjjjjjjjj/Update
+2015-11-11 19:33:16.0040| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj/Index
+2015-11-11 19:33:17.3759| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:33:17.3759| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:33:23.0914| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj
+2015-11-11 19:33:23.1804| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj
+2015-11-11 19:33:31.0669| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj/Update
+2015-11-11 19:33:31.3335| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj/Update
+2015-11-11 19:33:53.7981| IP: ::1 | Method: POST | Path: /game/jjjjjjjjj/Update
+2015-11-11 19:33:56.8583| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj/Index
+2015-11-11 19:33:57.0099| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj/Index
+2015-11-11 19:34:00.9866| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj
+2015-11-11 19:34:01.0086| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj
+2015-11-11 19:34:09.9072| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj/Index
+2015-11-11 19:34:10.0243| IP: ::1 | Method: GET | Path: /game/jjjjjjjjj/Index
+2015-11-11 19:39:09.6259| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:39:13.8504| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:39:49.9646| IP: ::1 | Method: GET | Path: /game/North 1
+2015-11-11 19:39:50.0647| IP: ::1 | Method: GET | Path: /game/North 1
+2015-11-11 19:39:54.4377| IP: ::1 | Method: GET | Path: /game/North 1/comments
+2015-11-11 19:39:55.7381| IP: ::1 | Method: GET | Path: /game/North 1/comments
+2015-11-11 19:40:00.5644| IP: ::1 | Method: POST | Path: /game/North 1/comments
+2015-11-11 19:40:00.6805| IP: ::1 | Method: GET | Path: /game/North 1/comments
+2015-11-11 19:40:00.7135| IP: ::1 | Method: GET | Path: /game/North 1/comments
+2015-11-11 19:40:06.8690| IP: ::1 | Method: GET | Path: /game/North 1/Index
+2015-11-11 19:40:06.9770| IP: ::1 | Method: GET | Path: /game/North 1/Index
+2015-11-11 19:40:14.0842| IP: ::1 | Method: GET | Path: /game/Northwind 3
+2015-11-11 19:40:14.1333| IP: ::1 | Method: GET | Path: /game/Northwind 3
+2015-11-11 19:40:17.8361| IP: ::1 | Method: GET | Path: /game/Northwind 3/Update
+2015-11-11 19:40:18.0563| IP: ::1 | Method: GET | Path: /game/Northwind 3/Update
+2015-11-11 19:40:30.2012| IP: ::1 | Method: POST | Path: /game/Northwind 3/Update
+2015-11-11 19:40:30.2786| IP: ::1 | Method: POST | Path: /game/Northwind 3/Update
+2015-11-11 19:40:34.9265| IP: ::1 | Method: POST | Path: /game/Northwind 3/Update
+2015-11-11 19:40:37.6998| IP: ::1 | Method: GET | Path: /game/Northwind 3/Index
+2015-11-11 19:40:37.8049| IP: ::1 | Method: GET | Path: /game/Northwind 3/Index
+2015-11-11 19:40:49.4041| IP: ::1 | Method: GET | Path: /game/North 3
+2015-11-11 19:40:49.4451| IP: ::1 | Method: GET | Path: /game/North 3
+2015-11-11 19:40:53.6122| IP: ::1 | Method: GET | Path: /game/North 3/Update
+2015-11-11 19:40:53.6969| IP: ::1 | Method: GET | Path: /game/North 3/Update
+2015-11-11 19:41:03.2449| IP: ::1 | Method: GET | Path: /game/Northwind 4
+2015-11-11 19:41:03.3039| IP: ::1 | Method: GET | Path: /game/Northwind 4
+2015-11-11 19:41:04.8919| IP: ::1 | Method: GET | Path: /game/Northwind 4/comments
+2015-11-11 19:41:04.9316| IP: ::1 | Method: GET | Path: /game/Northwind 4/comments
+2015-11-11 19:41:09.4671| IP: ::1 | Method: POST | Path: /game/Northwind 4/comments
+2015-11-11 19:44:36.1427| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:44:39.0119| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:44:42.4616| IP: ::1 | Method: GET | Path: /game/Northwind 4
+2015-11-11 19:44:42.5729| IP: ::1 | Method: GET | Path: /game/Northwind 4
+2015-11-11 19:44:44.0537| IP: ::1 | Method: GET | Path: /game/Northwind 4/comments
+2015-11-11 19:44:45.0050| IP: ::1 | Method: GET | Path: /game/Northwind 4/comments
+2015-11-11 19:44:50.0371| IP: ::1 | Method: POST | Path: /game/Northwind 4/comments
+2015-11-11 19:45:46.5184| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:45:49.0155| IP: ::1 | Method: POST | Path: /game/Northwind 4/comments
+2015-11-11 19:46:55.1593| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:46:57.9081| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:46:58.4638| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:46:58.5905| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:47:04.1377| IP: ::1 | Method: POST | Path: /game/Northwind 4/comments
+2015-11-11 19:49:36.5668| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:49:39.3096| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:49:45.7839| IP: ::1 | Method: GET | Path: /game/Northwind 4
+2015-11-11 19:49:45.9129| IP: ::1 | Method: GET | Path: /game/Northwind 4
+2015-11-11 19:49:50.2261| IP: ::1 | Method: POST | Path: /game/Northwind 4/comments
+2015-11-11 19:51:05.1244| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:51:07.9218| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:51:14.4453| IP: ::1 | Method: POST | Path: /game/Northwind 4/comments
+2015-11-11 19:55:00.9680| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:55:03.9239| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:55:08.7581| IP: ::1 | Method: POST | Path: /game/Northwind 4/comments
+2015-11-11 19:55:58.1201| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:55:59.7975| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:56:04.1421| IP: ::1 | Method: POST | Path: /game/Northwind 4/comments
+2015-11-11 19:56:31.7267| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:56:33.5711| IP: ::1 | Method: GET | Path: /
+2015-11-11 19:57:53.8127| IP: ::1 | Method: POST | Path: /game/Northwind 4/comments
+2015-11-11 20:00:29.1978| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:00:31.9716| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:01:25.2547| IP: ::1 | Method: POST | Path: /game/Northwind 4/comments
+2015-11-11 20:02:56.9129| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:03:00.5390| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:03:00.9222| IP: ::1 | Method: POST | Path: /game/Northwind 4/comments
+2015-11-11 20:03:57.1457| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:03:57.3228| IP: ::1 | Method: POST | Path: /game/Northwind 4/comments
+2015-11-11 20:04:33.8793| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:04:36.7920| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:04:39.4129| IP: ::1 | Method: POST | Path: /game/Northwind 4/comments
+2015-11-11 20:05:36.4118| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:05:39.1604| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:06:39.8487| IP: ::1 | Method: POST | Path: /game/Northwind 4/comments
+2015-11-11 20:06:41.9085| IP: ::1 | Method: GET | Path: /game/Northwind 4/comments
+2015-11-11 20:06:43.0744| IP: ::1 | Method: GET | Path: /game/Northwind 4/comments
+2015-11-11 20:06:55.1176| IP: ::1 | Method: POST | Path: /game/Northwind 4/comments
+2015-11-11 20:07:09.4599| IP: ::1 | Method: GET | Path: /game/Northwind 4/comments
+2015-11-11 20:07:09.4599| IP: ::1 | Method: GET | Path: /game/Northwind 4/comments
+2015-11-11 20:07:17.5125| IP: ::1 | Method: POST | Path: /game/Northwind 4/comments
+2015-11-11 20:07:35.1083| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:07:37.9418| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:07:43.1777| IP: ::1 | Method: POST | Path: /game/Northwind 4/comments
+2015-11-11 20:07:52.6132| IP: ::1 | Method: GET | Path: /game/Northwind 4/comments
+2015-11-11 20:07:53.7675| IP: ::1 | Method: GET | Path: /game/Northwind 4/comments
+2015-11-11 20:07:58.5288| IP: ::1 | Method: GET | Path: /game/Northwind 4/Index
+2015-11-11 20:07:58.6307| IP: ::1 | Method: GET | Path: /game/Northwind 4/Index
+2015-11-11 20:08:01.1290| IP: ::1 | Method: POST | Path: /game/Northwind 4/Index
+2015-11-11 20:08:01.1759| IP: ::1 | Method: POST | Path: /game/Northwind 4/Index
+2015-11-11 20:08:02.9117| IP: ::1 | Method: GET | Path: /game/Northwind 5
+2015-11-11 20:08:03.0168| IP: ::1 | Method: GET | Path: /game/Northwind 5
+2015-11-11 20:08:03.8478| IP: ::1 | Method: GET | Path: /game/Northwind 5/comments
+2015-11-11 20:08:03.8928| IP: ::1 | Method: GET | Path: /game/Northwind 5/comments
+2015-11-11 20:08:07.5507| IP: ::1 | Method: POST | Path: /game/Northwind 5/comments
+2015-11-11 20:08:19.1328| IP: ::1 | Method: GET | Path: /game/Northwind 5/comments
+2015-11-11 20:08:19.1548| IP: ::1 | Method: GET | Path: /game/Northwind 5/comments
+2015-11-11 20:08:27.8530| IP: ::1 | Method: POST | Path: /game/Northwind 5/comments
+2015-11-11 20:08:29.3344| IP: ::1 | Method: GET | Path: /game/Northwind 5/comments
+2015-11-11 20:08:29.3544| IP: ::1 | Method: GET | Path: /game/Northwind 5/comments
+2015-11-11 20:08:32.2723| IP: ::1 | Method: GET | Path: /game/Northwind 5/Index
+2015-11-11 20:08:32.3945| IP: ::1 | Method: GET | Path: /game/Northwind 5/Index
+2015-11-11 20:08:57.1582| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:08:59.9652| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:09:05.3237| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 20:09:05.3803| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 20:09:07.9599| IP: ::1 | Method: GET | Path: /game/Northwind 5
+2015-11-11 20:09:08.0427| IP: ::1 | Method: GET | Path: /game/Northwind 5
+2015-11-11 20:09:10.5696| IP: ::1 | Method: GET | Path: /game/Northwind 5/comments
+2015-11-11 20:09:11.4302| IP: ::1 | Method: GET | Path: /game/Northwind 5/comments
+2015-11-11 20:09:23.9925| IP: ::1 | Method: GET | Path: /game/Northwind 5/Index
+2015-11-11 20:09:24.1006| IP: ::1 | Method: GET | Path: /game/Northwind 5/Index
+2015-11-11 20:09:26.3146| IP: ::1 | Method: POST | Path: /game/Northwind 5/Index
+2015-11-11 20:09:26.3506| IP: ::1 | Method: POST | Path: /game/Northwind 5/Index
+2015-11-11 20:09:28.1511| IP: ::1 | Method: POST | Path: /game/Northwind 5/Index
+2015-11-11 20:09:28.1901| IP: ::1 | Method: POST | Path: /game/Northwind 5/Index
+2015-11-11 20:09:30.3190| IP: ::1 | Method: POST | Path: /game/Northwind 5/Index
+2015-11-11 20:09:30.3679| IP: ::1 | Method: POST | Path: /game/Northwind 5/Index
+2015-11-11 20:09:33.7995| IP: ::1 | Method: GET | Path: /game/Northwind 10
+2015-11-11 20:09:33.8486| IP: ::1 | Method: GET | Path: /game/Northwind 10
+2015-11-11 20:09:36.9200| IP: ::1 | Method: GET | Path: /game/Northwind 10/comments
+2015-11-11 20:09:36.9661| IP: ::1 | Method: GET | Path: /game/Northwind 10/comments
+2015-11-11 20:09:47.0962| IP: ::1 | Method: POST | Path: /game/Northwind 10/comments
+2015-11-11 20:11:19.1259| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:11:22.0197| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:11:40.5963| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 20:11:40.6473| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 20:11:44.2333| IP: ::1 | Method: GET | Path: /game/Northwind 35
+2015-11-11 20:11:44.3399| IP: ::1 | Method: GET | Path: /game/Northwind 35
+2015-11-11 20:11:45.8419| IP: ::1 | Method: GET | Path: /game/Northwind 35/Update
+2015-11-11 20:11:46.1339| IP: ::1 | Method: GET | Path: /game/Northwind 35/Update
+2015-11-11 20:12:02.4455| IP: ::1 | Method: POST | Path: /game/Northwind 35/Update
+2015-11-11 20:12:04.0533| IP: ::1 | Method: GET | Path: /game/Northwind 35/Index
+2015-11-11 20:12:04.2554| IP: ::1 | Method: GET | Path: /game/Northwind 35/Index
+2015-11-11 20:12:07.8813| IP: ::1 | Method: POST | Path: /game/Northwind 35/Index
+2015-11-11 20:12:07.9300| IP: ::1 | Method: POST | Path: /game/Northwind 35/Index
+2015-11-11 20:12:12.5935| IP: ::1 | Method: GET | Path: /game/Northwind 35
+2015-11-11 20:12:12.6155| IP: ::1 | Method: GET | Path: /game/Northwind 35
+2015-11-11 20:12:18.4525| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 20:12:18.8655| IP: ::1 | Method: GET | Path: /Publisher/Details
+2015-11-11 20:12:21.7703| IP: ::1 | Method: GET | Path: /game/Northwind 35/comments
+2015-11-11 20:12:22.5388| IP: ::1 | Method: GET | Path: /game/Northwind 35/comments
+2015-11-11 20:12:26.1524| IP: ::1 | Method: POST | Path: /game/Northwind 35/comments
+2015-11-11 20:12:27.2407| IP: ::1 | Method: GET | Path: /game/Northwind 35/comments
+2015-11-11 20:12:27.2847| IP: ::1 | Method: GET | Path: /game/Northwind 35/comments
+2015-11-11 20:12:30.6333| IP: ::1 | Method: GET | Path: /game/Northwind 35/Index
+2015-11-11 20:12:30.7568| IP: ::1 | Method: GET | Path: /game/Northwind 35/Index
+2015-11-11 20:12:39.2061| IP: ::1 | Method: POST | Path: /game/Northwind 35/Index
+2015-11-11 20:12:39.2602| IP: ::1 | Method: POST | Path: /game/Northwind 35/Index
+2015-11-11 20:12:43.2241| IP: ::1 | Method: GET | Path: /game/Northwind 6
+2015-11-11 20:12:43.2702| IP: ::1 | Method: GET | Path: /game/Northwind 6
+2015-11-11 20:12:44.3204| IP: ::1 | Method: GET | Path: /game/Northwind 6/comments
+2015-11-11 20:12:44.3630| IP: ::1 | Method: GET | Path: /game/Northwind 6/comments
+2015-11-11 20:12:48.2956| IP: ::1 | Method: POST | Path: /game/Northwind 6/comments
+2015-11-11 20:15:35.9671| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:15:38.9619| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:15:45.0442| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 20:15:45.1143| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 20:15:47.4978| IP: ::1 | Method: GET | Path: /game/Northwind 6
+2015-11-11 20:15:47.6054| IP: ::1 | Method: GET | Path: /game/Northwind 6
+2015-11-11 20:15:48.8437| IP: ::1 | Method: GET | Path: /game/Northwind 6/comments
+2015-11-11 20:15:49.7284| IP: ::1 | Method: GET | Path: /game/Northwind 6/comments
+2015-11-11 20:15:53.9934| IP: ::1 | Method: POST | Path: /game/Northwind 6/comments
+2015-11-11 20:20:13.9713| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:20:16.8879| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:20:19.8464| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 20:20:19.8980| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 20:20:21.8664| IP: ::1 | Method: GET | Path: /game/Northwind 6
+2015-11-11 20:20:21.9774| IP: ::1 | Method: GET | Path: /game/Northwind 6
+2015-11-11 20:20:23.1877| IP: ::1 | Method: GET | Path: /game/Northwind 6/comments
+2015-11-11 20:20:24.0898| IP: ::1 | Method: GET | Path: /game/Northwind 6/comments
+2015-11-11 20:20:27.5375| IP: ::1 | Method: POST | Path: /game/Northwind 6/comments
+2015-11-11 20:20:29.5412| IP: ::1 | Method: GET | Path: /game/Northwind 6/comments
+2015-11-11 20:20:29.5597| IP: ::1 | Method: GET | Path: /game/Northwind 6/comments
+2015-11-11 20:20:35.2579| IP: ::1 | Method: GET | Path: /game/Northwind 6/Index
+2015-11-11 20:20:35.3866| IP: ::1 | Method: GET | Path: /game/Northwind 6/Index
+2015-11-11 20:20:38.1308| IP: ::1 | Method: POST | Path: /game/Northwind 6/Index
+2015-11-11 20:20:38.2599| IP: ::1 | Method: POST | Path: /game/Northwind 6/Index
+2015-11-11 20:20:41.1301| IP: ::1 | Method: GET | Path: /game/Northwind 7
+2015-11-11 20:20:41.1812| IP: ::1 | Method: GET | Path: /game/Northwind 7
+2015-11-11 20:20:42.4736| IP: ::1 | Method: GET | Path: /game/Northwind 7/comments
+2015-11-11 20:20:42.5166| IP: ::1 | Method: GET | Path: /game/Northwind 7/comments
+2015-11-11 20:20:46.9767| IP: ::1 | Method: POST | Path: /game/Northwind 7/comments
+2015-11-11 20:20:48.3898| IP: ::1 | Method: GET | Path: /game/Northwind 7/comments
+2015-11-11 20:20:48.4138| IP: ::1 | Method: GET | Path: /game/Northwind 7/comments
+2015-11-11 20:20:51.6824| IP: ::1 | Method: GET | Path: /orders/history
+2015-11-11 20:20:52.0602| IP: ::1 | Method: GET | Path: /orders/history
+2015-11-11 20:21:03.1546| IP: ::1 | Method: POST | Path: /orders/history
+2015-11-11 20:21:03.9669| IP: ::1 | Method: POST | Path: /orders/history
+2015-11-11 20:21:06.1059| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 20:21:06.2325| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 20:21:06.7530| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 20:21:06.9052| IP: ::1 | Method: GET | Path: /Games
+2015-11-11 20:21:15.5448| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 20:22:02.4141| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:22:04.5029| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:22:18.9064| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 20:22:18.9817| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 20:22:25.5441| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 20:22:25.5911| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 20:22:36.7060| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 20:22:36.7770| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 20:22:51.0718| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 20:22:51.3098| IP: ::1 | Method: POST | Path: /Games
+2015-11-11 20:23:27.6161| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:23:29.7630| IP: ::1 | Method: GET | Path: /
+2015-11-11 20:23:32.8349| IP: ::1 | Method: GET | Path: /game/SCII
+2015-11-11 20:23:32.9361| IP: ::1 | Method: GET | Path: /game/SCII
+2015-11-11 20:23:38.4703| IP: ::1 | Method: POST | Path: /game/SCII/buy
+2015-11-11 20:23:41.9459| IP: ::1 | Method: GET | Path: /game/SCII/Index
+2015-11-11 20:23:42.0869| IP: ::1 | Method: GET | Path: /game/SCII/Index
+2015-11-11 20:23:43.8819| IP: ::1 | Method: GET | Path: /Basket
+2015-11-11 20:23:44.0594| IP: ::1 | Method: GET | Path: /Basket
+2015-11-11 20:24:08.9881| IP: ::1 | Method: POST | Path: /game/SCII/Index
+2015-11-11 20:24:09.0575| IP: ::1 | Method: POST | Path: /game/SCII/Index
+2015-11-11 20:24:14.1311| IP: ::1 | Method: GET | Path: /game/Northwind 8
+2015-11-11 20:24:14.1746| IP: ::1 | Method: GET | Path: /game/Northwind 8
+2015-11-11 20:24:16.7878| IP: ::1 | Method: POST | Path: /game/Northwind 8/buy

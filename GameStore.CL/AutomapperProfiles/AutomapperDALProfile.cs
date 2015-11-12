@@ -34,7 +34,8 @@ namespace GameStore.CL.AutomapperProfiles
                 .ForMember(m => m.Genres, opt => opt.MapFrom(m => new[] {m.Category}))
                 .ForMember(m => m.Publisher, opt => opt.MapFrom(m => m.Supplier))
                 .ForMember(m => m.PlatformTypes, opt => opt.MapFrom(m => new List<PlatformType>()))
-                .ForMember(m => m.Comments, opt => opt.MapFrom(m => new List<Comment>()));
+                .ForMember(m => m.Comments, opt => opt.MapFrom(m => new List<Comment>()))
+                .ForMember(m => m.Views, opt => opt.MapFrom(m => new List<View>()));
 
 
             Mapper.CreateMap<Category, Genre>()

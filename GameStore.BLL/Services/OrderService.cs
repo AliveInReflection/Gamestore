@@ -81,7 +81,7 @@ namespace GameStore.BLL.Services
                 database.OrderDetailses.Create(new OrderDetails()
                 {
                     OrderId = order.OrderId,
-                    ProductId = game.GameId,
+                    Product = game,
                     Discount = 0,
                     Quantity = quantity
                 });

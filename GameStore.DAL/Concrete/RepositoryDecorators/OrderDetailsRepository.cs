@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Gamestore.DAL.Context;
+using System.Linq.Expressions;
 using GameStore.DAL.Concrete.RepositoryDecorators;
 using GameStore.DAL.GameStore.Interfaces;
 using GameStore.DAL.Infrastructure;
@@ -16,14 +13,22 @@ namespace GameStore.DAL.Concrete.Repositories
 {
     public class OrderDetailsRepository : BaseRepository<OrderDetails>
     {
-        public OrderDetailsRepository(IGameStoreUnitOfWork gameStore, INorthwindUnitOfWork northwind)
+        private IRepository<Game> gameRepository;
+        public OrderDetailsRepository(IGameStoreUnitOfWork gameStore, INorthwindUnitOfWork northwind, IRepository<Game> gameRepository)
             : base(gameStore, northwind)
         {
-            
+            this.gameRepository = gameRepository;
         }
 
         public override void Create(OrderDetails entity)
         {
+            var game = gameStore.Games.Get(m => m.GameId.Equals(entity.Product.GameId));
+            if (game == null)
+            {
+                game = northwind.Games.Get(KeyManager.Decode(entity.Product.GameId));
+                gameRepository.Update(game);
+                entity.Product = game;
+            } 
             gameStore.OrderDetailses.Create(entity);
         }
 
@@ -37,7 +42,7 @@ namespace GameStore.DAL.Concrete.Repositories
             gameStore.OrderDetailses.Delete(id);
         }
 
-        public override OrderDetails Get(System.Linq.Expressions.Expression<Func<OrderDetails, bool>> predicate)
+        public override OrderDetails Get(Expression<Func<OrderDetails, bool>> predicate)
         {
             var orderDetails = gameStore.OrderDetailses.GetMany(predicate).First(m => !m.IsDeleted);
             return orderDetails;
@@ -49,7 +54,7 @@ namespace GameStore.DAL.Concrete.Repositories
             return orderDetailses;
         }
 
-        public override IEnumerable<OrderDetails> GetMany(System.Linq.Expressions.Expression<Func<OrderDetails, bool>> predicate)
+        public override IEnumerable<OrderDetails> GetMany(Expression<Func<OrderDetails, bool>> predicate)
         {
             var orderDetailses = gameStore.OrderDetailses.GetMany(predicate).Where(m => !m.IsDeleted).ToList();
             return orderDetailses;
@@ -60,7 +65,7 @@ namespace GameStore.DAL.Concrete.Repositories
             return gameStore.OrderDetailses.GetMany(m => !m.IsDeleted).Count();
         }
 
-        public override bool IsExists(System.Linq.Expressions.Expression<Func<OrderDetails, bool>> predicate)
+        public override bool IsExists(Expression<Func<OrderDetails, bool>> predicate)
         {
             return gameStore.OrderDetailses.GetMany(predicate).Any(m => !m.IsDeleted);
         }

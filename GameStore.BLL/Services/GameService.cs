@@ -2,16 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
-using GameStore.BLL.Concrete;
-using GameStore.BLL.Concrete.ContentFilters;
-using GameStore.BLL.Concrete.ContentSorters;
-using GameStore.BLL.ContentFilters;
 using GameStore.BLL.Infrastructure;
 using GameStore.DAL.Interfaces;
 using GameStore.Domain.Entities;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
-using GameStore.Infrastructure.Enums;
 
 namespace GameStore.BLL.Services
 {
@@ -76,7 +71,6 @@ namespace GameStore.BLL.Services
         public GameDTO Get(string gameKey)
         {
             var entry = database.Games.Get(m => m.GameKey.Equals(gameKey));
-
             Mapper.CreateMap<Game, GameDTO>();
             var game = Mapper.Map<Game, GameDTO>(entry);
             return game;
