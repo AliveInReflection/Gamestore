@@ -106,7 +106,7 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Games in the store:.
+        ///   Looks up a localized string similar to Games in the store.
         /// </summary>
         public static string GameGetCount {
             get {

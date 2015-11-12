@@ -18,6 +18,7 @@ namespace GameStore.WebUI.Models
 
         [Display(ResourceType = typeof(ModelRes), Name = "GameFilterSortByItems")]
         public List<SelectListItem> SortByItems { get; set; }
+        [Display(ResourceType = typeof(ModelRes), Name = "GameFilterSortByItems")]
         public string SortBy { get; set; }
 
         [Display(ResourceType = typeof(ModelRes), Name = "GameFilterPublicationDate")]

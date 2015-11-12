@@ -133,7 +133,7 @@
     <value>Quantity</value>
   </data>
   <data name="GameGetCount" xml:space="preserve">
-    <value>Games in the store:</value>
+    <value>Games in the store</value>
   </data>
   <data name="GameIndexTitle" xml:space="preserve">
     <value>Games in the store</value>
