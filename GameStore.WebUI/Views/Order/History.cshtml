@@ -1,17 +1,18 @@
-﻿@model IEnumerable<GameStore.WebUI.Models.Order.DisplayOrderViewModel>
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model IEnumerable<GameStore.WebUI.Models.Order.DisplayOrderViewModel>
 
 @{
-    ViewBag.Title = "GetHistory";
+    ViewBag.Title = ViewsRes.OrderHistoryTitle;
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>History</h2>
+<h2>@ViewBag.Title</h2>
 <div class="center-block">
     @using (Html.BeginForm())
     {
         @Html.TextBox("dateFrom", null, new { type = "date" })
         @Html.TextBox("dateTo", null, new { type = "date" })
-        <input type="submit" value="Search" />
+        <input type="submit" value="@ViewsRes.LinkSearch" />
     }
 </div>
 

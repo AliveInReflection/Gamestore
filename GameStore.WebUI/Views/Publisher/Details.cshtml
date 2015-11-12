@@ -1,12 +1,13 @@
-﻿@model GameStore.WebUI.Models.DisplayPublisherViewModel
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.DisplayPublisherViewModel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = ViewsRes.PublisherDetailsTitle;
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>Details</h2>
-@Html.ActionLink("Update", "Update", new { publisherId = Model.PublisherId }) 
+<h2>@ViewBag.Title</h2>
+@Html.ActionLink(ViewsRes.LinkUpdate, "Update", new { publisherId = Model.PublisherId }) 
 <table class="table">
     <tr>
         <td class="display-label">
@@ -36,6 +37,6 @@
 @using (Html.BeginForm("Delete", "Publisher"))
 {
     @Html.Hidden("publisherId", Model.PublisherId)
-    <input type="submit" value="Delete" />
+    <input type="submit" value="@ViewsRes.LinkDelete" />
 }
 

@@ -1,12 +1,13 @@
-﻿@using GameStore.WebUI.Helpers;
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@using GameStore.WebUI.Helpers;
 @model GameStore.WebUI.Models.CommentViewModel
 
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = ViewsRes.CommentIndexTitle;
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>List</h2>
+<h2>@ViewsRes.CommentIndexTitle</h2>
 
 @if (TempData["ErrorMessage"] != null)
 {
@@ -49,14 +50,14 @@
             </div>
 
             <p>
-                <input type="submit" value="Comment" />
+                <input type="submit" value="@ViewsRes.LinkComment" />
             </p>
         </fieldset>
     }
 </div>
 
 <div id="dialog" title="Confirmation required">
-    Delete this comment?
+    @ViewsRes.CommentIndexDeleteModal
 </div>
 
 

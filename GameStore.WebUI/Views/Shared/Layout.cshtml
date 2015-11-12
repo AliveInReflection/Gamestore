@@ -1,4 +1,5 @@
-﻿@{
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+Menu@{
     Layout = null;
 }
 
@@ -16,13 +17,13 @@
 <body>
 <div class="header">
     <div class="pull-left">@Html.Action("GetCount", "Game")</div>
-    <div class="pull-right">@Html.ActionLink("Basket", "Details", "Order")</div>
+    <div class="pull-right">@Html.ActionLink(ViewsRes.MenuBasket, "Details", "Order")</div>
 </div>
 <div class="menu-line">
     <p class="text-center">
-        @Html.ActionLink("Games", "Index", "Game") | 
-        @Html.ActionLink("Publishers", "Index", "Publisher") | 
-        @Html.ActionLink("Order history", "History", "Order")
+        @Html.ActionLink(ViewsRes.MenuGames, "Index", "Game") | 
+        @Html.ActionLink(ViewsRes.MenuPublishers, "Index", "Publisher") | 
+        @Html.ActionLink(ViewsRes.MenuOrderHistory, "History", "Order")
     </p>
 </div>
 <div class="content-line">

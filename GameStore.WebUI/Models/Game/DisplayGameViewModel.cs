@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GameStore.WebUI.App_LocalResources.Localization;
 
 namespace GameStore.WebUI.Models
 {    
@@ -12,37 +13,37 @@ namespace GameStore.WebUI.Models
         [HiddenInput(DisplayValue = false)]
         public int GameId { get; set; }
 
-        [Display(Name="Key")]
+        [Display(ResourceType = typeof(ModelRes), Name = "GameGameKey")]
         public string GameKey { get; set; }
 
-        [Display(Name = "Game name")]
+        [Display(ResourceType = typeof(ModelRes), Name = "GameGameName")]
         public string GameName { get; set; }
 
-        [Display(Name = "Descriptions")]
+        [Display(ResourceType = typeof(ModelRes), Name = "GameDescription")]
         public string Description { get; set; }
 
-        [Display(Name = "Price")]
+        [Display(ResourceType = typeof(ModelRes), Name = "GamePrice")]
         public decimal Price { get; set; }
 
-        [Display(Name = "Units in stock")]
+        [Display(ResourceType = typeof(ModelRes), Name = "GameUnitsInStock")]
         public short UnitsInStock { get; set; }
 
-        [Display(Name = "Is discontinued")]
+        [Display(ResourceType = typeof(ModelRes), Name = "GameDiscontinued")]
         public bool Discontinued { get; set; }
 
-        [Display(Name = "Publication date")]
+        [Display(ResourceType = typeof(ModelRes), Name = "GamePublicationDate")]
         public DateTime PublicationDate { get; set; }
 
-        [Display(Name = "Receipt date")]
+        [Display(ResourceType = typeof(ModelRes), Name = "GameReceiptDate")]
         public DateTime ReceiptDate { get; set; }
 
-        [Display(Name="Publisher")]
+        [Display(ResourceType = typeof(ModelRes), Name = "GamePublisher")]
         public DisplayPublisherViewModel Publisher { get; set; }
 
-        [Display(Name = "Genres")]
+        [Display(ResourceType = typeof(ModelRes), Name = "GameGenres")]
         public IEnumerable<DisplayGenreViewModel> Genres { get; set; }
 
-        [Display(Name = "Platforms")]
+        [Display(ResourceType = typeof(ModelRes), Name = "GamePlatformTypes")]
         public IEnumerable<DisplayPlatformTypeViewModel> PlatformTypes { get; set; }
 
     }

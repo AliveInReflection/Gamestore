@@ -1,4 +1,5 @@
-﻿@model GameStore.WebUI.Models.CreateCommentViewModel
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.CreateCommentViewModel
 
 <div id="add-comment-fieldset">
     @using (Html.BeginForm("Create", "Comment"))
@@ -29,7 +30,7 @@
             </div>
 
             <p>
-                <input type="submit" value="Comment" />
+                <input type="submit" value="@ViewsRes.LinkComment" />
             </p>
         </fieldset>
     }

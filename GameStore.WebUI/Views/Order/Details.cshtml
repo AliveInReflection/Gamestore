@@ -1,7 +1,8 @@
-﻿@model GameStore.WebUI.Models.OrderViewModel
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.OrderViewModel
 
 @{
-    ViewBag.Title = "Basket";
+    ViewBag.Title = ViewsRes.OrderDetailsTitle;
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
@@ -18,8 +19,8 @@
     <table class="table">
         <thead>
         <tr>
-            <th>Game key</th>
-            <th>Quantity</th>
+            <th>@ModelRes.GameGameKey</th>
+            <th>@ModelRes.OrderDetailsQuantity</th>
         </tr>
         </thead>
         <tbody>
@@ -36,5 +37,5 @@
 </fieldset>
 
 <p>
-    @Html.ActionLink("Make order", "Make")
+    @Html.ActionLink(ViewsRes.LinkMakeOrder, "Make")
 </p>

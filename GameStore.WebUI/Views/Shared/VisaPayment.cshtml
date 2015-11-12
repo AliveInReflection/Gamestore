@@ -1,4 +1,5 @@
-﻿@{
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@{
     Layout = null;
 }
 
@@ -15,19 +16,19 @@
         {
             <table>
                 <tr>
-                    <td>Cart holder’s name</td>
+                    <td>@ViewsRes.VisaName</td>
                     <td>@Html.TextBox("name")</td>
                 </tr>
                 <tr>
-                    <td>Card number</td>
+                    <td>@ViewsRes.VisaNumber</td>
                     <td>@Html.TextBox("number")</td>
                 </tr>
                 <tr>
-                    <td>Date of expiry </td>
+                    <td>@ViewsRes.VisaDate</td>
                     <td>@Html.TextBox("date")</td>
                 </tr>
                 <tr>
-                    <td>CVV2/CVC2</td>
+                    <td>@ViewsRes.VisaSecure</td>
                     <td>@Html.TextBox("secure")</td>
                 </tr>
             </table>

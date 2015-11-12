@@ -1,11 +1,12 @@
-﻿@model GameStore.WebUI.Models.UpdatePublisherViewModel
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.UpdatePublisherViewModel
 
 @{
-    ViewBag.Title = "Update";
+    ViewBag.Title = ViewsRes.PublisherUpdateTitle;
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>Update</h2>
+<h2>@ViewBag.Title</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -53,7 +54,7 @@
     </table>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="@ViewsRes.LinkSave" />
         </p>
 }
 

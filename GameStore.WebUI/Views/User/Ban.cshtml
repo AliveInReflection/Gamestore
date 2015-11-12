@@ -1,13 +1,14 @@
-﻿@model IEnumerable<string>
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model IEnumerable<string>
 
 @{
-    ViewBag.Title = "Ban";
+    ViewBag.Title = ViewsRes.UserBanTitle;
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>Ban</h2>
+<h2>@ViewBag.Title</h2>
 
-<p>Choose bun duration: </p>
+<p>@ViewsRes.UserBanDurations: </p>
 @using (Html.BeginForm())
 {
     Html.Hidden("userName", ViewBag.UserName as string);
@@ -15,5 +16,5 @@
     {
         @Html.RadioButton("duration", item); <span>@item</span>
     }
-    <input type="submit" value="Ban"/>
+    <input type="submit" value="@ViewsRes.LinkBan"/>
 }

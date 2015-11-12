@@ -1,11 +1,12 @@
-﻿@model IEnumerable<GameStore.WebUI.Models.DisplayPublisherViewModel>
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model IEnumerable<GameStore.WebUI.Models.DisplayPublisherViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = ViewsRes.PublisherIndexTitle;
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>Publishers</h2>
+<h2>@ViewBag.Title</h2>
 
 @if (TempData["ErrorMessage"] != null)
 {
@@ -15,7 +16,7 @@
 }
 
 <p>
-    @Html.ActionLink("Create new", "New")
+    @Html.ActionLink(ViewsRes.LinkAddNew, "New")
 </p>
 <table class="table">
     <tr>
@@ -43,7 +44,7 @@
             @Html.DisplayFor(modelItem => item.HomePage)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { companyName = item.CompanyName }) 
+            @Html.ActionLink(ViewsRes.LinkDetails, "Details", new { companyName = item.CompanyName }) 
         </td>
     </tr>
 }

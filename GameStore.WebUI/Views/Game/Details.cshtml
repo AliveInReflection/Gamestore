@@ -1,13 +1,14 @@
-﻿@model GameStore.WebUI.Models.DisplayGameViewModel
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.DisplayGameViewModel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = @Model.GameName;
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 
 <h2>@Model.GameName</h2>
-<div class="pull-right">@Html.ActionLink("Update", "Update", "Game", new{gameKey = Model.GameKey}, null)</div>
+<div class="pull-right">@Html.ActionLink(ViewsRes.LinkUpdate, "Update", "Game", new{gameKey = Model.GameKey}, null)</div>
 <table class="table">
 
     <tr>
@@ -99,7 +100,7 @@
     @using (Html.BeginForm("Remove", "Game"))
     {
         @Html.Hidden("gameId", Model.GameId)
-        <input type="submit" value="Delete" />
+        <input type="submit" value="@ViewsRes.LinkUpdate" />
     }
 </p>
 
@@ -108,13 +109,13 @@
     {
         @Html.Hidden("gameKey", Model.GameKey)
         ;
-        <span>Qauntity: </span>@Html.TextBox("quantity", 1, new {type = "number", min = 1, max = Model.UnitsInStock})
+        <span>@ViewsRes.GameDetailsQuantity: </span>@Html.TextBox("quantity", 1, new {type = "number", min = 1, max = Model.UnitsInStock})
         ;
-        <input type="submit" value="Buy"/>
+        <input type="submit" value="@ViewsRes.LinkBuy"/>
     }
 </p>
 
 <p>
-    @Html.ActionLink("Download", "Download", "Game", new{ gameKey=Model.GameKey}, new{ target="_blank"})
-    @Html.ActionLink("Comments", "Index", "Comment", new{gameKey = Model.GameKey}, null)
+    @Html.ActionLink(ViewsRes.LinkDownload, "Download", "Game", new{ gameKey=Model.GameKey}, new{ target="_blank"})
+    @Html.ActionLink(ViewsRes.LinkComments, "Index", "Comment", new{gameKey = Model.GameKey}, null)
 </p>

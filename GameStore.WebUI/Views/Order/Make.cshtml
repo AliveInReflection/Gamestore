@@ -1,18 +1,19 @@
-﻿@model GameStore.WebUI.Models.MakeOrderViewModel
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.MakeOrderViewModel
 
 @{
-    ViewBag.Title = "Pay";
+    ViewBag.Title = ViewsRes.OrderMakeTitle;
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>Make order</h2>
+<h2>@ViewBag.Title</h2>
 
-<h4>Products in your basket:</h4>
+<h4>@ViewsRes.OrderMakeSubtitle:</h4>
 <table>
     <thead>
     <tr>
-        <th>Product</th>
-        <th>Quantity</th>
+        <th>@ViewsRes.OrderMakeProduct</th>
+        <th>@ViewsRes.OrderMakeQuantity</th>
     </tr>
     </thead>
     <tbody>
@@ -25,16 +26,16 @@
     }
     </tbody>
 </table>
-<p><b>Amount: </b> @Model.Amount</p>
+<p><b>@ViewsRes.OrderMakeAmount: </b> @Model.Amount</p>
 
-<h4>Choose payment method</h4>
+<h4>@ViewsRes.OrderMakePaymentSubtitle</h4>
 <table class="table">
      @foreach (var payment in Model.PaymentMethods)
      {
          <tr>
              <td><img src="@payment.PictureURL" alt="@payment.PaymentKey"></td>
              <td>@payment.Description</td>
-             <td>@Html.ActionLink("Pay", "Pay", "Order", new{paymentKey = payment.PaymentKey}, null)</td>
+             <td>@Html.ActionLink(ViewsRes.LinkPay, "Pay", "Order", new{paymentKey = payment.PaymentKey}, null)</td>
          </tr>
      }   
 </table>

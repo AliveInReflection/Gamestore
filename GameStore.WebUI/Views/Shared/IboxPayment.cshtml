@@ -1,11 +1,12 @@
-﻿@model GameStore.WebUI.Models.IboxPaymentViewModel
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.IboxPaymentViewModel
 
 @{
-    ViewBag.Title = "IboxPayment";
+    ViewBag.Title = ViewsRes.IBoxPaymentTitle;
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>Ibox payment</h2>
+<h2>@ViewBag.Title</h2>
 
 <fieldset>
 

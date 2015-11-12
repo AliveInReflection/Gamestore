@@ -1,19 +1,18 @@
-﻿@model GameStore.WebUI.Models.CreatePublisherViewModel
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.CreatePublisherViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = ViewsRes.PublisherCreateTitle;
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>ViewBag.Title</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>CreatePublisherViewModel</legend>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.CompanyName)
         </div>
@@ -39,14 +38,10 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="@ViewsRes.LinkCreate" />
         </p>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
 
