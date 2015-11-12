@@ -5,11 +5,12 @@ using GameStore.BLL.Infrastructure;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
 using GameStore.Logger.Interfaces;
+using GameStore.WebUI.App_LocalResources.Localization;
 using GameStore.WebUI.Models;
 
 namespace GameStore.WebUI.Controllers
 {
-    public class CommentController : Controller
+    public class CommentController : BaseController
     {
         private ICommentService commentService;
         private IGameStoreLogger logger;
@@ -51,7 +52,7 @@ namespace GameStore.WebUI.Controllers
             catch (ValidationException e)
             {
                 logger.Warn(e);
-                TempData["ErrorMessage"] = "Validation error";
+                TempData["ErrorMessage"] = ValidationRes.ValidationError;
             }
 
             return RedirectToAction("Index", "Comment", new{gameKey = comment.GameKey});
@@ -67,7 +68,7 @@ namespace GameStore.WebUI.Controllers
             catch (ValidationException e)
             {
                 logger.Warn(e);
-                TempData["ErrorMessage"] = "Validation error"; 
+                TempData["ErrorMessage"] = ValidationRes.ValidationError; 
             }
             return RedirectToAction("Index", "Comment", new {gameKey = gameKey});
         }
@@ -83,7 +84,7 @@ namespace GameStore.WebUI.Controllers
             catch (ValidationException e)
             {
                 logger.Warn(e);
-                TempData["ErrorMessage"] = "Validation error";
+                TempData["ErrorMessage"] = ValidationRes.ValidationError;
             }
             return RedirectToAction("Index", "Comment", new { gameKey = gameKey });
         }
@@ -103,7 +104,7 @@ namespace GameStore.WebUI.Controllers
             catch (ValidationException e)
             {
                 logger.Warn(e);
-                TempData["ErrorMessage"] = e;
+                TempData["ErrorMessage"] = ValidationRes.ValidationError;
             }
             return RedirectToAction("Index", "Comment", new { gameKey = gameKey });
         }     

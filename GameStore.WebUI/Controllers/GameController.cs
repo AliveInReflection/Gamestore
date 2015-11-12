@@ -8,12 +8,13 @@ using GameStore.BLL.Infrastructure;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
 using GameStore.Logger.Interfaces;
+using GameStore.WebUI.App_LocalResources.Localization;
 using GameStore.WebUI.Infrastructure;
 using GameStore.WebUI.Models;
 
 namespace GameStore.WebUI.Controllers
 {
-    public class GameController : Controller
+    public class GameController : BaseController
     {
         private IGameService gameService;
         private IGenreService genreService;
@@ -87,7 +88,7 @@ namespace GameStore.WebUI.Controllers
             catch (ValidationException e)
             {
                logger.Warn(e);
-               TempData["ErrorMessage"] = "Validation error";
+               TempData["ErrorMessage"] = ValidationRes.ValidationError;
             }
             
             return RedirectToAction("Index");
@@ -120,7 +121,7 @@ namespace GameStore.WebUI.Controllers
             catch (ValidationException e)
             {
                 logger.Warn(e);
-                TempData["ErrorMessage"] = "Validation error";
+                TempData["ErrorMessage"] = ValidationRes.ValidationError;
             }
 
             return RedirectToAction("Index");
@@ -138,7 +139,7 @@ namespace GameStore.WebUI.Controllers
             catch (Exception e)
             {
                 logger.Warn(e);
-                TempData["ErrorMessage"] = "Validation error";
+                TempData["ErrorMessage"] = ValidationRes.ValidationError;
             }
             return RedirectToAction("Index");
         }
@@ -165,7 +166,7 @@ namespace GameStore.WebUI.Controllers
             catch (InvalidOperationException e)
             {
                 logger.Warn(e);
-                TempData["ErrorMessage"] = "Game not found";
+                TempData["ErrorMessage"] = ValidationRes.GameNotFound;
             }
             return RedirectToAction("Index");
         }

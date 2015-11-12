@@ -9,9 +9,9 @@ namespace GameStore.WebUI.Models
 {
     public class CreatePlatformTypeViewModel
     {
-        [Required]
-        [MinLength(3)]
-        [MaxLength(20)]
+        [Required(ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "FieldIsRequired")]
+        [MinLength(5, ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "MinLengthError")]
+        [MaxLength(20, ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "MaxLengthError")]
         [Display(ResourceType = typeof(ModelRes), Name = "PlatformTypeName")]
         public string PlatformTypeName { get; set; }
     }

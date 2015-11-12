@@ -8,13 +8,14 @@ using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
 using GameStore.Infrastructure.Enums;
 using GameStore.Logger.Interfaces;
+using GameStore.WebUI.App_LocalResources.Localization;
 using GameStore.WebUI.Infrastructure;
 using GameStore.WebUI.Models;
 using GameStore.WebUI.Models.Order;
 
 namespace GameStore.WebUI.Controllers
 {
-    public class OrderController : Controller
+    public class OrderController : BaseController
     {
         private IOrderService orderService;
         private IGameStoreLogger logger;
@@ -37,7 +38,7 @@ namespace GameStore.WebUI.Controllers
             catch (ValidationException e)
             {
                 logger.Warn(e);
-                TempData["ErrorMessage"] = "Not enough units in stock";
+                TempData["ErrorMessage"] = ValidationRes.NotEnoughUnitsInStock;
             }
             return RedirectToAction("Index", "Game");
 

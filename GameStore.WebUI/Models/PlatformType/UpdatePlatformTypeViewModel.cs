@@ -13,9 +13,9 @@ namespace GameStore.WebUI.Models
         [HiddenInput]
         public int PlatformTypeId { get; set; }
 
-        [Required]
-        [MinLength(3)]
-        [MaxLength(20)]
+        [Required(ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "FieldIsRequired")]
+        [MinLength(3, ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "MinLengthError")]
+        [MaxLength(20, ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "MaxLengthError")]
         [Display(ResourceType = typeof(ModelRes), Name = "PlatformTypeName")]
         public string PlatformTypeName { get; set; }
     }

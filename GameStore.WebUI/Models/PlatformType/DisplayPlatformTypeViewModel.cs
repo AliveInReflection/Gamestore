@@ -14,11 +14,11 @@ namespace GameStore.WebUI.Models
 
     public class DisplayPlatformTypeViewModel
     {
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "FieldIsRequired")]
         public int PlatformTypeId { get; set; }
 
-        [Required]
-        [MinLength(3)]
+        [Required(ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "FieldIsRequired")]
+        [MinLength(3, ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "MinLengthError")]
         [MaxLength(20)]
         [Display(ResourceType = typeof(ModelRes), Name = "PlatformTypeName")]
         public string PlatformTypeName { get; set; }

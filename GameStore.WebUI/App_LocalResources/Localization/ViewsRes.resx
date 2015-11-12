@@ -123,6 +123,9 @@
   <data name="CommentIndexTitle" xml:space="preserve">
     <value>Comments for game</value>
   </data>
+  <data name="FilteringViewModelPrice" xml:space="preserve">
+    <value>Price</value>
+  </data>
   <data name="GameCreateTitle" xml:space="preserve">
     <value>Create new game</value>
   </data>

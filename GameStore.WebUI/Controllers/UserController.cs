@@ -4,7 +4,7 @@ using GameStore.WebUI.Infrastructure;
 
 namespace GameStore.WebUI.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         private IUserService userService;
 

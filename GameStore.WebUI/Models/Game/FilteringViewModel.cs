@@ -25,12 +25,12 @@ namespace GameStore.WebUI.Models
         public RadiobuttonViewModel PublishingDate { get; set; }
 
         [Display(ResourceType = typeof(ModelRes), Name = "GameFilterMinPrice")]
-        [Range(0, int.MaxValue)]
+        [Range(0, int.MaxValue, ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "OnlyPositiveError")]
         public decimal MinPrice { get; set; }
 
 
         [Display(ResourceType = typeof(ModelRes), Name = "GameFilterMaxPrice")]
-        [Range(0, int.MaxValue)]
+        [Range(0, int.MaxValue, ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "OnlyPositiveError")]
         public decimal MaxPrice { get; set; }
 
         [Display(ResourceType = typeof(ModelRes), Name = "GameFilterName")]

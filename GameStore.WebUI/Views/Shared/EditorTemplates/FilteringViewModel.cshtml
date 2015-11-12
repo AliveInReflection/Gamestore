@@ -1,4 +1,5 @@
-﻿@model GameStore.WebUI.Models.FilteringViewModel
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.FilteringViewModel
 
 @Html.Hidden("CurrentPage", Model.CurrentPage, new { id = "CurrentPage" })
 
@@ -40,7 +41,7 @@
 </fieldset>
 
 <fieldset>
-    <legend>Price</legend>
+    <legend>@ViewsRes.FilteringViewModelPrice</legend>
     <table>
         <tr>
             <td>@Html.DisplayNameFor(m => m.MinPrice)</td>

@@ -25,15 +25,13 @@ namespace GameStore.WebUI.Models
         [HiddenInput(DisplayValue = false)]
         public int? GameId { get; set; }
 
-        [Required]
-        [MinLength(5)]
-        [MaxLength(400)]
+        [Required(ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "FieldIsRequired")]
+        [MinLength(5, ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "MinLengthError")]
+        [MaxLength(400, ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "MaxLengthError")]
         [Display(ResourceType = typeof(ModelRes), Name = "CommentContent")]
         public string Content { get; set; }
 
-        [Required]
-        [MinLength(5)]
-        [MaxLength(1000)]
+        [Required(ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "FieldIsRequired")]
         [Display(ResourceType = typeof(ModelRes), Name = "CommentQuote")]
         public string Quote { get; set; }
 

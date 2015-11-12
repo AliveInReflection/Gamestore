@@ -147,17 +147,48 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_LocalResources\Localization\InfrastructureRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InfrastructureRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\Localization\InfrastructureRes.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InfrastructureRes.ru.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_LocalResources\Localization\ModelRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\Localization\ModelRes.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelRes.ru.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\Localization\ValidationRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_LocalResources\Localization\ValidationRes.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationRes.ru.resx</DependentUpon>
     </Compile>
     <Compile Include="App_LocalResources\Localization\ViewsRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ViewsRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="App_LocalResources\Localization\ViewsRes.ru.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ViewsRes.ru.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -369,9 +400,33 @@
     <Content Include="Views\Comment\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="App_LocalResources\Localization\InfrastructureRes.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>InfrastructureRes.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\Localization\InfrastructureRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>InfrastructureRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\Localization\ModelRes.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModelRes.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\Localization\ModelRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ModelRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\Localization\ValidationRes.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationRes.ru.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\Localization\ValidationRes.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_LocalResources\Localization\ViewsRes.ru.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ViewsRes.ru.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="App_LocalResources\Localization\ViewsRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

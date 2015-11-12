@@ -13,8 +13,8 @@ namespace GameStore.WebUI.Models
         [Required]
         public int GenreId { get; set; }
 
-        [Required]
-        [MinLength(3)]
+        [Required(ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "FieldIsRequired")]
+        [MinLength(3, ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "MinLengthError")]
         [MaxLength(20)]
         [Display(ResourceType = typeof(ModelRes), Name = "GenreGenreName")]
         public string GenreName { get; set; }

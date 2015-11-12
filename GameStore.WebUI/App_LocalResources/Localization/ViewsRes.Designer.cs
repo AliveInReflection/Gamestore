@@ -79,6 +79,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Price.
+        /// </summary>
+        public static string FilteringViewModelPrice {
+            get {
+                return ResourceManager.GetString("FilteringViewModelPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create new game.
         /// </summary>
         public static string GameCreateTitle {

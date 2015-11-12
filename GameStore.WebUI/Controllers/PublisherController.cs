@@ -6,11 +6,12 @@ using GameStore.BLL.Infrastructure;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
 using GameStore.Logger.Interfaces;
+using GameStore.WebUI.App_LocalResources.Localization;
 using GameStore.WebUI.Models;
 
 namespace GameStore.WebUI.Controllers
 {
-    public class PublisherController : Controller
+    public class PublisherController : BaseController
     {
         private IPublisherService publisherService;
         private IGameStoreLogger logger;
@@ -38,7 +39,7 @@ namespace GameStore.WebUI.Controllers
             catch (ValidationException e)
             {
                 logger.Warn(e);
-                TempData["ErrorMessage"] = "Not found";
+                TempData["ErrorMessage"] = ValidationRes.NotFound;
                 return RedirectToAction("Index");
             }
             
@@ -66,7 +67,7 @@ namespace GameStore.WebUI.Controllers
             catch (ValidationException e)
             {
                 logger.Warn(e);
-                TempData["ErrorMessage"] = "Error";
+                TempData["ErrorMessage"] = ValidationRes.ValidationError;
             }
             
             return RedirectToAction("Index");
@@ -83,7 +84,7 @@ namespace GameStore.WebUI.Controllers
             catch (ValidationException e)
             {
                 logger.Warn(e);
-                TempData["ErrorMessage"] = "Not found";
+                TempData["ErrorMessage"] = ValidationRes.NotFound;
             }
             return RedirectToAction("Index", "Game");
         }
@@ -103,7 +104,7 @@ namespace GameStore.WebUI.Controllers
             catch (ValidationException e)
             {
                 logger.Warn(e);
-                TempData["ErrorMessage"] = "Validation error";
+                TempData["ErrorMessage"] = ValidationRes.ValidationError;
             }
             return RedirectToAction("Index");
 
@@ -119,7 +120,7 @@ namespace GameStore.WebUI.Controllers
             catch (ValidationException e)
             {
                 logger.Warn(e);
-                TempData["ErrorMessage"] = "Error";
+                TempData["ErrorMessage"] = ValidationRes.ValidationError;
             }
             return RedirectToAction("Index");
         }

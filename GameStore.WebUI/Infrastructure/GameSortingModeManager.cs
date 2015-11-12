@@ -31,7 +31,6 @@ namespace GameStore.WebUI.Infrastructure
 
         public static void Initialize()
         {
-            sorters.Add("None", GamesSortingMode.None);
             sorters.Add("Most popular", GamesSortingMode.MostPopular);
             sorters.Add("Most commented", GamesSortingMode.MostCommented);
             sorters.Add("Price ascending", GamesSortingMode.PriceAscending);

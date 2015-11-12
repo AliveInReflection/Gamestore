@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using GameStore.WebUI.App_LocalResources.Localization;
 
 namespace GameStore.WebUI.Infrastructure
 {
@@ -32,11 +33,11 @@ namespace GameStore.WebUI.Infrastructure
 
         public static void Initialize()
         {
-            durations.Add("1 hour", TimeSpan.FromHours(1));
-            durations.Add("1 day", TimeSpan.FromDays(1));
-            durations.Add("1 week", TimeSpan.FromDays(7));
-            durations.Add("1 month", TimeSpan.FromDays(30));
-            durations.Add("Permanent", TimeSpan.MaxValue);
+            durations.Add(InfrastructureRes.BanHour, TimeSpan.FromHours(1));
+            durations.Add(InfrastructureRes.BanDay, TimeSpan.FromDays(1));
+            durations.Add(InfrastructureRes.BanWeek, TimeSpan.FromDays(7));
+            durations.Add(InfrastructureRes.BanMonth, TimeSpan.FromDays(30));
+            durations.Add(InfrastructureRes.BanPermanent, TimeSpan.MaxValue);
         }
     }
 }

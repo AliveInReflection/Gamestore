@@ -9,9 +9,9 @@ namespace GameStore.WebUI.Models
 {
     public class CreateGenreViewModel
     {
-        [Required]
-        [MinLength(3)]
-        [MaxLength(20)]
+        [Required(ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "FieldIsRequired")]
+        [MinLength(3, ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "MinLengthError")]
+        [MaxLength(20, ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "MaxLengthError")]
         [Display(ResourceType = typeof(ModelRes), Name = "GenreGenreName")]
         public string GenreName { get; set; }
     }

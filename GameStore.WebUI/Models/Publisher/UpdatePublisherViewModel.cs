@@ -13,12 +13,15 @@ namespace GameStore.WebUI.Models
         [HiddenInput]
         public int PublisherId { get; set; }
 
+        [Required(ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "FieldIsRequired")]
         [Display(ResourceType = typeof(ModelRes), Name = "PublisherCompanyName")]
         public string CompanyName { get; set; }
 
+        [Required(ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "FieldIsRequired")]
         [Display(ResourceType = typeof(ModelRes), Name = "PublisherDescription")]
         public string Description { get; set; }
 
+        [Required(ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "FieldIsRequired")]
         [Display(ResourceType = typeof(ModelRes), Name = "PublisherHomePage")]
         public string HomePage { get; set; }
     }
