@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Threading;
+using System.Web.Mvc;
 using AutoMapper;
 using GameStore.Domain.Entities;
 using GameStore.Infrastructure.DTO;
@@ -12,19 +13,24 @@ namespace GameStore.CL.AutomapperProfiles
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<GameDTO, DisplayGameViewModel>();
+            Mapper.CreateMap<GameDTO, DisplayGameViewModel>()
+                .ForMember(g => g.Description, opt => opt.ResolveUsing(ResolveCulture));
+
+
             Mapper.CreateMap<GameDTO, UpdateGameViewModel>();
 
             Mapper.CreateMap<CommentDTO, DisplayCommentViewModel>();
             Mapper.CreateMap<CommentDTO, UpdateCommentViewModel>();
             
-            Mapper.CreateMap<GenreDTO, DisplayGenreViewModel>();
+            Mapper.CreateMap<GenreDTO, DisplayGenreViewModel>()
+                .ForMember(g => g.GenreName, opt => opt.ResolveUsing(ResolveCulture));
             Mapper.CreateMap<GenreDTO, UpdateGenreViewModel>();
 
             Mapper.CreateMap<PlatformTypeDTO, DisplayPlatformTypeViewModel>();
             Mapper.CreateMap<PlatformTypeDTO, UpdatePlatformTypeViewModel>();
 
-            Mapper.CreateMap<PublisherDTO, DisplayPublisherViewModel>();
+            Mapper.CreateMap<PublisherDTO, DisplayPublisherViewModel>()
+                .ForMember(p => p.Description, opt => opt.ResolveUsing(ResolveCulture));
             Mapper.CreateMap<PublisherDTO, UpdatePublisherViewModel>();
 
             Mapper.CreateMap<OrderDTO, OrderViewModel>();
@@ -93,6 +99,36 @@ namespace GameStore.CL.AutomapperProfiles
                 .ForMember(m => m.SelectedValue, opt => opt.MapFrom(t => t));
 
             Mapper.CreateMap<string, GameDTO>().ForMember(m => m.GameKey, opt => opt.MapFrom(t => t));
+        }
+
+        public string ResolveCulture(GameDTO game)
+        {
+            var culture = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+            if (culture == "ru")
+            {
+                return game.DescriptionRu;
+            }
+            return game.Description;
+        }
+
+        public string ResolveCulture(GenreDTO genre)
+        {
+            var culture = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+            if (culture == "ru")
+            {
+                return genre.GenreNameRu;
+            }
+            return genre.GenreName;
+        }
+
+        public string ResolveCulture(PublisherDTO publisher)
+        {
+            var culture = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+            if (culture == "ru")
+            {
+                return publisher.DescriptionRu;
+            }
+            return publisher.Description;
         }
     }
 }

@@ -6,10 +6,12 @@ using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
 using GameStore.Logger.Interfaces;
 using GameStore.WebUI.App_LocalResources.Localization;
+using GameStore.WebUI.Filters;
 using GameStore.WebUI.Models;
 
 namespace GameStore.WebUI.Controllers
 {
+    [Localization]
     public class CommentController : BaseController
     {
         private ICommentService commentService;

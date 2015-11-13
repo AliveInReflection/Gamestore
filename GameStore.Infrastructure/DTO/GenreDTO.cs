@@ -10,6 +10,8 @@ namespace GameStore.Infrastructure.DTO
     {
         public int GenreId { get; set; }
         public string GenreName { get; set; }
+        public string GenreNameRu { get; set; }
+
         public int? ParentGenreId { get; set; }
 
         public IEnumerable<GameDTO> Games { get; set; }

@@ -14,6 +14,7 @@ namespace GameStore.Domain.Entities
         public int PublisherId { get; set; }
         public string CompanyName { get; set; }
         public string Description { get; set; }
+        public string DescriptionRu { get; set; }
         public string HomePage { get; set; }
 
         public virtual ICollection<Game> Games { get; set; }

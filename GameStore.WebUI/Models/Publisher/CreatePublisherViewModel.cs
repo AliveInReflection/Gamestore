@@ -17,6 +17,9 @@ namespace GameStore.WebUI.Models
         [Display(ResourceType = typeof(ModelRes), Name = "PublisherDescription")]
         public string Description { get; set; }
 
+        [Display(ResourceType = typeof(ModelRes), Name = "PublisherDescriptionRu")]
+        public string DescriptionRu { get; set; }
+
         [Required(ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "FieldIsRequired")]
         [Display(ResourceType = typeof(ModelRes), Name = "PublisherHomePage")]
         public string HomePage { get; set; }

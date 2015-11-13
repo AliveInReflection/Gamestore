@@ -6,11 +6,29 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using GameStore.WebUI.Filters;
 
 namespace GameStore.WebUI.Controllers
 {
+    [Localization]
     public class BaseController : Controller
     {
+        //public string Language { get; set; }
+
+        //public ActionResult ChangeLanguage(string lang)
+        //{
+        //    string returnUrl = Request.UrlReferrer.AbsolutePath;
+
+        //    Language = lang;
+
+        //    Response.Cookies["lang"].Value = lang;
+
+        //    Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(Language);
+        //    Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(Language);
+            
+        //    return Redirect(returnUrl);
+        //}
+
         public string CurrentLangCode { get; protected set; }
         protected override void Initialize(RequestContext requestContext)
         {
@@ -23,6 +41,8 @@ namespace GameStore.WebUI.Controllers
             }
             base.Initialize(requestContext);
         }
+
+        
 
     }
 }

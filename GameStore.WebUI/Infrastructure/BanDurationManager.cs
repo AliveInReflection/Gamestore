@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
-using System.Web;
-using GameStore.WebUI.App_LocalResources.Localization;
 
 namespace GameStore.WebUI.Infrastructure
 {

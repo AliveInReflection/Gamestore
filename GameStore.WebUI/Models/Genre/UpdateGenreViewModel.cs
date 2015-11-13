@@ -18,5 +18,9 @@ namespace GameStore.WebUI.Models
         [MaxLength(20, ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "MaxLengthError")]
         [Display(ResourceType = typeof(ModelRes), Name = "GenreGenreName")]
         public string GenreName { get; set; }
+
+        [MaxLength(20, ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "MaxLengthError")]
+        [Display(ResourceType = typeof(ModelRes), Name = "GenreGenreNameRu")]
+        public string GenreNameRu { get; set; }
     }
 }

@@ -9,12 +9,14 @@ using GameStore.Infrastructure.DTO;
 using GameStore.Infrastructure.Enums;
 using GameStore.Logger.Interfaces;
 using GameStore.WebUI.App_LocalResources.Localization;
+using GameStore.WebUI.Filters;
 using GameStore.WebUI.Infrastructure;
 using GameStore.WebUI.Models;
 using GameStore.WebUI.Models.Order;
 
 namespace GameStore.WebUI.Controllers
 {
+    [Localization]
     public class OrderController : BaseController
     {
         private IOrderService orderService;

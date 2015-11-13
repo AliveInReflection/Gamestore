@@ -18,6 +18,7 @@
 <div class="header">
     <div class="pull-left">@ViewsRes.GameGetCount: @Html.Action("GetCount", "Game")</div>
     <div class="pull-right">@Html.ActionLink(ViewsRes.MenuBasket, "Details", "Order")</div>
+    <p class="text-center">@Html.ActionLink("English", "ChangeLanguage", new {lang = "en"})|@Html.ActionLink("Русский", "ChangeLanguage", new { lang = "ru" })</p>
 </div>
 <div class="menu-line">
     <p class="text-center">

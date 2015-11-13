@@ -129,6 +129,9 @@
   <data name="GameDescription" xml:space="preserve">
     <value>Описание</value>
   </data>
+  <data name="GameDescriptionRu" xml:space="preserve">
+    <value>Русская версия описания</value>
+  </data>
   <data name="GameDiscontinued" xml:space="preserve">
     <value>Поддержка</value>
   </data>
@@ -192,6 +195,9 @@
   <data name="GenreGenreName" xml:space="preserve">
     <value>Жанры</value>
   </data>
+  <data name="GenreGenreNameRu" xml:space="preserve">
+    <value>Русская версия названия</value>
+  </data>
   <data name="IboxAmount" xml:space="preserve">
     <value>Сумма</value>
   </data>
@@ -236,5 +242,8 @@
   </data>
   <data name="PublisherHomePage" xml:space="preserve">
     <value>Домашняя страница</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Русская версия описания</value>
   </data>
 </root>

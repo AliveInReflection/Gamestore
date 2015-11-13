@@ -97,6 +97,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Russian version of description.
+        /// </summary>
+        public static string GameDescriptionRu {
+            get {
+                return ResourceManager.GetString("GameDescriptionRu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Is discontinued.
         /// </summary>
         public static string GameDiscontinued {
@@ -286,6 +295,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Russian version of name.
+        /// </summary>
+        public static string GenreGenreNameRu {
+            get {
+                return ResourceManager.GetString("GenreGenreNameRu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount.
         /// </summary>
         public static string IboxAmount {
@@ -408,6 +426,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         public static string PublisherDescription {
             get {
                 return ResourceManager.GetString("PublisherDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Russian version of description.
+        /// </summary>
+        public static string PublisherDescriptionRu {
+            get {
+                return ResourceManager.GetString("PublisherDescriptionRu", resourceCulture);
             }
         }
         

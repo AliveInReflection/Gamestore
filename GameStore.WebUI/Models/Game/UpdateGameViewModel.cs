@@ -31,6 +31,9 @@ namespace GameStore.WebUI.Models
         [Display(ResourceType = typeof(ModelRes), Name = "GameDescription")]
         public string Description { get; set; }
 
+        [Display(ResourceType = typeof(ModelRes), Name = "GameDescriptionRu")]
+        public string DescriptionRu { get; set; }
+
         [Display(ResourceType = typeof(ModelRes), Name = "GamePrice")]
         [Range(0.01d, double.MaxValue, ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "OnlyPositiveError")]
         public decimal Price { get; set; }
