@@ -16,7 +16,6 @@ using GameStore.WebUI.Models.Order;
 
 namespace GameStore.WebUI.Controllers
 {
-    [Localization]
     public class OrderController : BaseController
     {
         private IOrderService orderService;

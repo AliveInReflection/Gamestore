@@ -15,7 +15,6 @@ using GameStore.WebUI.Models;
 
 namespace GameStore.WebUI.Controllers
 {
-    [Localization]
     public class GameController : BaseController
     {
         private IGameService gameService;

@@ -11,7 +11,6 @@ using GameStore.WebUI.Models;
 
 namespace GameStore.WebUI.Controllers
 {
-    [Localization]
     public class CommentController : BaseController
     {
         private ICommentService commentService;

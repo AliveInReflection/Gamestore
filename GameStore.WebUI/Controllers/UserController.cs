@@ -5,7 +5,6 @@ using GameStore.WebUI.Infrastructure;
 
 namespace GameStore.WebUI.Controllers
 {
-    [Localization]
     public class UserController : BaseController
     {
         private IUserService userService;

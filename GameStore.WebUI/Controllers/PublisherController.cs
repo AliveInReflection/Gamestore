@@ -12,7 +12,6 @@ using GameStore.WebUI.Models;
 
 namespace GameStore.WebUI.Controllers
 {
-    [Localization]
     public class PublisherController : BaseController
     {
         private IPublisherService publisherService;

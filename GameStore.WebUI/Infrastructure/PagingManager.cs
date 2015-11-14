@@ -47,16 +47,12 @@ namespace GameStore.WebUI.Infrastructure
             pages.Add("20", 20);
             pages.Add("50", 50);
             pages.Add("100", 100);
-            pages.Add("5", 5);
-            pages.Add("1", 1);
             pages.Add("All", short.MaxValue);
 
             pagesRu.Add("10", 10);
             pagesRu.Add("20", 20);
             pagesRu.Add("50", 50);
             pagesRu.Add("100", 100);
-            pagesRu.Add("5", 5);
-            pagesRu.Add("1", 1);
             pagesRu.Add("Все", short.MaxValue);
         }
     }

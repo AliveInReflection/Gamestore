@@ -196,7 +196,6 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\ErrorLoggingAttribute.cs" />
     <Compile Include="Filters\IPAddressLoggingAttribute.cs" />
-    <Compile Include="Filters\LocalizationAttribute.cs" />
     <Compile Include="Filters\PerformanceLoggingAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
