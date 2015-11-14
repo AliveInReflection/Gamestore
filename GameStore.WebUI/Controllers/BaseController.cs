@@ -13,21 +13,18 @@ namespace GameStore.WebUI.Controllers
     [Localization]
     public class BaseController : Controller
     {
-        //public string Language { get; set; }
+        public string Language { get; set; }
 
-        //public ActionResult ChangeLanguage(string lang)
-        //{
-        //    string returnUrl = Request.UrlReferrer.AbsolutePath;
+        public ActionResult ChangeLanguage(string lang)
+        {
+            string returnUrl = Request.UrlReferrer.AbsolutePath;
 
-        //    Language = lang;
+            Language = lang;
 
-        //    Response.Cookies["lang"].Value = lang;
+            Response.Cookies["lang"].Value = lang;
 
-        //    Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(Language);
-        //    Thread.CurrentThread.CurrentUICulture = CultureInfo.CreateSpecificCulture(Language);
-            
-        //    return Redirect(returnUrl);
-        //}
+            return RedirectToAction("Index", "Game");
+        }
 
         public string CurrentLangCode { get; protected set; }
         protected override void Initialize(RequestContext requestContext)

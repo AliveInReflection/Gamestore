@@ -197,6 +197,7 @@ namespace GameStore.WebUI.Controllers
             filter.ItemsPerPageList = Mapper.Map<IEnumerable<string>, List<SelectListItem>>(PagingManager.GetKeys());
 
             filter.SortByItems = Mapper.Map<IEnumerable<string>, List<SelectListItem>>(GameSortingModeManager.GetKeys());
+            filter.SortByItems.First().Selected = true;
 
             if (filter.PublishingDates == null)
             {

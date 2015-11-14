@@ -12,82 +12,152 @@ namespace GameStore.WebUI
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            
-
             routes.MapRoute(
                name: "Buy",
-               url: "game/{gamekey}/buy",
-               defaults: new { controller = "Order", action = "Add"}
+               url: "{lang}/game/{gamekey}/buy",
+               defaults: new { controller = "Order", action = "Add", lang = "en" },
+               constraints: new { lang = @"ru|en" }
                );
 
             routes.MapRoute(
                name: "OrdersHistory",
-               url: "orders/history",
-               defaults: new { controller = "Order", action = "History"}
+               url: "{lang}/orders/history",
+               defaults: new { controller = "Order", action = "History", lang = "en" },
+               constraints: new { lang = @"ru|en" }
                );
 
             routes.MapRoute(
                 name: "Comments",
-                url: "game/{gamekey}/comments",
-                defaults: new { controller = "Comment", action = "Index"}
+                url: "{lang}/game/{gamekey}/comments",
+                defaults: new { controller = "Comment", action = "Index", lang = "en" },
+                constraints: new { lang = @"ru|en" }
                 );
 
             routes.MapRoute(
                 name: "NewComment",
-                url: "game/{gamekey}/newcomment",
-                defaults: new { controller = "Comment", action = "Create"}
+                url: "{lang}/game/{gamekey}/newcomment",
+                defaults: new { controller = "Comment", action = "Create", lang = "en" },
+                constraints: new { lang = @"ru|en" }
                 );
 
             routes.MapRoute(
                 name: "Download",
-                url: "game/{gamekey}/{action}",
-                defaults: new { controller = "Game", action = "Details"}
-                );          
+                url: "{lang}/game/{gamekey}/{action}",
+                defaults: new { controller = "Game", action = "Details", lang = "en" },
+                constraints: new { lang = @"ru|en" }
+                );
 
             routes.MapRoute(
                 name: "Games",
-                url: "Games/{action}",
-                defaults: new { controller = "Game", action = "Index"}
+                url: "{lang}/Games/{action}",
+                defaults: new { controller = "Game", action = "Index", lang = "en" },
+                constraints: new { lang = @"ru|en" }
             );
 
             routes.MapRoute(
                name: "Basket",
-               url: "Basket",
-               defaults: new { controller = "Order", action = "Details"}
+               url: "{lang}/Basket",
+               defaults: new { controller = "Order", action = "Details", lang = "en" },
+               constraints: new { lang = @"ru|en" }
            );
             routes.MapRoute(
                name: "Order",
-               url: "Order",
-               defaults: new { controller = "Order", action = "Make"}
+               url: "{lang}/Order",
+               defaults: new { controller = "Order", action = "Make", lang = "en" },
+               constraints: new { lang = @"ru|en" }
            );
 
             routes.MapRoute(
                 name: "GameDetails",
-                url: "Game/{key}",
-                defaults: new { controller = "Game", action = "Details"}
+                url: "{lang}/Game/{key}",
+                defaults: new { controller = "Game", action = "Details", lang = "en" },
+                constraints: new { lang = @"ru|en" }
                 );
 
 
             routes.MapRoute(
                 name: "Publisher",
-                url: "Publisher/{action}",
-                defaults: new { controller = "Publisher", action = "Index"}
-                );
+                url: "{lang}/Publisher/{action}",
+                defaults: new { controller = "Publisher", action = "Index", lang = "en" },
+                constraints: new { lang = @"ru|en" }
+                ); 
 
             routes.MapRoute(
                 name: "DefaultLang",
                 url: "{lang}/{controller}/{action}/{id}",
-                defaults: new { controller = "Game", action = "Index", id = UrlParameter.Optional },
+                defaults: new { controller = "Game", action = "Index", id = UrlParameter.Optional, lang = "en" },
                 constraints: new { lang = @"ru|en" }
-            ); 
-
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Game", action = "Index", id = UrlParameter.Optional}
             );
-            //=============== localized =================
+
+
+            //====================================================
+
+           // routes.MapRoute(
+           //    name: "Buy",
+           //    url: "game/{gamekey}/buy",
+           //    defaults: new { controller = "Order", action = "Add"}
+           //    );
+
+           // routes.MapRoute(
+           //    name: "OrdersHistory",
+           //    url: "orders/history",
+           //    defaults: new { controller = "Order", action = "History"}
+           //    );
+
+           // routes.MapRoute(
+           //     name: "Comments",
+           //     url: "game/{gamekey}/comments",
+           //     defaults: new { controller = "Comment", action = "Index"}
+           //     );
+
+           // routes.MapRoute(
+           //     name: "NewComment",
+           //     url: "game/{gamekey}/newcomment",
+           //     defaults: new { controller = "Comment", action = "Create"}
+           //     );
+
+           // routes.MapRoute(
+           //     name: "Download",
+           //     url: "game/{gamekey}/{action}",
+           //     defaults: new { controller = "Game", action = "Details"}
+           //     );          
+
+           // routes.MapRoute(
+           //     name: "Games",
+           //     url: "Games/{action}",
+           //     defaults: new { controller = "Game", action = "Index"}
+           // );
+
+           // routes.MapRoute(
+           //    name: "Basket",
+           //    url: "Basket",
+           //    defaults: new { controller = "Order", action = "Details"}
+           //);
+           // routes.MapRoute(
+           //    name: "Order",
+           //    url: "Order",
+           //    defaults: new { controller = "Order", action = "Make"}
+           //);
+
+           // routes.MapRoute(
+           //     name: "GameDetails",
+           //     url: "Game/{key}",
+           //     defaults: new { controller = "Game", action = "Details"}
+           //     );
+
+
+           // routes.MapRoute(
+           //     name: "Publisher",
+           //     url: "Publisher/{action}",
+           //     defaults: new { controller = "Publisher", action = "Index"}
+           //     ); 
+
+           // routes.MapRoute(
+           //     name: "Default",
+           //     url: "{controller}/{action}/{id}",
+           //     defaults: new { controller = "Game", action = "Index", id = UrlParameter.Optional}
+           // );
+           // //=============== localized =================
             
             
 

@@ -29,7 +29,7 @@
 
 <fieldset>
     <legend>@Html.LabelFor(m => m.SortByItems)</legend>
-    @Html.DropDownListFor(m => m.SortBy, Model.SortByItems,"SortBy")
+    @Html.DropDownListFor(m => m.SortBy, Model.SortByItems, "SortBy", new {value = @ModelRes.GameFilterSortByItems })
 </fieldset>
 
 <fieldset>

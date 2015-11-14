@@ -80,7 +80,7 @@ namespace GameStore.CL.AutomapperProfiles
                 .ForMember(m => m.Value, opt => opt.MapFrom(t => t.PublisherId));
 
             Mapper.CreateMap<GenreDTO, CheckBoxViewModel>()
-                .ForMember(m => m.Text, opt => opt.MapFrom(t => t.GenreName))
+                .ForMember(m => m.Text, opt => opt.ResolveUsing(ResolveCulture))
                 .ForMember(m => m.Id, opt => opt.MapFrom(t => t.GenreId));
 
             Mapper.CreateMap<PlatformTypeDTO, CheckBoxViewModel>()
@@ -106,7 +106,7 @@ namespace GameStore.CL.AutomapperProfiles
             var culture = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
             if (culture == "ru")
             {
-                return game.DescriptionRu;
+                return game.DescriptionRu ?? game.Description;
             }
             return game.Description;
         }
@@ -116,7 +116,7 @@ namespace GameStore.CL.AutomapperProfiles
             var culture = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
             if (culture == "ru")
             {
-                return genre.GenreNameRu;
+                return genre.GenreNameRu ?? genre.GenreName;
             }
             return genre.GenreName;
         }
@@ -126,7 +126,7 @@ namespace GameStore.CL.AutomapperProfiles
             var culture = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
             if (culture == "ru")
             {
-                return publisher.DescriptionRu;
+                return publisher.DescriptionRu ?? publisher.Description;
             }
             return publisher.Description;
         }

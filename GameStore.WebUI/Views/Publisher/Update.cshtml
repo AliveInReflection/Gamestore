@@ -44,6 +44,15 @@
         </tr>
         <tr>
             <td class="editor-label">
+                @Html.LabelFor(model => model.DescriptionRu)
+            </td>
+            <td class="editor-field">
+                @Html.EditorFor(model => model.DescriptionRu)
+                @Html.ValidationMessageFor(model => model.DescriptionRu)
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label">
                 @Html.LabelFor(model => model.HomePage)
             </td>
             <td class="editor-field">
