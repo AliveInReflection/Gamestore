@@ -14,6 +14,7 @@ namespace GameStore.DAL.Interfaces
         IRepository<Order> Orders { get; }
         IRepository<User> Users { get; }
 
+        /// <summary>Save changes to database</summary>
         void Save();
     }
 }
