@@ -7,7 +7,7 @@ namespace GameStore.Domain.Metadata
     public partial class UserClaimMetadata
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
         public int ClaimId { get; set; }
 
@@ -15,10 +15,10 @@ namespace GameStore.Domain.Metadata
         public int UserId { get; set; }
 
         [Required]
-        public ClaimTypes ClaimType { get; set; }
+        public string ClaimType { get; set; }
 
         [Required]
-        public Permissions ClaimValue { get; set; }
+        public string ClaimValue { get; set; }
     }
 }
 

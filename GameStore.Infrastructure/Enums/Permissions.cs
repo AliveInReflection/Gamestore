@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace GameStore.Infrastructure.Enums
 {
-    [Flags]
-    public enum Permissions
+
+    public static class Permissions
     {
-        Create = 1,
-        Retreive = 2,
-        Update = 4,
-        Delete = 8,
-        Ban = 16,
-        Crud = 15,
-        Full = 31
+        public const string Create = "Create";
+        public const string Retreive = "Retreive";
+        public const string Update = "Update";
+        public const string Delete = "Delete";
+        public const string Ban = "Ban";
+        public const string Crud = "CRUD";
+        public const string Full = "Full";
     }
 }

@@ -152,10 +152,14 @@ namespace Gamestore.DAL.Context
             db.Games.Add(csgo);
 
 
-            var ghostComment = new Comment() {User = new User(){UserId = 1, UserName = "Ghost"}, Content = "Is it miltiplayer only?", GameId = 7};
+            var user1 = db.Users.Add(new User() { UserId = 1, UserName = "Ghost", Password = "qwerty", Claims = new[] { new UserClaim() { UserId = 3, ClaimType = ClaimType.Comments, ClaimValue = Permissions.Create } } });
+            var user2 = db.Users.Add(new User() { UserId = 2, UserName = "Shooter", Password = "qwerty", Claims = new[] { new UserClaim() { UserId = 3, ClaimType = ClaimType.Comments, ClaimValue = Permissions.Create } } });
+            var user3 = db.Users.Add(new User() { UserId = 3, UserName = "Sarah Kerrigan", Password = "qwerty", Claims = new[] { new UserClaim() { UserId = 3, ClaimType = ClaimType.Comments, ClaimValue = Permissions.Create } } });
+
+            var ghostComment = new Comment() { User = user2, Content = "Is it miltiplayer only?", GameId = 7 };
             db.Comments.Add(ghostComment);
-            db.Comments.Add(new Comment() { User = new User(){UserId = 2, UserName ="Shooter"}, Content = "No. It has offline mode to play with bots.", GameId = 7, ParentComment = ghostComment});
-            db.Comments.Add(new Comment() { User = new User(){UserId = 3, UserName ="Sarah Kerrigan"}, Content = "Nice game", GameId = 1 });
+            db.Comments.Add(new Comment() { User = user1, Content = "No. It has offline mode to play with bots.", GameId = 7, ParentComment = ghostComment});
+            db.Comments.Add(new Comment() { User = user3, Content = "Nice game", GameId = 1 });
 
 
             db.Orders.Add(new Order()

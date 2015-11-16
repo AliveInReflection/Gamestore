@@ -2,15 +2,14 @@
 
 namespace GameStore.Infrastructure.Enums
 {
-    [Flags]
-    public enum ClaimTypes
+    public static class ClaimType
     {
-        Games = 1,
-        Comments = 2,
-        Genres = 4,
-        PlatformTypes = 8,
-        Publishers = 16,
-        Orders = 32,
-        Users = 64
+        public const string Games = "Games";
+        public const string Comments = "Comments";
+        public const string Genres = "Genres";
+        public const string PlatformTypes = "PlatformTypes";
+        public const string Publishers = "Publishers";
+        public const string Orders = "Orders";
+        public const string Users = "Users";
     }
 }

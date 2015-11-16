@@ -10,8 +10,8 @@ namespace GameStore.Infrastructure.DTO
     {
         public int ClaimId { get; set; }
         public int UserId { get; set; }
-        public ClaimTypes ClaimType { get; set; }
-        public Permissions ClaimValue { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
 
         public virtual UserDTO User { get; set; }
     }
