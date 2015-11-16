@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutomapperProfiles\AutomapperAuthProfile.cs" />
     <Compile Include="AutomapperProfiles\AutomapperBLLProfile.cs" />
     <Compile Include="AutomapperProfiles\AutomapperDALProfile.cs" />
     <Compile Include="DI\BLLModule.cs" />

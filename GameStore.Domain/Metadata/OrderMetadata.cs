@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using GameStore.Domain.Entities;
-using GameStore.Domain.Static;
+using GameStore.Infrastructure.Enums;
 
 namespace GameStore.Domain.Metadata
 {

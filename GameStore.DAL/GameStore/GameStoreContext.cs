@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using GameStore.Domain.Entities;
 using System.Data.Entity;
-using System.Data.Metadata.Edm;
-using GameStore.Domain.Static;
+using GameStore.Domain.Entities;
+using GameStore.Infrastructure.Enums;
 
 namespace Gamestore.DAL.Context
 {
@@ -12,7 +10,7 @@ namespace Gamestore.DAL.Context
     {
         static  GameStoreContext()
         {
-            System.Data.Entity.Database.SetInitializer<GameStoreContext>(new GameStoreDbInitializer());
+            Database.SetInitializer<GameStoreContext>(new GameStoreDbInitializer());
         }
 
         public GameStoreContext()

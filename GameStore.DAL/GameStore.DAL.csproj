@@ -141,6 +141,10 @@
       <Project>{cb81696a-2b7e-4fbb-9e08-ce552c35e964}</Project>
       <Name>GameStore.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GameStore.Infrastructure\GameStore.Infrastructure.csproj">
+      <Project>{0a05fe70-f5b3-4772-92eb-657abf6e59bf}</Project>
+      <Name>GameStore.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Migrations\" />

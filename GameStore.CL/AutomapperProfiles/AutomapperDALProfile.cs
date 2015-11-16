@@ -4,7 +4,7 @@ using AutoMapper;
 using GameStore.DAL.Infrastructure;
 using GameStore.DAL.Northwind;
 using GameStore.Domain.Entities;
-using GameStore.Domain.Static;
+using GameStore.Infrastructure.Enums;
 using GameStoreOrder = GameStore.Domain.Entities.Order;
 using NorthwindOrder = GameStore.DAL.Northwind.Order;
 

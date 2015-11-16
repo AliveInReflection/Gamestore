@@ -18,5 +18,12 @@ namespace GameStore.Domain.Metadata
         [Required]
         [MaxLength(100)]
         public string UserName { get; set; }
+
+        [Required]
+        [MaxLength(100)]
+        public string Password { get; set; }
+
+        [Required]
+        public DateTime? BanExpirationDate { get; set; }
     }
 }

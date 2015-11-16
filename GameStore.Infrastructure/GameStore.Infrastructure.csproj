@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthInterfaces\IAuthenticationService.cs" />
+    <Compile Include="AuthInterfaces\IUserService.cs" />
     <Compile Include="BLInterfaces\ContentFilters\IContentFilter.cs" />
     <Compile Include="BLInterfaces\ContentFilters\IContentPaginator.cs" />
     <Compile Include="BLInterfaces\ContentFilters\IContentSorter.cs" />
@@ -60,18 +62,17 @@
     <Compile Include="DTO\PaginatedGames.cs" />
     <Compile Include="DTO\PlatformTypeDTO.cs" />
     <Compile Include="DTO\PublisherDTO.cs" />
+    <Compile Include="DTO\UserClaimDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="Enums\ClaimTypes.cs" />
     <Compile Include="Enums\GameSortingMode.cs" />
+    <Compile Include="Enums\OrderState.cs" />
     <Compile Include="Enums\PaymentMode.cs" />
+    <Compile Include="Enums\Permissions.cs" />
     <Compile Include="Enums\SortingDirectionEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GameStore.Domain\GameStore.Domain.csproj">
-      <Project>{cb81696a-2b7e-4fbb-9e08-ce552c35e964}</Project>
-      <Name>GameStore.Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

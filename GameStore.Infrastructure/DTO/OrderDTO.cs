@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using GameStore.Domain.Entities;
-using GameStore.Domain.Static;
+using GameStore.Infrastructure.Enums;
 
 namespace GameStore.Infrastructure.DTO
 {

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using GameStore.Domain.Static;
 using System.ComponentModel.DataAnnotations;
+using GameStore.Infrastructure.Enums;
 using GameStore.WebUI.App_LocalResources.Localization;
-
 
 namespace GameStore.WebUI.Models.Order
 {

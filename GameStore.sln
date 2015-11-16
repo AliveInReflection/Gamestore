@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStore.Domain", "GameStore.Domain\GameStore.Domain.csproj", "{CB81696A-2B7E-4FBB-9E08-CE552C35E964}"
 EndProject
@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{502A64
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameStore.Auth", "GameStore.Auth\GameStore.Auth.csproj", "{37B12501-AFBF-4962-A73F-306DEECB1823}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,6 +66,10 @@ Global
 		{0A05FE70-F5B3-4772-92EB-657ABF6E59BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A05FE70-F5B3-4772-92EB-657ABF6E59BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A05FE70-F5B3-4772-92EB-657ABF6E59BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37B12501-AFBF-4962-A73F-306DEECB1823}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37B12501-AFBF-4962-A73F-306DEECB1823}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37B12501-AFBF-4962-A73F-306DEECB1823}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37B12501-AFBF-4962-A73F-306DEECB1823}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

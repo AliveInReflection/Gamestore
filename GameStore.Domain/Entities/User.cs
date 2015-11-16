@@ -13,7 +13,10 @@ namespace GameStore.Domain.Entities
     {
         public int UserId { get; set; }
         public string UserName { get; set; }
+        public string Password { get; set; }
+        public DateTime? BanExpirationDate { get; set; }
 
+        public virtual ICollection<UserClaim> Claims { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
     }
 }

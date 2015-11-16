@@ -5,9 +5,9 @@ using AutoMapper;
 using GameStore.BLL.Infrastructure;
 using GameStore.DAL.Interfaces;
 using GameStore.Domain.Entities;
-using GameStore.Domain.Static;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
+using GameStore.Infrastructure.Enums;
 
 namespace GameStore.BLL.Services
 {
