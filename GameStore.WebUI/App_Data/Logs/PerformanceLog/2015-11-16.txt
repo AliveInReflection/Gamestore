@@ -1,0 +1,24 @@
+GameController/Index: 	5937ms
+
+GameController/GetCount: 	5968ms
+
+GameController/Index: 	1672ms
+
+GameController/GetCount: 	1684ms
+
+GameController/ChangeLanguage: 	1685ms
+
+GameController/Index: 	1768ms
+
+GameController/GetCount: 	1769ms
+
+GameController/Index: 	1850ms
+
+GameController/GetCount: 	1890ms
+
+GameController/ChangeLanguage: 	1891ms
+
+GameController/Index: 	1976ms
+
+GameController/GetCount: 	1977ms
+
