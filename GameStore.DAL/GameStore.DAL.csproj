@@ -64,6 +64,7 @@
     <Compile Include="Concrete\RepositoryDecorators\OrderRepository.cs" />
     <Compile Include="Concrete\RepositoryDecorators\PlatformTypeRepository.cs" />
     <Compile Include="Concrete\RepositoryDecorators\PublisherRepository.cs" />
+    <Compile Include="Concrete\RepositoryDecorators\RoleRepository.cs" />
     <Compile Include="Concrete\RepositoryDecorators\UserRepository.cs" />
     <Compile Include="Concrete\UnitOfWork.cs" />
     <Compile Include="GameStore\Concrete\BaseGameStoreRepository.cs" />

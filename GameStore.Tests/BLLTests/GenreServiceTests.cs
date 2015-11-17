@@ -14,8 +14,6 @@ namespace GameStore.Tests.BLLTests
         
         private UOWMock mock;
        
-        private string testGameKey;
-        private string notExistedGameKey;
 
         private int existedGenreId = 1;
 
@@ -27,8 +25,6 @@ namespace GameStore.Tests.BLLTests
         
         private void InitializeTestEntities()
         {
-            testGameKey = "SCII";
-            notExistedGameKey = "Test";
 
             genreToAdd = new GenreDTO()
             {

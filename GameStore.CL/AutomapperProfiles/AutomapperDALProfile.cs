@@ -20,6 +20,15 @@ namespace GameStore.CL.AutomapperProfiles
             Mapper.CreateMap<Game, Game>().ForMember(m => m.Genres, opt => opt.Ignore())
                 .ForMember(m => m.PlatformTypes, opt => opt.Ignore()).ForMember(m => m.Publisher, opt => opt.Ignore());
 
+            Mapper.CreateMap<Genre, Genre>();
+            Mapper.CreateMap<PlatformType, PlatformType>();
+            Mapper.CreateMap<Publisher, Publisher>();
+            Mapper.CreateMap<GameStoreOrder, GameStoreOrder>();
+            Mapper.CreateMap<OrderDetails, OrderDetails>();
+            Mapper.CreateMap<User, User>();
+            Mapper.CreateMap<Role, Role>();
+
+
             Mapper.CreateMap<Product, Game>()
                 .ForMember(m => m.GameId, opt => opt.MapFrom(m => KeyManager.Encode(m.ProductID, DatabaseType.Northwind)))
                 .ForMember(m => m.GameKey, opt => opt.MapFrom(m => "Northwind " + m.ProductID))

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Security.Claims;
 using GameStore.Domain.Entities;
 using GameStore.Infrastructure.Enums;
 
@@ -32,6 +33,7 @@ namespace Gamestore.DAL.Context
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetails> OrderDetailses { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
         public DbSet<View> Views { get; set; }
     }
 
@@ -152,9 +154,70 @@ namespace Gamestore.DAL.Context
             db.Games.Add(csgo);
 
 
-            var user1 = db.Users.Add(new User() { UserId = 1, UserName = "Ghost", Password = "qwerty", Claims = new[] { new UserClaim() { UserId = 3, ClaimType = ClaimType.Comments, ClaimValue = Permissions.Create } } });
-            var user2 = db.Users.Add(new User() { UserId = 2, UserName = "Shooter", Password = "qwerty", Claims = new[] { new UserClaim() { UserId = 3, ClaimType = ClaimType.Comments, ClaimValue = Permissions.Create } } });
-            var user3 = db.Users.Add(new User() { UserId = 3, UserName = "Sarah Kerrigan", Password = "qwerty", Claims = new[] { new UserClaim() { UserId = 3, ClaimType = ClaimType.Comments, ClaimValue = Permissions.Create } } });
+            var guestRole = db.Roles.Add(new Role()
+            {
+                RoleName = "Guest",
+                RoleClaims = new List<RoleClaim>
+                {
+                    new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Create},
+                    new RoleClaim(){ClaimType = GameStoreClaim.Games, ClaimValue = Permissions.Retreive}
+                }
+            });
+            var userRole = db.Roles.Add(new Role()
+            {
+                RoleName = "User",
+                RoleClaims = new List<RoleClaim>
+                {
+                    new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Create},
+                    new RoleClaim(){ClaimType = GameStoreClaim.Games, ClaimValue = Permissions.Retreive},
+                    new RoleClaim(){ClaimType = GameStoreClaim.Orders, ClaimValue = Permissions.Create}
+                }
+            });
+            var adminRole = db.Roles.Add(new Role()
+            {
+                RoleName = "Administrator",
+                RoleClaims = new List<RoleClaim>
+                {
+                    new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Create},
+                    new RoleClaim(){ClaimType = GameStoreClaim.Games, ClaimValue = Permissions.Retreive},
+                    new RoleClaim(){ClaimType = GameStoreClaim.Orders, ClaimValue = Permissions.Create},
+                    new RoleClaim(){ClaimType = GameStoreClaim.Users, ClaimValue = Permissions.Crud},
+                    new RoleClaim(){ClaimType = GameStoreClaim.Roles, ClaimValue = Permissions.Crud}
+                }
+            });
+            var managerRole = db.Roles.Add(new Role()
+            {
+                RoleName = "Manager",
+                RoleClaims = new List<RoleClaim>
+                {
+                    new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Create},
+                    new RoleClaim(){ClaimType = GameStoreClaim.Games, ClaimValue = Permissions.Crud},
+                    new RoleClaim(){ClaimType = GameStoreClaim.Genres, ClaimValue = Permissions.Crud},
+                    new RoleClaim(){ClaimType = GameStoreClaim.PlatformTypes, ClaimValue = Permissions.Crud},
+                    new RoleClaim(){ClaimType = GameStoreClaim.Publishers, ClaimValue = Permissions.Crud},
+                    new RoleClaim(){ClaimType = GameStoreClaim.Orders, ClaimValue = Permissions.Crud}
+                }
+            });
+            var moderatorRole = db.Roles.Add(new Role()
+            {
+                RoleName = "Moderator",
+                RoleClaims = new List<RoleClaim>
+                {
+                    new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Crud},
+                    new RoleClaim(){ClaimType = GameStoreClaim.Games, ClaimValue = Permissions.Retreive},
+                    new RoleClaim(){ClaimType = GameStoreClaim.Users, ClaimValue = Permissions.Ban},
+                    new RoleClaim(){ClaimType = GameStoreClaim.Orders, ClaimValue = Permissions.Create}
+                }
+            });
+
+            var admin = db.Users.Add(new User() { UserName = "Administrator", Password = "qwerty", Claims = new[] { new UserClaim() { ClaimType = ClaimTypes.Name, ClaimValue = "Administrator" } }, Roles = new[] { adminRole } });
+            var manager = db.Users.Add(new User() { UserName = "Manager", Password = "qwerty", Claims = new[] { new UserClaim() { ClaimType = ClaimTypes.Name, ClaimValue = "Manager" } }, Roles = new[] { managerRole } });
+            var moderator = db.Users.Add(new User() { UserName = "Moderator", Password = "qwerty", Claims = new[] { new UserClaim() { ClaimType = ClaimTypes.Name, ClaimValue = "Moderator" } }, Roles = new[] { moderatorRole } });
+            
+
+            var user1 = db.Users.Add(new User() {UserName = "Ghost", Password = "qwerty", Claims = new[] { new UserClaim() {ClaimType = ClaimTypes.Name, ClaimValue = "Ghost" } }, Roles = new[] { userRole } });
+            var user2 = db.Users.Add(new User() {UserName = "Shooter", Password = "qwerty", Claims = new[] { new UserClaim() {ClaimType = ClaimTypes.Name, ClaimValue = "Shooter" } }, Roles = new[] { userRole } });
+            var user3 = db.Users.Add(new User() {UserName = "Sarah Kerrigan", Password = "qwerty", Claims = new[] { new UserClaim() {ClaimType = ClaimTypes.Name, ClaimValue = "Sarah Kerrigan" } }, Roles = new[] { userRole } });
 
             var ghostComment = new Comment() { User = user2, Content = "Is it miltiplayer only?", GameId = 7 };
             db.Comments.Add(ghostComment);

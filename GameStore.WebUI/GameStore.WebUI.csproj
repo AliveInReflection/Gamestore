@@ -201,6 +201,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\GameStoreHtmlHelper.cs" />
+    <Compile Include="Helpers\GameStoreUrlHelper.cs" />
     <Compile Include="Helpers\PaginationHelper.cs" />
     <Compile Include="Infrastructure\AutomapperWebProfile.cs" />
     <Compile Include="Infrastructure\BanDurationManager.cs" />

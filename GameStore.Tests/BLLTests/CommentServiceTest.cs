@@ -18,8 +18,6 @@ namespace GameStore.Tests.BLLTests
         private CommentDTO commentToUpdate;
 
 
-        private string testGameKey = "CSGO";
-        private string notExistedGameKey = "Not Existed";
 
         private CommentService service;
         

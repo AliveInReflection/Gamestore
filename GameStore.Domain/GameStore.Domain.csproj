@@ -55,6 +55,8 @@
     <Compile Include="Entities\OrderDetails.cs" />
     <Compile Include="Entities\PlatformType.cs" />
     <Compile Include="Entities\Publisher.cs" />
+    <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\RoleClaim.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserClaim.cs" />
     <Compile Include="Entities\View.cs" />
@@ -65,6 +67,8 @@
     <Compile Include="Metadata\OrderMetadata.cs" />
     <Compile Include="Metadata\PlatformTypeMetadata.cs" />
     <Compile Include="Metadata\PublisherMetadata.cs" />
+    <Compile Include="Metadata\RoleClaimMetadata.cs" />
+    <Compile Include="Metadata\RoleMetadata.cs" />
     <Compile Include="Metadata\UserClaimMetadata.cs" />
     <Compile Include="Metadata\UserMetadata.cs" />
     <Compile Include="Metadata\ViewMetadata.cs" />

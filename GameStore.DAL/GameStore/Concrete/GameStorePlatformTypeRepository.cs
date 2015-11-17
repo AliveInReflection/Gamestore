@@ -12,9 +12,9 @@ namespace GameStore.DAL.GameStore.Concrete
     public class GameStorePlatformTypeRepository : BaseGameStoreRepository<PlatformType>
     {
         public GameStorePlatformTypeRepository(GameStoreContext context)
-            :base(context)
+            : base(context)
         {
-            
+
         }
 
         public override void Delete(int id)

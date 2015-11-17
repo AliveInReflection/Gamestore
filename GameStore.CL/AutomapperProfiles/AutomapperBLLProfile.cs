@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -26,6 +27,9 @@ namespace GameStore.CL.AutomapperProfiles
             Mapper.CreateMap<OrderDetails, OrderDetailsDTO>();
             Mapper.CreateMap<User, UserDTO>();
 
+            Mapper.CreateMap<Role, RoleDTO>()
+                .ForMember(m => m.Claims, opt => opt.MapFrom(m => m.RoleClaims));
+
             //====================================================
 
 
@@ -49,6 +53,9 @@ namespace GameStore.CL.AutomapperProfiles
 
             Mapper.CreateMap<string, User>().ForMember(m => m.UserName, opt => opt.MapFrom(t => t));
             Mapper.CreateMap<int, Comment>().ForMember(m => m.CommentId, opt => opt.MapFrom(t => t));
+
+            Mapper.CreateMap<RoleDTO, Role>()
+                .ForMember(m => m.RoleClaims, opt => opt.MapFrom(m => m.Claims));
             
 
 

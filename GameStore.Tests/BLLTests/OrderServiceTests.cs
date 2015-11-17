@@ -14,7 +14,6 @@ namespace GameStore.Tests.BLLTests
         public UOWMock mock;
 
 
-        private Order testOrder;
         private string testPaymentKey = "Visa";
         private string testCustomerId = "1";
 

@@ -40,7 +40,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthInterfaces\IAuthenticationService.cs" />
-    <Compile Include="AuthInterfaces\IUserService.cs" />
     <Compile Include="BLInterfaces\ContentFilters\IContentFilter.cs" />
     <Compile Include="BLInterfaces\ContentFilters\IContentPaginator.cs" />
     <Compile Include="BLInterfaces\ContentFilters\IContentSorter.cs" />
@@ -62,9 +61,11 @@
     <Compile Include="DTO\PaginatedGames.cs" />
     <Compile Include="DTO\PlatformTypeDTO.cs" />
     <Compile Include="DTO\PublisherDTO.cs" />
+    <Compile Include="DTO\RoleDTO.cs" />
     <Compile Include="DTO\UserClaimDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
-    <Compile Include="Enums\ClaimTypes.cs" />
+    <Compile Include="Enums\DefaultRoles.cs" />
+    <Compile Include="Enums\GameStoreClaims.cs" />
     <Compile Include="Enums\GameSortingMode.cs" />
     <Compile Include="Enums\OrderState.cs" />
     <Compile Include="Enums\PaymentMode.cs" />

@@ -17,12 +17,9 @@ namespace GameStore.Tests.WebTests
     {
         private Mocks mocks;
         private Mock<HttpContextBase> context;
-        private Mock<HttpRequestBase> request;
-        
-        private string testGameKey = "SCII";
+        private Mock<HttpRequestBase> request;       
 
         private string visaPaymentKey = "Visa";
-        private string bankPaymentKey = "Bank";
         private string iboxPaymentKey = "Ibox";
 
 

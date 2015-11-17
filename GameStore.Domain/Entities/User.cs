@@ -16,6 +16,7 @@ namespace GameStore.Domain.Entities
         public string Password { get; set; }
         public DateTime? BanExpirationDate { get; set; }
 
+        public virtual ICollection<Role> Roles { get; set; }
         public virtual ICollection<UserClaim> Claims { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
     }

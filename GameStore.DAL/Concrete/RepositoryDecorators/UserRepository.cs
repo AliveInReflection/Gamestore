@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
+using AutoMapper;
 using Gamestore.DAL.Context;
 using GameStore.DAL.Interfaces;
 using GameStore.Domain.Entities;
@@ -20,12 +21,19 @@ namespace GameStore.DAL.Concrete.Repositories
 
         public void Create(User entity)
         {
+            var roleNames = entity.Roles.Select(m => m.RoleName);
+            var roles = context.Roles.Where(m => roleNames.Contains(m.RoleName)).ToList();
+            entity.Roles = roles;
             context.Entry(entity).State = EntityState.Added;
         }
 
         public void Update(User entity)
         {
-            context.Entry(entity).State = EntityState.Modified;
+            var roleNames = entity.Roles.Select(m => m.RoleName);
+            var roles = context.Roles.Where(m => roleNames.Contains(m.RoleName)).ToList();
+            var entry = context.Users.First(m => m.UserId.Equals(entity.UserId));
+            Mapper.Map(entity, entry);
+            entry.Roles = roles;
         }
 
         public void Delete(int id)

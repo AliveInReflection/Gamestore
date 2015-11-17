@@ -12,9 +12,6 @@ namespace GameStore.Tests.BLLTests
     {
         private TestCollections collections;
         private UOWMock mock;
-        
-        private string testGameKey = "SCII";
-        private string notExistedGameKey = "Test";
 
         private int existedPlatformTypeId = 1;
 

@@ -30,7 +30,6 @@ namespace GameStore.Tests.BLLTests
         private int testItemsPerPage = 2;
         private int testPageNumber = 2;
 
-        private GameService service;
 
         #region initialize
 

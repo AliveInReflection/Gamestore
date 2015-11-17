@@ -23,7 +23,6 @@ namespace GameStore.Tests.BLLTests
         private GameDTO testGame;
         private string notExistedGameKey = "Not existed";
         private int notExistedGameId = 100;
-        private int notExistedGenreId = 100;
         private IEnumerable<int> testPlatformTypeIds;
 
         private GameService service;

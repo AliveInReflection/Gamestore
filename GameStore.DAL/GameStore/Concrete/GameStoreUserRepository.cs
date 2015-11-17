@@ -1,20 +1,20 @@
-﻿using GameStore.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Gamestore.DAL.Context;
+using GameStore.Domain.Entities;
 
 namespace GameStore.DAL.GameStore.Concrete
 {
     public class GameStoreUserRepository : BaseGameStoreRepository<User>
     {
         public GameStoreUserRepository(GameStoreContext context)
-            :base(context)
+            : base(context)
         {
-            
+
         }
 
         public override void Delete(int id)

@@ -25,7 +25,7 @@ namespace GameStore.WebUI.Controllers
         [HttpPost]
         public ActionResult Ban(string userName, string duration)
         {
-            userService.Ban(userName, BanDurationManager.Get(duration));
+            userService.Ban(1, BanDurationManager.Get(duration));
             return RedirectToAction("Index", "Game");
         }
 
