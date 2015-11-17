@@ -106,6 +106,42 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 10.
+        /// </summary>
+        public static string Pagination_10 {
+            get {
+                return ResourceManager.GetString("Pagination_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 100.
+        /// </summary>
+        public static string Pagination_100 {
+            get {
+                return ResourceManager.GetString("Pagination_100", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 20.
+        /// </summary>
+        public static string Pagination_20 {
+            get {
+                return ResourceManager.GetString("Pagination_20", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 50.
+        /// </summary>
+        public static string Pagination_50 {
+            get {
+                return ResourceManager.GetString("Pagination_50", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All.
         /// </summary>
         public static string PaginationAll {

@@ -186,3 +186,4 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+/GameStore.WebUI/App_Data/Logs/

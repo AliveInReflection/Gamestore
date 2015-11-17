@@ -12,10 +12,10 @@ namespace GameStore.WebUI.Infrastructure
             {
                 return new Dictionary<string, int>()
                 {
-                    {"10", 10},
-                    {"20", 20},
-                    {"50", 50},
-                    {"100", 100},
+                    {InfrastructureRes.Pagination_10, 10},
+                    {InfrastructureRes.Pagination_20, 20},
+                    {InfrastructureRes.Pagination_50, 50},
+                    {InfrastructureRes.Pagination_100, 100},
                     {InfrastructureRes.PaginationAll, short.MaxValue}
                 };
             }
