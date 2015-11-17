@@ -132,6 +132,9 @@
   <data name="BanWeek" xml:space="preserve">
     <value>1 неделя</value>
   </data>
+  <data name="PaginationAll" xml:space="preserve">
+    <value>Все</value>
+  </data>
   <data name="PaymentBank" xml:space="preserve">
     <value>Банковский платеж</value>
   </data>

@@ -1,59 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
+using GameStore.WebUI.App_LocalResources.Localization;
 
 namespace GameStore.WebUI.Infrastructure
 {
     public static class PagingManager
     {
-        private static Dictionary<string, int> pages;
-        private static Dictionary<string, int> pagesRu;
-
-
-        static PagingManager()
+        public static Dictionary<string, int> Items
         {
-            pages = new Dictionary<string, int>();
-            pagesRu = new Dictionary<string, int>();
-            Initialize();
-        }
-
-        public static void Add(string key, int pageCount)
-        {
-            pages.Add(key, pageCount);
-        }
-
-        public static int Get(string key)
-        {
-            var culture = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
-            if (culture == "ru")
+            get
             {
-                return pagesRu[key];
+                return new Dictionary<string, int>()
+                {
+                    {"10", 10},
+                    {"20", 20},
+                    {"50", 50},
+                    {"100", 100},
+                    {InfrastructureRes.PaginationAll, short.MaxValue}
+                };
             }
-            return pages[key];
-        }
-
-        public static IEnumerable<string> GetKeys()
-        {
-            var culture = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
-            if (culture == "ru")
-            {
-                return pagesRu.Keys;
-            }
-            return pages.Keys;
-        }
-
-        public static void Initialize()
-        {
-            pages.Add("10", 10);
-            pages.Add("20", 20);
-            pages.Add("50", 50);
-            pages.Add("100", 100);
-            pages.Add("All", short.MaxValue);
-
-            pagesRu.Add("10", 10);
-            pagesRu.Add("20", 20);
-            pagesRu.Add("50", 50);
-            pagesRu.Add("100", 100);
-            pagesRu.Add("Все", short.MaxValue);
         }
     }
 }

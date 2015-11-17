@@ -193,14 +193,14 @@ namespace GameStore.WebUI.Controllers
                 filter.Publishers = Mapper.Map<IEnumerable<PublisherDTO>, List<CheckBoxViewModel>>(publisherService.GetAll());
             }
 
-            filter.ItemsPerPageList = Mapper.Map<IEnumerable<string>, List<SelectListItem>>(PagingManager.GetKeys());
+            filter.ItemsPerPageList = Mapper.Map<IEnumerable<string>, List<SelectListItem>>(PagingManager.Items.Keys);
 
-            filter.SortByItems = Mapper.Map<IEnumerable<string>, List<SelectListItem>>(GameSortingModeManager.GetKeys());
+            filter.SortByItems = Mapper.Map<IEnumerable<string>, List<SelectListItem>>(GameSortingModeManager.Items.Keys);
             filter.SortByItems.First().Selected = true;
 
             if (filter.PublishingDates == null)
             {
-                filter.PublishingDates = Mapper.Map<IEnumerable<string>, List<RadiobuttonViewModel>>(GamePublishingDateFilteringManager.GetKeys());
+                filter.PublishingDates = Mapper.Map<IEnumerable<string>, List<RadiobuttonViewModel>>(GamePublishingDateFilteringManager.Items.Keys);
             }
 
             filter.CurrentPage = filter.CurrentPage == 0 ? 1 : filter.CurrentPage;
@@ -229,17 +229,17 @@ namespace GameStore.WebUI.Controllers
 
             if (filter.PublishingDate != null)
             {
-                filteringMode.PublishingDate = GamePublishingDateFilteringManager.Get(filter.PublishingDate.SelectedValue);
+                filteringMode.PublishingDate = GamePublishingDateFilteringManager.Items[filter.PublishingDate.SelectedValue];
             }
 
             if (filter.SortBy != null)
             {
-                filteringMode.SortingMode = GameSortingModeManager.Get(filter.SortBy); 
+                filteringMode.SortingMode = GameSortingModeManager.Items[filter.SortBy]; 
             }
 
             if (filter.ItemsPerPage != null)
             {
-                filteringMode.ItemsPerPage = PagingManager.Get(filter.ItemsPerPage);
+                filteringMode.ItemsPerPage = PagingManager.Items[filter.ItemsPerPage];
             }
             
             filteringMode.MinPrice = filter.MinPrice;
@@ -247,7 +247,7 @@ namespace GameStore.WebUI.Controllers
             filteringMode.PartOfName = filter.Name;
 
             filteringMode.CurrentPage = filter.CurrentPage;
-            filteringMode.ItemsPerPage = PagingManager.Get(filter.ItemsPerPage);
+            filteringMode.ItemsPerPage = PagingManager.Items[filter.ItemsPerPage];
 
             return filteringMode;
         }

@@ -9,7 +9,6 @@ using GameStore.Infrastructure.DTO;
 using GameStore.Infrastructure.Enums;
 using GameStore.Logger.Interfaces;
 using GameStore.WebUI.App_LocalResources.Localization;
-using GameStore.WebUI.Filters;
 using GameStore.WebUI.Infrastructure;
 using GameStore.WebUI.Models;
 using GameStore.WebUI.Models.Order;
@@ -56,7 +55,7 @@ namespace GameStore.WebUI.Controllers
         {
             string sessionId = HttpContext.Session.SessionID;            
             var basket = orderService.GetCurrent(sessionId);
-            var methods = PaymentModeManager.GetAll();
+            var methods = PaymentModeManager.Items.Values;
             
             var order = new MakeOrderViewModel();
             

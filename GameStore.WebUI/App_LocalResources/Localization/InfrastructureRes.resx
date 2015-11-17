@@ -132,14 +132,23 @@
   <data name="BanWeek" xml:space="preserve">
     <value>1 week</value>
   </data>
+  <data name="PaginationAll" xml:space="preserve">
+    <value>All</value>
+  </data>
   <data name="PaymentBank" xml:space="preserve">
     <value>Bank</value>
   </data>
   <data name="PaymentBankDescription" xml:space="preserve">
     <value>Remote banking services</value>
   </data>
+  <data name="PaymentIbox" xml:space="preserve">
+    <value>Ibox</value>
+  </data>
   <data name="PaymentIboxDescription" xml:space="preserve">
     <value>The payment network of Ukraine</value>
+  </data>
+  <data name="PaymentVisa" xml:space="preserve">
+    <value>Visa</value>
   </data>
   <data name="PaymentVisaDescription" xml:space="preserve">
     <value>American multinational financial services</value>

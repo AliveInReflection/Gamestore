@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using GameStore.WebUI.Filters;
+using GameStore.WebUI.Infrastructure;
 
 namespace GameStore.WebUI.Controllers
 {
@@ -29,7 +30,8 @@ namespace GameStore.WebUI.Controllers
                 Language = requestContext.RouteData.Values["lang"] as string;
                 var ci = new CultureInfo(Language);
                 Thread.CurrentThread.CurrentUICulture = ci;
-                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(ci.Name);
+                Thread.CurrentThread.CurrentCulture = ci;
+
             }
             base.Initialize(requestContext);
         }

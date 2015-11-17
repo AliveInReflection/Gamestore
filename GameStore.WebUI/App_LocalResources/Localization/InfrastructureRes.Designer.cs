@@ -106,6 +106,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        public static string PaginationAll {
+            get {
+                return ResourceManager.GetString("PaginationAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bank.
         /// </summary>
         public static string PaymentBank {
@@ -124,11 +133,29 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ibox.
+        /// </summary>
+        public static string PaymentIbox {
+            get {
+                return ResourceManager.GetString("PaymentIbox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The payment network of Ukraine.
         /// </summary>
         public static string PaymentIboxDescription {
             get {
                 return ResourceManager.GetString("PaymentIboxDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visa.
+        /// </summary>
+        public static string PaymentVisa {
+            get {
+                return ResourceManager.GetString("PaymentVisa", resourceCulture);
             }
         }
         

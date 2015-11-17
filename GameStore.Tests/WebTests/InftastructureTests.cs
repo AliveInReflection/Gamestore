@@ -10,7 +10,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Ban_Durations_List_Is_Not_Empty()
         {
-            var result = BanDurationManager.GetKeys();
+            var result = BanDurationManager.Items.Keys;
 
             Assert.AreNotEqual(0, result.Count());
         }
@@ -18,7 +18,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Game_Publiting_Date_Filtering_Manager_List_Is_Not_Empty()
         {
-            var result = GamePublishingDateFilteringManager.GetKeys();
+            var result = GamePublishingDateFilteringManager.Items.Keys;
 
             Assert.AreNotEqual(0, result.Count());
         }
@@ -26,7 +26,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Game_Sorting_Mode_Manager_List_Is_Not_Empty()
         {
-            var result = GameSortingModeManager.GetKeys();
+            var result = GameSortingModeManager.Items.Keys;
 
             Assert.AreNotEqual(0, result.Count());
         }
@@ -34,7 +34,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Paging_Manager_List_Is_Not_Empty()
         {
-            var result = PagingManager.GetKeys();
+            var result = PagingManager.Items.Keys;
 
             Assert.AreNotEqual(0, result.Count());
         }
@@ -42,7 +42,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Paymant_Mode_Manager_List_Is_Not_Empty()
         {
-            var result = PaymentModeManager.GetAll();
+            var result = PaymentModeManager.Items.Keys;
 
             Assert.AreNotEqual(0, result.Count());
         }
