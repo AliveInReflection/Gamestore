@@ -3,6 +3,7 @@ using System.Data.Entity.Validation;
 using System.Text;
 using Gamestore.DAL.Context;
 using GameStore.DAL.Concrete.Repositories;
+using GameStore.DAL.Concrete.RepositoryDecorators;
 using GameStore.DAL.GameStore.Concrete;
 using GameStore.DAL.GameStore.Interfaces;
 using GameStore.DAL.Interfaces;
@@ -30,7 +31,7 @@ namespace GameStore.DAL.Concrete
         private IRepository<OrderDetails> orderDetailses;
         private IRepository<Order> orders;
         private IRepository<User> users;
-
+        private IRepository<Role> roles; 
 
         public UnitOfWork(string gameStoreConnectionString)
         {
@@ -82,6 +83,11 @@ namespace GameStore.DAL.Concrete
             get { return users ?? (users = new UserRepository(gameStoreContext)); }
         }
 
+        public IRepository<Role> Roles
+        {
+            get { return roles ?? (roles = new RoleRepository(gameStoreContext)); }
+        }
+
         public void Save()
         {
             try
@@ -113,5 +119,8 @@ namespace GameStore.DAL.Concrete
             gameStoreContext.Dispose();
             northwindContext.Dispose();
         }
+
+
+        
     }
 }

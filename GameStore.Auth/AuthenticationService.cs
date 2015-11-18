@@ -17,7 +17,7 @@ namespace GameStore.Auth
         private IUnitOfWork database;
         private IGameStoreLogger logger;
         internal const string CookieName = "GameStore_Auth";
-        private const string protectPurpose = "GameStore";
+        internal const string Purpose = "GameStore";
 
         public AuthenticationService(IUnitOfWork database, IGameStoreLogger logger)
         {
@@ -48,18 +48,18 @@ namespace GameStore.Auth
 
             var ticket = new AuthenticationTicket(principal.Identity as ClaimsIdentity, authenticationProperties);
 
-            var ticketDataFormat = new TicketDataFormat(new TicketProtector(protectPurpose));
+            var ticketDataFormat = new TicketDataFormat(new TicketProtector(Purpose));
             var protectedTicket = ticketDataFormat.Protect(ticket);
 
             var cookie = new HttpCookie(CookieName, protectedTicket);
-            HttpContext.Current.Request.Cookies.Add(cookie);
+            HttpContext.Current.Response.Cookies.Add(cookie);
 
             return true;
         }
 
         public void Logout()
         {
-            var cookie = HttpContext.Current.Request.Cookies[CookieName];
+            var cookie = HttpContext.Current.Response.Cookies[CookieName];
             if (cookie != null)
             {
                 cookie.Value = string.Empty;

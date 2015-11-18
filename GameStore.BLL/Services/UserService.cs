@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using AutoMapper;
+using GameStore.BLL.Infrastructure;
 using GameStore.DAL.Interfaces;
 using GameStore.Domain.Entities;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
+using GameStore.Infrastructure.Enums;
 using GameStore.Logger.Interfaces;
 
 namespace GameStore.BLL.Services
@@ -43,14 +45,25 @@ namespace GameStore.BLL.Services
         }
 
 
-        public IEnumerable<Claim> GetClaims(string role)
+        public void Create(UserDTO user)
         {
-            throw new NotImplementedException();
-        }
+            if (user == null)
+            {
+                throw new ValidationException("No content received");
+            }
 
-        public void Create(GameStore.Infrastructure.DTO.UserDTO user)
-        {
-            throw new NotImplementedException();
+            var userToSave = Mapper.Map<UserDTO, User>(user);
+            userToSave.Roles = new[] {new Role() {RoleName = DefaultRoles.User}};
+            try
+            {
+                database.Users.Create(userToSave);
+                database.Save();
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ValidationException(string.Format("User with the same name ({0}) is already existed", user.UserName));
+            }
+            
         }
 
         public void Update(GameStore.Infrastructure.DTO.UserDTO user)
@@ -65,17 +78,34 @@ namespace GameStore.BLL.Services
 
         public UserDTO Get(int userId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var user = database.Users.Get(m => m.UserId.Equals(userId));
+                return Mapper.Map<User, UserDTO>(user);
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ValidationException(string.Format("User not found(Id:{0})",userId));
+            }
         }
 
         public UserDTO Get(string userName)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var user = database.Users.Get(m => m.UserId.Equals(userName));
+                return Mapper.Map<User, UserDTO>(user);
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ValidationException(string.Format("User not found(Name:{0})", userName));
+            }
         }
 
         public IEnumerable<UserDTO> GetAll()
         {
-            throw new NotImplementedException();
+            var users = database.Users.GetAll();
+            return Mapper.Map<IEnumerable<User>, IEnumerable<UserDTO>>(users);
         }
     }
 }

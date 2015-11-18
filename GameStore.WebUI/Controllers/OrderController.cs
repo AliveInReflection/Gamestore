@@ -29,6 +29,7 @@ namespace GameStore.WebUI.Controllers
 
 
         [HttpPost]
+        [Claims(GameStoreClaim.Orders, Permissions.Create)]
         public ActionResult Add(string gameKey, short quantity = 1)
         {
             string sessionId = HttpContext.Session.SessionID;
@@ -46,12 +47,14 @@ namespace GameStore.WebUI.Controllers
         }
 
         [HttpGet]
+        [Claims(GameStoreClaim.Orders, Permissions.Create)]
         public ActionResult Details()
         {
             var basket = orderService.GetCurrent(HttpContext.Session.SessionID);
             return View(Mapper.Map<OrderDTO, OrderViewModel>(basket));
         }
 
+        [Claims(GameStoreClaim.Orders, Permissions.Create)]
         public ActionResult Make()
         {
             string sessionId = HttpContext.Session.SessionID;            
@@ -68,6 +71,7 @@ namespace GameStore.WebUI.Controllers
         }
 
         [HttpGet]
+        [Claims(GameStoreClaim.Orders, Permissions.Create)]
         public ActionResult Pay(string paymentKey)
         {
             string sessionId = HttpContext.Session.SessionID;
@@ -103,6 +107,7 @@ namespace GameStore.WebUI.Controllers
         }
 
         [ActionName("History")]
+        [Claims(GameStoreClaim.Orders, Permissions.Retreive)]
         public ActionResult GetHistory()
         {
             return View(new List<DisplayOrderViewModel>());
@@ -110,6 +115,7 @@ namespace GameStore.WebUI.Controllers
 
         [ActionName("History")]
         [HttpPost]
+        [Claims(GameStoreClaim.Orders, Permissions.Retreive)]
         public ActionResult GetHistory(DateTime dateFrom, DateTime dateTo)
         {
             var orders = orderService.Get(dateFrom, dateTo);

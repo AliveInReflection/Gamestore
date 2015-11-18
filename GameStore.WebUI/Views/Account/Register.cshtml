@@ -1,0 +1,51 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.Account.RegisterViewModel
+
+@{
+    ViewBag.Title = ViewsRes.RegisterTitle;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+    @Html.Hidden("returnUrl", ViewBag.ReturnUrl as string)
+
+    <table class="table">
+        <tr>
+            <td class="editor-label">
+                @Html.LabelFor(model => model.UserName)
+            </td>
+            <td class="editor-field">
+                @Html.EditorFor(model => model.UserName)
+                @Html.ValidationMessageFor(model => model.UserName)
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label">
+                @Html.LabelFor(model => model.Password)
+            </td>
+            <td class="editor-field">
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label">
+                @Html.LabelFor(model => model.RepeatPassword)
+            </td>
+            <td class="editor-field">
+                @Html.EditorFor(model => model.RepeatPassword)
+                @Html.ValidationMessageFor(model => model.RepeatPassword)
+            </td>
+        </tr>
+
+
+    </table>
+    <div>
+        <input type="submit" value="@ViewsRes.LinkRegister" />
+    </div>
+}

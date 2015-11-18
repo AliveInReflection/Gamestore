@@ -79,6 +79,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User name or password are wrong.
+        /// </summary>
+        public static string LoginError {
+            get {
+                return ResourceManager.GetString("LoginError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Field is too long ({0} charecters max).
         /// </summary>
         public static string MaxLengthError {
@@ -120,6 +129,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         public static string OnlyPositiveError {
             get {
                 return ResourceManager.GetString("OnlyPositiveError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passwords do not match.
+        /// </summary>
+        public static string PasswordsNotMatch {
+            get {
+                return ResourceManager.GetString("PasswordsNotMatch", resourceCulture);
             }
         }
         

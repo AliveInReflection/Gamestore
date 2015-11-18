@@ -14,14 +14,6 @@ namespace GameStore.WebUI.Controllers
     {
         public string Language { get; protected set; }
 
-        public ActionResult ChangeLanguage(string lang)
-        {
-            Language = lang;
-            
-            return RedirectToAction("Index", "Game");
-        }
-
-
         protected override void Initialize(RequestContext requestContext)
         {
             if (requestContext.RouteData.Values["lang"] != null && requestContext.RouteData.Values["lang"] as string != "null")

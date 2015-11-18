@@ -123,6 +123,9 @@
   <data name="GameNotFound" xml:space="preserve">
     <value>Game not found</value>
   </data>
+  <data name="LoginError" xml:space="preserve">
+    <value>User name or password are wrong</value>
+  </data>
   <data name="MaxLengthError" xml:space="preserve">
     <value>Field is too long ({0} charecters max)</value>
   </data>
@@ -137,6 +140,9 @@
   </data>
   <data name="OnlyPositiveError" xml:space="preserve">
     <value>Field must be only positive</value>
+  </data>
+  <data name="PasswordsNotMatch" xml:space="preserve">
+    <value>Passwords do not match</value>
   </data>
   <data name="RangeError" xml:space="preserve">
     <value>Field must be from {0} to {0}</value>

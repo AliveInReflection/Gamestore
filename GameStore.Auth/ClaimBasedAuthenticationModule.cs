@@ -1,23 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Claims;
 using System.Web;
+using AutoMapper;
+using GameStore.Auth.Infrastructure;
+using GameStore.DAL.Concrete;
 using GameStore.DAL.Interfaces;
-using GameStore.Logger.Interfaces;
+using GameStore.Domain.Entities;
+using GameStore.Infrastructure.Enums;
+using Microsoft.Owin.Security.DataHandler;
 
 namespace GameStore.Auth
 {
     public class ClaimBasedAuthenticationModule : IHttpModule
     {
         private IUnitOfWork database;
-        private IGameStoreLogger logger;
 
-        public ClaimBasedAuthenticationModule(IUnitOfWork database, IGameStoreLogger logger)
+        public ClaimBasedAuthenticationModule()
         {
-            this.database = database;
-            this.logger = logger;
+            this.database = new UnitOfWork("GameStoreContext");
         }
 
         public void Dispose()
@@ -33,10 +35,49 @@ namespace GameStore.Auth
         private void UpdateUser(object sender, EventArgs args)
         {
             var cookie = HttpContext.Current.Request.Cookies[AuthenticationService.CookieName];
-            if (cookie == null)
+            if (cookie != null)
             {
-                
+                var ticketDataFormat = new TicketDataFormat(new TicketProtector(AuthenticationService.Purpose));
+                var ticket = ticketDataFormat.Unprotect(cookie.Value);
+
+                if (ticket == null)
+                {
+                    AuthenticateAsGuest();
+                    return;
+                }
+
+                var userName = ticket.Identity.FindFirst(ClaimTypes.Name).Value;
+
+                var user = database.Users.Get(m => m.UserName.Equals(userName));
+
+                var userClaims = Mapper.Map<IEnumerable<UserClaim>, IEnumerable<Claim>>(user.Claims);
+                var roles = user.Roles;
+                List<Claim> roleClaims = new List<Claim>();
+                foreach (var role in roles)
+                {
+                    roleClaims.AddRange(role.RoleClaims.Select(m => new Claim(m.ClaimType, m.ClaimValue, "GameStore")).ToList());
+                }
+
+                ticket.Identity.AddClaims(userClaims.Union(roleClaims).Distinct());
+                var principal = new ClaimsPrincipal(ticket.Identity);
+
+                HttpContext.Current.User = principal;
+
             }
+            else
+            {
+                AuthenticateAsGuest();
+            }
+        }
+
+        private void AuthenticateAsGuest()
+        {
+            var claimEntries = database.Roles.Get(m => m.RoleName.Equals(DefaultRoles.Guest)).RoleClaims;
+            var claims = claimEntries.Select(m => new Claim(m.ClaimType, m.ClaimValue, "GameStore"));
+
+            var principal = new ClaimsPrincipal(new ClaimsIdentity(claims.Concat(new[] { new Claim(ClaimTypes.Role, DefaultRoles.Guest, "GameStore") })));
+
+            HttpContext.Current.User = principal;
         }
     }
 }

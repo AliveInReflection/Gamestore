@@ -4,6 +4,7 @@ using AutoMapper;
 using GameStore.BLL.Infrastructure;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
+using GameStore.Infrastructure.Enums;
 using GameStore.Logger.Interfaces;
 using GameStore.WebUI.App_LocalResources.Localization;
 using GameStore.WebUI.Filters;
@@ -22,6 +23,8 @@ namespace GameStore.WebUI.Controllers
             this.logger = logger;
         }
 
+        [Claims(GameStoreClaim.Comments, Permissions.Retreive)]
+        [Claims(GameStoreClaim.Comments, Permissions.Create)]
         public ActionResult Index(string gameKey)
         {
             var viewModel = new CommentViewModel()
@@ -36,6 +39,8 @@ namespace GameStore.WebUI.Controllers
         }
 
         [HttpPost]
+        [Claims(GameStoreClaim.Comments, Permissions.Retreive)]
+        [Claims(GameStoreClaim.Comments, Permissions.Create)]
         public ActionResult Index(CommentViewModel comment)
         {
             if (!ModelState.IsValid)
@@ -60,6 +65,7 @@ namespace GameStore.WebUI.Controllers
         }
 
         [HttpPost]
+        [Claims(GameStoreClaim.Comments, Permissions.Delete)]
         public ActionResult Delete(int commentId, string gameKey)
         {
             try
@@ -74,6 +80,8 @@ namespace GameStore.WebUI.Controllers
             return RedirectToAction("Index", "Comment", new {gameKey = gameKey});
         }
 
+        [Claims(GameStoreClaim.Comments, Permissions.Retreive)]
+        [Claims(GameStoreClaim.Comments, Permissions.Update)]
         public ActionResult Update(int commentId, string gameKey)
         {
             try
@@ -91,6 +99,8 @@ namespace GameStore.WebUI.Controllers
         }
 
         [HttpPost]
+        [Claims(GameStoreClaim.Comments, Permissions.Retreive)]
+        [Claims(GameStoreClaim.Comments, Permissions.Update)]
         public ActionResult Update(UpdateCommentViewModel comment, string gameKey)
         {
             if (!ModelState.IsValid)

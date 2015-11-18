@@ -133,6 +133,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hello.
+        /// </summary>
+        public static string Greet {
+            get {
+                return ResourceManager.GetString("Greet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ibox payment.
         /// </summary>
         public static string IBoxPaymentTitle {
@@ -232,6 +241,24 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        public static string LinkLogin {
+            get {
+                return ResourceManager.GetString("LinkLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        public static string LinkLogout {
+            get {
+                return ResourceManager.GetString("LinkLogout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Make order.
         /// </summary>
         public static string LinkMakeOrder {
@@ -246,6 +273,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         public static string LinkPay {
             get {
                 return ResourceManager.GetString("LinkPay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        public static string LinkRegister {
+            get {
+                return ResourceManager.GetString("LinkRegister", resourceCulture);
             }
         }
         
@@ -273,6 +309,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         public static string LinkUpdate {
             get {
                 return ResourceManager.GetString("LinkUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login.
+        /// </summary>
+        public static string LoginTitle {
+            get {
+                return ResourceManager.GetString("LoginTitle", resourceCulture);
             }
         }
         
@@ -417,6 +462,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         public static string PublisherUpdateTitle {
             get {
                 return ResourceManager.GetString("PublisherUpdateTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration.
+        /// </summary>
+        public static string RegisterTitle {
+            get {
+                return ResourceManager.GetString("RegisterTitle", resourceCulture);
             }
         }
         

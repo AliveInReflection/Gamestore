@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountPassword" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="AccountPasswordRepeat" xml:space="preserve">
+    <value>Повторите пароль</value>
+  </data>
+  <data name="AccountRememberMe" xml:space="preserve">
+    <value>Запомнить меня</value>
+  </data>
+  <data name="AccountUserName" xml:space="preserve">
+    <value>Имя пользователя</value>
+  </data>
   <data name="CommentContent" xml:space="preserve">
     <value>Сообщение</value>
   </data>
@@ -240,10 +252,10 @@
   <data name="PublisherDescription" xml:space="preserve">
     <value>Описание</value>
   </data>
+  <data name="PublisherDescriptionRu" xml:space="preserve">
+    <value>Русская версия описания</value>
+  </data>
   <data name="PublisherHomePage" xml:space="preserve">
     <value>Домашняя страница</value>
-  </data>
-  <data name="String1" xml:space="preserve">
-    <value>Русская версия описания</value>
   </data>
 </root>

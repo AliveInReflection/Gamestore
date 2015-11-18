@@ -19,7 +19,9 @@
 <div class="header">
     <div class="pull-left">@ViewsRes.GameGetCount: @Html.Action("GetCount", "Game")</div>
     <div class="pull-right">@Html.ActionLink(ViewsRes.MenuBasket, "Details", "Order")</div>
-    <p class="text-center">@Url.ChangeLanguage("English", ViewContext.RouteData,"en")|@Url.ChangeLanguage("Русский", ViewContext.RouteData, "ru")</p>
+    <h2 class ="text-center">Game store</h2>
+    <p class="text-center">@Url.ChangeLanguage("English", ViewContext.RouteData, "en") | @Url.ChangeLanguage("Русский", ViewContext.RouteData, "ru")</p>
+    @Html.Partial("_LoginPartial");
 </div>
 <div class="menu-line">
     <p class="text-center">

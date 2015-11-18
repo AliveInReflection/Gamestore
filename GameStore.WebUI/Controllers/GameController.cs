@@ -7,6 +7,7 @@ using AutoMapper;
 using GameStore.BLL.Infrastructure;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
+using GameStore.Infrastructure.Enums;
 using GameStore.Logger.Interfaces;
 using GameStore.WebUI.App_LocalResources.Localization;
 using GameStore.WebUI.Filters;
@@ -33,6 +34,8 @@ namespace GameStore.WebUI.Controllers
             this.logger = logger;
         }
 
+
+        [Claims(GameStoreClaim.Games, Permissions.Retreive)]
         public ActionResult Index(FilteringViewModel filter)
         {
             var model = new FilteredGamesViewModel();
@@ -49,6 +52,7 @@ namespace GameStore.WebUI.Controllers
             return View(model);
         }
 
+        [Claims(GameStoreClaim.Games, Permissions.Retreive)]
         public ActionResult Details(string gameKey)
         {
             var game = gameService.Get(gameKey);
@@ -59,6 +63,7 @@ namespace GameStore.WebUI.Controllers
         }
 
         [ActionName("New")]
+        [Claims(GameStoreClaim.Games, Permissions.Create)]
         public ActionResult Create()
         {
             var viewModel = new CreateGameViewModel();
@@ -70,6 +75,7 @@ namespace GameStore.WebUI.Controllers
 
         [HttpPost]
         [ActionName("New")]
+        [Claims(GameStoreClaim.Games, Permissions.Create)]
         public ActionResult Create(CreateGameViewModel game)
         {
             if (!ModelState.IsValid)
@@ -95,6 +101,7 @@ namespace GameStore.WebUI.Controllers
             return RedirectToAction("Index");
         }
 
+        [Claims(GameStoreClaim.Games, Permissions.Update)]
         public ActionResult Update(string gameKey)
         {
             var viewModel = Mapper.Map<GameDTO, UpdateGameViewModel>(gameService.Get(gameKey));
@@ -105,6 +112,7 @@ namespace GameStore.WebUI.Controllers
         }
 
         [HttpPost]
+        [Claims(GameStoreClaim.Games, Permissions.Update)]
         public ActionResult Update(UpdateGameViewModel game)
         {
             if (!ModelState.IsValid)
@@ -131,6 +139,7 @@ namespace GameStore.WebUI.Controllers
 
         [HttpPost]
         [ActionName("Remove")]
+        [Claims(GameStoreClaim.Games, Permissions.Delete)]
         public ActionResult Delete(int gameId)
         {
             try
@@ -147,12 +156,13 @@ namespace GameStore.WebUI.Controllers
 
 
         [OutputCache(Duration = 60)]
+        [Claims(GameStoreClaim.Games, Permissions.Retreive)]
         public ActionResult GetCount()
         {
             return PartialView(gameService.GetCount());
         }
 
-
+        [Claims(GameStoreClaim.Games, Permissions.Retreive)]
         public ActionResult Download(string gamekey)
         {
             try

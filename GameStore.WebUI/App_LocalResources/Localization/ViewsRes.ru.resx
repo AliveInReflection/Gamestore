@@ -141,6 +141,9 @@
   <data name="GameUpdateTitle" xml:space="preserve">
     <value>Изменить игру</value>
   </data>
+  <data name="Greet" xml:space="preserve">
+    <value>Здравствуйте</value>
+  </data>
   <data name="IBoxPaymentTitle" xml:space="preserve">
     <value>Ibox платеж</value>
   </data>
@@ -174,11 +177,20 @@
   <data name="LinkFilter" xml:space="preserve">
     <value>Применить фильтры</value>
   </data>
+  <data name="LinkLogin" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="LinkLogout" xml:space="preserve">
+    <value>Выйти</value>
+  </data>
   <data name="LinkMakeOrder" xml:space="preserve">
     <value>Оформить заказ</value>
   </data>
   <data name="LinkPay" xml:space="preserve">
     <value>Оплатить</value>
+  </data>
+  <data name="LinkRegister" xml:space="preserve">
+    <value>Регистрация</value>
   </data>
   <data name="LinkSave" xml:space="preserve">
     <value>Сохранить</value>
@@ -188,6 +200,9 @@
   </data>
   <data name="LinkUpdate" xml:space="preserve">
     <value>Обновить</value>
+  </data>
+  <data name="LoginTitle" xml:space="preserve">
+    <value>Войти</value>
   </data>
   <data name="MenuBasket" xml:space="preserve">
     <value>Корзина</value>

@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="AccountPasswordRepeat" xml:space="preserve">
+    <value>Repeat password</value>
+  </data>
+  <data name="AccountRememberMe" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="AccountUserName" xml:space="preserve">
+    <value>User name</value>
+  </data>
   <data name="CommentContent" xml:space="preserve">
     <value>Message</value>
   </data>

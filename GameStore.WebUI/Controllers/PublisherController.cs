@@ -5,6 +5,7 @@ using AutoMapper;
 using GameStore.BLL.Infrastructure;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
+using GameStore.Infrastructure.Enums;
 using GameStore.Logger.Interfaces;
 using GameStore.WebUI.App_LocalResources.Localization;
 using GameStore.WebUI.Filters;
@@ -23,6 +24,7 @@ namespace GameStore.WebUI.Controllers
             this.logger = logger;
         }
 
+        [Claims(GameStoreClaim.Publishers, Permissions.Retreive)]
         public ActionResult Index()
         {
             var publishers = publisherService.GetAll();
@@ -30,6 +32,7 @@ namespace GameStore.WebUI.Controllers
         }
 
         [HttpGet]
+        [Claims(GameStoreClaim.Publishers, Permissions.Retreive)]
         public ActionResult Details(string companyName)
         {
             try
@@ -48,6 +51,7 @@ namespace GameStore.WebUI.Controllers
 
         [HttpGet]
         [ActionName("New")]
+        [Claims(GameStoreClaim.Publishers, Permissions.Create)]
         public ActionResult Create()
         {
             return View(new CreatePublisherViewModel());
@@ -55,6 +59,7 @@ namespace GameStore.WebUI.Controllers
 
         [HttpPost]
         [ActionName("New")]
+        [Claims(GameStoreClaim.Publishers, Permissions.Create)]
         public ActionResult Create(CreatePublisherViewModel publisher)
         {
             if (!ModelState.IsValid)
@@ -75,6 +80,7 @@ namespace GameStore.WebUI.Controllers
 
         }
 
+        [Claims(GameStoreClaim.Publishers, Permissions.Update)]
         public ActionResult Update(int publisherId)
         {
             try
@@ -91,6 +97,7 @@ namespace GameStore.WebUI.Controllers
         }
 
         [HttpPost]
+        [Claims(GameStoreClaim.Publishers, Permissions.Update)]
         public ActionResult Update(UpdatePublisherViewModel publisher)
         {
             if (!ModelState.IsValid)
@@ -112,6 +119,7 @@ namespace GameStore.WebUI.Controllers
         }
 
         [HttpPost]
+        [Claims(GameStoreClaim.Publishers, Permissions.Delete)]
         public ActionResult Delete(int publisherId)
         {
             try

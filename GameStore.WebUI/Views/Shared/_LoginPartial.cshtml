@@ -1,0 +1,14 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+
+
+<p class="text-center">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <span>@ViewsRes.Greet, @User.Identity.Name | @Html.ActionLink(ViewsRes.LinkLogout, "Logout", "Account")</span>
+    }
+    else
+    {
+        <span> @Html.ActionLink(ViewsRes.LinkLogin, "Login", "Account") | @Html.ActionLink(ViewsRes.LinkRegister, "Register", "Account")</span>
+    }
+    
+</p>

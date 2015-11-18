@@ -1,8 +1,10 @@
 ﻿using GameStore.BLL.Services;
+using GameStore.Infrastructure.AuthInterfaces;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Logger.Concrete;
 using GameStore.Logger.Interfaces;
 using Ninject.Modules;
+using GameStore.Auth;
 
 namespace GameStore.CL.DI
 {
@@ -18,6 +20,7 @@ namespace GameStore.CL.DI
             Bind<IPublisherService>().To<PublisherService>();
             Bind<IOrderService>().To<OrderService>();
             Bind<IUserService>().To<UserService>();
+            Bind<IAuthenticationService>().To<AuthenticationService>();
         }
     }
 }

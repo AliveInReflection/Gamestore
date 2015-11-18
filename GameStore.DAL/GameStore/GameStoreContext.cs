@@ -46,7 +46,8 @@ namespace Gamestore.DAL.Context
             {
                 {"Games", "GameKey"},
                 {"Genres", "GenreName"},
-                {"PlatformTypes", "PlatformTypeName"}
+                {"PlatformTypes", "PlatformTypeName"},
+                {"Users", "UserName"}
             };
             foreach (var item in uniqeFields)
             {
@@ -159,6 +160,7 @@ namespace Gamestore.DAL.Context
                 RoleName = "Guest",
                 RoleClaims = new List<RoleClaim>
                 {
+                    new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Retreive},
                     new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Create},
                     new RoleClaim(){ClaimType = GameStoreClaim.Games, ClaimValue = Permissions.Retreive}
                 }
@@ -168,6 +170,7 @@ namespace Gamestore.DAL.Context
                 RoleName = "User",
                 RoleClaims = new List<RoleClaim>
                 {
+                    new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Retreive},
                     new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Create},
                     new RoleClaim(){ClaimType = GameStoreClaim.Games, ClaimValue = Permissions.Retreive},
                     new RoleClaim(){ClaimType = GameStoreClaim.Orders, ClaimValue = Permissions.Create}
@@ -178,6 +181,7 @@ namespace Gamestore.DAL.Context
                 RoleName = "Administrator",
                 RoleClaims = new List<RoleClaim>
                 {
+                    new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Retreive},
                     new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Create},
                     new RoleClaim(){ClaimType = GameStoreClaim.Games, ClaimValue = Permissions.Retreive},
                     new RoleClaim(){ClaimType = GameStoreClaim.Orders, ClaimValue = Permissions.Create},
@@ -190,6 +194,7 @@ namespace Gamestore.DAL.Context
                 RoleName = "Manager",
                 RoleClaims = new List<RoleClaim>
                 {
+                    new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Retreive},
                     new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Create},
                     new RoleClaim(){ClaimType = GameStoreClaim.Games, ClaimValue = Permissions.Crud},
                     new RoleClaim(){ClaimType = GameStoreClaim.Genres, ClaimValue = Permissions.Crud},

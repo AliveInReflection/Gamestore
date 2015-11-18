@@ -7,6 +7,16 @@ namespace GameStore.Auth
     {
         private List<Claim> claims;
 
+        public GameStoreClaimsPrincipal(List<Claim> claims)
+        {
+            claims = new List<Claim>();
+            claims.AddRange(claims);
+
+            var identity = new ClaimsIdentity(claims, "Game store auth", ClaimTypes.Name, ClaimTypes.Role);
+
+            AddIdentity(identity);
+        }
+
         public GameStoreClaimsPrincipal(string userName, List<Claim> claims)
         {
             claims = new List<Claim>

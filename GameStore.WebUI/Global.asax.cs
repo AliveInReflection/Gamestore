@@ -3,7 +3,9 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using AutoMapper;
+using GameStore.Auth;
 using GameStore.CL.AutomapperProfiles;
+using GameStore.Infrastructure.AuthInterfaces;
 using GameStore.WebUI.Infrastructure;
 
 namespace GameStore.WebUI
@@ -26,7 +28,15 @@ namespace GameStore.WebUI
                 cfg.AddProfile(new AutomapperDALProfile());
                 cfg.AddProfile(new AutomapperBLLProfile());
                 cfg.AddProfile(new AutomapperWebProfile());
+                cfg.AddProfile(new AutomapperAuthProfile());
             });
+        }
+
+        public override void Init()
+        {
+            base.Init();
+            var authModule = new ClaimBasedAuthenticationModule();
+            authModule.Init(this);
         }
     }
 }

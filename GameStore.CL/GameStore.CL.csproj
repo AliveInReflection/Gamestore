@@ -53,7 +53,6 @@
     <Compile Include="AutomapperProfiles\AutomapperBLLProfile.cs" />
     <Compile Include="AutomapperProfiles\AutomapperDALProfile.cs" />
     <Compile Include="DI\BLLModule.cs" />
-    <Compile Include="DI\NinjectConfig.cs" />
     <Compile Include="DI\WebModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -61,6 +60,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GameStore.Auth\GameStore.Auth.csproj">
+      <Project>{37b12501-afbf-4962-a73f-306deecb1823}</Project>
+      <Name>GameStore.Auth</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GameStore.BLL\GameStore.BLL.csproj">
       <Project>{03cf56c3-71ea-40d1-9866-89a4b42f5e1e}</Project>
       <Name>GameStore.BLL</Name>

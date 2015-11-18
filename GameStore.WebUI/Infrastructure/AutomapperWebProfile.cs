@@ -5,6 +5,7 @@ using GameStore.Domain.Entities;
 using GameStore.Infrastructure.DTO;
 using GameStore.WebUI.Infrastructure;
 using GameStore.WebUI.Models;
+using GameStore.WebUI.Models.Account;
 using GameStore.WebUI.Models.Order;
 
 namespace GameStore.CL.AutomapperProfiles
@@ -99,6 +100,12 @@ namespace GameStore.CL.AutomapperProfiles
                 .ForMember(m => m.SelectedValue, opt => opt.MapFrom(t => t));
 
             Mapper.CreateMap<string, GameDTO>().ForMember(m => m.GameKey, opt => opt.MapFrom(t => t));
+
+            Mapper.CreateMap<RegisterViewModel, UserDTO>()
+                .ForMember(m => m.UserName, opt => opt.MapFrom(m => m.UserName))
+                .ForMember(m => m.Password, opt => opt.MapFrom(m => m.Password));
+
+
         }
 
         public string ResolveCulture(GameDTO game)
