@@ -5,8 +5,10 @@ using GameStore.Domain.Entities;
 using GameStore.BLL.Infrastructure;
 using GameStore.DAL.Interfaces;
 using System.Linq;
+using System.Text;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
+using GameStore.Infrastructure.Enums;
 
 namespace GameStore.BLL.Services
 {
@@ -31,7 +33,12 @@ namespace GameStore.BLL.Services
             if (comment.QuoteId != null)
             {
                 var quotedComment = database.Comments.Get(m => m.CommentId.Equals(comment.QuoteId.Value));
-                commentToSave.Quote = "<quote>" + quotedComment.Quote + quotedComment.Content + "</quote>";
+                var quote = new StringBuilder();
+                quote.Append(BLLConstants.QuoteTagOpen);
+                quote.Append(quotedComment.Quote);
+                quote.Append(quotedComment.Content);
+                quote.Append(BLLConstants.QuoteTagClose);
+                commentToSave.Quote =  quote.ToString();
             }
 
             database.Comments.Create(commentToSave);
@@ -40,18 +47,11 @@ namespace GameStore.BLL.Services
 
         public IEnumerable<CommentDTO> Get(string gameKey)
         {
-            var gameId = database.Games.Get(m => m.GameKey.Equals(gameKey)).GameId;
-            
-            var commentEntries = database.Comments.GetMany(m => m.GameId.HasValue && m.GameId.Value.Equals(gameId));
+            var commentEntries = database.Games.Get(m => m.GameKey.Equals(gameKey)).Comments;
 
             var comments = Mapper.Map<IEnumerable<Comment>, IEnumerable<CommentDTO>>(commentEntries);
-
-            foreach (var comment in comments)
-            {
-                GetChildComments(comment);
-            }
-            
-            return comments;
+          
+            return BuildTree(comments);
         }
 
         public CommentDTO Get(int commentId)
@@ -65,7 +65,7 @@ namespace GameStore.BLL.Services
             var comment = database.Comments.Get(m => m.CommentId.Equals(commentId));
             if (HasChildren(comment))
             {
-                comment.Content = "<Message deleted>";
+                comment.Content = BLLConstants.DeleteComment;
             }
             else
             {
@@ -87,15 +87,27 @@ namespace GameStore.BLL.Services
         }
 
         #region privates
-        private void GetChildComments(CommentDTO parent)
+        private IEnumerable<CommentDTO> BuildTree(IEnumerable<CommentDTO> comments)
         {
-            var childComments = database.Comments.GetMany(m => m.ParentComment.CommentId.Equals(parent.CommentId));
-            parent.ChildComments = Mapper.Map<IEnumerable<Comment>, IEnumerable<CommentDTO>>(childComments);
+            var childComments = comments.Where(m => m.ParentCommentId != null).ToList();
 
-            foreach (var childComment in parent.ChildComments)
+            foreach (var childComment in childComments)
             {
-                GetChildComments(childComment);
+                var parent = comments.First(m => m.CommentId.Equals(childComment.ParentCommentId));
+                if (parent.ChildComments == null)
+                {
+                    parent.ChildComments = new List<CommentDTO>
+                    {
+                        childComment
+                    };
+                }
+                else
+                {
+                    parent.ChildComments.Add(childComment);
+                }
             }
+
+            return comments.Where(m => m.ParentCommentId == null);
         }
 
         private bool HasChildren(Comment parent)

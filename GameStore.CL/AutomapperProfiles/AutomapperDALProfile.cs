@@ -16,10 +16,12 @@ namespace GameStore.CL.AutomapperProfiles
     public class AutomapperDALProfile : Profile
     {
         protected override void Configure()
-        {
-            Mapper.CreateMap<Game, Game>().ForMember(m => m.Genres, opt => opt.Ignore())
-                .ForMember(m => m.PlatformTypes, opt => opt.Ignore()).ForMember(m => m.Publisher, opt => opt.Ignore());
-
+        {         
+            Mapper.CreateMap<Game, Game>()
+                .ForMember(m => m.Comments,opt => opt.Ignore())
+                .ForMember(m => m.PlatformTypes, opt => opt.Ignore())
+                .ForMember(m => m.Genres, opt => opt.Ignore())
+                .ForMember(m => m.Publisher, opt => opt.Ignore());
             Mapper.CreateMap<Genre, Genre>();
             Mapper.CreateMap<PlatformType, PlatformType>();
             Mapper.CreateMap<Publisher, Publisher>();

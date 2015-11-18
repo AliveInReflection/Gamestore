@@ -17,6 +17,6 @@ namespace GameStore.Infrastructure.DTO
         public int? GameId { get; set; }
         
         public GameDTO Game { get; set; }
-        public IEnumerable<CommentDTO> ChildComments { get; set; } 
+        public List<CommentDTO> ChildComments { get; set; } 
     }
 }

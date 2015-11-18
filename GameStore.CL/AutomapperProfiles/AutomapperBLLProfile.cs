@@ -18,7 +18,8 @@ namespace GameStore.CL.AutomapperProfiles
             Mapper.CreateMap<Game, GameDTO>();
             Mapper.CreateMap<Genre, GenreDTO>();
             Mapper.CreateMap<Comment, CommentDTO>()
-                .ForMember(c => c.UserName, opt => opt.MapFrom(m => m.User.UserName));
+                .ForMember(c => c.UserName, opt => opt.MapFrom(m => m.User.UserName))
+                .ForMember(c => c.ParentCommentId, opt => opt.MapFrom(m => m.ParentComment.CommentId));
 
 
             Mapper.CreateMap<PlatformType, PlatformTypeDTO>();

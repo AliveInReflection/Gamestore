@@ -70,33 +70,34 @@ namespace GameStore.WebUI.Controllers
         [HttpGet]
         public ActionResult Pay(string paymentKey)
         {
+            string sessionId = HttpContext.Session.SessionID;
+            var basket = orderService.GetCurrent(sessionId);
+            IPayment payment;
             try
-            {
-                string sessionId = HttpContext.Session.SessionID;
-                var basket = orderService.GetCurrent(sessionId);
-
-                var payment = orderService.Make(basket.OrderId, paymentKey);
-                var amount = orderService.CalculateAmount(basket.OrderId);
-                var paymentMode = payment.Pay(basket.OrderId, amount);
-
-                switch (paymentMode)
-                {
-                    case PaymentMode.Bank:
-                        return File(InvoiceService.GenerateInvoice(basket.OrderId, amount),"application/pdf","invoice.pdf");
-                    case PaymentMode.Ibox:
-                        return View("IboxPayment", new IboxPaymentViewModel(){InvoiceId = new Random().Next(10000000,99999999), OrderId = basket.OrderId, Amount = amount});
-                    case PaymentMode.Visa:
-                        return View("VisaPayment");
-                    default:
-                        return HttpNotFound();
-
-                }
+            {                
+                payment = orderService.Make(basket.OrderId, paymentKey);                
             }
             catch (ValidationException e)
             {
                 logger.Warn(e);
                 TempData["ErrorMessage"] = e.Message;
                 return RedirectToAction("Details");
+            }
+
+            var amount = orderService.CalculateAmount(basket.OrderId);
+            var paymentMode = payment.Pay(basket.OrderId, amount);
+
+            switch (paymentMode)
+            {
+                case PaymentMode.Bank:
+                    return File(InvoiceService.GenerateInvoice(basket.OrderId, amount), "application/pdf", "invoice.pdf");
+                case PaymentMode.Ibox:
+                    return View("IboxPayment", new IboxPaymentViewModel() { InvoiceId = new Random().Next(10000000, 99999999), OrderId = basket.OrderId, Amount = amount });
+                case PaymentMode.Visa:
+                    return View("VisaPayment");
+                default:
+                    return HttpNotFound();
+
             }
             
         }

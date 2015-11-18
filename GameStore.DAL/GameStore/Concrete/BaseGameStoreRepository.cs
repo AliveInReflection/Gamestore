@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace GameStore.DAL.GameStore.Concrete
 
         public virtual void Create(TEntity entity)
         {
-            context.Set<TEntity>().Add(entity);
+            context.Entry(entity).State = EntityState.Added;
         }
 
         public virtual TEntity Get(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)

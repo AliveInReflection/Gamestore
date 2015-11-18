@@ -36,16 +36,19 @@ namespace GameStore.BLL.Services
         public IPayment Make(int orderId, string paymentKey)
         {
             var order = database.Orders.Get(m => m.OrderId.Equals(orderId));
-            var orderDetailses = database.OrderDetailses.GetMany(m => m.OrderId.Equals(orderId));
+            var orderDetailses = order.OrderDetailses;
 
             if (!orderDetailses.Any())
             {
                 throw new ValidationException(String.Format("Basket is empty ({0})", orderId));
             }
 
+            var gameIds = orderDetailses.Select(m => m.ProductId);
+            var games = database.Games.GetMany(x => gameIds.Any(m => m == x.GameId));
+            
             foreach (var orderDetails in orderDetailses)
             {
-                var game = database.Games.Get(m => m.GameId.Equals(orderDetails.ProductId));
+                var game = games.First(m => m.GameId.Equals(orderDetails.ProductId));
                 if (game.UnitsInStock >= orderDetails.Quantity)
                 {
                     game.UnitsInStock -= orderDetails.Quantity;

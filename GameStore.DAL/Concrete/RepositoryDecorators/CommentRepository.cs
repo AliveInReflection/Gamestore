@@ -27,6 +27,10 @@ namespace GameStore.DAL.Concrete.Repositories
             {
                 entity.User = user;
             }
+            else
+            {
+                entity.User.Password = entity.User.UserName;
+            }
 
             var game = gameStore.Games.Get(m => m.GameKey.Equals(entity.Game.GameKey));
             if (game == null)
@@ -34,18 +38,11 @@ namespace GameStore.DAL.Concrete.Repositories
                 game = northwind.Games.GetAll(new int[] { }).First(m => m.GameKey.Equals(entity.Game.GameKey));             
                 gameRepository.Create(game);
             }
+            entity.Game = game;
 
             var parentComment = gameStore.Comments.Get(m => m.CommentId.Equals(entity.ParentComment.CommentId));
-            if (parentComment != null)
-            {
-                entity.Game = null;
-                entity.ParentComment = parentComment;
-            }
-            else
-            {
-                entity.ParentComment = null;        
-                entity.Game = game;
-            }
+            entity.ParentComment = parentComment;
+
             gameStore.Comments.Create(entity);
             
         }
