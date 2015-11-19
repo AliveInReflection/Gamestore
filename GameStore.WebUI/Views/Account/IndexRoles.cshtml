@@ -31,7 +31,7 @@
             @Html.DisplayFor(modelItem => item.RoleName)
         </td>
         <td>
-            @Html.ActionLink(@ViewsRes.LinkUpdate, "UpdateRole", "Account", new { roleId=item.RoleId }) |
+            @Html.ActionLink(@ViewsRes.LinkManage, "ManageRole", "Account", new { roleId = item.RoleId }, null) |
             @using (Html.BeginForm("DeleteRole", "Account", null, FormMethod.Post, new { @class = "inline-form" }))
             {
                 @Html.Hidden("roleId", item.RoleId)

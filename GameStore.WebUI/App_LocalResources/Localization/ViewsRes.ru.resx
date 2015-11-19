@@ -123,6 +123,9 @@
   <data name="AccountIndexTitle" xml:space="preserve">
     <value>Все пользователи</value>
   </data>
+  <data name="AccountManageRoleTitle" xml:space="preserve">
+    <value>Управление ролью</value>
+  </data>
   <data name="AccountManageTitle" xml:space="preserve">
     <value>Управление пользователем</value>
   </data>

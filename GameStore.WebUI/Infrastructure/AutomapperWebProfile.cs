@@ -3,7 +3,6 @@ using System.Security.Claims;
 using System.Threading;
 using System.Web.Mvc;
 using AutoMapper;
-using GameStore.Domain.Entities;
 using GameStore.Infrastructure.DTO;
 using GameStore.WebUI.Infrastructure;
 using GameStore.WebUI.Models;
@@ -48,6 +47,9 @@ namespace GameStore.CL.AutomapperProfiles
                 .ForMember(m => m.Roles, opt => opt.MapFrom(m => m.Roles.Select(x => x.RoleName)));
 
             Mapper.CreateMap<RoleDTO, DisplayRoleViewModel>();
+
+            Mapper.CreateMap<RoleDTO, ManageRoleViewModel>()
+                .ForMember(m => m.Claims, opt => opt.Ignore());
 
             Mapper.CreateMap<RoleDTO, SelectListItem>()
                 .ForMember(m => m.Text, opt => opt.MapFrom(m => m.RoleName))
@@ -132,6 +134,8 @@ namespace GameStore.CL.AutomapperProfiles
                 .ForMember(m => m.UserName, opt => opt.MapFrom(m => m.User.UserName))
                 .ForMember(m => m.Roles, opt => opt.MapFrom(m => m.Roles))
                 .ForMember(m => m.Claims, opt => opt.MapFrom(m => m.Claims));
+
+            Mapper.CreateMap<ManageRoleViewModel, RoleDTO>();
 
         }
 

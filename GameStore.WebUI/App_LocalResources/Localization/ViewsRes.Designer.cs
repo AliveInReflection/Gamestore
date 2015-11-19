@@ -79,6 +79,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manage role.
+        /// </summary>
+        public static string AccountManageRoleTitle {
+            get {
+                return ResourceManager.GetString("AccountManageRoleTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Manage user.
         /// </summary>
         public static string AccountManageTitle {

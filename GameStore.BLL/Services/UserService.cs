@@ -67,13 +67,17 @@ namespace GameStore.BLL.Services
                 throw new ValidationException(string.Format("Old password wrong(Id:{0})",model.UserId));
             }
 
-            user.Password = model.NewPassword;
+            var entity = new User()
+            {
+                UserId = model.UserId,
+                Password = model.NewPassword
+            };
 
-            database.Users.Update(user);
+            database.Users.Update(entity);
             database.Save();
         }
 
-        public void Manage(UserDTO user)
+        public void Update(UserDTO user)
         {
             if (user == null)
             {
@@ -86,7 +90,15 @@ namespace GameStore.BLL.Services
 
         public void Delete(int userId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                database.Users.Delete(userId);
+                database.Save();
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ValidationException(string.Format("Role not found({0})", userId));
+            }
         }
 
         public UserDTO Get(int userId)
@@ -162,7 +174,14 @@ namespace GameStore.BLL.Services
 
         public void UpdateRole(RoleDTO role)
         {
-            throw new NotImplementedException();
+            if (role == null)
+            {
+                throw new ValidationException("No content received");
+            }
+
+            var roleToSave = Mapper.Map<RoleDTO, Role>(role);
+            database.Roles.Update(roleToSave);
+            database.Save();
         }
 
         public void DeleteRole(int roleId)

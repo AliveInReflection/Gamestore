@@ -1,0 +1,46 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.Account.ManageRoleViewModel
+
+@{
+    ViewBag.Title = ViewsRes.AccountManageRoleTitle;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.Hidden("model.RoleId", Model.RoleId)
+    @Html.Hidden("model.RoleName", Model.RoleName)
+
+    <table class="table">
+        <tr>
+            <td class="editor-label">
+                @Html.LabelFor(model => model.RoleName)
+            </td>
+            <td class="editor-field">
+                @Html.DisplayFor(model => model.RoleName)
+            </td>
+        </tr>
+    </table>
+
+    <div id="claims">
+        @Html.Action("AddClaim", "Account", new { number = 0 })
+    </div>
+
+    <p class="text-center">
+        <a href="#" id="add-claim" data-url="@Url.Action("AddClaim","Account")">@ViewsRes.LinkAddNew</a> | <a href="#" id="delete-claim">@ViewsRes.LinkDelete</a>
+    </p>
+
+
+    <p>
+        <input type="submit" value="@ViewsRes.LinkSave" />
+    </p>
+}
+
+
+@section Scripts {
+    <script src="/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="/Scripts/Account/Account.js"></script>
+}

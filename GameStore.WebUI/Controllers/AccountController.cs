@@ -130,7 +130,7 @@ namespace GameStore.WebUI.Controllers
             }
             try
             {
-                userService.Manage(Mapper.Map<ManageUserViewModel, UserDTO>(model));
+                userService.Update(Mapper.Map<ManageUserViewModel, UserDTO>(model));
             }
             catch (ValidationException e)
             {
@@ -185,6 +185,26 @@ namespace GameStore.WebUI.Controllers
             return RedirectToAction("IndexRoles");
         }
 
+        public ActionResult ManageRole(int roleId)
+        {
+            return View(Mapper.Map<RoleDTO, ManageRoleViewModel>(userService.GetRole(roleId)));
+        }
+
+        [HttpPost]
+        public ActionResult ManageRole(ManageRoleViewModel model)
+        {
+            try
+            {
+                userService.UpdateRole(Mapper.Map<ManageRoleViewModel, RoleDTO>(model));
+            }
+            catch (ValidationException e)
+            {
+                logger.Warn(e);
+                TempData["ErrorMessage"] = ValidationRes.ValidationError;
+            }
+            return RedirectToAction("IndexRoles");
+        }
+
 
         public ActionResult AddClaim(int number)
         {
@@ -194,6 +214,21 @@ namespace GameStore.WebUI.Controllers
                 ClaimTypes = Mapper.Map<IEnumerable<string>, IEnumerable<SelectListItem>>(GameStoreClaim.Items),
                 Permissions = Mapper.Map<IEnumerable<string>, IEnumerable<SelectListItem>>(Permissions.Items)
             });
+        }
+
+        [HttpPost]
+        public ActionResult DeleteRole(int roleId)
+        {
+            try
+            {
+                userService.DeleteRole(roleId);
+            }
+            catch (ValidationException e)
+            {
+                logger.Warn(e);
+                TempData["ErrorMessage"] = ValidationRes.ValidationError;
+            }
+            return RedirectToAction("IndexRoles");
         }
 
         
