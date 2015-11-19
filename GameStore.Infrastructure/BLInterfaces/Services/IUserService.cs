@@ -7,7 +7,8 @@ namespace GameStore.Infrastructure.BLInterfaces
     public interface IUserService
     {
         void Create(UserDTO user);
-        void Update(UserDTO user);
+        void Manage(UserDTO user);
+        void ChangePassword(ChangePasswordDTO model);
         void Delete(int userId);
 
         UserDTO Get(int userId);

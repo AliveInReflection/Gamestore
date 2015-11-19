@@ -27,8 +27,12 @@ namespace GameStore.CL.AutomapperProfiles
             Mapper.CreateMap<Publisher, Publisher>();
             Mapper.CreateMap<GameStoreOrder, GameStoreOrder>();
             Mapper.CreateMap<OrderDetails, OrderDetails>();
-            Mapper.CreateMap<User, User>();
-            Mapper.CreateMap<Role, Role>();
+            Mapper.CreateMap<User, User>()
+                .ForMember(m => m.Comments, opt => opt.Ignore())
+                .ForMember(m => m.Claims, opt => opt.Ignore())
+                .ForMember(m => m.Roles, opt => opt.Ignore());
+            Mapper.CreateMap<Role, Role>()
+                .ForMember(m => m.Users, opt => opt.Ignore());
 
 
             Mapper.CreateMap<Product, Game>()

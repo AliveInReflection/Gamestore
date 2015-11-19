@@ -27,8 +27,14 @@ namespace GameStore.DAL.Concrete.RepositoryDecorators
         public void Update(Role entity)
         {
             var entry = context.Roles.First(m => m.RoleId.Equals(entity.RoleId));
-            Mapper.Map(entity, entry);
-            context.Entry(entity).State = EntityState.Modified;
+            entry.RoleName = entity.RoleName;
+
+            var oldClaims = entry.Claims.ToList();
+            foreach (var claim in oldClaims)
+            {
+                context.RoleClaims.Remove(claim);
+            }
+            entry.Claims = entity.Claims;
         }
 
         public void Delete(int id)

@@ -52,6 +52,7 @@
     <Compile Include="BLInterfaces\Services\IPlatformTypeService.cs" />
     <Compile Include="BLInterfaces\Services\IPublisherService.cs" />
     <Compile Include="BLInterfaces\Services\IUserService.cs" />
+    <Compile Include="DTO\ChangePasswordDTO.cs" />
     <Compile Include="DTO\CommentDTO.cs" />
     <Compile Include="DTO\GameDTO.cs" />
     <Compile Include="DTO\GameFilteringMode.cs" />

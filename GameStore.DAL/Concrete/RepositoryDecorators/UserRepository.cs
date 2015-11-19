@@ -29,11 +29,40 @@ namespace GameStore.DAL.Concrete.Repositories
 
         public void Update(User entity)
         {
-            var roleNames = entity.Roles.Select(m => m.RoleName);
-            var roles = context.Roles.Where(m => roleNames.Contains(m.RoleName)).ToList();
+            var roleIds = entity.Roles.Select(m => m.RoleId);
+            var roles = context.Roles.Where(m => roleIds.Contains(m.RoleId)).ToList();
             var entry = context.Users.First(m => m.UserId.Equals(entity.UserId));
-            Mapper.Map(entity, entry);
-            entry.Roles = roles;
+
+            if (entity.BanExpirationDate != null)
+            {
+                entry.BanExpirationDate = entity.BanExpirationDate;
+            }
+
+            if (entity.Password != null)
+            {
+                entry.Password = entity.Password;
+            }
+
+            if (entity.Claims.Any())
+            {
+                var oldClaims = entry.Claims.ToList();
+                foreach (var userClaim in oldClaims)
+                {
+                    context.UserClaims.Remove(userClaim);
+                }
+                entry.Claims = entity.Claims;
+            }
+            if (entity.Roles.Any())
+            {
+                var oldRoles = entry.Roles.ToList();
+                foreach (var role in oldRoles)
+                {
+                    entry.Roles.Remove(role);
+                }
+                entry.Roles = roles;
+            }
+           
+            entry.Roles = roles;           
         }
 
         public void Delete(int id)

@@ -34,6 +34,8 @@ namespace Gamestore.DAL.Context
         public DbSet<OrderDetails> OrderDetailses { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<RoleClaim> RoleClaims { get; set; }
+        public DbSet<UserClaim> UserClaims { get; set; }
         public DbSet<View> Views { get; set; }
     }
 

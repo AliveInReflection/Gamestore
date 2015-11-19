@@ -59,9 +59,29 @@ namespace GameStore.BLL.Services
             
         }
 
-        public void Update(UserDTO user)
+        public void ChangePassword(ChangePasswordDTO model)
         {
-            throw new NotImplementedException();
+            var user = database.Users.Get(m => m.UserId.Equals(model.UserId));
+            if (user.Password != model.OldPassword)
+            {
+                throw new ValidationException(string.Format("Old password wrong(Id:{0})",model.UserId));
+            }
+
+            user.Password = model.NewPassword;
+
+            database.Users.Update(user);
+            database.Save();
+        }
+
+        public void Manage(UserDTO user)
+        {
+            if (user == null)
+            {
+                throw new ValidationException("No content received");
+            }
+
+            database.Users.Update(Mapper.Map<UserDTO, User>(user));
+            database.Save();
         }
 
         public void Delete(int userId)

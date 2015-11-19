@@ -130,7 +130,7 @@ namespace GameStore.WebUI.Controllers
             }
             try
             {
-                userService.Update(Mapper.Map<ManageUserViewModel, UserDTO>(model));
+                userService.Manage(Mapper.Map<ManageUserViewModel, UserDTO>(model));
             }
             catch (ValidationException e)
             {
