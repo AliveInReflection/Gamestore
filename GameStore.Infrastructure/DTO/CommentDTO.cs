@@ -9,7 +9,6 @@ namespace GameStore.Infrastructure.DTO
     public class CommentDTO
     {
         public int CommentId { get; set; }
-        public string UserName { get; set; }
         public string Content { get; set; }
         public string Quote { get; set; }
         public int? QuoteId { get; set; }
@@ -17,6 +16,7 @@ namespace GameStore.Infrastructure.DTO
         public int? GameId { get; set; }
         
         public GameDTO Game { get; set; }
+        public UserDTO User { get; set; }
         public List<CommentDTO> ChildComments { get; set; } 
     }
 }

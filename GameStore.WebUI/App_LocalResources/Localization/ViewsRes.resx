@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountCreateRoleTitle" xml:space="preserve">
+    <value>Create role</value>
+  </data>
+  <data name="AccountIndexTitle" xml:space="preserve">
+    <value>All users</value>
+  </data>
+  <data name="AccountManageTitle" xml:space="preserve">
+    <value>Manage user</value>
+  </data>
   <data name="CommentIndexDeleteModal" xml:space="preserve">
     <value>Delete this comment?</value>
   </data>
@@ -185,6 +194,9 @@
   </data>
   <data name="LinkMakeOrder" xml:space="preserve">
     <value>Make order</value>
+  </data>
+  <data name="LinkManage" xml:space="preserve">
+    <value>Manage</value>
   </data>
   <data name="LinkPay" xml:space="preserve">
     <value>Pay</value>

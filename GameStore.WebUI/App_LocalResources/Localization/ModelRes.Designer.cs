@@ -61,6 +61,33 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New password.
+        /// </summary>
+        public static string AccountNewPassword {
+            get {
+                return ResourceManager.GetString("AccountNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repeat new password.
+        /// </summary>
+        public static string AccountNewPasswordRepeat {
+            get {
+                return ResourceManager.GetString("AccountNewPasswordRepeat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old password.
+        /// </summary>
+        public static string AccountOldPassword {
+            get {
+                return ResourceManager.GetString("AccountOldPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string AccountPassword {
@@ -84,6 +111,42 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         public static string AccountRememberMe {
             get {
                 return ResourceManager.GetString("AccountRememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Role id.
+        /// </summary>
+        public static string AccountRoleId {
+            get {
+                return ResourceManager.GetString("AccountRoleId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Role name.
+        /// </summary>
+        public static string AccountRoleName {
+            get {
+                return ResourceManager.GetString("AccountRoleName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User roles.
+        /// </summary>
+        public static string AccountRoles {
+            get {
+                return ResourceManager.GetString("AccountRoles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User id.
+        /// </summary>
+        public static string AccountUserId {
+            get {
+                return ResourceManager.GetString("AccountUserId", resourceCulture);
             }
         }
         

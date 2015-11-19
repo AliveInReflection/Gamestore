@@ -15,6 +15,17 @@ namespace GameStore.Infrastructure.Enums
         public const string Delete = "Delete";
         public const string Ban = "Ban";
         public const string Crud = "CRUD";
-        public const string Full = "Full";
+
+        public static IEnumerable<string> Items
+        {
+            get
+            {
+                return new[]
+                {
+                    Create, Retreive, Update, Delete,
+                    Ban, Crud
+                };
+            }
+        }
     }
 }

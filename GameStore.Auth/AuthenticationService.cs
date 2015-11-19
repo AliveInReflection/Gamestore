@@ -35,9 +35,14 @@ namespace GameStore.Auth
             var user = database.Users.Get(m => m.UserName.ToLower().Equals(userName.ToLower()) &&
                                                m.Password.Equals(password));
 
-            var claims = new List<Claim> { new Claim(ClaimTypes.SerialNumber, user.UserId.ToString()) };
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.SerialNumber, user.UserId.ToString())
+            };
 
             ClaimsPrincipal principal = new GameStoreClaimsPrincipal(user.UserName, claims);
+
+            
 
             var authenticationProperties = new AuthenticationProperties()
             {

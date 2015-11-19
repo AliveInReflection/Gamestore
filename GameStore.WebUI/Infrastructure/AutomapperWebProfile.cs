@@ -1,4 +1,6 @@
-﻿using System.Threading;
+﻿using System.Linq;
+using System.Security.Claims;
+using System.Threading;
 using System.Web.Mvc;
 using AutoMapper;
 using GameStore.Domain.Entities;
@@ -40,9 +42,19 @@ namespace GameStore.CL.AutomapperProfiles
             Mapper.CreateMap<OrderDTO, DisplayOrderViewModel>();
 
 
-            Mapper.CreateMap<int, GenreDTO>().ForMember(m => m.GenreId, opt => opt.MapFrom(t => t));
-            Mapper.CreateMap<int, PlatformTypeDTO>().ForMember(m => m.PlatformTypeId, opt => opt.MapFrom(t => t));
-            Mapper.CreateMap<int, PublisherDTO>().ForMember(m => m.PublisherId, opt => opt.MapFrom(t => t));
+            
+
+            Mapper.CreateMap<UserDTO, DisplayUserViewModel>()
+                .ForMember(m => m.Roles, opt => opt.MapFrom(m => m.Roles.Select(x => x.RoleName)));
+
+            Mapper.CreateMap<RoleDTO, DisplayRoleViewModel>();
+
+            Mapper.CreateMap<RoleDTO, SelectListItem>()
+                .ForMember(m => m.Text, opt => opt.MapFrom(m => m.RoleName))
+                .ForMember(m => m.Value, opt => opt.MapFrom(m => m.RoleId.ToString()));
+
+
+            //===================Reverce=============================
 
             Mapper.CreateMap<CreateGameViewModel, GameDTO>()
                 .ForMember(m => m.Genres, opt => opt.MapFrom(t => t.GenreIds))
@@ -105,6 +117,21 @@ namespace GameStore.CL.AutomapperProfiles
                 .ForMember(m => m.UserName, opt => opt.MapFrom(m => m.UserName))
                 .ForMember(m => m.Password, opt => opt.MapFrom(m => m.Password));
 
+            Mapper.CreateMap<CreateRoleViewModel, RoleDTO>();
+            Mapper.CreateMap<ClaimViewModel, Claim>()
+                .ConstructProjectionUsing(m => new Claim(m.ClaimType, m.ClaimValue, "GameStore"));
+
+
+            Mapper.CreateMap<int, GenreDTO>().ForMember(m => m.GenreId, opt => opt.MapFrom(t => t));
+            Mapper.CreateMap<int, PlatformTypeDTO>().ForMember(m => m.PlatformTypeId, opt => opt.MapFrom(t => t));
+            Mapper.CreateMap<int, PublisherDTO>().ForMember(m => m.PublisherId, opt => opt.MapFrom(t => t));
+            Mapper.CreateMap<int, RoleDTO>().ForMember(m => m.RoleId, opt => opt.MapFrom(m => m));
+
+            Mapper.CreateMap<ManageUserViewModel, UserDTO>()
+                .ForMember(m => m.UserId, opt => opt.MapFrom(m => m.User.UserId))
+                .ForMember(m => m.UserName, opt => opt.MapFrom(m => m.User.UserName))
+                .ForMember(m => m.Roles, opt => opt.MapFrom(m => m.Roles))
+                .ForMember(m => m.Claims, opt => opt.MapFrom(m => m.Claims));
 
         }
 

@@ -19,6 +19,7 @@ namespace GameStore.WebUI.Models.Account
         [MinLength(6, ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "MinLengthError")]
         [MaxLength(20, ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "MaxLengthError")]
         [Display(ResourceType = typeof(ModelRes), Name = "AccountPassword")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "FieldIsRequired")]
@@ -26,6 +27,7 @@ namespace GameStore.WebUI.Models.Account
         [MaxLength(20, ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "MaxLengthError")]
         [Compare("Password",ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "PasswordsNotMatch")]
         [Display(ResourceType = typeof(ModelRes), Name = "AccountPasswordRepeat")]
+        [DataType(DataType.Password)]
         public string RepeatPassword { get; set; }
     }
 }

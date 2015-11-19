@@ -61,6 +61,33 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create role.
+        /// </summary>
+        public static string AccountCreateRoleTitle {
+            get {
+                return ResourceManager.GetString("AccountCreateRoleTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All users.
+        /// </summary>
+        public static string AccountIndexTitle {
+            get {
+                return ResourceManager.GetString("AccountIndexTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manage user.
+        /// </summary>
+        public static string AccountManageTitle {
+            get {
+                return ResourceManager.GetString("AccountManageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete this comment?.
         /// </summary>
         public static string CommentIndexDeleteModal {
@@ -264,6 +291,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         public static string LinkMakeOrder {
             get {
                 return ResourceManager.GetString("LinkMakeOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manage.
+        /// </summary>
+        public static string LinkManage {
+            get {
+                return ResourceManager.GetString("LinkManage", resourceCulture);
             }
         }
         

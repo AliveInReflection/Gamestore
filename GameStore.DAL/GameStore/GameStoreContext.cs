@@ -9,20 +9,20 @@ namespace Gamestore.DAL.Context
 {
     public class GameStoreContext : DbContext
     {
-        static  GameStoreContext()
+        static GameStoreContext()
         {
             Database.SetInitializer<GameStoreContext>(new GameStoreDbInitializer());
         }
 
         public GameStoreContext()
         {
-            
+
         }
 
         public GameStoreContext(string connectionString)
-            :base(connectionString)
+            : base(connectionString)
         {
-            
+
         }
 
         public DbSet<Game> Games { get; set; }
@@ -63,7 +63,7 @@ namespace Gamestore.DAL.Context
             db.PlatformTypes.Add(console);
 
 
-            db.Genres.Add(new Genre() {GenreId = 1, GenreName = "Strategy", GenreNameRu = "Стратегия"});
+            db.Genres.Add(new Genre() { GenreId = 1, GenreName = "Strategy", GenreNameRu = "Стратегия" });
             db.Genres.Add(new Genre() { GenreId = 4, GenreName = "RPG", GenreNameRu = "Ролевые" });
             db.Genres.Add(new Genre() { GenreId = 7, GenreName = "Sports", GenreNameRu = "Спорт" });
 
@@ -103,14 +103,14 @@ namespace Gamestore.DAL.Context
                 GameKey = "SCII",
                 Description = "StarCraft II is a sequel to the real-time strategy game StarCraft, announced on May 19, 2007, at the Blizzard World Wide Invitational in Seoul, South Korea.[9][10] It is set to be released as a trilogy.",
                 DescriptionRu = "Действие игры происходит в XXVI-м веке в отдалённой части галактики Млечный Путь. Сюжет игры базируется на взаимодействии трёх рас: Терранов (потомков сосланных преступников, не поддерживающих связь с Землёй), Зергов (расы существ, чьи воины представляют собой мутировавших млекопитающих или насекомоподобных или пресмыкающихся существ различных планет, управляемых сначала Сверхразумом, а затем и Королевой клинков) и Протоссов (высокотехнологичной расы с ярко выраженными псионными способностями).",
-                PlatformTypes = new []{desctop},
+                PlatformTypes = new[] { desctop },
                 UnitsInStock = 450,
                 Discontinued = false,
                 Price = 49.99m,
                 PublisherId = 1,
                 PublicationDate = new DateTime(2012, 9, 17),
                 ReceiptDate = new DateTime(2014, 12, 10),
-                Genres = new[] { rts}
+                Genres = new[] { rts }
             };
             db.Games.Add(sc2);
 
@@ -123,14 +123,14 @@ namespace Gamestore.DAL.Context
                 GameKey = "NFSMW",
                 Description = "Need for Speed: Most Wanted (commonly abbreviated to as NFS: MW or just Most Wanted) is a racing video game developed by EA Black Box and published by Electronic Arts. It is the ninth installment in the Need for Speed series.",
                 DescriptionRu = "серия гоночных компьютерных игр, выпускаемая компанией Electronic Arts (EA) и разработанная в нескольких студиях, включая канадское отделение EA Black Box, британскую компанию Criterion Games и шведскую Ghost Games. В настоящее время разрабатывается под брендом EA Sports.",
-                PlatformTypes = new []{console,desctop},
+                PlatformTypes = new[] { console, desctop },
                 UnitsInStock = 780,
                 Discontinued = false,
                 Price = 25,
                 PublisherId = 4,
                 PublicationDate = new DateTime(2008, 10, 13),
                 ReceiptDate = new DateTime(2014, 12, 10),
-                Genres = new[] { races}
+                Genres = new[] { races }
             });
 
             //-----------------------------------
@@ -142,14 +142,14 @@ namespace Gamestore.DAL.Context
                 GameKey = "CSGO",
                 Description = "Counter-Strike: Global Offensive (CS:GO) is a first-person shooter video game which is a part of the Counter-Strike series. It was announced to the public on August 12, 2011, and is developed by Valve Corporation and their partner, Hidden Path Entertainment. The game was later released on August 21, 2012 for the Playstation 3, Xbox 360, Microsoft Windows, and OS X and later Linux as a downloadable title.",
                 DescriptionRu = "Counter-Strike: Global Offensive (рус. «Контрудар: глобальное наступление») — компьютерная игра, разработанная компаниями Valve и Hidden Path Entertainment; последняя основная игра в серии игр Counter-Strike.",
-                PlatformTypes = new[]{desctop},
+                PlatformTypes = new[] { desctop },
                 UnitsInStock = 818,
                 Discontinued = false,
                 Price = 9.99m,
                 PublisherId = 7,
                 PublicationDate = new DateTime(2013, 12, 1),
                 ReceiptDate = new DateTime(2014, 12, 10),
-                Genres = new[] { action}
+                Genres = new[] { action }
             };
 
             db.Games.Add(csgo);
@@ -158,7 +158,7 @@ namespace Gamestore.DAL.Context
             var guestRole = db.Roles.Add(new Role()
             {
                 RoleName = "Guest",
-                RoleClaims = new List<RoleClaim>
+                Claims = new List<RoleClaim>
                 {
                     new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Retreive},
                     new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Create},
@@ -168,7 +168,7 @@ namespace Gamestore.DAL.Context
             var userRole = db.Roles.Add(new Role()
             {
                 RoleName = "User",
-                RoleClaims = new List<RoleClaim>
+                Claims = new List<RoleClaim>
                 {
                     new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Retreive},
                     new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Create},
@@ -179,7 +179,7 @@ namespace Gamestore.DAL.Context
             var adminRole = db.Roles.Add(new Role()
             {
                 RoleName = "Administrator",
-                RoleClaims = new List<RoleClaim>
+                Claims = new List<RoleClaim>
                 {
                     new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Retreive},
                     new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Create},
@@ -192,7 +192,7 @@ namespace Gamestore.DAL.Context
             var managerRole = db.Roles.Add(new Role()
             {
                 RoleName = "Manager",
-                RoleClaims = new List<RoleClaim>
+                Claims = new List<RoleClaim>
                 {
                     new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Retreive},
                     new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Create},
@@ -206,7 +206,7 @@ namespace Gamestore.DAL.Context
             var moderatorRole = db.Roles.Add(new Role()
             {
                 RoleName = "Moderator",
-                RoleClaims = new List<RoleClaim>
+                Claims = new List<RoleClaim>
                 {
                     new RoleClaim(){ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Crud},
                     new RoleClaim(){ClaimType = GameStoreClaim.Games, ClaimValue = Permissions.Retreive},
@@ -215,18 +215,18 @@ namespace Gamestore.DAL.Context
                 }
             });
 
-            var admin = db.Users.Add(new User() { UserName = "Administrator", Password = "qwerty", Claims = new[] { new UserClaim() { ClaimType = ClaimTypes.Name, ClaimValue = "Administrator" } }, Roles = new[] { adminRole } });
-            var manager = db.Users.Add(new User() { UserName = "Manager", Password = "qwerty", Claims = new[] { new UserClaim() { ClaimType = ClaimTypes.Name, ClaimValue = "Manager" } }, Roles = new[] { managerRole } });
-            var moderator = db.Users.Add(new User() { UserName = "Moderator", Password = "qwerty", Claims = new[] { new UserClaim() { ClaimType = ClaimTypes.Name, ClaimValue = "Moderator" } }, Roles = new[] { moderatorRole } });
-            
+            var admin = db.Users.Add(new User() { UserName = "Administrator", Password = "qwerty", Roles = new[] { adminRole } });
+            var manager = db.Users.Add(new User() { UserName = "Manager", Password = "qwerty", Roles = new[] { managerRole } });
+            var moderator = db.Users.Add(new User() { UserName = "Moderator", Password = "qwerty", Roles = new[] { moderatorRole } });
 
-            var user1 = db.Users.Add(new User() {UserName = "Ghost", Password = "qwerty", Claims = new[] { new UserClaim() {ClaimType = ClaimTypes.Name, ClaimValue = "Ghost" } }, Roles = new[] { userRole } });
-            var user2 = db.Users.Add(new User() {UserName = "Shooter", Password = "qwerty", Claims = new[] { new UserClaim() {ClaimType = ClaimTypes.Name, ClaimValue = "Shooter" } }, Roles = new[] { userRole } });
-            var user3 = db.Users.Add(new User() {UserName = "Sarah Kerrigan", Password = "qwerty", Claims = new[] { new UserClaim() {ClaimType = ClaimTypes.Name, ClaimValue = "Sarah Kerrigan" } }, Roles = new[] { userRole } });
+
+            var user1 = db.Users.Add(new User() { UserName = "Ghost", Password = "qwerty", Roles = new[] { userRole } });
+            var user2 = db.Users.Add(new User() { UserName = "Shooter", Password = "qwerty", Roles = new[] { userRole } });
+            var user3 = db.Users.Add(new User() { UserName = "Sarah Kerrigan", Password = "qwerty", Roles = new[] { userRole } });
 
             var ghostComment = new Comment() { User = user2, Content = "Is it miltiplayer only?", GameId = 7 };
             db.Comments.Add(ghostComment);
-            db.Comments.Add(new Comment() { User = user1, Content = "No. It has offline mode to play with bots.", GameId = 7, ParentComment = ghostComment});
+            db.Comments.Add(new Comment() { User = user1, Content = "No. It has offline mode to play with bots.", GameId = 7, ParentComment = ghostComment });
             db.Comments.Add(new Comment() { User = user3, Content = "Nice game", GameId = 1 });
 
 
@@ -243,7 +243,7 @@ namespace Gamestore.DAL.Context
                 },
             });
 
-            db.Views.Add(new View() {GameId = 1, UserId = 1});
+            db.Views.Add(new View() { GameId = 1, UserId = 1 });
             db.Views.Add(new View() { GameId = 1, UserId = 2 });
             db.Views.Add(new View() { GameId = 1, UserId = 3 });
             db.Views.Add(new View() { GameId = 1, UserId = 2 });
@@ -252,7 +252,6 @@ namespace Gamestore.DAL.Context
             db.Views.Add(new View() { GameId = 4, UserId = 3 });
             db.Views.Add(new View() { GameId = 7, UserId = 1 });
             db.Views.Add(new View() { GameId = 7, UserId = 2 });
-
         }
     }
 }

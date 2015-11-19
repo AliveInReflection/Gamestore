@@ -18,7 +18,6 @@ namespace GameStore.CL.AutomapperProfiles
             Mapper.CreateMap<Game, GameDTO>();
             Mapper.CreateMap<Genre, GenreDTO>();
             Mapper.CreateMap<Comment, CommentDTO>()
-                .ForMember(c => c.UserName, opt => opt.MapFrom(m => m.User.UserName))
                 .ForMember(c => c.ParentCommentId, opt => opt.MapFrom(m => m.ParentComment.CommentId));
 
 
@@ -29,7 +28,14 @@ namespace GameStore.CL.AutomapperProfiles
             Mapper.CreateMap<User, UserDTO>();
 
             Mapper.CreateMap<Role, RoleDTO>()
-                .ForMember(m => m.Claims, opt => opt.MapFrom(m => m.RoleClaims));
+                .ForMember(m => m.Claims, opt => opt.MapFrom(m => m.Claims));
+
+
+            Mapper.CreateMap<UserClaim, Claim>()
+                .ConstructProjectionUsing(m => new Claim(m.ClaimType, m.ClaimValue, "GameStore"));
+
+            Mapper.CreateMap<RoleClaim, Claim>()
+                .ConstructProjectionUsing(m => new Claim(m.ClaimType, m.ClaimValue, "GameStore"));
 
             //====================================================
 
@@ -37,7 +43,6 @@ namespace GameStore.CL.AutomapperProfiles
             Mapper.CreateMap<GameDTO, Game>();
 
             Mapper.CreateMap<CommentDTO, Comment>()
-                .ForMember(m => m.User, opt => opt.MapFrom(t => t.UserName))
                 .ForMember(m => m.ParentComment, opt => opt.MapFrom(t => t.ParentCommentId));
 
             Mapper.CreateMap<GenreDTO, Genre>();
@@ -52,11 +57,19 @@ namespace GameStore.CL.AutomapperProfiles
 
             Mapper.CreateMap<UserDTO, User>();
 
-            Mapper.CreateMap<string, User>().ForMember(m => m.UserName, opt => opt.MapFrom(t => t));
+            Mapper.CreateMap<int, User>().ForMember(m => m.UserId, opt => opt.MapFrom(t => t));
             Mapper.CreateMap<int, Comment>().ForMember(m => m.CommentId, opt => opt.MapFrom(t => t));
 
+            Mapper.CreateMap<Claim, RoleClaim>()
+                .ForMember(m => m.ClaimType, opt => opt.MapFrom(m => m.Type))
+                .ForMember(m => m.ClaimValue, opt => opt.MapFrom(m => m.Value));
+
+            Mapper.CreateMap<Claim, UserClaim>()
+                .ForMember(m => m.ClaimType, opt => opt.MapFrom(m => m.Type))
+                .ForMember(m => m.ClaimValue, opt => opt.MapFrom(m => m.Value));
+
             Mapper.CreateMap<RoleDTO, Role>()
-                .ForMember(m => m.RoleClaims, opt => opt.MapFrom(m => m.Claims));
+                .ForMember(m => m.Claims, opt => opt.MapFrom(m => m.Claims));
             
 
 

@@ -62,7 +62,6 @@
     <Compile Include="DTO\PlatformTypeDTO.cs" />
     <Compile Include="DTO\PublisherDTO.cs" />
     <Compile Include="DTO\RoleDTO.cs" />
-    <Compile Include="DTO\UserClaimDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Enums\BLLConstants.cs" />
     <Compile Include="Enums\DefaultRoles.cs" />

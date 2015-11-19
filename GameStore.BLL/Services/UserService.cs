@@ -38,13 +38,6 @@ namespace GameStore.BLL.Services
             database.Save();
         }
 
-        public IEnumerable<Claim> GetClaims(int userId)
-        {
-            var claims = database.Users.Get(m => m.UserId.Equals(userId)).Claims;
-            return Mapper.Map<IEnumerable<UserClaim>, IEnumerable<Claim>>(claims);
-        }
-
-
         public void Create(UserDTO user)
         {
             if (user == null)
@@ -66,7 +59,7 @@ namespace GameStore.BLL.Services
             
         }
 
-        public void Update(GameStore.Infrastructure.DTO.UserDTO user)
+        public void Update(UserDTO user)
         {
             throw new NotImplementedException();
         }
@@ -106,6 +99,63 @@ namespace GameStore.BLL.Services
         {
             var users = database.Users.GetAll();
             return Mapper.Map<IEnumerable<User>, IEnumerable<UserDTO>>(users);
+        }
+
+
+        public IEnumerable<RoleDTO> GetAllRoles()
+        {
+            var roles = database.Roles.GetAll();
+            return Mapper.Map<IEnumerable<Role>, IEnumerable<RoleDTO>>(roles);
+        }
+
+        public RoleDTO GetRole(int roleId)
+        {
+            try
+            {
+                var role = database.Roles.Get(m => m.RoleId.Equals(roleId));
+                return Mapper.Map<Role, RoleDTO>(role);
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ValidationException(string.Format("Role not found({0})", roleId));
+            }
+        }
+
+        public void CreateRole(RoleDTO role)
+        {
+            if (role == null)
+            {
+                throw new ValidationException("No content received");
+            }
+
+            var roleToSave = Mapper.Map<RoleDTO, Role>(role);
+            try
+            {
+                database.Roles.Create(roleToSave);
+                database.Save();
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ValidationException(string.Format("Role with the same name ({0}) is already existed", role.RoleName));
+            }
+        }
+
+        public void UpdateRole(RoleDTO role)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteRole(int roleId)
+        {
+            try
+            {
+                database.Roles.Delete(roleId);
+                database.Save();
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ValidationException(string.Format("Role not found({0})", roleId));
+            }
         }
     }
 }

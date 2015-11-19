@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountNewPassword" xml:space="preserve">
+    <value>Новый пароль</value>
+  </data>
+  <data name="AccountNewPasswordRepeat" xml:space="preserve">
+    <value>Повторите новый пароль</value>
+  </data>
+  <data name="AccountOldPassword" xml:space="preserve">
+    <value>Старый пароль</value>
+  </data>
   <data name="AccountPassword" xml:space="preserve">
     <value>Пароль</value>
   </data>
@@ -125,6 +134,18 @@
   </data>
   <data name="AccountRememberMe" xml:space="preserve">
     <value>Запомнить меня</value>
+  </data>
+  <data name="AccountRoleId" xml:space="preserve">
+    <value>Id роли</value>
+  </data>
+  <data name="AccountRoleName" xml:space="preserve">
+    <value>Имя роли</value>
+  </data>
+  <data name="AccountRoles" xml:space="preserve">
+    <value>Роли</value>
+  </data>
+  <data name="AccountUserId" xml:space="preserve">
+    <value>Id пользователя</value>
   </data>
   <data name="AccountUserName" xml:space="preserve">
     <value>Имя пользователя</value>

@@ -1,4 +1,19 @@
 ﻿
+.link {
+    color: #4682b4;
+    display: inline;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.inline-form {
+    display: inline;
+}
 
 .checkbox-group {
     margin: 10px;

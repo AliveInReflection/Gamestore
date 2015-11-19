@@ -15,6 +15,7 @@ namespace GameStore.WebUI.Models.Account
 
         [Required(ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "FieldIsRequired")]
         [Display(ResourceType = typeof(ModelRes), Name = "AccountPassword")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Display(ResourceType = typeof(ModelRes), Name = "AccountRememberMe")]

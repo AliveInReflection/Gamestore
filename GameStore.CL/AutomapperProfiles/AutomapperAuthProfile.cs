@@ -15,7 +15,6 @@ namespace GameStore.CL.AutomapperProfiles
         protected override void Configure()
         {
             Mapper.CreateMap<User, UserDTO>();
-            Mapper.CreateMap<UserClaim, UserClaimDTO>();
 
             Mapper.CreateMap<UserClaim, Claim>()
                 .ForMember(m => m.Type, opt => opt.MapFrom(x => x.ClaimType))
@@ -28,7 +27,6 @@ namespace GameStore.CL.AutomapperProfiles
                 .ForMember(m => m.Issuer, opt => opt.MapFrom(x => "GameStore"));
 
             Mapper.CreateMap<UserDTO, User>();
-            Mapper.CreateMap<UserClaimDTO, UserClaim>();
 
             Mapper.CreateMap<Claim, UserClaim>()
                 .ForMember(m => m.ClaimType, opt => opt.MapFrom(x => x.Type))
