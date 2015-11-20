@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -22,15 +24,13 @@ namespace GameStore.Tests.WebTests
         private string visaPaymentKey = "Visa";
         private string iboxPaymentKey = "Ibox";
 
+        private ClaimsIdentity identity;
+
 
         private OrderController controller;
 
         #region Initialize
 
-        private void InitializeCollections()
-        {
-            
-        }
 
         private void InitializeMocks()
         {
@@ -38,7 +38,7 @@ namespace GameStore.Tests.WebTests
             request = new Mock<HttpRequestBase>();
 
             context.Setup(c => c.Request).Returns(request.Object);
-            context.Setup(c => c.Session.SessionID).Returns("session");
+            context.Setup(c => c.User.Identity).Returns(identity);
         }
 
         [TestInitialize]
@@ -48,7 +48,13 @@ namespace GameStore.Tests.WebTests
             {
                 cfg.AddProfile(new AutomapperWebProfile());
             });
-            InitializeCollections();
+
+            identity = new ClaimsIdentity(new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, "Test"),
+                new Claim(ClaimTypes.SerialNumber, "1")
+            });
+
             InitializeMocks();
             mocks = new Mocks();
             controller = new OrderController(mocks.OrderService.Object, mocks.Logger.Object);

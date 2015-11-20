@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.Security;
 using GameStore.Domain.Entities;
 using GameStore.Infrastructure.Enums;
 
@@ -13,8 +14,10 @@ namespace GameStore.Tests.BLLTests
         private List<Comment> comments;
         private List<Publisher> publishers;
         private List<User> users;
+        private List<Role> roles; 
         private List<Order> orders;
         private List<OrderDetails> orderDetailses;
+
 
         public TestCollections()
         {
@@ -27,6 +30,7 @@ namespace GameStore.Tests.BLLTests
         public List<Comment> Comments { get { return comments; } }
         public List<Publisher> Publishers { get { return publishers; } }
         public List<User> Users { get { return users; } }
+        public List<Role> Roles { get { return roles; } }
         public List<Order> Orders { get { return orders; } }
         public List<OrderDetails> OrderDetailses { get { return orderDetailses; } }
 
@@ -72,12 +76,37 @@ namespace GameStore.Tests.BLLTests
                     HomePage = "www.valve.com"}
             };
 
+            roles = new List<Role>
+            {
+                new Role()
+                {
+                    RoleName = "Guest",
+                    Claims = new List<RoleClaim>{new RoleClaim() {ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Retreive}}
+                },
+                new Role()
+                {
+                    RoleName = "User",
+                    Claims = new List<RoleClaim>{new RoleClaim() {ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Retreive}}
+                },
+                new Role()
+                {
+                    RoleName = "Administrator",
+                    Claims = new List<RoleClaim>{new RoleClaim() {ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Retreive}}
+                },
+                new Role()
+                {
+                    RoleName = "Manager",
+                    Claims = new List<RoleClaim>{new RoleClaim() {ClaimType = GameStoreClaim.Comments, ClaimValue = Permissions.Retreive}}
+                }
+            };
+
             users = new List<User>
             {
-                new User(){UserId = 1, UserName = "User1"},
-                new User(){UserId = 2, UserName = "User2"},
-                new User(){UserId = 3, UserName = "User3"},
-                new User(){UserId = 4, UserName = "User4"}
+                new User() { UserName = "Administrator", DateOfBirth = new DateTime(1990, 1, 12), Country = Countries.Ukraine, Password = "qwerty", Roles = new[] { roles[2] } },
+                new User() { UserName = "Manager", DateOfBirth = new DateTime(1991, 3, 23), Country = Countries.Ukraine, Password = "qwerty", Roles = new[] { roles[3] } },
+                new User() { UserName = "Ghost", DateOfBirth = new DateTime(1993,12,17), Country = Countries.Ukraine, Password = "qwerty", Roles = new[] { roles[1] } },
+                new User() { UserName = "Shooter", DateOfBirth = new DateTime(1992, 8, 11), Country = Countries.Ukraine, Password = "qwerty", Roles = new[] { roles[1] } },
+                new User() { UserName = "Sarah Kerrigan", DateOfBirth = new DateTime(1991, 4, 1), Country = Countries.Ukraine, Password = "qwerty", Roles = new[] { roles[1] } }
             };
 
             games = new List<Game>

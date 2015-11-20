@@ -38,7 +38,6 @@ namespace GameStore.Tests.WebTests
             request = new Mock<HttpRequestBase>();
 
             context.Setup(c => c.Request).Returns(request.Object);
-            context.Setup(c => c.Session.SessionID).Returns("session");
             context.Setup(c => c.Server.MapPath(It.IsAny<string>())).Returns("/");
         }
 

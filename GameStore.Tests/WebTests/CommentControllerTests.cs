@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Claims;
+using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using AutoMapper;
 using GameStore.BLL.Infrastructure;
 using GameStore.CL.AutomapperProfiles;
@@ -18,6 +21,11 @@ namespace GameStore.Tests.WebTests
     public class CommentControllerTests
     {
         private Mocks mocks;
+        private Mock<HttpContextBase> context;
+        private Mock<HttpRequestBase> request;
+
+        private ClaimsIdentity identity;
+
         private string testGameKey = "SCII";
         private int testCommentId = 1;
 
@@ -36,6 +44,15 @@ namespace GameStore.Tests.WebTests
             };
         }
 
+        private void InitializeMocks()
+        {
+            context = new Mock<HttpContextBase>();
+            request = new Mock<HttpRequestBase>();
+
+            context.Setup(c => c.Request).Returns(request.Object);
+            context.Setup(c => c.User.Identity).Returns(identity);
+        }
+
         [TestInitialize]
         public void TestInitialize()
         {
@@ -43,9 +60,19 @@ namespace GameStore.Tests.WebTests
             {
                 cfg.AddProfile(new AutomapperWebProfile());
             });
+
+             identity = new ClaimsIdentity(new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, "Test"),
+                new Claim(ClaimTypes.SerialNumber, "1")
+            });
+
+            InitializeMocks();
+
             InitializeTestEntities();
             mocks = new Mocks();
             controller = new CommentController(mocks.CommentService.Object, mocks.Logger.Object);
+            controller.ControllerContext = new ControllerContext(context.Object, new RouteData(), controller);
         }
         #endregion
 

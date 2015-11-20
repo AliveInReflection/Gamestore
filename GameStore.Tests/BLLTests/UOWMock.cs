@@ -117,6 +117,68 @@ namespace GameStore.Tests.BLLTests
                 .Callback((OrderDetails orderDetailse) => collections.OrderDetailses.Add(orderDetailse));
             mock.Setup(x => x.OrderDetailses.GetMany(It.IsAny<Expression<Func<OrderDetails, bool>>>()))
                 .Returns(collections.Orders[0].OrderDetailses);
+
+            //Users
+            mock.Setup(x => x.Users.Get(It.IsAny<Expression<Func<User, bool>>>()))
+                .Returns(collections.Users[0]);
+
+            mock.Setup(x => x.Users.Create(It.IsAny<User>()))
+                .Callback((User user) => collections.Users.Add(user));
+
+            mock.Setup(x => x.Users.GetAll()).Returns(collections.Users);
+            
+            mock.Setup(x => x.Users.GetMany(It.IsAny<Expression<Func<User, bool>>>()))
+                .Returns((Expression<Func<User, bool>> predicate) => collections.Users.Where(predicate.Compile()));
+           
+            mock.Setup(x => x.Users.Update(It.IsAny<User>())).Callback(
+                (User user) =>
+                {
+                    var entry = collections.Users.First(m => m.UserId.Equals(user.UserId));
+                    entry.UserName = user.UserName;
+                    entry.BanExpirationDate = user.BanExpirationDate;
+                    entry.Claims = user.Claims;
+                    entry.Roles = user.Roles;
+                    entry.Password = user.Password;
+                    entry.DateOfBirth = user.DateOfBirth;
+                    entry.Country = user.Country;
+                });
+
+            mock.Setup(x => x.Users.Delete(It.IsAny<int>())).Callback(
+                (int id) =>
+                {
+                    collections.Users.Remove(collections.Users.First(m => m.UserId.Equals(id)));
+                });
+
+
+            //Roles
+
+            mock.Setup(x => x.Roles.Get(It.IsAny<Expression<Func<Role, bool>>>()))
+                .Returns(collections.Roles[0]);
+
+            mock.Setup(x => x.Roles.Create(It.IsAny<Role>()))
+                .Callback((Role role) => collections.Roles.Add(role));
+
+            mock.Setup(x => x.Roles.GetAll()).Returns(collections.Roles);
+
+            mock.Setup(x => x.Roles.GetMany(It.IsAny<Expression<Func<Role, bool>>>()))
+                .Returns((Expression<Func<Role, bool>> predicate) => collections.Roles.Where(predicate.Compile()));
+
+            mock.Setup(x => x.Roles.Update(It.IsAny<Role>())).Callback(
+                (Role role) =>
+                {
+                    var entry = collections.Roles.First(m => m.RoleId.Equals(role.RoleId));
+                    entry.RoleName = role.RoleName;
+                    entry.Claims = role.Claims;
+                });
+
+            mock.Setup(x => x.Roles.Delete(It.IsAny<int>())).Callback(
+                (int id) =>
+                {
+                    collections.Roles.Remove(collections.Roles.First(m => m.RoleId.Equals(id)));
+                });
+
+            
+            
         }
     }
 }
