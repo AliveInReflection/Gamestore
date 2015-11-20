@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountChangePasswordTitle" xml:space="preserve">
+    <value>Change password</value>
+  </data>
   <data name="AccountCreateRoleTitle" xml:space="preserve">
     <value>Create role</value>
+  </data>
+  <data name="AccountDetailsTitle" xml:space="preserve">
+    <value>User details</value>
   </data>
   <data name="AccountIndexTitle" xml:space="preserve">
     <value>All users</value>
@@ -162,11 +168,17 @@
   <data name="LinkAddNew" xml:space="preserve">
     <value>Add new </value>
   </data>
+  <data name="LinkAnswer" xml:space="preserve">
+    <value>Answer</value>
+  </data>
   <data name="LinkBan" xml:space="preserve">
     <value>Ban</value>
   </data>
   <data name="LinkBuy" xml:space="preserve">
     <value>Buy</value>
+  </data>
+  <data name="LinkChangePassword" xml:space="preserve">
+    <value>Change password</value>
   </data>
   <data name="LinkComment" xml:space="preserve">
     <value>Comment</value>
@@ -203,6 +215,9 @@
   </data>
   <data name="LinkPay" xml:space="preserve">
     <value>Pay</value>
+  </data>
+  <data name="LinkQuote" xml:space="preserve">
+    <value>Quote</value>
   </data>
   <data name="LinkRegister" xml:space="preserve">
     <value>Register</value>

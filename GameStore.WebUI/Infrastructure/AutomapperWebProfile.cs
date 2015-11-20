@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading;
 using System.Web.Mvc;
 using AutoMapper;
+using GameStore.Domain.Entities;
 using GameStore.Infrastructure.DTO;
 using GameStore.WebUI.Infrastructure;
 using GameStore.WebUI.Models;
@@ -135,7 +136,11 @@ namespace GameStore.CL.AutomapperProfiles
                 .ForMember(m => m.Roles, opt => opt.MapFrom(m => m.Roles))
                 .ForMember(m => m.Claims, opt => opt.MapFrom(m => m.Claims));
 
+            Mapper.CreateMap<DisplayUserViewModel, UserDTO>();
+
             Mapper.CreateMap<ManageRoleViewModel, RoleDTO>();
+
+            Mapper.CreateMap<ChangePasswordViewModel, ChangePasswordDTO>();
 
         }
 

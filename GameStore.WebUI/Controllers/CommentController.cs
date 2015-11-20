@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Security.Claims;
 using System.Web.Mvc;
 using AutoMapper;
 using GameStore.BLL.Infrastructure;
@@ -9,6 +10,7 @@ using GameStore.Logger.Interfaces;
 using GameStore.WebUI.App_LocalResources.Localization;
 using GameStore.WebUI.Filters;
 using GameStore.WebUI.Models;
+using GameStore.WebUI.Models.Account;
 
 namespace GameStore.WebUI.Controllers
 {
@@ -33,6 +35,13 @@ namespace GameStore.WebUI.Controllers
                 Comments =
                     Mapper.Map<IEnumerable<CommentDTO>, IEnumerable<DisplayCommentViewModel>>(commentService.Get(gameKey)),
                 NewComment = new CreateCommentViewModel()
+                {
+                    User = new DisplayUserViewModel()
+                    {
+                        UserId = int.Parse((User.Identity as ClaimsIdentity).FindFirst(ClaimTypes.SerialNumber).Value),
+                        UserName = (User.Identity as ClaimsIdentity).FindFirst(ClaimTypes.Name).Value
+                    }
+                }
             };
 
             return View(viewModel);

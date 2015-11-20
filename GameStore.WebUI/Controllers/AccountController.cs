@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Web.Mvc;
 using AutoMapper;
 using GameStore.BLL.Infrastructure;
@@ -9,8 +10,10 @@ using GameStore.Infrastructure.DTO;
 using GameStore.Infrastructure.Enums;
 using GameStore.Logger.Interfaces;
 using GameStore.WebUI.App_LocalResources.Localization;
+using GameStore.WebUI.Filters;
 using GameStore.WebUI.Infrastructure;
 using GameStore.WebUI.Models.Account;
+using HttpContext = System.Web.HttpContext;
 
 namespace GameStore.WebUI.Controllers
 {
@@ -90,27 +93,68 @@ namespace GameStore.WebUI.Controllers
             return RedirectToAction("Index", "Game");
         }
 
-
-        public ActionResult Ban(string userName)
+        [Authorize]
+        public ActionResult Details()
         {
-            ViewBag.UserId = userName;
+            var userId = int.Parse((User as ClaimsPrincipal).FindFirst(ClaimTypes.SerialNumber).Value);
+            var user = Mapper.Map<DisplayUserViewModel>(userService.Get(userId));
+            return View(user);
+        }
+
+        [Authorize]
+        public ActionResult ChangePassword()
+        {
+            return View(new ChangePasswordViewModel());
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult ChangePassword(ChangePasswordViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            try
+            {
+                var modelDTO = Mapper.Map<ChangePasswordDTO>(model);
+                modelDTO.UserId = int.Parse((User as ClaimsPrincipal).FindFirst(ClaimTypes.SerialNumber).Value);
+                userService.ChangePassword(modelDTO);
+            }
+            catch (ValidationException e)
+            {
+                logger.Warn(e);
+                TempData["ErrorMessage"] = ValidationRes.ValidationError;
+            }
+            return RedirectToAction("Details");
+        }
+
+        [Claims(GameStoreClaim.Users, Permissions.Ban)]
+        public ActionResult Ban(int userId)
+        {
+            ViewBag.UserId = userId;
             var durations = BanDurationManager.GetKeys();
             return View("Ban", durations);
         }
 
         [HttpPost]
-        public ActionResult Ban(string userName, string duration)
+        [Claims(GameStoreClaim.Users, Permissions.Ban)]
+        public ActionResult Ban(int userId, string duration)
         {
-            userService.Ban(1, BanDurationManager.Get(duration));
+            userService.Ban(userId, BanDurationManager.Get(duration));
             return RedirectToAction("Index", "Game");
         }
 
+
+        [Claims(GameStoreClaim.Users, Permissions.Retreive)]
         public ActionResult Index()
         {
             var users = Mapper.Map<IEnumerable<UserDTO>, IEnumerable<DisplayUserViewModel>>(userService.GetAll());
             return View(users);
         }
 
+        [Claims(GameStoreClaim.Users, Permissions.Update)]
         public ActionResult Manage(int userId)
         {
             return View(new ManageUserViewModel()
@@ -121,6 +165,7 @@ namespace GameStore.WebUI.Controllers
         }
 
         [HttpPost]
+        [Claims(GameStoreClaim.Users, Permissions.Update)]
         public ActionResult Manage(ManageUserViewModel model)
         {
             if (!ModelState.IsValid)
@@ -141,6 +186,7 @@ namespace GameStore.WebUI.Controllers
         }
 
         [HttpPost]
+        [Claims(GameStoreClaim.Users, Permissions.Delete)]
         public ActionResult Delete(int userId)
         {
             try
@@ -159,18 +205,21 @@ namespace GameStore.WebUI.Controllers
 
 
         #region roles
+        [Claims(GameStoreClaim.Roles, Permissions.Retreive)]
         public ActionResult IndexRoles()
         {
             var roles = userService.GetAllRoles();
             return View(Mapper.Map<IEnumerable<RoleDTO>, IEnumerable<DisplayRoleViewModel>>(roles));
         }
-               
+
+        [Claims(GameStoreClaim.Roles, Permissions.Create)]
         public ActionResult CreateRole()
         {
             return View(new CreateRoleViewModel());
         }
 
         [HttpPost]
+        [Claims(GameStoreClaim.Roles, Permissions.Create)]
         public ActionResult CreateRole(CreateRoleViewModel model)
         {
             try
@@ -185,12 +234,14 @@ namespace GameStore.WebUI.Controllers
             return RedirectToAction("IndexRoles");
         }
 
+        [Claims(GameStoreClaim.Roles, Permissions.Update)]
         public ActionResult ManageRole(int roleId)
         {
             return View(Mapper.Map<RoleDTO, ManageRoleViewModel>(userService.GetRole(roleId)));
         }
 
         [HttpPost]
+        [Claims(GameStoreClaim.Roles, Permissions.Update)]
         public ActionResult ManageRole(ManageRoleViewModel model)
         {
             try
@@ -205,7 +256,6 @@ namespace GameStore.WebUI.Controllers
             return RedirectToAction("IndexRoles");
         }
 
-
         public ActionResult AddClaim(int number)
         {
             return PartialView(new ClaimViewModel()
@@ -217,6 +267,7 @@ namespace GameStore.WebUI.Controllers
         }
 
         [HttpPost]
+        [Claims(GameStoreClaim.Roles, Permissions.Delete)]
         public ActionResult DeleteRole(int roleId)
         {
             try

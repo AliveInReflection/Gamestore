@@ -37,10 +37,11 @@ namespace GameStore.Auth
 
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.SerialNumber, user.UserId.ToString())
+                new Claim(ClaimTypes.SerialNumber, user.UserId.ToString()),
+                new Claim(ClaimTypes.Name, user.UserName)
             };
 
-            ClaimsPrincipal principal = new GameStoreClaimsPrincipal(user.UserName, claims);
+            ClaimsPrincipal principal = new GameStoreClaimsPrincipal(claims);
 
             
 

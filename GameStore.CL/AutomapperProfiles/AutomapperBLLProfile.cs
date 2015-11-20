@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using GameStore.Domain.Entities;
 using GameStore.Infrastructure.DTO;
+using GameStore.Infrastructure.Enums;
 
 namespace GameStore.CL.AutomapperProfiles
 {
@@ -18,8 +19,8 @@ namespace GameStore.CL.AutomapperProfiles
             Mapper.CreateMap<Game, GameDTO>();
             Mapper.CreateMap<Genre, GenreDTO>();
             Mapper.CreateMap<Comment, CommentDTO>()
-                .ForMember(c => c.ParentCommentId, opt => opt.MapFrom(m => m.ParentComment.CommentId));
-
+                .ForMember(c => c.ParentCommentId, opt => opt.MapFrom(m => m.ParentComment.CommentId))
+                .ForMember(c => c.User, opt => opt.MapFrom(m => m.User ?? new User(){UserName = DefaultRoles.Guest}));                           
 
             Mapper.CreateMap<PlatformType, PlatformTypeDTO>();
             Mapper.CreateMap<Publisher, PublisherDTO>();

@@ -127,10 +127,10 @@
     <value>User name or password are wrong</value>
   </data>
   <data name="MaxLengthError" xml:space="preserve">
-    <value>Field is too long ({0} charecters max)</value>
+    <value>Field "{0}" is too long ({1} charecters max)</value>
   </data>
   <data name="MinLengthError" xml:space="preserve">
-    <value>Field is too short ({0} charecters min)</value>
+    <value>Field "{0}" is too short ({1} charecters min)</value>
   </data>
   <data name="NotEnoughUnitsInStock" xml:space="preserve">
     <value>Not enough units in stock</value>
@@ -145,7 +145,7 @@
     <value>Passwords do not match</value>
   </data>
   <data name="RangeError" xml:space="preserve">
-    <value>Field must be from {0} to {0}</value>
+    <value>Field must be from {0} to {1}</value>
   </data>
   <data name="ValidationError" xml:space="preserve">
     <value>Validation error</value>

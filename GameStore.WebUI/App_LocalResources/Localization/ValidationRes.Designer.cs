@@ -88,7 +88,7 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Field is too long ({0} charecters max).
+        ///   Looks up a localized string similar to Field &quot;{0}&quot; is too long ({1} charecters max).
         /// </summary>
         public static string MaxLengthError {
             get {
@@ -97,7 +97,7 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Field is too short ({0} charecters min).
+        ///   Looks up a localized string similar to Field &quot;{0}&quot; is too short ({1} charecters min).
         /// </summary>
         public static string MinLengthError {
             get {
@@ -142,7 +142,7 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Field must be from {0} to {0}.
+        ///   Looks up a localized string similar to Field must be from {0} to {1}.
         /// </summary>
         public static string RangeError {
             get {

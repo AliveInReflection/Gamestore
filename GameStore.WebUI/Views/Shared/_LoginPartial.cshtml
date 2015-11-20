@@ -4,7 +4,7 @@
 <p class="text-center">
     @if (User.Identity.IsAuthenticated)
     {
-        <span>@ViewsRes.Greet, @User.Identity.Name | @Html.ActionLink(ViewsRes.LinkLogout, "Logout", "Account")</span>
+        <span>@ViewsRes.Greet, @Html.ActionLink(User.Identity.Name,"Details", "Account") | @Html.ActionLink(ViewsRes.LinkLogout, "Logout", "Account")</span>
     }
     else
     {

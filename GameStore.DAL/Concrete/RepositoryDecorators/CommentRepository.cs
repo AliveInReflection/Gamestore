@@ -22,15 +22,10 @@ namespace GameStore.DAL.Concrete.Repositories
 
         public override void Create(Comment entity)
         {
-            var user = gameStore.Users.Get(m => m.UserName.Equals(entity.User.UserName));
-            if (user != null)
+            if (entity.User != null)
             {
-                entity.User = user;
-            }
-            else
-            {
-                entity.User.Password = entity.User.UserName;
-            }
+                entity.User = gameStore.Users.Get(m => m.UserName.Equals(entity.User.UserName));
+            } 
 
             var game = gameStore.Games.Get(m => m.GameKey.Equals(entity.Game.GameKey));
             if (game == null)

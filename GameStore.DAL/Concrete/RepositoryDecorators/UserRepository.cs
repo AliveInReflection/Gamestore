@@ -29,8 +29,6 @@ namespace GameStore.DAL.Concrete.Repositories
 
         public void Update(User entity)
         {
-            var roleIds = entity.Roles.Select(m => m.RoleId);
-            var roles = context.Roles.Where(m => roleIds.Contains(m.RoleId)).ToList();
             var entry = context.Users.First(m => m.UserId.Equals(entity.UserId));
 
             if (entity.BanExpirationDate != null)
@@ -43,7 +41,7 @@ namespace GameStore.DAL.Concrete.Repositories
                 entry.Password = entity.Password;
             }
 
-            if (entity.Claims.Any())
+            if (entity.Claims != null)
             {
                 var oldClaims = entry.Claims.ToList();
                 foreach (var userClaim in oldClaims)
@@ -52,17 +50,18 @@ namespace GameStore.DAL.Concrete.Repositories
                 }
                 entry.Claims = entity.Claims;
             }
-            if (entity.Roles.Any())
+
+            if (entity.Roles != null)
             {
+                var roleIds = entity.Roles.Select(m => m.RoleId);
+                var roles = context.Roles.Where(m => roleIds.Contains(m.RoleId)).ToList();
                 var oldRoles = entry.Roles.ToList();
                 foreach (var role in oldRoles)
                 {
                     entry.Roles.Remove(role);
                 }
                 entry.Roles = roles;
-            }
-           
-            entry.Roles = roles;           
+            }           
         }
 
         public void Delete(int id)

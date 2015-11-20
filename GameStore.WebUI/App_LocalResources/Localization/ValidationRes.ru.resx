@@ -127,10 +127,10 @@
     <value>Имя пользователя или пароль неверны</value>
   </data>
   <data name="MaxLengthError" xml:space="preserve">
-    <value>Длина поля превышает норму ({0} символов максимум)</value>
+    <value>Длина поля "{0}" превышает норму ({1} символов максимум)</value>
   </data>
   <data name="MinLengthError" xml:space="preserve">
-    <value>Длина поля слишком мала ({0} символов минимум)</value>
+    <value>Длина поля "{0}" слишком мала ({1} символов минимум)</value>
   </data>
   <data name="NotEnoughUnitsInStock" xml:space="preserve">
     <value>Недостаточно единиц на складе</value>
@@ -145,7 +145,7 @@
     <value>Пароли не совпадают</value>
   </data>
   <data name="RangeError" xml:space="preserve">
-    <value>Число должно быть от  {0} до {0}</value>
+    <value>Число должно быть от  {0} до {1}</value>
   </data>
   <data name="ValidationError" xml:space="preserve">
     <value>Ошибка валидации</value>

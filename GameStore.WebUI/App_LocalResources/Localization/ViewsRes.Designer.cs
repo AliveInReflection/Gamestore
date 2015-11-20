@@ -61,11 +61,29 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change password.
+        /// </summary>
+        public static string AccountChangePasswordTitle {
+            get {
+                return ResourceManager.GetString("AccountChangePasswordTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create role.
         /// </summary>
         public static string AccountCreateRoleTitle {
             get {
                 return ResourceManager.GetString("AccountCreateRoleTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User details.
+        /// </summary>
+        public static string AccountDetailsTitle {
+            get {
+                return ResourceManager.GetString("AccountDetailsTitle", resourceCulture);
             }
         }
         
@@ -196,6 +214,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Answer.
+        /// </summary>
+        public static string LinkAnswer {
+            get {
+                return ResourceManager.GetString("LinkAnswer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ban.
         /// </summary>
         public static string LinkBan {
@@ -210,6 +237,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         public static string LinkBuy {
             get {
                 return ResourceManager.GetString("LinkBuy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change password.
+        /// </summary>
+        public static string LinkChangePassword {
+            get {
+                return ResourceManager.GetString("LinkChangePassword", resourceCulture);
             }
         }
         
@@ -318,6 +354,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         public static string LinkPay {
             get {
                 return ResourceManager.GetString("LinkPay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quote.
+        /// </summary>
+        public static string LinkQuote {
+            get {
+                return ResourceManager.GetString("LinkQuote", resourceCulture);
             }
         }
         

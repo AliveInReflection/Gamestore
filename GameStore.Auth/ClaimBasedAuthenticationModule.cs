@@ -55,6 +55,7 @@ namespace GameStore.Auth
                 List<Claim> roleClaims = new List<Claim>();
                 foreach (var role in roles)
                 {
+                    roleClaims.Add(new Claim(ClaimTypes.Role, role.RoleName));
                     roleClaims.AddRange(Mapper.Map<IEnumerable<RoleClaim>,IEnumerable<Claim>>(role.Claims));
                 }
 
@@ -73,8 +74,11 @@ namespace GameStore.Auth
         private void AuthenticateAsGuest()
         {
             var claimEntries = database.Roles.Get(m => m.RoleName.Equals(DefaultRoles.Guest)).Claims;
-            var claims = Mapper.Map<IEnumerable<RoleClaim>, IEnumerable<Claim>>(claimEntries);
-            var principal = new ClaimsPrincipal(new ClaimsIdentity(claims.Concat(new[] { new Claim(ClaimTypes.Role, DefaultRoles.Guest, "GameStore") })));
+            var claims = Mapper.Map<IEnumerable<RoleClaim>, IEnumerable<Claim>>(claimEntries).ToList();
+            claims.Add(new Claim(ClaimTypes.Name, DefaultRoles.Guest, "GameStore"));
+            claims.Add(new Claim(ClaimTypes.Role, DefaultRoles.Guest, "GameStore"));
+            claims.Add(new Claim(ClaimTypes.SerialNumber, "0", "GameStore"));
+            var principal = new ClaimsPrincipal(new ClaimsIdentity(claims));
 
             HttpContext.Current.User = principal;
         }

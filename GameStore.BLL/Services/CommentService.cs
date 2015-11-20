@@ -47,7 +47,7 @@ namespace GameStore.BLL.Services
 
         public IEnumerable<CommentDTO> Get(string gameKey)
         {
-            var commentEntries = database.Games.Get(m => m.GameKey.Equals(gameKey)).Comments;
+            var commentEntries = database.Comments.GetMany(m => m.Game.GameKey.Equals(gameKey));
 
             var comments = Mapper.Map<IEnumerable<Comment>, IEnumerable<CommentDTO>>(commentEntries);
           

@@ -12,14 +12,5 @@ namespace GameStore.Auth
 
             AddIdentity(identity);
         }
-
-        public GameStoreClaimsPrincipal(string userName, List<Claim> claims)
-        {
-            claims.Add(new Claim(ClaimTypes.Name, userName));
-
-            var identity = new ClaimsIdentity(claims, "Game store auth", ClaimTypes.Name, ClaimTypes.Role);
-
-            AddIdentity(identity);
-        }
     }
 }

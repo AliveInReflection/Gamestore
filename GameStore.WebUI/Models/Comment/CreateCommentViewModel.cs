@@ -5,14 +5,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GameStore.WebUI.App_LocalResources.Localization;
+using GameStore.WebUI.Models.Account;
 
 namespace GameStore.WebUI.Models
 {
     public class CreateCommentViewModel
     {
-        [Required(ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "FieldIsRequired")]
-        [Display(ResourceType = typeof(ModelRes), Name = "CommentUserName")]
-        public string UserName { get; set; }
+        public DisplayUserViewModel User { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "FieldIsRequired")]
         [MinLength(5, ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "MinLengthError")]

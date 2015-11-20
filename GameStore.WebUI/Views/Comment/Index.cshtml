@@ -27,32 +27,35 @@
         @Html.ValidationSummary(true)
         @Html.HiddenFor(m => m.GameKey)
 
-        <fieldset>
+        <table class="table">
 
             @Html.HiddenFor(m => m.NewComment.ParentCommentId)
             @Html.HiddenFor(m => m.NewComment.QuoteId)
             @Html.Hidden("gameKey", ViewBag.GameKey as string)
+            @Html.HiddenFor(model => model.NewComment.User.UserId)
+            @Html.HiddenFor(model => model.NewComment.User.UserName)
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.NewComment.User.UserName)
+                </td>
+                <td class="editor-field">
+                    @Html.DisplayFor(model => model.NewComment.User.UserName)
+                </td>
+            </tr>
+            <tr>
+                <td class="editor-label">
+                    @Html.LabelFor(model => model.NewComment.Content)
+                </td>
+                <td class="editor-field">
+                    @Html.TextAreaFor(model => model.NewComment.Content)
+                    @Html.ValidationMessageFor(model => model.NewComment.Content)
+                </td>
+            </tr>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.NewComment.UserName)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.NewComment.UserName)
-                @Html.ValidationMessageFor(model => model.NewComment.UserName)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.NewComment.Content)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.NewComment.Content)
-                @Html.ValidationMessageFor(model => model.NewComment.Content)
-            </div>
-
-            <p>
-                <input type="submit" value="@ViewsRes.LinkComment" />
-            </p>
-        </fieldset>
+        </table>
+    <p class="text-center">
+        <input type="submit" value="@ViewsRes.LinkComment" class="link"/>
+    </p>
     }
 </div>
 
