@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Data;
+using System.Linq;
 using AutoMapper;
 using Gamestore.DAL.Context;
 using GameStore.Domain.Entities;
@@ -21,8 +22,7 @@ namespace GameStore.DAL.GameStore.Concrete
 
         public override void Update(Order entity)
         {
-            var entry = context.Orders.First(m => m.OrderId.Equals(entity.OrderId));
-            Mapper.Map(entity, entry);
+            context.Entry(entity).State  = EntityState.Modified;
         }
     }
 }

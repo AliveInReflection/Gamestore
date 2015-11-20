@@ -180,6 +180,9 @@
   <data name="LinkChangePassword" xml:space="preserve">
     <value>Change password</value>
   </data>
+  <data name="LinkChangeState" xml:space="preserve">
+    <value>Change state</value>
+  </data>
   <data name="LinkComment" xml:space="preserve">
     <value>Comment</value>
   </data>
@@ -243,8 +246,17 @@
   <data name="MenuOrderHistory" xml:space="preserve">
     <value>Orders history</value>
   </data>
+  <data name="MenuOrders" xml:space="preserve">
+    <value>Orders</value>
+  </data>
   <data name="MenuPublishers" xml:space="preserve">
     <value>Publishers</value>
+  </data>
+  <data name="MenuRoles" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="MenuUsers" xml:space="preserve">
+    <value>Users</value>
   </data>
   <data name="OrderDetailsTitle" xml:space="preserve">
     <value>Basket</value>

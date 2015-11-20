@@ -21,7 +21,7 @@ namespace GameStore.Tests.BLLTests
             Initialize();
         }
 
-        public List<Genre> Genres {get { return genres; }}
+        public List<Genre> Genres { get { return genres; } }
         public List<PlatformType> PlatformTypes { get { return platformTypes; } }
         public List<Game> Games { get { return games; } }
         public List<Comment> Comments { get { return comments; } }
@@ -138,11 +138,11 @@ namespace GameStore.Tests.BLLTests
             }
             };
 
-            genres[0].Games = new[] {games[0]};
+            genres[0].Games = new[] { games[0] };
             genres[1].Games = new[] { games[1] };
             genres[2].Games = new[] { games[2] };
 
-            platformTypes[0].Games = new[] {games[0]};
+            platformTypes[0].Games = new[] { games[0] };
             platformTypes[1].Games = new[] { games[1] };
             platformTypes[2].Games = new[] { games[2] };
 
@@ -156,7 +156,6 @@ namespace GameStore.Tests.BLLTests
                     Game = games[1],
                     GameId = games[1].GameId,
                     User = users[0],
-                    UserId = users[0].UserId
                 },
                 new Comment()
                 {
@@ -165,13 +164,17 @@ namespace GameStore.Tests.BLLTests
                     Game = games[1],
                     GameId = games[1].GameId,
                     User = users[1],
-                    UserId = users[1].UserId
                 },
-                new Comment() {CommentId = 3, Content = "Nice game", Game = games[0],
+                new Comment() {
+                    CommentId = 3, 
+                    Content = "Nice game", 
+                    Game = games[0],
                     GameId = games[0].GameId,
                     User = users[2],
-                    UserId = users[2].UserId}
+}
+
             };
+
             comments[1].ParentComment = comments[0];
 
             games[0].Comments = new List<Comment> { comments[2] };
@@ -189,7 +192,7 @@ namespace GameStore.Tests.BLLTests
                 new Order()
                 {
                     OrderId = 1,
-                    CustomerId = "1",
+                    Customer = users[0],
                     OrderState = OrderState.NotIssued,
                     Date = DateTime.UtcNow,
                     OrderDetailses = new List<OrderDetails>
@@ -203,7 +206,7 @@ namespace GameStore.Tests.BLLTests
             orderDetailses = new List<OrderDetails>(orders[0].OrderDetailses);
             orderDetailses[0].Order = orders[0];
             orderDetailses[1].Order = orders[0];
-            
+
         }
     }
 }

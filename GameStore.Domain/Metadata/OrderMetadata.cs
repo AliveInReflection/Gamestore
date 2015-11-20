@@ -15,9 +15,6 @@ namespace GameStore.Domain.Metadata
         public int OrderId { get; set; }
 
         [Required]
-        public string CustomerId { get; set; }
-
-        [Required]
         public DateTime Date { get; set; }
 
         [Required]

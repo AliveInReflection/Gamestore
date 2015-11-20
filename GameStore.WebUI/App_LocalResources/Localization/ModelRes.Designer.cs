@@ -61,6 +61,24 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Country.
+        /// </summary>
+        public static string AccountCountry {
+            get {
+                return ResourceManager.GetString("AccountCountry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date of birth.
+        /// </summary>
+        public static string AccountDateOfBirth {
+            get {
+                return ResourceManager.GetString("AccountDateOfBirth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New password.
         /// </summary>
         public static string AccountNewPassword {
@@ -498,6 +516,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         public static string OrderOrderState {
             get {
                 return ResourceManager.GetString("OrderOrderState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shipped date.
+        /// </summary>
+        public static string OrderShippedDate {
+            get {
+                return ResourceManager.GetString("OrderShippedDate", resourceCulture);
             }
         }
         

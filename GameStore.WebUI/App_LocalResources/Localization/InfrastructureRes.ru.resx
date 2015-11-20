@@ -132,6 +132,18 @@
   <data name="BanWeek" xml:space="preserve">
     <value>1 неделя</value>
   </data>
+  <data name="OrderStateNotIssued" xml:space="preserve">
+    <value>Не оформлен</value>
+  </data>
+  <data name="OrderStateNotPayed" xml:space="preserve">
+    <value>Не оплачен</value>
+  </data>
+  <data name="OrderStatePayed" xml:space="preserve">
+    <value>Оплачен</value>
+  </data>
+  <data name="OrderStateShipped" xml:space="preserve">
+    <value>Доставлен</value>
+  </data>
   <data name="PaymentBank" xml:space="preserve">
     <value>Банковский платеж</value>
   </data>

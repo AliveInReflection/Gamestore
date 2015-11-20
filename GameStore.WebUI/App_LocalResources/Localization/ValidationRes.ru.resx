@@ -132,6 +132,9 @@
   <data name="MinLengthError" xml:space="preserve">
     <value>Длина поля "{0}" слишком мала ({1} символов минимум)</value>
   </data>
+  <data name="NoAccess" xml:space="preserve">
+    <value>У вас нет доступа к этой странице</value>
+  </data>
   <data name="NotEnoughUnitsInStock" xml:space="preserve">
     <value>Недостаточно единиц на складе</value>
   </data>

@@ -55,7 +55,7 @@ namespace GameStore.Tests.BLLTests
         [TestMethod]
         public void Get_Current()
         {
-            var order = service.GetCurrent(testCustomerId);
+            var order = service.GetCurrent(collections.Users[0].UserId);
 
             Assert.IsNotNull(order);
         }
@@ -72,7 +72,7 @@ namespace GameStore.Tests.BLLTests
         public void Add_Existed_Item()
         {
             var expectedCount = collections.Orders[0].OrderDetailses.Count;
-            service.AddItem(testCustomerId, collections.Games[0].GameKey, 2);
+            service.AddItem(collections.Users[0].UserId, collections.Games[0].GameKey, 2);
 
             Assert.AreEqual(expectedCount, collections.Orders[0].OrderDetailses.Count);
         }
@@ -81,7 +81,7 @@ namespace GameStore.Tests.BLLTests
         public void Add_New_Item()
         {
             var expectedCount = collections.OrderDetailses.Count + 1;
-            service.AddItem(testCustomerId, collections.Games[1].GameKey, 2);
+            service.AddItem(collections.Users[0].UserId, collections.Games[1].GameKey, 2);
 
             Assert.AreEqual(expectedCount, collections.OrderDetailses.Count);
         }

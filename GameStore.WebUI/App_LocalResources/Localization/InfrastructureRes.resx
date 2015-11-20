@@ -132,6 +132,30 @@
   <data name="BanWeek" xml:space="preserve">
     <value>1 week</value>
   </data>
+  <data name="CountryGreatBritain" xml:space="preserve">
+    <value>GreatBritain</value>
+  </data>
+  <data name="CountryRussia" xml:space="preserve">
+    <value>Russia</value>
+  </data>
+  <data name="CountryUkraine" xml:space="preserve">
+    <value>Ukraine</value>
+  </data>
+  <data name="CountryUsa" xml:space="preserve">
+    <value>USA</value>
+  </data>
+  <data name="OrderStateNotIssued" xml:space="preserve">
+    <value>Not issued</value>
+  </data>
+  <data name="OrderStateNotPayed" xml:space="preserve">
+    <value>Not payed</value>
+  </data>
+  <data name="OrderStatePayed" xml:space="preserve">
+    <value>Payed</value>
+  </data>
+  <data name="OrderStateShipped" xml:space="preserve">
+    <value>Shipped</value>
+  </data>
   <data name="PaymentBank" xml:space="preserve">
     <value>Bank</value>
   </data>

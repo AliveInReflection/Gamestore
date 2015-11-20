@@ -8,6 +8,14 @@
 
 <h2>@ViewBag.Title</h2>
 
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+
 <table class="table">
     <tr>
         <td class="display-label">
@@ -15,6 +23,22 @@
         </td>
         <td class="display-field">
             @Html.DisplayFor(model => model.UserName)
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </td>
+        <td class="display-field">
+            @Model.DateOfBirth.ToShortDateString()
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.Country)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.Country)
         </td>
     </tr>
 

@@ -12,10 +12,14 @@ namespace GameStore.WebUI.Models.Order
         public int OrderId { get; set; }
 
         [Display(ResourceType = typeof(ModelRes), Name = "OrderOrderState")]
-        public OrderState OrderState { get; set; }
+        public string OrderState { get; set; }
 
         [Display(ResourceType = typeof(ModelRes), Name = "OrderDate")]
         public DateTime Date { get; set; }
+
+        [Display(ResourceType = typeof(ModelRes), Name = "OrderShippedDate")]
+        public DateTime ShippedDate { get; set; }
+
 
 
         [Display(ResourceType = typeof(ModelRes), Name = "OrderOrderDetails")]

@@ -27,7 +27,7 @@ namespace GameStore.BLL.Services
             return amount;
         }
 
-        public OrderDTO GetCurrent(string customerId)
+        public OrderDTO GetCurrent(int customerId)
         {
             var entry = GetCurrentOrder(customerId);
             return Mapper.Map<Order, OrderDTO>(entry);
@@ -68,7 +68,7 @@ namespace GameStore.BLL.Services
         }
 
 
-        public void AddItem(string customerId, string gameKey, short quantity)
+        public void AddItem(int customerId, string gameKey, short quantity)
         {
             var game = database.Games.Get(m => m.GameKey.Equals(gameKey));
 
@@ -113,14 +113,14 @@ namespace GameStore.BLL.Services
             return Mapper.Map<IEnumerable<Order>, IEnumerable<OrderDTO>>(orders);
         }
 
-        private Order GetCurrentOrder(string customerId)
+        private Order GetCurrentOrder(int customerId)
         {
             Order entry;                
-            if (!database.Orders.IsExists(m => m.CustomerId.Equals(customerId) && m.OrderState == OrderState.NotIssued)) 
+            if (!database.Orders.IsExists(m => m.Customer.UserId.Equals(customerId) && m.OrderState == OrderState.NotIssued)) 
             {
                 var newOrder = new Order()
                 {
-                    CustomerId = customerId,
+                    Customer = database.Users.Get(m => m.UserId.Equals(customerId)),
                     Date = DateTime.UtcNow,
                     OrderState = OrderState.NotIssued
                 };
@@ -130,9 +130,26 @@ namespace GameStore.BLL.Services
             }
             else
             {
-                entry = database.Orders.Get(m => m.CustomerId.Equals(customerId) && m.OrderState == OrderState.NotIssued);
+                entry = database.Orders.Get(m => m.Customer.UserId.Equals(customerId) && m.OrderState == OrderState.NotIssued);
             }
             return entry;
+        }
+
+
+        public void ChangeState(int orderId)
+        {
+            try
+            {
+                var entry = database.Orders.Get(m => m.OrderId.Equals(orderId));
+                entry.OrderState = OrderState.Shipped;
+                entry.ShippedDate = DateTime.UtcNow;
+                database.Orders.Update(entry);
+                database.Save();
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ValidationException(string.Format("Order not found({0})", orderId));
+            }
         }
     }
 }

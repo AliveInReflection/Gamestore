@@ -6,7 +6,15 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<h2>Login</h2>
+<h2>@ViewBag.Title</h2>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()

@@ -60,6 +60,14 @@ namespace GameStore.Auth
                 }
 
                 ticket.Identity.AddClaims(userClaims.Union(roleClaims).Distinct());
+                
+                if (user.BanExpirationDate > DateTime.UtcNow)
+                {
+                    var claim = ticket.Identity.FindFirst(m => m.Type == GameStoreClaim.Comments && 
+                                                          m.Value == Permissions.Create);
+                    ticket.Identity.TryRemoveClaim(claim);
+                }
+                
                 var principal = new ClaimsPrincipal(ticket.Identity);
 
                 HttpContext.Current.User = principal;

@@ -16,6 +16,12 @@ namespace GameStore.WebUI.Models.Account
         [Display(ResourceType = typeof(ModelRes), Name = "AccountUserName")]
         public string UserName { get; set; }
 
+        [Display(ResourceType = typeof(ModelRes), Name = "AccountDateOfBirth")]
+        public DateTime DateOfBirth { get; set; }
+
+        [Display(ResourceType = typeof(ModelRes), Name = "AccountCountry")]
+        public string Country { get; set; }
+
         [Display(ResourceType = typeof(ModelRes), Name = "AccountRoles")]
         public IEnumerable<string> Roles { get; set; }
     }

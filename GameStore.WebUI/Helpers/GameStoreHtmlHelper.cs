@@ -79,6 +79,68 @@ namespace GameStore.WebUI.Helpers
                 ul.InnerHtml += li.ToString();
             }
             return new MvcHtmlString(ul.ToString());
-        }        
+        }
+
+        public static MvcHtmlString BuildMenu(this HtmlHelper _this)
+        {
+            var url = new UrlHelper(HttpContext.Current.Request.RequestContext);
+            var identity = HttpContext.Current.User.Identity as ClaimsIdentity;
+
+            var paragraph = new TagBuilder("p");
+            paragraph.AddCssClass("text-center");
+
+            var gamesLink = new TagBuilder("a");
+            gamesLink.MergeAttribute("href", url.Action("Index", "Game"));
+            gamesLink.SetInnerText(ViewsRes.MenuGames);
+
+            paragraph.InnerHtml += gamesLink.ToString();
+
+            var publisherLink = new TagBuilder("a");
+            publisherLink.MergeAttribute("href", url.Action("Index", "Publisher"));
+            publisherLink.SetInnerText(" | " + ViewsRes.MenuPublishers);
+
+            paragraph.InnerHtml = paragraph.InnerHtml + publisherLink.ToString();
+
+            if (identity.HasClaim(GameStoreClaim.Users, Permissions.Retreive) ||
+                identity.HasClaim(GameStoreClaim.Users, Permissions.Crud))
+            {
+                var link = new TagBuilder("a");
+                link.MergeAttribute("href", url.Action("Index", "Account"));
+                link.SetInnerText(" | " + ViewsRes.MenuUsers);
+
+                paragraph.InnerHtml = paragraph.InnerHtml + link.ToString();
+            }
+
+            if (identity.HasClaim(GameStoreClaim.Roles, Permissions.Retreive) ||
+                identity.HasClaim(GameStoreClaim.Roles, Permissions.Crud))
+            {
+                var link = new TagBuilder("a");
+                link.MergeAttribute("href", url.Action("IndexRoles", "Account"));
+                link.SetInnerText(" | " + ViewsRes.MenuRoles);
+
+                paragraph.InnerHtml = paragraph.InnerHtml + link.ToString();
+            }
+
+            if (identity.HasClaim(GameStoreClaim.Orders, Permissions.Retreive) ||
+                identity.HasClaim(GameStoreClaim.Orders, Permissions.Crud))
+            {
+                var link = new TagBuilder("a");
+                link.MergeAttribute("href", url.Action("GetShortHistory", "Order"));
+                link.SetInnerText(" | " + ViewsRes.MenuOrders);
+
+                paragraph.InnerHtml = paragraph.InnerHtml + link.ToString();
+            }
+
+            if (identity.HasClaim(GameStoreClaim.Orders, Permissions.Retreive) ||
+                identity.HasClaim(GameStoreClaim.Orders, Permissions.Crud))
+            {
+                var link = new TagBuilder("a");
+                link.MergeAttribute("href", url.Action("History", "Order"));
+                link.SetInnerText(" | " + ViewsRes.MenuOrderHistory);
+
+                paragraph.InnerHtml = paragraph.InnerHtml + link.ToString();
+            }
+            return new MvcHtmlString(paragraph.ToString());
+        }
     }
 }

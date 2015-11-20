@@ -4,7 +4,7 @@
     {
         NotIssued = 1,
         NotPayed = 2,
-        CheckingOut = 3,
-        Complete = 4
+        Payed = 3,
+        Shipped = 4
     }
 }

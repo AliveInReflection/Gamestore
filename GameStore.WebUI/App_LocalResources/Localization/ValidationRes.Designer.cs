@@ -106,6 +106,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have no access to this page.
+        /// </summary>
+        public static string NoAccess {
+            get {
+                return ResourceManager.GetString("NoAccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not enough units in stock.
         /// </summary>
         public static string NotEnoughUnitsInStock {

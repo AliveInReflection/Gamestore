@@ -24,11 +24,7 @@
     @Html.Partial("_LoginPartial");
 </div>
 <div class="menu-line">
-    <p class="text-center">
-        @Html.ActionLink(ViewsRes.MenuGames, "Index", "Game") | 
-        @Html.ActionLink(ViewsRes.MenuPublishers, "Index", "Publisher") | 
-        @Html.ActionLink(ViewsRes.MenuOrderHistory, "History", "Order")
-    </p>
+    @Html.BuildMenu()
 </div>
 <div class="content-line">
     <div class="col-md-3 left-side-bar">

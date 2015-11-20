@@ -20,6 +20,13 @@ namespace GameStore.WebUI
                );
 
             routes.MapRoute(
+               name: "OrdersShortHistory",
+               url: "{lang}/orders",
+               defaults: new { controller = "Order", action = "GetShortHistory", lang = "en" },
+               constraints: new { lang = @"ru|en" }
+               );
+
+            routes.MapRoute(
                name: "OrdersHistory",
                url: "{lang}/orders/history",
                defaults: new { controller = "Order", action = "History", lang = "en" },

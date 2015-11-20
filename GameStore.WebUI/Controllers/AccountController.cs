@@ -35,7 +35,10 @@ namespace GameStore.WebUI.Controllers
         public ActionResult Register()
         {
             ViewBag.ReturnUrl = HttpContext.Request.UrlReferrer.AbsolutePath;
-            return View(new RegisterViewModel());
+            return View(new RegisterViewModel()
+            {
+                CountryItems = Mapper.Map<IEnumerable<SelectListItem>>(CountryManager.Items.Keys)
+            });
         }
 
         [HttpPost]

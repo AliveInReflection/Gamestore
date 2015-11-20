@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Web.Mvc;
 using AutoMapper;
 using GameStore.BLL.Infrastructure;
@@ -30,12 +31,13 @@ namespace GameStore.WebUI.Controllers
 
         [HttpPost]
         [Claims(GameStoreClaim.Orders, Permissions.Create)]
+        [Claims(ClaimTypes.Country, Countries.Ukraine)]
         public ActionResult Add(string gameKey, short quantity = 1)
         {
-            string sessionId = HttpContext.Session.SessionID;
+            int userId = int.Parse((User.Identity as ClaimsIdentity).FindFirst(ClaimTypes.SerialNumber).Value);
             try
             {
-                orderService.AddItem(sessionId, gameKey, quantity);
+                orderService.AddItem(userId, gameKey, quantity);
             }
             catch (ValidationException e)
             {
@@ -48,17 +50,19 @@ namespace GameStore.WebUI.Controllers
 
         [HttpGet]
         [Claims(GameStoreClaim.Orders, Permissions.Create)]
+        [Claims(ClaimTypes.Country, Countries.Ukraine)]
         public ActionResult Details()
         {
-            var basket = orderService.GetCurrent(HttpContext.Session.SessionID);
+            int userId = int.Parse((User.Identity as ClaimsIdentity).FindFirst(ClaimTypes.SerialNumber).Value);
+            var basket = orderService.GetCurrent(userId);
             return View(Mapper.Map<OrderDTO, OrderViewModel>(basket));
         }
 
         [Claims(GameStoreClaim.Orders, Permissions.Create)]
         public ActionResult Make()
         {
-            string sessionId = HttpContext.Session.SessionID;            
-            var basket = orderService.GetCurrent(sessionId);
+            int userId = int.Parse((User.Identity as ClaimsIdentity).FindFirst(ClaimTypes.SerialNumber).Value);            
+            var basket = orderService.GetCurrent(userId);
             var methods = PaymentModeManager.GetAll();
             
             var order = new MakeOrderViewModel();
@@ -72,10 +76,11 @@ namespace GameStore.WebUI.Controllers
 
         [HttpGet]
         [Claims(GameStoreClaim.Orders, Permissions.Create)]
+        [Claims(ClaimTypes.Country, Countries.Ukraine)]
         public ActionResult Pay(string paymentKey)
         {
-            string sessionId = HttpContext.Session.SessionID;
-            var basket = orderService.GetCurrent(sessionId);
+            int userId = int.Parse((User.Identity as ClaimsIdentity).FindFirst(ClaimTypes.SerialNumber).Value);
+            var basket = orderService.GetCurrent(userId);
             IPayment payment;
             try
             {                
@@ -102,8 +107,37 @@ namespace GameStore.WebUI.Controllers
                 default:
                     return HttpNotFound();
 
+            }            
+        }
+
+        public ActionResult GetShortHistory()
+        {
+            try
+            {
+                var orders = orderService.Get(DateTime.UtcNow - TimeSpan.FromDays(30), DateTime.UtcNow);
+                return View(Mapper.Map<IEnumerable<OrderDTO>, IEnumerable<DisplayOrderViewModel>>(orders));
             }
-            
+            catch (ValidationException e)
+            {
+                logger.Warn(e);
+                TempData["ErrorMessage"] = ValidationRes.ValidationError;
+            }
+            return RedirectToAction("Index", "Game");
+
+        }
+
+        public ActionResult ChangeState(int orderId)
+        {
+            try
+            {
+                orderService.ChangeState(orderId);
+            }
+            catch (ValidationException e)
+            {
+                logger.Warn(e);
+                TempData["ErrorMessage"] = ValidationRes.ValidationError;
+            }
+            return RedirectToAction("GetShortHistory");
         }
 
         [ActionName("History")]

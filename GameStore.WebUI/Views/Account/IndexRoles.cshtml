@@ -8,6 +8,14 @@
 
 <h2>@ViewBag.Title</h2>
 
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+
 <p>
     @Html.ActionLink(ViewsRes.LinkAddNew, "CreateRole")
 </p>

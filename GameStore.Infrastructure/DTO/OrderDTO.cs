@@ -10,6 +10,7 @@ namespace GameStore.Infrastructure.DTO
         public string CustomerId { get; set; }
         public OrderState OrderState { get; set; }
         public DateTime Date { get; set; }
+        public DateTime ShippedDate { get; set; }
 
         public IEnumerable<OrderDetailsDTO> OrderDetailses { get; set; }
     }

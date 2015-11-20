@@ -78,9 +78,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Static\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\GameStore.Infrastructure\GameStore.Infrastructure.csproj">
       <Project>{0a05fe70-f5b3-4772-92eb-657abf6e59bf}</Project>

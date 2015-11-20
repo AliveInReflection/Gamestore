@@ -180,6 +180,9 @@
   <data name="LinkChangePassword" xml:space="preserve">
     <value>Сменить пароль</value>
   </data>
+  <data name="LinkChangeState" xml:space="preserve">
+    <value>Изменить статус</value>
+  </data>
   <data name="LinkComment" xml:space="preserve">
     <value>Комментировать</value>
   </data>
@@ -243,8 +246,17 @@
   <data name="MenuOrderHistory" xml:space="preserve">
     <value>История заказов</value>
   </data>
+  <data name="MenuOrders" xml:space="preserve">
+    <value>Заказы</value>
+  </data>
   <data name="MenuPublishers" xml:space="preserve">
     <value>Издатели</value>
+  </data>
+  <data name="MenuRoles" xml:space="preserve">
+    <value>Роли</value>
+  </data>
+  <data name="MenuUsers" xml:space="preserve">
+    <value>Пользователи</value>
   </data>
   <data name="OrderDetailsTitle" xml:space="preserve">
     <value>Корзина</value>

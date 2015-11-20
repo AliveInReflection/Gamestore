@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using GameStore.Infrastructure.Enums;
+using GameStore.WebUI.App_LocalResources.Localization;
 using AuthorizationContext = System.Web.Mvc.AuthorizationContext;
 
 namespace GameStore.WebUI.Filters
@@ -26,6 +27,7 @@ namespace GameStore.WebUI.Filters
                 return;
             }
 
+            filterContext.Controller.TempData["ErrorMessage"] = ValidationRes.NoAccess;
             filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary()
                 {
                     {"action","Login"},

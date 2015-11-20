@@ -106,6 +106,78 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GreatBritain.
+        /// </summary>
+        public static string CountryGreatBritain {
+            get {
+                return ResourceManager.GetString("CountryGreatBritain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Russia.
+        /// </summary>
+        public static string CountryRussia {
+            get {
+                return ResourceManager.GetString("CountryRussia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ukraine.
+        /// </summary>
+        public static string CountryUkraine {
+            get {
+                return ResourceManager.GetString("CountryUkraine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to USA.
+        /// </summary>
+        public static string CountryUsa {
+            get {
+                return ResourceManager.GetString("CountryUsa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not issued.
+        /// </summary>
+        public static string OrderStateNotIssued {
+            get {
+                return ResourceManager.GetString("OrderStateNotIssued", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not payed.
+        /// </summary>
+        public static string OrderStateNotPayed {
+            get {
+                return ResourceManager.GetString("OrderStateNotPayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payed.
+        /// </summary>
+        public static string OrderStatePayed {
+            get {
+                return ResourceManager.GetString("OrderStatePayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shipped.
+        /// </summary>
+        public static string OrderStateShipped {
+            get {
+                return ResourceManager.GetString("OrderStateShipped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bank.
         /// </summary>
         public static string PaymentBank {

@@ -132,6 +132,9 @@
   <data name="MinLengthError" xml:space="preserve">
     <value>Field "{0}" is too short ({1} charecters min)</value>
   </data>
+  <data name="NoAccess" xml:space="preserve">
+    <value>You have no access to this page</value>
+  </data>
   <data name="NotEnoughUnitsInStock" xml:space="preserve">
     <value>Not enough units in stock</value>
   </data>

@@ -78,8 +78,8 @@ namespace GameStore.CL.AutomapperProfiles
             Mapper.CreateMap<NorthwindOrder, GameStoreOrder>()
                 .ForMember(m => m.OrderId, opt => opt.MapFrom(m => KeyManager.Encode(m.OrderID, DatabaseType.Northwind)))
                 .ForMember(m => m.Date, opt => opt.MapFrom(m => m.OrderDate))
-                .ForMember(m => m.OrderState, opt => opt.MapFrom(m => OrderState.Complete))
-                .ForMember(m => m.CustomerId, opt => opt.MapFrom(m => m.CustomerID))
+                .ForMember(m => m.OrderState, opt => opt.MapFrom(m => OrderState.Shipped))
+                .ForMember(m => m.Customer, opt => opt.MapFrom(m => new User(){UserId = 0}))
                 .ForMember(m => m.OrderDetailses, opt => opt.MapFrom(m => m.Order_Details));
 
 

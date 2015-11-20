@@ -202,6 +202,7 @@
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\PublisherController.cs" />
+    <Compile Include="Filters\AgeClaimAttribute.cs" />
     <Compile Include="Filters\ClaimAttribute.cs" />
     <Compile Include="Filters\ErrorLoggingAttribute.cs" />
     <Compile Include="Filters\IPAddressLoggingAttribute.cs" />
@@ -214,7 +215,9 @@
     <Compile Include="Helpers\PaginationHelper.cs" />
     <Compile Include="Infrastructure\AutomapperWebProfile.cs" />
     <Compile Include="Infrastructure\BanDurationManager.cs" />
+    <Compile Include="Infrastructure\CountryManager.cs" />
     <Compile Include="Infrastructure\GameSortingModeManager.cs" />
+    <Compile Include="Infrastructure\OrderStateManager.cs" />
     <Compile Include="Infrastructure\PagingManager.cs" />
     <Compile Include="Infrastructure\PaymentModeManager.cs" />
     <Compile Include="Infrastructure\GamePublishingDateFilteringManager.cs" />
@@ -375,6 +378,7 @@
     <Content Include="Views\Account\ManageRole.cshtml" />
     <Content Include="Views\Account\Details.cshtml" />
     <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Order\GetShortHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstract\" />

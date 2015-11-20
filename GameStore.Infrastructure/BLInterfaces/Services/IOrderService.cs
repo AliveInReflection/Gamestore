@@ -16,14 +16,14 @@ namespace GameStore.Infrastructure.BLInterfaces
         /// <param name="customerId">customer id</param>
         /// <returns>Order</returns>
         /// <exception>ValidationException</exception>
-        OrderDTO GetCurrent(string customerId);
+        OrderDTO GetCurrent(int customerId);
 
         /// <summary>Add new item to basket</summary>
         /// <param name="customerId">customer id</param>
         /// <param name="gameId">product id</param>
         /// <param name="quantity">quantity of selected product(1 by default)</param>
         /// <exception>ValidationException</exception>
-        void AddItem(string customerId, string gameId, short quantity);
+        void AddItem(int customerId, string gameId, short quantity);
 
         /// <summary>Changes status of specified order to not payed</summary>
         /// <param name="orderId">order id</param>
@@ -36,5 +36,7 @@ namespace GameStore.Infrastructure.BLInterfaces
         /// <param name="dateTo">Date to</param>
         /// <exception>ValidationException</exception>
         IEnumerable<OrderDTO> Get(DateTime dateFrom, DateTime dateTo);
+
+        void ChangeState(int orderId);
     }
 }

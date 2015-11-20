@@ -250,6 +250,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change state.
+        /// </summary>
+        public static string LinkChangeState {
+            get {
+                return ResourceManager.GetString("LinkChangeState", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comment.
         /// </summary>
         public static string LinkComment {
@@ -439,11 +448,38 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Orders.
+        /// </summary>
+        public static string MenuOrders {
+            get {
+                return ResourceManager.GetString("MenuOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Publishers.
         /// </summary>
         public static string MenuPublishers {
             get {
                 return ResourceManager.GetString("MenuPublishers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roles.
+        /// </summary>
+        public static string MenuRoles {
+            get {
+                return ResourceManager.GetString("MenuRoles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Users.
+        /// </summary>
+        public static string MenuUsers {
+            get {
+                return ResourceManager.GetString("MenuUsers", resourceCulture);
             }
         }
         

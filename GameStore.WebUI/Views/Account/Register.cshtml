@@ -26,6 +26,24 @@
         </tr>
         <tr>
             <td class="editor-label">
+                @Html.LabelFor(model => model.DateOfBirth)
+            </td>
+            <td class="editor-field">
+                @Html.TextBoxFor(model => model.DateOfBirth,new{type = "date"})
+                @Html.ValidationMessageFor(model => model.DateOfBirth)
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label">
+                @Html.LabelFor(model => model.Country)
+            </td>
+            <td class="editor-field">
+                @Html.DropDownListFor(model => model.Country, Model.CountryItems)
+                @Html.ValidationMessageFor(model => model.UserName)
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label">
                 @Html.LabelFor(model => model.Password)
             </td>
             <td class="editor-field">

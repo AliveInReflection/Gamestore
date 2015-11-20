@@ -59,8 +59,8 @@ namespace GameStore.Tests.WebTests
             mockPublisher.Setup(x => x.Get(It.IsAny<int>())).Returns(new PublisherDTO());
             mockPublisher.Setup(x => x.Create(It.IsAny<PublisherDTO>()));
 
-            mockOrder.Setup(x => x.AddItem(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<short>()));
-            mockOrder.Setup(x => x.GetCurrent(It.IsAny<string>())).Returns(new OrderDTO());
+            mockOrder.Setup(x => x.AddItem(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<short>()));
+            mockOrder.Setup(x => x.GetCurrent(It.IsAny<int>())).Returns(new OrderDTO());
             mockOrder.Setup(x => x.CalculateAmount(It.IsAny<int>())).Returns(256);
             mockOrder.Setup(x => x.Get(It.IsAny<DateTime>(), It.IsAny<DateTime>())).Returns(new List<OrderDTO>());
 

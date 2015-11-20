@@ -27,6 +27,7 @@ namespace GameStore.WebUI.Controllers
 
         [Claims(GameStoreClaim.Comments, Permissions.Retreive)]
         [Claims(GameStoreClaim.Comments, Permissions.Create)]
+        [AgeClaim(21)]
         public ActionResult Index(string gameKey)
         {
             var viewModel = new CommentViewModel()
@@ -50,6 +51,7 @@ namespace GameStore.WebUI.Controllers
         [HttpPost]
         [Claims(GameStoreClaim.Comments, Permissions.Retreive)]
         [Claims(GameStoreClaim.Comments, Permissions.Create)]
+        [AgeClaim(21)]
         public ActionResult Index(CommentViewModel comment)
         {
             if (!ModelState.IsValid)

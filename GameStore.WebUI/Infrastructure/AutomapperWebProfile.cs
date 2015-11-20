@@ -44,13 +44,15 @@ namespace GameStore.CL.AutomapperProfiles
             Mapper.CreateMap<OrderDTO, OrderViewModel>();
             Mapper.CreateMap<OrderDetailsDTO, OrderDetailsViewModel>();
 
-            Mapper.CreateMap<OrderDTO, DisplayOrderViewModel>();
+            Mapper.CreateMap<OrderDTO, DisplayOrderViewModel>()
+                .ForMember(m => m.OrderState, opt => opt.MapFrom(m => OrderStateManager.Items[m.OrderState]));
 
 
             
 
             Mapper.CreateMap<UserDTO, DisplayUserViewModel>()
-                .ForMember(m => m.Roles, opt => opt.MapFrom(m => m.Roles.Select(x => x.RoleName)));
+                .ForMember(m => m.Roles, opt => opt.MapFrom(m => m.Roles.Select(x => x.RoleName)))
+                .ForMember(m => m.Country, opt => opt.MapFrom(m => CountryManager.Items.First(x => x.Value.Equals(m.Country)).Key));
 
             Mapper.CreateMap<RoleDTO, DisplayRoleViewModel>();
 
@@ -123,7 +125,8 @@ namespace GameStore.CL.AutomapperProfiles
 
             Mapper.CreateMap<RegisterViewModel, UserDTO>()
                 .ForMember(m => m.UserName, opt => opt.MapFrom(m => m.UserName))
-                .ForMember(m => m.Password, opt => opt.MapFrom(m => m.Password));
+                .ForMember(m => m.Password, opt => opt.MapFrom(m => m.Password))
+                .ForMember(m => m.Country, opt => opt.MapFrom(m => CountryManager.Items[m.Country]));
 
             Mapper.CreateMap<CreateRoleViewModel, RoleDTO>();
             Mapper.CreateMap<ClaimViewModel, Claim>()

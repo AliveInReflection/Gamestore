@@ -10,12 +10,12 @@ namespace GameStore.Domain.Entities
     public partial class Order : BaseEntity
     {
         public int OrderId { get; set; }
-        public string CustomerId { get; set; }
         public DateTime Date { get; set; }
+        public DateTime? ShippedDate { get; set; }
         public OrderState OrderState { get; set; }
 
 
-        
+        public virtual User Customer { get; set; }
         public virtual ICollection<OrderDetails> OrderDetailses { get; set; }
     }   
 }

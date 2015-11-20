@@ -129,7 +129,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Order_Add_Get_Exception_Error_Message_Is_Not_Null()
         {
-            mocks.OrderService.Setup(x => x.AddItem(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<short>())).Throws<ValidationException>();
+            mocks.OrderService.Setup(x => x.AddItem(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<short>())).Throws<ValidationException>();
 
             controller.Add("gameKey", 1);
 

@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameStore.Infrastructure.Enums;
 
 namespace GameStore.Domain.Metadata
 {
@@ -22,5 +23,11 @@ namespace GameStore.Domain.Metadata
         [Required]
         [MaxLength(100)]
         public string Password { get; set; }
+
+        [Required]
+        public DateTime DateOfBirth { get; set; }
+
+        [Required]
+        public string Country { get; set; }
     }
 }

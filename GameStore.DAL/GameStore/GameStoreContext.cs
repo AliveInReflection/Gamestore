@@ -217,14 +217,14 @@ namespace Gamestore.DAL.Context
                 }
             });
 
-            var admin = db.Users.Add(new User() { UserName = "Administrator", Password = "qwerty", Roles = new[] { adminRole } });
-            var manager = db.Users.Add(new User() { UserName = "Manager", Password = "qwerty", Roles = new[] { managerRole } });
-            var moderator = db.Users.Add(new User() { UserName = "Moderator", Password = "qwerty", Roles = new[] { moderatorRole } });
+            var admin = db.Users.Add(new User() { UserName = "Administrator", DateOfBirth = new DateTime(1990, 1, 12), Country = Countries.Ukraine, Password = "qwerty", Roles = new[] { adminRole } });
+            var manager = db.Users.Add(new User() { UserName = "Manager", DateOfBirth = new DateTime(1991, 3, 23), Country = Countries.Ukraine, Password = "qwerty", Roles = new[] { managerRole } });
+            var moderator = db.Users.Add(new User() { UserName = "Moderator", DateOfBirth = new DateTime(1992, 8, 30), Country = Countries.Ukraine, Password = "qwerty", Roles = new[] { moderatorRole } });
 
 
-            var user1 = db.Users.Add(new User() { UserName = "Ghost", Password = "qwerty", Roles = new[] { userRole } });
-            var user2 = db.Users.Add(new User() { UserName = "Shooter", Password = "qwerty", Roles = new[] { userRole } });
-            var user3 = db.Users.Add(new User() { UserName = "Sarah Kerrigan", Password = "qwerty", Roles = new[] { userRole } });
+            var user1 = db.Users.Add(new User() { UserName = "Ghost", DateOfBirth = new DateTime(1993,12,17), Country = Countries.Ukraine, Password = "qwerty", Roles = new[] { userRole } });
+            var user2 = db.Users.Add(new User() { UserName = "Shooter", DateOfBirth = new DateTime(1992, 8, 11), Country = Countries.Ukraine, Password = "qwerty", Roles = new[] { userRole } });
+            var user3 = db.Users.Add(new User() { UserName = "Sarah Kerrigan", DateOfBirth = new DateTime(1991, 4, 1), Country = Countries.Ukraine, Password = "qwerty", Roles = new[] { userRole } });
 
             var ghostComment = new Comment() { User = user2, Content = "Is it miltiplayer only?", GameId = 7 };
             db.Comments.Add(ghostComment);
@@ -235,7 +235,7 @@ namespace Gamestore.DAL.Context
             db.Orders.Add(new Order()
             {
                 OrderId = 1,
-                CustomerId = "1",
+                Customer = user1,
                 OrderState = OrderState.NotIssued,
                 Date = DateTime.UtcNow,
                 OrderDetailses = new List<OrderDetails>
