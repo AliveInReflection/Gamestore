@@ -502,6 +502,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Other.
+        /// </summary>
+        public static string Other {
+            get {
+                return ResourceManager.GetString("Other", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Platform type.
         /// </summary>
         public static string PlatformTypeName {
@@ -543,6 +552,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         public static string PublisherHomePage {
             get {
                 return ResourceManager.GetString("PublisherHomePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown.
+        /// </summary>
+        public static string Unknown {
+            get {
+                return ResourceManager.GetString("Unknown", resourceCulture);
             }
         }
     }

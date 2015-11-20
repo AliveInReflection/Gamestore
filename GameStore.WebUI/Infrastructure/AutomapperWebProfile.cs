@@ -1,10 +1,12 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading;
 using System.Web.Mvc;
 using AutoMapper;
 using GameStore.Domain.Entities;
 using GameStore.Infrastructure.DTO;
+using GameStore.WebUI.App_LocalResources.Localization;
 using GameStore.WebUI.Infrastructure;
 using GameStore.WebUI.Models;
 using GameStore.WebUI.Models.Account;
@@ -17,7 +19,10 @@ namespace GameStore.CL.AutomapperProfiles
         protected override void Configure()
         {
             Mapper.CreateMap<GameDTO, DisplayGameViewModel>()
-                .ForMember(g => g.Description, opt => opt.ResolveUsing(ResolveCulture));
+                .ForMember(g => g.Description, opt => opt.ResolveUsing(ResolveCulture))
+                .ForMember(g => g.Publisher, opt => opt.MapFrom(m => m.Publisher ?? new PublisherDTO() { CompanyName = ModelRes.Unknown }))
+                .ForMember(g => g.Genres, opt => opt.MapFrom(m => m.Genres.Any() ? m.Genres : new[]{new GenreDTO(){GenreName = ModelRes.Other}}))
+                .ForMember(g => g.PlatformTypes, opt => opt.MapFrom(m => m.PlatformTypes.Any() ? m.PlatformTypes : new[]{new PlatformTypeDTO() {PlatformTypeName = ModelRes.Other}}));
 
 
             Mapper.CreateMap<GameDTO, UpdateGameViewModel>();
@@ -153,6 +158,7 @@ namespace GameStore.CL.AutomapperProfiles
             }
             return game.Description;
         }
+
 
         public string ResolveCulture(GenreDTO genre)
         {

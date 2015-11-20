@@ -264,6 +264,9 @@
   <data name="OrderOrderState" xml:space="preserve">
     <value>Order state</value>
   </data>
+  <data name="Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
   <data name="PlatformTypeName" xml:space="preserve">
     <value>Platform type</value>
   </data>
@@ -278,5 +281,8 @@
   </data>
   <data name="PublisherHomePage" xml:space="preserve">
     <value>Home page</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Unknown</value>
   </data>
 </root>

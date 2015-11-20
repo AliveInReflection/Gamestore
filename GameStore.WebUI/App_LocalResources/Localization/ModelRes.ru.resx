@@ -264,6 +264,9 @@
   <data name="OrderOrderState" xml:space="preserve">
     <value>Состояние заказа</value>
   </data>
+  <data name="Other" xml:space="preserve">
+    <value>Другое</value>
+  </data>
   <data name="PlatformTypeName" xml:space="preserve">
     <value>Платформа</value>
   </data>
@@ -278,5 +281,8 @@
   </data>
   <data name="PublisherHomePage" xml:space="preserve">
     <value>Домашняя страница</value>
+  </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Неизвестно</value>
   </data>
 </root>

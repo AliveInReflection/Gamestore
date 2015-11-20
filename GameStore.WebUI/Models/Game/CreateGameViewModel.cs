@@ -52,12 +52,10 @@ namespace GameStore.WebUI.Models
         [Display(ResourceType = typeof(ModelRes), Name = "GameReceiptDate")]
         public DateTime ReceiptDate { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "FieldIsRequired")]
         [Display(ResourceType = typeof(ModelRes), Name = "GamePublisher")]
         public int PublisherId { get; set; }
         public IEnumerable<SelectListItem> Publishers { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof(ValidationRes), ErrorMessageResourceName = "FieldIsRequired")]
         [Display(ResourceType = typeof(ModelRes), Name = "GameGenres")]
         public IEnumerable<int> GenreIds { get; set; }
         public IEnumerable<SelectListItem> Genres { get; set; }
