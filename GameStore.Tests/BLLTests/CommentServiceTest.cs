@@ -6,6 +6,7 @@ using GameStore.BLL.Services;
 using GameStore.CL.AutomapperProfiles;
 using GameStore.Infrastructure.DTO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using GameStore.Tests.Mocks;
 
 namespace GameStore.Tests.BLLTests
 {

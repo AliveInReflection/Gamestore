@@ -14,13 +14,14 @@ using GameStore.WebUI.Controllers;
 using GameStore.WebUI.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using GameStore.Tests.Mocks;
 
 namespace GameStore.Tests.WebTests
 {
     [TestClass]
     public class CommentControllerTests
     {
-        private Mocks mocks;
+        private ServiceMocks mocks;
         private Mock<HttpContextBase> context;
         private Mock<HttpRequestBase> request;
 
@@ -70,7 +71,7 @@ namespace GameStore.Tests.WebTests
             InitializeMocks();
 
             InitializeTestEntities();
-            mocks = new Mocks();
+            mocks = new ServiceMocks();
             controller = new CommentController(mocks.CommentService.Object, mocks.Logger.Object);
             controller.ControllerContext = new ControllerContext(context.Object, new RouteData(), controller);
         }

@@ -10,6 +10,7 @@ using GameStore.BLL.Services;
 using GameStore.CL.AutomapperProfiles;
 using GameStore.Infrastructure.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using GameStore.Tests.Mocks;
 
 namespace GameStore.Tests.BLLTests
 {

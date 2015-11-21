@@ -11,13 +11,14 @@ using GameStore.CL.AutomapperProfiles;
 using GameStore.WebUI.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using GameStore.Tests.Mocks;
 
 namespace GameStore.Tests.WebTests
 {
     [TestClass]
     public class OrderControllerTests
     {
-        private Mocks mocks;
+        private ServiceMocks mocks;
         private Mock<HttpContextBase> context;
         private Mock<HttpRequestBase> request;       
 
@@ -56,7 +57,7 @@ namespace GameStore.Tests.WebTests
             });
 
             InitializeMocks();
-            mocks = new Mocks();
+            mocks = new ServiceMocks();
             controller = new OrderController(mocks.OrderService.Object, mocks.Logger.Object);
             controller.ControllerContext = new ControllerContext(context.Object, new RouteData(), controller);
         }

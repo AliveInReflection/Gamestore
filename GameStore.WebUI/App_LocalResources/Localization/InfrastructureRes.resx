@@ -156,14 +156,35 @@
   <data name="OrderStateShipped" xml:space="preserve">
     <value>Shipped</value>
   </data>
+  <data name="PaginationAll" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Pagination_10" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="Pagination_100" xml:space="preserve">
+    <value>100</value>
+  </data>
+  <data name="Pagination_20" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="Pagination_50" xml:space="preserve">
+    <value>50</value>
+  </data>
   <data name="PaymentBank" xml:space="preserve">
     <value>Bank</value>
   </data>
   <data name="PaymentBankDescription" xml:space="preserve">
     <value>Remote banking services</value>
   </data>
+  <data name="PaymentIbox" xml:space="preserve">
+    <value>IBox</value>
+  </data>
   <data name="PaymentIboxDescription" xml:space="preserve">
     <value>The payment network of Ukraine</value>
+  </data>
+  <data name="PaymentVisa" xml:space="preserve">
+    <value>Visa</value>
   </data>
   <data name="PaymentVisaDescription" xml:space="preserve">
     <value>American multinational financial services</value>

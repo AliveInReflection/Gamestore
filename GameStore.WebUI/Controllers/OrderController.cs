@@ -63,7 +63,7 @@ namespace GameStore.WebUI.Controllers
         {
             int userId = int.Parse((User.Identity as ClaimsIdentity).FindFirst(ClaimTypes.SerialNumber).Value);            
             var basket = orderService.GetCurrent(userId);
-            var methods = PaymentModeManager.GetAll();
+            var methods = PaymentModeManager.Items.Values;
             
             var order = new MakeOrderViewModel();
             

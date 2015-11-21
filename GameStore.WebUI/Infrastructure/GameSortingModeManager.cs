@@ -1,55 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using GameStore.Infrastructure.Enums;
+using GameStore.WebUI.App_LocalResources.Localization;
 
 
 namespace GameStore.WebUI.Infrastructure
 {
     public static class GameSortingModeManager
     {
-        private static Dictionary<string, GamesSortingMode> sorters;
-        private static Dictionary<string, GamesSortingMode> sortersRu;
-
-        static GameSortingModeManager()
+        public static Dictionary<string, GamesSortingMode> Items
         {
-            sorters = new Dictionary<string, GamesSortingMode>();
-            sortersRu = new Dictionary<string, GamesSortingMode>();
-            Initialize();
-        }
-
-        public static GamesSortingMode Get(string key)
-        {
-            var culture = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
-            if (culture == "ru")
+            get
             {
-                return sortersRu[key];
+                return new Dictionary<string, GamesSortingMode>()
+                {
+                    {InfrastructureRes.SortingMostPopular, GamesSortingMode.MostPopular},
+                    {InfrastructureRes.SortingMostCommented, GamesSortingMode.MostCommented},
+                    {InfrastructureRes.SortingPriceAscending, GamesSortingMode.PriceAscending},
+                    {InfrastructureRes.SortingPriceDescending, GamesSortingMode.PriceDescending},
+                    {InfrastructureRes.SortingAdditionDate, GamesSortingMode.AdditionDate},
+                };
             }
-            return sorters[key];
-        }
-
-        public static IEnumerable<string> GetKeys()
-        {
-            var culture = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
-            if (culture == "ru")
-            {
-                return sortersRu.Keys;
-            }
-            return sorters.Keys;
-        }
-
-        public static void Initialize()
-        {
-            sorters.Add("Most popular", GamesSortingMode.MostPopular);
-            sorters.Add("Most commented", GamesSortingMode.MostCommented);
-            sorters.Add("Price ascending", GamesSortingMode.PriceAscending);
-            sorters.Add("Price descending", GamesSortingMode.PriceDescending);
-            sorters.Add("Addition date", GamesSortingMode.AdditionDate);
-
-            sortersRu.Add("Самые популярные", GamesSortingMode.MostPopular);
-            sortersRu.Add("Самые комментируемые", GamesSortingMode.MostCommented);
-            sortersRu.Add("Цена по возрастанию", GamesSortingMode.PriceAscending);
-            sortersRu.Add("Цена по убыванию", GamesSortingMode.PriceDescending);
-            sortersRu.Add("По дате выхода", GamesSortingMode.AdditionDate); 
         }
     }
 }

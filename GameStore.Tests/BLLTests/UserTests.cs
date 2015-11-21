@@ -11,6 +11,7 @@ using GameStore.CL.AutomapperProfiles;
 using GameStore.Infrastructure.DTO;
 using GameStore.Infrastructure.Enums;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using GameStore.Tests.Mocks;
 
 namespace GameStore.Tests.BLLTests
 {
@@ -27,6 +28,8 @@ namespace GameStore.Tests.BLLTests
         private RoleDTO testRole;
 
         private ChangePasswordDTO changePasswordModel;
+
+        private const string newUserName = "Test";
 
         #region initialize
 
@@ -76,7 +79,7 @@ namespace GameStore.Tests.BLLTests
         [TestMethod]
         public void User_Service_Is_Free()
         {
-            var result = service.IsFree(collections.Users[0].UserName);
+            var result = service.IsFree(newUserName);
 
             Assert.IsTrue(result);
         }

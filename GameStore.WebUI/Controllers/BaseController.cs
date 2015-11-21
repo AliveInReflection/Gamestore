@@ -21,7 +21,7 @@ namespace GameStore.WebUI.Controllers
                 Language = requestContext.RouteData.Values["lang"] as string;
                 var ci = new CultureInfo(Language);
                 Thread.CurrentThread.CurrentUICulture = ci;
-                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(ci.Name);
+                Thread.CurrentThread.CurrentCulture = ci;
             }
             base.Initialize(requestContext);
         }

@@ -137,7 +137,7 @@ namespace GameStore.WebUI.Controllers
         public ActionResult Ban(int userId)
         {
             ViewBag.UserId = userId;
-            var durations = BanDurationManager.GetKeys();
+            var durations = BanDurationManager.Items.Keys;
             return View("Ban", durations);
         }
 
@@ -145,7 +145,7 @@ namespace GameStore.WebUI.Controllers
         [Claims(GameStoreClaim.Users, Permissions.Ban)]
         public ActionResult Ban(int userId, string duration)
         {
-            userService.Ban(userId, BanDurationManager.Get(duration));
+            userService.Ban(userId, BanDurationManager.Items[duration]);
             return RedirectToAction("Index", "Game");
         }
 

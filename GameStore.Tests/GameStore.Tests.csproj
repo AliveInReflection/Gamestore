@@ -71,6 +71,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AuthTests\AuthenticationServiceTests.cs" />
     <Compile Include="BLLTests\CommentServiceTest.cs" />
     <Compile Include="BLLTests\FilterTests.cs" />
     <Compile Include="BLLTests\GameServiceTests.cs" />
@@ -79,15 +80,16 @@
     <Compile Include="BLLTests\PaymentTests.cs" />
     <Compile Include="BLLTests\PlatformTypeServiceTests.cs" />
     <Compile Include="BLLTests\PublisherServiceTests.cs" />
-    <Compile Include="BLLTests\TestCollections.cs" />
-    <Compile Include="BLLTests\UOWMock.cs" />
+    <Compile Include="Mocks\TestCollections.cs" />
+    <Compile Include="Mocks\UOWMock.cs" />
     <Compile Include="BLLTests\UserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebTests\AccountControllerTests.cs" />
     <Compile Include="WebTests\CommentControllerTests.cs" />
     <Compile Include="WebTests\GameControllerTests.cs" />
     <Compile Include="WebTests\HelperTests.cs" />
     <Compile Include="WebTests\InftastructureTests.cs" />
-    <Compile Include="WebTests\Mocks.cs" />
+    <Compile Include="Mocks\ServiceMocks.cs" />
     <Compile Include="WebTests\OrderControllerTests.cs" />
     <Compile Include="WebTests\PublisherControllerTests.cs" />
     <Compile Include="WebTests\ResourceTests.cs" />
@@ -99,6 +101,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GameStore.Auth\GameStore.Auth.csproj">
+      <Project>{37b12501-afbf-4962-a73f-306deecb1823}</Project>
+      <Name>GameStore.Auth</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GameStore.BLL\GameStore.BLL.csproj">
       <Project>{03cf56c3-71ea-40d1-9866-89a4b42f5e1e}</Project>
       <Name>GameStore.BLL</Name>

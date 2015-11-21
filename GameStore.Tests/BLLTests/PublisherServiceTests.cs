@@ -11,6 +11,7 @@ using GameStore.Domain.Entities;
 using GameStore.Infrastructure.DTO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using GameStore.Tests.Mocks;
 
 namespace GameStore.Tests.BLLTests
 {

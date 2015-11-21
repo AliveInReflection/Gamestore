@@ -7,6 +7,9 @@ using System.Web.Mvc;
 using GameStore.WebUI.Helpers;
 using GameStore.WebUI.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Web;
+using System.IO;
+using System.Security.Claims;
 
 namespace GameStore.Tests.WebTests
 {
@@ -16,6 +19,10 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Build_Comment_Tree_Returns_Mvc_String()
         {
+            var context = new HttpContext(new HttpRequest(null, "http://tempuri.org", null), new HttpResponse(new StringWriter()));
+            context.User = new ClaimsPrincipal();
+            HttpContext.Current = context;
+ 
             var result = GameStoreHtmlHelper.BuildCommentsTree(new HtmlHelper(new ViewContext(), new ViewPage()),
                 new List<DisplayCommentViewModel>(), "");
 

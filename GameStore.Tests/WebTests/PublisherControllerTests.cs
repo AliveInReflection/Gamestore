@@ -7,17 +7,20 @@ using GameStore.WebUI.Controllers;
 using GameStore.WebUI.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using GameStore.Tests.Mocks;
 
 namespace GameStore.Tests.WebTests
 {
     [TestClass]
     public class PublisherControllerTests
     {
-        private Mocks mocks;
+        private ServiceMocks mocks;
         private string testCompanyName = "Blizzard";
         private int testPublisherId = 1;
 
         private PublisherController controller;
+
+
 
         #region Initialize
 
@@ -37,7 +40,7 @@ namespace GameStore.Tests.WebTests
 
             InitializeTestEntities();
 
-            mocks = new Mocks();
+            mocks = new ServiceMocks();
             controller = new PublisherController(mocks.PublisherService.Object, mocks.Logger.Object);
         }
         #endregion

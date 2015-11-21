@@ -3,6 +3,7 @@ using GameStore.BLL.Services;
 using GameStore.CL.AutomapperProfiles;
 using GameStore.Domain.Entities;
 using GameStore.Infrastructure.Enums;
+using GameStore.Tests.Mocks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GameStore.Tests.BLLTests

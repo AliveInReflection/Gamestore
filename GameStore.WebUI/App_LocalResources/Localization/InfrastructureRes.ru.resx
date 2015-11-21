@@ -144,6 +144,9 @@
   <data name="OrderStateShipped" xml:space="preserve">
     <value>Доставлен</value>
   </data>
+  <data name="PaginationAll" xml:space="preserve">
+    <value>Все</value>
+  </data>
   <data name="PaymentBank" xml:space="preserve">
     <value>Банковский платеж</value>
   </data>
