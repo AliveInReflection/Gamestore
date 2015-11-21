@@ -78,7 +78,7 @@ namespace GameStore.Tests.Mocks
             mockUser.Setup(x => x.Create(It.IsAny<UserDTO>()));
             mockUser.Setup(x => x.Update(It.IsAny<UserDTO>()));
             mockUser.Setup(x => x.Delete(It.IsAny<int>()));
-            mockUser.Setup(x => x.Get(It.IsAny<int>())).Returns(new UserDTO());
+            mockUser.Setup(x => x.Get(It.IsAny<int>())).Returns(new UserDTO() { Country = "Ukraine", Roles = new[]{new RoleDTO()}});
             mockUser.Setup(x => x.Get(It.IsAny<string>())).Returns(new UserDTO());
             mockUser.Setup(x => x.GetAll()).Returns(new[]{new UserDTO()});
             mockUser.Setup(x => x.Ban(It.IsAny<int>(), It.IsAny<TimeSpan>()));
