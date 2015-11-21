@@ -37,6 +37,9 @@ namespace GameStore.Infrastructure.BLInterfaces
         /// <exception>ValidationException</exception>
         IEnumerable<OrderDTO> Get(DateTime dateFrom, DateTime dateTo);
 
+        /// <summary>Changes order state to shipped</summary>
+        /// <param name="orderId">Order id</param>
+        /// <exception>ValidationException</exception>
         void ChangeState(int orderId);
     }
 }
