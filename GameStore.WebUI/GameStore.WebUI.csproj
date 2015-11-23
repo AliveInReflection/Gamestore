@@ -155,6 +155,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiControllers\BaseApiController.cs" />
+    <Compile Include="ApiControllers\GamesController.cs" />
     <Compile Include="App_LocalResources\Localization\InfrastructureRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

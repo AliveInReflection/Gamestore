@@ -9,6 +9,15 @@ namespace GameStore.BLL.ContentPaginators
     {
         public IEnumerable<Game> GetItems(IEnumerable<Game> items, int pageNumber, int itemsPerPage)
         {
+            if (pageNumber == 0)
+            {
+                pageNumber = 1;
+            }
+
+            if (itemsPerPage == 0)
+            {
+                itemsPerPage = int.MaxValue;
+            }
             return items.Skip(itemsPerPage*(pageNumber - 1)).Take(itemsPerPage);
         }
     }

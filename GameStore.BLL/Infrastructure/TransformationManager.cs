@@ -20,17 +20,17 @@ namespace GameStore.BLL.Infrastructure
         {
             var pipeline = new GameFilterPipeline();
 
-            if (filteringMode.GenreIds.Any())
+            if (filteringMode.GenreIds != null && filteringMode.GenreIds.Any())
             {
                 pipeline.Add(new GameFilterByGenre(filteringMode.GenreIds));
             }
 
-            if (filteringMode.PlatformTypeIds.Any())
+            if (filteringMode.PlatformTypeIds != null && filteringMode.PlatformTypeIds.Any())
             {
                 pipeline.Add(new GameFilterByPlatformType(filteringMode.PlatformTypeIds));
             }
 
-            if (filteringMode.PublisherIds.Any())
+            if (filteringMode.PublisherIds != null && filteringMode.PublisherIds.Any())
             {
                 pipeline.Add(new GameFilterByPublisher(filteringMode.PublisherIds));
             }
