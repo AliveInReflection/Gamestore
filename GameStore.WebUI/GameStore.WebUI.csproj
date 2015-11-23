@@ -157,9 +157,12 @@
   <ItemGroup>
     <Compile Include="ApiControllers\BaseApiController.cs" />
     <Compile Include="ApiControllers\CommentsController.cs" />
+    <Compile Include="ApiControllers\GameGenresController.cs" />
     <Compile Include="ApiControllers\GamesController.cs" />
+    <Compile Include="ApiControllers\GenreGamesController.cs" />
     <Compile Include="ApiControllers\GenresController.cs" />
     <Compile Include="ApiControllers\OrdersController.cs" />
+    <Compile Include="ApiControllers\PublisherGamesController.cs" />
     <Compile Include="ApiControllers\PublishersController.cs" />
     <Compile Include="App_LocalResources\Localization\InfrastructureRes.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -210,6 +213,7 @@
     <Compile Include="Controllers\PublisherController.cs" />
     <Compile Include="Filters\AgeClaimAttribute.cs" />
     <Compile Include="Filters\ClaimAttribute.cs" />
+    <Compile Include="Filters\ClaimsApiAttribute.cs" />
     <Compile Include="Filters\ErrorLoggingAttribute.cs" />
     <Compile Include="Filters\IPAddressLoggingAttribute.cs" />
     <Compile Include="Filters\PerformanceLoggingAttribute.cs" />

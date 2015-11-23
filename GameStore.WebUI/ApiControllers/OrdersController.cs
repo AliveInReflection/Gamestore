@@ -8,7 +8,9 @@ using System.Web.Http;
 using AutoMapper;
 using GameStore.BLL.Infrastructure;
 using GameStore.Infrastructure.BLInterfaces;
+using GameStore.Infrastructure.Enums;
 using GameStore.Logger.Interfaces;
+using GameStore.WebUI.Filters;
 using GameStore.WebUI.Models.Order;
 
 namespace GameStore.WebUI.ApiControllers
@@ -25,6 +27,7 @@ namespace GameStore.WebUI.ApiControllers
         }
 
         // GET api/<controller>
+        [ClaimsApi(GameStoreClaim.Orders, Permissions.Create)]
         public HttpResponseMessage Get()
         {   
             int userId = int.Parse(CurrentUser.FindFirst(ClaimTypes.SerialNumber).Value);
@@ -33,6 +36,7 @@ namespace GameStore.WebUI.ApiControllers
         }
 
         // POST api/<controller>
+        [ClaimsApi(GameStoreClaim.Orders, Permissions.Create)]
         public HttpResponseMessage Post(int id)
         {
             try
@@ -50,6 +54,7 @@ namespace GameStore.WebUI.ApiControllers
         }
 
         // DELETE api/<controller>/5
+        [ClaimsApi(GameStoreClaim.Orders, Permissions.Create)]
         public HttpResponseMessage Delete(int id)
         {
             try

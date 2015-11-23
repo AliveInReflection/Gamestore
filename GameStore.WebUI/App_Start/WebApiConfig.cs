@@ -16,6 +16,24 @@ namespace GameStore.WebUI
             );
 
             config.Routes.MapHttpRoute(
+                name: "GameGenresApi",
+                routeTemplate: "api/games/{id}/genres",
+                defaults: new { controller = "GameGenres", id = RouteParameter.Optional }
+            );
+            config.Routes.MapHttpRoute(
+                name: "GenreGamesApi",
+                routeTemplate: "api/genres/{id}/games",
+                defaults: new { controller = "GenreGames", id = RouteParameter.Optional }
+            );
+
+
+            config.Routes.MapHttpRoute(
+                name: "PublisherGamesApi",
+                routeTemplate: "api/publisher/{id}/games",
+                defaults: new { controller = "PublisherGames", id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

@@ -8,7 +8,9 @@ using AutoMapper;
 using GameStore.BLL.Infrastructure;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
+using GameStore.Infrastructure.Enums;
 using GameStore.Logger.Interfaces;
+using GameStore.WebUI.Filters;
 using GameStore.WebUI.Models;
 
 namespace GameStore.WebUI.ApiControllers
@@ -26,6 +28,7 @@ namespace GameStore.WebUI.ApiControllers
 
 
         // GET api/<controller>
+        [ClaimsApi(GameStoreClaim.Comments, Permissions.Retreive)]
         public HttpResponseMessage Get([FromUri]int gameId)
         {
             var game = gameService.Get(gameId);
@@ -36,6 +39,7 @@ namespace GameStore.WebUI.ApiControllers
         }
 
         // GET api/<controller>
+        [ClaimsApi(GameStoreClaim.Comments, Permissions.Retreive)]
         public HttpResponseMessage Get([FromUri]int gameId, int id)
         {
             var comment = commentService.Get(id);
@@ -44,6 +48,7 @@ namespace GameStore.WebUI.ApiControllers
         }
 
         // POST api/<controller>
+        [ClaimsApi(GameStoreClaim.Comments, Permissions.Create)]
         public HttpResponseMessage Post(int gameId, [FromBody]CreateCommentViewModel model)
         {
             if (!ModelState.IsValid)
@@ -67,6 +72,7 @@ namespace GameStore.WebUI.ApiControllers
         }
 
         // PUT api/<controller>/5
+        [ClaimsApi(GameStoreClaim.Comments, Permissions.Update)]
         public HttpResponseMessage Put(int gameId, [FromBody]UpdateCommentViewModel model)
         {
             if (!ModelState.IsValid)
@@ -90,6 +96,7 @@ namespace GameStore.WebUI.ApiControllers
         }
 
         // DELETE api/<controller>/5
+        [ClaimsApi(GameStoreClaim.Comments, Permissions.Delete)]
         public HttpResponseMessage Delete(int gameId, int id)
         {
             try

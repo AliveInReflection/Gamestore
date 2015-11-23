@@ -8,7 +8,9 @@ using AutoMapper;
 using GameStore.BLL.Infrastructure;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
+using GameStore.Infrastructure.Enums;
 using GameStore.Logger.Interfaces;
+using GameStore.WebUI.Filters;
 using GameStore.WebUI.Models;
 
 namespace GameStore.WebUI.ApiControllers
@@ -23,6 +25,7 @@ namespace GameStore.WebUI.ApiControllers
         }
 
         // GET api/<controller>
+        [ClaimsApi(GameStoreClaim.Genres, Permissions.Retreive)]
         public HttpResponseMessage Get()
         {
             var genres = genreService.GetAll();
@@ -31,6 +34,7 @@ namespace GameStore.WebUI.ApiControllers
         }
 
         // GET api/<controller>/5
+        [ClaimsApi(GameStoreClaim.Genres, Permissions.Retreive)]
         public HttpResponseMessage Get(int id)
         {
             try
@@ -46,6 +50,7 @@ namespace GameStore.WebUI.ApiControllers
         }
 
         // POST api/<controller>
+        [ClaimsApi(GameStoreClaim.Genres, Permissions.Create)]
         public HttpResponseMessage Post([FromBody]CreateGenreViewModel model)
         {
             if (!ModelState.IsValid)
@@ -66,6 +71,7 @@ namespace GameStore.WebUI.ApiControllers
         }
 
         // PUT api/<controller>/5
+        [ClaimsApi(GameStoreClaim.Genres, Permissions.Update)]
         public HttpResponseMessage Put(int id, [FromBody]UpdateGenreViewModel model)
         {
             if (!ModelState.IsValid)
@@ -86,6 +92,7 @@ namespace GameStore.WebUI.ApiControllers
         }
 
         // DELETE api/<controller>/5
+        [ClaimsApi(GameStoreClaim.Genres, Permissions.Delete)]
         public HttpResponseMessage Delete(int id)
         {
             try
