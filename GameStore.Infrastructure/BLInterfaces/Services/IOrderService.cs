@@ -20,10 +20,18 @@ namespace GameStore.Infrastructure.BLInterfaces
 
         /// <summary>Add new item to basket</summary>
         /// <param name="customerId">customer id</param>
+        /// <param name="gameKey">product key</param>
+        /// <param name="quantity">quantity of selected product(1 by default)</param>
+        /// <exception>ValidationException</exception>
+        void AddItem(int customerId, string gameKey, short quantity);
+
+
+        /// <summary>Remove item from basket</summary>
+        /// <param name="customerId">customer id</param>
         /// <param name="gameId">product id</param>
         /// <param name="quantity">quantity of selected product(1 by default)</param>
         /// <exception>ValidationException</exception>
-        void AddItem(int customerId, string gameId, short quantity);
+        void RemoveItem(int customerId, int gameId, short quantity);
 
         /// <summary>Changes status of specified order to not payed</summary>
         /// <param name="orderId">order id</param>

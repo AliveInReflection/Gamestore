@@ -159,6 +159,7 @@
     <Compile Include="ApiControllers\CommentsController.cs" />
     <Compile Include="ApiControllers\GamesController.cs" />
     <Compile Include="ApiControllers\GenresController.cs" />
+    <Compile Include="ApiControllers\OrdersController.cs" />
     <Compile Include="ApiControllers\PublishersController.cs" />
     <Compile Include="App_LocalResources\Localization\InfrastructureRes.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -68,6 +68,7 @@ namespace GameStore.BLL.Services
         }
 
 
+
         public void AddItem(int customerId, string gameKey, short quantity)
         {
             var game = database.Games.Get(m => m.GameKey.Equals(gameKey));
@@ -99,6 +100,31 @@ namespace GameStore.BLL.Services
                 }
             }
             database.Save();
+        }
+
+        public void RemoveItem(int customerId, int gameId, short quantity)
+        {
+            var order = GetCurrentOrder(customerId);
+
+            try
+            {
+                var orderDetails = order.OrderDetailses.First(m => m.ProductId.Equals(gameId));
+
+                if (orderDetails.Quantity >= quantity)
+                {
+                    orderDetails.Quantity -= quantity;
+                    database.Save();
+                }
+                else
+                {
+                    throw new ValidationException("Quantity in order is less then received");
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ValidationException(string.Format("No products (Id: {0}) in the order(Id:{1})", gameId, order.OrderId));
+            }
+            
         }
 
 

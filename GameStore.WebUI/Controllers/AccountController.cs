@@ -86,7 +86,13 @@ namespace GameStore.WebUI.Controllers
                 ModelState.AddModelError("UserName", ValidationRes.LoginError);
                 return View(login);
             }
-            return Redirect(returnUrl);
+
+            if (returnUrl != null)
+            {
+                return Redirect(returnUrl);
+            }
+
+            return RedirectToAction("Index", "Game");
         }
 
         [Authorize]
