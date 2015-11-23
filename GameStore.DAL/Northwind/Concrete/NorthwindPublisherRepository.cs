@@ -27,7 +27,7 @@ namespace GameStore.DAL.Northwind.Concrete
 
         public Publisher Get(int id)
         {
-            var supplier = context.Suppliers.First(m => m.SupplierID.Equals(id));
+            var supplier = context.Suppliers.FirstOrDefault(m => m.SupplierID.Equals(id));
             return Mapper.Map<Supplier, Publisher>(supplier);
         }
 

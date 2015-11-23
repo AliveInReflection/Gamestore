@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
+using GameStore.BLL.Infrastructure;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
 using GameStore.Logger.Interfaces;
@@ -15,16 +16,10 @@ namespace GameStore.WebUI.ApiControllers
     public class GamesController : BaseApiController
     {
         private IGameService gameService;
-        private IGenreService genreService;
-        private IPlatformTypeService platformTypeService;
-        private IPublisherService publisherService;
 
-        public GamesController(IGameStoreLogger logger, IGameService gameService, IGenreService genreService, IPlatformTypeService platformTypeService, IPublisherService publisherService) : base(logger)
+        public GamesController(IGameStoreLogger logger, IGameService gameService) : base(logger)
         {
             this.gameService = gameService;
-            this.genreService = genreService;
-            this.platformTypeService = platformTypeService;
-            this.publisherService = publisherService;
         }
 
 
@@ -39,25 +34,73 @@ namespace GameStore.WebUI.ApiControllers
         // GET api/<controller>/5
         public HttpResponseMessage Get(int id)
         {
-            return Request.CreateResponse(HttpStatusCode.NotFound);
+            try
+            {
+                var game = gameService.Get(id);
+                var viewModel = Mapper.Map<DisplayGameViewModel>(game);
+                return Request.CreateResponse(HttpStatusCode.OK, viewModel);
+            }
+            catch (ValidationException e)
+            {
+                Logger.Warn(e);
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
         }
 
         // POST api/<controller>
-        public HttpResponseMessage Post([FromBody]string value)
+        public HttpResponseMessage Post([FromBody]CreateGameViewModel model)
         {
-            return Request.CreateResponse(HttpStatusCode.NotFound);
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+
+            try
+            {
+                gameService.Create(Mapper.Map<GameDTO>(model));
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+            catch (ValidationException e)
+            {
+                Logger.Warn(e);
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
         }
 
         // PUT api/<controller>/5
-        public HttpResponseMessage Put(int id, [FromBody]string value)
+        public HttpResponseMessage Put(int id, [FromBody]UpdateGameViewModel model)
         {
-            return Request.CreateResponse(HttpStatusCode.NotFound);
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+
+            try
+            {
+                gameService.Update(Mapper.Map<GameDTO>(model));
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (ValidationException e)
+            {
+                Logger.Warn(e);
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
         }
 
         // DELETE api/<controller>/5
         public HttpResponseMessage Delete(int id)
         {
-            return Request.CreateResponse(HttpStatusCode.NotFound);
+            try
+            {
+                gameService.Delete(id);
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (ValidationException e)
+            {
+                Logger.Warn(e);
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            
         }
 
 

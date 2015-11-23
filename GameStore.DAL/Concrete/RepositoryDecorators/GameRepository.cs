@@ -128,7 +128,10 @@ namespace GameStore.DAL.Concrete.Repositories
             if (publisher == null)
             {
                 publisher = northwind.Publishers.Get(KeyManager.Decode(entity.PublisherId));
-                publisher.Games.Clear();
+                if (publisher != null)
+                {
+                    publisher.Games.Clear();
+                }                
             }
 
             entity.PlatformTypes = platformTypes.ToList();

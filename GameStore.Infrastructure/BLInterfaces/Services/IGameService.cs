@@ -28,11 +28,17 @@ namespace GameStore.Infrastructure.BLInterfaces
         /// <exception>ValidationException</exception>
         GameDTO Get(string gameKey);
 
+        /// <summary>Returns game from database with specified game id</summary>
+        /// <param name="gameId">Game id</param>
+        /// <returns>Game</returns>
+        /// <exception>ValidationException</exception>
+        GameDTO Get(int gameId);
+
         /// <summary>Returns list of games from database which masked by genre with specified genre id</summary>
         /// <param name="genreId">Genre id</param>
         /// <returns>List of games</returns>
         /// <exception>ValidationException</exception>
-        IEnumerable<GameDTO> Get(int genreId);
+        IEnumerable<GameDTO> GetByGenre(int genreId);
 
         /// <summary>Returns list of games from database which masked by platform types which ids listed in param</summary>
         /// <param name="platfotmTypeIds">List of platform type ids</param>

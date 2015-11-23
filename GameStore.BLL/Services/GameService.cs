@@ -76,6 +76,22 @@ namespace GameStore.BLL.Services
             return game;
         }
 
+        public GameDTO Get(int gameId)
+        {
+            try
+            {
+                var entry = database.Games.Get(m => m.GameId.Equals(gameId));
+                Mapper.CreateMap<Game, GameDTO>();
+                var game = Mapper.Map<Game, GameDTO>(entry);
+                return game;
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new ValidationException(string.Format("Game not found(Id: {0})", gameId));
+            }
+            
+        }
+
         public IEnumerable<GameDTO> GetAll()
         {
             var entries = database.Games.GetAll();
@@ -111,7 +127,7 @@ namespace GameStore.BLL.Services
             return paginatedGames;
         }
 
-        public IEnumerable<GameDTO> Get(int genreId)
+        public IEnumerable<GameDTO> GetByGenre(int genreId)
         {
             var gameEntries = database.Games.GetMany(m => m.Genres.Any(g => g.GenreId.Equals(genreId)));
             var games = Mapper.Map<IEnumerable<Game>, IEnumerable<GameDTO>>(gameEntries);
