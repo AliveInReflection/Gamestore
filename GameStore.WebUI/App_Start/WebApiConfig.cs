@@ -10,6 +10,12 @@ namespace GameStore.WebUI
         public static void Register(HttpConfiguration config)
         {
             config.Routes.MapHttpRoute(
+                name: "CommentsApi",
+                routeTemplate: "api/games/{gameId}/comments/{id}",
+                defaults: new { controller = "Comments", id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

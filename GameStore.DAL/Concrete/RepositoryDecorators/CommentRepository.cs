@@ -24,7 +24,7 @@ namespace GameStore.DAL.Concrete.Repositories
         {
             if (entity.User != null)
             {
-                entity.User = gameStore.Users.Get(m => m.UserName.Equals(entity.User.UserName));
+                entity.User = gameStore.Users.Get(m => m.UserId.Equals(entity.User.UserId));
             } 
 
             var game = gameStore.Games.Get(m => m.GameKey.Equals(entity.Game.GameKey));

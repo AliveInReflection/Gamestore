@@ -57,7 +57,7 @@ namespace GameStore.WebUI.Controllers
             if (!ModelState.IsValid)
             {
                 comment.Comments = Mapper.Map<IEnumerable<CommentDTO>, IEnumerable<DisplayCommentViewModel>>(commentService.Get(comment.GameKey));
-                return View(comment);;
+                return View(comment);
             }
                 
             try
