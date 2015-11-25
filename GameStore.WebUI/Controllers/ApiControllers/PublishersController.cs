@@ -68,7 +68,7 @@ namespace GameStore.WebUI.ApiControllers
             catch (ValidationException e)
             {
                 Logger.Warn(e);
-                return Request.CreateResponse(HttpStatusCode.NotFound);
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
         }
 
@@ -90,7 +90,7 @@ namespace GameStore.WebUI.ApiControllers
             catch (ValidationException e)
             {
                 Logger.Warn(e);
-                return Request.CreateResponse(HttpStatusCode.NotFound);
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
         }
 

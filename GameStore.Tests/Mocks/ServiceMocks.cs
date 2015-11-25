@@ -21,6 +21,8 @@ namespace GameStore.Tests.Mocks
         private Mock<IAuthenticationService> mockAuth;
         private Mock<IGameStoreLogger> mockLogger;
 
+        private GameDTO game;
+
         public ServiceMocks()
         {
             mockComment = new Mock<ICommentService>();
@@ -33,6 +35,7 @@ namespace GameStore.Tests.Mocks
             mockAuth = new Mock<IAuthenticationService>();
             mockLogger = new Mock<IGameStoreLogger>();
 
+            InitializeModels();
             Initialize();
         }
 
@@ -57,7 +60,10 @@ namespace GameStore.Tests.Mocks
                 });
             mockGame.Setup(x => x.Create(It.IsAny<GameDTO>()));
             mockGame.Setup(x => x.Get(It.IsAny<GameFilteringMode>(),It.IsAny<GamesSortingMode>(),It.IsAny<PaginationMode>())).Returns(new PaginatedGames());
+            mockGame.Setup(x => x.Get(It.IsAny<int>())).Returns(game);
+            mockGame.Setup(x => x.Get(It.IsAny<string>())).Returns(game);
             mockGame.Setup(x => x.GetCount()).Returns(100);
+            mockGame.Setup(x => x.GetByGenre(It.IsAny<int>())).Returns(new List<GameDTO>());
 
             mockComment.Setup(x => x.Get(It.IsAny<string>())).Returns(new List<CommentDTO>());
             mockComment.Setup(x => x.Get(It.IsAny<int>())).Returns(new CommentDTO());
@@ -95,6 +101,26 @@ namespace GameStore.Tests.Mocks
             mockAuth.Setup(x => x.Logout());
 
             mockLogger.Setup(x => x.Warn(It.IsAny<Exception>()));
+        }
+
+        private void InitializeModels()
+        {
+            game = new GameDTO()
+            {
+                GameId = 1,
+                GameKey = "Test",
+                GameName = "TestGame",
+                Description = "Desc",
+                DescriptionRu = "Descru",
+                Discontinued = false,
+                Genres = new List<GenreDTO>(),
+                PlatformTypes = new List<PlatformTypeDTO>(),
+                Price = 100,
+                PublicationDate = DateTime.UtcNow,
+                Publisher = new PublisherDTO(),
+                ReceiptDate = DateTime.UtcNow,
+                UnitsInStock = 100
+            };
         }
     }
 }

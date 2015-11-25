@@ -86,7 +86,7 @@ namespace GameStore.WebUI.ApiControllers
                 var comment = Mapper.Map<CommentDTO>(model);
                 comment.Game = game;
                 commentService.Update(comment);
-                return Request.CreateResponse(HttpStatusCode.Created);
+                return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (ValidationException e)
             {
@@ -107,7 +107,7 @@ namespace GameStore.WebUI.ApiControllers
             catch (ValidationException e)
             {
                 Logger.Warn(e);
-                return Request.CreateResponse(HttpStatusCode.OK);
+                return Request.CreateResponse(HttpStatusCode.NotFound);
             }
         }
     }
