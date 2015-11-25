@@ -14,6 +14,7 @@ namespace CreditCardService.Entities
         public string VerificationCode { get; set; }
         public DateTime InitTime { get; set; }
         public DateTime? CompleteTime { get; set; }
+        public int FailedConfirmationCount { get; set; }
         public bool Confirmed { get; set; }
     }
 }

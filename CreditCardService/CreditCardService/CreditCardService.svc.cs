@@ -59,6 +59,13 @@ namespace CreditCardService
             {
                 var transfer = transferRepository.Get(m => !m.Confirmed && m.VerificationCode.Equals(confirmationCode));
 
+                transfer.FailedConfirmationCount += 1;
+
+                if (transfer.FailedConfirmationCount > 3)
+                {
+                    return false;
+                }
+
                 transfer.Confirmed = true;
 
                 var payer = accountRepository.Get(m => m.AccountId.Equals(transfer.PayerId));
