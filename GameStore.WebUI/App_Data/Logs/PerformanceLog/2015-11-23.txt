@@ -1,0 +1,435 @@
+GameController/Index: 	12508ms
+
+GameController/GetCount: 	12541ms
+
+GameController/Index: 	12651ms
+
+GameController/GetCount: 	12652ms
+
+AccountController/Index: 	12877ms
+
+GameController/GetCount: 	12877ms
+
+AccountController/IndexRoles: 	12887ms
+
+GameController/GetCount: 	12888ms
+
+GameController/Index: 	12986ms
+
+GameController/GetCount: 	12987ms
+
+AccountController/Login: 	13021ms
+
+GameController/GetCount: 	13022ms
+
+AccountController/Index: 	13097ms
+
+GameController/GetCount: 	13097ms
+
+AccountController/IndexRoles: 	13103ms
+
+GameController/GetCount: 	13104ms
+
+AccountController/Login: 	13105ms
+
+GameController/GetCount: 	13106ms
+
+GameController/Index: 	13201ms
+
+GameController/GetCount: 	13201ms
+
+AccountController/Login: 	13202ms
+
+GameController/GetCount: 	13202ms
+
+GameController/Index: 	13299ms
+
+GameController/GetCount: 	13300ms
+
+GameController/Index: 	4503ms
+
+GameController/GetCount: 	4548ms
+
+GameController/Index: 	1190ms
+
+GameController/GetCount: 	1212ms
+
+GameController/Index: 	7167ms
+
+GameController/GetCount: 	7202ms
+
+GameController/Index: 	1072ms
+
+GameController/GetCount: 	1111ms
+
+GameController/Index: 	4229ms
+
+GameController/GetCount: 	4257ms
+
+GameController/Index: 	13287ms
+
+GameController/GetCount: 	13326ms
+
+GameController/Index: 	1091ms
+
+GameController/GetCount: 	1104ms
+
+GameController/Index: 	159681ms
+
+GameController/GetCount: 	159737ms
+
+GameController/Index: 	3828ms
+
+GameController/GetCount: 	3890ms
+
+GameController/Index: 	4177ms
+
+GameController/GetCount: 	4230ms
+
+GameController/Index: 	5038ms
+
+GameController/GetCount: 	5088ms
+
+GameController/Index: 	1110ms
+
+GameController/GetCount: 	1147ms
+
+GameController/Index: 	585ms
+
+GameController/GetCount: 	600ms
+
+AccountController/Login: 	639ms
+
+GameController/GetCount: 	648ms
+
+AccountController/Logout: 	661ms
+
+GameController/Index: 	773ms
+
+GameController/GetCount: 	773ms
+
+AccountController/Login: 	774ms
+
+GameController/GetCount: 	774ms
+
+AccountController/Login: 	1828ms
+
+GameController/Index: 	1922ms
+
+GameController/GetCount: 	1923ms
+
+GameController/New: 	1981ms
+
+GameController/GetCount: 	1981ms
+
+GameController/Index: 	3804ms
+
+GameController/GetCount: 	3817ms
+
+GameController/New: 	4510ms
+
+GameController/GetCount: 	4519ms
+
+GameController/Index: 	3231ms
+
+GameController/GetCount: 	3578ms
+
+GameController/Index: 	526737ms
+
+GameController/Index: 	526737ms
+GameController/Index: 	526737ms
+
+GameController/GetCount: 	526766ms
+
+GameController/GetCount: 	526766ms
+
+GameController/Index: 	701ms
+
+GameController/GetCount: 	730ms
+
+GameController/Index: 	1347ms
+
+GameController/GetCount: 	1360ms
+
+GameController/Index: 	1304ms
+
+GameController/GetCount: 	1320ms
+
+GameController/Index: 	634ms
+
+GameController/GetCount: 	648ms
+
+GameController/Index: 	1348ms
+
+GameController/GetCount: 	1382ms
+
+GameController/Index: 	642ms
+
+GameController/GetCount: 	655ms
+
+GameController/Index: 	2837ms
+
+GameController/GetCount: 	2891ms
+
+GameController/Details: 	2925ms
+
+GameController/GetCount: 	2926ms
+
+CommentController/Index: 	3133ms
+
+GameController/GetCount: 	3134ms
+
+CommentController/Index: 	3665ms
+
+CommentController/Index: 	3732ms
+
+GameController/GetCount: 	3733ms
+
+GameController/Index: 	1118ms
+
+GameController/GetCount: 	1136ms
+
+GameController/Index: 	1576ms
+
+GameController/GetCount: 	1589ms
+
+GameController/Index: 	4031ms
+
+GameController/GetCount: 	4045ms
+
+GameController/Details: 	4067ms
+
+GameController/GetCount: 	4077ms
+
+CommentController/Index: 	4177ms
+
+GameController/GetCount: 	4177ms
+
+GameController/Index: 	4296ms
+
+GameController/GetCount: 	4297ms
+
+GameController/Details: 	4308ms
+
+GameController/GetCount: 	4309ms
+
+CommentController/Index: 	4345ms
+
+GameController/GetCount: 	4345ms
+
+CommentController/Index: 	4381ms
+
+GameController/GetCount: 	4382ms
+
+GameController/Index: 	2442ms
+
+GameController/GetCount: 	2457ms
+
+GameController/Index: 	3087ms
+
+GameController/GetCount: 	3109ms
+
+GameController/Index: 	3058ms
+
+GameController/GetCount: 	3072ms
+
+GameController/Index: 	1370ms
+
+GameController/GetCount: 	1383ms
+
+OrderController/Details: 	2208ms
+
+GameController/GetCount: 	2209ms
+
+AccountController/Logout: 	2210ms
+
+GameController/Index: 	2327ms
+
+GameController/GetCount: 	2334ms
+
+AccountController/Login: 	2393ms
+
+GameController/GetCount: 	2394ms
+
+AccountController/Login: 	2414ms
+
+GameController/Index: 	2517ms
+
+GameController/GetCount: 	2518ms
+
+GameController/Index: 	1464ms
+
+GameController/GetCount: 	1477ms
+
+GameController/Index: 	981ms
+
+GameController/GetCount: 	995ms
+
+GameController/Index: 	1266ms
+
+GameController/GetCount: 	1272ms
+
+AccountController/Logout: 	1274ms
+
+GameController/Index: 	1419ms
+
+GameController/GetCount: 	1428ms
+
+AccountController/Login: 	1480ms
+
+GameController/GetCount: 	1481ms
+
+AccountController/Login: 	1502ms
+
+GameController/Index: 	1608ms
+
+GameController/GetCount: 	1609ms
+
+GameController/Index: 	1244ms
+
+GameController/GetCount: 	1258ms
+
+AccountController/login: 	1289ms
+
+GameController/Index: 	1396ms
+
+GameController/GetCount: 	1397ms
+
+GameController/Index: 	969ms
+
+GameController/GetCount: 	999ms
+
+GameController/Index: 	1121ms
+
+GameController/GetCount: 	1122ms
+
+GameController/Index: 	1235ms
+
+GameController/GetCount: 	1241ms
+
+GameController/Index: 	1476ms
+
+GameController/GetCount: 	1489ms
+
+GameController/Index: 	950ms
+
+GameController/GetCount: 	962ms
+
+GameController/Index: 	1041ms
+
+GameController/GetCount: 	1094ms
+
+OrderController/Details: 	1186ms
+
+GameController/GetCount: 	1187ms
+
+GameController/Index: 	594ms
+
+GameController/GetCount: 	607ms
+
+OrderController/Details: 	660ms
+
+GameController/GetCount: 	661ms
+
+OrderController/Details: 	679ms
+
+GameController/GetCount: 	680ms
+
+OrderController/Details: 	691ms
+
+GameController/GetCount: 	692ms
+
+OrderController/Details: 	705ms
+
+GameController/GetCount: 	705ms
+
+OrderController/Details: 	719ms
+
+GameController/GetCount: 	720ms
+
+GameController/Index: 	835ms
+
+GameController/GetCount: 	842ms
+
+OrderController/Details: 	855ms
+
+GameController/GetCount: 	855ms
+
+OrderController/Details: 	894ms
+
+GameController/GetCount: 	894ms
+
+GameController/Index: 	596ms
+
+GameController/GetCount: 	628ms
+
+OrderController/Details: 	659ms
+
+GameController/GetCount: 	659ms
+
+OrderController/Details: 	677ms
+
+GameController/GetCount: 	677ms
+
+OrderController/Details: 	691ms
+
+GameController/GetCount: 	693ms
+
+GameController/Index: 	4237ms
+
+GameController/GetCount: 	4252ms
+
+GameController/Index: 	1193ms
+
+GameController/GetCount: 	1211ms
+
+AccountController/Logout: 	1212ms
+
+GameController/Index: 	1324ms
+
+GameController/GetCount: 	1332ms
+
+AccountController/Login: 	1370ms
+
+GameController/GetCount: 	1371ms
+
+AccountController/Login: 	1402ms
+
+GameController/Index: 	1507ms
+
+GameController/GetCount: 	1507ms
+
+GameController/Details: 	1526ms
+
+GameController/GetCount: 	1526ms
+
+GameController/Update: 	1597ms
+
+GameController/GetCount: 	1597ms
+
+GameController/Update: 	1656ms
+
+GameController/GetCount: 	1657ms
+
+GameController/Update: 	3289ms
+
+GameController/Index: 	3402ms
+
+GameController/GetCount: 	3403ms
+
+GameController/Index: 	3575ms
+
+GameController/GetCount: 	3630ms
+
+GameController/Index: 	3767ms
+
+GameController/GetCount: 	3780ms
+
+GameController/Index: 	1461ms
+
+GameController/GetCount: 	1474ms
+
+GameController/Index: 	1128ms
+
+GameController/GetCount: 	1170ms
+
