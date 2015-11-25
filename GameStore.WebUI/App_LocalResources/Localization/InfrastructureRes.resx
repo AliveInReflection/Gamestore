@@ -216,6 +216,9 @@
   <data name="SortingMostPopular" xml:space="preserve">
     <value>Most popular</value>
   </data>
+  <data name="SortingNone" xml:space="preserve">
+    <value>None</value>
+  </data>
   <data name="SortingPriceAscending" xml:space="preserve">
     <value>PriceAscending</value>
   </data>

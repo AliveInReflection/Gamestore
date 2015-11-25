@@ -23,9 +23,9 @@ namespace GameStore.BLL.Services
             this.logger = logger;
         }
 
-        public bool IsFree(string userName)
+        public bool IsNameUsed(string userName)
         {
-            return !database.Users.IsExists(m => m.UserName.ToLower().Equals(userName.ToLower()));
+            return database.Users.IsExists(m => m.UserName.ToLower().Equals(userName.ToLower()));
         }
 
         public void Ban(int userId, TimeSpan expirationDate)

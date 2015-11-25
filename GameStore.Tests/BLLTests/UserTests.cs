@@ -79,9 +79,9 @@ namespace GameStore.Tests.BLLTests
         [TestMethod]
         public void User_Service_Is_Free()
         {
-            var result = service.IsFree(newUserName);
+            var result = service.IsNameUsed(newUserName);
 
-            Assert.IsTrue(result);
+            Assert.IsFalse(result);
         }
 
         [TestMethod]

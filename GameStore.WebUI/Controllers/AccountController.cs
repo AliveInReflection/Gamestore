@@ -50,6 +50,14 @@ namespace GameStore.WebUI.Controllers
                 ViewBag.ReturnUrl = returnUrl;
                 return View(register);
             }
+
+            if (userService.IsNameUsed(register.UserName))
+            {
+                ModelState.AddModelError("UserName", ValidationRes.ValidationUserNameOccupied);
+                ViewBag.ReturnUrl = returnUrl;
+                return View(register);
+            }
+
             try
             {
                 var user = Mapper.Map<RegisterViewModel, UserDTO>(register);

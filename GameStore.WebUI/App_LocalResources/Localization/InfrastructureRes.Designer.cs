@@ -358,6 +358,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        public static string SortingNone {
+            get {
+                return ResourceManager.GetString("SortingNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PriceAscending.
         /// </summary>
         public static string SortingPriceAscending {

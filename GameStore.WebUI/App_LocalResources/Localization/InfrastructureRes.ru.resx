@@ -132,6 +132,18 @@
   <data name="BanWeek" xml:space="preserve">
     <value>1 неделя</value>
   </data>
+  <data name="CountryGreatBritain" xml:space="preserve">
+    <value>Великобритания</value>
+  </data>
+  <data name="CountryRussia" xml:space="preserve">
+    <value>Россия</value>
+  </data>
+  <data name="CountryUkraine" xml:space="preserve">
+    <value>Украина</value>
+  </data>
+  <data name="CountryUsa" xml:space="preserve">
+    <value>США</value>
+  </data>
   <data name="OrderStateNotIssued" xml:space="preserve">
     <value>Не оформлен</value>
   </data>
@@ -185,6 +197,9 @@
   </data>
   <data name="SortingMostPopular" xml:space="preserve">
     <value>Найболее популярные</value>
+  </data>
+  <data name="SortingNone" xml:space="preserve">
+    <value>Не сортировать</value>
   </data>
   <data name="SortingPriceAscending" xml:space="preserve">
     <value>Цена по возрастанию</value>

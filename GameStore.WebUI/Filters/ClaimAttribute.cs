@@ -10,8 +10,8 @@ namespace GameStore.WebUI.Filters
 {
     public class ClaimsAttribute : AuthorizeAttribute
     {
-        private string claimType;
-        private string claimValue;
+        private readonly string claimType;
+        private readonly string claimValue;
         public ClaimsAttribute(string claimType, string claimValue)
         {
             this.claimType = claimType;

@@ -167,5 +167,14 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
                 return ResourceManager.GetString("ValidationError", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User with the same name is already existed.
+        /// </summary>
+        public static string ValidationUserNameOccupied {
+            get {
+                return ResourceManager.GetString("ValidationUserNameOccupied", resourceCulture);
+            }
+        }
     }
 }

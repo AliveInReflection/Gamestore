@@ -5,6 +5,7 @@ using GameStore.Infrastructure.DTO;
 using GameStore.Logger.Interfaces;
 using Moq;
 using GameStore.Infrastructure.AuthInterfaces;
+using GameStore.Infrastructure.Enums;
 
 namespace GameStore.Tests.Mocks
 {
@@ -55,7 +56,7 @@ namespace GameStore.Tests.Mocks
                     PlatformTypes = new List<PlatformTypeDTO>()
                 });
             mockGame.Setup(x => x.Create(It.IsAny<GameDTO>()));
-            mockGame.Setup(x => x.Get(It.IsAny<GameFilteringMode>())).Returns(new PaginatedGames());
+            mockGame.Setup(x => x.Get(It.IsAny<GameFilteringMode>(),It.IsAny<GamesSortingMode>(),It.IsAny<PaginationMode>())).Returns(new PaginatedGames());
             mockGame.Setup(x => x.GetCount()).Returns(100);
 
             mockComment.Setup(x => x.Get(It.IsAny<string>())).Returns(new List<CommentDTO>());
@@ -82,7 +83,7 @@ namespace GameStore.Tests.Mocks
             mockUser.Setup(x => x.Get(It.IsAny<string>())).Returns(new UserDTO());
             mockUser.Setup(x => x.GetAll()).Returns(new[]{new UserDTO()});
             mockUser.Setup(x => x.Ban(It.IsAny<int>(), It.IsAny<TimeSpan>()));
-            mockUser.Setup(x => x.IsFree(It.IsAny<string>())).Returns(true);
+            mockUser.Setup(x => x.IsNameUsed(It.IsAny<string>())).Returns(false);
 
             mockUser.Setup(x => x.GetAllRoles()).Returns(new[]{new RoleDTO()});
             mockUser.Setup(x => x.GetRole(It.IsAny<int>())).Returns(new RoleDTO());

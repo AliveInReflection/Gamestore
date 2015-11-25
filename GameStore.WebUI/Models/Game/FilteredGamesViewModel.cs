@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace GameStore.WebUI.Models
 {
     public class FilteredGamesViewModel
     {
         public IEnumerable<DisplayGameViewModel> Games { get; set; }
-        public FilteringViewModel Filter { get; set; }
+        public ContentTransformationViewModel Transformer { get; set; }
     }
 }

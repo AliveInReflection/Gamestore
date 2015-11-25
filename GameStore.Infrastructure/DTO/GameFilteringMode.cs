@@ -11,11 +11,7 @@ namespace GameStore.Infrastructure.DTO
         public IEnumerable<int> PublisherIds { get; set; }
         public decimal MinPrice { get; set; }
         public decimal MaxPrice { get; set; }
-        public GamesSortingMode SortingMode { get; set; }
         public TimeSpan PublishingDate { get; set; }
         public string PartOfName { get; set; }
-        public int ItemsPerPage { get; set; }
-        public int CurrentPage { get; set; }
-        public int PageCount { get; set; }
     }    
 }

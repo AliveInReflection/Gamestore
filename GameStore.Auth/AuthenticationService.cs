@@ -32,8 +32,7 @@ namespace GameStore.Auth
             {
                 return false;
             }
-            var user = database.Users.Get(m => m.UserName.ToLower().Equals(userName.ToLower()) &&
-                                               m.Password.Equals(password));
+            var user = database.Users.Get(m => m.UserName.ToLower().Equals(userName.ToLower()));
 
             var claims = new List<Claim>
             {

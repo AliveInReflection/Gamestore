@@ -48,9 +48,9 @@ namespace GameStore.Infrastructure.BLInterfaces
         /// <param name="expirationDate">Ban duration</param>
         void Ban(int userId, TimeSpan expirationDate);
 
-        /// <summary>Chack existance of specified user name in database</summary>
+        /// <summary>Check existance of specified user name in database</summary>
         /// /// <param name="userName">User name</param>
-        bool IsFree(string userName);
+        bool IsNameUsed(string userName);
 
 
         /// <summary>Returns all roles from database</summary>

@@ -60,6 +60,7 @@
     <Compile Include="DTO\OrderDetailsDTO.cs" />
     <Compile Include="DTO\OrderDTO.cs" />
     <Compile Include="DTO\PaginatedGames.cs" />
+    <Compile Include="DTO\PaginationMode.cs" />
     <Compile Include="DTO\PlatformTypeDTO.cs" />
     <Compile Include="DTO\PublisherDTO.cs" />
     <Compile Include="DTO\RoleDTO.cs" />

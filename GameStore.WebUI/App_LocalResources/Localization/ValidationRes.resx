@@ -153,4 +153,7 @@
   <data name="ValidationError" xml:space="preserve">
     <value>Validation error</value>
   </data>
+  <data name="ValidationUserNameOccupied" xml:space="preserve">
+    <value>User with the same name is already existed</value>
+  </data>
 </root>

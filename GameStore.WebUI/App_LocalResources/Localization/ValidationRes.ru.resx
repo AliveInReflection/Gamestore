@@ -153,4 +153,7 @@
   <data name="ValidationError" xml:space="preserve">
     <value>Ошибка валидации</value>
   </data>
+  <data name="ValidationUserNameOccupied" xml:space="preserve">
+    <value>Пользователь с таким именем существует</value>
+  </data>
 </root>

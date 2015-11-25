@@ -7,6 +7,7 @@ using GameStore.DAL.Interfaces;
 using GameStore.Domain.Entities;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
+using GameStore.Infrastructure.Enums;
 
 namespace GameStore.BLL.Services
 {
@@ -99,7 +100,7 @@ namespace GameStore.BLL.Services
             return games;
         }
 
-        public PaginatedGames Get(GameFilteringMode filteringMode)
+        public PaginatedGames Get(GameFilteringMode filteringMode, GamesSortingMode sortingMode, PaginationMode paginationMode)
         {
             IEnumerable<Game> entries;
 
@@ -107,7 +108,7 @@ namespace GameStore.BLL.Services
             
             entries = !filter.IsEmpty() ? database.Games.GetMany(filter.GetExpression()) : database.Games.GetAll();
 
-            var sorter = TransformationManager.GetGameSorter(filteringMode.SortingMode);
+            var sorter = TransformationManager.GetGameSorter(sortingMode);
             if (sorter != null)
             {
                 entries = sorter.Sort(entries);
@@ -115,11 +116,11 @@ namespace GameStore.BLL.Services
 
             var paginatedGames = new PaginatedGames
             {
-                CurrentPage = filteringMode.CurrentPage,
-                PageCount = (int) Math.Ceiling((double) entries.Count()/filteringMode.ItemsPerPage)
+                CurrentPage = paginationMode.CurrentPage,
+                PageCount = (int)Math.Ceiling((double)entries.Count() / paginationMode.ItemsPerPage)
             };
 
-            entries = paginator.GetItems(entries, filteringMode.CurrentPage, filteringMode.ItemsPerPage);
+            entries = paginator.GetItems(entries, paginationMode.CurrentPage, paginationMode.ItemsPerPage);
             var games = Mapper.Map<IEnumerable<Game>, IEnumerable<GameDTO>>(entries);
 
             paginatedGames.Games = games;

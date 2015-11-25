@@ -66,7 +66,7 @@ namespace GameStore.Tests.WebTests
         [TestMethod]
         public void Game_Index_Model_Is_Not_Null()
         {
-            var result = controller.Index(new FilteringViewModel()) as ViewResult;
+            var result = controller.Index(new ContentTransformationViewModel()) as ViewResult;
 
             Assert.IsNotNull(result.Model);
         }

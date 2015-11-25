@@ -14,6 +14,7 @@ namespace GameStore.WebUI.Infrastructure
             {
                 return new Dictionary<string, GamesSortingMode>()
                 {
+                    {InfrastructureRes.SortingNone, GamesSortingMode.MostPopular},
                     {InfrastructureRes.SortingMostPopular, GamesSortingMode.MostPopular},
                     {InfrastructureRes.SortingMostCommented, GamesSortingMode.MostCommented},
                     {InfrastructureRes.SortingPriceAscending, GamesSortingMode.PriceAscending},

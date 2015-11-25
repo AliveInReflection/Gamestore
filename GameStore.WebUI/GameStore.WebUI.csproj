@@ -153,17 +153,21 @@
       <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="WebApiContrib.IoC.Ninject, Version=0.9.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebApiContrib.IoC.Ninject.0.9.3.0\lib\net40\WebApiContrib.IoC.Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiControllers\BaseApiController.cs" />
-    <Compile Include="ApiControllers\CommentsController.cs" />
-    <Compile Include="ApiControllers\GameGenresController.cs" />
-    <Compile Include="ApiControllers\GamesController.cs" />
-    <Compile Include="ApiControllers\GenreGamesController.cs" />
-    <Compile Include="ApiControllers\GenresController.cs" />
-    <Compile Include="ApiControllers\OrdersController.cs" />
-    <Compile Include="ApiControllers\PublisherGamesController.cs" />
-    <Compile Include="ApiControllers\PublishersController.cs" />
+    <Compile Include="Controllers\ApiControllers\BaseApiController.cs" />
+    <Compile Include="Controllers\ApiControllers\CommentsController.cs" />
+    <Compile Include="Controllers\ApiControllers\GameGenresController.cs" />
+    <Compile Include="Controllers\ApiControllers\GamesController.cs" />
+    <Compile Include="Controllers\ApiControllers\GenreGamesController.cs" />
+    <Compile Include="Controllers\ApiControllers\GenresController.cs" />
+    <Compile Include="Controllers\ApiControllers\OrdersController.cs" />
+    <Compile Include="Controllers\ApiControllers\PublisherGamesController.cs" />
+    <Compile Include="Controllers\ApiControllers\PublishersController.cs" />
     <Compile Include="App_LocalResources\Localization\InfrastructureRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -252,7 +256,7 @@
     <Compile Include="Models\Game\CreateGameViewModel.cs" />
     <Compile Include="Models\DisplayPaymentMethodViewModel.cs" />
     <Compile Include="Models\Game\FilteredGamesViewModel.cs" />
-    <Compile Include="Models\Game\FilteringViewModel.cs" />
+    <Compile Include="Models\Game\ContentTransformationViewModel.cs" />
     <Compile Include="Models\Game\DisplayGameViewModel.cs" />
     <Compile Include="Models\Genre\DisplayGenreViewModel.cs" />
     <Compile Include="Models\Order\MakeOrderViewModel.cs" />
@@ -367,7 +371,7 @@
     <Content Include="Views\Order\Make.cshtml" />
     <Content Include="Views\Account\Ban.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\CheckBoxViewModel.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\FilteringViewModel.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ContentTransformationViewModel.cshtml" />
     <Content Include="Views\Comment\Update.cshtml" />
     <Content Include="Views\Publisher\Update.cshtml" />
     <Content Include="Views\Publisher\Index.cshtml" />

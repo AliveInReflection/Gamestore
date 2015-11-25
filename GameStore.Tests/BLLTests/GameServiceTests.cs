@@ -158,7 +158,7 @@ namespace GameStore.Tests.BLLTests
         [TestMethod]
         public void Get_Games_By_Genre()
         {
-                var games = service.Get(collections.Genres[0].GenreId);
+                var games = service.GetByGenre(collections.Genres[0].GenreId);
                 Assert.IsInstanceOfType(games, typeof(IEnumerable<GameDTO>));
         }
 

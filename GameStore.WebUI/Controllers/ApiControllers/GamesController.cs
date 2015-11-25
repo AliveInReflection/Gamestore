@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
+using GameStore.BLL.ContentPaginators;
 using GameStore.BLL.Infrastructure;
 using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.DTO;
@@ -27,9 +26,9 @@ namespace GameStore.WebUI.ApiControllers
 
         // GET api/<controller>
         [ClaimsApi(GameStoreClaim.Games, Permissions.Retreive)]
-        public HttpResponseMessage Get([FromUri] GameFilteringMode filter)
+        public HttpResponseMessage Get([FromUri] GameFilteringMode filter,  [FromUri] PaginationMode paginator, [FromUri] GamesSortingMode sorter = GamesSortingMode.None)
         {
-            var games = gameService.Get(filter);
+            var games = gameService.Get(filter, sorter, paginator);
             var viewModels = Mapper.Map<IEnumerable<GameDTO>, IEnumerable<DisplayGameViewModel>>(games.Games);
             return Request.CreateResponse(HttpStatusCode.OK, viewModels);
         }

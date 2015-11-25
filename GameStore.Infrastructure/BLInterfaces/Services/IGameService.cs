@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using GameStore.Infrastructure.DTO;
+using GameStore.Infrastructure.Enums;
 
 
 namespace GameStore.Infrastructure.BLInterfaces
@@ -47,10 +48,12 @@ namespace GameStore.Infrastructure.BLInterfaces
         IEnumerable<GameDTO> Get(IEnumerable<int> platfotmTypeIds);
 
         /// <summary>Returns conteiner with games, filtered and sorted for specified page</summary>
-        /// <param name="filteringMode">Conteiner with parameters for filtering, sorting and paginating</param>
+        /// <param name="filteringMode">Conteiner with parameters for filtering</param>
+        /// <param name="sortingMode">Enum parameter for determine type of sorting</param>
+        /// <param name="paginationMode">Conteiner with parameters for paginating</param>
         /// <returns>Conteiner with games</returns>
         /// <exception>ValidationException</exception>
-        PaginatedGames Get(GameFilteringMode filteringMode);
+        PaginatedGames Get(GameFilteringMode filteringMode, GamesSortingMode sortingMode, PaginationMode paginationMode);
 
         /// <summary>Returns all games from database</summary>
         /// <returns>List of games</returns>

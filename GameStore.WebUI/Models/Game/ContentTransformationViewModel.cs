@@ -5,7 +5,7 @@ using GameStore.WebUI.App_LocalResources.Localization;
 
 namespace GameStore.WebUI.Models
 {
-    public class FilteringViewModel
+    public class ContentTransformationViewModel
     {
         [Display(ResourceType = typeof(ModelRes), Name = "GameFilterGenres")]
         public List<CheckBoxViewModel> Genres { get; set; }

@@ -36,18 +36,20 @@ namespace GameStore.WebUI.Controllers
 
 
         [Claims(GameStoreClaim.Games, Permissions.Retreive)]
-        public ActionResult Index(FilteringViewModel filter)
+        public ActionResult Index(ContentTransformationViewModel transformer)
         {
             var model = new FilteredGamesViewModel();
-            UpdateFilterViewModel(filter);
+            UpdateTransformerViewModel(transformer);           
 
-            var paginatedGames = gameService.Get(BuildFilteringMode(filter));
+            var paginatedGames = gameService.Get(BuildFilteringMode(transformer),
+                                                 GetSortingMode(transformer),
+                                                 BuildPaginationMode(transformer));
 
             model.Games = Mapper.Map<IEnumerable<GameDTO>, IEnumerable<DisplayGameViewModel>>(paginatedGames.Games);
 
-            filter.CurrentPage = paginatedGames.CurrentPage;
-            filter.PageCount = paginatedGames.PageCount;
-            model.Filter = filter;
+            transformer.CurrentPage = paginatedGames.CurrentPage;
+            transformer.PageCount = paginatedGames.PageCount;
+            model.Transformer = transformer;
 
             return View(model);
         }
@@ -185,81 +187,93 @@ namespace GameStore.WebUI.Controllers
 
         #region Private helpers
 
-        
-        private void UpdateFilterViewModel(FilteringViewModel filter)
+
+        private void UpdateTransformerViewModel(ContentTransformationViewModel transformer)
         {
-            if (filter.Genres == null)
+            if (transformer.Genres == null)
             {
-                filter.Genres = Mapper.Map<IEnumerable<GenreDTO>, List<CheckBoxViewModel>>(genreService.GetAll());
+                transformer.Genres = Mapper.Map<IEnumerable<GenreDTO>, List<CheckBoxViewModel>>(genreService.GetAll());
             }
 
-            if (filter.PlatformTypes == null)
+            if (transformer.PlatformTypes == null)
             {
-                filter.PlatformTypes = Mapper.Map<IEnumerable<PlatformTypeDTO>, List<CheckBoxViewModel>>(platformTypeService.GetAll());
+                transformer.PlatformTypes = Mapper.Map<IEnumerable<PlatformTypeDTO>, List<CheckBoxViewModel>>(platformTypeService.GetAll());
             }
 
-            if (filter.Publishers == null)
+            if (transformer.Publishers == null)
             {
-                filter.Publishers = Mapper.Map<IEnumerable<PublisherDTO>, List<CheckBoxViewModel>>(publisherService.GetAll());
+                transformer.Publishers = Mapper.Map<IEnumerable<PublisherDTO>, List<CheckBoxViewModel>>(publisherService.GetAll());
             }
 
-            filter.ItemsPerPageList = Mapper.Map<IEnumerable<string>, List<SelectListItem>>(PagingManager.Items.Keys);
+            transformer.ItemsPerPageList = Mapper.Map<IEnumerable<string>, List<SelectListItem>>(PagingManager.Items.Keys);
 
-            filter.SortByItems = Mapper.Map<IEnumerable<string>, List<SelectListItem>>(GameSortingModeManager.Items.Keys);
-            filter.SortByItems.First().Selected = true;
+            transformer.SortByItems = Mapper.Map<IEnumerable<string>, List<SelectListItem>>(GameSortingModeManager.Items.Keys);
+            transformer.SortByItems.First().Selected = true;
 
-            if (filter.PublishingDates == null)
+
+            if (transformer.PublishingDates == null)
             {
-                filter.PublishingDates = Mapper.Map<IEnumerable<string>, List<RadiobuttonViewModel>>(GamePublishingDateFilteringManager.Items.Keys);
+                transformer.PublishingDates = Mapper.Map<IEnumerable<string>, List<RadiobuttonViewModel>>(GamePublishingDateFilteringManager.Items.Keys);
             }
 
-            filter.CurrentPage = filter.CurrentPage == 0 ? 1 : filter.CurrentPage;
-            filter.ItemsPerPage = filter.ItemsPerPage ?? 10.ToString();
+            transformer.CurrentPage = transformer.CurrentPage == 0 ? 1 : transformer.CurrentPage;
+            transformer.ItemsPerPage = transformer.ItemsPerPage ?? 10.ToString();
 
         }
 
-        private GameFilteringMode BuildFilteringMode(FilteringViewModel filter)
+        private GameFilteringMode BuildFilteringMode(ContentTransformationViewModel transformer)
         {
             var filteringMode = new GameFilteringMode();
 
-            if (filter.Genres != null)
+            if (transformer.Genres != null)
             {
-                filteringMode.GenreIds = filter.Genres.Where(m => m.IsChecked).Select(m => m.Id);
+                filteringMode.GenreIds = transformer.Genres.Where(m => m.IsChecked).Select(m => m.Id);
             }
 
-            if (filter.PlatformTypes != null)
+            if (transformer.PlatformTypes != null)
             {
-                filteringMode.PlatformTypeIds = filter.PlatformTypes.Where(m => m.IsChecked).Select(m => m.Id);
+                filteringMode.PlatformTypeIds = transformer.PlatformTypes.Where(m => m.IsChecked).Select(m => m.Id);
             }
 
-            if (filter.Publishers != null)
+            if (transformer.Publishers != null)
             {
-                filteringMode.PublisherIds = filter.Publishers.Where(m => m.IsChecked).Select(m => m.Id);
+                filteringMode.PublisherIds = transformer.Publishers.Where(m => m.IsChecked).Select(m => m.Id);
             }
 
-            if (filter.PublishingDate != null)
+            if (transformer.PublishingDate != null)
             {
-                filteringMode.PublishingDate = GamePublishingDateFilteringManager.Items[filter.PublishingDate.SelectedValue];
+                filteringMode.PublishingDate = GamePublishingDateFilteringManager.Items[transformer.PublishingDate.SelectedValue];
             }
 
-            if (filter.SortBy != null)
-            {
-                filteringMode.SortingMode = GameSortingModeManager.Items[filter.SortBy]; 
-            }
-
-            if (filter.ItemsPerPage != null)
-            {
-                filteringMode.ItemsPerPage = PagingManager.Items[filter.ItemsPerPage];
-            }
-            
-            filteringMode.MinPrice = filter.MinPrice;
-            filteringMode.MaxPrice = filter.MaxPrice;                      
-            filteringMode.PartOfName = filter.Name;
-
-            filteringMode.CurrentPage = filter.CurrentPage;
-            filteringMode.ItemsPerPage = PagingManager.Items[filter.ItemsPerPage];
+            filteringMode.MinPrice = transformer.MinPrice;
+            filteringMode.MaxPrice = transformer.MaxPrice;
+            filteringMode.PartOfName = transformer.Name;
 
             return filteringMode;
+        }
+
+        private PaginationMode BuildPaginationMode(ContentTransformationViewModel transformer)
+        {
+            var paginationMode = new PaginationMode();
+            
+            if (transformer.ItemsPerPage != null)
+            {
+                paginationMode.ItemsPerPage = PagingManager.Items[transformer.ItemsPerPage];
+            }
+
+            paginationMode.CurrentPage = transformer.CurrentPage;
+
+            return paginationMode;
+        }
+
+        private GamesSortingMode GetSortingMode(ContentTransformationViewModel transformer)
+        {
+            if (transformer.SortBy != null)
+            {
+                return GameSortingModeManager.Items[transformer.SortBy];
+            }
+            
+            return GamesSortingMode.None;
         }
 
         #endregion

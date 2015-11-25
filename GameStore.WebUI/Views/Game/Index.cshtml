@@ -58,7 +58,7 @@
 </table>
 
 
-@Html.PaginationBuilder(Model.Filter.CurrentPage,Model.Filter.PageCount,"List", "Game")
+@Html.PaginationBuilder(Model.Transformer.CurrentPage,Model.Transformer.PageCount,"List", "Game")
 
 
 
@@ -66,7 +66,7 @@
 {
     @using (Html.BeginForm("Index", "Game"))
     {
-        @Html.EditorFor(m => m.Filter,"FilteringViewModel", "filter")
+        @Html.EditorFor(m => m.Transformer, "ContentTransformationViewModel", "transformer")
         <p>
             <input type="submit" value="@ViewsRes.LinkFilter" />
         </p>
