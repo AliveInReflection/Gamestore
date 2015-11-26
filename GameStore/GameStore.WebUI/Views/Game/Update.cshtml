@@ -1,0 +1,26 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.UpdateGameViewModel
+
+@{
+    ViewBag.Title = ViewsRes.GameUpdateTitle;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewsRes.GameUpdateTitle</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.EditorForModel()
+
+    <p>
+        <input type="submit" value="@ViewsRes.LinkSave" />
+    </p>
+}
+
+
+@section Scripts {
+
+}

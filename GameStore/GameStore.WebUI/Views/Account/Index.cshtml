@@ -1,0 +1,45 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model IEnumerable<GameStore.WebUI.Models.Account.DisplayUserViewModel>
+
+@{
+    ViewBag.Title = ViewsRes.AccountIndexTitle;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@Html.Partial("_MessagePartial")
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.ActionLink(ViewsRes.LinkManage, "Manage", "Account", new {userId = item.UserId}, null) |
+
+            @using (Html.BeginForm("Delete", "Account", null, FormMethod.Post, new { @class = "inline-form" }))
+            {
+                @Html.Hidden("userId", item.UserId)
+                <input type="submit" value="@ViewsRes.LinkDelete" class="link"/>
+            }
+        </td>
+    </tr>
+}
+
+</table>

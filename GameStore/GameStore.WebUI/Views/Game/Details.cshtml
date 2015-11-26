@@ -1,0 +1,121 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.DisplayGameViewModel
+
+@{
+    ViewBag.Title = @Model.GameName;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+<h2>@Model.GameName</h2>
+<div class="pull-right">@Html.ActionLink(ViewsRes.LinkUpdate, "Update", "Game", new{gameKey = Model.GameKey}, null)</div>
+<table class="table">
+
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.GameKey)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.GameKey)
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.GameName)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.GameName)
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.Description)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.Description)
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.Price)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.Price)
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.UnitsInStock)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.UnitsInStock)
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.Discontinued)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.Discontinued)
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.PublicationDate)
+        </td>
+        <td class="display-field">
+            @Model.PublicationDate.ToShortDateString()
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.ReceiptDate)
+        </td>
+        <td class="display-field">
+            @Model.ReceiptDate.ToShortDateString()
+        </td>
+    </tr>
+</table>
+
+<p>
+    @Html.DisplayNameFor(model => model.Genres) :
+    @foreach (var genre in Model.Genres)
+    {
+        <span>@genre.GenreName</span>
+    }
+</p>
+<p>
+    @Html.DisplayNameFor(model => model.PlatformTypes) :
+    @foreach (var pt in Model.PlatformTypes)
+    {
+        <span>@pt.PlatformTypeName</span>
+    }
+</p>
+<p>
+    @Html.DisplayNameFor(model => model.Publisher) :
+    @Html.ActionLink(Model.Publisher.CompanyName, "Details", "Publisher", new {companyName = Model.Publisher.CompanyName}, null)
+</p>
+
+<p>
+    @using (Html.BeginForm("Remove", "Game"))
+    {
+        @Html.Hidden("gameId", Model.GameId)
+        <input type="submit" value="@ViewsRes.LinkDelete" />
+    }
+</p>
+
+<p>
+    @using (Html.BeginForm("Add", "Order"))
+    {
+        @Html.Hidden("gameKey", Model.GameKey)
+        ;
+        <span>@ViewsRes.GameDetailsQuantity: </span>@Html.TextBox("quantity", 1, new {type = "number", min = 1, max = Model.UnitsInStock})
+        ;
+        <input type="submit" value="@ViewsRes.LinkBuy"/>
+    }
+</p>
+
+<p>
+    @Html.ActionLink(ViewsRes.LinkDownload, "Download", "Game", new{ gameKey=Model.GameKey}, new{ target="_blank"})
+    @Html.ActionLink(ViewsRes.LinkComments, "Index", "Comment", new{gameKey = Model.GameKey}, null)
+</p>

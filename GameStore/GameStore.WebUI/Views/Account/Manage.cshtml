@@ -1,0 +1,50 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.Account.ManageUserViewModel
+
+@{
+    ViewBag.Title = ViewsRes.AccountManageTitle;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.Hidden("model.User.UserId", Model.User.UserId)
+    @Html.Hidden("model.User.UserName", Model.User.UserName)
+
+    <table class="table">
+        <tr>
+            <td>@Html.LabelFor(m => m.User.UserName)</td>
+            <td>@Html.DisplayFor(m => m.User.UserName)</td>
+        </tr>
+        <tr>
+            <td class="editor-label">
+                @Html.LabelFor(model => model.Roles)
+            </td>
+            <td class="editor-field">
+                @Html.ListBox("model.Roles", Model.RoleItems)
+                @Html.ValidationMessageFor(model => model.Roles)
+            </td>
+        </tr>
+    </table>
+
+    <div id="claims">
+        @Html.Action("AddClaim", "Account", new { number = 0 })
+    </div>
+
+    <p class="text-center">
+        <a href="#" id="add-claim" data-url="@Url.Action("AddClaim","Account")">@ViewsRes.LinkAddNew</a> | <a href="#" id="delete-claim">@ViewsRes.LinkDelete</a>
+    </p>
+
+    <p>
+        <input type="submit" value="@ViewsRes.LinkManage" />
+    </p>
+}
+
+
+@section Scripts {
+    <script src="/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="/Scripts/Account/Account.js"></script>
+}

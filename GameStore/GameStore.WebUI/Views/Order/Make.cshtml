@@ -1,0 +1,42 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.MakeOrderViewModel
+
+@{
+    ViewBag.Title = ViewsRes.OrderMakeTitle;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h4>@ViewsRes.OrderMakeSubtitle:</h4>
+<table>
+    <thead>
+    <tr>
+        <th>@ViewsRes.OrderMakeProduct</th>
+        <th>@ViewsRes.OrderMakeQuantity</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var product in Model.Order.OrderDetailses)
+    {
+        <tr>
+            <td>@product.Product.GameKey</td>
+            <td>@product.Quantity</td>
+        </tr>
+    }
+    </tbody>
+</table>
+<p><b>@ViewsRes.OrderMakeAmount: </b> @Model.Amount</p>
+
+<h4>@ViewsRes.OrderMakePaymentSubtitle</h4>
+<table class="table">
+     @foreach (var payment in Model.PaymentMethods)
+     {
+         <tr>
+             <td><img src="@payment.PictureURL" alt="@payment.PaymentKey"></td>
+             <td>@payment.Description</td>
+             <td>@Html.ActionLink(ViewsRes.LinkPay, "Pay", "Order", new{paymentKey = payment.PaymentKey}, null)</td>
+         </tr>
+     }   
+</table>
+

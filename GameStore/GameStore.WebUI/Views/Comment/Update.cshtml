@@ -1,0 +1,67 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.UpdateCommentViewModel
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Update</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.Hidden("gameKey", @ViewBag.GameKey as string)
+    
+    <fieldset>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CommentId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CommentId)
+            @Html.ValidationMessageFor(model => model.CommentId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ParentCommentId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ParentCommentId)
+            @Html.ValidationMessageFor(model => model.ParentCommentId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.QuoteId)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.QuoteId)
+            @Html.ValidationMessageFor(model => model.QuoteId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UserName)
+            @Html.ValidationMessageFor(model => model.UserName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Content)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Content)
+            @Html.ValidationMessageFor(model => model.Content)
+        </div>
+
+        <p>
+            <input type="submit" value="@ViewsRes.LinkSave" />
+        </p>
+    </fieldset>
+}
+
+
+@section Scripts {
+
+}

@@ -1,0 +1,18 @@
+﻿@using System.Drawing
+@model GameStore.WebUI.Models.Account.ClaimViewModel
+
+
+<div class="add-claim-container">
+
+        <table>
+            <tr>
+                <td class="editor-field">
+                    @Html.DropDownList(String.Format("model.Claims[{0}].ClaimType", Model.Number), Model.ClaimTypes)
+                </td>
+                <td>
+                    @Html.DropDownList(String.Format("model.Claims[{0}].ClaimValue", Model.Number), Model.Permissions)
+                </td>
+            </tr>
+        </table>
+
+</div>

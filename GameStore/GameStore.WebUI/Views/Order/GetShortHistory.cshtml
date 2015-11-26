@@ -1,0 +1,61 @@
+﻿@using GameStore.Infrastructure.Enums
+@using GameStore.WebUI.App_LocalResources.Localization
+@model IEnumerable<GameStore.WebUI.Models.Order.DisplayOrderViewModel>
+
+@{
+    ViewBag.Title = ViewsRes.OrderHistoryTitle;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderState)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDetailses)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderId)
+        </td>
+        <td>
+            @item.Date.ToShortDateString()
+        </td>
+        <th>
+            @Html.DisplayFor(modelItem => item.OrderState)
+        </th>
+        <td>
+            <table class="table table-striped">
+                @foreach (var detail in item.OrderDetailses)
+                {
+                    <tr>
+                        <td>@detail.Product.GameName</td>
+                        <td>$@detail.Product.Price</td>
+                        <td>@detail.Quantity</td>
+                        <td>@detail.Discount</td>
+                    </tr>
+                }
+            </table>
+        </td>
+
+        <td>
+            @Html.ActionLink(ViewsRes.LinkChangeState, "ChangeState", new {orderId = item.OrderId}) 
+        </td>
+    </tr>
+}
+
+</table>

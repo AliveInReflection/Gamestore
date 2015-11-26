@@ -1,0 +1,64 @@
+﻿
+.link {
+    color: #4682b4;
+    display: inline;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.inline-form {
+    display: inline;
+}
+
+.checkbox-group {
+    margin: 10px;
+    padding: 10px;
+}
+
+.checkbox-group input {
+
+}
+
+
+.comment-block {
+    margin: 10px;
+    padding: 10px;
+}
+
+.comment-block ul {
+    list-style-type: none;
+}
+
+.comment-block a {
+    margin: 5px;
+}
+
+.comment-author {
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.comment-content {
+    display: block;
+    padding: 15px;
+    font-size: 12pt;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.comment-block quote {
+    display: block;
+    border: 1px solid green;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+
+.pagination-page-current {
+    color: red;
+}

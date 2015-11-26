@@ -1,0 +1,80 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.CardPaymentInfoViewModel
+
+@{
+    ViewBag.Title = ViewsRes.PaymentPayCardTitle;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <table class="table">
+        <tr>
+            <td class="editor-label">
+                @Html.LabelFor(model => model.FullName)
+            </td>
+            <td class="editor-field">
+                @Html.EditorFor(model => model.FullName)
+                @Html.ValidationMessageFor(model => model.FullName)
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label">
+                @Html.LabelFor(model => model.CardNumber)
+            </td>
+            <td class="editor-field">
+                @Html.EditorFor(model => model.CardNumber)
+                @Html.ValidationMessageFor(model => model.CardNumber)
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label">
+                @Html.LabelFor(model => model.SecureCode)
+            </td>
+            <td class="editor-field">
+                @Html.EditorFor(model => model.SecureCode)
+                @Html.ValidationMessageFor(model => model.SecureCode)
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label">
+                @Html.LabelFor(model => model.ExpirationMonth)
+            </td>
+            <td class="editor-field">
+                @Html.EditorFor(model => model.ExpirationMonth)
+                @Html.ValidationMessageFor(model => model.ExpirationMonth)
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label">
+                @Html.LabelFor(model => model.ExpirationYear)
+            </td>
+            <td class="editor-field">
+                @Html.EditorFor(model => model.ExpirationYear)
+                @Html.ValidationMessageFor(model => model.ExpirationYear)
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label">
+                @Html.LabelFor(model => model.CardType)
+            </td>
+            <td class="editor-field">
+                @Html.DropDownListFor(model => model.CardType, Model.CardTypeList)
+                @Html.ValidationMessageFor(model => model.CardType)
+            </td>
+        </tr>
+
+    </table>
+    <p>
+        <input type="submit" value="@ViewsRes.PaymentPayCardTitle" />
+    </p>
+}
+
+
+@section Scripts {
+
+}

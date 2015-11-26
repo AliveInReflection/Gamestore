@@ -1,0 +1,38 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VisaPayment</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm())
+        {
+            <table>
+                <tr>
+                    <td>@ViewsRes.VisaName</td>
+                    <td>@Html.TextBox("name")</td>
+                </tr>
+                <tr>
+                    <td>@ViewsRes.VisaNumber</td>
+                    <td>@Html.TextBox("number")</td>
+                </tr>
+                <tr>
+                    <td>@ViewsRes.VisaDate</td>
+                    <td>@Html.TextBox("date")</td>
+                </tr>
+                <tr>
+                    <td>@ViewsRes.VisaSecure</td>
+                    <td>@Html.TextBox("secure")</td>
+                </tr>
+            </table>
+        }
+    </div>
+</body>
+</html>

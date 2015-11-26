@@ -1,0 +1,47 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model IEnumerable<GameStore.WebUI.Models.Account.DisplayRoleViewModel>
+
+@{
+    ViewBag.Title = ViewsRes.AccountCreateRoleTitle;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@Html.Partial("_MessagePartial")
+
+
+<p>
+    @Html.ActionLink(ViewsRes.LinkAddNew, "CreateRole")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleName)
+        </td>
+        <td>
+            @Html.ActionLink(@ViewsRes.LinkManage, "ManageRole", "Account", new { roleId = item.RoleId }, null) |
+            @using (Html.BeginForm("DeleteRole", "Account", null, FormMethod.Post, new { @class = "inline-form" }))
+            {
+                @Html.Hidden("roleId", item.RoleId)
+                <input type="submit" value="@ViewsRes.LinkDelete" class="link" />
+            }
+        </td>
+    </tr>
+}
+
+</table>

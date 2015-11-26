@@ -1,0 +1,35 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.IboxPaymentViewModel
+
+@{
+    ViewBag.Title = ViewsRes.IBoxPaymentTitle;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<fieldset>
+
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.InvoiceId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.InvoiceId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OrderId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OrderId)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Amount)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Amount)
+    </div>
+</fieldset>
+

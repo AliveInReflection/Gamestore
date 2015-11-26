@@ -1,0 +1,644 @@
+GameController/List: 	4192ms
+
+GameController/GetCount: 	4228ms
+
+GameController/List: 	4259ms
+
+GameController/GetCount: 	4260ms
+
+GameController/List: 	4276ms
+
+GameController/GetCount: 	4277ms
+
+GameController/List: 	2192ms
+
+GameController/GetCount: 	2219ms
+
+GameController/List: 	2313ms
+
+GameController/GetCount: 	2313ms
+
+GameController/List: 	2330ms
+
+GameController/GetCount: 	2330ms
+
+GameController/List: 	2435ms
+
+GameController/GetCount: 	2436ms
+
+GameController/List: 	2742ms
+
+GameController/GetCount: 	2742ms
+
+GameController/List: 	2814ms
+
+GameController/GetCount: 	2814ms
+
+GameController/List: 	1860ms
+
+GameController/GetCount: 	1913ms
+
+GameController/List: 	2205ms
+
+GameController/GetCount: 	2209ms
+
+GameController/List: 	1315ms
+
+GameController/GetCount: 	1322ms
+
+GameController/List: 	8705ms
+
+GameController/GetCount: 	8712ms
+
+GameController/List: 	1534ms
+
+GameController/GetCount: 	1542ms
+
+GameController/List: 	1306ms
+
+GameController/GetCount: 	1314ms
+
+GameController/List: 	1176ms
+
+GameController/GetCount: 	1184ms
+
+GameController/List: 	1298ms
+
+GameController/GetCount: 	1306ms
+
+GameController/List: 	1312ms
+
+GameController/GetCount: 	1312ms
+
+GameController/List: 	1317ms
+
+GameController/GetCount: 	1317ms
+
+GameController/List: 	1320ms
+
+GameController/GetCount: 	1321ms
+
+GameController/List: 	1324ms
+
+GameController/GetCount: 	1325ms
+
+GameController/List: 	1327ms
+
+GameController/GetCount: 	1328ms
+
+GameController/List: 	1340ms
+
+GameController/GetCount: 	1341ms
+
+GameController/List: 	1350ms
+
+GameController/GetCount: 	1350ms
+
+GameController/List: 	1356ms
+
+GameController/GetCount: 	1357ms
+
+GameController/List: 	1362ms
+
+GameController/GetCount: 	1362ms
+
+GameController/List: 	1365ms
+
+GameController/GetCount: 	1365ms
+
+GameController/List: 	1368ms
+
+GameController/GetCount: 	1369ms
+
+GameController/List: 	1371ms
+
+GameController/GetCount: 	1372ms
+
+GameController/List: 	1375ms
+
+GameController/GetCount: 	1376ms
+
+GameController/List: 	1381ms
+
+GameController/GetCount: 	1382ms
+
+GameController/List: 	1382ms
+
+GameController/GetCount: 	1383ms
+
+GameController/List: 	1386ms
+
+GameController/GetCount: 	1387ms
+
+GameController/List: 	1390ms
+
+GameController/GetCount: 	1391ms
+
+GameController/List: 	1395ms
+
+GameController/GetCount: 	1395ms
+
+GameController/List: 	1398ms
+
+GameController/GetCount: 	1399ms
+
+GameController/List: 	1403ms
+
+GameController/GetCount: 	1404ms
+
+GameController/List: 	1404ms
+
+GameController/GetCount: 	1405ms
+
+GameController/List: 	1409ms
+
+GameController/GetCount: 	1410ms
+
+GameController/List: 	1415ms
+
+GameController/GetCount: 	1415ms
+
+GameController/List: 	1419ms
+
+GameController/GetCount: 	1419ms
+
+GameController/List: 	1422ms
+
+GameController/GetCount: 	1423ms
+
+GameController/List: 	1426ms
+
+GameController/GetCount: 	1426ms
+
+GameController/List: 	1429ms
+
+GameController/GetCount: 	1429ms
+
+GameController/List: 	1437ms
+
+GameController/GetCount: 	1438ms
+
+GameController/List: 	1440ms
+
+GameController/GetCount: 	1440ms
+
+GameController/List: 	1442ms
+
+GameController/GetCount: 	1443ms
+
+GameController/List: 	1445ms
+
+GameController/GetCount: 	1446ms
+
+GameController/List: 	1448ms
+
+GameController/GetCount: 	1449ms
+
+GameController/List: 	1451ms
+
+GameController/GetCount: 	1452ms
+
+GameController/List: 	1455ms
+
+GameController/GetCount: 	1456ms
+
+GameController/List: 	1459ms
+
+GameController/GetCount: 	1459ms
+
+GameController/List: 	1462ms
+
+GameController/GetCount: 	1462ms
+
+GameController/List: 	1465ms
+
+GameController/GetCount: 	1466ms
+
+GameController/List: 	1468ms
+
+GameController/GetCount: 	1468ms
+
+GameController/List: 	1472ms
+
+GameController/GetCount: 	1473ms
+
+GameController/List: 	1476ms
+
+GameController/GetCount: 	1477ms
+
+GameController/List: 	1481ms
+
+GameController/GetCount: 	1481ms
+
+GameController/List: 	1487ms
+
+GameController/GetCount: 	1488ms
+
+GameController/List: 	1488ms
+
+GameController/GetCount: 	1489ms
+
+GameController/List: 	1493ms
+
+GameController/GetCount: 	1494ms
+
+GameController/List: 	1496ms
+
+GameController/GetCount: 	1498ms
+
+GameController/List: 	1504ms
+
+GameController/GetCount: 	1504ms
+
+GameController/List: 	1511ms
+
+GameController/GetCount: 	1511ms
+
+GameController/List: 	1516ms
+
+GameController/GetCount: 	1517ms
+
+GameController/List: 	1520ms
+
+GameController/GetCount: 	1520ms
+
+GameController/List: 	1523ms
+
+GameController/GetCount: 	1523ms
+
+GameController/List: 	1526ms
+
+GameController/GetCount: 	1527ms
+
+GameController/List: 	1141ms
+
+GameController/GetCount: 	1149ms
+
+GameController/List: 	1161ms
+
+GameController/GetCount: 	1161ms
+
+GameController/List: 	1173ms
+
+GameController/GetCount: 	1174ms
+
+GameController/List: 	1182ms
+
+GameController/GetCount: 	1183ms
+
+GameController/List: 	1193ms
+
+GameController/GetCount: 	1196ms
+
+GameController/List: 	1214ms
+
+GameController/GetCount: 	1215ms
+
+GameController/List: 	1235ms
+
+GameController/GetCount: 	1235ms
+
+GameController/List: 	1251ms
+
+GameController/GetCount: 	1252ms
+
+GameController/List: 	1263ms
+
+GameController/GetCount: 	1264ms
+
+GameController/List: 	1274ms
+
+GameController/GetCount: 	1274ms
+
+GameController/List: 	1285ms
+
+GameController/GetCount: 	1285ms
+
+GameController/List: 	1296ms
+
+GameController/GetCount: 	1297ms
+
+GameController/List: 	1309ms
+
+GameController/GetCount: 	1311ms
+
+GameController/List: 	1322ms
+
+GameController/GetCount: 	1324ms
+
+GameController/List: 	1335ms
+
+GameController/GetCount: 	1336ms
+
+GameController/List: 	1355ms
+
+GameController/GetCount: 	1356ms
+
+GameController/List: 	1427ms
+
+GameController/GetCount: 	1429ms
+
+GameController/List: 	1429ms
+
+GameController/GetCount: 	1430ms
+
+GameController/List: 	1455ms
+
+GameController/GetCount: 	1455ms
+
+GameController/List: 	1481ms
+
+GameController/GetCount: 	1482ms
+
+GameController/List: 	1535ms
+
+GameController/GetCount: 	1536ms
+
+GameController/List: 	1560ms
+
+GameController/GetCount: 	1561ms
+
+GameController/List: 	1641ms
+
+GameController/GetCount: 	1641ms
+
+GameController/List: 	1686ms
+
+GameController/GetCount: 	1687ms
+
+GameController/List: 	1701ms
+
+GameController/GetCount: 	1702ms
+
+GameController/List: 	1751ms
+
+GameController/GetCount: 	1753ms
+
+GameController/List: 	1806ms
+
+GameController/GetCount: 	1807ms
+
+GameController/List: 	1833ms
+
+GameController/GetCount: 	1834ms
+
+GameController/List: 	1844ms
+
+GameController/GetCount: 	1844ms
+
+GameController/List: 	1892ms
+
+GameController/GetCount: 	1892ms
+
+GameController/List: 	1927ms
+
+GameController/GetCount: 	1930ms
+
+GameController/List: 	1940ms
+
+GameController/GetCount: 	1941ms
+
+GameController/List: 	1951ms
+
+GameController/GetCount: 	1951ms
+
+GameController/List: 	1963ms
+
+GameController/GetCount: 	1964ms
+
+GameController/List: 	1983ms
+
+GameController/GetCount: 	1983ms
+
+GameController/List: 	1996ms
+
+GameController/GetCount: 	1997ms
+
+GameController/List: 	2008ms
+
+GameController/GetCount: 	2009ms
+
+GameController/List: 	2022ms
+
+GameController/GetCount: 	2023ms
+
+GameController/List: 	2037ms
+
+GameController/GetCount: 	2038ms
+
+GameController/List: 	2046ms
+
+GameController/GetCount: 	2048ms
+
+GameController/List: 	2057ms
+
+GameController/GetCount: 	2059ms
+
+GameController/List: 	2075ms
+
+GameController/GetCount: 	2077ms
+
+GameController/List: 	2297ms
+
+GameController/GetCount: 	2303ms
+
+GameController/List: 	2303ms
+
+GameController/GetCount: 	2304ms
+
+GameController/List: 	2331ms
+
+GameController/GetCount: 	2335ms
+
+GameController/List: 	2344ms
+
+GameController/GetCount: 	2345ms
+
+GameController/List: 	2362ms
+
+GameController/GetCount: 	2363ms
+
+GameController/List: 	2363ms
+
+GameController/GetCount: 	2363ms
+
+GameController/List: 	2375ms
+
+GameController/GetCount: 	2376ms
+
+GameController/List: 	2388ms
+
+GameController/GetCount: 	2390ms
+
+GameController/List: 	1088ms
+
+GameController/GetCount: 	1096ms
+
+GameController/List: 	1109ms
+
+GameController/GetCount: 	1110ms
+
+GameController/List: 	1136ms
+
+GameController/GetCount: 	1137ms
+
+GameController/List: 	1183ms
+
+GameController/GetCount: 	1183ms
+
+GameController/List: 	1206ms
+
+GameController/GetCount: 	1207ms
+
+GameController/List: 	1230ms
+
+GameController/GetCount: 	1230ms
+
+GameController/List: 	1240ms
+
+GameController/GetCount: 	1240ms
+
+GameController/List: 	1257ms
+
+GameController/GetCount: 	1257ms
+
+GameController/List: 	1269ms
+
+GameController/GetCount: 	1270ms
+
+GameController/List: 	1280ms
+
+GameController/GetCount: 	1281ms
+
+GameController/List: 	4480ms
+
+GameController/List: 	4480ms
+GameController/List: 	4480ms
+
+GameController/GetCount: 	4489ms
+
+GameController/GetCount: 	4489ms
+GameController/GetCount: 	4489ms
+
+GameController/Create: 	4625ms
+
+GameController/List: 	1106ms
+
+GameController/GetCount: 	1115ms
+
+GameController/Create: 	1241ms
+
+GameController/GetCount: 	1242ms
+
+GameController/Details: 	1270ms
+
+GameController/GetCount: 	1270ms
+
+PublisherController/Details: 	1430ms
+
+GameController/GetCount: 	1431ms
+
+GameController/List: 	1489ms
+
+GameController/GetCount: 	1490ms
+
+GameController/List: 	1550ms
+
+GameController/GetCount: 	1554ms
+
+GameController/List: 	1184ms
+
+GameController/GetCount: 	1192ms
+
+GameController/Details: 	1227ms
+
+GameController/GetCount: 	1227ms
+
+CommentController/List: 	1356ms
+
+CommentController/Create: 	1356ms
+
+GameController/GetCount: 	1357ms
+
+CommentController/Create: 	1358ms
+
+UserController/Ban: 	11691ms
+
+GameController/GetCount: 	11691ms
+
+GameController/Create: 	11835ms
+
+GameController/GetCount: 	11836ms
+
+GameController/List: 	1312ms
+
+GameController/GetCount: 	1319ms
+
+GameController/Create: 	1456ms
+
+GameController/GetCount: 	1457ms
+
+GameController/List: 	1441ms
+
+GameController/GetCount: 	1450ms
+
+GameController/Create: 	1640ms
+
+GameController/GetCount: 	1641ms
+
+GameController/Create: 	1784ms
+
+GameController/GetCount: 	1784ms
+
+GameController/Create: 	2051ms
+
+GameController/List: 	2090ms
+
+GameController/GetCount: 	2091ms
+
+GameController/Details: 	2108ms
+
+GameController/GetCount: 	2108ms
+
+GameController/Details: 	2149ms
+
+GameController/GetCount: 	2153ms
+
+GameController/Remove: 	2233ms
+
+GameController/List: 	2277ms
+
+GameController/GetCount: 	2277ms
+
+GameController/Details: 	2293ms
+
+GameController/GetCount: 	2294ms
+
+GameController/Remove: 	30675ms
+
+GameController/List: 	30735ms
+
+GameController/GetCount: 	30739ms
+
+GameController/List: 	1124ms
+
+GameController/GetCount: 	1132ms
+
+GameController/Details: 	1190ms
+
+GameController/GetCount: 	1193ms
+
+GameController/List: 	920ms
+
+GameController/GetCount: 	927ms
+
+GameController/Details: 	947ms
+
+GameController/GetCount: 	947ms
+
+GameController/Remove: 	4334ms
+
+GameController/List: 	4374ms
+
+GameController/GetCount: 	4375ms
+

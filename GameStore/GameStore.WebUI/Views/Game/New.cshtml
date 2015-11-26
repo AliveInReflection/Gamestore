@@ -1,0 +1,25 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@using GameStore.WebUI.Helpers
+@model GameStore.WebUI.Models.CreateGameViewModel
+
+@{
+    ViewBag.Title = ViewsRes.GameCreateTitle;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewsRes.GameCreateTitle</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        @Html.EditorForModel()
+
+        <p>
+            <input type="submit" value="@ViewsRes.LinkCreate" />
+        </p>
+    </fieldset>
+}
+

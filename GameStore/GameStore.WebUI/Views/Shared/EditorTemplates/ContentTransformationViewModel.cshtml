@@ -1,0 +1,67 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.ContentTransformationViewModel
+
+@Html.Hidden("CurrentPage", Model.CurrentPage, new { id = "CurrentPage" })
+
+<fieldset>
+    <legend>@Html.LabelFor(m => m.Genres)</legend>
+    @for (int i = 0; i < Model.Genres.Count; i++)
+    {
+        @Html.EditorFor(m => Model.Genres[i], "CheckBoxViewModel", String.Format("Genres[{0}]", i))
+    }
+</fieldset>
+
+<fieldset>
+    <legend>@Html.LabelFor(m => m.PlatformTypes)</legend>
+    @for (int i = 0; i < Model.PlatformTypes.Count; i++)
+    {
+        @Html.EditorFor(m => Model.PlatformTypes[i], "CheckBoxViewModel", String.Format("PlatformTypes[{0}]", i))
+    }
+</fieldset>
+
+<fieldset>
+    <legend>@Html.LabelFor(m => m.Publishers)</legend>
+    @for (int i = 0; i < Model.Publishers.Count; i++)
+    {
+        @Html.EditorFor(m => Model.Publishers[i], "CheckBoxViewModel", String.Format("Publishers[{0}]", i))
+    }
+</fieldset>
+
+<fieldset>
+    <legend>@Html.LabelFor(m => m.SortByItems)</legend>
+    @Html.DropDownListFor(m => m.SortBy, Model.SortByItems, "SortBy", new {value = @ModelRes.GameFilterSortByItems })
+</fieldset>
+
+<fieldset>
+    <legend>@Html.LabelFor(m => m.PublishingDates)</legend>
+    @for (int i = 0; i < Model.PublishingDates.Count; i++)
+    {
+        @Html.EditorFor(m => Model.PublishingDates[i], "RadiobuttonViewModel", "PublishingDate", null)
+    }
+</fieldset>
+
+<fieldset>
+    <legend>@ViewsRes.FilteringViewModelPrice</legend>
+    <table>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.MinPrice)</td>
+            <td>@Html.EditorFor(m => m.MinPrice)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(m => m.MaxPrice)</td>
+            <td>@Html.EditorFor(m => m.MaxPrice)</td>
+        </tr>
+    </table>
+</fieldset>
+
+<fieldset>
+    <legend>@Html.LabelFor(m => m.Name)</legend>
+    @Html.EditorFor(m => m.Name)
+</fieldset>
+<fieldset>
+    <legend>@Html.LabelFor(m => m.ItemsPerPage)</legend>
+    @Html.DropDownList("ItemsPerPage", Model.ItemsPerPageList)
+</fieldset>
+
+
+

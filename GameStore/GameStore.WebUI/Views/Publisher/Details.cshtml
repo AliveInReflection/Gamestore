@@ -1,0 +1,42 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.DisplayPublisherViewModel
+
+@{
+    ViewBag.Title = ViewsRes.PublisherDetailsTitle;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+@Html.ActionLink(ViewsRes.LinkUpdate, "Update", new { publisherId = Model.PublisherId }) 
+<table class="table">
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.CompanyName)
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.Description)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.Description)
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.HomePage)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.HomePage)
+        </td>
+    </tr>
+</table>
+@using (Html.BeginForm("Delete", "Publisher"))
+{
+    @Html.Hidden("publisherId", Model.PublisherId)
+    <input type="submit" value="@ViewsRes.LinkDelete" />
+}
+

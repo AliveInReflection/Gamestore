@@ -1,0 +1,37 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.CreateCommentViewModel
+
+<div id="add-comment-fieldset">
+    @using (Html.BeginForm("Create", "Comment"))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+
+            @Html.HiddenFor(m => m.ParentCommentId)
+            @Html.HiddenFor(m => m.QuoteId)
+            @Html.Hidden("gameKey", ViewBag.GameKey as string)
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.UserName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.UserName)
+                @Html.ValidationMessageFor(model => model.UserName)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Content)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Content)
+                @Html.ValidationMessageFor(model => model.Content)
+            </div>
+
+            <p>
+                <input type="submit" value="@ViewsRes.LinkComment" />
+            </p>
+        </fieldset>
+    }
+</div>

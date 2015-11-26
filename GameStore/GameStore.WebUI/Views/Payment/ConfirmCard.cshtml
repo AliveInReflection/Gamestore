@@ -1,0 +1,36 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.Payment.CardPaymentConfirmationViewModel
+
+@{
+    ViewBag.Title = ViewsRes.PaymentConfirmCardTitle;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.CardNumber)
+
+    <table class="table">
+        <tr>
+            <td class="editor-label">
+                @Html.LabelFor(model => model.ConfirmationCode)
+            </td>
+            <td class="editor-field">
+                @Html.EditorFor(model => model.ConfirmationCode)
+                @Html.ValidationMessageFor(model => model.ConfirmationCode)
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        <input type="submit" value="@ViewsRes.LinkConfirm" />
+    </p>
+}
+
+
+@section Scripts {
+
+}

@@ -1,0 +1,75 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@using GameStore.WebUI.Helpers
+@model GameStore.WebUI.Models.FilteredGamesViewModel
+
+@{
+    ViewBag.Title = @ViewsRes.GameIndexTitle;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewsRes.GameIndexTitle</h2>
+
+@Html.Partial("_MessagePartial")
+
+<div class="pull-right">@Html.ActionLink(ViewsRes.LinkAddNew, "New", "Game")</div>
+<table class="table table-condensed">
+    <tr>
+        <th>@ModelRes.GameGameKey</th>
+        <th>@ModelRes.GameGameName</th>
+        <th>@ModelRes.GameDescription</th>
+        <th>@ModelRes.GamePrice</th>
+        <th>@ModelRes.GameUnitsInStock</th>
+        <th>@ModelRes.GameDiscontinued</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Games)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GameKey)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GameName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsInStock)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discontinued)
+            </td>
+            <td>
+                @Html.ActionLink(ViewsRes.LinkDetails, "Details", new {gameKey = item.GameKey})
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@Html.PaginationBuilder(Model.Transformer.CurrentPage,Model.Transformer.PageCount,"List", "Game")
+
+
+
+@section LeftSideBar
+{
+    @using (Html.BeginForm("Index", "Game"))
+    {
+        @Html.EditorFor(m => m.Transformer, "ContentTransformationViewModel", "transformer")
+        <p>
+            <input type="submit" value="@ViewsRes.LinkFilter" />
+        </p>
+    }
+}
+
+@section Scripts
+{
+    <script src="/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="/Scripts/Game/pagination.js"></script>
+}

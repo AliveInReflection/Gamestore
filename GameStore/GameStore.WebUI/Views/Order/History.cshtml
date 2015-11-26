@@ -1,0 +1,54 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model IEnumerable<GameStore.WebUI.Models.Order.DisplayOrderViewModel>
+
+@{
+    ViewBag.Title = ViewsRes.OrderHistoryTitle;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="center-block">
+    @using (Html.BeginForm())
+    {
+        @Html.TextBox("dateFrom", null, new { type = "date" })
+        @Html.TextBox("dateTo", null, new { type = "date" })
+        <input type="submit" value="@ViewsRes.LinkSearch" />
+    }
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderId)
+        </td>
+        <td>
+            @item.Date.ToShortDateString()
+        </td>
+        <td>
+            <table class="table table-striped">
+                @foreach (var detail in item.OrderDetailses)
+                {
+                    <tr>
+                        <td>@detail.Product.GameName</td>
+                        <td>$@detail.Product.Price</td>
+                        <td>@detail.Quantity</td>
+                        <td>@detail.Discount</td>
+                    </tr>
+                }
+            </table>
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,59 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.Account.DisplayUserViewModel
+
+@{
+    ViewBag.Title = ViewsRes.AccountDetailsTitle;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+
+<table class="table">
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.UserName)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.UserName)
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </td>
+        <td class="display-field">
+            @Model.DateOfBirth.ToShortDateString()
+        </td>
+    </tr>
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.Country)
+        </td>
+        <td class="display-field">
+            @Html.DisplayFor(model => model.Country)
+        </td>
+    </tr>
+
+    <tr>
+        <td class="display-label">
+            @Html.DisplayNameFor(model => model.Roles)
+        </td>
+        <td class="display-field">
+            @foreach (var role in Model.Roles)
+            {
+                <span>@role</span>
+            } 
+        </td>
+    </tr>
+</table>
+<p>
+    @Html.ActionLink(ViewsRes.LinkChangePassword, "ChangePassword")
+</p>

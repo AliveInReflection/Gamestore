@@ -1,0 +1,58 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model GameStore.WebUI.Models.Account.LoginViewModel
+
+@{
+    ViewBag.Title = ViewsRes.LoginTitle;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@Html.Partial("_MessagePartial")
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.Hidden("returnUrl", @ViewBag.LoginUrl as string)
+
+    <table class="table">
+
+        <tr>
+            <td class="editor-label">
+                @Html.LabelFor(model => model.UserName)
+            </td>
+            <td class="editor-field">
+                @Html.EditorFor(model => model.UserName)
+                @Html.ValidationMessageFor(model => model.UserName)
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label">
+                @Html.LabelFor(model => model.Password)
+            </td>
+            <td class="editor-field">
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label">
+                @Html.LabelFor(model => model.RememberMe)
+            </td>
+            <td class="editor-field">
+                @Html.EditorFor(model => model.RememberMe)
+                @Html.ValidationMessageFor(model => model.RememberMe)
+            </td>
+        </tr>
+
+    </table>
+    <div>
+        <input type="submit" value="@ViewsRes.LinkLogin" />
+    </div>
+}
+
+
+@section Scripts {
+
+}

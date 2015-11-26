@@ -1,0 +1,21 @@
+2015-11-18 10:29:44.7649|Warn| Type: ValidationException | Message: Another game with the same key (NFSMW) exists | Where:    at GameStore.WebUI.Controllers.GameController.Update(UpdateGameViewModel game) in d:\GameStoreApp\task5\GameStore.WebUI\Controllers\GameController.cs:line 120
+2015-11-18 10:30:29.6298|Warn| Type: ValidationException | Message: Another game with the same key (NFSMW) exists | Where:    at GameStore.WebUI.Controllers.GameController.Update(UpdateGameViewModel game) in d:\GameStoreApp\task5\GameStore.WebUI\Controllers\GameController.cs:line 120
+2015-11-18 10:32:45.9744|Warn| Type: ValidationException | Message: Another game with the same key (NFSMW) exists | Where:    at GameStore.WebUI.Controllers.GameController.Update(UpdateGameViewModel game) in d:\GameStoreApp\task5\GameStore.WebUI\Controllers\GameController.cs:line 120
+2015-11-18 13:48:41.6029|Fatal| Controller: Account | Action: Register | Message: The view '::1' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Account/::1.aspx
+~/Views/Account/::1.ascx
+~/Views/Shared/::1.aspx
+~/Views/Shared/::1.ascx
+~/Views/Account/::1.cshtml
+~/Views/Account/::1.vbhtml
+~/Views/Shared/::1.cshtml
+~/Views/Shared/::1.vbhtml | Where:    at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+2015-11-18 14:05:10.4630|Fatal| Controller: Account | Action: Login | Message: The view 'Login' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Account/Login.aspx
+~/Views/Account/Login.ascx
+~/Views/Shared/Login.aspx
+~/Views/Shared/Login.ascx
+~/Views/Account/Login.cshtml
+~/Views/Account/Login.vbhtml
+~/Views/Shared/Login.cshtml
+~/Views/Shared/Login.vbhtml | Where:    at System.Web.Mvc.ViewResult.FindView(ControllerContext context)

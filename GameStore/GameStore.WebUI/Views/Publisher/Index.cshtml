@@ -1,0 +1,47 @@
+﻿@using GameStore.WebUI.App_LocalResources.Localization
+@model IEnumerable<GameStore.WebUI.Models.DisplayPublisherViewModel>
+
+@{
+    ViewBag.Title = ViewsRes.PublisherIndexTitle;
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@Html.Partial("_MessagePartial")
+
+<p>
+    @Html.ActionLink(ViewsRes.LinkAddNew, "New")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomePage)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomePage)
+        </td>
+        <td>
+            @Html.ActionLink(ViewsRes.LinkDetails, "Details", new { companyName = item.CompanyName }) 
+        </td>
+    </tr>
+}
+
+</table>
