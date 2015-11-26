@@ -62,3 +62,24 @@
 .pagination-page-current {
     color: red;
 }
+
+.button {
+    margin: 5px;
+    padding: 5px 10px;
+    border-top: 2px solid #3d4652;
+    border-bottom: 2px solid #3d4652;
+    border-radius: 10px;
+    display: inline-block;
+    text-decoration: none;
+    background-color: #8094b3;
+    color: #ced6e3;
+    width: 100px;
+    text-align: center;
+    font-weight: 300;
+}
+
+.button:hover {
+    background-color: #fcfcfe;
+    color: #3d4652;
+    font-weight: bold;
+}

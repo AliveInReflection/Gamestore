@@ -1,682 +1,238 @@
-GameController/Index: 	2003ms
+GameController/Index: 	1109ms
 
-GameController/GetCount: 	2045ms
+GameController/GetCount: 	1122ms
 
-PaymentController/paycard: 	2052ms
+GameController/Index: 	1229ms
 
-GameController/GetCount: 	2060ms
+GameController/GetCount: 	1230ms
 
-PaymentController/paycard: 	9551ms
+GameController/Index: 	1328ms
 
-PaymentController/ConfirmCard: 	9552ms
+GameController/GetCount: 	1329ms
 
-GameController/GetCount: 	9596ms
+GameController/Index: 	1436ms
 
-GameController/Index: 	9596ms
+GameController/GetCount: 	1437ms
 
-GameController/GetCount: 	9596ms
+GameController/Index: 	1541ms
 
-GameController/Index: 	1793ms
+GameController/GetCount: 	1590ms
 
-GameController/GetCount: 	1808ms
+GameController/Index: 	1681ms
 
-AccountController/Login: 	1848ms
+GameController/GetCount: 	1682ms
 
-GameController/GetCount: 	1849ms
+GameController/Index: 	1786ms
 
-AccountController/Login: 	2646ms
+GameController/GetCount: 	1787ms
 
-GameController/Index: 	2767ms
+GameController/Index: 	1874ms
 
-GameController/GetCount: 	2776ms
+GameController/GetCount: 	1874ms
 
-OrderController/Details: 	4906ms
+AccountController/Login: 	1924ms
 
-GameController/GetCount: 	4906ms
+GameController/GetCount: 	1925ms
 
-GameController/Details: 	4946ms
+GameController/Index: 	2018ms
 
-GameController/GetCount: 	4946ms
+GameController/GetCount: 	2018ms
 
-OrderController/Add: 	5094ms
-
-GameController/Index: 	5192ms
-
-GameController/GetCount: 	5193ms
-
-OrderController/Details: 	5225ms
-
-GameController/GetCount: 	5226ms
-
-OrderController/Make: 	5247ms
-
-GameController/GetCount: 	5247ms
-
-OrderController/Pay: 	16965ms
-
-PaymentController/PayCard: 	16975ms
-
-GameController/GetCount: 	16976ms
-
-GameController/Index: 	2357ms
-
-GameController/GetCount: 	2582ms
-
-GameController/Details: 	2591ms
-
-GameController/GetCount: 	2591ms
-
-OrderController/Add: 	4335ms
-
-GameController/Index: 	4547ms
-
-GameController/GetCount: 	4548ms
-
-OrderController/Details: 	4613ms
-
-GameController/GetCount: 	4614ms
-
-OrderController/Make: 	4648ms
-
-GameController/GetCount: 	4649ms
-
-OrderController/Pay: 	4943ms
-
-PaymentController/PayCard: 	4963ms
-
-GameController/GetCount: 	4964ms
-
-GameController/Index: 	783ms
-
-GameController/GetCount: 	857ms
-
-GameController/Index: 	1288ms
-
-GameController/GetCount: 	1318ms
-
-OrderController/Details: 	3005ms
-
-GameController/GetCount: 	3005ms
-
-GameController/Index: 	3118ms
-
-GameController/GetCount: 	3119ms
-
-GameController/Details: 	3132ms
-
-GameController/GetCount: 	3133ms
-
-OrderController/Add: 	3212ms
-
-GameController/Index: 	3303ms
-
-GameController/GetCount: 	3303ms
-
-GameController/Details: 	3349ms
-
-GameController/GetCount: 	3349ms
-
-OrderController/Details: 	3381ms
-
-GameController/GetCount: 	3382ms
-
-OrderController/Make: 	3398ms
-
-GameController/GetCount: 	3399ms
-
-OrderController/Pay: 	3507ms
-
-PaymentController/PayCard: 	3513ms
-
-GameController/GetCount: 	3514ms
-
-PaymentController/PayCard: 	55826ms
-
-GameController/Index: 	1435ms
-
-GameController/GetCount: 	1535ms
-
-OrderController/Details: 	2426ms
-
-GameController/GetCount: 	2427ms
-
-OrderController/Details: 	2464ms
-
-GameController/GetCount: 	2465ms
-
-GameController/Index: 	2561ms
-
-GameController/GetCount: 	2561ms
-
-GameController/Details: 	2571ms
-
-GameController/GetCount: 	2571ms
-
-OrderController/Add: 	2691ms
-
-GameController/Index: 	2791ms
-
-GameController/GetCount: 	2792ms
-
-OrderController/Details: 	2818ms
-
-GameController/GetCount: 	2819ms
-
-OrderController/Make: 	2834ms
-
-GameController/GetCount: 	2835ms
-
-OrderController/Pay: 	2926ms
-
-PaymentController/PayCard: 	2933ms
-
-GameController/GetCount: 	2934ms
-
-PaymentController/PayCard: 	63047ms
-
-GameController/GetCount: 	63055ms
-
-PaymentController/PayCard: 	125695ms
-
-PaymentController/ConfirmCard: 	125696ms
-
-GameController/GetCount: 	125704ms
-
-GameController/Index: 	125815ms
-
-GameController/GetCount: 	125822ms
-
-OrderController/Details: 	126459ms
-
-GameController/GetCount: 	126460ms
-
-GameController/Details: 	126476ms
-
-GameController/GetCount: 	126476ms
-
-OrderController/Add: 	126549ms
-
-GameController/Index: 	126644ms
-
-GameController/GetCount: 	126645ms
-
-OrderController/Details: 	126663ms
-
-GameController/GetCount: 	126664ms
-
-OrderController/Make: 	126673ms
-
-GameController/GetCount: 	126674ms
-
-OrderController/Pay: 	126777ms
-
-PaymentController/PayCard: 	126777ms
-
-GameController/GetCount: 	126778ms
-
-PaymentController/PayCard: 	163820ms
-
-PaymentController/ConfirmCard: 	163822ms
-
-GameController/GetCount: 	163830ms
-
-PaymentController/ConfirmCard: 	197541ms
-
-GameController/GetCount: 	198622ms
-
-PaymentController/ConfirmCard: 	272361ms
-
-GameController/Index: 	273129ms
-
-GameController/GetCount: 	273157ms
-
-PaymentController/ConfirmCard: 	323759ms
-
-GameController/Index: 	323871ms
-
-GameController/GetCount: 	323871ms
-
-PaymentController/ConfirmCard: 	323872ms
-
-GameController/GetCount: 	323880ms
-
-PaymentController/PayCard: 	323881ms
-
-GameController/GetCount: 	323882ms
-
-PaymentController/PayCard: 	331867ms
-
-PaymentController/ConfirmCard: 	331868ms
-
-GameController/GetCount: 	331868ms
-
-PaymentController/ConfirmCard: 	420457ms
-
-GameController/Index: 	420580ms
-
-GameController/GetCount: 	420586ms
-
-PaymentController/ConfirmCard: 	420586ms
-
-GameController/GetCount: 	420587ms
-
-PaymentController/PayCard: 	420587ms
-
-GameController/GetCount: 	420588ms
-
-PaymentController/PayCard: 	498727ms
-
-GameController/Index: 	498839ms
-
-GameController/GetCount: 	498847ms
-
-PaymentController/PayCard: 	498847ms
-
-GameController/GetCount: 	498848ms
-
-PaymentController/PayCard: 	506657ms
-
-PaymentController/ConfirmCard: 	506657ms
-
-GameController/GetCount: 	506659ms
-
-PaymentController/ConfirmCard: 	557657ms
-
-GameController/GetCount: 	557668ms
-
-GameController/Index: 	1261ms
-
-GameController/GetCount: 	1274ms
-
-OrderController/Details: 	2522ms
-
-GameController/GetCount: 	2523ms
-
-GameController/Details: 	2542ms
-
-GameController/GetCount: 	2542ms
-
-OrderController/Add: 	2590ms
-
-GameController/Index: 	2715ms
-
-GameController/GetCount: 	2715ms
-
-OrderController/Details: 	2743ms
-
-GameController/GetCount: 	2744ms
-
-OrderController/Make: 	2762ms
-
-GameController/GetCount: 	2763ms
-
-OrderController/Pay: 	2854ms
-
-PaymentController/PayCard: 	2861ms
-
-GameController/GetCount: 	2861ms
-
-PaymentController/PayCard: 	27202ms
-
-PaymentController/ConfirmCard: 	27203ms
-
-GameController/GetCount: 	27212ms
-
-PaymentController/ConfirmCard: 	57257ms
-
-GameController/Index: 	57362ms
-
-GameController/GetCount: 	57369ms
-
-OrderController/Details: 	58015ms
-
-GameController/GetCount: 	58015ms
-
-GameController/Index: 	58118ms
-
-GameController/GetCount: 	58118ms
-
-GameController/Details: 	58124ms
-
-GameController/GetCount: 	58125ms
-
-OrderController/Add: 	58147ms
-
-GameController/Index: 	58242ms
-
-GameController/GetCount: 	58242ms
-
-OrderController/Details: 	58252ms
-
-GameController/GetCount: 	58253ms
-
-OrderController/Make: 	58262ms
-
-GameController/GetCount: 	58263ms
-
-OrderController/Pay: 	58336ms
-
-PaymentController/PayCard: 	58337ms
-
-GameController/GetCount: 	58337ms
-
-PaymentController/PayCard: 	63775ms
-
-PaymentController/ConfirmCard: 	63776ms
-
-GameController/GetCount: 	63776ms
-
-PaymentController/ConfirmCard: 	86246ms
-
-GameController/Index: 	86358ms
-
-GameController/GetCount: 	86365ms
-
-PaymentController/ConfirmCard: 	86365ms
-
-GameController/GetCount: 	86367ms
-
-PaymentController/PayCard: 	86367ms
-
-GameController/GetCount: 	86368ms
-
-GameController/Index: 	86494ms
-
-GameController/GetCount: 	86501ms
-
-GameController/Details: 	86519ms
-
-GameController/GetCount: 	86519ms
-
-OrderController/Add: 	87183ms
-
-GameController/Index: 	87282ms
-
-GameController/GetCount: 	87282ms
-
-OrderController/Details: 	87303ms
-
-GameController/GetCount: 	87304ms
-
-OrderController/Make: 	87313ms
-
-GameController/GetCount: 	87314ms
-
-OrderController/Pay: 	87414ms
-
-PaymentController/PayCard: 	87415ms
-
-GameController/GetCount: 	87416ms
-
-PaymentController/PayCard: 	137730ms
-
-PaymentController/ConfirmCard: 	137730ms
-
-GameController/GetCount: 	137927ms
-
-GameController/Index: 	1272ms
-
-GameController/GetCount: 	1286ms
-
-GameController/Details: 	1311ms
-
-GameController/GetCount: 	1312ms
-
-OrderController/Add: 	2095ms
-
-GameController/Index: 	2191ms
-
-GameController/GetCount: 	2191ms
-
-OrderController/Details: 	2239ms
-
-GameController/GetCount: 	2240ms
-
-OrderController/Make: 	2258ms
-
-GameController/GetCount: 	2259ms
-
-OrderController/Pay: 	2361ms
-
-PaymentController/PayCard: 	2369ms
-
-GameController/GetCount: 	2370ms
-
-PaymentController/PayCard: 	20719ms
-
-PaymentController/ConfirmCard: 	20720ms
-
-GameController/GetCount: 	20724ms
-
-PaymentController/ConfirmCard: 	22008ms
-
-GameController/GetCount: 	22023ms
-
-GameController/Index: 	22137ms
-
-GameController/GetCount: 	22144ms
-
-GameController/Details: 	22150ms
-
-GameController/GetCount: 	22152ms
-
-OrderController/Add: 	22770ms
-
-GameController/Index: 	22863ms
-
-GameController/GetCount: 	22864ms
-
-OrderController/Details: 	22882ms
-
-GameController/GetCount: 	22883ms
-
-OrderController/Make: 	22892ms
-
-GameController/GetCount: 	22893ms
-
-OrderController/Pay: 	22962ms
-
-PaymentController/PayCard: 	22963ms
-
-GameController/GetCount: 	22963ms
-
-GameController/Index: 	1314ms
-
-GameController/GetCount: 	1360ms
-
-GameController/Details: 	1377ms
-
-GameController/GetCount: 	1378ms
-
-OrderController/Add: 	2446ms
-
-GameController/Index: 	2544ms
-
-GameController/GetCount: 	2544ms
-
-OrderController/Details: 	2597ms
-
-GameController/GetCount: 	2597ms
-
-OrderController/Make: 	2612ms
-
-GameController/GetCount: 	2613ms
-
-OrderController/Pay: 	2701ms
-
-PaymentController/PayCard: 	2708ms
-
-GameController/GetCount: 	2716ms
-
-PaymentController/PayCard: 	15076ms
-
-PaymentController/ConfirmCard: 	15077ms
-
-GameController/GetCount: 	15078ms
-
-PaymentController/ConfirmCard: 	55922ms
-
-GameController/Index: 	56025ms
-
-GameController/GetCount: 	56032ms
-
-GameController/Details: 	56045ms
-
-GameController/GetCount: 	56047ms
-
-OrderController/Add: 	56718ms
-
-GameController/Index: 	56813ms
-
-GameController/GetCount: 	56814ms
-
-OrderController/Details: 	56833ms
-
-GameController/GetCount: 	56833ms
-
-OrderController/Make: 	56843ms
-
-GameController/GetCount: 	56844ms
-
-OrderController/Pay: 	56911ms
-
-PaymentController/PayCard: 	56912ms
-
-GameController/GetCount: 	56912ms
-
-PaymentController/PayCard: 	56913ms
-
-GameController/GetCount: 	56923ms
-
-PaymentController/PayCard: 	38609ms
-
-GameController/Index: 	39775ms
-
-GameController/GetCount: 	39788ms
-
-PaymentController/PayCard: 	60248ms
-
-GameController/GetCount: 	60249ms
-
-PaymentController/PayCard: 	78758ms
-
-GameController/GetCount: 	78761ms
-
-PaymentController/PayCard: 	120073ms
-
-GameController/GetCount: 	120081ms
-
-GameController/Index: 	1198ms
-
-GameController/GetCount: 	1232ms
-
-OrderController/Details: 	2133ms
+GameController/Index: 	2125ms
 
 GameController/GetCount: 	2133ms
 
-OrderController/Make: 	2186ms
+GameController/Index: 	2248ms
 
-GameController/GetCount: 	2187ms
+GameController/GetCount: 	2255ms
 
-GameController/Index: 	2285ms
+GameController/Index: 	2986ms
 
-GameController/GetCount: 	2286ms
+GameController/GetCount: 	2995ms
 
-GameController/Details: 	2295ms
+GameController/Index: 	3106ms
 
-GameController/GetCount: 	2296ms
+GameController/GetCount: 	3113ms
 
-OrderController/Add: 	2323ms
+GameController/Index: 	3219ms
 
-GameController/Index: 	2417ms
+GameController/GetCount: 	3220ms
 
-GameController/GetCount: 	2417ms
+GameController/Index: 	3328ms
 
-OrderController/Details: 	2438ms
+GameController/GetCount: 	3329ms
 
-GameController/GetCount: 	2439ms
+GameController/Index: 	3453ms
 
-OrderController/Make: 	2446ms
+GameController/GetCount: 	3454ms
 
-GameController/GetCount: 	2447ms
+GameController/Index: 	3580ms
 
-OrderController/Pay: 	2531ms
+GameController/GetCount: 	3657ms
 
-PaymentController/PayCard: 	2536ms
+GameController/Index: 	3778ms
 
-GameController/GetCount: 	2537ms
+GameController/GetCount: 	3778ms
 
-PaymentController/PayCard: 	35786ms
+GameController/Index: 	4799ms
 
-GameController/Index: 	35894ms
+GameController/GetCount: 	4806ms
 
-GameController/GetCount: 	35900ms
+GameController/Index: 	4943ms
 
-PaymentController/PayCard: 	35901ms
+GameController/GetCount: 	4944ms
 
-GameController/GetCount: 	35902ms
+GameController/Index: 	6174ms
 
-PaymentController/PayCard: 	42418ms
+GameController/GetCount: 	6300ms
 
-GameController/GetCount: 	42422ms
+GameController/Index: 	6419ms
 
-PaymentController/PayCard: 	54114ms
+GameController/GetCount: 	6420ms
 
-PaymentController/ConfirmCard: 	54115ms
+GameController/Index: 	6538ms
 
-GameController/GetCount: 	54115ms
+GameController/GetCount: 	6545ms
 
-PaymentController/ConfirmCard: 	56430ms
+GameController/Index: 	6649ms
 
-GameController/GetCount: 	56454ms
+GameController/GetCount: 	6650ms
 
-PaymentController/ConfirmCard: 	61731ms
+GameController/Index: 	6771ms
 
-GameController/GetCount: 	61745ms
+GameController/GetCount: 	6777ms
 
-PaymentController/ConfirmCard: 	61774ms
+GameController/Index: 	6904ms
 
-GameController/GetCount: 	61774ms
+GameController/GetCount: 	6911ms
 
-PaymentController/ConfirmCard: 	61801ms
+GameController/Index: 	7011ms
 
-GameController/Index: 	61913ms
+GameController/GetCount: 	7012ms
 
-GameController/GetCount: 	61914ms
+GameController/Index: 	7110ms
 
-GameController/Details: 	61935ms
+GameController/GetCount: 	7111ms
 
-GameController/GetCount: 	61943ms
+GameController/Index: 	7277ms
 
-OrderController/Add: 	62561ms
+GameController/GetCount: 	7285ms
 
-GameController/Index: 	62665ms
+GameController/Index: 	8318ms
 
-GameController/GetCount: 	62665ms
+GameController/GetCount: 	8352ms
 
-OrderController/Details: 	62695ms
+GameController/Index: 	8458ms
 
-GameController/GetCount: 	62695ms
+GameController/GetCount: 	8459ms
 
-OrderController/Make: 	62706ms
+GameController/Index: 	591ms
 
-GameController/GetCount: 	62706ms
+GameController/GetCount: 	613ms
 
-OrderController/Pay: 	62775ms
+GameController/Index: 	718ms
 
-PaymentController/PayCard: 	62775ms
+GameController/GetCount: 	718ms
 
-GameController/GetCount: 	62776ms
+GameController/Index: 	845ms
 
-PaymentController/PayCard: 	62820ms
+GameController/Index: 	933ms
 
-GameController/GetCount: 	62822ms
+GameController/Index: 	1697ms
 
-OrderController/Details: 	63423ms
+GameController/GetCount: 	1732ms
 
-GameController/GetCount: 	63424ms
+GameController/Index: 	1841ms
 
-GameController/Index: 	2754ms
+GameController/GetCount: 	1847ms
 
-GameController/GetCount: 	2786ms
+GameController/Index: 	1956ms
+
+GameController/GetCount: 	1964ms
+
+GameController/Index: 	2080ms
+
+GameController/GetCount: 	2088ms
+
+GameController/Index: 	2191ms
+
+GameController/GetCount: 	2198ms
+
+GameController/Index: 	2638ms
+
+GameController/GetCount: 	2645ms
+
+GameController/Index: 	2755ms
+
+GameController/GetCount: 	2756ms
+
+GameController/Index: 	2867ms
+
+GameController/GetCount: 	2867ms
+
+GameController/Index: 	3071ms
+
+GameController/GetCount: 	3078ms
+
+GameController/Index: 	869ms
+
+GameController/GetCount: 	882ms
+
+GameController/Index: 	993ms
+
+GameController/GetCount: 	994ms
+
+GameController/Index: 	1097ms
+
+GameController/GetCount: 	1098ms
+
+GameController/Index: 	1219ms
+
+GameController/GetCount: 	1226ms
+
+GameController/Index: 	1317ms
+
+GameController/GetCount: 	1317ms
+
+GameController/Index: 	1442ms
+
+GameController/GetCount: 	1448ms
+
+GameController/Index: 	1562ms
+
+GameController/GetCount: 	1570ms
+
+AccountController/Logout: 	1571ms
+
+GameController/Index: 	1674ms
+
+GameController/GetCount: 	1681ms
+
+GameController/Index: 	1777ms
+
+GameController/GetCount: 	1778ms
+
+GameController/Index: 	1906ms
+
+GameController/GetCount: 	1914ms
+
+GameController/Index: 	2020ms
+
+GameController/GetCount: 	2027ms
+
+GameController/Index: 	2149ms
+
+GameController/GetCount: 	2157ms
+
+GameController/Index: 	2242ms
+
+GameController/GetCount: 	2243ms
+
+GameController/Index: 	2695ms
+
+GameController/GetCount: 	2703ms
+
+GameController/Index: 	2811ms
+
+GameController/GetCount: 	2818ms
 

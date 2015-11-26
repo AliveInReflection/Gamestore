@@ -1,18 +1,9 @@
-2015-11-26 12:21:37.7451|Fatal| Controller: Payment | Action: ConfirmCard | Message: An error occurred while receiving the HTTP response to http://localhost:51782/CreditCardService.svc. This could be due to the service endpoint binding not using the HTTP protocol. This could also be due to an HTTP request context being aborted by the server (possibly due to the service shutting down). See server logs for more details. | Where: 
-2015-11-26 12:22:34.8732|Fatal| Controller: Payment | Action: ConfirmCard | Message: An error occurred while receiving the HTTP response to http://localhost:51782/CreditCardService.svc. This could be due to the service endpoint binding not using the HTTP protocol. This could also be due to an HTTP request context being aborted by the server (possibly due to the service shutting down). See server logs for more details. | Where: 
-2015-11-26 12:25:04.4162|Fatal| Controller: Payment | Action: ConfirmCard | Message: An error occurred while receiving the HTTP response to http://localhost:51782/CreditCardService.svc. This could be due to the service endpoint binding not using the HTTP protocol. This could also be due to an HTTP request context being aborted by the server (possibly due to the service shutting down). See server logs for more details. | Where: 
-2015-11-26 12:28:39.1307|Fatal| Controller: Payment | Action: PayCard | Message: The request channel timed out while waiting for a reply after 00:00:59.9980035. Increase the timeout value passed to the call to Request or increase the SendTimeout value on the Binding. The time allotted to this operation may have been a portion of a longer timeout. | Where: 
-2015-11-26 12:40:38.9446|Fatal| Controller: Payment | Action: ConfirmCard | Message: An error occurred while receiving the HTTP response to http://localhost:51782/CreditCardService.svc. This could be due to the service endpoint binding not using the HTTP protocol. This could also be due to an HTTP request context being aborted by the server (possibly due to the service shutting down). See server logs for more details. | Where: 
-2015-11-26 12:41:53.8546|Fatal| Controller: Payment | Action: ConfirmCard | Message: An error occurred while receiving the HTTP response to http://localhost:51782/CreditCardService.svc. This could be due to the service endpoint binding not using the HTTP protocol. This could also be due to an HTTP request context being aborted by the server (possibly due to the service shutting down). See server logs for more details. | Where: 
-2015-11-26 13:06:58.5460|Fatal| Controller: Payment | Action: PayCard | Message: 
-
-Mapping types:
-String -> CardType
-System.String -> GameStore.Infrastructure.Enums.CardType
-
-Destination path:
-CardPaymentInfoDTO.CardType.CardType
-
-Source value:
-Master card | Where:    at GameStore.WebUI.Controllers.PaymentController.PayCard(CardPaymentInfoViewModel model) in d:\GameStoreApp\Task8\GameStore\GameStore.WebUI\Controllers\PaymentController.cs:line 53
-2015-11-26 13:15:38.1970|Fatal| Controller: Payment | Action: PayCard | Message: There was no endpoint listening at http://localhost:51782/CreditCardService.svc that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details. | Where: 
+2015-11-26 18:21:03.4740|Fatal| Controller: Game | Action: Index | Message: The partial view '_SupportPartial' was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Game/_SupportPartial.aspx
+~/Views/Game/_SupportPartial.ascx
+~/Views/Shared/_SupportPartial.aspx
+~/Views/Shared/_SupportPartial.ascx
+~/Views/Game/_SupportPartial.cshtml
+~/Views/Game/_SupportPartial.vbhtml
+~/Views/Shared/_SupportPartial.cshtml
+~/Views/Shared/_SupportPartial.vbhtml | Where:    at System.Web.Mvc.HtmlHelper.FindPartialView(ViewContext viewContext, String partialViewName, ViewEngineCollection viewEngineCollection)

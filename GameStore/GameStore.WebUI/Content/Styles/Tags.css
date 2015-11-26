@@ -1,0 +1,16 @@
+﻿body {
+    font-family: "Verdana";
+    font-size: 10pt;
+    background-color: #fcfcfe;
+}
+
+
+a {
+    color: #3d4652;
+    display: inline;
+}
+
+    a:hover {
+        color: #406c8e;
+        text-decoration: none;
+    }

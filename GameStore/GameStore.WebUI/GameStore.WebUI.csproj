@@ -294,6 +294,8 @@
     <Content Include="App_Data\Northwind_log.ldf">
       <DependentUpon>Northwind.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\Images\Layout\game-logo.jpg" />
+    <Content Include="Content\Images\Layout\Normandy.png" />
     <Content Include="Content\Styles\bootstrap.min.css" />
     <Content Include="Content\Styles\Content.css" />
     <Content Include="Content\Styles\Main.css" />
@@ -330,6 +332,7 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\Styles\Tags.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Account\Account.js" />
     <Content Include="Scripts\Comment\Comment.js" />
@@ -410,6 +413,7 @@
     <Content Include="Views\Payment\PayCard.cshtml" />
     <Content Include="Views\Shared\_MessagePartial.cshtml" />
     <Content Include="Views\Payment\ConfirmCard.cshtml" />
+    <Content Include="Views\Shared\_SupportPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstract\" />

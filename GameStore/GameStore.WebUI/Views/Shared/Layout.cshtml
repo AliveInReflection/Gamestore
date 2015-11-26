@@ -10,34 +10,55 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Layout</title>
-    <link rel="stylesheet" href="/Content/Styles/bootstrap.min.css" />
-    <link rel="stylesheet" href="/Content/Styles/Main.css"/>
+    <link rel="stylesheet" href="/Content/Styles/Tags.css" />
+    <link rel="stylesheet" href="/Content/Styles/Main.css" />
     <link rel="stylesheet" href="/Content/Styles/Content.css" />
     @RenderSection("Styles", false)
 </head>
 <body>
-<div class="header">
-    <div class="pull-left">@ViewsRes.GameGetCount: @Html.Action("GetCount", "Game")</div>
-    <div class="pull-right">@Html.ActionLink(ViewsRes.MenuBasket, "Details", "Order")</div>
-    <h2 class ="text-center">Game store</h2>
-    <p class="text-center">@Url.ChangeLanguage("English", ViewContext.RouteData, "en") | @Url.ChangeLanguage("Русский", ViewContext.RouteData, "ru")</p>
-    @Html.Partial("_LoginPartial");
-</div>
-<div class="menu-line">
-    @Html.BuildMenu()
-</div>
-<div class="content-line">
-    <div class="col-md-3 left-side-bar">
-        @RenderSection("LeftSideBar", false)
+    <div class="page-wrapper">
+        <div class="support-line">
+            @Html.Partial("_SupportPartial")
+        </div>
+        <div class="header">
+            <div class="logo-line">
+                <div class="logo">
+                    <img src="/Content/Images/Layout/logo.png" class="logo-img" />
+                </div>
+                <div class="auth">
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+
+            <div class="pull-left">
+                @ViewsRes.GameGetCount: @Html.Action("GetCount", "Game")
+            </div>
+
+            <div class="pull-right">
+                @Html.ActionLink(ViewsRes.MenuBasket, "Details", "Order")
+            </div>
+
+            <p class="text-center">@Url.ChangeLanguage("English", ViewContext.RouteData, "en") | @Url.ChangeLanguage("Русский", ViewContext.RouteData, "ru")</p>
+
+        </div>
+
+        <div class="menu-line">
+            @Html.BuildMenu()
+        </div>
+
+        <div class="content-line">
+
+            <div class="col-md-9 content">
+                @RenderBody()
+            </div>
+            <div class="col-md-3 left-side-bar">
+                @RenderSection("SideBar", false)
+            </div>
+
+        </div>
+        <div class="main-content"></div>
+        @RenderSection("Scripts", false)
+
     </div>
-    <div class="col-md-6 content">
-        @RenderBody()
-    </div>
-    <div class="col-md-3 right-side-bar">
-        @RenderSection("RightSidebar", false)
-    </div>
-    
-</div>
-    @RenderSection("Scripts", false)
 </body>
 </html>

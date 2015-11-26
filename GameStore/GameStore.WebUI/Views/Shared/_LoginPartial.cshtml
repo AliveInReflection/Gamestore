@@ -1,14 +1,13 @@
 ﻿@using GameStore.WebUI.App_LocalResources.Localization
 
 
-<p class="text-center">
+<div class="auth-"></div>
     @if (User.Identity.IsAuthenticated)
     {
-        <span>@ViewsRes.Greet, @Html.ActionLink(User.Identity.Name,"Details", "Account") | @Html.ActionLink(ViewsRes.LinkLogout, "Logout", "Account")</span>
+        <span>@ViewsRes.Greet, @Html.ActionLink(User.Identity.Name,"Details", "Account",null,new{@class="button"}) | @Html.ActionLink(ViewsRes.LinkLogout, "Logout", "Account", null, new { @class = "button" })</span>
     }
     else
     {
-        <span> @Html.ActionLink(ViewsRes.LinkLogin, "Login", "Account") | @Html.ActionLink(ViewsRes.LinkRegister, "Register", "Account")</span>
+        <span> @Html.ActionLink(ViewsRes.LinkLogin, "Login", "Account", null, new { @class = "button" }) @Html.ActionLink(ViewsRes.LinkRegister, "Register", "Account", null, new { @class = "button" })</span>
     }
     
-</p>

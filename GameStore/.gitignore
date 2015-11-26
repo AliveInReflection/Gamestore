@@ -187,5 +187,5 @@ GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
 
-#Logs
-GameStore.WebUI\App_Data\Logs
+# Ignore all logfiles 
+GameStore.WebUI/App_Data/Logs/
