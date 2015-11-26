@@ -71,7 +71,7 @@
     <Compile Include="Concrete\AccountRepository.cs" />
     <Compile Include="Concrete\FakeDatabase.cs" />
     <Compile Include="Concrete\MessageService.cs" />
-    <Compile Include="Concrete\TransferService.cs" />
+    <Compile Include="Concrete\TransferRepository.cs" />
     <Compile Include="Concrete\UserRepository.cs" />
     <Compile Include="CreditCardService.svc.cs">
       <DependentUpon>CreditCardService.svc</DependentUpon>
@@ -82,6 +82,7 @@
     <Compile Include="ICreditCardService.cs" />
     <Compile Include="Models\PaimentInfo.cs" />
     <Compile Include="Static\CodeWordGenerator.cs" />
+    <Compile Include="Static\ConfirmationStatus.cs" />
     <Compile Include="Static\PaymentStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Static\CardType.cs" />

@@ -20,6 +20,6 @@ namespace CreditCardService
         PaymentStatus PayMasterCard(PaymentInfo info);
 
         [OperationContract]
-        bool Confirm(string confirmationCode);
+        ConfirmationStatus Confirm(string cardNumber, string confirmationCode);
     }
 }

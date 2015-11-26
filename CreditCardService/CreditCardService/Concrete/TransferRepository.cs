@@ -8,31 +8,24 @@ using CreditCardService.Entities;
 
 namespace CreditCardService.Concrete
 {
-    public class TransferService : ITransferRepository
+    public class TransferRepository : ITransferRepository
     {
-        private IStorable database;
-
-        public TransferService()
-        {
-            database = new FakeDatabase();
-        }
-
         public Transfer Get(Expression<Func<Transfer, bool>> predicate)
         {
-            return database.Transfers.First(predicate.Compile());
+            return FakeDatabase.Transfers.First(predicate.Compile());
         }
 
         public void Create(Transfer transfer)
         {
-            if (database.Transfers.Any())
+            if (FakeDatabase.Transfers.Any())
             {
-                transfer.TransferId = database.Transfers.Max(m => m.TransferId) + 1;
+                transfer.TransferId = FakeDatabase.Transfers.Max(m => m.TransferId) + 1;
             }
             else
             {
                 transfer.TransferId = 1;
             }
-            database.Transfers.Add(transfer);
+            FakeDatabase.Transfers.Add(transfer);
         }
 
         public void Update(Transfer transfer)

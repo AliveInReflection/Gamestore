@@ -8,18 +8,18 @@ using CreditCardService.Static;
 
 namespace CreditCardService.Concrete
 {
-    public class FakeDatabase : IStorable
+    public static class FakeDatabase
     {
-        private  ICollection<Account> accounts;
-        private  ICollection<User> users;
-        private  ICollection<Transfer> transfers;
+        private static ICollection<Account> accounts;
+        private static ICollection<User> users;
+        private static ICollection<Transfer> transfers;
 
-        public FakeDatabase()
+        static FakeDatabase()
         {
             accounts = new List<Account>
             {
                 new Account(){AccountId = 1, Owner = "GameStore", Amount = 100m},
-                new Account(){AccountId = 2, Owner = "Garrus Vaccarian", Amount = 30m},
+                new Account(){AccountId = 2, Owner = "Garrus Vaccarian", Amount = 300m},
                 new Account(){AccountId = 3, Owner = "Sarah Kerrigan", Amount = 100}
             };
 
@@ -54,20 +54,22 @@ namespace CreditCardService.Concrete
                     SecureCode = 234,                    
                 }
             };
+
+            transfers = new List<Transfer>();
         }
 
 
-        public ICollection<User> Users
+        public static ICollection<User> Users
         {
             get { return users; }
         }
 
-        public ICollection<Account> Accounts
+        public static ICollection<Account> Accounts
         {
             get { return accounts; }
         }
 
-        public ICollection<Transfer> Transfers
+        public static ICollection<Transfer> Transfers
         {
             get { return transfers; }
         }

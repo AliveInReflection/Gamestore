@@ -20,12 +20,13 @@ namespace CreditCardService
         private IAccountRepository accountRepository;
         private ITransferRepository transferRepository;
         private IMessageService messageService;
+        private static IStorable database;
 
         public CreditCardService()
         {
             userRepository = new UserRepository();
             accountRepository = new AccountRepository();
-            transferRepository = new TransferService();
+            transferRepository = new TransferRepository();
             messageService = new MessageService();
         }
 
@@ -53,19 +54,26 @@ namespace CreditCardService
             }
         }
 
-        public bool Confirm(string confirmationCode)
+        public ConfirmationStatus Confirm(string cardNumber, string confirmationCode)
         {
             try
             {
-                var transfer = transferRepository.Get(m => !m.Confirmed && m.VerificationCode.Equals(confirmationCode));
+                var user = userRepository.Get(m => m.CardNumber.Equals(cardNumber));
+                var account = accountRepository.Get(m => m.AccountId.Equals(user.AccountId));
 
-                transfer.FailedConfirmationCount += 1;
+                var transfer = transferRepository.Get(m => !m.Confirmed && m.PayerId.Equals(account.AccountId));
 
-                if (transfer.FailedConfirmationCount > 3)
+                if (transfer.VerificationCode != confirmationCode)
                 {
-                    return false;
+                    if (transfer.FailedConfirmationCount >= 3)
+                    {
+                        return ConfirmationStatus.Aborted;
+                    }
+                    
+                    transfer.FailedConfirmationCount += 1;
+                    return ConfirmationStatus.Failed;
                 }
-
+                
                 transfer.Confirmed = true;
 
                 var payer = accountRepository.Get(m => m.AccountId.Equals(transfer.PayerId));
@@ -76,11 +84,11 @@ namespace CreditCardService
 
                 transfer.CompleteTime = DateTime.UtcNow;
 
-                return true;
+                return ConfirmationStatus.Successfull;
             }
             catch (Exception)
             {
-                return false;
+                return ConfirmationStatus.Failed;
             }
         }
 
