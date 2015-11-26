@@ -5,6 +5,7 @@ using GameStore.Infrastructure.DTO;
 using GameStore.Logger.Interfaces;
 using Moq;
 using GameStore.Infrastructure.AuthInterfaces;
+using GameStore.Infrastructure.BLInterfaces.Services;
 using GameStore.Infrastructure.Enums;
 
 namespace GameStore.Tests.Mocks
@@ -20,6 +21,7 @@ namespace GameStore.Tests.Mocks
         private Mock<IUserService> mockUser;
         private Mock<IAuthenticationService> mockAuth;
         private Mock<IGameStoreLogger> mockLogger;
+        private Mock<ICreditCardService> mockCreditCard;
 
         private GameDTO game;
 
@@ -34,6 +36,7 @@ namespace GameStore.Tests.Mocks
             mockUser = new Mock<IUserService>();
             mockAuth = new Mock<IAuthenticationService>();
             mockLogger = new Mock<IGameStoreLogger>();
+            mockCreditCard = new Mock<ICreditCardService>();
 
             InitializeModels();
             Initialize();
@@ -48,7 +51,7 @@ namespace GameStore.Tests.Mocks
         public Mock<IUserService> UserService { get { return mockUser; } }
         public Mock<IAuthenticationService> AuthService { get { return mockAuth; } }
         public Mock<IGameStoreLogger> Logger { get { return mockLogger; } }
-
+        public Mock<ICreditCardService> CreditCardService { get { return mockCreditCard; } }
 
         private void Initialize()
         {
@@ -101,6 +104,12 @@ namespace GameStore.Tests.Mocks
             mockAuth.Setup(x => x.Logout());
 
             mockLogger.Setup(x => x.Warn(It.IsAny<Exception>()));
+
+            mockCreditCard.Setup(x => x.Pay(It.IsAny<CardPaymentInfoDTO>()))
+                .Returns(CardPaymentStatus.ConfirmationRequired);
+           
+            mockCreditCard.Setup(x => x.Confirm(It.IsAny<string>(),  It.IsAny<string>()))
+                .Returns(CardConfirmationStatus.Successfull);
         }
 
         private void InitializeModels()
@@ -122,5 +131,7 @@ namespace GameStore.Tests.Mocks
                 UnitsInStock = 100
             };
         }
+
+        
     }
 }

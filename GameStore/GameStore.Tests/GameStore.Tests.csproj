@@ -101,6 +101,7 @@
     <Compile Include="WebTests\InftastructureTests.cs" />
     <Compile Include="Mocks\ServiceMocks.cs" />
     <Compile Include="WebTests\OrderControllerTests.cs" />
+    <Compile Include="WebTests\PaymentControllerTests.cs" />
     <Compile Include="WebTests\PublisherControllerTests.cs" />
     <Compile Include="WebTests\ResourceTests.cs" />
     <Compile Include="WebTests\RouteTests.cs" />

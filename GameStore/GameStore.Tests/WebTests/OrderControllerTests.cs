@@ -88,13 +88,13 @@ namespace GameStore.Tests.WebTests
         }
 
         [TestMethod]
-        public void Order_Pay_Visa_Model_Is_VisaPayment_View()
+        public void Order_Pay_Card_Is_Redirect()
         {
             mocks.OrderService.Setup(x => x.Make(It.IsAny<int>(), It.IsAny<string>())).Returns(new VisaPayment());
 
-            var result = controller.Pay(visaPaymentKey) as ViewResult;
+            var result = controller.Pay(visaPaymentKey);
 
-            Assert.AreEqual("VisaPayment", result.ViewName);
+            Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
         }
 
         [TestMethod]

@@ -10,10 +10,18 @@ namespace GameStore.Infrastructure.BLInterfaces.Services
 {
     public interface ICreditCardService
     {
+        /// <summary>Used remote service to implement credit card payment</summary>
+        /// <param name="info">Information about credit card</param>
+        /// <exception>ValidationException</exception>
+        /// <returns>Status code of operation</returns>
+        CardPaymentStatus Pay(CardPaymentInfoDTO info);
 
-            CardPaymentStatus Pay(CardPaymentInfoDTO info);
 
-            CardConfirmationStatus Confirm(string cardNumber, string confirmationCode);
-        }
+        /// <summary>Used remote service to confirm payment</summary>
+        /// <param name="cardNumber">Users card number</param>
+        /// <param name="confirmationCode">Code received by email</param>
+        /// <returns>Status code of operation</returns>
+        CardConfirmationStatus Confirm(string cardNumber, string confirmationCode);
+    }
 
 }

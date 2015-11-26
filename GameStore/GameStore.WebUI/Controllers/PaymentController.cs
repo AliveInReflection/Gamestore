@@ -19,13 +19,13 @@ namespace GameStore.WebUI.Controllers
 {
     public class PaymentController : BaseController
     {
-        private ICreditCardService paymentService;
+        private ICreditCardService creditCardService;
         private IOrderService orderService;
 
-        public PaymentController(IGameStoreLogger logger, ICreditCardService paymentService, IOrderService orderService)
+        public PaymentController(IGameStoreLogger logger, ICreditCardService creditCardService, IOrderService orderService)
             : base(logger)
         {
-            this.paymentService = paymentService;
+            this.creditCardService = creditCardService;
             this.orderService = orderService;
         }
 
@@ -51,7 +51,7 @@ namespace GameStore.WebUI.Controllers
             try
             {
                 var info = Mapper.Map<CardPaymentInfoDTO>(model);
-                var result = paymentService.Pay(info);
+                var result = creditCardService.Pay(info);
 
                 switch (result)
                 {
@@ -96,7 +96,7 @@ namespace GameStore.WebUI.Controllers
                 return View(model);
             }
 
-            var result = paymentService.Confirm(model.CardNumber, model.ConfirmationCode);
+            var result = creditCardService.Confirm(model.CardNumber, model.ConfirmationCode);
 
             switch (result)
             {

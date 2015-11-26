@@ -344,3 +344,5 @@
 2015-11-26 13:20:53.5528| IP: ::1 | Method: POST | Path: /en/Payment/PayCard
 2015-11-26 13:21:05.9922| IP: ::1 | Method: GET | Path: /en/Basket
 2015-11-26 13:21:06.5940| IP: ::1 | Method: GET | Path: /en/Basket
+2015-11-26 13:45:51.4509| IP: ::1 | Method: GET | Path: /
+2015-11-26 13:45:55.7190| IP: ::1 | Method: GET | Path: /
