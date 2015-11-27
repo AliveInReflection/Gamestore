@@ -13,15 +13,7 @@
 
 <div class="pull-right">@Html.ActionLink(ViewsRes.LinkAddNew, "New", "Game")</div>
 <table class="table table-condensed">
-    <tr>
-        <th>@ModelRes.GameGameKey</th>
-        <th>@ModelRes.GameGameName</th>
-        <th>@ModelRes.GameDescription</th>
-        <th>@ModelRes.GamePrice</th>
-        <th>@ModelRes.GameUnitsInStock</th>
-        <th>@ModelRes.GameDiscontinued</th>
-        <th></th>
-    </tr>
+
 
     @foreach (var item in Model.Games)
     {
@@ -33,7 +25,14 @@
                 @Html.DisplayFor(modelItem => item.GameName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
+                @if (item.Description.Length > 150)
+                {
+                    <span>@item.Description.Substring(0, 150) ...</span>
+                }
+                else
+                {
+                    <span>@item.Description</span>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)

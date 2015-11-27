@@ -83,3 +83,24 @@
     color: #3d4652;
     font-weight: bold;
 }
+
+.localization {
+    text-align: center;
+    position: relative;
+    height: 0px;
+    top: 0px;
+}
+
+.table {
+    margin: 10px;
+}
+
+table tr {
+    padding: 20px 0px;
+}
+
+.table td {
+
+    padding: 10px;
+    background-color: #f2f3f5;
+}

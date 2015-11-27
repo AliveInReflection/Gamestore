@@ -86,61 +86,73 @@ namespace GameStore.WebUI.Helpers
             var url = new UrlHelper(HttpContext.Current.Request.RequestContext);
             var identity = HttpContext.Current.User.Identity as ClaimsIdentity;
 
-            var paragraph = new TagBuilder("p");
-            paragraph.AddCssClass("text-center");
+            var ul = new TagBuilder("ul");
+
 
             var gamesLink = new TagBuilder("a");
+            var gameLi = new TagBuilder("li"); 
             gamesLink.MergeAttribute("href", url.Action("Index", "Game"));
             gamesLink.SetInnerText(ViewsRes.MenuGames);
 
-            paragraph.InnerHtml += gamesLink.ToString();
+            gameLi.InnerHtml = gamesLink.ToString();
+            ul.InnerHtml += gameLi.ToString();
 
             var publisherLink = new TagBuilder("a");
+            var publisherLi = new TagBuilder("li"); 
             publisherLink.MergeAttribute("href", url.Action("Index", "Publisher"));
-            publisherLink.SetInnerText(" | " + ViewsRes.MenuPublishers);
+            publisherLink.SetInnerText(ViewsRes.MenuPublishers);
 
-            paragraph.InnerHtml = paragraph.InnerHtml + publisherLink.ToString();
+            publisherLi.InnerHtml = publisherLink.ToString();
+            ul.InnerHtml = ul.InnerHtml + publisherLi;
 
             if (identity.HasClaim(GameStoreClaim.Users, Permissions.Retreive) ||
                 identity.HasClaim(GameStoreClaim.Users, Permissions.Crud))
             {
                 var link = new TagBuilder("a");
+                var li = new TagBuilder("li"); 
                 link.MergeAttribute("href", url.Action("Index", "Account"));
-                link.SetInnerText(" | " + ViewsRes.MenuUsers);
+                link.SetInnerText(ViewsRes.MenuUsers);
 
-                paragraph.InnerHtml = paragraph.InnerHtml + link.ToString();
+                li.InnerHtml = link.ToString();
+                ul.InnerHtml = ul.InnerHtml + li;
             }
 
             if (identity.HasClaim(GameStoreClaim.Roles, Permissions.Retreive) ||
                 identity.HasClaim(GameStoreClaim.Roles, Permissions.Crud))
             {
                 var link = new TagBuilder("a");
+                var li = new TagBuilder("li"); 
                 link.MergeAttribute("href", url.Action("IndexRoles", "Account"));
-                link.SetInnerText(" | " + ViewsRes.MenuRoles);
+                link.SetInnerText(ViewsRes.MenuRoles);
 
-                paragraph.InnerHtml = paragraph.InnerHtml + link.ToString();
+                li.InnerHtml = link.ToString();
+                ul.InnerHtml = ul.InnerHtml + li;
             }
 
             if (identity.HasClaim(GameStoreClaim.Orders, Permissions.Retreive) ||
                 identity.HasClaim(GameStoreClaim.Orders, Permissions.Crud))
             {
                 var link = new TagBuilder("a");
+                var li = new TagBuilder("li"); 
                 link.MergeAttribute("href", url.Action("GetShortHistory", "Order"));
-                link.SetInnerText(" | " + ViewsRes.MenuOrders);
+                link.SetInnerText(ViewsRes.MenuOrders);
 
-                paragraph.InnerHtml = paragraph.InnerHtml + link.ToString();
+                li.InnerHtml = link.ToString();
+                ul.InnerHtml = ul.InnerHtml + li;
             }
 
             if (identity.HasClaim(GameStoreClaim.Orders, Permissions.Retreive) ||
                 identity.HasClaim(GameStoreClaim.Orders, Permissions.Crud))
             {
                 var link = new TagBuilder("a");
+                var li = new TagBuilder("li"); 
                 link.MergeAttribute("href", url.Action("History", "Order"));
-                link.SetInnerText(" | " + ViewsRes.MenuOrderHistory);
+                link.SetInnerText(ViewsRes.MenuOrderHistory);
 
-                paragraph.InnerHtml = paragraph.InnerHtml + link.ToString();
+                li.InnerHtml = link.ToString();
+                ul.InnerHtml = ul.InnerHtml + li;
             }
-            return new MvcHtmlString(paragraph.ToString());
+            return new MvcHtmlString(ul.ToString());
         }
     }
 }

@@ -16,49 +16,52 @@
     @RenderSection("Styles", false)
 </head>
 <body>
-    <div class="page-wrapper">
-        <div class="support-line">
-            @Html.Partial("_SupportPartial")
-        </div>
-        <div class="header">
-            <div class="logo-line">
-                <div class="logo">
-                    <img src="/Content/Images/Layout/logo.png" class="logo-img" />
-                </div>
-                <div class="auth">
-                    @Html.Partial("_LoginPartial")
-                </div>
+<div class="page-wrapper">
+    <div class="support-line">
+        <div class="localization">@Url.ChangeLanguage("English", ViewContext.RouteData, "en") | @Url.ChangeLanguage("Русский", ViewContext.RouteData, "ru")</div>
+        @Html.Partial("_SupportPartial")
+    </div>
+    <div class="header">
+        <div class="logo-line">
+            <div class="logo">
+                <img src="/Content/Images/Layout/logo.png" class="logo-img"/>
             </div>
-
-            <div class="pull-left">
-                @ViewsRes.GameGetCount: @Html.Action("GetCount", "Game")
+            <div class="auth">
+                @Html.Partial("_LoginPartial")
             </div>
-
-            <div class="pull-right">
-                @Html.ActionLink(ViewsRes.MenuBasket, "Details", "Order")
-            </div>
-
-            <p class="text-center">@Url.ChangeLanguage("English", ViewContext.RouteData, "en") | @Url.ChangeLanguage("Русский", ViewContext.RouteData, "ru")</p>
 
         </div>
-
         <div class="menu-line">
             @Html.BuildMenu()
         </div>
-
-        <div class="content-line">
-
-            <div class="col-md-9 content">
-                @RenderBody()
+        <div class="sub-header">
+            
+            <div class="slogan-column">
+                <h3>GameStore</h3>
             </div>
-            <div class="col-md-3 left-side-bar">
-                @RenderSection("SideBar", false)
-            </div>
+            <div class="sub-logo-column">
 
+                <img src="/Content/Images/Layout/Normandy.png"/>
+            </div>
         </div>
-        <div class="main-content"></div>
-        @RenderSection("Scripts", false)
+    </div>
 
+    <div class="content-line">
+        <div class="content">
+            @RenderBody()
+        </div>
+        <div class="side-bar">
+            @RenderSection("SideBar", false)
+        </div>
+    </div>
+
+    
+    @RenderSection("Scripts", false)
+
+</div>
+
+    <div class="pull-right">
+        @Html.ActionLink(ViewsRes.MenuBasket, "Details", "Order")
     </div>
 </body>
 </html>

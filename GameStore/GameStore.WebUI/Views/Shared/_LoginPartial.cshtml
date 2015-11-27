@@ -4,7 +4,7 @@
 <div class="auth-"></div>
     @if (User.Identity.IsAuthenticated)
     {
-        <span>@ViewsRes.Greet, @Html.ActionLink(User.Identity.Name,"Details", "Account",null,new{@class="button"}) | @Html.ActionLink(ViewsRes.LinkLogout, "Logout", "Account", null, new { @class = "button" })</span>
+        <span>@ViewsRes.Greet, @Html.ActionLink(User.Identity.Name,"Details", "Account")  @Html.ActionLink(ViewsRes.LinkLogout, "Logout", "Account", null, new { @class = "button" })</span>
     }
     else
     {
