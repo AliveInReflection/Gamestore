@@ -137,7 +137,7 @@
 .sub-header {
     height: 230px;
     border-radius: 10px;
-    background-color: #4f6d9c;
+    background: linear-gradient(to bottom right, #2b4362, #406c8e);
     margin: 0;
 
 }

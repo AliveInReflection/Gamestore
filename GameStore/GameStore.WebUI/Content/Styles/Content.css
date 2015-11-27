@@ -66,8 +66,8 @@
 .button {
     margin: 5px;
     padding: 5px 10px;
-    border-top: 2px solid #3d4652;
-    border-bottom: 2px solid #3d4652;
+    border-top: 1px solid #3d4652;
+    border-bottom: 1px solid #3d4652;
     border-radius: 10px;
     display: inline-block;
     text-decoration: none;
@@ -92,7 +92,7 @@
 }
 
 .table {
-    margin: 10px;
+    margin: 10px auto;
 }
 
 table tr {
