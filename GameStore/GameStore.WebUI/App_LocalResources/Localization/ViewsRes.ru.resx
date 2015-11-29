@@ -324,4 +324,19 @@
   <data name="LinkConfirm" xml:space="preserve">
     <value>Подтвердить</value>
   </data>
+  <data name="Slogan" xml:space="preserve">
+    <value>Если день не задался и ты хочешь почувствовать себя лучше, играй!</value>
+  </data>
+  <data name="LinkSend" xml:space="preserve">
+    <value>Отправить</value>
+  </data>
+  <data name="SocialsGetInTouch" xml:space="preserve">
+    <value>Обратная связь</value>
+  </data>
+  <data name="SocialsRss" xml:space="preserve">
+    <value>Из блога</value>
+  </data>
+  <data name="SocialsTwitter" xml:space="preserve">
+    <value>Обновления</value>
+  </data>
 </root>

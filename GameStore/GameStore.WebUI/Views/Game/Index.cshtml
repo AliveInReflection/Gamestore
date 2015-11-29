@@ -11,16 +11,16 @@
 
 @Html.Partial("_MessagePartial")
 
-<div class="pull-right">@Html.ActionLink(ViewsRes.LinkAddNew, "New", "Game")</div>
+<div class="add-link">@Html.ActionLink(ViewsRes.LinkAddNew, "New", "Game")</div>
 <table class="table table-condensed">
 
 
     @foreach (var item in Model.Games)
     {
         <tr>
-            <td>
+            <th>
                 @Html.DisplayFor(modelItem => item.GameKey)
-            </td>
+            </th>
             <td>
                 @Html.DisplayFor(modelItem => item.GameName)
             </td>

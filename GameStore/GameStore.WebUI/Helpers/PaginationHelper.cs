@@ -16,8 +16,8 @@ namespace GameStore.WebUI.Helpers
 
             var url = new UrlHelper(HttpContext.Current.Request.RequestContext);
 
-            var container = new TagBuilder("div");
-            container.AddCssClass("pagination-container");
+            var ul = new TagBuilder("ul");
+            ul.AddCssClass("pagination-container");
 
             if (currentPage > 1)
             {
@@ -28,7 +28,9 @@ namespace GameStore.WebUI.Helpers
                 prev.MergeAttribute("data-page", (currentPage - 1).ToString());
                 prev.SetInnerText("<");
 
-                container.InnerHtml += prev.ToString();
+                var li = new TagBuilder("li");
+                li.InnerHtml += prev.ToString();
+                ul.InnerHtml += li;
             }
 
             for (int i = firstPage; i <= lastPage; i++)
@@ -49,7 +51,9 @@ namespace GameStore.WebUI.Helpers
                 cur.MergeAttribute("data-page", i.ToString());
                 cur.SetInnerText(i.ToString());
 
-                container.InnerHtml += cur.ToString();
+                var li = new TagBuilder("li");
+                li.InnerHtml += cur.ToString();
+                ul.InnerHtml += li;
             }
 
             if (currentPage < pageCount)
@@ -61,10 +65,12 @@ namespace GameStore.WebUI.Helpers
                 next.MergeAttribute("data-page", (currentPage + 1).ToString());
                 next.SetInnerText(">");
 
-                container.InnerHtml += next.ToString();
+                var li = new TagBuilder("li");
+                li.InnerHtml += next.ToString();
+                ul.InnerHtml += li;
             }
 
-            return new MvcHtmlString(container.ToString());
+            return new MvcHtmlString(ul.ToString());
         }
     }
 }

@@ -15,18 +15,18 @@ namespace GameStore.WebUI.Infrastructure
                 {
                     {
                         InfrastructureRes.PaymentVisa,
-                        new PaymentMethod("en.wikipedia.org/wiki/Visa_Inc.#/media/File:Visa.svg", InfrastructureRes.PaymentVisa,
+                        new PaymentMethod(@"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/MasterCard_logo.png/320px-MasterCard_logo.png", InfrastructureRes.PaymentVisa,
                             InfrastructureRes.PaymentVisaDescription)
                     },
                     {
                         InfrastructureRes.PaymentIbox,
-                        new PaymentMethod("znet.lviv.ua/assets/img/ibox_logo.PNG", InfrastructureRes.PaymentIbox,
+                        new PaymentMethod(@"http://www.uic.in.ua/wp-content/uploads/2014/06/ibox.png", InfrastructureRes.PaymentIbox,
                             InfrastructureRes.PaymentIboxDescription)
                     },
                     {
                         InfrastructureRes.PaymentBank,
                         new PaymentMethod(
-                            "www.financemagnates.com/wp-content/uploads/fxmag-experts/2014/08/unicredit.jpg", InfrastructureRes.PaymentBank,
+                            @"https://lh5.ggpht.com/N7HIRYjD9L-aPe-RCIknkN3_kXgBhqALaelv83sFD70hsZHbL99Zr4T20AQcmkRw4Q=w300-rw", InfrastructureRes.PaymentBank,
                             InfrastructureRes.PaymentBankDescription)
                     }
                 };

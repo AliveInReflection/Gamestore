@@ -10,58 +10,59 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Layout</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/Content/Styles/Tags.css" />
     <link rel="stylesheet" href="/Content/Styles/Main.css" />
     <link rel="stylesheet" href="/Content/Styles/Content.css" />
     @RenderSection("Styles", false)
 </head>
 <body>
-<div class="page-wrapper">
-    <div class="support-line">
-        <div class="localization">@Url.ChangeLanguage("English", ViewContext.RouteData, "en") | @Url.ChangeLanguage("Русский", ViewContext.RouteData, "ru")</div>
-        @Html.Partial("_SupportPartial")
+    <div class="page-wrapper">
+        <div class="support-line">
+            <div class="localization">@Url.ChangeLanguage("English", ViewContext.RouteData, "en") | @Url.ChangeLanguage("Русский", ViewContext.RouteData, "ru")</div>
+            @Html.Partial("_SupportPartial")
+        </div>
+        <div class="header">
+            <div class="logo-line">
+                <div class="logo">
+                    <img src="/Content/Images/Layout/logo.png" class="logo-img" />
+                </div>
+                <div class="auth">
+                    @Html.Partial("_LoginPartial")
+                </div>
+
+            </div>
+            <div class="menu-line">
+                @Html.BuildMenu()
+            </div>
+            <div class="sub-header">
+
+                <div class="slogan-column">
+                    <div class="text-logo">Game store</div>
+                    <div class="slogan">@ViewsRes.Slogan</div>
+                </div>
+                <div class="sub-logo-column">
+
+                    <img src="/Content/Images/Layout/Normandy.png" />
+                </div>
+            </div>
+        </div>
+
+        <div class="content-line">
+            <div class="content">
+                @RenderBody()
+            </div>
+            <div class="side-bar">
+                <div class="basket">
+                    <span><a href="@Url.Action("Details", "Order")"><i class="fa fa-shopping-cart"></i> @ViewsRes.MenuBasket</a> </span>
+                </div>
+                @RenderSection("SideBar", false)
+            </div>
+        </div>
+
+        @Html.Partial("_SocialLine")
+        @Html.Partial("_Footer")
     </div>
-    <div class="header">
-        <div class="logo-line">
-            <div class="logo">
-                <img src="/Content/Images/Layout/logo.png" class="logo-img"/>
-            </div>
-            <div class="auth">
-                @Html.Partial("_LoginPartial")
-            </div>
-
-        </div>
-        <div class="menu-line">
-            @Html.BuildMenu()
-        </div>
-        <div class="sub-header">
-            
-            <div class="slogan-column">
-                <h3>GameStore</h3>
-            </div>
-            <div class="sub-logo-column">
-
-                <img src="/Content/Images/Layout/Normandy.png"/>
-            </div>
-        </div>
-    </div>
-
-    <div class="content-line">
-        <div class="content">
-            @RenderBody()
-        </div>
-        <div class="side-bar">
-            @RenderSection("SideBar", false)
-        </div>
-    </div>
-
-    
     @RenderSection("Scripts", false)
-
-</div>
-
-    <div class="pull-right">
-        @Html.ActionLink(ViewsRes.MenuBasket, "Details", "Order")
-    </div>
 </body>
 </html>

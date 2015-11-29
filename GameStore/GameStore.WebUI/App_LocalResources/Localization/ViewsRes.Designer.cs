@@ -142,6 +142,114 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About What.
+        /// </summary>
+        public static string Footer_About {
+            get {
+                return ResourceManager.GetString("Footer_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Awards.
+        /// </summary>
+        public static string Footer_Awards {
+            get {
+                return ResourceManager.GetString("Footer_Awards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company information.
+        /// </summary>
+        public static string Footer_CompanyInformation {
+            get {
+                return ResourceManager.GetString("Footer_CompanyInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact.
+        /// </summary>
+        public static string Footer_Contact {
+            get {
+                return ResourceManager.GetString("Footer_Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All rights reserved.
+        /// </summary>
+        public static string Footer_Copyright {
+            get {
+                return ResourceManager.GetString("Footer_Copyright", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string Footer_Help {
+            get {
+                return ResourceManager.GetString("Footer_Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Footer_Home {
+            get {
+                return ResourceManager.GetString("Footer_Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Personal finance blog.
+        /// </summary>
+        public static string Footer_PersonalFinance {
+            get {
+                return ResourceManager.GetString("Footer_PersonalFinance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy&amp;Security.
+        /// </summary>
+        public static string Footer_Privacy {
+            get {
+                return ResourceManager.GetString("Footer_Privacy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reviews.
+        /// </summary>
+        public static string Footer_Reviews {
+            get {
+                return ResourceManager.GetString("Footer_Reviews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Site links.
+        /// </summary>
+        public static string Footer_SiteLinks {
+            get {
+                return ResourceManager.GetString("Footer_SiteLinks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Site map.
+        /// </summary>
+        public static string Footer_SiteMap {
+            get {
+                return ResourceManager.GetString("Footer_SiteMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create new game.
         /// </summary>
         public static string GameCreateTitle {
@@ -412,6 +520,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        public static string LinkSend {
+            get {
+                return ResourceManager.GetString("LinkSend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update.
         /// </summary>
         public static string LinkUpdate {
@@ -633,6 +750,69 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         public static string RegisterTitle {
             get {
                 return ResourceManager.GetString("RegisterTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you have a bad day and you want to feel yourself better -  play!.
+        /// </summary>
+        public static string Slogan {
+            get {
+                return ResourceManager.GetString("Slogan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string SocialEmail {
+            get {
+                return ResourceManager.GetString("SocialEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message.
+        /// </summary>
+        public static string SocialMessage {
+            get {
+                return ResourceManager.GetString("SocialMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string SocialName {
+            get {
+                return ResourceManager.GetString("SocialName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get in touch.
+        /// </summary>
+        public static string SocialsGetInTouch {
+            get {
+                return ResourceManager.GetString("SocialsGetInTouch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From the blog.
+        /// </summary>
+        public static string SocialsRss {
+            get {
+                return ResourceManager.GetString("SocialsRss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Twitter updates.
+        /// </summary>
+        public static string SocialsTwitter {
+            get {
+                return ResourceManager.GetString("SocialsTwitter", resourceCulture);
             }
         }
         

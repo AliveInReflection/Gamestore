@@ -9,7 +9,7 @@
 <h2>@ViewBag.Title</h2>
 
 <h4>@ViewsRes.OrderMakeSubtitle:</h4>
-<table>
+<table class="table">
     <thead>
     <tr>
         <th>@ViewsRes.OrderMakeProduct</th>
@@ -33,7 +33,7 @@
      @foreach (var payment in Model.PaymentMethods)
      {
          <tr>
-             <td><img src="@payment.PictureURL" alt="@payment.PaymentKey"></td>
+             <td><img src="@payment.PictureURL" alt="@payment.PaymentKey" class="payment-img"></td>
              <td>@payment.Description</td>
              <td>@Html.ActionLink(ViewsRes.LinkPay, "Pay", "Order", new{paymentKey = payment.PaymentKey}, null)</td>
          </tr>

@@ -327,4 +327,64 @@
   <data name="LinkConfirm" xml:space="preserve">
     <value>Confirm</value>
   </data>
+  <data name="Slogan" xml:space="preserve">
+    <value>If you have a bad day and you want to feel yourself better -  play!</value>
+  </data>
+  <data name="LinkSend" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="SocialEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="SocialMessage" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="SocialName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="SocialsGetInTouch" xml:space="preserve">
+    <value>Get in touch</value>
+  </data>
+  <data name="SocialsRss" xml:space="preserve">
+    <value>From the blog</value>
+  </data>
+  <data name="SocialsTwitter" xml:space="preserve">
+    <value>Twitter updates</value>
+  </data>
+  <data name="Footer_About" xml:space="preserve">
+    <value>About What</value>
+  </data>
+  <data name="Footer_Awards" xml:space="preserve">
+    <value>Awards</value>
+  </data>
+  <data name="Footer_CompanyInformation" xml:space="preserve">
+    <value>Company information</value>
+  </data>
+  <data name="Footer_Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Footer_Copyright" xml:space="preserve">
+    <value>All rights reserved</value>
+  </data>
+  <data name="Footer_Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Footer_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Footer_PersonalFinance" xml:space="preserve">
+    <value>Personal finance blog</value>
+  </data>
+  <data name="Footer_Privacy" xml:space="preserve">
+    <value>Privacy&amp;Security</value>
+  </data>
+  <data name="Footer_Reviews" xml:space="preserve">
+    <value>Reviews</value>
+  </data>
+  <data name="Footer_SiteLinks" xml:space="preserve">
+    <value>Site links</value>
+  </data>
+  <data name="Footer_SiteMap" xml:space="preserve">
+    <value>Site map</value>
+  </data>
 </root>

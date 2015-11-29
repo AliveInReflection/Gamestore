@@ -3,45 +3,47 @@
 
 @Html.Hidden("CurrentPage", Model.CurrentPage, new { id = "CurrentPage" })
 
-<fieldset>
-    <legend>@Html.LabelFor(m => m.Genres)</legend>
+<div class="filter-label">@Html.LabelFor(m => m.Genres)</div>
+<div class="filter">
     @for (int i = 0; i < Model.Genres.Count; i++)
     {
         @Html.EditorFor(m => Model.Genres[i], "CheckBoxViewModel", String.Format("Genres[{0}]", i))
     }
-</fieldset>
+</div>
 
-<fieldset>
-    <legend>@Html.LabelFor(m => m.PlatformTypes)</legend>
+<div class="filter-label">@Html.LabelFor(m => m.PlatformTypes)</div>
+<div class="filter">
     @for (int i = 0; i < Model.PlatformTypes.Count; i++)
     {
         @Html.EditorFor(m => Model.PlatformTypes[i], "CheckBoxViewModel", String.Format("PlatformTypes[{0}]", i))
     }
-</fieldset>
+</div>
 
-<fieldset>
-    <legend>@Html.LabelFor(m => m.Publishers)</legend>
+
+<div class="filter-label">@Html.LabelFor(m => m.Publishers)</div>
+<div class="filter">
     @for (int i = 0; i < Model.Publishers.Count; i++)
     {
         @Html.EditorFor(m => Model.Publishers[i], "CheckBoxViewModel", String.Format("Publishers[{0}]", i))
     }
-</fieldset>
+</div>
 
-<fieldset>
-    <legend>@Html.LabelFor(m => m.SortByItems)</legend>
-    @Html.DropDownListFor(m => m.SortBy, Model.SortByItems, "SortBy", new {value = @ModelRes.GameFilterSortByItems })
-</fieldset>
 
-<fieldset>
-    <legend>@Html.LabelFor(m => m.PublishingDates)</legend>
+<div class="filter-label">@Html.LabelFor(m => m.SortByItems)</div>
+<div class="filter">
+    @Html.DropDownListFor(m => m.SortBy, Model.SortByItems, "SortBy", new { value = @ModelRes.GameFilterSortByItems })
+</div>
+
+<div class="filter-label">@Html.LabelFor(m => m.PublishingDates)</div>
+<div class="filter">
     @for (int i = 0; i < Model.PublishingDates.Count; i++)
     {
         @Html.EditorFor(m => Model.PublishingDates[i], "RadiobuttonViewModel", "PublishingDate", null)
     }
-</fieldset>
+</div>
 
-<fieldset>
-    <legend>@ViewsRes.FilteringViewModelPrice</legend>
+<div class="filter-label">@ViewsRes.FilteringViewModelPrice</div>
+<div class="filter">
     <table>
         <tr>
             <td>@Html.DisplayNameFor(m => m.MinPrice)</td>
@@ -52,16 +54,17 @@
             <td>@Html.EditorFor(m => m.MaxPrice)</td>
         </tr>
     </table>
-</fieldset>
+</div>
 
-<fieldset>
-    <legend>@Html.LabelFor(m => m.Name)</legend>
+<div class="filter-label">@Html.LabelFor(m => m.Name)</div>
+<div class="filter">
     @Html.EditorFor(m => m.Name)
-</fieldset>
-<fieldset>
-    <legend>@Html.LabelFor(m => m.ItemsPerPage)</legend>
+</div>
+
+<div class="filter-label">@Html.LabelFor(m => m.ItemsPerPage)</div>
+<div class="filter">
     @Html.DropDownList("ItemsPerPage", Model.ItemsPerPageList)
-</fieldset>
+</div>
 
 
 

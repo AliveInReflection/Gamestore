@@ -71,7 +71,7 @@
     border-radius: 10px;
     display: inline-block;
     text-decoration: none;
-    background-color: #8094b3;
+    background-color: #4d6265;
     color: #ced6e3;
     width: 100px;
     text-align: center;
@@ -93,6 +93,7 @@
 
 .table {
     margin: 10px auto;
+    min-width: 80%;
 }
 
 table tr {
@@ -103,4 +104,102 @@ table tr {
 
     padding: 10px;
     background-color: #f2f3f5;
+}
+
+.table th {
+
+    padding: 10px;
+    border: 1px solid #8a1715;
+    background-color: #3d4652;
+    color: white;
+}
+
+
+.filter{
+    overflow: auto;
+    max-height: 150px;
+    padding: 10px 2px;
+    border: 1px solid #16272c;
+    border-bottom-left-radius: 10px;
+}
+
+.filter-label{
+    margin-top: 25px;
+    padding: 5px 10px;
+    border: 1px solid #8a1715;
+    border-top-left-radius: 10px;
+    background-color: #8a1715;
+    color: white;
+}
+
+.filter input[type=text], .filter select
+{
+    width: 80%;
+    margin: 5px auto;
+    display: block;
+}
+
+.add-link{
+    text-align: right;
+    padding: 0px 50px;
+}
+
+.add-link a{
+        color: #8a1715;
+}
+
+.alert{
+    border-top: 1px solid #8a1715;
+    border-bottom: 1px solid #8a1715;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 70%;
+    padding : 10px 50px;
+    margin: 20px 0px;
+    color: #8a1715;
+    font-weight: bold;
+}
+
+.pagination-container{
+    list-style-type: none;
+    text-align: center;
+    margin: 30px;
+}
+
+.pagination-container li{
+    display: inline-block;
+}
+
+.pagination-container a{
+    padding: 5px 10px;
+    margin-left: -1px;
+    border: 1px solid #8a1715;
+    text-decoration: none;
+    color: #8a1715;
+    font-weight: bold;  
+}
+
+.pagination-container a:hover{
+    background-color: #4d6265;
+    color: white;
+}
+
+.pagination-container .pagination-page-current{
+    
+    background-color: #8a1715;
+    color: white;
+}
+
+.pagination-container li:first-child a{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.pagination-container li:last-child a{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.payment-img{
+    width: 50px;
 }

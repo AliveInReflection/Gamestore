@@ -295,7 +295,9 @@
       <DependentUpon>Northwind.mdf</DependentUpon>
     </Content>
     <Content Include="Content\Images\Layout\game-logo.jpg" />
+    <Content Include="Content\Images\Layout\Logo.png" />
     <Content Include="Content\Images\Layout\Normandy.png" />
+    <Content Include="Content\Images\Layout\space.jpg" />
     <Content Include="Content\Styles\bootstrap.min.css" />
     <Content Include="Content\Styles\Content.css" />
     <Content Include="Content\Styles\Main.css" />
@@ -414,6 +416,8 @@
     <Content Include="Views\Shared\_MessagePartial.cshtml" />
     <Content Include="Views\Payment\ConfirmCard.cshtml" />
     <Content Include="Views\Shared\_SupportPartial.cshtml" />
+    <Content Include="Views\Shared\_SocialLine.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstract\" />
