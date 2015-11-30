@@ -6,7 +6,7 @@ using CreditCardService.Entities;
 
 namespace CreditCardService.Concrete
 {
-    public class AccountRepository : IAccountRepository
+    public class AccountRepository : IRepository<Account>
     {
         public Account Get(Expression<Func<Account, bool>> predicate)
         {

@@ -7,7 +7,6 @@ namespace CreditCardService.Abstract
 {
     public interface IMessageService
     {
-        void SendEmail(string email, string message);
-        void SendSms(string phoneNumber, string message);
+        void Send(string message);
     }
 }

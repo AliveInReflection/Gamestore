@@ -16,75 +16,45 @@ namespace CreditCardService
     // NOTE: In order to launch WCF Test Client for testing this service, please select CreditCardService.svc or CreditCardService.svc.cs at the Solution Explorer and start debugging.
     public class CreditCardService : ICreditCardService
     {
-        private IUserRepository userRepository;
-        private IAccountRepository accountRepository;
-        private ITransferRepository transferRepository;
-        private IMessageService messageService;
-        private static IStorable database;
+        private IRepository<User> userRepository;
+        private IRepository<Account> accountRepository;
+        private IRepository<Transfer> transferRepository;
 
         public CreditCardService()
         {
             userRepository = new UserRepository();
             accountRepository = new AccountRepository();
             transferRepository = new TransferRepository();
-            messageService = new MessageService();
         }
 
         public PaymentStatus PayVisa(PaymentInfo info)
         {
-            try
-            {
-                return Pay(info, CardType.Visa);
-            }
-            catch (Exception)
-            {
-                return PaymentStatus.Failed;
-            }
+            return Pay(info, CardType.Visa);
         }
 
         public PaymentStatus PayMasterCard(PaymentInfo info)
         {
-            try
-            {
-                return Pay(info, CardType.MasterCard);
-            }
-            catch (Exception)
-            {
-                return PaymentStatus.Failed;
-            }
+            return Pay(info, CardType.MasterCard);
         }
 
         public ConfirmationStatus Confirm(string cardNumber, string confirmationCode)
         {
             try
             {
-                var user = userRepository.Get(m => m.CardNumber.Equals(cardNumber));
-                var account = accountRepository.Get(m => m.AccountId.Equals(user.AccountId));
+                var transfer = FindTransfer(cardNumber);
 
-                var transfer = transferRepository.Get(m => !m.Confirmed && m.PayerId.Equals(account.AccountId));
-
-                if (transfer.VerificationCode != confirmationCode)
+                if (!VerifyTransfer(transfer, confirmationCode))
                 {
                     if (transfer.FailedConfirmationCount >= 3)
                     {
                         return ConfirmationStatus.Aborted;
                     }
-                    
-                    transfer.FailedConfirmationCount += 1;
                     return ConfirmationStatus.Failed;
                 }
-                
-                transfer.Confirmed = true;
 
-                var payer = accountRepository.Get(m => m.AccountId.Equals(transfer.PayerId));
-                var receiver = accountRepository.Get(m => m.AccountId.Equals(transfer.ReceiverId));
+                CompleteTransfer(transfer);
 
-                payer.Amount -= transfer.Amount;
-                receiver.Amount += transfer.Amount;
-
-                transfer.CompleteTime = DateTime.UtcNow;
-
-                return ConfirmationStatus.Successfull;
+                return ConfirmationStatus.Successful;
             }
             catch (Exception)
             {
@@ -132,7 +102,10 @@ namespace CreditCardService
                 };
 
 
-                messageService.SendEmail(user.Email, string.Format("Your confirmation code for operation is: {0}", transfer.VerificationCode));
+                SendMessage(new EmailService(user.Email),
+                            string.Format("Your confirmation code for operation is: {0}", transfer.VerificationCode));
+
+
                 transferRepository.Create(transfer);
                 return PaymentStatus.ConfirmationRequired;
 
@@ -141,6 +114,39 @@ namespace CreditCardService
             {
                 return PaymentStatus.Failed;
             }
+        }
+
+        private Transfer FindTransfer(string cardNumber)
+        {
+            var user = userRepository.Get(m => m.CardNumber.Equals(cardNumber));
+            var account = accountRepository.Get(m => m.AccountId.Equals(user.AccountId));
+
+            return transferRepository.Get(m => !m.Confirmed && m.PayerId.Equals(account.AccountId));
+        }
+
+        private bool VerifyTransfer(Transfer transfer, string verificationCode)
+        {
+            transfer.FailedConfirmationCount += 1;
+
+            return transfer.VerificationCode == verificationCode;
+        }
+
+        private void CompleteTransfer(Transfer transfer)
+        {
+            transfer.Confirmed = true;
+
+            var payer = accountRepository.Get(m => m.AccountId.Equals(transfer.PayerId));
+            var receiver = accountRepository.Get(m => m.AccountId.Equals(transfer.ReceiverId));
+
+            payer.Amount -= transfer.Amount;
+            receiver.Amount += transfer.Amount;
+
+            transfer.CompleteTime = DateTime.UtcNow;
+        }
+
+        private void SendMessage(IMessageService service, string message)
+        {
+            service.Send(message);
         }
     }
 }

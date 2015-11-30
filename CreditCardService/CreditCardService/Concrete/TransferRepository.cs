@@ -8,7 +8,7 @@ using CreditCardService.Entities;
 
 namespace CreditCardService.Concrete
 {
-    public class TransferRepository : ITransferRepository
+    public class TransferRepository : IRepository<Transfer>
     {
         public Transfer Get(Expression<Func<Transfer, bool>> predicate)
         {

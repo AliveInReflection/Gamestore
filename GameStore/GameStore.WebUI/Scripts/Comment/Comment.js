@@ -11,7 +11,7 @@
                 $.post(CommentObjectToDelete.data("href"), {
                     commentId: CommentObjectToDelete.data("commentid"),
                     gameKey: CommentObjectToDelete.data("gamekey"),
-                    success: function () {
+                    complete: function () {
                         setTimeout(window.location.reload(), 3000);
                     }
                     

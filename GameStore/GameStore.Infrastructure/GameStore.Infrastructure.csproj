@@ -45,7 +45,7 @@
     <Compile Include="BLInterfaces\ContentFilters\IContentSorter.cs" />
     <Compile Include="BLInterfaces\ContentFilters\IFilteringPipeline.cs" />
     <Compile Include="BLInterfaces\IPayment.cs" />
-    <Compile Include="BLInterfaces\Services\ICreditCardService.cs" />
+    <Compile Include="BLInterfaces\Services\ICreditCardPaymentService.cs" />
     <Compile Include="BLInterfaces\Services\ICommentService.cs" />
     <Compile Include="BLInterfaces\Services\IGameService.cs" />
     <Compile Include="BLInterfaces\Services\IGenreService.cs" />

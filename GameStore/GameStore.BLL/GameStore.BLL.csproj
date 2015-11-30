@@ -89,7 +89,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Services\CommentService.cs" />
-    <Compile Include="Services\CreditCardService.cs" />
+    <Compile Include="Services\CreditCardPaymentService.cs" />
     <Compile Include="Services\GameService.cs" />
     <Compile Include="Services\GenreService.cs" />
     <Compile Include="Services\InvoiceService.cs" />
