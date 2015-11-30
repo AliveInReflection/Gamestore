@@ -10,8 +10,14 @@
 <div class="center-block">
     @using (Html.BeginForm())
     {
-        @Html.TextBox("dateFrom", null, new { type = "date" })
-        @Html.TextBox("dateTo", null, new { type = "date" })
+        <table class="table">
+            <tr>
+                <th>@Html.TextBox("dateFrom", null, new {type = "date"})</th>
+                <th>@Html.TextBox("dateTo", null, new { type = "date" })</th>
+            </tr>
+        </table>
+        
+        
         <input type="submit" value="@ViewsRes.LinkSearch" />
     }
 </div>

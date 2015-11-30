@@ -12,12 +12,12 @@ using GameStore.Infrastructure.Enums;
 
 namespace GameStore.BLL.Services
 {
-    public class CreditCardService : GameStore.Infrastructure.BLInterfaces.Services.ICreditCardService
+    public class CreditCardPaymentService : GameStore.Infrastructure.BLInterfaces.Services.ICreditCardPaymentService
     {
         private ICreditCardService paymentService;
         private IOrderService orderService;
 
-        public CreditCardService(IOrderService orderService)
+        public CreditCardPaymentService(IOrderService orderService)
         {
             this.paymentService = new CreditCardServiceClient();
             this.orderService = orderService;

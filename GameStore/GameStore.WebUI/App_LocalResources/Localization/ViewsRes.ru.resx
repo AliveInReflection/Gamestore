@@ -339,4 +339,55 @@
   <data name="SocialsTwitter" xml:space="preserve">
     <value>Обновления</value>
   </data>
+  <data name="RegisterTitle" xml:space="preserve">
+    <value>Регистранция</value>
+  </data>
+  <data name="SocialMessage" xml:space="preserve">
+    <value>Сообщение</value>
+  </data>
+  <data name="SocialName" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="Footer_About" xml:space="preserve">
+    <value>О нас</value>
+  </data>
+  <data name="Footer_Awards" xml:space="preserve">
+    <value>Награды</value>
+  </data>
+  <data name="Footer_CompanyInformation" xml:space="preserve">
+    <value>О компании</value>
+  </data>
+  <data name="Footer_Contact" xml:space="preserve">
+    <value>Контакты</value>
+  </data>
+  <data name="Footer_Copyright" xml:space="preserve">
+    <value>Все права защищены</value>
+  </data>
+  <data name="Footer_Help" xml:space="preserve">
+    <value>Помощь</value>
+  </data>
+  <data name="Footer_Home" xml:space="preserve">
+    <value>Домашняя страница</value>
+  </data>
+  <data name="Footer_PersonalFinance" xml:space="preserve">
+    <value>Персональный финансовый блог</value>
+  </data>
+  <data name="Footer_Privacy" xml:space="preserve">
+    <value>Безопасность</value>
+  </data>
+  <data name="Footer_Reviews" xml:space="preserve">
+    <value>Отзывы</value>
+  </data>
+  <data name="Footer_SiteLinks" xml:space="preserve">
+    <value>Ссылки</value>
+  </data>
+  <data name="Footer_SiteMap" xml:space="preserve">
+    <value>Карта сайта</value>
+  </data>
+  <data name="LinkFollowUs" xml:space="preserve">
+    <value>Подписаться</value>
+  </data>
+  <data name="LinkVisitBlog" xml:space="preserve">
+    <value>Посетить блог</value>
+  </data>
 </root>

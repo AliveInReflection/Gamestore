@@ -439,6 +439,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Follow us.
+        /// </summary>
+        public static string LinkFollowUs {
+            get {
+                return ResourceManager.GetString("LinkFollowUs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
         public static string LinkLogin {
@@ -534,6 +543,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         public static string LinkUpdate {
             get {
                 return ResourceManager.GetString("LinkUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visit blog.
+        /// </summary>
+        public static string LinkVisitBlog {
+            get {
+                return ResourceManager.GetString("LinkVisitBlog", resourceCulture);
             }
         }
         

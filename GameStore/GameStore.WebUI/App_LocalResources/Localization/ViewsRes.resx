@@ -387,4 +387,10 @@
   <data name="Footer_SiteMap" xml:space="preserve">
     <value>Site map</value>
   </data>
+  <data name="LinkFollowUs" xml:space="preserve">
+    <value>Follow us</value>
+  </data>
+  <data name="LinkVisitBlog" xml:space="preserve">
+    <value>Visit blog</value>
+  </data>
 </root>

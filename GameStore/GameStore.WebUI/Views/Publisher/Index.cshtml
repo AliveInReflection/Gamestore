@@ -11,7 +11,7 @@
 @Html.Partial("_MessagePartial")
 
 <p>
-    @Html.ActionLink(ViewsRes.LinkAddNew, "New")
+    <div class="add-link">@Html.ActionLink(ViewsRes.LinkAddNew, "New")</div>
 </p>
 <table class="table">
     <tr>
@@ -39,7 +39,7 @@
             @Html.DisplayFor(modelItem => item.HomePage)
         </td>
         <td>
-            @Html.ActionLink(ViewsRes.LinkDetails, "Details", new { companyName = item.CompanyName }) 
+            @Html.ActionLink(ViewsRes.LinkDetails, "Details", new { companyName = item.CompanyName }, new { @class = "button-small" }) 
         </td>
     </tr>
 }

@@ -22,7 +22,7 @@ namespace GameStore.CL.DI
             Bind<IOrderService>().To<OrderService>();
             Bind<IUserService>().To<UserService>();
             Bind<IAuthenticationService>().To<AuthenticationService>();
-            Bind<ICreditCardService>().To<CreditCardService>();
+            Bind<ICreditCardPaymentService>().To<CreditCardPaymentService>();
 
         }
     }

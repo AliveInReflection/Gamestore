@@ -19,10 +19,10 @@ namespace GameStore.WebUI.Controllers
 {
     public class PaymentController : BaseController
     {
-        private ICreditCardService creditCardService;
+        private ICreditCardPaymentService creditCardService;
         private IOrderService orderService;
 
-        public PaymentController(IGameStoreLogger logger, ICreditCardService creditCardService, IOrderService orderService)
+        public PaymentController(IGameStoreLogger logger, ICreditCardPaymentService creditCardService, IOrderService orderService)
             : base(logger)
         {
             this.creditCardService = creditCardService;

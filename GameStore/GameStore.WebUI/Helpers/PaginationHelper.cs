@@ -36,17 +36,14 @@ namespace GameStore.WebUI.Helpers
             for (int i = firstPage; i <= lastPage; i++)
             {
                 var cur = new TagBuilder("a");
-
+                cur.AddCssClass("pagination-page");
+                
                 if (currentPage == i)
                 {
-                    cur.AddCssClass("pagination-page");
+                    
                     cur.AddCssClass("pagination-page-current");
                 }
-                else
-                {
-                    cur.AddCssClass("pagination-page");
-                }
-                
+
                 cur.MergeAttribute("href", url.Action(action, controller, new { page = i }));
                 cur.MergeAttribute("data-page", i.ToString());
                 cur.SetInnerText(i.ToString());

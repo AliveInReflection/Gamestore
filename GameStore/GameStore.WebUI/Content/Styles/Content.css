@@ -1,4 +1,8 @@
 ﻿
+.text-center {
+    text-align: center;
+}
+
 .link {
     color: #4682b4;
     display: inline;
@@ -13,6 +17,8 @@
 
 .inline-form {
     display: inline;
+    width: 0;
+    height: 0;
 }
 
 .checkbox-group {
@@ -34,6 +40,10 @@
     list-style-type: none;
 }
 
+.comment-block li {
+    margin: 20px 0;
+}
+
 .comment-block a {
     margin: 5px;
 }
@@ -46,16 +56,27 @@
 .comment-content {
     display: block;
     padding: 15px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
     font-size: 12pt;
     border: 1px solid gray;
     border-radius: 10px;
 }
 
+.comment-block quote::before {
+    content: '\"';
+}
+
+.comment-block quote::after {
+    content: '\"';
+}
+
 .comment-block quote {
     display: block;
-    border: 1px solid green;
-    border-radius: 5px;
-    padding: 5px;
+    padding: 10px;
+    color: gray;
+    background-color: #ced6e3;
+    margin: 5px;
 
 }
 
@@ -139,13 +160,30 @@ table tr {
     display: block;
 }
 
-.add-link{
+.add-link {
     text-align: right;
-    padding: 0px 50px;
 }
 
-.add-link a{
-        color: #8a1715;
+.add-link a, .button-small, .inline-form input[type=submit],
+.comment-answer, .comment-quote, .comment-delete, .comment-ban
+{
+    display: inline;
+    text-align: right;
+    margin: 0px 5px;
+    padding: 4px 15px;
+    border: none;
+    border-top: 1px solid #8a1715;
+    border-bottom: 1px solid #8a1715;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #8a1715;
+    text-decoration: none;
+}
+
+.add-link a:hover, .button-small:hover,.inline-form input[type=submit]:hover,
+.comment-answer:hover, .comment-quote:hover, .comment-delete:hover, .comment-ban:hover{
+    background-color: #8a1715;
+    color: white;
 }
 
 .alert{
@@ -202,4 +240,8 @@ table tr {
 
 .payment-img{
     width: 50px;
+}
+
+#claims {
+    padding: 40px;
 }

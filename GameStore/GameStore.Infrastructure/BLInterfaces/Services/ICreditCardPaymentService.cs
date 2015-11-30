@@ -8,7 +8,7 @@ using GameStore.Infrastructure.Enums;
 
 namespace GameStore.Infrastructure.BLInterfaces.Services
 {
-    public interface ICreditCardService
+    public interface ICreditCardPaymentService
     {
         /// <summary>Used remote service to implement credit card payment</summary>
         /// <param name="info">Information about credit card</param>

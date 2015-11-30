@@ -8,69 +8,69 @@
 
 
 <h2>@Model.GameName</h2>
-<div class="pull-right">@Html.ActionLink(ViewsRes.LinkUpdate, "Update", "Game", new{gameKey = Model.GameKey}, null)</div>
+<div class="add-link">@Html.ActionLink(ViewsRes.LinkUpdate, "Update", "Game", new{gameKey = Model.GameKey}, null)</div>
 <table class="table">
 
     <tr>
-        <td class="display-label">
+        <th class="display-label">
             @Html.DisplayNameFor(model => model.GameKey)
-        </td>
+        </th>
         <td class="display-field">
             @Html.DisplayFor(model => model.GameKey)
         </td>
     </tr>
     <tr>
-        <td class="display-label">
+        <th class="display-label">
             @Html.DisplayNameFor(model => model.GameName)
-        </td>
+        </th>
         <td class="display-field">
             @Html.DisplayFor(model => model.GameName)
         </td>
     </tr>
     <tr>
-        <td class="display-label">
+        <th class="display-label">
             @Html.DisplayNameFor(model => model.Description)
-        </td>
+        </th>
         <td class="display-field">
             @Html.DisplayFor(model => model.Description)
         </td>
     </tr>
     <tr>
-        <td class="display-label">
+        <th class="display-label">
             @Html.DisplayNameFor(model => model.Price)
-        </td>
+        </th>
         <td class="display-field">
             @Html.DisplayFor(model => model.Price)
         </td>
     </tr>
     <tr>
-        <td class="display-label">
+        <th class="display-label">
             @Html.DisplayNameFor(model => model.UnitsInStock)
-        </td>
+        </th>
         <td class="display-field">
             @Html.DisplayFor(model => model.UnitsInStock)
         </td>
     </tr>
     <tr>
-        <td class="display-label">
+        <th class="display-label">
             @Html.DisplayNameFor(model => model.Discontinued)
-        </td>
+        </th>
         <td class="display-field">
             @Html.DisplayFor(model => model.Discontinued)
         </td>
     </tr>
     <tr>
-        <td class="display-label">
+        <th class="display-label">
             @Html.DisplayNameFor(model => model.PublicationDate)
-        </td>
+        </th>
         <td class="display-field">
             @Model.PublicationDate.ToShortDateString()
         </td>
     </tr>
     <tr>
-        <td class="display-label">
+        <th class="display-label">
             @Html.DisplayNameFor(model => model.ReceiptDate)
-        </td>
+        </th>
         <td class="display-field">
             @Model.ReceiptDate.ToShortDateString()
         </td>
@@ -116,6 +116,6 @@
 </p>
 
 <p>
-    @Html.ActionLink(ViewsRes.LinkDownload, "Download", "Game", new{ gameKey=Model.GameKey}, new{ target="_blank"})
-    @Html.ActionLink(ViewsRes.LinkComments, "Index", "Comment", new{gameKey = Model.GameKey}, null)
+    @Html.ActionLink(ViewsRes.LinkDownload, "Download", "Game", new{ gameKey=Model.GameKey}, new{ target="_blank", @class="button-small"})
+    @Html.ActionLink(ViewsRes.LinkComments, "Index", "Comment", new { gameKey = Model.GameKey }, new { @class = "button-small" })
 </p>

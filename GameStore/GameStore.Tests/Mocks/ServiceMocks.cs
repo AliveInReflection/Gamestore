@@ -21,7 +21,7 @@ namespace GameStore.Tests.Mocks
         private Mock<IUserService> mockUser;
         private Mock<IAuthenticationService> mockAuth;
         private Mock<IGameStoreLogger> mockLogger;
-        private Mock<ICreditCardService> mockCreditCard;
+        private Mock<ICreditCardPaymentService> mockCreditCard;
 
         private GameDTO game;
 
@@ -36,7 +36,7 @@ namespace GameStore.Tests.Mocks
             mockUser = new Mock<IUserService>();
             mockAuth = new Mock<IAuthenticationService>();
             mockLogger = new Mock<IGameStoreLogger>();
-            mockCreditCard = new Mock<ICreditCardService>();
+            mockCreditCard = new Mock<ICreditCardPaymentService>();
 
             InitializeModels();
             Initialize();
@@ -51,7 +51,7 @@ namespace GameStore.Tests.Mocks
         public Mock<IUserService> UserService { get { return mockUser; } }
         public Mock<IAuthenticationService> AuthService { get { return mockAuth; } }
         public Mock<IGameStoreLogger> Logger { get { return mockLogger; } }
-        public Mock<ICreditCardService> CreditCardService { get { return mockCreditCard; } }
+        public Mock<ICreditCardPaymentService> CreditCardService { get { return mockCreditCard; } }
 
         private void Initialize()
         {

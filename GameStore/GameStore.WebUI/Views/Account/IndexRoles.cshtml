@@ -11,9 +11,9 @@
 @Html.Partial("_MessagePartial")
 
 
-<p>
+<div class="add-link">
     @Html.ActionLink(ViewsRes.LinkAddNew, "CreateRole")
-</p>
+</div>
 <table class="table">
     <tr>
         <th>
@@ -34,7 +34,7 @@
             @Html.DisplayFor(modelItem => item.RoleName)
         </td>
         <td>
-            @Html.ActionLink(@ViewsRes.LinkManage, "ManageRole", "Account", new { roleId = item.RoleId }, null) |
+            @Html.ActionLink(@ViewsRes.LinkManage, "ManageRole", "Account", new { roleId = item.RoleId }, new { @class = "button-small" }) |
             @using (Html.BeginForm("DeleteRole", "Account", null, FormMethod.Post, new { @class = "inline-form" }))
             {
                 @Html.Hidden("roleId", item.RoleId)

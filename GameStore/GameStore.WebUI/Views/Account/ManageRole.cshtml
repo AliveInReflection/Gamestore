@@ -16,12 +16,12 @@
 
     <table class="table">
         <tr>
-            <td class="editor-label">
+            <th class="editor-label">
                 @Html.LabelFor(model => model.RoleName)
-            </td>
-            <td class="editor-field">
+            </th>
+            <th class="editor-field">
                 @Html.DisplayFor(model => model.RoleName)
-            </td>
+            </th>
         </tr>
     </table>
 
@@ -30,7 +30,7 @@
     </div>
 
     <p class="text-center">
-        <a href="#" id="add-claim" data-url="@Url.Action("AddClaim","Account")">@ViewsRes.LinkAddNew</a> | <a href="#" id="delete-claim">@ViewsRes.LinkDelete</a>
+        <a href="#" id="add-claim" data-url="@Url.Action("AddClaim","Account")" class="button-small">@ViewsRes.LinkAddNew</a> | <a href="#" id="delete-claim" class="button-small">@ViewsRes.LinkDelete</a>
     </p>
 
 

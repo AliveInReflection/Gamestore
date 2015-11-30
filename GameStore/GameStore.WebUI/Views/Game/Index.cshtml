@@ -44,7 +44,7 @@
                 @Html.DisplayFor(modelItem => item.Discontinued)
             </td>
             <td>
-                @Html.ActionLink(ViewsRes.LinkDetails, "Details", new {gameKey = item.GameKey})
+                @Html.ActionLink(ViewsRes.LinkDetails, "Details", new {gameKey = item.GameKey}, new {@class="button-small"})
             </td>
         </tr>
     }
@@ -52,13 +52,13 @@
 </table>
 
 
-@Html.PaginationBuilder(Model.Transformer.CurrentPage,Model.Transformer.PageCount,"List", "Game")
+@Html.PaginationBuilder( Model.Transformer.CurrentPage, Model.Transformer.PageCount, "List", "Game" )
 
 
 
 @section SideBar
 {
-    @using (Html.BeginForm("Index", "Game"))
+    @using (Html.BeginForm("Index", "Game", FormMethod.Post, new{id="transformator"}))
     {
         @Html.EditorFor(m => m.Transformer, "ContentTransformationViewModel", "transformer")
         <p>

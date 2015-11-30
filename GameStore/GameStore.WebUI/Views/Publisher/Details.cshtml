@@ -7,28 +7,30 @@
 }
 
 <h2>@ViewBag.Title</h2>
-@Html.ActionLink(ViewsRes.LinkUpdate, "Update", new { publisherId = Model.PublisherId }) 
+<div class="add-link">
+    @Html.ActionLink(ViewsRes.LinkUpdate, "Update", new { publisherId = Model.PublisherId })
+ </div>
 <table class="table">
     <tr>
-        <td class="display-label">
+        <th class="display-label">
             @Html.DisplayNameFor(model => model.CompanyName)
-        </td>
+        </th>
         <td class="display-field">
             @Html.DisplayFor(model => model.CompanyName)
         </td>
     </tr>
     <tr>
-        <td class="display-label">
+        <th class="display-label">
             @Html.DisplayNameFor(model => model.Description)
-        </td>
+        </th>
         <td class="display-field">
             @Html.DisplayFor(model => model.Description)
         </td>
     </tr>
     <tr>
-        <td class="display-label">
+        <th class="display-label">
             @Html.DisplayNameFor(model => model.HomePage)
-        </td>
+        </th>
         <td class="display-field">
             @Html.DisplayFor(model => model.HomePage)
         </td>

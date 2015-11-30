@@ -31,7 +31,7 @@
             @Html.DisplayFor(modelItem => item.UserName)
         </td>
         <td>
-            @Html.ActionLink(ViewsRes.LinkManage, "Manage", "Account", new {userId = item.UserId}, null) |
+            @Html.ActionLink(ViewsRes.LinkManage, "Manage", "Account", new {userId = item.UserId}, new{@class="button-small"}) |
 
             @using (Html.BeginForm("Delete", "Account", null, FormMethod.Post, new { @class = "inline-form" }))
             {

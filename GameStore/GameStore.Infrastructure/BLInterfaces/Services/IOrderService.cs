@@ -48,7 +48,7 @@ namespace GameStore.Infrastructure.BLInterfaces
 
         /// <summary>Changes order state to specified state</summary>
         /// <param name="orderId">Order id</param>
-        /// <param name="state">Future state</param>
+        /// <param name="state">Order state</param>
         /// <exception>ValidationException</exception>
         void ChangeState(int orderId, OrderState state);
     }

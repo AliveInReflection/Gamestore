@@ -54,5 +54,5 @@ input[type=text],input[type=date], input[type=number], input[type=password], tex
 }
 
 textarea{
-     height: 250px;
+     height: 100px;
 }

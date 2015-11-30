@@ -6,6 +6,6 @@
         var input = $("#CurrentPage");
         console.log(input);
         input.attr("value", pageNumber);
-        $("form").submit();
+        $("#transformator").submit();
     });
 })
