@@ -2,11 +2,13 @@
 using System.Web.Helpers;
 using System.Web.Http;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
 using AutoMapper;
 using GameStore.Auth;
 using GameStore.CL.AutomapperProfiles;
 using GameStore.Infrastructure.AuthInterfaces;
+using GameStore.WebUI.App_Start;
 using GameStore.WebUI.Infrastructure;
 
 namespace GameStore.WebUI
@@ -23,6 +25,7 @@ namespace GameStore.WebUI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             AntiForgeryConfig.UniqueClaimTypeIdentifier = System.Security.Claims.ClaimTypes.Name;
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             Mapper.Initialize(cfg =>
             {

@@ -220,7 +220,7 @@
     <value>Оплатить</value>
   </data>
   <data name="LinkQuote" xml:space="preserve">
-    <value>Комментировать</value>
+    <value>Цитировать</value>
   </data>
   <data name="LinkRegister" xml:space="preserve">
     <value>Регистрация</value>
