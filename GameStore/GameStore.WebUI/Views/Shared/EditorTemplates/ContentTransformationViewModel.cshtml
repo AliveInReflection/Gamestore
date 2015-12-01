@@ -5,26 +5,35 @@
 
 <div class="filter-label">@Html.LabelFor(m => m.Genres)</div>
 <div class="filter">
-    @for (int i = 0; i < Model.Genres.Count; i++)
+    @for (int i = 0; i < Model.GenreItems.Count; i++)
     {
-        @Html.EditorFor(m => Model.Genres[i], "CheckBoxViewModel", String.Format("Genres[{0}]", i))
+        <div class="checkbox">
+            <input id="@String.Concat("genre-", Model.GenreItems[i].Id)" type="checkbox" name="transformer.Genres" value="@Model.GenreItems[i].Id" />
+            <label for="@String.Concat("genre-", Model.GenreItems[i].Id)">@Model.GenreItems[i].Text</label>
+        </div>
     }
 </div>
 
 <div class="filter-label">@Html.LabelFor(m => m.PlatformTypes)</div>
 <div class="filter">
-    @for (int i = 0; i < Model.PlatformTypes.Count; i++)
+    @for (int i = 0; i < Model.PlatformTypeItems.Count; i++)
     {
-        @Html.EditorFor(m => Model.PlatformTypes[i], "CheckBoxViewModel", String.Format("PlatformTypes[{0}]", i))
+        <div class="checkbox">
+            <input id="@String.Concat("platform-type-", Model.PlatformTypeItems[i].Id)" type="checkbox" name="transformer.PlatformTypes" value="@Model.PlatformTypeItems[i].Id" />
+            <label for="@String.Concat("platform-type-", Model.PlatformTypeItems[i].Id)">@Model.PlatformTypeItems[i].Text</label>
+        </div>
     }
 </div>
 
 
 <div class="filter-label">@Html.LabelFor(m => m.Publishers)</div>
 <div class="filter">
-    @for (int i = 0; i < Model.Publishers.Count; i++)
+    @for (int i = 0; i < Model.PublisherItems.Count; i++)
     {
-        @Html.EditorFor(m => Model.Publishers[i], "CheckBoxViewModel", String.Format("Publishers[{0}]", i))
+        <div class="checkbox">
+            <input id="@String.Concat("publisher-", Model.PublisherItems[i].Id)" type="checkbox" name="transformer.Publishers" value="@Model.PublisherItems[i].Id" />
+            <label for="@String.Concat("publisher-", Model.PublisherItems[i].Id)">@Model.PublisherItems[i].Text</label>
+        </div>
     }
 </div>
 

@@ -40,9 +40,9 @@ namespace GameStore.WebUI.Controllers
             var model = new FilteredGamesViewModel();
             UpdateTransformerViewModel(transformer);           
 
-            var paginatedGames = gameService.Get(BuildFilteringMode(transformer),
+            var paginatedGames = gameService.Get(Mapper.Map<GameFilteringMode>(transformer),
                                                  GetSortingMode(transformer),
-                                                 BuildPaginationMode(transformer));
+                                                 Mapper.Map<PaginationMode>(transformer));
 
             model.Games = Mapper.Map<IEnumerable<GameDTO>, IEnumerable<DisplayGameViewModel>>(paginatedGames.Games);
 
@@ -189,20 +189,11 @@ namespace GameStore.WebUI.Controllers
 
         private void UpdateTransformerViewModel(ContentTransformationViewModel transformer)
         {
-            if (transformer.Genres == null)
-            {
-                transformer.Genres = Mapper.Map<IEnumerable<GenreDTO>, List<CheckBoxViewModel>>(genreService.GetAll());
-            }
+            transformer.GenreItems = Mapper.Map<IEnumerable<GenreDTO>, List<CheckBoxViewModel>>(genreService.GetAll());
 
-            if (transformer.PlatformTypes == null)
-            {
-                transformer.PlatformTypes = Mapper.Map<IEnumerable<PlatformTypeDTO>, List<CheckBoxViewModel>>(platformTypeService.GetAll());
-            }
+            transformer.PlatformTypeItems = Mapper.Map<IEnumerable<PlatformTypeDTO>, List<CheckBoxViewModel>>(platformTypeService.GetAll());
 
-            if (transformer.Publishers == null)
-            {
-                transformer.Publishers = Mapper.Map<IEnumerable<PublisherDTO>, List<CheckBoxViewModel>>(publisherService.GetAll());
-            }
+            transformer.PublisherItems = Mapper.Map<IEnumerable<PublisherDTO>, List<CheckBoxViewModel>>(publisherService.GetAll());
 
             transformer.ItemsPerPageList = Mapper.Map<IEnumerable<string>, List<SelectListItem>>(PagingManager.Items.Keys);
 
@@ -218,51 +209,6 @@ namespace GameStore.WebUI.Controllers
             transformer.CurrentPage = transformer.CurrentPage == 0 ? 1 : transformer.CurrentPage;
             transformer.ItemsPerPage = transformer.ItemsPerPage ?? 10.ToString();
 
-        }
-
-        private GameFilteringMode BuildFilteringMode(ContentTransformationViewModel transformer)
-        {
-            var filteringMode = new GameFilteringMode();
-
-            if (transformer.Genres != null)
-            {
-                filteringMode.GenreIds = transformer.Genres.Where(m => m.IsChecked).Select(m => m.Id);
-            }
-
-            if (transformer.PlatformTypes != null)
-            {
-                filteringMode.PlatformTypeIds = transformer.PlatformTypes.Where(m => m.IsChecked).Select(m => m.Id);
-            }
-
-            if (transformer.Publishers != null)
-            {
-                filteringMode.PublisherIds = transformer.Publishers.Where(m => m.IsChecked).Select(m => m.Id);
-            }
-
-            if (transformer.PublishingDate != null)
-            {
-                filteringMode.PublishingDate = GamePublishingDateFilteringManager.Items[transformer.PublishingDate.SelectedValue];
-            }
-
-            filteringMode.MinPrice = transformer.MinPrice;
-            filteringMode.MaxPrice = transformer.MaxPrice;
-            filteringMode.PartOfName = transformer.Name;
-
-            return filteringMode;
-        }
-
-        private PaginationMode BuildPaginationMode(ContentTransformationViewModel transformer)
-        {
-            var paginationMode = new PaginationMode();
-            
-            if (transformer.ItemsPerPage != null)
-            {
-                paginationMode.ItemsPerPage = PagingManager.Items[transformer.ItemsPerPage];
-            }
-
-            paginationMode.CurrentPage = transformer.CurrentPage;
-
-            return paginationMode;
         }
 
         private GamesSortingMode GetSortingMode(ContentTransformationViewModel transformer)

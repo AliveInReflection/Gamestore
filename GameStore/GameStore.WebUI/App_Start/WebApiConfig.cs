@@ -11,37 +11,42 @@ namespace GameStore.WebUI
         {
             config.Routes.MapHttpRoute(
                 name: "CommentsApi",
-                routeTemplate: "api/games/{gameId}/comments/{id}",
-                defaults: new { controller = "Comments", id = RouteParameter.Optional }
+                routeTemplate: "api/{lang}/games/{gameId}/comments/{id}",
+                defaults: new { controller = "Comments", id = RouteParameter.Optional, lang = "en" },
+                constraints: new { lang = @"ru|en" }
             );
 
             config.Routes.MapHttpRoute(
                 name: "GameGenresApi",
-                routeTemplate: "api/games/{id}/genres",
-                defaults: new { controller = "GameGenres", id = RouteParameter.Optional }
+                routeTemplate: "api/{lang}/games/{id}/genres",
+                defaults: new { controller = "GameGenres", id = RouteParameter.Optional, lang = "en" },
+                constraints: new { lang = @"ru|en" }
             );
             config.Routes.MapHttpRoute(
                 name: "GenreGamesApi",
-                routeTemplate: "api/genres/{id}/games",
-                defaults: new { controller = "GenreGames", id = RouteParameter.Optional }
+                routeTemplate: "api/{lang}/genres/{id}/games",
+                defaults: new { controller = "GenreGames", id = RouteParameter.Optional, lang = "en" },
+                constraints: new { lang = @"ru|en" }
             );
 
 
             config.Routes.MapHttpRoute(
                 name: "PublisherGamesApi",
-                routeTemplate: "api/publisher/{id}/games",
-                defaults: new { controller = "PublisherGames", id = RouteParameter.Optional }
+                routeTemplate: "api/{lang}/publisher/{id}/games",
+                defaults: new { controller = "PublisherGames", id = RouteParameter.Optional, lang = "en" },
+                constraints: new { lang = @"ru|en" }
             );
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{lang}/{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional, lang = "en" },
+                constraints: new { lang = @"ru|en" }
             );
 
 
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
-            
+
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.MediaTypeMappings.Add(
             new QueryStringMapping("type", "xml", new MediaTypeHeaderValue("application/xml")));
 
@@ -51,6 +56,6 @@ namespace GameStore.WebUI
             GlobalConfiguration.Configuration.Services.RemoveAll(
             typeof(System.Web.Http.Validation.ModelValidatorProvider),
             v => v is InvalidModelValidatorProvider);
-        }  
+        }
     }
 }

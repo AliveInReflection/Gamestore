@@ -1,4 +1,5 @@
-﻿@using GameStore.WebUI.App_LocalResources.Localization
+﻿@using System.Threading
+@using GameStore.WebUI.App_LocalResources.Localization
 @using GameStore.WebUI.Helpers
 @model GameStore.WebUI.Models.FilteredGamesViewModel
 
@@ -12,44 +13,45 @@
 @Html.Partial("_MessagePartial")
 
 <div class="add-link">@Html.ActionLink(ViewsRes.LinkAddNew, "New", "Game")</div>
-<table class="table table-condensed">
+<div id="content-wrapper">
+    <table class="table">
 
 
-    @foreach (var item in Model.Games)
-    {
-        <tr>
-            <th>
-                @Html.DisplayFor(modelItem => item.GameKey)
-            </th>
-            <td>
-                @Html.DisplayFor(modelItem => item.GameName)
-            </td>
-            <td>
-                @if (item.Description.Length > 150)
-                {
-                    <span>@item.Description.Substring(0, 150) ...</span>
-                }
-                else
-                {
-                    <span>@item.Description</span>
-                }
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnitsInStock)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discontinued)
-            </td>
-            <td>
-                @Html.ActionLink(ViewsRes.LinkDetails, "Details", new {gameKey = item.GameKey}, new {@class="button-small"})
-            </td>
-        </tr>
-    }
-
-</table>
+        @foreach (var item in Model.Games)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => item.GameKey)
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GameName)
+                </td>
+                <td>
+                    @if (item.Description.Length > 150)
+                    {
+                        <span>@item.Description.Substring(0, 150) ...</span>
+                    }
+                    else
+                    {
+                        <span>@item.Description</span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitsInStock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discontinued)
+                </td>
+                <td>
+                    @Html.ActionLink(ViewsRes.LinkDetails, "Details", new { gameKey = item.GameKey }, new { @class = "button-small" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
 
 
 @Html.PaginationBuilder( Model.Transformer.CurrentPage, Model.Transformer.PageCount, "List", "Game" )
@@ -60,9 +62,13 @@
 {
     @using (Html.BeginForm("Index", "Game", FormMethod.Post, new{id="transformator"}))
     {
+        @Html.Hidden("Culture", Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName, new{id = "Culture"})
+        @Html.Hidden("DetailsLink", ViewsRes.LinkDetails, new { id = "DetailsLink" })
+        @Html.Hidden("Auth", Request.Cookies["GameStore_Auth"], new { id = "Auth" })
         @Html.EditorFor(m => m.Transformer, "ContentTransformationViewModel", "transformer")
         <p>
-            <input type="submit" value="@ViewsRes.LinkFilter" />
+            @*<input type="submit" value="@ViewsRes.LinkFilter" />*@
+            <a href="#" id="submit" class="button">@ViewsRes.LinkFilter</a>
         </p>
     }
 }

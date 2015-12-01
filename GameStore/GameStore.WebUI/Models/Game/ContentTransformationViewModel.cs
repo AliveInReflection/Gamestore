@@ -8,13 +8,16 @@ namespace GameStore.WebUI.Models
     public class ContentTransformationViewModel
     {
         [Display(ResourceType = typeof(ModelRes), Name = "GameFilterGenres")]
-        public List<CheckBoxViewModel> Genres { get; set; }
+        public IEnumerable<int> Genres { get; set; }
+        public List<CheckBoxViewModel> GenreItems { get; set; }
 
         [Display(ResourceType = typeof(ModelRes), Name = "GameFilterPlatformTypes")]
-        public List<CheckBoxViewModel> PlatformTypes { get; set; }
+        public IEnumerable<int> PlatformTypes { get; set; }
+        public List<CheckBoxViewModel> PlatformTypeItems { get; set; }
 
         [Display(ResourceType = typeof(ModelRes), Name = "GameFilterPublishers")]
-        public List<CheckBoxViewModel> Publishers { get; set; }
+        public IEnumerable<int> Publishers { get; set; }
+        public List<CheckBoxViewModel> PublisherItems { get; set; }
 
         [Display(ResourceType = typeof(ModelRes), Name = "GameFilterSortByItems")]
         public List<SelectListItem> SortByItems { get; set; }

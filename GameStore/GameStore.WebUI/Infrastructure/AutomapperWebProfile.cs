@@ -11,6 +11,7 @@ using GameStore.WebUI.Infrastructure;
 using GameStore.WebUI.Models;
 using GameStore.WebUI.Models.Account;
 using GameStore.WebUI.Models.Order;
+using GameStore.Infrastructure.Enums;
 
 namespace GameStore.CL.AutomapperProfiles
 {
@@ -152,6 +153,21 @@ namespace GameStore.CL.AutomapperProfiles
 
             Mapper.CreateMap<CardPaymentInfoViewModel, CardPaymentInfoDTO>()
                 .ForMember(x => x.CardType, opt => opt.MapFrom(m => CardTypeManager.Items[m.CardType]));
+
+
+            Mapper.CreateMap<ContentTransformationViewModel, GameFilteringMode>()
+                .ForMember(m => m.PublishingDate,opt => opt.MapFrom(m => GamePublishingDateFilteringManager.Items[m.PublishingDate.SelectedValue]))
+                .ForMember(m => m.GenreIds, opt => opt.MapFrom(m => m.Genres))
+                .ForMember(m => m.PlatformTypeIds, opt => opt.MapFrom(m => m.PlatformTypes))
+                .ForMember(m => m.PublisherIds, opt => opt.MapFrom(m => m.Publishers))
+                .ForMember(m => m.PartOfName, opt => opt.MapFrom(m => m.Name));
+
+            Mapper.CreateMap<ContentTransformationViewModel, PaginationMode>()
+                .ForMember(m => m.ItemsPerPage,
+                    opt => opt.MapFrom(m => PagingManager.Items[m.ItemsPerPage]));
+
+            Mapper.CreateMap<ContentTransformationViewModel, GamesSortingMode>()
+                .ProjectUsing(m => m != null ? GameSortingModeManager.Items[m.SortBy] : GamesSortingMode.None);
 
         }
 

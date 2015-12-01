@@ -353,6 +353,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\Account\Account.js" />
     <Content Include="Scripts\Comment\Comment.js" />
+    <Content Include="Scripts\Game\json-parsing.js" />
     <Content Include="Scripts\Game\pagination.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
@@ -404,7 +405,6 @@
     <Content Include="Views\Order\Details.cshtml" />
     <Content Include="Views\Order\Make.cshtml" />
     <Content Include="Views\Account\Ban.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\CheckBoxViewModel.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\ContentTransformationViewModel.cshtml" />
     <Content Include="Views\Comment\Update.cshtml" />
     <Content Include="Views\Publisher\Update.cshtml" />

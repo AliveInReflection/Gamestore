@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -10,6 +11,7 @@ using GameStore.Infrastructure.DTO;
 using GameStore.Infrastructure.Enums;
 using GameStore.Logger.Interfaces;
 using GameStore.WebUI.Filters;
+using GameStore.WebUI.Infrastructure;
 using GameStore.WebUI.Models;
 
 namespace GameStore.WebUI.ApiControllers
@@ -26,11 +28,23 @@ namespace GameStore.WebUI.ApiControllers
 
         // GET api/<controller>
         [ClaimsApi(GameStoreClaim.Games, Permissions.Retreive)]
-        public HttpResponseMessage Get([FromUri] GameFilteringMode filter,  [FromUri] PaginationMode paginator, [FromUri] GamesSortingMode sorter = GamesSortingMode.None)
+        public HttpResponseMessage Get([FromUri] ContentTransformationViewModel transformer)
         {
-            var games = gameService.Get(filter, sorter, paginator);
-            var viewModels = Mapper.Map<IEnumerable<GameDTO>, IEnumerable<DisplayGameViewModel>>(games.Games);
-            return Request.CreateResponse(HttpStatusCode.OK, viewModels);
+            var games = gameService.Get(Mapper.Map<GameFilteringMode>(transformer), 
+                                        GetSortingMode(transformer), 
+                                        Mapper.Map<PaginationMode>(transformer));
+
+            var model = new FilteredGamesViewModel()
+            {
+                Games = Mapper.Map<IEnumerable<GameDTO>, IEnumerable<DisplayGameViewModel>>(games.Games),
+                Transformer = new ContentTransformationViewModel()
+                {
+                    CurrentPage = games.CurrentPage,
+                    PageCount = games.PageCount
+                }
+            };
+
+            return Request.CreateResponse(HttpStatusCode.OK, model);
         }
 
         // GET api/<controller>/5
@@ -112,7 +126,15 @@ namespace GameStore.WebUI.ApiControllers
 
         #region private
 
+        private GamesSortingMode GetSortingMode(ContentTransformationViewModel transformer)
+        {
+            if (transformer.SortBy != null)
+            {
+                return GameSortingModeManager.Items[transformer.SortBy];
+            }
 
+            return GamesSortingMode.None;
+        }
 
         #endregion
     }
