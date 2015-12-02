@@ -51,10 +51,11 @@
             </tr>
         }
     </table>
+    @Html.PaginationBuilder(Model.Transformer.CurrentPage, Model.Transformer.PageCount, "List", "Game") 
 </div>
 
 
-@Html.PaginationBuilder( Model.Transformer.CurrentPage, Model.Transformer.PageCount, "List", "Game" )
+
 
 
 

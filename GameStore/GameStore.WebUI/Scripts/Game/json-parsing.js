@@ -3,13 +3,11 @@
 
     $("#submit").click(function(event) {
         event.preventDefault();
-        console.log("click");
         $("#transformator").submit();
     });
 
 
     $("#transformator").on("submit", function(event) {
-        console.log("submit_start");
         event.preventDefault();
 
         _that = $(this);
@@ -17,8 +15,6 @@
         var formData = _that.serializeArray();
 
         var culture = $("#Culture").val();
-        console.log(culture);
-
         var promice = $.ajax({
             url: "/api/"+ culture+ "/games/",
             type: "get",
@@ -26,15 +22,10 @@
         });
 
         promice.done(ParseContent);
-
-        console.log("submit_end");
     });
 });
 
 ParseContent = function (data) {
-
-    console.log("parse_start");
-
     var games = data.Games;
 
     var table = $("<table/>", {
@@ -64,7 +55,6 @@ ParseContent = function (data) {
             text: games[i].UnitsInStock
         }).appendTo(tr);
 
-
         var td = $("<td/>");
 
         $("<a/>", {
@@ -81,10 +71,14 @@ ParseContent = function (data) {
     $("#content-wrapper").html(table);
 
 
-    var currentPage = data.CurrentPage;
-    var pageCount = data.PageCount;
+    var currentPage = data.Transformer.CurrentPage;
+    var pageCount = data.Transformer.PageCount;
+    console.log(currentPage);
+    console.log(pageCount);
 
-    var ul = $("<ul/>");
+    var ul = $("<ul/>", {
+        class: "pagination-container"
+    });
     var firstPage = currentPage > 5 ? currentPage - 5 : 1;
     var lastPage = pageCount - currentPage > 5 ? currentPage + 5 : pageCount;
 
@@ -95,7 +89,10 @@ ParseContent = function (data) {
             "data-page": currentPage - 1,
             text: "<"
         });
-        a.appendTo("<li/>").appendTo(ul);
+        a.click(PageOnClickHandler);
+        var li = $("<li/>");
+        a.appendTo(li);
+        li.appendTo(ul);
     }
 
     for (var i = firstPage; i <= lastPage; i++) {
@@ -109,24 +106,25 @@ ParseContent = function (data) {
         if (i == currentPage) {
             a.addClass("pagination-page-current");
         }
-
-        a.appendTo("<li/>").appendTo(ul);
+        a.click(PageOnClickHandler);
+        var li = $("<li/>");
+        a.appendTo(li);
+        li.appendTo(ul);
     }
 
-    if (currentPage > pageCount) {
+    if (currentPage < pageCount) {
         var a = $("<a/>", {
             class: "pagination-page",
             href: "/" + $("#Culture").val() + "/games",
             "data-page": currentPage + 1,
             text: ">"
         });
-        a.appendTo("<li/>").appendTo(ul);
+        a.click(PageOnClickHandler);
+        var li = $("<li/>");
+        a.appendTo(li);
+        li.appendTo(ul);
     }
 
     ul.appendTo($("#content-wrapper"));
-
-
-    console.log("parse_end");
-
     
 }
