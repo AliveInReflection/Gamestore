@@ -76,7 +76,7 @@ namespace GameStore.Tests.WebTests.API
         {
             TestHelper.CreateRequest(controller, HttpMethod.Get);
 
-            var result = controller.Get(1);
+            var result = controller.Get("");
 
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
@@ -86,7 +86,7 @@ namespace GameStore.Tests.WebTests.API
         {
             TestHelper.CreateRequest(controller, HttpMethod.Get);
 
-            var result = controller.Get(1, 1);
+            var result = controller.Get("", 1);
 
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }

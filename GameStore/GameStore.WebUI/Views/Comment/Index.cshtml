@@ -1,5 +1,8 @@
 ﻿@using GameStore.WebUI.App_LocalResources.Localization
 @using GameStore.WebUI.Helpers;
+@using System.Threading;
+@using System.Security.Claims;
+@using GameStore.Infrastructure.Enums;
 @model GameStore.WebUI.Models.CommentViewModel
 
 @{
@@ -11,24 +14,25 @@
 
 @Html.Partial("_MessagePartial")
 
-<div class="comment-block">
-    @Html.BuildCommentsTree(Model.Comments, ViewBag.GameKey as string)
+<div id="content-wrapper">
+    <div class="comment-block">
+        @Html.BuildCommentsTree(Model.Comments, Model.GameKey)
+    </div>
 </div>
 
 <div>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Index", "Comment", FormMethod.Post, new { id = "form"}))
     {
-        @Html.AntiForgeryToken()
+        @*@Html.AntiForgeryToken()*@
         @Html.ValidationSummary(true)
         @Html.HiddenFor(m => m.GameKey)
+        
+        @Html.HiddenFor(m => m.NewComment.ParentCommentId)
+        @Html.HiddenFor(m => m.NewComment.QuoteId)
+        @Html.HiddenFor(model => model.NewComment.User.UserId)
+        @Html.HiddenFor(model => model.NewComment.User.UserName)
 
         <table class="table">
-
-            @Html.HiddenFor(m => m.NewComment.ParentCommentId)
-            @Html.HiddenFor(m => m.NewComment.QuoteId)
-            @Html.Hidden("gameKey", ViewBag.GameKey as string)
-            @Html.HiddenFor(model => model.NewComment.User.UserId)
-            @Html.HiddenFor(model => model.NewComment.User.UserName)
             <tr>
                 <td class="editor-label">
                     @Html.LabelFor(model => model.NewComment.User.UserName)
@@ -43,16 +47,29 @@
                 </td>
                 <td class="editor-field">
                     @Html.TextAreaFor(model => model.NewComment.Content)
-                    @Html.ValidationMessageFor(model => model.NewComment.Content)
+                    @Html.ValidationMessageFor(model => model.NewComment.Content, "", new { id = "content-error-message" })
                 </td>
             </tr>
 
         </table>
     <p class="text-center">
         <input type="submit" value="@ViewsRes.LinkComment" class="link"/>
+        @*<a href="#" id="submit" class="button">@ViewsRes.LinkComment</a>*@
     </p>
     }
 </div>
+
+<form>
+    @Html.Hidden("GameKey", ViewBag.GameKey as string, new { id = "gameKey" })
+    @Html.Hidden("Culture", Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName, new { id = "Culture" })
+    @Html.Hidden("LinkAnswer", ViewsRes.LinkAnswer, new { id = "LinkAnswer" })
+    @Html.Hidden("LinkQuote", ViewsRes.LinkQuote, new { id = "LinkQuote" })
+    @Html.Hidden("LinkDelete", ViewsRes.LinkDelete, new { id = "LinkDelete" })
+    @Html.Hidden("LinkBan", ViewsRes.LinkBan, new { id = "LinkBan" })
+    @Html.Hidden("DeletePermission", (User as ClaimsPrincipal).HasClaim(GameStoreClaim.Comments, Permissions.Delete) ||
+                                     (User as ClaimsPrincipal).HasClaim(GameStoreClaim.Comments, Permissions.Crud), new { id = "DeletePermission" })
+    @Html.Hidden("BanPermission", (User as ClaimsPrincipal).HasClaim(GameStoreClaim.Users, Permissions.Ban), new { id = "BanPermission" })
+</form>
 
 <div id="dialog" title="Confirmation required">
     @ViewsRes.CommentIndexDeleteModal

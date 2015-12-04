@@ -69,7 +69,7 @@ namespace GameStore.Tests.WebTests.API
         {
             TestHelper.CreateRequest(controller, HttpMethod.Get);
 
-            var result = controller.Get(null,null);
+            var result = controller.Get(new ContentTransformationViewModel());
 
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }

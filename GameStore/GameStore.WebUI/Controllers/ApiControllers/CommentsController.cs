@@ -29,20 +29,20 @@ namespace GameStore.WebUI.ApiControllers
 
         // GET api/<controller>
         [ClaimsApi(GameStoreClaim.Comments, Permissions.Retreive)]
-        public HttpResponseMessage Get([FromUri]int gameId)
+        public HttpResponseMessage Get([FromUri]string gameKey)
         {
-            var game = gameService.Get(gameId);
-
-            var comments = commentService.Get(game.GameKey);
+            var comments = commentService.Get(gameKey);
 
             return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<IEnumerable<DisplayCommentViewModel>>(comments));
         }
 
         // GET api/<controller>
         [ClaimsApi(GameStoreClaim.Comments, Permissions.Retreive)]
-        public HttpResponseMessage Get([FromUri]int gameId, int id)
+        public HttpResponseMessage Get([FromUri]string gameKey, int id)
         {
-            var comment = commentService.Get(id);
+            var game = gameService.Get(gameKey);
+            
+            var comment = commentService.Get(game.GameId);
 
             return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<DisplayCommentViewModel>(comment));
         }
@@ -53,7 +53,7 @@ namespace GameStore.WebUI.ApiControllers
         {
             if (!ModelState.IsValid)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, model);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
             }
 
             try
@@ -97,7 +97,7 @@ namespace GameStore.WebUI.ApiControllers
 
         // DELETE api/<controller>/5
         [ClaimsApi(GameStoreClaim.Comments, Permissions.Delete)]
-        public HttpResponseMessage Delete(int gameId, int id)
+        public HttpResponseMessage Delete(string gameKey, int id)
         {
             try
             {

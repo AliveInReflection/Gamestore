@@ -352,8 +352,11 @@
     <Content Include="Content\Styles\Tags.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Account\Account.js" />
+    <Content Include="Scripts\Comment\add-comment.js" />
     <Content Include="Scripts\Comment\Comment.js" />
-    <Content Include="Scripts\Game\json-parsing.js" />
+    <Content Include="Scripts\Comment\delete-comment.js" />
+    <Content Include="Scripts\Comment\get-comments.js" />
+    <Content Include="Scripts\Game\get-games.js" />
     <Content Include="Scripts\Game\pagination.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using GameStore.Infrastructure.Enums;
 using GameStore.WebUI.App_LocalResources.Localization;
+using System.Threading;
 
 
 namespace GameStore.WebUI.Helpers
@@ -54,8 +55,8 @@ namespace GameStore.WebUI.Helpers
                 {
                     var deleteLink = new TagBuilder("a");
                     deleteLink.AddCssClass("comment-delete");
-                    deleteLink.MergeAttribute("data-href", (new UrlHelper(HttpContext.Current.Request.RequestContext)).Action("Delete", "Comment"));
-                    deleteLink.MergeAttribute("data-commentId", comment.CommentId.ToString());
+                    deleteLink.MergeAttribute("data-href", string.Format("/api/{0}/games/{1}/comments", Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName, gameKey));
+                    deleteLink.MergeAttribute("data-id", comment.CommentId.ToString());
                     deleteLink.MergeAttribute("data-gameKey", gameKey);
                     deleteLink.MergeAttribute("href", "#");
                     deleteLink.SetInnerText(ViewsRes.LinkDelete);

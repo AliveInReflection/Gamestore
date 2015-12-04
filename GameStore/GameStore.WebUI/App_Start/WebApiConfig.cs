@@ -11,7 +11,7 @@ namespace GameStore.WebUI
         {
             config.Routes.MapHttpRoute(
                 name: "CommentsApi",
-                routeTemplate: "api/{lang}/games/{gameId}/comments/{id}",
+                routeTemplate: "api/{lang}/games/{gameKey}/comments/{id}",
                 defaults: new { controller = "Comments", id = RouteParameter.Optional, lang = "en" },
                 constraints: new { lang = @"ru|en" }
             );
