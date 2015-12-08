@@ -49,6 +49,7 @@
     <Compile Include="BLInterfaces\Services\ICommentService.cs" />
     <Compile Include="BLInterfaces\Services\IGameService.cs" />
     <Compile Include="BLInterfaces\Services\IGenreService.cs" />
+    <Compile Include="BLInterfaces\Services\INotificationService.cs" />
     <Compile Include="BLInterfaces\Services\IOrderService.cs" />
     <Compile Include="BLInterfaces\Services\IPlatformTypeService.cs" />
     <Compile Include="BLInterfaces\Services\IPublisherService.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Enums\DefaultRoles.cs" />
     <Compile Include="Enums\GameStoreClaims.cs" />
     <Compile Include="Enums\GameSortingMode.cs" />
+    <Compile Include="Enums\NotificationMethod.cs" />
     <Compile Include="Enums\OrderState.cs" />
     <Compile Include="Enums\PaymentMode.cs" />
     <Compile Include="Enums\Permissions.cs" />

@@ -79,6 +79,7 @@
     <Compile Include="Infrastructure\ExpressionHelper.cs" />
     <Compile Include="Infrastructure\PaymentManager.cs" />
     <Compile Include="Infrastructure\ValidationException.cs" />
+    <Compile Include="NotificationServices\EmailNotificationService.cs" />
     <Compile Include="Payments\BankPayment.cs" />
     <Compile Include="Payments\IboxPayment.cs" />
     <Compile Include="Payments\VisaPayment.cs" />
