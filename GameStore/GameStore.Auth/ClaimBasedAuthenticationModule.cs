@@ -60,6 +60,7 @@ namespace GameStore.Auth
                 }
 
                 ticket.Identity.AddClaims(userClaims.Union(roleClaims).Distinct());
+                ticket.Identity.AddClaim(new Claim(ClaimTypes.DateOfBirth, user.DateOfBirth.ToShortDateString()));
                 
                 if (user.BanExpirationDate > DateTime.UtcNow)
                 {

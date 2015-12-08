@@ -105,11 +105,11 @@
 </p>
 
 <p>
-    @using (Html.BeginForm("Add", "Order"))
+    @using (Html.BeginForm("Add", "Order", FormMethod.Post, new { id="form-buy"}))
     {
         @Html.Hidden("gameKey", Model.GameKey)
         ;
-        <span>@ViewsRes.GameDetailsQuantity: </span>@Html.TextBox("quantity", 1, new {type = "number", min = 1, max = Model.UnitsInStock})
+        <span>@ViewsRes.GameDetailsQuantity: </span>@Html.TextBox("quantity", 1, new { type = "number", min = 1, max = Model.UnitsInStock })
         ;
         <input type="submit" value="@ViewsRes.LinkBuy"/>
     }
@@ -119,3 +119,9 @@
     @Html.ActionLink(ViewsRes.LinkDownload, "Download", "Game", new{ gameKey=Model.GameKey}, new{ target="_blank", @class="button-small"})
     @Html.ActionLink(ViewsRes.LinkComments, "Index", "Comment", new { gameKey = Model.GameKey }, new { @class = "button-small" })
 </p>
+
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/game")
+}

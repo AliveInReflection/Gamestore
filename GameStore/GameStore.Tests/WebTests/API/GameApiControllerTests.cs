@@ -15,6 +15,7 @@ using GameStore.WebUI.ApiControllers;
 using GameStore.WebUI.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using GameStore.WebUI.Infrastructure;
 
 namespace GameStore.Tests.WebTests.API
 {
@@ -69,7 +70,7 @@ namespace GameStore.Tests.WebTests.API
         {
             TestHelper.CreateRequest(controller, HttpMethod.Get);
 
-            var result = controller.Get(new ContentTransformationViewModel());
+            var result = controller.Get(new ContentTransformationViewModel() { ItemsPerPage = "10"});
 
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }

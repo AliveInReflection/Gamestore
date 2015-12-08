@@ -5,12 +5,11 @@
 
 PageOnClickHandler = function (event) {
     event.preventDefault();
-    var pageNumber = $(this).data("page");
-    console.log(pageNumber);
-    var input = $("#CurrentPage");
-    console.log(input);
-    input.attr("value", pageNumber);
-    $("#transformator").submit();
 
-    console.log("pagination click");
+    var pageNumber = $(this).data("page");
+
+    var input = $("#CurrentPage");
+    input.attr("value", pageNumber);
+
+    $("#transformer").submit();
 };

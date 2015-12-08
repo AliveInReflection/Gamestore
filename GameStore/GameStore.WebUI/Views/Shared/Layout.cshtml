@@ -52,7 +52,14 @@
             </div>
             <div class="side-bar">
                 <div class="basket">
-                    <span><a href="@Url.Action("Details", "Order")"><i class="fa fa-shopping-cart"></i> @ViewsRes.MenuBasket</a> </span>
+                    <a href="@Url.Action("Details", "Order")">
+                        <div>
+                            <i class="fa fa-shopping-cart"></i> @ViewsRes.MenuBasket
+                        </div>
+                        <div><i class="fa fa-gamepad"></i>&#9;<span id="count"></span></div>
+                        <div><i class="fa fa-usd"></i>&#9;<span id="amount"></span></div>
+                    </a>
+
                 </div>
                 @RenderSection("SideBar", false)
             </div>
@@ -60,7 +67,12 @@
 
         @Html.Partial("_SocialLine")
         @Html.Partial("_Footer")
+        <form>
+            @Html.Hidden("Culture", System.Threading.Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName, new { id = "Culture" })
+        </form>
     </div>
+    @Scripts.Render("~/bundles/jquery")
     @RenderSection("Scripts", false)
+    @Scripts.Render("~/bundles/order")
 </body>
 </html>

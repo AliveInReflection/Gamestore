@@ -32,18 +32,21 @@ namespace GameStore.WebUI.ApiControllers
         {   
             int userId = int.Parse(CurrentUser.FindFirst(ClaimTypes.SerialNumber).Value);
             var order = orderService.GetCurrent(userId);
-            return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<DisplayOrderViewModel>(order));
+            
+            var orderVM = Mapper.Map<DisplayOrderViewModel>(order);
+            orderVM.Amount = orderService.CalculateAmount(order.OrderId);
+            
+            return Request.CreateResponse(HttpStatusCode.OK, orderVM);
         }
 
         // POST api/<controller>
         [ClaimsApi(GameStoreClaim.Orders, Permissions.Create)]
-        public HttpResponseMessage Post(int id)
+        public HttpResponseMessage Post(string gameKey, short quantity = 1)
         {
             try
             {
-                var game = gameService.Get(id);
                 int userId = int.Parse(CurrentUser.FindFirst(ClaimTypes.SerialNumber).Value);
-                orderService.AddItem(userId, game.GameKey, 1);
+                orderService.AddItem(userId, gameKey, quantity);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (ValidationException e)
@@ -55,12 +58,13 @@ namespace GameStore.WebUI.ApiControllers
 
         // DELETE api/<controller>/5
         [ClaimsApi(GameStoreClaim.Orders, Permissions.Create)]
-        public HttpResponseMessage Delete(int id)
+        public HttpResponseMessage Delete(string gameKey, short quantity = 1)
         {
             try
             {
+                var game = gameService.Get(gameKey);
                 int userId = int.Parse(CurrentUser.FindFirst(ClaimTypes.SerialNumber).Value);
-                orderService.RemoveItem(userId, id, 1);
+                orderService.RemoveItem(userId, game.GameId, quantity);
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (ValidationException e)

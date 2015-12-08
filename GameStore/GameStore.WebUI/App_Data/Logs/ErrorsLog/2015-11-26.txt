@@ -1,9 +1,0 @@
-2015-11-26 18:21:03.4740|Fatal| Controller: Game | Action: Index | Message: The partial view '_SupportPartial' was not found or no view engine supports the searched locations. The following locations were searched:
-~/Views/Game/_SupportPartial.aspx
-~/Views/Game/_SupportPartial.ascx
-~/Views/Shared/_SupportPartial.aspx
-~/Views/Shared/_SupportPartial.ascx
-~/Views/Game/_SupportPartial.cshtml
-~/Views/Game/_SupportPartial.vbhtml
-~/Views/Shared/_SupportPartial.cshtml
-~/Views/Shared/_SupportPartial.vbhtml | Where:    at System.Web.Mvc.HtmlHelper.FindPartialView(ViewContext viewContext, String partialViewName, ViewEngineCollection viewEngineCollection)

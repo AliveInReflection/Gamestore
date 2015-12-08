@@ -7,6 +7,7 @@ using System.Web.Routing;
 using GameStore.Infrastructure.Enums;
 using GameStore.WebUI.App_LocalResources.Localization;
 using AuthorizationContext = System.Web.Mvc.AuthorizationContext;
+using System.Threading;
 
 namespace GameStore.WebUI.Filters
 {
@@ -25,7 +26,7 @@ namespace GameStore.WebUI.Filters
             var user = HttpContext.Current.User as ClaimsPrincipal;
             if (user != null && user.Claims.Any(m => m.Type.Equals(ClaimTypes.DateOfBirth)))
             {
-                var dateOfBirth = DateTime.Parse(user.FindFirst(ClaimTypes.DateOfBirth).Value);
+                var dateOfBirth = DateTime.Parse(user.FindFirst(ClaimTypes.DateOfBirth).Value, Thread.CurrentThread.CurrentCulture);
                 if((DateTime.UtcNow - dateOfBirth) > TimeSpan.FromDays(daysInYear * years))
                 return;
             }

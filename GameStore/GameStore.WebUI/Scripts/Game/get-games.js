@@ -1,13 +1,13 @@
 ﻿$(function() {
 
 
-    $("#submit").click(function(event) {
-        event.preventDefault();
-        $("#transformator").submit();
+    $("#transformer input[type=submit]").click(function (event) {
+        var input = $("#CurrentPage");
+        input.attr("value", 1);
     });
 
 
-    $("#transformator").on("submit", function(event) {
+    $("#transformer").on("submit", function (event) {
         event.preventDefault();
 
         _that = $(this);

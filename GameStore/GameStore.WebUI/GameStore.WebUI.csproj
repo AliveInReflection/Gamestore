@@ -352,6 +352,8 @@
     <Content Include="Content\Styles\Tags.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Account\Account.js" />
+    <Content Include="Scripts\Game\buy-game.js" />
+    <Content Include="Scripts\Order\basket-widget.js" />
     <Content Include="Scripts\Comment\add-comment.js" />
     <Content Include="Scripts\Comment\Comment.js" />
     <Content Include="Scripts\Comment\delete-comment.js" />

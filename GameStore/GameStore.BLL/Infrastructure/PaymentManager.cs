@@ -18,7 +18,7 @@ namespace GameStore.BLL.Infrastructure
             payments = new Dictionary<string, IPayment>
             {
                 {"Bank", new BankPayment()},
-                {"Ibox", new IboxPayment()},
+                {"IBox", new IboxPayment()},
                 {"Visa", new VisaPayment()}
             };
         }

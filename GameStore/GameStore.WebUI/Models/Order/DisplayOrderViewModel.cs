@@ -20,9 +20,9 @@ namespace GameStore.WebUI.Models.Order
         [Display(ResourceType = typeof(ModelRes), Name = "OrderShippedDate")]
         public DateTime ShippedDate { get; set; }
 
-
-
         [Display(ResourceType = typeof(ModelRes), Name = "OrderOrderDetails")]
         public IEnumerable<OrderDetailsViewModel> OrderDetailses { get; set; }
+
+        public decimal Amount { get; set; }
     }
 }

@@ -7,7 +7,6 @@ $(function () {
         buttons: {
             "Yes": function () {
                 $(this).dialog("close");
-                console.log(CommentObjectToDelete);
                 DeleteComment(CommentObjectToDelete);
             },
             "No": function () {

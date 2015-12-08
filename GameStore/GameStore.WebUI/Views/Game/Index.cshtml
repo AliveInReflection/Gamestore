@@ -61,21 +61,18 @@
 
 @section SideBar
 {
-    @using (Html.BeginForm("Index", "Game", FormMethod.Post, new{id="transformator"}))
+    @using (Html.BeginForm("Index", "Game", FormMethod.Post, new{id="transformer"}))
     {
-        @Html.Hidden("Culture", Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName, new{id = "Culture"})
         @Html.Hidden("DetailsLink", ViewsRes.LinkDetails, new { id = "DetailsLink" })
         @Html.Hidden("Auth", Request.Cookies["GameStore_Auth"], new { id = "Auth" })
         @Html.EditorFor(m => m.Transformer, "ContentTransformationViewModel", "transformer")
         <p>
-            @*<input type="submit" value="@ViewsRes.LinkFilter" />*@
-            <a href="#" id="submit" class="button">@ViewsRes.LinkFilter</a>
+            <input type="submit" value="@ViewsRes.LinkFilter"/>
         </p>
     }
 }
 
 @section Scripts
 {
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/game")
 }

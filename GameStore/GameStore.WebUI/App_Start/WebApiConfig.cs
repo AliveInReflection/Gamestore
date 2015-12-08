@@ -38,6 +38,13 @@ namespace GameStore.WebUI
             );
 
             config.Routes.MapHttpRoute(
+                name: "OrdersApi",
+                routeTemplate: "api/{lang}/orders/{gameId}",
+                defaults: new {controller = "Orders", lang = "en" },
+                constraints: new { lang = @"ru|en" }
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{lang}/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional, lang = "en" },

@@ -19,6 +19,7 @@ namespace GameStore.WebUI.App_Start
             bundles.Add(new ScriptBundle("~/bundles/account").Include("~/Scripts/Account/*.js"));
             bundles.Add(new ScriptBundle("~/bundles/comment").Include("~/Scripts/Comment/*.js"));
             bundles.Add(new ScriptBundle("~/bundles/game").Include("~/Scripts/Game/*.js"));
+            bundles.Add(new ScriptBundle("~/bundles/order").Include("~/Scripts/Order/*.js"));
 
 
             bundles.Add(new StyleBundle("~/content/css").Include("~/Content/Styles/Tags.css",

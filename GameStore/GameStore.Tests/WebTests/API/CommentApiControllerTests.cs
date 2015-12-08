@@ -161,7 +161,7 @@ namespace GameStore.Tests.WebTests.API
         {
             TestHelper.CreateRequest(controller, HttpMethod.Delete);
 
-            var result = controller.Delete(1, 1);
+            var result = controller.Delete("", 1);
 
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
         }
@@ -172,7 +172,7 @@ namespace GameStore.Tests.WebTests.API
             TestHelper.CreateRequest(controller, HttpMethod.Delete);
             mocks.CommentService.Setup(x => x.Delete(It.IsAny<int>())).Throws<ValidationException>();
 
-            var result = controller.Delete(1, 1);
+            var result = controller.Delete("", 1);
 
             Assert.AreEqual(HttpStatusCode.NotFound, result.StatusCode);
         }
