@@ -1,17 +1,12 @@
-﻿using GameStore.Domain.Metadata;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using GameStore.Infrastructure.Enums;
+using GameStore.Domain.Metadata;
 
 namespace GameStore.Domain.Entities
 {
     [MetadataType(typeof(UserMetadata))]
-    public class User : BaseEntity
+    public partial class User : BaseEntity
     {
         public int UserId { get; set; }
         public string UserName { get; set; }
@@ -24,5 +19,7 @@ namespace GameStore.Domain.Entities
         public virtual ICollection<UserClaim> Claims { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
+
+        public virtual NotificationInfo NotificationInfo { get; set; }
     }
 }

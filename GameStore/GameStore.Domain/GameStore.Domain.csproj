@@ -51,6 +51,7 @@
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\Game.cs" />
     <Compile Include="Entities\Genre.cs" />
+    <Compile Include="Entities\NotificationInfo.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderDetails.cs" />
     <Compile Include="Entities\PlatformType.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Metadata\CommentMetadata.cs" />
     <Compile Include="Metadata\GameMetadata.cs" />
     <Compile Include="Metadata\GenreMetadata.cs" />
+    <Compile Include="Metadata\NotificationInfoMetadata.cs" />
     <Compile Include="Metadata\OrderDetailsMetadata.cs" />
     <Compile Include="Metadata\OrderMetadata.cs" />
     <Compile Include="Metadata\PlatformTypeMetadata.cs" />

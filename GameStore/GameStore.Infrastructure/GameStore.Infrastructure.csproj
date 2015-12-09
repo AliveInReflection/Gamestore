@@ -44,12 +44,13 @@
     <Compile Include="BLInterfaces\ContentFilters\IContentPaginator.cs" />
     <Compile Include="BLInterfaces\ContentFilters\IContentSorter.cs" />
     <Compile Include="BLInterfaces\ContentFilters\IFilteringPipeline.cs" />
+    <Compile Include="BLInterfaces\INotificationSubject.cs" />
     <Compile Include="BLInterfaces\IPayment.cs" />
     <Compile Include="BLInterfaces\Services\ICreditCardPaymentService.cs" />
     <Compile Include="BLInterfaces\Services\ICommentService.cs" />
     <Compile Include="BLInterfaces\Services\IGameService.cs" />
     <Compile Include="BLInterfaces\Services\IGenreService.cs" />
-    <Compile Include="BLInterfaces\Services\INotificationService.cs" />
+    <Compile Include="BLInterfaces\INotificationObject.cs" />
     <Compile Include="BLInterfaces\Services\IOrderService.cs" />
     <Compile Include="BLInterfaces\Services\IPlatformTypeService.cs" />
     <Compile Include="BLInterfaces\Services\IPublisherService.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="DTO\GameDTO.cs" />
     <Compile Include="DTO\GameFilteringMode.cs" />
     <Compile Include="DTO\GenreDTO.cs" />
+    <Compile Include="DTO\NotificationInfoDTO.cs" />
     <Compile Include="DTO\OrderDetailsDTO.cs" />
     <Compile Include="DTO\OrderDTO.cs" />
     <Compile Include="DTO\PaginatedGames.cs" />

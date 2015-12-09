@@ -38,6 +38,8 @@ namespace GameStore.CL.AutomapperProfiles
             Mapper.CreateMap<RoleClaim, Claim>()
                 .ConstructProjectionUsing(m => new Claim(m.ClaimType, m.ClaimValue, "GameStore"));
 
+            Mapper.CreateMap<NotificationInfo, NotificationInfoDTO>();
+
             //====================================================
 
 
@@ -71,8 +73,8 @@ namespace GameStore.CL.AutomapperProfiles
 
             Mapper.CreateMap<RoleDTO, Role>()
                 .ForMember(m => m.Claims, opt => opt.MapFrom(m => m.Claims));
-            
 
+            Mapper.CreateMap<NotificationInfoDTO, NotificationInfo>();
 
         }
     }

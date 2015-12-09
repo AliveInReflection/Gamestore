@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GameStore.Domain.Entities;
 using GameStore.Infrastructure.Enums;
 
 namespace GameStore.Domain.Metadata
@@ -29,5 +30,7 @@ namespace GameStore.Domain.Metadata
 
         [Required]
         public string Country { get; set; }
+
+        public virtual NotificationInfo NotificationInfo { get; set; }
     }
 }

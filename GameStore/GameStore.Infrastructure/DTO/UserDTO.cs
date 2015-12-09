@@ -17,5 +17,7 @@ namespace GameStore.Infrastructure.DTO
         public IEnumerable<RoleDTO> Roles { get; set; }
         public IEnumerable<Claim> Claims { get; set; }
         public IEnumerable<CommentDTO> Comments { get; set; }
+
+        public NotificationInfoDTO NotificationInfo { get; set; }
     }
 }
