@@ -150,6 +150,15 @@
   <data name="CountryUsa" xml:space="preserve">
     <value>USA</value>
   </data>
+  <data name="NotificationMethodEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="NotificationMethodMobileApp" xml:space="preserve">
+    <value>Mobile application</value>
+  </data>
+  <data name="NotificationMethodSms" xml:space="preserve">
+    <value>SMS</value>
+  </data>
   <data name="OrderStateNotIssued" xml:space="preserve">
     <value>Not issued</value>
   </data>

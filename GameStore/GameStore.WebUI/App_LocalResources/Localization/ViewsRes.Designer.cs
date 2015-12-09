@@ -61,6 +61,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose notification title.
+        /// </summary>
+        public static string AccountChangeNotificationMethodTitle {
+            get {
+                return ResourceManager.GetString("AccountChangeNotificationMethodTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change password.
         /// </summary>
         public static string AccountChangePasswordTitle {
@@ -75,6 +84,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         public static string AccountCreateRoleTitle {
             get {
                 return ResourceManager.GetString("AccountCreateRoleTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notification method.
+        /// </summary>
+        public static string AccountDetailsNotification {
+            get {
+                return ResourceManager.GetString("AccountDetailsNotification", resourceCulture);
             }
         }
         
@@ -345,6 +363,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         public static string LinkBuy {
             get {
                 return ResourceManager.GetString("LinkBuy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change.
+        /// </summary>
+        public static string LinkChange {
+            get {
+                return ResourceManager.GetString("LinkChange", resourceCulture);
             }
         }
         

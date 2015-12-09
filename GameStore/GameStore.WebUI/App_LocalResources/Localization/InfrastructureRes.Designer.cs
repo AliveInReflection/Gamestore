@@ -160,6 +160,33 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string NotificationMethodEmail {
+            get {
+                return ResourceManager.GetString("NotificationMethodEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile application.
+        /// </summary>
+        public static string NotificationMethodMobileApp {
+            get {
+                return ResourceManager.GetString("NotificationMethodMobileApp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SMS.
+        /// </summary>
+        public static string NotificationMethodSms {
+            get {
+                return ResourceManager.GetString("NotificationMethodSms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not issued.
         /// </summary>
         public static string OrderStateNotIssued {

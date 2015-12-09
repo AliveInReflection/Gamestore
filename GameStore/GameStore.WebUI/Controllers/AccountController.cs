@@ -146,6 +146,14 @@ namespace GameStore.WebUI.Controllers
             return RedirectToAction("Details");
         }
 
+        public ActionResult ChangeNotificationMethod()
+        {
+            var notificationMethods = Mapper.Map<IEnumerable<SelectListItem>>(NotificationMethodManager.Items.Keys);
+            return View(notificationMethods);
+        }
+
+
+
         [Claims(GameStoreClaim.Users, Permissions.Ban)]
         public ActionResult Ban(int userId)
         {

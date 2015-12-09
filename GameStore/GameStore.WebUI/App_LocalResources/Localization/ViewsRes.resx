@@ -393,4 +393,13 @@
   <data name="LinkVisitBlog" xml:space="preserve">
     <value>Visit blog</value>
   </data>
+  <data name="AccountDetailsNotification" xml:space="preserve">
+    <value>Notification method</value>
+  </data>
+  <data name="LinkChange" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="AccountChangeNotificationMethodTitle" xml:space="preserve">
+    <value>Choose notification title</value>
+  </data>
 </root>

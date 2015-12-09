@@ -10,5 +10,6 @@ namespace GameStore.Infrastructure.Enums
     {
         public const string Guest = "Guest";
         public const string User = "User";
+        public const string Manager = "Manager";
     }
 }

@@ -1,4 +1,8 @@
 ﻿@using GameStore.WebUI.App_LocalResources.Localization
+@using GameStore.Infrastructure.Enums;
+@using System.Security.Claims;
+
+
 @model GameStore.WebUI.Models.Account.DisplayUserViewModel
 
 @{
@@ -57,3 +61,19 @@
 <p class="text-center">
     @Html.ActionLink(ViewsRes.LinkChangePassword, "ChangePassword", null, new{@class="button-small"})
 </p>
+
+
+@if ((User as ClaimsIdentity).HasClaim(ClaimTypes.Role, DefaultRoles.Manager))
+{
+    <p>@ViewsRes.AccountDetailsNotification</p>
+    <table class="table">
+        <tr>
+            <th>@ModelRes.NotificationInfoNotificationMethod</th>
+            <td>@Model.NotificationInfo.NotificationMethod</td>
+        </tr>
+    </table>
+
+    <p class="text-center">
+        @Html.ActionLink(ViewsRes.LinkChange, "ChangeNotificationMethod", null, new { @class = "button-small" })
+    </p>
+}

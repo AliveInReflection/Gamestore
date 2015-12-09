@@ -315,4 +315,10 @@
   <data name="CardConfirmationCode" xml:space="preserve">
     <value>ConfirmationCode</value>
   </data>
+  <data name="NotificationInfoNotificationMethod" xml:space="preserve">
+    <value>NotificationMethod</value>
+  </data>
+  <data name="NotificationInfoTarget" xml:space="preserve">
+    <value>Target</value>
+  </data>
 </root>

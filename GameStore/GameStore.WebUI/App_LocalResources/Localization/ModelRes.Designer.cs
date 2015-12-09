@@ -457,6 +457,24 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NotificationMethod.
+        /// </summary>
+        public static string NotificationInfoNotificationMethod {
+            get {
+                return ResourceManager.GetString("NotificationInfoNotificationMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target.
+        /// </summary>
+        public static string NotificationInfoTarget {
+            get {
+                return ResourceManager.GetString("NotificationInfoTarget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customer.
         /// </summary>
         public static string OrderCustomerId {

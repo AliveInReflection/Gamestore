@@ -258,6 +258,7 @@
     <Compile Include="Infrastructure\CardTypeManager.cs" />
     <Compile Include="Infrastructure\CountryManager.cs" />
     <Compile Include="Infrastructure\GameSortingModeManager.cs" />
+    <Compile Include="Infrastructure\NotificationMethodManager.cs" />
     <Compile Include="Infrastructure\OrderStateManager.cs" />
     <Compile Include="Infrastructure\PagingManager.cs" />
     <Compile Include="Infrastructure\PaymentModeManager.cs" />
@@ -269,6 +270,7 @@
     <Compile Include="Models\Account\DisplayUserViewModel.cs" />
     <Compile Include="Models\Account\LoginViewModel.cs" />
     <Compile Include="Models\Account\ManageUserViewModel.cs" />
+    <Compile Include="Models\Account\NotificationInfoViewModel.cs" />
     <Compile Include="Models\Account\RegisterViewModel.cs" />
     <Compile Include="Models\Account\ManageRoleViewModel.cs" />
     <Compile Include="Models\Payment\CardPaymentConfirmationViewModel.cs" />
@@ -438,6 +440,7 @@
     <Content Include="Views\Shared\_SupportPartial.cshtml" />
     <Content Include="Views\Shared\_SocialLine.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Account\ChangeNotificationMethod.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstract\" />
