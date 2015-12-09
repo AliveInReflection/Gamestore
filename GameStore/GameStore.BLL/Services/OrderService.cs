@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using GameStore.BLL.Infrastructure;
+using GameStore.BLL.NotificationServices;
 using GameStore.DAL.Interfaces;
 using GameStore.Domain.Entities;
 using GameStore.Infrastructure.BLInterfaces;
@@ -176,6 +177,41 @@ namespace GameStore.BLL.Services
             {
                 throw new ValidationException(string.Format("Order not found({0})", orderId));
             }
+
+            if (state == OrderState.Payed)
+            {
+                NotifyManagers(orderId);
+            }
+        }
+
+        private void NotifyManagers(int orderId)
+        {
+            var managers = database.Users.GetMany(m => m.Roles.Any(r => r.RoleName.Equals("Manager")));
+
+            var subject = new NotificationSubject();
+
+            foreach (var manager in managers)
+            {
+                var notificationInfo = manager.NotificationInfo;
+
+                if (notificationInfo != null)
+                {
+                    switch (manager.NotificationInfo.NotificationMethod)
+                    {
+                        case NotificationMethod.Email:
+                            subject.Attach(new EmailNotificationObject(notificationInfo.Target));
+                            break;
+                        case NotificationMethod.Sms:
+                            subject.Attach(new SmsNotificationObject(notificationInfo.Target));
+                            break;
+                        case NotificationMethod.MobileApp:
+                            subject.Attach(new MobileAppNotificationObject(notificationInfo.Target));
+                            break;
+                    }
+                }
+            }
+
+            subject.Notify(string.Format("Order #{0} was paid", orderId));
         }
     }
 }

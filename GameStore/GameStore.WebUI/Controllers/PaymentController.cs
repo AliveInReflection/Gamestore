@@ -106,7 +106,7 @@ namespace GameStore.WebUI.Controllers
                 case CardConfirmationStatus.Aborted:
                     SetInfoMessage(MessageRes.AttemptsExceeded);
                     break;
-                case CardConfirmationStatus.Successfull:
+                case CardConfirmationStatus.Successful:
                     SetInfoMessage(MessageRes.ConfirmationSuccessfull);
                     orderService.ChangeState(model.OrderId, OrderState.Payed);
                     break;

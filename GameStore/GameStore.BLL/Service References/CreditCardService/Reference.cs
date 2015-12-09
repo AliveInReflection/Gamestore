@@ -195,7 +195,7 @@ namespace GameStore.BLL.CreditCardService {
     public enum ConfirmationStatus : int {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        Successfull = 1,
+        Successful = 1,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         Failed = 2,

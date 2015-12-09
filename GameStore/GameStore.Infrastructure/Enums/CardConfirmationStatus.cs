@@ -8,7 +8,7 @@ namespace GameStore.Infrastructure.Enums
 {
     public enum CardConfirmationStatus
     {
-        Successfull = 1,
+        Successful = 1,
         Failed = 2,
         Aborted = 3
     }

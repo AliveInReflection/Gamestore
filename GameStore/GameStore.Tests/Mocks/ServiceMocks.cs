@@ -109,7 +109,7 @@ namespace GameStore.Tests.Mocks
                 .Returns(CardPaymentStatus.ConfirmationRequired);
            
             mockCreditCard.Setup(x => x.Confirm(It.IsAny<string>(),  It.IsAny<string>()))
-                .Returns(CardConfirmationStatus.Successfull);
+                .Returns(CardConfirmationStatus.Successful);
         }
 
         private void InitializeModels()

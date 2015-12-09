@@ -61,7 +61,12 @@ namespace GameStore.DAL.Concrete.Repositories
                     entry.Roles.Remove(role);
                 }
                 entry.Roles = roles;
-            }           
+            }
+
+            if (entity.NotificationInfo != null)
+            {
+                entry.NotificationInfo = entity.NotificationInfo;
+            }
         }
 
         public void Delete(int id)

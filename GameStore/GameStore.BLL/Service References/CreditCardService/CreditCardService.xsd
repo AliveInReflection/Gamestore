@@ -43,7 +43,7 @@
   <xs:element name="PaymentStatus" nillable="true" type="tns:PaymentStatus" />
   <xs:simpleType name="ConfirmationStatus">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="Successfull">
+      <xs:enumeration value="Successful">
         <xs:annotation>
           <xs:appinfo>
             <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>

@@ -42,7 +42,7 @@ namespace GameStore.BLL.NotificationServices
             mail.IsBodyHtml = true;
             mail.Body = message;
 
-            client.SendMailAsync(mail);
+            client.Send(mail);
         }
     }
 }
