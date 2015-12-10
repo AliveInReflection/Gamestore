@@ -178,6 +178,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        public static string NotificationMethodNone {
+            get {
+                return ResourceManager.GetString("NotificationMethodNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SMS.
         /// </summary>
         public static string NotificationMethodSms {

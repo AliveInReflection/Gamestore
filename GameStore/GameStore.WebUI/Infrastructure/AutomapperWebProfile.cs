@@ -64,6 +64,11 @@ namespace GameStore.CL.AutomapperProfiles
                 .ForMember(m => m.Text, opt => opt.MapFrom(m => m.RoleName))
                 .ForMember(m => m.Value, opt => opt.MapFrom(m => m.RoleId.ToString()));
 
+            Mapper.CreateMap<UserDTO, UpdateUserViewModel>()
+                .ForMember(m => m.NotificationMethod,
+                    opt =>
+                        opt.MapFrom(
+                            m => NotificationMethodManager.Items.First(x => x.Value.Equals(m.NotificationMethod)).Key));
 
             //===================Reverce=============================
 
@@ -168,6 +173,15 @@ namespace GameStore.CL.AutomapperProfiles
 
             Mapper.CreateMap<ContentTransformationViewModel, GamesSortingMode>()
                 .ProjectUsing(m => m != null ? GameSortingModeManager.Items[m.SortBy] : GamesSortingMode.None);
+
+            Mapper.CreateMap<UpdateUserViewModel, UserDTO>()
+                .ForMember(m => m.NotificationMethod,
+                    opt =>
+                        opt.MapFrom(
+                            m =>
+                                !string.IsNullOrEmpty(m.NotificationMethod)
+                                    ? NotificationMethodManager.Items[m.NotificationMethod]
+                                    : default(NotificationMethod)));
 
         }
 

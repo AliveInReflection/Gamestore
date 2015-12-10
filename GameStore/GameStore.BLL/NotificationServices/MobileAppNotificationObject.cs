@@ -10,11 +10,11 @@ namespace GameStore.BLL.NotificationServices
 {
     public class MobileAppNotificationObject : INotificationObject
     {
-        private string _credentials;
+        private int userId;
 
-        public MobileAppNotificationObject(string credentials)
+        public MobileAppNotificationObject(int userId)
         {
-            _credentials = credentials;
+            this.userId = userId;
         }
 
         public void Send(string message)

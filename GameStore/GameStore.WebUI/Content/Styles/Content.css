@@ -162,6 +162,7 @@ table tr {
 
 .add-link {
     text-align: right;
+    padding-right: 50px;
 }
 
 .add-link a, .button-small, .inline-form input[type=submit],

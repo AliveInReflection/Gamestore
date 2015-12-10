@@ -146,10 +146,46 @@ namespace GameStore.WebUI.Controllers
             return RedirectToAction("Details");
         }
 
-        public ActionResult ChangeNotificationMethod()
+        public ActionResult UpdateProfile()
         {
-            var notificationMethods = Mapper.Map<IEnumerable<SelectListItem>>(NotificationMethodManager.Items.Keys);
-            return View(notificationMethods);
+            try
+            {
+                var user = userService.Get(int.Parse((User as ClaimsPrincipal).FindFirst(ClaimTypes.SerialNumber).Value));
+
+                var userVM = Mapper.Map<UpdateUserViewModel>(user);
+                userVM.NotificationMethodItems = Mapper.Map<IEnumerable<SelectListItem>>(NotificationMethodManager.Items.Keys);
+
+                return View(userVM);
+            }
+            catch (ValidationException e)
+            {
+                Logger.Warn(e);
+                SetErrorMessage(ValidationRes.ValidationError);
+                return RedirectToAction("Details");
+            }
+            
+        }
+
+
+        [HttpPost]
+        public ActionResult UpdateProfile(UpdateUserViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                model.NotificationMethodItems = Mapper.Map<IEnumerable<SelectListItem>>(NotificationMethodManager.Items.Keys);
+                return View(model);
+            }
+            
+            try
+            {
+                userService.Update(Mapper.Map<UserDTO>(model));
+            }
+            catch (ValidationException e)
+            {
+                Logger.Warn(e);
+            }
+
+            return RedirectToAction("Details");
         }
 
 

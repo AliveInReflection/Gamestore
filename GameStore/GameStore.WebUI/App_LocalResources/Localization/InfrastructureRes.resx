@@ -240,4 +240,7 @@
   <data name="SortingPriceDescending" xml:space="preserve">
     <value>Price descending</value>
   </data>
+  <data name="NotificationMethodNone" xml:space="preserve">
+    <value>None</value>
+  </data>
 </root>

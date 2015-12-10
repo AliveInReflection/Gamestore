@@ -162,4 +162,10 @@
   <data name="WrongFormat" xml:space="preserve">
     <value>Wrong format</value>
   </data>
+  <data name="EmailIsNotValid" xml:space="preserve">
+    <value>Email address is not valid</value>
+  </data>
+  <data name="PhoneNumberIsNotValid" xml:space="preserve">
+    <value>Phone number is not valid</value>
+  </data>
 </root>

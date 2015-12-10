@@ -15,6 +15,7 @@ namespace GameStore.WebUI.Infrastructure
             {
                 return new Dictionary<string, NotificationMethod>()
                 {
+                    {InfrastructureRes.NotificationMethodNone, default(NotificationMethod)},
                     {InfrastructureRes.NotificationMethodEmail, NotificationMethod.Email},
                     {InfrastructureRes.NotificationMethodSms, NotificationMethod.Sms},
                     {InfrastructureRes.NotificationMethodMobileApp, NotificationMethod.MobileApp}

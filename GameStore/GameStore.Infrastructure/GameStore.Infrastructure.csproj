@@ -61,7 +61,6 @@
     <Compile Include="DTO\GameDTO.cs" />
     <Compile Include="DTO\GameFilteringMode.cs" />
     <Compile Include="DTO\GenreDTO.cs" />
-    <Compile Include="DTO\NotificationInfoDTO.cs" />
     <Compile Include="DTO\OrderDetailsDTO.cs" />
     <Compile Include="DTO\OrderDTO.cs" />
     <Compile Include="DTO\PaginatedGames.cs" />

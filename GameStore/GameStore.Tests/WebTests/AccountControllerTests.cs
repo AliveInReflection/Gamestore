@@ -266,5 +266,30 @@ namespace GameStore.Tests.WebTests
             Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
         }
 
+
+        [TestMethod]
+        public void Update_Profile_Get_Model_Is_Not_Null()
+        {
+            var result = controller.UpdateProfile() as ViewResult;
+
+            Assert.IsNotNull(result.Model);
+        }
+
+        [TestMethod]
+        public void Update_Profile_Post_Invalid_Model_Is_Not_Null()
+        {
+            controller.ModelState.AddModelError("", "");
+            var result = controller.UpdateProfile(new UpdateUserViewModel()) as ViewResult;
+
+            Assert.IsNotNull(result.Model);
+        }
+
+        [TestMethod]
+        public void Update_Profile_Post_Is_Redirect_Result()
+        {
+            var result = controller.UpdateProfile(new UpdateUserViewModel());
+
+            Assert.IsInstanceOfType(result, typeof(RedirectToRouteResult));
+        }
     }
 }

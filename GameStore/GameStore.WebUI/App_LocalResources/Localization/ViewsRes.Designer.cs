@@ -574,6 +574,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update profile.
+        /// </summary>
+        public static string LinkUpdateProfile {
+            get {
+                return ResourceManager.GetString("LinkUpdateProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Visit blog.
         /// </summary>
         public static string LinkVisitBlog {

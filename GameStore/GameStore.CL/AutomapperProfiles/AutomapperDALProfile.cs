@@ -34,8 +34,6 @@ namespace GameStore.CL.AutomapperProfiles
             Mapper.CreateMap<Role, Role>()
                 .ForMember(m => m.Users, opt => opt.Ignore());
 
-            Mapper.CreateMap<NotificationInfo, NotificationInfo>();
-
 
             Mapper.CreateMap<Product, Game>()
                 .ForMember(m => m.GameId, opt => opt.MapFrom(m => KeyManager.Encode(m.ProductID, DatabaseType.Northwind)))

@@ -265,12 +265,12 @@
     <Compile Include="Infrastructure\GamePublishingDateFilteringManager.cs" />
     <Compile Include="Models\Account\ChangePasswordViewModel.cs" />
     <Compile Include="Models\Account\ClaimViewModel.cs" />
+    <Compile Include="Models\Account\UpdateUserViewModel.cs" />
     <Compile Include="Models\Account\CreateRoleViewModel.cs" />
     <Compile Include="Models\Account\DisplayRoleViewModel.cs" />
     <Compile Include="Models\Account\DisplayUserViewModel.cs" />
     <Compile Include="Models\Account\LoginViewModel.cs" />
     <Compile Include="Models\Account\ManageUserViewModel.cs" />
-    <Compile Include="Models\Account\NotificationInfoViewModel.cs" />
     <Compile Include="Models\Account\RegisterViewModel.cs" />
     <Compile Include="Models\Account\ManageRoleViewModel.cs" />
     <Compile Include="Models\Payment\CardPaymentConfirmationViewModel.cs" />
@@ -440,7 +440,7 @@
     <Content Include="Views\Shared\_SupportPartial.cshtml" />
     <Content Include="Views\Shared\_SocialLine.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\Account\ChangeNotificationMethod.cshtml" />
+    <Content Include="Views\Account\UpdateProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstract\" />

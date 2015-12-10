@@ -19,6 +19,7 @@
     </div>
 }
 
+<div class="add-link">@Html.ActionLink(ViewsRes.LinkUpdateProfile, "UpdateProfile", null, new{@class="button-small"})</div>
 
 <table class="table">
     <tr>
@@ -63,17 +64,3 @@
 </p>
 
 
-@if ((User as ClaimsIdentity).HasClaim(ClaimTypes.Role, DefaultRoles.Manager))
-{
-    <p>@ViewsRes.AccountDetailsNotification</p>
-    <table class="table">
-        <tr>
-            <th>@ModelRes.NotificationInfoNotificationMethod</th>
-            <td>@Model.NotificationInfo.NotificationMethod</td>
-        </tr>
-    </table>
-
-    <p class="text-center">
-        @Html.ActionLink(ViewsRes.LinkChange, "ChangeNotificationMethod", null, new { @class = "button-small" })
-    </p>
-}

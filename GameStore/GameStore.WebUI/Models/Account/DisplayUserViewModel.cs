@@ -25,6 +25,5 @@ namespace GameStore.WebUI.Models.Account
         [Display(ResourceType = typeof(ModelRes), Name = "AccountRoles")]
         public IEnumerable<string> Roles { get; set; }
 
-        public NotificationInfoViewModel NotificationInfo { get; set; }
     }
 }

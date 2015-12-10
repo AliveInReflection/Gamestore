@@ -7,6 +7,7 @@ using AutoMapper;
 using Gamestore.DAL.Context;
 using GameStore.DAL.Interfaces;
 using GameStore.Domain.Entities;
+using GameStore.Infrastructure.Enums;
 
 namespace GameStore.DAL.Concrete.Repositories
 {
@@ -31,6 +32,31 @@ namespace GameStore.DAL.Concrete.Repositories
         {
             var entry = context.Users.First(m => m.UserId.Equals(entity.UserId));
 
+            if (entity.Country != null)
+            {
+                entry.Country = entity.Country;
+            }
+
+            if (entity.DateOfBirth != DateTime.MinValue)
+            {
+                entry.DateOfBirth = entity.DateOfBirth;
+            }
+
+            if (entity.Email != null)
+            {
+                entry.Email = entity.Email;
+            }
+
+            if (entity.PhoneNumber != null)
+            {
+                entry.PhoneNumber = entity.PhoneNumber;
+            }
+
+            if (entity.NotificationMethod != default(NotificationMethod))
+            {
+                entry.NotificationMethod = entity.NotificationMethod;
+            }
+
             if (entity.BanExpirationDate != null)
             {
                 entry.BanExpirationDate = entity.BanExpirationDate;
@@ -41,7 +67,7 @@ namespace GameStore.DAL.Concrete.Repositories
                 entry.Password = entity.Password;
             }
 
-            if (entity.Claims != null)
+            if (entity.Claims != null && entity.Claims.Any())
             {
                 var oldClaims = entry.Claims.ToList();
                 foreach (var userClaim in oldClaims)
@@ -51,7 +77,7 @@ namespace GameStore.DAL.Concrete.Repositories
                 entry.Claims = entity.Claims;
             }
 
-            if (entity.Roles != null)
+            if (entity.Roles != null && entity.Roles.Any())
             {
                 var roleIds = entity.Roles.Select(m => m.RoleId);
                 var roles = context.Roles.Where(m => roleIds.Contains(m.RoleId)).ToList();
@@ -63,10 +89,6 @@ namespace GameStore.DAL.Concrete.Repositories
                 entry.Roles = roles;
             }
 
-            if (entity.NotificationInfo != null)
-            {
-                entry.NotificationInfo = entity.NotificationInfo;
-            }
         }
 
         public void Delete(int id)

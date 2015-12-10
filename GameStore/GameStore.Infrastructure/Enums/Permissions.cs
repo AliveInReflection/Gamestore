@@ -22,7 +22,7 @@ namespace GameStore.Infrastructure.Enums
             {
                 return new[]
                 {
-                    Create, Retreive, Update, Delete,
+                    Retreive, Create, Update, Delete,
                     Ban, Crud
                 };
             }

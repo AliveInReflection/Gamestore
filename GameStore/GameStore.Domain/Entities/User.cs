@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using GameStore.Domain.Metadata;
+using GameStore.Infrastructure.Enums;
 
 namespace GameStore.Domain.Entities
 {
@@ -15,11 +16,16 @@ namespace GameStore.Domain.Entities
         public string Country { get; set; }
         public DateTime? BanExpirationDate { get; set; }
 
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+
+        public NotificationMethod NotificationMethod { get; set; }
+
         public virtual ICollection<Role> Roles { get; set; }
         public virtual ICollection<UserClaim> Claims { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
 
-        public virtual NotificationInfo NotificationInfo { get; set; }
+        
     }
 }

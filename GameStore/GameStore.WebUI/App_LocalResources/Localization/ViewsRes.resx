@@ -402,4 +402,7 @@
   <data name="AccountChangeNotificationMethodTitle" xml:space="preserve">
     <value>Choose notification title</value>
   </data>
+  <data name="LinkUpdateProfile" xml:space="preserve">
+    <value>Update profile</value>
+  </data>
 </root>

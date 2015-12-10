@@ -37,7 +37,6 @@ namespace Gamestore.DAL.Context
         public DbSet<RoleClaim> RoleClaims { get; set; }
         public DbSet<UserClaim> UserClaims { get; set; }
         public DbSet<View> Views { get; set; }
-        public DbSet<NotificationInfo> NotificationInfos { get; set; }
     }
 
 
@@ -255,13 +254,6 @@ namespace Gamestore.DAL.Context
             db.Views.Add(new View() { GameId = 4, UserId = 3 });
             db.Views.Add(new View() { GameId = 7, UserId = 1 });
             db.Views.Add(new View() { GameId = 7, UserId = 2 });
-
-
-            manager.NotificationInfo = new NotificationInfo()
-            {
-                NotificationMethod = NotificationMethod.Email,
-                Target = "Yurii_Honchar@epam.com"
-            };
         }
     }
 }

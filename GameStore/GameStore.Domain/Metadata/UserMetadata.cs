@@ -30,7 +30,5 @@ namespace GameStore.Domain.Metadata
 
         [Required]
         public string Country { get; set; }
-
-        public virtual NotificationInfo NotificationInfo { get; set; }
     }
 }

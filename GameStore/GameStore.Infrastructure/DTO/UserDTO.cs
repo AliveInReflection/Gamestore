@@ -13,11 +13,13 @@ namespace GameStore.Infrastructure.DTO
         public DateTime DateOfBirth { get; set; }
         public string Country { get; set; }
         public DateTime? BanExpirationDate { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+
+        public NotificationMethod NotificationMethod { get; set; }
 
         public IEnumerable<RoleDTO> Roles { get; set; }
         public IEnumerable<Claim> Claims { get; set; }
         public IEnumerable<CommentDTO> Comments { get; set; }
-
-        public NotificationInfoDTO NotificationInfo { get; set; }
     }
 }

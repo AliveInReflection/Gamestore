@@ -24,7 +24,7 @@ namespace GameStore.BLL.Services
         public decimal CalculateAmount(int orderId)
         {
             var orderDetailses = database.OrderDetailses.GetMany(m => m.OrderId.Equals(orderId)).ToList();
-            decimal amount = orderDetailses.Sum(orderDetailse => orderDetailse.Product.Price*orderDetailse.Quantity*(decimal)(1-orderDetailse.Discount));
+            decimal amount = orderDetailses.Sum(orderDetailse => orderDetailse.Product.Price * orderDetailse.Quantity * (decimal)(1 - orderDetailse.Discount));
             return amount;
         }
 
@@ -46,7 +46,7 @@ namespace GameStore.BLL.Services
 
             var gameIds = orderDetailses.Select(m => m.ProductId);
             var games = database.Games.GetMany(x => gameIds.Any(m => m == x.GameId));
-            
+
             foreach (var orderDetails in orderDetailses)
             {
                 var game = games.First(m => m.GameId.Equals(orderDetails.ProductId));
@@ -80,7 +80,7 @@ namespace GameStore.BLL.Services
             }
 
             var order = GetCurrentOrder(customerId);
-                       
+
             if (!database.OrderDetailses.IsExists(m => m.OrderId.Equals(order.OrderId) && m.ProductId.Equals(game.GameId)))
             {
                 database.OrderDetailses.Create(new OrderDetails()
@@ -125,7 +125,7 @@ namespace GameStore.BLL.Services
             {
                 throw new ValidationException(string.Format("No products (Id: {0}) in the order(Id:{1})", gameId, order.OrderId));
             }
-            
+
         }
 
 
@@ -142,8 +142,8 @@ namespace GameStore.BLL.Services
 
         private Order GetCurrentOrder(int customerId)
         {
-            Order entry;                
-            if (!database.Orders.IsExists(m => m.Customer.UserId.Equals(customerId) && m.OrderState == OrderState.NotIssued)) 
+            Order entry;
+            if (!database.Orders.IsExists(m => m.Customer.UserId.Equals(customerId) && m.OrderState == OrderState.NotIssued))
             {
                 var newOrder = new Order()
                 {
@@ -192,22 +192,23 @@ namespace GameStore.BLL.Services
 
             foreach (var manager in managers)
             {
-                var notificationInfo = manager.NotificationInfo;
-
-                if (notificationInfo != null)
+                switch (manager.NotificationMethod)
                 {
-                    switch (manager.NotificationInfo.NotificationMethod)
-                    {
-                        case NotificationMethod.Email:
-                            subject.Attach(new EmailNotificationObject(notificationInfo.Target));
-                            break;
-                        case NotificationMethod.Sms:
-                            subject.Attach(new SmsNotificationObject(notificationInfo.Target));
-                            break;
-                        case NotificationMethod.MobileApp:
-                            subject.Attach(new MobileAppNotificationObject(notificationInfo.Target));
-                            break;
-                    }
+                    case NotificationMethod.Email:
+                        if (!string.IsNullOrEmpty(manager.Email))
+                        {
+                            subject.Attach(new EmailNotificationObject(manager.Email));
+                        }
+                        break;
+                    case NotificationMethod.Sms:
+                        if (!string.IsNullOrEmpty(manager.PhoneNumber))
+                        {
+                            subject.Attach(new SmsNotificationObject(manager.PhoneNumber));
+                        }
+                        break;
+                    case NotificationMethod.MobileApp:
+                        subject.Attach(new MobileAppNotificationObject(manager.UserId));
+                        break;
                 }
             }
 

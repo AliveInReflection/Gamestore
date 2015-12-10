@@ -61,6 +61,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email address is not valid.
+        /// </summary>
+        public static string EmailIsNotValid {
+            get {
+                return ResourceManager.GetString("EmailIsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Field {0} is required.
         /// </summary>
         public static string FieldIsRequired {
@@ -156,6 +165,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         public static string PasswordsNotMatch {
             get {
                 return ResourceManager.GetString("PasswordsNotMatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phone number is not valid.
+        /// </summary>
+        public static string PhoneNumberIsNotValid {
+            get {
+                return ResourceManager.GetString("PhoneNumberIsNotValid", resourceCulture);
             }
         }
         
