@@ -188,7 +188,7 @@ namespace GameStore.BLL.Services
         {
             var managers = database.Users.GetMany(m => m.Roles.Any(r => r.RoleName.Equals("Manager")));
 
-            var subject = new NotificationSubject();
+            var subject = new NotificationQueue();
 
             foreach (var manager in managers)
             {
@@ -197,17 +197,17 @@ namespace GameStore.BLL.Services
                     case NotificationMethod.Email:
                         if (!string.IsNullOrEmpty(manager.Email))
                         {
-                            subject.Attach(new EmailNotificationObject(manager.Email));
+                            subject.Attach(new EmailNotification(manager.Email));
                         }
                         break;
                     case NotificationMethod.Sms:
                         if (!string.IsNullOrEmpty(manager.PhoneNumber))
                         {
-                            subject.Attach(new SmsNotificationObject(manager.PhoneNumber));
+                            subject.Attach(new SmsNotification(manager.PhoneNumber));
                         }
                         break;
                     case NotificationMethod.MobileApp:
-                        subject.Attach(new MobileAppNotificationObject(manager.UserId));
+                        subject.Attach(new MobileAppNotification(manager.UserId));
                         break;
                 }
             }
