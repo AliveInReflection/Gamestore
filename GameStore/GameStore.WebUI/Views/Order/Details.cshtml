@@ -11,26 +11,35 @@
 @Html.Partial("_MessagePartial")
 
 <fieldset>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>@ModelRes.GameGameKey</th>
-            <th>@ModelRes.OrderDetailsQuantity</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in Model.OrderDetailses)
-        {
+    @if (Model.OrderDetailses.Any())
+    {
+        <table class="table">
+            <thead>
             <tr>
-                <td>@item.Product.GameKey</td>
-                <td>@item.Quantity</td>
+                <th>@ModelRes.GameGameKey</th>
+                <th>@ModelRes.OrderDetailsQuantity</th>
             </tr>
-        }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @foreach (var item in Model.OrderDetailses)
+            {
+                <tr>
+                    <td>@item.Product.GameKey</td>
+                    <td>@item.Quantity</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="info-message">@ViewsRes.OrderDetailsBasketEmpty</p>
+    }
+    
 
 </fieldset>
 
 <p class="text-center">
     @Html.ActionLink(ViewsRes.LinkMakeOrder, "Make", null, new{@class="button-small"})
+    @Html.ActionLink(ViewsRes.LinkClear, "Clear", new{orderId = Model.OrderId},new { @class = "button-small" })
 </p>

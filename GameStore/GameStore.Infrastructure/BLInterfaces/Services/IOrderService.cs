@@ -51,5 +51,11 @@ namespace GameStore.Infrastructure.BLInterfaces
         /// <param name="state">Order state</param>
         /// <exception>ValidationException</exception>
         void ChangeState(int orderId, OrderState state);
+
+
+        /// <summary>Remove add order details from order</summary>
+        /// <param name="orderId">Order id</param>
+        /// <exception>ValidationException</exception>
+        void Clear(int orderId);
     }
 }

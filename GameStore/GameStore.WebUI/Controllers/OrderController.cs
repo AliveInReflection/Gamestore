@@ -155,6 +155,20 @@ namespace GameStore.WebUI.Controllers
             return View(Mapper.Map<IEnumerable<OrderDTO>, IEnumerable<DisplayOrderViewModel>>(orders));
         }
 
+        public ActionResult Clear(int orderId)
+        {
+            try
+            {
+                orderService.Clear(orderId);
+            }
+            catch (ValidationException e)
+            {
+                Logger.Warn(e);
+            }
+
+            return RedirectToAction("Details");
+        }
+
     }
 
 }

@@ -177,5 +177,24 @@ namespace GameStore.BLL.Services
                 throw new ValidationException(string.Format("Order not found({0})", orderId));
             }
         }
+
+
+        public void Clear(int orderId)
+        {
+            IEnumerable<OrderDetails> orderDetailses;
+            try
+            {
+                orderDetailses = database.OrderDetailses.GetMany(m => m.Order.OrderId.Equals(orderId));
+                foreach (var orderDetails in orderDetailses)
+                {
+                    database.OrderDetailses.Delete(orderDetails.OrderDetailsId);
+                }
+                database.Save();
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ValidationException(string.Format("Cannot clear order({0})", orderId));
+            }
+        }
     }
 }

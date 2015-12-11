@@ -390,4 +390,10 @@
   <data name="LinkVisitBlog" xml:space="preserve">
     <value>Посетить блог</value>
   </data>
+  <data name="OrderDetailsBasketEmpty" xml:space="preserve">
+    <value>Корзина пуста</value>
+  </data>
+  <data name="LinkClear" xml:space="preserve">
+    <value>Очистить</value>
+  </data>
 </root>
