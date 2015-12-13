@@ -11,9 +11,10 @@ namespace GameStore.BLL.NotificationServices
         private string _message;
         private SmtpClient _client;
 
-        public EmailNotification(string email)
+        public EmailNotification(string email, string message)
         {
             _email = email;
+            _message = message;
 
             _client = new SmtpClient
             {
@@ -30,15 +31,15 @@ namespace GameStore.BLL.NotificationServices
 
         public void Send()
         {
-            _client.Send(BuildMail(_message));
+            _client.Send(BuildMail());
         }
 
         public Task SendAsync()
         {
-            return _client.SendMailAsync(BuildMail(_message));
+            return _client.SendMailAsync(BuildMail());
         }
 
-        private MailMessage BuildMail(string message)
+        private MailMessage BuildMail()
         {
             MailMessage mail = new MailMessage();
 
@@ -46,7 +47,7 @@ namespace GameStore.BLL.NotificationServices
             mail.To.Add(new MailAddress(_email));
             mail.Subject = "Game store notification";
             mail.IsBodyHtml = true;
-            mail.Body = message;
+            mail.Body = _message;
 
             return mail;
         }

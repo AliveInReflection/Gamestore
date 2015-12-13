@@ -22,6 +22,7 @@ namespace GameStore.Tests.Mocks
         private Mock<IAuthenticationService> mockAuth;
         private Mock<IGameStoreLogger> mockLogger;
         private Mock<ICreditCardPaymentService> mockCreditCard;
+        
 
         private GameDTO game;
 
@@ -110,6 +111,7 @@ namespace GameStore.Tests.Mocks
            
             mockCreditCard.Setup(x => x.Confirm(It.IsAny<string>(),  It.IsAny<string>()))
                 .Returns(CardConfirmationStatus.Successful);
+
         }
 
         private void InitializeModels()

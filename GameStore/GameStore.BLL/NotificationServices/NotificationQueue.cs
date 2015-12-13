@@ -3,34 +3,31 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using GameStore.Infrastructure.BLInterfaces;
+using GameStore.Logger.Interfaces;
+using System;
 
 namespace GameStore.BLL.NotificationServices
 {
     public class NotificationQueue : INotificationQueue
     {
+        private IGameStoreLogger _logger;
         private ConcurrentQueue<INotification> _notifications;
+        private bool _runFlag;
 
-        public NotificationQueue()
+        public NotificationQueue(IGameStoreLogger logger)
         {
+            _logger = logger;
             _notifications = new ConcurrentQueue<INotification>();
-
-            Task.Factory.StartNew(() =>
-            {
-                INotification currentnotification;
-                while (true)
-                {
-                    if (_notifications.TryDequeue(out currentnotification))
-                    {
-                        currentnotification.SendAsync();
-                    }
-                    Thread.Sleep(1000);
-                }
-            });
         }
-
+        
         public void Enqueue(INotification notification)
         {
             _notifications.Enqueue(notification);
+            
+            if(!_runFlag)
+            {
+                Start();
+            }
         }
 
         public void Enqueue(IEnumerable<INotification> notifications)
@@ -39,15 +36,37 @@ namespace GameStore.BLL.NotificationServices
             {
                 _notifications.Enqueue(notification);
             }
+
+            if (!_runFlag)
+            {
+                Start();
+            }
         }
 
-        public void Notify()
+        private async void Notify()
         {
-            INotification currentnotification;
+            INotification currentNotification;
             
-            while(_notifications.TryDequeue(out currentnotification))
-                currentnotification.Send();
+            while (_notifications.TryDequeue(out currentNotification))
+            {
+                try
+                {
+                    await currentNotification.SendAsync();
+                }
+                catch(AggregateException e)
+                {
+                    _logger.Error(e.InnerException);
+                }
+                
             }
+
+            _runFlag = false;
+        }
+
+        private Task Start()
+        {
+            _runFlag = true;
+            return Task.Factory.StartNew(() => Notify());
         }
     }
 }

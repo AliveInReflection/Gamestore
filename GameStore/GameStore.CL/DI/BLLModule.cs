@@ -10,6 +10,7 @@ using GameStore.DAL.Interfaces;
 using GameStore.Domain.Entities;
 using GameStore.Infrastructure.BLInterfaces;
 using Ninject.Modules;
+using GameStore.BLL.NotificationServices;
 
 namespace GameStore.CL.DI
 {
@@ -24,6 +25,7 @@ namespace GameStore.CL.DI
         {
             Bind<IUnitOfWork>().To<UnitOfWork>().WithConstructorArgument("GameStoreContext");
             Bind<IContentPaginator<Game>>().To<GamePaginator>();
+            Bind<INotificationQueue>().To<NotificationQueue>();
         }
     }
 }

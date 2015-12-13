@@ -15,10 +15,12 @@ namespace GameStore.BLL.Services
     public class OrderService : IOrderService
     {
         private IUnitOfWork database;
+        private INotificationQueue notificationQueue;
 
-        public OrderService(IUnitOfWork database)
+        public OrderService(IUnitOfWork database, INotificationQueue notificationQueue)
         {
             this.database = database;
+            this.notificationQueue = notificationQueue;
         }
 
         public decimal CalculateAmount(int orderId)
@@ -188,7 +190,7 @@ namespace GameStore.BLL.Services
         {
             var managers = database.Users.GetMany(m => m.Roles.Any(r => r.RoleName.Equals("Manager")));
 
-            var subject = new NotificationQueue();
+            var message = string.Format("Order #{0} was paid", orderId);
 
             foreach (var manager in managers)
             {
@@ -197,22 +199,20 @@ namespace GameStore.BLL.Services
                     case NotificationMethod.Email:
                         if (!string.IsNullOrEmpty(manager.Email))
                         {
-                            subject.Attach(new EmailNotification(manager.Email));
+                            notificationQueue.Enqueue(new EmailNotification(manager.Email, message));
                         }
                         break;
                     case NotificationMethod.Sms:
                         if (!string.IsNullOrEmpty(manager.PhoneNumber))
                         {
-                            subject.Attach(new SmsNotification(manager.PhoneNumber));
+                            notificationQueue.Enqueue(new SmsNotification(manager.PhoneNumber, message));
                         }
                         break;
                     case NotificationMethod.MobileApp:
-                        subject.Attach(new MobileAppNotification(manager.UserId));
+                        notificationQueue.Enqueue(new MobileAppNotification(manager.UserId, message));
                         break;
                 }
             }
-
-            subject.Notify(string.Format("Order #{0} was paid", orderId));
         }
     }
 }

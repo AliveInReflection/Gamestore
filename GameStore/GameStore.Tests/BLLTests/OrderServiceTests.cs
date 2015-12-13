@@ -2,9 +2,12 @@
 using GameStore.BLL.Services;
 using GameStore.CL.AutomapperProfiles;
 using GameStore.Domain.Entities;
+using GameStore.Infrastructure.BLInterfaces;
 using GameStore.Infrastructure.Enums;
 using GameStore.Tests.Mocks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using System.Collections.Generic;
 
 namespace GameStore.Tests.BLLTests
 {
@@ -13,6 +16,7 @@ namespace GameStore.Tests.BLLTests
     {
         private TestCollections collections;
         public UOWMock mock;
+        private Mock<INotificationQueue> mockQueue;
 
 
         private string testPaymentKey = "Visa";
@@ -26,8 +30,7 @@ namespace GameStore.Tests.BLLTests
 
         private void InitializeTestEntities()
         {
-
-            service = new OrderService(mock.UnitOfWork);
+            service = new OrderService(mock.UnitOfWork, mockQueue.Object);
         }
 
         [TestInitialize]
@@ -39,6 +42,11 @@ namespace GameStore.Tests.BLLTests
             });
             collections = new TestCollections();
             mock = new UOWMock(collections);
+            mockQueue = new Mock<INotificationQueue>();
+
+            mockQueue.Setup(x => x.Enqueue(It.IsAny<INotification>()));
+            mockQueue.Setup(x => x.Enqueue(It.IsAny<IEnumerable<INotification>>()));
+
             InitializeTestEntities();
         }
         #endregion

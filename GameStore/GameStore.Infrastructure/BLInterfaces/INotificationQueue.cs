@@ -6,6 +6,5 @@ namespace GameStore.Infrastructure.BLInterfaces
     {
         void Enqueue(INotification notification);
         void Enqueue(IEnumerable<INotification> notifications);
-        void Notify();
     }
 }
