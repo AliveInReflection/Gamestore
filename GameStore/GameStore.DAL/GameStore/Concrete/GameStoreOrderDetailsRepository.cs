@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Data;
+using System.Linq;
 using AutoMapper;
 using Gamestore.DAL.Context;
 using GameStore.Domain.Entities;
@@ -16,7 +17,7 @@ namespace GameStore.DAL.GameStore.Concrete
         public override void Delete(int id)
         {
             var entry = context.OrderDetailses.First(m => m.OrderDetailsId.Equals(id));
-            entry.IsDeleted = true;
+            context.Entry(entry).State = EntityState.Deleted;
         }
 
         public override void Update(OrderDetails entity)

@@ -394,6 +394,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        public static string LinkClear {
+            get {
+                return ResourceManager.GetString("LinkClear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Comment.
         /// </summary>
         public static string LinkComment {
@@ -660,6 +669,15 @@ namespace GameStore.WebUI.App_LocalResources.Localization {
         public static string MenuUsers {
             get {
                 return ResourceManager.GetString("MenuUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Basket is empty.
+        /// </summary>
+        public static string OrderDetailsBasketEmpty {
+            get {
+                return ResourceManager.GetString("OrderDetailsBasketEmpty", resourceCulture);
             }
         }
         

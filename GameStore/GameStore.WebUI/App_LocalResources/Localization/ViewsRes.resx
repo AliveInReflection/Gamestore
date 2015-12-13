@@ -393,6 +393,12 @@
   <data name="LinkVisitBlog" xml:space="preserve">
     <value>Visit blog</value>
   </data>
+  <data name="OrderDetailsBasketEmpty" xml:space="preserve">
+    <value>Basket is empty</value>
+  </data>
+  <data name="LinkClear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
   <data name="AccountDetailsNotification" xml:space="preserve">
     <value>Notification method</value>
   </data>
