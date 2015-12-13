@@ -30,6 +30,10 @@ OnDeleteClick = function (event) {
 
 OnAnswerClick = function (event) {
     event.preventDefault();
+
+    $(".button-small-answer-active").removeClass("button-small-answer-active");
+    $(this).addClass("button-small-answer-active");
+
     var parentId = $(this).data("id");
     console.log(parentId);
     $("#NewComment_ParentCommentId").attr("value", parentId);
@@ -37,6 +41,10 @@ OnAnswerClick = function (event) {
 
 OnQuoteClick = function (event) {
     event.preventDefault();
+
+    $(".button-small-quote-active").removeClass("button-small-quote-active");
+    $(this).addClass("button-small-quote-active");
+
     var quoteId = $(this).data("id");
     console.log(quoteId);
     $("#NewComment_QuoteId").attr("value", quoteId);

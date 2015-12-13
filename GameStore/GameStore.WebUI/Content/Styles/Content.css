@@ -166,7 +166,8 @@ table tr {
 }
 
 .add-link a, .button-small, .inline-form input[type=submit],
-.comment-answer, .comment-quote, .comment-delete, .comment-ban
+.comment-answer, .comment-quote, .comment-delete, .comment-ban,
+.button-small-quote-active, .button-small-answer-active
 {
     display: inline;
     text-align: right;
@@ -181,10 +182,21 @@ table tr {
     text-decoration: none;
 }
 
+.button-small-quote-active, .button-small-answer-active
+{
+    background-color: #16272c;
+    border-top: 1px solid #16272c;
+    border-bottom: 1px solid #16272c;
+    color: white;
+}
+
 .add-link a:hover, .button-small:hover,.inline-form input[type=submit]:hover,
 .comment-answer:hover, .comment-quote:hover, .comment-delete:hover, .comment-ban:hover{
     background-color: #8a1715;
     color: white;
+}
+
+.button-small-quote-active:hover, .button-small-answer-active:hover {
 }
 
 .alert{
